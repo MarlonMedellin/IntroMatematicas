@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representación en la Recta Numérica - Concepto</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1920px;
+            min-height: 1080px;
+            background-color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        .title-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: #172139;
+        }
+        .header {
+            color: #172139;
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .subheader {
+            color: #195855;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        .card {
+            background-color: rgba(251, 187, 40, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card-title {
+            color: #195855;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        .step-number {
+            background-color: #172139;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        .step-text {
+            color: #2F3E5D;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .number-line-container {
+            width: 100%;
+            position: relative;
+            margin: 40px 0;
+        }
+        .number-line {
+            height: 6px;
+            background-color: #172139;
+            position: relative;
+            border-radius: 3px;
+        }
+        .number-line::after {
+            content: "";
+            position: absolute;
+            right: -12px;
+            top: -7px;
+            border-left: 14px solid #172139;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+        .tick {
+            position: absolute;
+            height: 16px;
+            width: 3px;
+            background-color: #172139;
+            bottom: 0;
+            transform: translateX(-50%) translateY(5px);
+        }
+        .number {
+            position: absolute;
+            font-size: 18px;
+            color: #195855;
+            bottom: -35px;
+            transform: translateX(-50%);
+            font-weight: 600;
+        }
+        .zero {
+            color: #00AEAC;
+            font-weight: 700;
+        }
+        .accent-shape {
+            position: absolute;
+            right: -200px;
+            bottom: -200px;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background-color: rgba(180, 196, 44, 0.07);
+            z-index: 0;
+        }
+        .highlight-box {
+            background-color: rgba(233, 144, 30, 0.12);
+            border-left: 4px solid #E9901E;
+            padding: 16px;
+            margin-top: 30px;
+        }
+        .highlight-text {
+            color: #172139;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        .content-wrapper {
+            z-index: 10;
+            position: relative;
+        }
+        .comparison-example {
+            font-size: 22px;
+            color: #172139;
+            font-weight: 500;
+        }
+        .greater-than {
+            color: #00AEAC;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col">
+        <div class="title-bar"></div>
+        <div class="accent-shape"></div>
+
+```
+    <div class="px-36 py-28 content-wrapper">
+        <h1 class="header">La Recta Numérica</h1>
+        <h2 class="subheader">Visualización y comprensión de los números enteros</h2>
+        
+        <div class="grid grid-cols-2 gap-10">
+            <!-- Columna izquierda -->
+            <div>
+                <div class="card">
+                    <h3 class="card-title">¿Qué es la recta numérica?</h3>
+                    <p class="text-lg text-gray-800 mb-4">Es una línea recta donde cada punto representa un número entero único, permitiendo visualizar el orden y la relación entre los números.</p>
+                    
+                    <div class="mt-6">
+                        <h4 class="text-xl font-semibold mb-3" style="color: #172139;">Construcción de la recta numérica:</h4>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <p class="step-text">Se elige un punto para representar el <strong>cero (0)</strong>.</p>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <p class="step-text">A la <strong>derecha</strong> del cero, a intervalos iguales, se ubican los <strong>enteros positivos</strong> (1, 2, 3, ...) en orden creciente.</p>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <p class="step-text">A la <strong>izquierda</strong> del cero, con los mismos intervalos, se ubican los <strong>enteros negativos</strong> (-1, -2, -3, ...) en orden decreciente.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box mt-8">
+                    <p class="highlight-text">En la recta numérica, un número es <strong>mayor</strong> que otro si está ubicado a su <strong>derecha</strong>.</p>
+                    <div class="mt-4 mb-2 comparison-example">
+                        <span>3 <span class="greater-than">&gt;</span> -1</span>
+                        <span class="ml-8">-2 <span class="greater-than">&gt;</span> -5</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna derecha -->
+            <div>
+                <div class="number-line-container mt-4">
+                    <h3 class="text-xl font-semibold mb-6" style="color: #172139;">Representación visual:</h3>
+                    <div class="number-line h-6 w-full">
+                        <!-- Marcas y números -->
+                        <div class="tick" style="left: 0%"></div>
+                        <div class="number" style="left: 0%">-5</div>
+                        
+                        <div class="tick" style="left: 10%"></div>
+                        <div class="number" style="left: 10%">-4</div>
+                        
+                        <div class="tick" style="left: 20%"></div>
+                        <div class="number" style="left: 20%">-3</div>
+                        
+                        <div class="tick" style="left: 30%"></div>
+                        <div class="number" style="left: 30%">-2</div>
+                        
+                        <div class="tick" style="left: 40%"></div>
+                        <div class="number" style="left: 40%">-1</div>
+                        
+                        <div class="tick" style="left: 50%"></div>
+                        <div class="number zero" style="left: 50%">0</div>
+                        
+                        <div class="tick" style="left: 60%"></div>
+                        <div class="number" style="left: 60%">1</div>
+                        
+                        <div class="tick" style="left: 70%"></div>
+                        <div class="number" style="left: 70%">2</div>
+                        
+                        <div class="tick" style="left: 80%"></div>
+                        <div class="number" style="left: 80%">3</div>
+                        
+                        <div class="tick" style="left: 90%"></div>
+                        <div class="number" style="left: 90%">4</div>
+                        
+                        <div class="tick" style="left: 100%"></div>
+                        <div class="number" style="left: 100%">5</div>
+                    </div>
+                </div>
+                
+                <div class="card mt-12" style="background-color: rgba(0, 174, 172, 0.08);">
+                    <h3 class="card-title">Visualización en código:</h3>
+                    <div class="bg-gray-100 p-4 rounded-md font-mono text-lg text-gray-800">
+                        &lt;----|----|----|----|----|----|----|----|----|----|----&gt;<br>
+                        &nbsp;&nbsp;&nbsp; -5&nbsp;&nbsp; -4&nbsp;&nbsp; -3&nbsp;&nbsp; -2&nbsp;&nbsp; -1&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp; 5
+                    </div>
+                </div>
+                
+                <div class="mt-10 bg-gray-50 p-6 rounded-lg border-l-4" style="border-color: #B4C42C;">
+                    <h3 class="text-xl font-semibold mb-3" style="color: #172139;">Propiedades de la recta numérica:</h3>
+                    <ul class="list-disc pl-6 text-lg text-gray-800 space-y-2">
+                        <li>Es <strong>infinita</strong> en ambos sentidos</li>
+                        <li>Cada punto representa un único número</li>
+                        <li>La distancia entre números consecutivos es <strong>constante</strong></li>
+                        <li>Permite comparar visualmente la magnitud de los números</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</body>
+</html>
