@@ -1,401 +1,259 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicaciones de la Recta Numérica</title>
+    <title>Aplicaciones de los Números Enteros</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
+            background: #FFFFFF;
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
         .slide {
-            width: 1920px;
-            min-height: 1080px;
-            background-color: #FFFFFF;
+            width: 1280px;
+            min-height: 720px;
             position: relative;
             overflow: hidden;
         }
-        .title-bar {
+        .number-symbol {
+            font-size: 220px;
+            opacity: 0.08;
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background-color: #172139;
-        }
-        .header {
+            transform: rotate(-10deg);
             color: #172139;
-            font-size: 60px;
-            font-weight: 700;
-            margin-bottom: 30px;
         }
-        .subheader {
-            color: #195855;
-            font-size: 28px;
-            font-weight: 500;
-            margin-bottom: 20px;
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-        .application-card {
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
-        .application-card:hover {
-            transform: translateY(-5px);
-        }
-        .application-title {
-            font-size: 30px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .application-icon {
-            width: 50px;
+        .profession-icon {
+            font-size: 1.8rem;
             height: 50px;
+            width: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        .architecture-card {
-            background-color: rgba(251, 187, 40, 0.08);
-            border-left: 5px solid #FBBB28;
-        }
-        .architecture-icon {
-            background-color: #FBBB28;
-            color: #172139;
-        }
-        .environmental-card {
-            background-color: rgba(180, 196, 44, 0.08);
-            border-left: 5px solid #B4C42C;
-        }
-        .environmental-icon {
-            background-color: #B4C42C;
-            color: #172139;
-        }
-        .vertical-number-line {
-            width: 6px;
             background-color: #172139;
-            height: 360px;
-            margin: 0 auto;
+            color: white;
+        }
+        .number-line {
+            height: 4px;
+            width: 100%;
+            background-color: #2F3E5D;
             position: relative;
-            border-radius: 3px;
         }
-        .vertical-number-line::after {
-            content: "";
+        .number-marker {
             position: absolute;
-            top: -12px;
-            left: -7px;
-            border-bottom: 14px solid #172139;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-        }
-        .horizontal-tick {
-            position: absolute;
-            width: 16px;
-            height: 3px;
-            background-color: #172139;
-            left: -5px;
-            transform: translateY(-50%);
-        }
-        .floor-label {
-            position: absolute;
-            left: 25px;
-            transform: translateY(-50%);
-            font-weight: 600;
-            font-size: 18px;
-            color: #195855;
+            transform: translateX(-50%);
             display: flex;
+            flex-direction: column;
             align-items: center;
         }
-        .floor-icon {
-            width: 30px;
-            height: 30px;
-            background-color: rgba(0, 174, 172, 0.15);
-            color: #00AEAC;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-        .altitude-line {
-            width: 6px;
-            background-color: #172139;
-            height: 360px;
-            margin: 0 auto;
-            position: relative;
-            border-radius: 3px;
-        }
-        .altitude-marker {
-            position: absolute;
-            left: -5px;
-            width: 16px;
-            height: 3px;
-            background-color: #172139;
-            transform: translateY(-50%);
-        }
-        .altitude-label {
-            position: absolute;
-            left: 25px;
-            transform: translateY(-50%);
-            font-weight: 600;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-        .sea-level {
-            position: absolute;
-            top: 50%;
-            left: -120px;
-            right: -120px;
-            height: 20px;
-            background-color: #00AEAC;
-            opacity: 0.3;
-            border-radius: 2px;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .sea-label {
-            color: #00AEAC;
-            font-weight: 700;
-            background-color: white;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .description-text {
-            color: #2F3E5D;
-            font-size: 18px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        .accent-shape-1 {
-            position: absolute;
-            right: -150px;
-            bottom: -150px;
-            width: 300px;
-            height: 300px;
+        .marker-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background-color: rgba(233, 144, 30, 0.05);
-            z-index: 0;
+            margin-bottom: 5px;
         }
-        .accent-shape-2 {
-            position: absolute;
-            left: -100px;
-            top: -100px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: rgba(0, 174, 172, 0.05);
-            z-index: 0;
-        }
-        .note-box {
-            background-color: rgba(233, 144, 30, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 25px;
-        }
-        .note-text {
-            color: #172139;
-            font-size: 16px;
-            font-weight: 500;
+        .example-box {
+            border-left-width: 4px;
+            border-radius: 0.375rem;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
-    <div class="slide flex flex-col">
-        <div class="title-bar"></div>
-        <div class="accent-shape-1"></div>
-        <div class="accent-shape-2"></div>
-
-```
-    <div class="px-36 py-28 z-10 relative">
-        <h1 class="header">Aplicaciones de la Recta Numérica</h1>
-        <h2 class="subheader">Contextos prácticos en diferentes disciplinas</h2>
+    <div class="slide bg-white p-10 flex flex-col">
+        <!-- Decorative elements -->
+        <div class="number-symbol" style="top: 5%; right: 5%;">Z</div>
         
-        <div class="grid grid-cols-2 gap-10">
-            <!-- Aplicación en Arquitectura -->
-            <div class="application-card architecture-card">
-                <div class="application-title">
-                    <div class="application-icon architecture-icon">
-                        <i class="fas fa-building fa-lg"></i>
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold mb-2" style="color: #172139;">Aplicaciones Prácticas de los Números Enteros</h1>
+            <p class="text-lg" style="color: #2F3E5D;">Contextos profesionales donde se utilizan números positivos, negativos y cero</p>
+        </div>
+        
+        <!-- Main content -->
+        <div class="grid grid-cols-2 gap-6 mb-6">
+            <!-- Administración -->
+            <div class="card p-5" style="background-color: #FBBB28;">
+                <div class="flex items-center mb-3">
+                    <div class="profession-icon">
+                        <i class="fas fa-chart-pie"></i>
                     </div>
-                    <span style="color: #172139;">Arquitectura</span>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Administración</h3>
                 </div>
-                
-                <p class="description-text">
-                    En arquitectura, la recta numérica vertical permite representar los diferentes niveles de un edificio, donde:
-                </p>
-                
-                <div class="flex justify-between">
-                    <div class="w-1/2 pr-6">
-                        <ul class="list-disc pl-6 space-y-3 description-text">
-                            <li>El nivel de la <strong>calle es 0</strong></li>
-                            <li>Los <strong>pisos superiores</strong> son números <strong>positivos</strong>: +1, +2, +3...</li>
-                            <li>Los <strong>sótanos</strong> son números <strong>negativos</strong>: -1, -2, -3...</li>
-                            <li>Permite una fácil ubicación vertical en planos arquitectónicos</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="w-1/2 relative">
-                        <div class="vertical-number-line mx-auto">
-                            <!-- Pisos superiores -->
-                            <div class="horizontal-tick" style="top: 10%"></div>
-                            <div class="floor-label" style="top: 10%">
-                                <div class="floor-icon"><i class="fas fa-arrow-up"></i></div>
-                                <span>Piso +3</span>
-                            </div>
-                            
-                            <div class="horizontal-tick" style="top: 25%"></div>
-                            <div class="floor-label" style="top: 25%">
-                                <div class="floor-icon"><i class="fas fa-arrow-up"></i></div>
-                                <span>Piso +2</span>
-                            </div>
-                            
-                            <div class="horizontal-tick" style="top: 40%"></div>
-                            <div class="floor-label" style="top: 40%">
-                                <div class="floor-icon"><i class="fas fa-arrow-up"></i></div>
-                                <span>Piso +1</span>
-                            </div>
-                            
-                            <!-- Planta baja -->
-                            <div class="horizontal-tick" style="top: 55%"></div>
-                            <div class="floor-label" style="top: 55%; color: #00AEAC; font-weight: 700;">
-                                <div class="floor-icon" style="background-color: rgba(0, 174, 172, 0.3); color: #00AEAC;">
-                                    <i class="fas fa-street-view"></i>
-                                </div>
-                                <span>Planta Baja (0)</span>
-                            </div>
-                            
-                            <!-- Sótanos -->
-                            <div class="horizontal-tick" style="top: 70%"></div>
-                            <div class="floor-label" style="top: 70%">
-                                <div class="floor-icon" style="background-color: rgba(233, 144, 30, 0.15); color: #E9901E;">
-                                    <i class="fas fa-arrow-down"></i>
-                                </div>
-                                <span>Sótano -1</span>
-                            </div>
-                            
-                            <div class="horizontal-tick" style="top: 85%"></div>
-                            <div class="floor-label" style="top: 85%">
-                                <div class="floor-icon" style="background-color: rgba(233, 144, 30, 0.15); color: #E9901E;">
-                                    <i class="fas fa-arrow-down"></i>
-                                </div>
-                                <span>Sótano -2</span>
-                            </div>
-                        </div>
-                    </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #195855;">+</span>
+                        <p style="color: #172139;"><span class="font-semibold">Ganancias:</span> <span class="font-bold" style="color: #195855;">+$50.000</span> en ventas semanales</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
+                        <p style="color: #172139;"><span class="font-semibold">Pérdidas:</span> <span class="font-bold" style="color: #00AEAC;">-$20.000</span> en balances negativos</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
+                        <p style="color: #172139;"><span class="font-semibold">Punto equilibrio:</span> <span class="font-bold" style="color: #2F3E5D;">0</span> diferencia ingreso-gasto</p>
+                    </li>
+                </ul>
+                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
+                    <p class="text-sm" style="color: #172139;"><i class="fas fa-briefcase mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Gestión Comercial y análisis financiero</p>
                 </div>
             </div>
             
-            <!-- Aplicación en Gestión Ambiental -->
-            <div class="application-card environmental-card">
-                <div class="application-title">
-                    <div class="application-icon environmental-icon">
-                        <i class="fas fa-mountain fa-lg"></i>
+            <!-- Gastronomía -->
+            <div class="card p-5" style="background-color: #E9901E;">
+                <div class="flex items-center mb-3">
+                    <div class="profession-icon">
+                        <i class="fas fa-utensils"></i>
                     </div>
-                    <span style="color: #172139;">Gestión Ambiental</span>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Gastronomía</h3>
                 </div>
-                
-                <p class="description-text">
-                    En estudios ambientales, la recta numérica permite representar altitudes y profundidades con respecto al nivel del mar:
-                </p>
-                
-                <div class="flex justify-between">
-                    <div class="w-1/2 pr-6">
-                        <ul class="list-disc pl-6 space-y-3 description-text">
-                            <li>El <strong>nivel del mar es 0</strong> (punto de referencia)</li>
-                            <li>Las <strong>elevaciones</strong> son números <strong>positivos</strong>: +100m, +500m, +1000m...</li>
-                            <li>Las <strong>profundidades</strong> son números <strong>negativos</strong>: -50m, -100m, -200m...</li>
-                            <li>Útil para representar ecosistemas en función de la altura</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="w-1/2 relative">
-                        <div class="altitude-line mx-auto">
-                            <!-- Alturas sobre nivel del mar -->
-                            <div class="altitude-marker" style="top: 10%"></div>
-                            <div class="altitude-label" style="top: 10%; color: #108181;">
-                                <i class="fas fa-mountain mr-2"></i>
-                                <span>+1000m (Alta montaña)</span>
-                            </div>
-                            
-                            <div class="altitude-marker" style="top: 25%"></div>
-                            <div class="altitude-label" style="top: 25%; color: #195855;">
-                                <i class="fas fa-tree mr-2"></i>
-                                <span>+500m (Bosque)</span>
-                            </div>
-                            
-                            <div class="altitude-marker" style="top: 40%"></div>
-                            <div class="altitude-label" style="top: 40%; color: #195855;">
-                                <i class="fas fa-campground mr-2"></i>
-                                <span>+100m (Llanura)</span>
-                            </div>
-                            
-                            <!-- Nivel del mar -->
-                            <div class="sea-level">
-                                <span class="sea-label">NIVEL DEL MAR (0)</span>
-                            </div>
-                            
-                            <!-- Profundidades bajo nivel del mar -->
-                            <div class="altitude-marker" style="top: 60%"></div>
-                            <div class="altitude-label" style="top: 60%; color: #00AEAC;">
-                                <i class="fas fa-water mr-2"></i>
-                                <span>-50m (Plataforma continental)</span>
-                            </div>
-                            
-                            <div class="altitude-marker" style="top: 75%"></div>
-                            <div class="altitude-label" style="top: 75%; color: #00AEAC;">
-                                <i class="fas fa-fish mr-2"></i>
-                                <span>-200m (Talud continental)</span>
-                            </div>
-                            
-                            <div class="altitude-marker" style="top: 90%"></div>
-                            <div class="altitude-label" style="top: 90%; color: #00AEAC;">
-                                <i class="fas fa-ship mr-2"></i>
-                                <span>-1000m (Zona abisal)</span>
-                            </div>
-                        </div>
-                    </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #195855;">+</span>
+                        <p style="color: #172139;"><span class="font-semibold">Temperaturas:</span> <span class="font-bold" style="color: #195855;">+180°C</span> para hornear</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
+                        <p style="color: #172139;"><span class="font-semibold">Congelación:</span> <span class="font-bold" style="color: #00AEAC;">-18°C</span> para conservación</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
+                        <p style="color: #172139;"><span class="font-semibold">Punto crítico:</span> <span class="font-bold" style="color: #2F3E5D;">0°C</span> congelación del agua</p>
+                    </li>
+                </ul>
+                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
+                    <p class="text-sm" style="color: #172139;"><i class="fas fa-temperature-low mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Control de temperaturas en preparación de alimentos</p>
                 </div>
-                
-                <div class="note-box">
-                    <p class="note-text">
-                        <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
-                        La recta numérica vertical permite visualizar claramente la distribución de ecosistemas y hábitats según la altitud o profundidad.
-                    </p>
+            </div>
+            
+            <!-- Ingeniería -->
+            <div class="card p-5" style="background-color: #B4C42C;">
+                <div class="flex items-center mb-3">
+                    <div class="profession-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Ingeniería</h3>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #195855;">+</span>
+                        <p style="color: #172139;"><span class="font-semibold">Resistencia:</span> <span class="font-bold" style="color: #195855;">+120 kg</span> de carga máxima</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
+                        <p style="color: #172139;"><span class="font-semibold">Presión:</span> <span class="font-bold" style="color: #00AEAC;">-15 kPa</span> en sistemas de vacío</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
+                        <p style="color: #172139;"><span class="font-semibold">Referencia:</span> <span class="font-bold" style="color: #2F3E5D;">0 m</span> nivel del mar como base</p>
+                    </li>
+                </ul>
+                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
+                    <p class="text-sm" style="color: #172139;"><i class="fas fa-ruler-combined mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Mediciones, altitud y sistemas de presión</p>
+                </div>
+            </div>
+            
+            <!-- Salud -->
+            <div class="card p-5" style="background-color: #FBBB28;">
+                <div class="flex items-center mb-3">
+                    <div class="profession-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Salud</h3>
+                </div>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #195855;">+</span>
+                        <p style="color: #172139;"><span class="font-semibold">Ganancia:</span> <span class="font-bold" style="color: #195855;">+2 kg</span> en tratamiento nutricional</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
+                        <p style="color: #172139;"><span class="font-semibold">Pérdida:</span> <span class="font-bold" style="color: #00AEAC;">-1.5 kg</span> por deshidratación</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
+                        <p style="color: #172139;"><span class="font-semibold">Balance:</span> <span class="font-bold" style="color: #2F3E5D;">0</span> cambio en signos vitales</p>
+                    </li>
+                </ul>
+                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
+                    <p class="text-sm" style="color: #172139;"><i class="fas fa-notes-medical mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Control de peso, signos vitales y medicación</p>
                 </div>
             </div>
         </div>
         
-        <div class="mt-8 text-center">
-            <p class="text-lg text-gray-700 italic" style="color: #2F3E5D;">
-                <i class="fas fa-quote-left mr-2 opacity-50" style="color: #B4C42C;"></i>
-                La recta numérica es una herramienta visual poderosa que facilita la comprensión de conceptos matemáticos abstractos a través de aplicaciones prácticas en diversos campos profesionales.
-                <i class="fas fa-quote-right ml-2 opacity-50" style="color: #B4C42C;"></i>
+        <!-- Number line visualization -->
+        <div class="rounded-lg p-5 mb-3" style="background-color: #F5F7FA;">
+            <h3 class="text-xl font-semibold text-center mb-4" style="color: #172139;">Representación en la Recta Numérica</h3>
+            <div class="relative h-16">
+                <div class="number-line absolute top-1/2"></div>
+                
+                <!-- Negative numbers -->
+                <div class="number-marker" style="left: 10%">
+                    <div class="marker-dot" style="background-color: #00AEAC;"></div>
+                    <div class="font-bold" style="color: #00AEAC;">-3</div>
+                </div>
+                <div class="number-marker" style="left: 20%">
+                    <div class="marker-dot" style="background-color: #00AEAC;"></div>
+                    <div class="font-bold" style="color: #00AEAC;">-2</div>
+                </div>
+                <div class="number-marker" style="left: 30%">
+                    <div class="marker-dot" style="background-color: #00AEAC;"></div>
+                    <div class="font-bold" style="color: #00AEAC;">-1</div>
+                </div>
+                
+                <!-- Zero -->
+                <div class="number-marker" style="left: 50%">
+                    <div class="marker-dot" style="background-color: #2F3E5D;"></div>
+                    <div class="font-bold" style="color: #2F3E5D;">0</div>
+                </div>
+                
+                <!-- Positive numbers -->
+                <div class="number-marker" style="left: 70%">
+                    <div class="marker-dot" style="background-color: #172139;"></div>
+                    <div class="font-bold" style="color: #172139;">1</div>
+                </div>
+                <div class="number-marker" style="left: 80%">
+                    <div class="marker-dot" style="background-color: #172139;"></div>
+                    <div class="font-bold" style="color: #172139;">2</div>
+                </div>
+                <div class="number-marker" style="left: 90%">
+                    <div class="marker-dot" style="background-color: #172139;"></div>
+                    <div class="font-bold" style="color: #172139;">3</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer with key takeaway -->
+        <div class="border-l-4 p-3 rounded-r text-center" style="background-color: #E9901E; border-left-color: #172139;">
+            <p class="font-semibold" style="color: #172139;">
+                <i class="fas fa-lightbulb mr-2" style="color: #172139;"></i>
+                Los números enteros (Z) son fundamentales para expresar cantidades, medidas y cambios en cualquier campo profesional
             </p>
-            <p class="text-sm mt-2" style="color: #195855;">Fuente: Adaptado de Arcila Vanegas & Gómez Noreña, 2016</p>
         </div>
     </div>
-</div>
-```
 
+    <script>
+        // Ensure all elements load properly
+        document.addEventListener('DOMContentLoaded', function() {
+            // Additional scripting could be added here if needed
+        });
+    </script>
 </body>
 </html>
