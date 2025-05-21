@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicaciones de los Números Enteros</title>
+    <title>El Conjunto de los Números Enteros</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -26,7 +25,7 @@
             font-size: 220px;
             opacity: 0.08;
             position: absolute;
-            transform: rotate(-10deg);
+            transform: rotate(-15deg);
             color: #172139;
         }
         .card {
@@ -35,44 +34,17 @@
             transition: all 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
-        .profession-icon {
-            font-size: 1.8rem;
-            height: 50px;
-            width: 50px;
+        .example-icon {
+            font-size: 1.5rem;
+            height: 40px;
+            width: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background-color: #172139;
-            color: white;
-        }
-        .number-line {
-            height: 4px;
-            width: 100%;
-            background-color: #2F3E5D;
-            position: relative;
-        }
-        .number-marker {
-            position: absolute;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .marker-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-bottom: 5px;
-        }
-        .example-box {
-            border-left-width: 4px;
-            border-radius: 0.375rem;
-            padding: 0.75rem;
-            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -83,177 +55,90 @@
         
         <!-- Header -->
         <div class="text-center mb-6">
-            <h1 class="text-4xl font-bold mb-2" style="color: #172139;">Aplicaciones Prácticas de los Números Enteros</h1>
-            <p class="text-lg" style="color: #2F3E5D;">Contextos profesionales donde se utilizan números positivos, negativos y cero</p>
+            <h1 class="text-4xl font-bold mb-1" style="color: #172139;">El Conjunto de los Números Enteros (Z)</h1>
+            <p class="text-lg" style="color: #2F3E5D;">Un sistema que incluye positivos, negativos y el cero</p>
         </div>
         
         <!-- Main content -->
-        <div class="grid grid-cols-2 gap-6 mb-6">
-            <!-- Administración -->
+        <div class="grid grid-cols-3 gap-6 mb-6">
+            <!-- Números Naturales -->
             <div class="card p-5" style="background-color: #FBBB28;">
                 <div class="flex items-center mb-3">
-                    <div class="profession-icon">
-                        <i class="fas fa-chart-pie"></i>
+                    <div class="example-icon text-white" style="background-color: #172139;">
+                        <i class="fas fa-plus"></i>
                     </div>
-                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Administración</h3>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Números Naturales</h3>
                 </div>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #195855;">+</span>
-                        <p style="color: #172139;"><span class="font-semibold">Ganancias:</span> <span class="font-bold" style="color: #195855;">+$50.000</span> en ventas semanales</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
-                        <p style="color: #172139;"><span class="font-semibold">Pérdidas:</span> <span class="font-bold" style="color: #00AEAC;">-$20.000</span> en balances negativos</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
-                        <p style="color: #172139;"><span class="font-semibold">Punto equilibrio:</span> <span class="font-bold" style="color: #2F3E5D;">0</span> diferencia ingreso-gasto</p>
-                    </li>
-                </ul>
-                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
-                    <p class="text-sm" style="color: #172139;"><i class="fas fa-briefcase mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Gestión Comercial y análisis financiero</p>
+                <p class="mb-3" style="color: #172139;">Usados para contar (1, 2, 3, 4, ...)</p>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <h4 class="font-semibold" style="color: #172139;"><i class="fas fa-utensils mr-2" style="color: #172139;"></i> Ejemplo:</h4>
+                    <p style="color: #2F3E5D;">Un estudiante de Gastronomía necesita <span class="font-bold">3 manzanas</span> para una receta</p>
                 </div>
             </div>
             
-            <!-- Gastronomía -->
+            <!-- El Cero -->
             <div class="card p-5" style="background-color: #E9901E;">
                 <div class="flex items-center mb-3">
-                    <div class="profession-icon">
-                        <i class="fas fa-utensils"></i>
+                    <div class="example-icon text-white" style="background-color: #2F3E5D;">
+                        <span class="font-bold">0</span>
                     </div>
-                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Gastronomía</h3>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">El Cero</h3>
                 </div>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #195855;">+</span>
-                        <p style="color: #172139;"><span class="font-semibold">Temperaturas:</span> <span class="font-bold" style="color: #195855;">+180°C</span> para hornear</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
-                        <p style="color: #172139;"><span class="font-semibold">Congelación:</span> <span class="font-bold" style="color: #00AEAC;">-18°C</span> para conservación</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
-                        <p style="color: #172139;"><span class="font-semibold">Punto crítico:</span> <span class="font-bold" style="color: #2F3E5D;">0°C</span> congelación del agua</p>
-                    </li>
-                </ul>
-                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
-                    <p class="text-sm" style="color: #172139;"><i class="fas fa-temperature-low mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Control de temperaturas en preparación de alimentos</p>
+                <p class="mb-3" style="color: #172139;">Representa ausencia o punto neutro</p>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <h4 class="font-semibold" style="color: #172139;"><i class="fas fa-plane mr-2" style="color: #2F3E5D;"></i> Ejemplo:</h4>
+                    <p style="color: #2F3E5D;">Un gestor turístico reporta <span class="font-bold">0 reservaciones</span> para un tour</p>
                 </div>
             </div>
             
-            <!-- Ingeniería -->
+            <!-- Números Negativos -->
             <div class="card p-5" style="background-color: #B4C42C;">
                 <div class="flex items-center mb-3">
-                    <div class="profession-icon">
-                        <i class="fas fa-cogs"></i>
+                    <div class="example-icon text-white" style="background-color: #195855;">
+                        <i class="fas fa-minus"></i>
                     </div>
-                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Ingeniería</h3>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Números Negativos</h3>
                 </div>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #195855;">+</span>
-                        <p style="color: #172139;"><span class="font-semibold">Resistencia:</span> <span class="font-bold" style="color: #195855;">+120 kg</span> de carga máxima</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
-                        <p style="color: #172139;"><span class="font-semibold">Presión:</span> <span class="font-bold" style="color: #00AEAC;">-15 kPa</span> en sistemas de vacío</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
-                        <p style="color: #172139;"><span class="font-semibold">Referencia:</span> <span class="font-bold" style="color: #2F3E5D;">0 m</span> nivel del mar como base</p>
-                    </li>
-                </ul>
-                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
-                    <p class="text-sm" style="color: #172139;"><i class="fas fa-ruler-combined mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Mediciones, altitud y sistemas de presión</p>
-                </div>
-            </div>
-            
-            <!-- Salud -->
-            <div class="card p-5" style="background-color: #FBBB28;">
-                <div class="flex items-center mb-3">
-                    <div class="profession-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Salud</h3>
-                </div>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #195855;">+</span>
-                        <p style="color: #172139;"><span class="font-semibold">Ganancia:</span> <span class="font-bold" style="color: #195855;">+2 kg</span> en tratamiento nutricional</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #00AEAC;">−</span>
-                        <p style="color: #172139;"><span class="font-semibold">Pérdida:</span> <span class="font-bold" style="color: #00AEAC;">-1.5 kg</span> por deshidratación</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-xl mr-2" style="color: #2F3E5D;">0</span>
-                        <p style="color: #172139;"><span class="font-semibold">Balance:</span> <span class="font-bold" style="color: #2F3E5D;">0</span> cambio en signos vitales</p>
-                    </li>
-                </ul>
-                <div class="example-box bg-white border-l mt-3" style="border-left-color: #172139;">
-                    <p class="text-sm" style="color: #172139;"><i class="fas fa-notes-medical mr-1" style="color: #172139;"></i> <span class="font-semibold">Aplicación:</span> Control de peso, signos vitales y medicación</p>
+                <p class="mb-3" style="color: #172139;">Representan valores por debajo de cero</p>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <h4 class="font-semibold" style="color: #172139;"><i class="fas fa-chart-line mr-2" style="color: #195855;"></i> Ejemplo:</h4>
+                    <p style="color: #2F3E5D;">Un balance comercial con <span class="font-bold">-$50.000</span> indica pérdida</p>
                 </div>
             </div>
         </div>
         
-        <!-- Number line visualization -->
-        <div class="rounded-lg p-5 mb-3" style="background-color: #F5F7FA;">
-            <h3 class="text-xl font-semibold text-center mb-4" style="color: #172139;">Representación en la Recta Numérica</h3>
-            <div class="relative h-16">
-                <div class="number-line absolute top-1/2"></div>
-                
-                <!-- Negative numbers -->
-                <div class="number-marker" style="left: 10%">
-                    <div class="marker-dot" style="background-color: #00AEAC;"></div>
-                    <div class="font-bold" style="color: #00AEAC;">-3</div>
+        <!-- Representation -->
+        <div class="rounded-lg p-6 mb-6" style="background-color: #F5F7FA;">
+            <h3 class="text-2xl font-semibold text-center mb-4" style="color: #172139;"><i class="fas fa-infinity mr-2" style="color: #00AEAC;"></i>Conjunto de los Números Enteros</h3>
+            <div class="flex justify-center items-center">
+                <div class="text-4xl font-bold" style="color: #172139;">Z = {</div>
+                <div class="text-4xl font-bold mx-1" style="color: #195855;">..., -3, -2, -1,</div>
+                <div class="text-4xl font-bold mx-1" style="color: #2F3E5D;">0,</div>
+                <div class="text-4xl font-bold mx-1" style="color: #172139;">1, 2, 3, ...</div>
+                <div class="text-4xl font-bold" style="color: #172139;">}</div>
+            </div>
+            <p class="text-center mt-4" style="color: #2F3E5D;">Cada número entero tiene un opuesto: el opuesto de 5 es -5</p>
+        </div>
+        
+        <!-- Applications -->
+        <div class="p-4 rounded-lg" style="background-color: #FBBB28; border-left: 4px solid #172139;">
+            <h3 class="text-xl font-semibold mb-2" style="color: #172139;"><i class="fas fa-lightbulb mr-2" style="color: #E9901E;"></i>Aplicaciones en la vida diaria:</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-start">
+                    <i class="fas fa-thermometer-half mt-1 mr-2" style="color: #195855;"></i>
+                    <p style="color: #172139;">Temperaturas bajo cero: <span class="font-bold">-5°C</span> (cinco grados bajo cero)</p>
                 </div>
-                <div class="number-marker" style="left: 20%">
-                    <div class="marker-dot" style="background-color: #00AEAC;"></div>
-                    <div class="font-bold" style="color: #00AEAC;">-2</div>
-                </div>
-                <div class="number-marker" style="left: 30%">
-                    <div class="marker-dot" style="background-color: #00AEAC;"></div>
-                    <div class="font-bold" style="color: #00AEAC;">-1</div>
-                </div>
-                
-                <!-- Zero -->
-                <div class="number-marker" style="left: 50%">
-                    <div class="marker-dot" style="background-color: #2F3E5D;"></div>
-                    <div class="font-bold" style="color: #2F3E5D;">0</div>
-                </div>
-                
-                <!-- Positive numbers -->
-                <div class="number-marker" style="left: 70%">
-                    <div class="marker-dot" style="background-color: #172139;"></div>
-                    <div class="font-bold" style="color: #172139;">1</div>
-                </div>
-                <div class="number-marker" style="left: 80%">
-                    <div class="marker-dot" style="background-color: #172139;"></div>
-                    <div class="font-bold" style="color: #172139;">2</div>
-                </div>
-                <div class="number-marker" style="left: 90%">
-                    <div class="marker-dot" style="background-color: #172139;"></div>
-                    <div class="font-bold" style="color: #172139;">3</div>
+                <div class="flex items-start">
+                    <i class="fas fa-credit-card mt-1 mr-2" style="color: #172139;"></i>
+                    <p style="color: #172139;">Finanzas: saldo positivo <span class="font-bold">+$1.500</span> o negativo <span class="font-bold">-$800</span></p>
                 </div>
             </div>
         </div>
         
-        <!-- Footer with key takeaway -->
-        <div class="border-l-4 p-3 rounded-r text-center" style="background-color: #E9901E; border-left-color: #172139;">
-            <p class="font-semibold" style="color: #172139;">
-                <i class="fas fa-lightbulb mr-2" style="color: #172139;"></i>
-                Los números enteros (Z) son fundamentales para expresar cantidades, medidas y cambios en cualquier campo profesional
-            </p>
+        <!-- Footer -->
+        <div class="absolute bottom-4 right-6 text-sm" style="color: #2F3E5D;">
+            <i class="fas fa-info-circle mr-1" style="color: #00AEAC;"></i> El cero es el único número que no es ni positivo ni negativo
         </div>
     </div>
-
-    <script>
-        // Ensure all elements load properly
-        document.addEventListener('DOMContentLoaded', function() {
-            // Additional scripting could be added here if needed
-        });
-    </script>
 </body>
 </html>
