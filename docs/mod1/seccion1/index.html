@@ -1,159 +1,144 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Representación en la Recta Numérica</title>
+    <title>El Conjunto de los Números Enteros</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
+            background: #FFFFFF;
             margin: 0;
             padding: 0;
             overflow: hidden;
         }
         .slide {
-            width: 1920px;
-            min-height: 1080px;
-            background-color: #FFFFFF;
+            width: 1280px;
+            min-height: 720px;
             position: relative;
             overflow: hidden;
         }
-        .title-bar {
+        .number-symbol {
+            font-size: 220px;
+            opacity: 0.08;
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background-color: #172139;
-        }
-        .main-title {
+            transform: rotate(-15deg);
             color: #172139;
-            font-size: 80px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1.1;
         }
-        .subtitle {
-            color: #2F3E5D;
-            font-size: 36px;
-            font-weight: 400;
-            margin-top: 10px;
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-        .accent-shape {
-            position: absolute;
-            right: -150px;
-            top: 250px;
-            width: 600px;
-            height: 600px;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .example-icon {
+            font-size: 1.5rem;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            background-color: rgba(251, 187, 40, 0.08);
-            z-index: 1;
-        }
-        .accent-shape-2 {
-            position: absolute;
-            left: -100px;
-            bottom: -150px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background-color: rgba(180, 196, 44, 0.06);
-            z-index: 1;
-        }
-        .number-line {
-            position: relative;
-            height: 6px;
-            width: 80%;
-            background-color: #172139;
-            margin: 100px 0;
-            border-radius: 3px;
-        }
-        .number-line::after {
-            content: "";
-            position: absolute;
-            right: -20px;
-            top: -9px;
-            width: 0;
-            height: 0;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            border-left: 20px solid #172139;
-        }
-        .tick {
-            position: absolute;
-            height: 20px;
-            width: 4px;
-            background-color: #172139;
-            bottom: 0;
-            transform: translateY(7px);
-        }
-        .number {
-            position: absolute;
-            font-size: 24px;
-            color: #195855;
-            bottom: -50px;
-            transform: translateX(-50%);
-            font-weight: 600;
-        }
-        .zero {
-            color: #00AEAC;
-            font-weight: 700;
-            font-size: 28px;
-        }
-        .highlight {
-            color: #E9901E;
         }
     </style>
 </head>
 <body>
-    <div class="slide flex flex-col">
-        <div class="title-bar"></div>
-
-```
-    <!-- Accent shapes -->
-    <div class="accent-shape"></div>
-    <div class="accent-shape-2"></div>
-    
-    <div class="px-40 py-32 flex flex-col justify-center h-full z-10">
-        <!-- Title section -->
-        <div class="mb-8">
-            <h1 class="main-title">Representación en la <br>Recta Numérica</h1>
-            <p class="subtitle">Matemáticas | Curso Introductorio</p>
+    <div class="slide bg-white p-10 flex flex-col">
+        <!-- Decorative elements -->
+        <div class="number-symbol" style="top: 5%; right: 5%;">Z</div>
+        
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold mb-1" style="color: #172139;">El Conjunto de los Números Enteros (Z)</h1>
+            <p class="text-lg" style="color: #2F3E5D;">Un sistema que incluye positivos, negativos y el cero</p>
         </div>
         
-        <!-- Visual representation of number line -->
-        <div class="number-line relative mt-16">
-            <!-- Number ticks -->
-            <div class="tick" style="left: 10%"></div>
-            <div class="number" style="left: 10%">-4</div>
+        <!-- Main content -->
+        <div class="grid grid-cols-3 gap-6 mb-6">
+            <!-- Números Naturales -->
+            <div class="card p-5" style="background-color: #FBBB28;">
+                <div class="flex items-center mb-3">
+                    <div class="example-icon text-white" style="background-color: #172139;">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Números Naturales</h3>
+                </div>
+                <p class="mb-3" style="color: #172139;">Usados para contar (1, 2, 3, 4, ...)</p>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <h4 class="font-semibold" style="color: #172139;"><i class="fas fa-utensils mr-2" style="color: #172139;"></i> Ejemplo:</h4>
+                    <p style="color: #2F3E5D;">Un estudiante de Gastronomía necesita <span class="font-bold">3 manzanas</span> para una receta</p>
+                </div>
+            </div>
             
-            <div class="tick" style="left: 25%"></div>
-            <div class="number" style="left: 25%">-2</div>
+            <!-- El Cero -->
+            <div class="card p-5" style="background-color: #E9901E;">
+                <div class="flex items-center mb-3">
+                    <div class="example-icon text-white" style="background-color: #2F3E5D;">
+                        <span class="font-bold">0</span>
+                    </div>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">El Cero</h3>
+                </div>
+                <p class="mb-3" style="color: #172139;">Representa ausencia o punto neutro</p>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <h4 class="font-semibold" style="color: #172139;"><i class="fas fa-plane mr-2" style="color: #2F3E5D;"></i> Ejemplo:</h4>
+                    <p style="color: #2F3E5D;">Un gestor turístico reporta <span class="font-bold">0 reservaciones</span> para un tour</p>
+                </div>
+            </div>
             
-            <div class="tick" style="left: 40%"></div>
-            <div class="number zero" style="left: 40%">0</div>
-            
-            <div class="tick" style="left: 55%"></div>
-            <div class="number" style="left: 55%">2</div>
-            
-            <div class="tick" style="left: 70%"></div>
-            <div class="number highlight" style="left: 70%">4</div>
-            
-            <div class="tick" style="left: 85%"></div>
-            <div class="number" style="left: 85%">6</div>
+            <!-- Números Negativos -->
+            <div class="card p-5" style="background-color: #B4C42C;">
+                <div class="flex items-center mb-3">
+                    <div class="example-icon text-white" style="background-color: #195855;">
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold ml-3" style="color: #172139;">Números Negativos</h3>
+                </div>
+                <p class="mb-3" style="color: #172139;">Representan valores por debajo de cero</p>
+                <div class="bg-white rounded-lg p-3 shadow-sm">
+                    <h4 class="font-semibold" style="color: #172139;"><i class="fas fa-chart-line mr-2" style="color: #195855;"></i> Ejemplo:</h4>
+                    <p style="color: #2F3E5D;">Un balance comercial con <span class="font-bold">-$50.000</span> indica pérdida</p>
+                </div>
+            </div>
         </div>
         
-        <!-- Bottom info section -->
-        <div class="mt-20 flex items-center">
-            <div style="width: 10px; height: 40px; background-color: #172139; margin-right: 20px;"></div>
-            <p class="text-2xl font-light text-gray-700">Visualización y comprensión de los números enteros</p>
+        <!-- Representation -->
+        <div class="rounded-lg p-6 mb-6" style="background-color: #F5F7FA;">
+            <h3 class="text-2xl font-semibold text-center mb-4" style="color: #172139;"><i class="fas fa-infinity mr-2" style="color: #00AEAC;"></i>Conjunto de los Números Enteros</h3>
+            <div class="flex justify-center items-center">
+                <div class="text-4xl font-bold" style="color: #172139;">Z = {</div>
+                <div class="text-4xl font-bold mx-1" style="color: #195855;">..., -3, -2, -1,</div>
+                <div class="text-4xl font-bold mx-1" style="color: #2F3E5D;">0,</div>
+                <div class="text-4xl font-bold mx-1" style="color: #172139;">1, 2, 3, ...</div>
+                <div class="text-4xl font-bold" style="color: #172139;">}</div>
+            </div>
+            <p class="text-center mt-4" style="color: #2F3E5D;">Cada número entero tiene un opuesto: el opuesto de 5 es -5</p>
+        </div>
+        
+        <!-- Applications -->
+        <div class="p-4 rounded-lg" style="background-color: #FBBB28; border-left: 4px solid #172139;">
+            <h3 class="text-xl font-semibold mb-2" style="color: #172139;"><i class="fas fa-lightbulb mr-2" style="color: #E9901E;"></i>Aplicaciones en la vida diaria:</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-start">
+                    <i class="fas fa-thermometer-half mt-1 mr-2" style="color: #195855;"></i>
+                    <p style="color: #172139;">Temperaturas bajo cero: <span class="font-bold">-5°C</span> (cinco grados bajo cero)</p>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-credit-card mt-1 mr-2" style="color: #172139;"></i>
+                    <p style="color: #172139;">Finanzas: saldo positivo <span class="font-bold">+$1.500</span> o negativo <span class="font-bold">-$800</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="absolute bottom-4 right-6 text-sm" style="color: #2F3E5D;">
+            <i class="fas fa-info-circle mr-1" style="color: #00AEAC;"></i> El cero es el único número que no es ni positivo ni negativo
         </div>
     </div>
-</div>
-```
-
 </body>
 </html>
