@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Representación en la Recta Numérica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background-color: #FFFFFF;
+            overflow: hidden;
+        }
+        .title-container {
+            position: absolute;
+            left: 150px;
+            top: 140px;
+            max-width: 650px;
+        }
+        h1 {
+            color: #172139;
+            font-size: 58px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .subtitle {
+            color: #195855;
+            font-size: 30px;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        .number-line {
+            position: absolute;
+            bottom: 160px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .line-container {
+            position: relative;
+            width: 900px;
+            height: 8px;
+            background-color: #172139;
+            border-radius: 4px;
+        }
+        .arrow-right {
+            position: absolute;
+            right: -20px;
+            top: -16px;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #172139;
+        }
+        .arrow-left {
+            position: absolute;
+            left: -20px;
+            top: -16px;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-right: 20px solid #172139;
+        }
+        .number-marker {
+            position: absolute;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tick {
+            width: 4px;
+            height: 20px;
+            background-color: #172139;
+            margin-bottom: 5px;
+        }
+        .number {
+            font-weight: 600;
+            font-size: 22px;
+            color: #172139;
+        }
+        .zero-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .zero-tick {
+            width: 4px;
+            height: 26px;
+            background-color: #00AEAC;
+            margin-bottom: 5px;
+        }
+        .zero-number {
+            font-weight: 700;
+            font-size: 26px;
+            color: #00AEAC;
+        }
+        .decorative-shape {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 300px;
+            width: 450px;
+            background-color: rgba(251, 187, 40, 0.15);
+            border-radius: 0 0 0 250px;
+        }
+        .decorative-accent {
+            position: absolute;
+            right: 80px;
+            top: 160px;
+            height: 180px;
+            width: 8px;
+            background-color: #FBBB28;
+            border-radius: 4px;
+        }
+        .course-label {
+            position: absolute;
+            bottom: 60px;
+            left: 80px;
+            padding: 12px 25px;
+            background-color: #B4C42C;
+            color: #172139;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="decorative-shape"></div>
+        <div class="decorative-accent"></div>
+        
+        <div class="title-container">
+            <h1>Representación en la Recta Numérica</h1>
+            <div class="subtitle">Visualización y comprensión de los números enteros</div>
+        </div>
+        
+        <div class="number-line">
+            <div class="line-container">
+                <div class="arrow-left"></div>
+                <div class="arrow-right"></div>
+                
+                <!-- Número -4 -->
+                <div class="number-marker" style="left: 10%;">
+                    <div class="tick"></div>
+                    <div class="number">-4</div>
+                </div>
+                
+                <!-- Número -3 -->
+                <div class="number-marker" style="left: 20%;">
+                    <div class="tick"></div>
+                    <div class="number">-3</div>
+                </div>
+                
+                <!-- Número -2 -->
+                <div class="number-marker" style="left: 30%;">
+                    <div class="tick"></div>
+                    <div class="number">-2</div>
+                </div>
+                
+                <!-- Número -1 -->
+                <div class="number-marker" style="left: 40%;">
+                    <div class="tick"></div>
+                    <div class="number">-1</div>
+                </div>
+                
+                <!-- Número 0 -->
+                <div class="zero-marker">
+                    <div class="zero-tick"></div>
+                    <div class="zero-number">0</div>
+                </div>
+                
+                <!-- Número 1 -->
+                <div class="number-marker" style="left: 60%;">
+                    <div class="tick"></div>
+                    <div class="number">1</div>
+                </div>
+                
+                <!-- Número 2 -->
+                <div class="number-marker" style="left: 70%;">
+                    <div class="tick"></div>
+                    <div class="number">2</div>
+                </div>
+                
+                <!-- Número 3 -->
+                <div class="number-marker" style="left: 80%;">
+                    <div class="tick"></div>
+                    <div class="number">3</div>
+                </div>
+                
+                <!-- Número 4 -->
+                <div class="number-marker" style="left: 90%;">
+                    <div class="tick"></div>
+                    <div class="number">4</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-label">Curso Introductorio de Matemáticas</div>
+    </div>
+</body>
+</html>

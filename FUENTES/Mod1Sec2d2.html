@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concepto de la Recta Numérica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #172139;
+            color: white;
+            padding: 20px 60px;
+            display: flex;
+            align-items: center;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            padding: 30px 60px;
+            flex: 1;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .concept-card {
+            background-color: #f9f9f9;
+            border-left: 5px solid #00AEAC;
+            padding: 20px 25px;
+            border-radius: 6px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .card-title {
+            color: #195855;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            color: #172139;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .number-line-visual {
+            position: relative;
+            padding: 60px 0px 30px;
+        }
+        .line-container {
+            position: relative;
+            width: 100%;
+            height: 4px;
+            background-color: #172139;
+            margin: 30px 0;
+        }
+        .arrow-right {
+            position: absolute;
+            right: -12px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 12px solid #172139;
+        }
+        .arrow-left {
+            position: absolute;
+            left: -12px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 12px solid #172139;
+        }
+        .number-marker {
+            position: absolute;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tick {
+            width: 2px;
+            height: 15px;
+            background-color: #172139;
+            margin-bottom: 5px;
+        }
+        .number {
+            font-weight: 600;
+            font-size: 18px;
+            color: #172139;
+        }
+        .zero-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .zero-tick {
+            width: 2px;
+            height: 20px;
+            background-color: #00AEAC;
+            margin-bottom: 5px;
+        }
+        .zero-number {
+            font-weight: 700;
+            font-size: 20px;
+            color: #00AEAC;
+        }
+        .comparison-example {
+            background-color: rgba(180, 196, 44, 0.15);
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        .example-title {
+            color: #172139;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .example-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .example-icon {
+            background-color: #FBBB28;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .example-text {
+            flex: 1;
+            font-size: 16px;
+            color: #2F3E5D;
+        }
+        .highlighted {
+            background-color: rgba(251, 187, 40, 0.2);
+            padding: 2px 5px;
+            font-weight: 500;
+        }
+        .context-applications {
+            background-color: rgba(0, 174, 172, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            width: 280px;
+            margin-left: 30px;
+        }
+        .context-title {
+            color: #195855;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .context-title i {
+            margin-right: 10px;
+        }
+        .context-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .context-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #172139;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-right: 12px;
+        }
+        .context-text {
+            flex: 1;
+        }
+        .context-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: #172139;
+        }
+        .context-detail {
+            font-size: 14px;
+            color: #2F3E5D;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">La Recta Numérica: Concepto y Representación</div>
+        </div>
+        
+        <div class="content">
+            <div class="main-content">
+                <div class="concept-card">
+                    <div class="card-title">¿Qué es la Recta Numérica?</div>
+                    <div class="card-content">
+                        Es una línea recta donde cada punto representa un número entero único:
+                        <ul>
+                            <li>Se elige un punto para representar el <strong>cero (0)</strong>.</li>
+                            <li>A la <strong>derecha</strong> del cero, a intervalos iguales, se ubican los <strong>enteros positivos</strong> (1, 2, 3, ...).</li>
+                            <li>A la <strong>izquierda</strong> del cero, se ubican los <strong>enteros negativos</strong> (-1, -2, -3, ...).</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="number-line-visual">
+                    <div class="line-container">
+                        <div class="arrow-left"></div>
+                        <div class="arrow-right"></div>
+                        
+                        <!-- Marcadores de números -->
+                        <div class="number-marker" style="left: 10%;">
+                            <div class="tick"></div>
+                            <div class="number">-5</div>
+                        </div>
+                        <div class="number-marker" style="left: 20%;">
+                            <div class="tick"></div>
+                            <div class="number">-4</div>
+                        </div>
+                        <div class="number-marker" style="left: 30%;">
+                            <div class="tick"></div>
+                            <div class="number">-3</div>
+                        </div>
+                        <div class="number-marker" style="left: 40%;">
+                            <div class="tick"></div>
+                            <div class="number">-2</div>
+                        </div>
+                        <div class="number-marker" style="left: 45%;">
+                            <div class="tick"></div>
+                            <div class="number">-1</div>
+                        </div>
+                        
+                        <!-- Marcador del cero -->
+                        <div class="zero-marker">
+                            <div class="zero-tick"></div>
+                            <div class="zero-number">0</div>
+                        </div>
+                        
+                        <div class="number-marker" style="left: 55%;">
+                            <div class="tick"></div>
+                            <div class="number">1</div>
+                        </div>
+                        <div class="number-marker" style="left: 60%;">
+                            <div class="tick"></div>
+                            <div class="number">2</div>
+                        </div>
+                        <div class="number-marker" style="left: 70%;">
+                            <div class="tick"></div>
+                            <div class="number">3</div>
+                        </div>
+                        <div class="number-marker" style="left: 80%;">
+                            <div class="tick"></div>
+                            <div class="number">4</div>
+                        </div>
+                        <div class="number-marker" style="left: 90%;">
+                            <div class="tick"></div>
+                            <div class="number">5</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="concept-card">
+                    <div class="card-title">Comparación de Números en la Recta</div>
+                    <div class="card-content">
+                        En la recta numérica, un número es <strong>mayor</strong> que otro si está ubicado <strong>a su derecha</strong>.
+                        
+                        <div class="comparison-example">
+                            <div class="example-title">Ejemplos de Comparación:</div>
+                            <div class="example-row">
+                                <div class="example-icon"><i class="fas fa-exchange-alt" style="color: #172139;"></i></div>
+                                <div class="example-text"><span class="highlighted">3 > -1</span> porque 3 está a la derecha de -1 en la recta numérica</div>
+                            </div>
+                            <div class="example-row">
+                                <div class="example-icon"><i class="fas fa-exchange-alt" style="color: #172139;"></i></div>
+                                <div class="example-text"><span class="highlighted">-2 > -5</span> porque -2 está a la derecha de -5 en la recta numérica</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="context-applications">
+                <div class="context-title">
+                    <i class="fas fa-lightbulb" style="color: #195855;"></i>
+                    Aplicaciones Prácticas
+                </div>
+                
+                <div class="context-item">
+                    <div class="context-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="context-text">
+                        <div class="context-heading">Arquitectura</div>
+                        <div class="context-detail">Representación de niveles en un edificio: nivel 0 (calle), pisos superiores (+1, +2...) y sótanos (-1, -2...)</div>
+                    </div>
+                </div>
+                
+                <div class="context-item">
+                    <div class="context-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="context-text">
+                        <div class="context-heading">Gestión Ambiental</div>
+                        <div class="context-detail">Altitudes sobre el nivel del mar (positivas) o bajo el nivel del mar (negativas)</div>
+                    </div>
+                </div>
+                
+                <div class="context-item">
+                    <div class="context-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <div class="context-text">
+                        <div class="context-heading">Meteorología</div>
+                        <div class="context-detail">Temperaturas por encima (positivas) o por debajo de cero (negativas)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

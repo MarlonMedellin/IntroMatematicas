@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones Prácticas de la Recta Numérica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #172139;
+            color: white;
+            padding: 20px 60px;
+            display: flex;
+            align-items: center;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            padding: 25px 60px;
+            flex: 1;
+        }
+        .left-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-right: 20px;
+        }
+        .right-column {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .section-title {
+            color: #195855;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 12px;
+            color: #00AEAC;
+        }
+        .exercise-card {
+            background-color: rgba(251, 187, 40, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FBBB28;
+        }
+        .exercise-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #172139;
+            margin-bottom: 12px;
+        }
+        .exercise-content {
+            color: #2F3E5D;
+            font-size: 16px;
+        }
+        .number-line-container {
+            position: relative;
+            padding: 20px 0;
+            margin-bottom: 10px;
+        }
+        .number-line {
+            height: 4px;
+            background-color: #172139;
+            position: relative;
+            margin: 30px 0 15px;
+        }
+        .number-line::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #172139;
+        }
+        .number-line::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #172139;
+        }
+        .number-point {
+            position: absolute;
+            width: 3px;
+            height: 12px;
+            background-color: #172139;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+        .number-label {
+            position: absolute;
+            transform: translateX(-50%);
+            top: 15px;
+            font-weight: 500;
+            font-size: 16px;
+            color: #172139;
+        }
+        .scenario-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .scenario-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #195855;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+        .scenario-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #172139;
+        }
+        .scenario-content {
+            font-size: 15px;
+            color: #2F3E5D;
+            line-height: 1.5;
+        }
+        .highlight-block {
+            background-color: rgba(0, 174, 172, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .highlight-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #195855;
+            margin-bottom: 10px;
+        }
+        .highlight-content {
+            color: #2F3E5D;
+            font-size: 15px;
+        }
+        .application-card {
+            background-color: white;
+            border-radius: 8px;
+            border-left: 4px solid #108181;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .interactive-example {
+            background-color: rgba(180, 196, 44, 0.15);
+            border-radius: 8px;
+            padding: 20px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        .interactive-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #172139;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .interactive-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .problem-statement {
+            font-size: 16px;
+            color: #2F3E5D;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .temperature-scale {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .scale-line {
+            height: 180px;
+            width: 8px;
+            background: linear-gradient(to bottom, #E9901E, #FBBB28, #B4C42C, #108181);
+            margin: 0 auto;
+            border-radius: 4px;
+            position: relative;
+        }
+        .temp-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(15px);
+            display: flex;
+            align-items: center;
+        }
+        .marker-line {
+            width: 15px;
+            height: 2px;
+            background-color: #172139;
+            margin-right: 8px;
+        }
+        .marker-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #172139;
+            white-space: nowrap;
+        }
+        .temp-zero {
+            top: 50%;
+            font-weight: 700;
+            color: #00AEAC;
+        }
+        .temp-zero .marker-line {
+            background-color: #00AEAC;
+            height: 3px;
+        }
+        .step-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .step-card {
+            width: 48%;
+            background-color: white;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #FBBB28;
+            color: #172139;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .step-text {
+            display: inline-block;
+            font-size: 14px;
+            color: #2F3E5D;
+            vertical-align: middle;
+        }
+        .formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Aplicaciones y Ejercicios Prácticos</div>
+        </div>
+        
+        <div class="content">
+            <div class="left-column">
+                <div class="section-title">
+                    <i class="fas fa-tasks"></i>
+                    Aplicaciones Contextualizadas
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <div class="scenario-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="scenario-title">Arquitectura: Niveles de un Edificio</div>
+                    </div>
+                    <div class="scenario-content">
+                        En un plano arquitectónico, los pisos de un edificio pueden representarse en una recta numérica:
+                    </div>
+                    
+                    <div class="number-line-container">
+                        <div class="number-line">
+                            <div class="number-point" style="left: 10%;"></div>
+                            <div class="number-label" style="left: 10%;">-3</div>
+                            
+                            <div class="number-point" style="left: 25%;"></div>
+                            <div class="number-label" style="left: 25%;">-2</div>
+                            
+                            <div class="number-point" style="left: 40%;"></div>
+                            <div class="number-label" style="left: 40%;">-1</div>
+                            
+                            <div class="number-point" style="left: 55%;"></div>
+                            <div class="number-label" style="left: 55%;">0</div>
+                            
+                            <div class="number-point" style="left: 70%;"></div>
+                            <div class="number-label" style="left: 70%;">1</div>
+                            
+                            <div class="number-point" style="left: 85%;"></div>
+                            <div class="number-label" style="left: 85%;">2</div>
+                        </div>
+                        
+                        <div class="highlight-block">
+                            <div class="highlight-title">Interpretación:</div>
+                            <div class="highlight-content">
+                                <ul>
+                                    <li>El nivel 0 representa la planta baja (nivel de calle)</li>
+                                    <li>Números positivos (1, 2, ...) representan los pisos superiores</li>
+                                    <li>Números negativos (-1, -2, -3) representan los sótanos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scenario-card">
+                    <div class="scenario-header">
+                        <div class="scenario-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="scenario-title">Gestión Ambiental: Altitudes</div>
+                    </div>
+                    <div class="scenario-content">
+                        En estudios ambientales, la recta numérica permite representar altitudes respecto al nivel del mar:
+                        <ul>
+                            <li>Altitudes <strong>positivas</strong>: metros <strong>sobre</strong> el nivel del mar</li>
+                            <li>Altitudes <strong>negativas</strong>: metros <strong>bajo</strong> el nivel del mar</li>
+                            <li>El <strong>0</strong> representa exactamente el nivel del mar</li>
+                        </ul>
+                        
+                        <div class="highlight-block">
+                            <div class="highlight-title">Ejemplo:</div>
+                            <div class="highlight-content">
+                                La ciudad de Bogotá está a +2,640m sobre el nivel del mar, mientras que la costa del Mar Muerto está a -430m bajo el nivel del mar.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="section-title">
+                    <i class="fas fa-thermometer-half"></i>
+                    Ejercicio Práctico: Temperaturas
+                </div>
+                
+                <div class="interactive-example">
+                    <div class="interactive-title">Representación de Temperaturas</div>
+                    
+                    <div class="interactive-content">
+                        <div class="problem-statement">
+                            Las temperaturas pueden ser representadas en la recta numérica
+                        </div>
+                        
+                        <div class="temperature-scale">
+                            <div class="scale-line"></div>
+                            
+                            <div class="temp-marker" style="top: 15%;">
+                                <div class="marker-line"></div>
+                                <div class="marker-label">+30°C (Día caluroso)</div>
+                            </div>
+                            
+                            <div class="temp-marker" style="top: 35%;">
+                                <div class="marker-line"></div>
+                                <div class="marker-label">+15°C (Temperatura agradable)</div>
+                            </div>
+                            
+                            <div class="temp-marker temp-zero" style="top: 50%;">
+                                <div class="marker-line"></div>
+                                <div class="marker-label">0°C (Punto de congelación)</div>
+                            </div>
+                            
+                            <div class="temp-marker" style="top: 65%;">
+                                <div class="marker-line"></div>
+                                <div class="marker-label">-10°C (Muy frío)</div>
+                            </div>
+                            
+                            <div class="temp-marker" style="top: 85%;">
+                                <div class="marker-line"></div>
+                                <div class="marker-label">-30°C (Congelante)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-title">Ejercicio de Comparación</div>
+                    <div class="exercise-content">
+                        Ordena las siguientes temperaturas de menor a mayor:
+                        <ul>
+                            <li>Moscú: -12°C</li>
+                            <li>Buenos Aires: +25°C</li>
+                            <li>Montreal: -5°C</li>
+                            <li>Helsinki: -8°C</li>
+                        </ul>
+                        <strong>Solución:</strong> Moscú (-12°C) < Helsinki (-8°C) < Montreal (-5°C) < Buenos Aires (+25°C)
+                    </div>
+                </div>
+                
+                <div class="step-container">
+                    <div class="step-card">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Identifica el punto de referencia (cero)</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Ubica los números en la recta</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Recuerda: más a la derecha = mayor valor</span>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">4</span>
+                        <span class="step-text">Observa la distancia respecto al origen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
