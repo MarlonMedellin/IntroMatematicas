@@ -20,7 +20,6 @@ Realizar operaciones de suma y resta con números enteros aplicando correctament
 > - $5 - 8 = -3$
 > - $-4 - (-6) = -4 + 6 = 2$
 >
-> Fuente: Arcila Vanegas & Gómez Noreña, 2016, pp. 2–4.
 
 ### Aplicaciones por programa
 

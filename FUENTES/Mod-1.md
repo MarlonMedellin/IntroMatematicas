@@ -183,3 +183,4 @@ Las definiciones, conceptos fundamentales, ejemplos y procedimientos presentados
 ---
 
 Este es el esquema para el Módulo 1. Por favor, indícame si esta estructura y nivel de detalle son los que esperas para los siguientes módulos. Si es así, continuaré con el Módulo 2.
+
