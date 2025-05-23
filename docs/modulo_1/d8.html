@@ -1,0 +1,520 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referencias y Conclusiones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            overflow: hidden;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .conclusion-title {
+            color: #172139;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .conclusion-subtitle {
+            color: #195855;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .accent-line {
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto 3rem auto;
+            border-radius: 2px;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-card {
+            background: #ffffff;
+            border: 2px solid #e9ecef;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #108181 0%, #00AEAC 100%);
+            transition: all 0.6s ease;
+        }
+
+        .summary-card:hover::before {
+            left: 0;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(23, 33, 57, 0.15);
+            border-color: #108181;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            transition: all 0.4s ease;
+        }
+
+        .summary-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #108181 0%, #00AEAC 100%);
+        }
+
+        .card-icon i {
+            color: #ffffff;
+            font-size: 1.8rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #172139;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: #195855;
+            line-height: 1.4;
+        }
+
+        .references-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(23, 33, 57, 0.3);
+        }
+
+        .references-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(251, 187, 40, 0.1) 0%, transparent 70%);
+            animation: pulse 12s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+            50% { transform: scale(1.4) rotate(180deg); opacity: 1; }
+        }
+
+        .references-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #FBBB28;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .references-title i {
+            margin-right: 0.75rem;
+        }
+
+        .reference-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reference-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .reference-note {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .thank-you-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 1rem;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .thank-you-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .thank-you-text {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-info {
+            color: #195855;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.04;
+        }
+
+        .floating-number {
+            position: absolute;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #195855;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        .floating-number:nth-child(1) { top: 8%; left: 5%; animation-delay: 0s; }
+        .floating-number:nth-child(2) { top: 15%; right: 8%; animation-delay: 8s; }
+        .floating-number:nth-child(3) { bottom: 20%; left: 10%; animation-delay: 16s; }
+        .floating-number:nth-child(4) { bottom: 30%; right: 6%; animation-delay: 24s; }
+        .floating-number:nth-child(5) { top: 50%; left: 2%; animation-delay: 4s; }
+        .floating-number:nth-child(6) { top: 40%; right: 3%; animation-delay: 12s; }
+        .floating-number:nth-child(7) { bottom: 60%; left: 85%; animation-delay: 20s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.04; }
+            50% { transform: translateY(-60px) rotate(25deg); opacity: 0.08; }
+        }
+
+        .decorative-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #00AEAC 0%, #108181 100%);
+            top: 10%;
+            left: -5%;
+            animation: rotate 30s infinite linear;
+        }
+
+        .shape-2 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            bottom: 15%;
+            right: -3%;
+            animation: rotate 35s infinite linear reverse;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+            top: 60%;
+            left: 90%;
+            animation: rotate 25s infinite linear;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide { padding: 2rem; }
+            .conclusion-title { font-size: 3rem; }
+            .summary-cards { grid-template-columns: 1fr; gap: 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            .slide { padding: 1.5rem; }
+            .conclusion-title { font-size: 2.5rem; }
+            .conclusion-subtitle { font-size: 1.2rem; }
+            .references-section { padding: 2rem; }
+            .reference-text { font-size: 1.1rem; }
+        }
+    </style>
+<style>
+    .genspark-badge-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .genspark-modal {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 10000;
+      justify-content: end;
+    }
+    
+    .genspark-modal-content {
+      background-color: white;
+      border-radius: 8px;
+      max-width: 450px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      .genspark-modal-content {
+        max-width: 90%;
+      }
+    }
+    
+    .genspark-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    
+    .genspark-title {
+      margin-bottom: 8px;
+      font-weight: normal;
+      display: inline;
+      font-size: 14px;
+    }
+    
+    .genspark-report {
+      color: #909499;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-bottom: 14px;
+      display: inline;
+    }
+    
+    .genspark-info {
+      margin: 25px 0;
+      color: #333;
+      font-size: 14px;
+    }
+    
+    .genspark-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .genspark-remove-btn {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      color: #333;
+      padding: 4px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      flex: 1;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    
+    .genspark-go-btn {
+      background-color: #222;
+      border: none;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      flex: 1;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+  </style></head>
+<body>
+    <div class="slide">
+        <!-- Floating Background Elements -->
+        <div class="floating-elements">
+            <div class="floating-number">-5</div>
+            <div class="floating-number">+7</div>
+            <div class="floating-number">×</div>
+            <div class="floating-number">÷</div>
+            <div class="floating-number">ℤ</div>
+            <div class="floating-number">±</div>
+            <div class="floating-number">∑</div>
+        </div>
+
+        <!-- Decorative Shapes -->
+        <div class="decorative-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Conclusion Header -->
+            <h1 class="conclusion-title">¡Felicitaciones!</h1>
+            <p class="conclusion-subtitle">Has completado el Módulo 1: Sistema de los Números Enteros</p>
+            <div class="accent-line"></div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <div class="card-title">Conjunto ℤ</div>
+                    <div class="card-description">Dominio del conjunto de números enteros y representación en la recta numérica</div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="card-title">Operaciones</div>
+                    <div class="card-description">Suma, resta, multiplicación y división con reglas de signos</div>
+                </div>
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="card-title">Propiedades</div>
+                    <div class="card-description">Aplicación de propiedades algebraicas y resolución de polinomios</div>
+                </div>
+            </div>
+
+            <!-- References Section -->
+            <div class="references-section">
+                <div class="references-title">
+                    <i class="fas fa-book"></i>
+                    Referencias Bibliográficas
+                </div>
+                <div class="reference-content">
+                    <div class="reference-text">
+                        Fuente: Arcila Vanegas &amp; Gómez Noreña, 2016
+                    </div>
+                    <div class="reference-note">
+                        Material de apoyo para el curso de Matemáticas Básicas<br>
+                        Colegio Mayor de Antioquia
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thank You Section -->
+            <div class="thank-you-section">
+                
+                <div class="course-info">Continúa fortaleciendo tus bases matemáticas</div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDi4UktZVmuJS330EgKRxVqw2N3lDDGctHhsKe3ew2UiWPve5fKrsDBtjBZzRCfXm%2F%2BvjLS%2BxK45kgHEhycchga%2FlOpA13G1Mg2VZMYayYMyj%2Bot1N0vu424%2Bu0UnN8O6nLXHWIjv8dKufSvH%2BX9W4xED9gst4XqLFoZDUzaLfCIZJMHGWrhoVpnnpcdxozA3DIx3VXnCnNEhFrUVUqZD%2BXh5aKE8N5nN69hUgd0yAQoCmGzRJUdska9gweqGEQMbaz8oZ1Vd3BVOlPac6TLSJlsDpNH29neDw0Yb0kyyM8WahmOpQ4FKqXKsCmA7jfF8L8WPss6AML1SI%2FgSVhMeryfAo5sqZ5YcDr9593zy2Hl%2FctovxEe5bL27wR%2BY1hQbm5GYjwvXXW2FbJFkjFv87X3orKrgTyl%2Fs3dBftmHn8wi3xenz%2BEOu1GMsc1gwg6DKsxjlaQ4sCLk7NKTCOUbcw%2FL52U462Aaefg3QAJKC%2FV7S3s%2FiJeR0840qAj2PBlnuls%2FIbEivVubYR3WCijyA3Y3UMwMU%2Bwy2b8iwmWLZ6WhwvbIJ7MTVbrr8yUaoq%2Bnw%2BSnzOCvcAuk1nyla9TrTPkyHJcI7EhK%2FBiBcPIRpRErRmVVchg4tMZzgnfpI5N7PEVF3PNQtUcdhL3fYplqgB3qo2%2Fay2jp7FoWwL0h79VHQWGqqsq%2BMUZ%2BjzifZM7Fc6TqYZk0WLQON8lg3jTj2XUmNsukJY7CbyoaLa9hplYp4a7YqI54LLFPzZlrm6cWDw%3D%3D";
+        window.__genspark_locale = "es-ES";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDi4UktZVmuJS330EgKRxVqw2N3lDDGctHhsKe3ew2UiWPve5fKrsDBtjBZzRCfXm/+vjLS+xK45kgHEhycchga/lOpA13G1Mg2VZMYayYMyj+ot1N0vu424+u0UnN8O6nLXHWIjv8dKufSvH+X9W4xED9gst4XqLFoZDUzaLfCIZJMHGWrhoVpnnpcdxozA3DIx3VXnCnNEhFrUVUqZD+Xh5aKE8N5nN69hUgd0yAQoCmGzRJUdska9gweqGEQMbaz8oZ1Vd3BVOlPac6TLSJlsDpNH29neDw0Yb0kyyM8WahmOpQ4FKqXKsCmA7jfF8L8WPss6AML1SI/gSVhMeryfAo5sqZ5YcDr9593zy2Hl/ctovxEe5bL27wR+Y1hQbm5GYjwvXXW2FbJFkjFv87X3orKrgTyl/s3dBftmHn8wi3xenz+EOu1GMsc1gwg6DKsxjlaQ4sCLk7NKTCOUbcw/L52U462Aaefg3QAJKC/V7S3s/iJeR0840qAj2PBlnuls/IbEivVubYR3WCijyA3Y3UMwMU+wy2b8iwmWLZ6WhwvbIJ7MTVbrr8yUaoq+nw+SnzOCvcAuk1nyla9TrTPkyHJcI7EhK/BiBcPIRpRErRmVVchg4tMZzgnfpI5N7PEVF3PNQtUcdhL3fYplqgB3qo2/ay2jp7FoWwL0h79VHQWGqqsq+MUZ+jzifZM7Fc6TqYZk0WLQON8lg3jTj2XUmNsukJY7CbyoaLa9hplYp4a7YqI54LLFPzZlrm6cWDw==";
+    </script>
+    
+        </body></html>

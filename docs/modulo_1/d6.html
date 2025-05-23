@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signos de agrupación y jerarquía de operaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .session-badge {
+            display: inline-block;
+            background: #172139;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-text {
+            flex: 1;
+        }
+
+        .title-text h1:first-child {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-text h1:last-child {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background: #FBBB28;
+            margin-bottom: 1rem;
+        }
+
+        .title-icon {
+            font-size: 4rem;
+            color: #195855;
+            margin-left: 2rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hierarchy-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hierarchy-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(251, 187, 40, 0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+        }
+
+        .hierarchy-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #FBBB28;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hierarchy-title i {
+            margin-right: 0.5rem;
+        }
+
+        .hierarchy-steps {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hierarchy-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hierarchy-step:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .hierarchy-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #FBBB28;
+            transition: all 0.3s ease;
+        }
+
+        .hierarchy-step:hover::before {
+            width: 8px;
+            background: linear-gradient(to bottom, #FBBB28, #E9901E);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #FBBB28;
+            color: #172139;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-right: 1rem;
+        }
+
+        .step-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-description {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .grouping-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .grouping-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .grouping-title {
+            color: #172139;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grouping-title i {
+            color: #E9901E;
+            margin-right: 0.5rem;
+        }
+
+        .grouping-symbols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .symbol-card {
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .symbol-card:hover {
+            border-color: #108181;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(23, 33, 57, 0.1);
+        }
+
+        .symbol-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #195855;
+            margin-bottom: 0.5rem;
+        }
+
+        .symbol-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #172139;
+        }
+
+        .grouping-note {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #172139;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .examples-showcase {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 2px solid #dee2e6;
+        }
+
+        .examples-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .examples-title i {
+            color: #B4C42C;
+            margin-right: 0.5rem;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .example-card {
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .example-card:hover {
+            border-color: #108181;
+            box-shadow: 0 8px 25px rgba(23, 33, 57, 0.1);
+        }
+
+        .example-expression {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #172139;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .solution-steps {
+            margin-bottom: 1rem;
+        }
+
+        .solution-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: rgba(22, 33, 57, 0.05);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .solution-step:hover {
+            background: rgba(22, 33, 57, 0.1);
+        }
+
+        .step-arrow {
+            color: #108181;
+            margin-right: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .step-text {
+            font-size: 0.95rem;
+            color: #195855;
+            font-weight: 500;
+        }
+
+        .final-result {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .applications-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 2px solid #dee2e6;
+            margin-top: 1.5rem;
+        }
+
+        .applications-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .applications-title i {
+            color: #FBBB28;
+            margin-right: 0.5rem;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .app-card {
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .app-card:hover {
+            transform: translateY(-2px);
+            border-color: #108181;
+            box-shadow: 0 8px 20px rgba(23, 33, 57, 0.1);
+        }
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #108181 0%, #00AEAC 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+        }
+
+        .app-icon i {
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        .app-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #172139;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-description {
+            font-size: 0.8rem;
+            color: #195855;
+            line-height: 1.3;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .floating-symbol {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #195855;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-symbol:nth-child(1) { top: 8%; left: 2%; animation-delay: 0s; }
+        .floating-symbol:nth-child(2) { top: 15%; right: 4%; animation-delay: 6s; }
+        .floating-symbol:nth-child(3) { bottom: 25%; left: 6%; animation-delay: 12s; }
+        .floating-symbol:nth-child(4) { bottom: 10%; right: 8%; animation-delay: 18s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-45px) rotate(25deg); opacity: 0.1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide { padding: 1.5rem; }
+            .title-text h1 { font-size: 2.5rem; line-height: 2.75rem; }
+            .main-content { gap: 1.5rem; }
+            .applications-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .slide { padding: 1rem; }
+            .title-container { flex-direction: column; align-items: flex-start; }
+            .title-text h1 { font-size: 2rem; line-height: 2.25rem; }
+            .title-icon { margin-left: 0; margin-top: 1rem; }
+            .main-content { grid-template-columns: 1fr; gap: 1rem; }
+            .examples-grid { grid-template-columns: 1fr; }
+            .grouping-symbols { grid-template-columns: 1fr; }
+            .applications-grid { grid-template-columns: 1fr; }
+            .session-badge { font-size: 0.875rem; padding: 0.25rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Floating Background Elements -->
+        <div class="floating-elements">
+            <div class="floating-symbol">()</div>
+            <div class="floating-symbol">[]</div>
+            <div class="floating-symbol">{}</div>
+            <div class="floating-symbol">±</div>
+        </div>
+
+        <!-- Session Badge -->
+        <div class="session-badge">Sesión 5</div>
+
+        <!-- Title Section -->
+        <div class="title-container">
+            <div class="title-text">
+                <h1>Signos de agrupación y</h1>
+                <h1>jerarquía de operaciones</h1>
+                <div class="accent-line"></div>
+            </div>
+            <div class="title-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-content">
+            <!-- Hierarchy Section -->
+            <div class="hierarchy-section">
+                <div class="hierarchy-title">
+                    <i class="fas fa-sort-numeric-up"></i>
+                    Jerarquía de Operaciones
+                </div>
+                <div class="hierarchy-steps">
+                    <div class="hierarchy-step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <div class="step-title">Paréntesis y Agrupaciones</div>
+                            <div class="step-description">( ), [ ], { }</div>
+                        </div>
+                    </div>
+                    <div class="hierarchy-step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <div class="step-title">Potencias y Raíces</div>
+                            <div class="step-description">x², ³√x</div>
+                        </div>
+                    </div>
+                    <div class="hierarchy-step">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <div class="step-title">Multiplicación y División</div>
+                            <div class="step-description">×, ÷ (izquierda a derecha)</div>
+                        </div>
+                    </div>
+                    <div class="hierarchy-step">
+                        <span class="step-number">4</span>
+                        <div class="step-content">
+                            <div class="step-title">Suma y Resta</div>
+                            <div class="step-description">+, - (izquierda a derecha)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grouping Section -->
+            <div class="grouping-section">
+                <div class="grouping-title">
+                    <i class="fas fa-brackets-curly"></i>
+                    Signos de Agrupación
+                </div>
+                <div class="grouping-symbols">
+                    <div class="symbol-card">
+                        <div class="symbol-display">( )</div>
+                        <div class="symbol-name">Paréntesis</div>
+                    </div>
+                    <div class="symbol-card">
+                        <div class="symbol-display">[ ]</div>
+                        <div class="symbol-name">Corchetes</div>
+                    </div>
+                    <div class="symbol-card">
+                        <div class="symbol-display">{ }</div>
+                        <div class="symbol-name">Llaves</div>
+                    </div>
+                </div>
+                <div class="grouping-note">
+                    <i class="fas fa-lightbulb" style="margin-right: 0.5rem;"></i>
+                    Los signos de agrupación tienen la máxima prioridad y se resuelven primero
+                </div>
+            </div>
+        </div>
+
+        <!-- Examples Showcase -->
+        <div class="examples-showcase">
+            <div class="examples-title">
+                <i class="fas fa-calculator"></i>
+                Ejemplos Paso a Paso
+            </div>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-expression">3 + 2 × (5 - 3)</div>
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <i class="fas fa-arrow-right step-arrow"></i>
+                            <span class="step-text">Resolver paréntesis: (5 - 3) = 2</span>
+                        </div>
+                        <div class="solution-step">
+                            <i class="fas fa-arrow-right step-arrow"></i>
+                            <span class="step-text">Multiplicar: 2 × 2 = 4</span>
+                        </div>
+                        <div class="solution-step">
+                            <i class="fas fa-arrow-right step-arrow"></i>
+                            <span class="step-text">Sumar: 3 + 4 = 7</span>
+                        </div>
+                    </div>
+                    <div class="final-result">Resultado: 7</div>
+                </div>
+
+                <div class="example-card">
+                    <div class="example-expression">(4 + 3) × (2 - 1)</div>
+                    <div class="solution-steps">
+                        <div class="solution-step">
+                            <i class="fas fa-arrow-right step-arrow"></i>
+                            <span class="step-text">Primer paréntesis: (4 + 3) = 7</span>
+                        </div>
+                        <div class="solution-step">
+                            <i class="fas fa-arrow-right step-arrow"></i>
+                            <span class="step-text">Segundo paréntesis: (2 - 1) = 1</span>
+                        </div>
+                        <div class="solution-step">
+                            <i class="fas fa-arrow-right step-arrow"></i>
+                            <span class="step-text">Multiplicar: 7 × 1 = 7</span>
+                        </div>
+                    </div>
+                    <div class="final-result">Resultado: 7</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Section -->
+        <div class="applications-section">
+            <div class="applications-title">
+                <i class="fas fa-graduation-cap"></i>
+                Aplicaciones por Programa Académico
+            </div>
+            <div class="applications-grid">
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="app-title">Gastronomía</div>
+                    <div class="app-description">Costeo de recetas con múltiples ingredientes y pasos</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="app-title">Turismo</div>
+                    <div class="app-description">Presupuestos con descuentos, impuestos y tarifas escalonadas</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="app-title">Ingeniería</div>
+                    <div class="app-description">Cálculos de estructuras con expresiones compuestas</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="app-title">Salud</div>
+                    <div class="app-description">Cálculo de dosis o indicadores con operaciones secuenciales</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
