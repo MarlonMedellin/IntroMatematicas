@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 2: Sistema Imperial/Inglés de Medida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+        }
+        
+        .primary-blue { color: #172139; }
+        .secondary-blue { color: #195855; }
+        .tertiary-blue { color: #108181; }
+        .quaternary-blue { color: #00AEAC; }
+        
+        .primary-green { color: #B4C42C; }
+        .secondary-green { color: #E9901E; }
+        .tertiary-green { color: #FBBB28; }
+        
+        .bg-primary-blue { background-color: #172139; }
+        .bg-secondary-blue { background-color: #195855; }
+        .bg-tertiary-blue { background-color: #108181; }
+        .bg-quaternary-blue { background-color: #00AEAC; }
+        
+        .bg-primary-green { background-color: #B4C42C; }
+        .bg-secondary-green { background-color: #E9901E; }
+        .bg-tertiary-green { background-color: #FBBB28; }
+        
+        .session-badge {
+            background: #172139;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .second-title {
+            color: #172139;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .accent-line {
+            height: 0.25rem;
+            width: 8rem;
+            background-color: #FBBB28;
+            margin-bottom: 1.5rem;
+        }
+        
+        .imperial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(23, 33, 57, 0.12);
+            border-top: 5px solid;
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .imperial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .imperial-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(23, 33, 57, 0.2);
+        }
+        
+        .imperial-card.length { border-top-color: #E9901E; }
+        .imperial-card.mass { border-top-color: #108181; }
+        .imperial-card.volume { border-top-color: #00AEAC; }
+        
+        .unit-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.75rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .conversion-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1rem;
+        }
+        
+        .conversion-table th {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 0.875rem 1rem;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        
+        .conversion-table td {
+            padding: 0.875rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.875rem;
+        }
+        
+        .conversion-table td:first-child {
+            font-weight: 600;
+            color: #172139;
+        }
+        
+        .conversion-table td:last-child {
+            font-weight: 700;
+            color: #FBBB28;
+            font-size: 1rem;
+        }
+        
+        .conversion-table tr:hover {
+            background-color: #f8fafc;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(251, 187, 40, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .country-flag {
+            display: inline-block;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .pulse-element {
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        
+        .stagger-animation {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .imperial-card:nth-child(1) .stagger-animation { animation-delay: 0.1s; }
+        .imperial-card:nth-child(2) .stagger-animation { animation-delay: 0.2s; }
+        .imperial-card:nth-child(3) .stagger-animation { animation-delay: 0.3s; }
+        
+        .intro-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 5px solid #FBBB28;
+            margin-bottom: 2rem;
+        }
+        
+        .non-decimal-highlight {
+            background: linear-gradient(45deg, #E9901E, #FBBB28);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide relative overflow-hidden">
+        <!-- Header -->
+        <div class="px-16 py-6">
+            <!-- Session Badge and Title -->
+            <div class="mb-6">
+                <div class="session-badge">Sesión 2</div>
+                <h1 class="main-title">Sistema Imperial/Inglés</h1>
+                <h1 class="second-title">de Medida</h1>
+                <div class="accent-line"></div>
+            </div>
+            
+            <!-- Introduction -->
+            <div class="intro-card">
+                <div class="flex items-center">
+                    <div class="bg-primary-blue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                        <i class="fas fa-flag-usa text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold primary-blue text-lg mb-1">Sistema utilizado en Estados Unidos y contextos específicos</h3>
+                        <p class="text-gray-700">
+                            <span class="country-flag">🇺🇸</span>
+                            <span class="non-decimal-highlight">No se basa en múltiplos de 10</span> 
+                            como el SI, requiere factores de conversión únicos
+                            <span class="country-flag">🇬🇧</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Imperial Units Grid -->
+            <div class="grid grid-cols-3 gap-6 mb-6">
+                <!-- Length Units -->
+                <div class="imperial-card length">
+                    <div class="stagger-animation">
+                        <div class="unit-icon bg-secondary-green">
+                            <i class="fas fa-ruler-horizontal"></i>
+                        </div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">LONGITUD</h3>
+                        <div class="text-center mb-4">
+                            <span class="text-lg font-semibold secondary-green">Sistema de medidas lineales</span>
+                        </div>
+                        
+                        <div class="conversion-table">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Unidad</th>
+                                        <th>Equivalencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Pulgada (in)</td>
+                                        <td>Unidad base</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pie (ft)</td>
+                                        <td>12 in</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yarda (yd)</td>
+                                        <td>3 ft = 36 in</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Milla (mi)</td>
+                                        <td>1760 yd = 5280 ft</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mass Units -->
+                <div class="imperial-card mass">
+                    <div class="stagger-animation">
+                        <div class="unit-icon bg-tertiary-blue">
+                            <i class="fas fa-weight-hanging"></i>
+                        </div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">MASA (PESO)</h3>
+                        <div class="text-center mb-4">
+                            <span class="text-lg font-semibold tertiary-blue">Sistema de pesos</span>
+                        </div>
+                        
+                        <div class="conversion-table">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Unidad</th>
+                                        <th>Equivalencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Onza (oz)</td>
+                                        <td>Unidad base</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Libra (lb)</td>
+                                        <td>16 oz</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tonelada corta (US ton)</td>
+                                        <td>2000 lb</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volume Units -->
+                <div class="imperial-card volume">
+                    <div class="stagger-animation">
+                        <div class="unit-icon bg-quaternary-blue">
+                            <i class="fas fa-wine-bottle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">VOLUMEN</h3>
+                        <div class="text-center mb-4">
+                            <span class="text-lg font-semibold quaternary-blue">Capacidad líquida</span>
+                        </div>
+                        
+                        <div class="conversion-table">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Unidad</th>
+                                        <th>Equivalencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Onza líquida (fl oz)</td>
+                                        <td>Unidad base</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pinta (pt)</td>
+                                        <td>16 fl oz</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cuarto (qt)</td>
+                                        <td>2 pt = 32 fl oz</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Galón (gal)</td>
+                                        <td>4 qt = 8 pt</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Characteristic Highlight -->
+            <div class="highlight-box">
+                <div class="flex items-center justify-center">
+                    <div class="bg-tertiary-green w-16 h-16 rounded-xl flex items-center justify-center mr-6 floating-element">
+                        <i class="fas fa-exclamation-triangle text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="text-tertiary-green">Característica Clave:</span> Sistema No Decimal
+                        </h3>
+                        <p class="text-lg opacity-90">
+                            A diferencia del SI, las conversiones requieren <strong class="text-tertiary-green">factores específicos</strong> 
+                            (12, 16, 3, 4, etc.) en lugar de múltiplos de 10
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-16 w-20 h-20 bg-secondary-green rounded-full opacity-15 floating-element"></div>
+        <div class="absolute bottom-24 left-16 w-16 h-16 bg-quaternary-blue rounded-full opacity-20 pulse-element"></div>
+        <div class="absolute top-1/3 right-8 secondary-green text-4xl opacity-20 floating-element" style="animation-delay: 1s;">ft</div>
+        <div class="absolute bottom-1/4 left-8 tertiary-blue text-4xl opacity-25 floating-element" style="animation-delay: 2s;">lb</div>
+        <div class="absolute top-2/3 right-1/4 quaternary-blue text-4xl opacity-20 floating-element" style="animation-delay: 0.5s;">gal</div>
+        <div class="absolute top-16 left-1/3 secondary-green text-3xl opacity-15 floating-element" style="animation-delay: 1.5s;">in</div>
+    </div>
+</body>
+</html>

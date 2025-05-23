@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción al Módulo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+        }
+        
+        .primary-blue { color: #172139; }
+        .secondary-blue { color: #195855; }
+        .tertiary-blue { color: #108181; }
+        .quaternary-blue { color: #00AEAC; }
+        
+        .primary-green { color: #B4C42C; }
+        .secondary-green { color: #E9901E; }
+        .tertiary-green { color: #FBBB28; }
+        
+        .bg-primary-blue { background-color: #172139; }
+        .bg-secondary-blue { background-color: #195855; }
+        .bg-tertiary-blue { background-color: #108181; }
+        .bg-quaternary-blue { background-color: #00AEAC; }
+        
+        .bg-primary-green { background-color: #B4C42C; }
+        .bg-secondary-green { background-color: #E9901E; }
+        .bg-tertiary-green { background-color: #FBBB28; }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(23, 33, 57, 0.15);
+        }
+        
+        .gradient-accent {
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .icon-container {
+            background: linear-gradient(135deg, #108181 0%, #00AEAC 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide relative overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary-blue h-20 w-full flex items-center px-16">
+            <div class="bg-tertiary-green text-white px-6 py-2 rounded-r-full font-medium text-lg">
+                Módulo 5
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="px-16 py-12 relative">
+            <!-- Title -->
+            <div class="mb-12">
+                <h1 class="text-5xl font-bold primary-blue mb-4">
+                    Introducción al 
+                    <span class="secondary-blue">Módulo</span>
+                </h1>
+                <div class="gradient-accent h-1 w-32"></div>
+            </div>
+            
+            <!-- Content Grid -->
+            <div class="grid grid-cols-2 gap-12">
+                <!-- Introduction Card -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-quaternary-blue card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="icon-container w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-book-open text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold primary-blue">¿Qué aprenderás?</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        En este módulo aprenderás a aplicar <strong class="secondary-blue">factores de conversión</strong> entre los diferentes sistemas de medida (Sistema Internacional y sistema imperial) para resolver problemas reales de <strong class="secondary-blue">física, ingeniería y turismo</strong>.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <span class="bg-tertiary-green bg-opacity-20 tertiary-green px-3 py-1 rounded-full text-sm font-medium">Longitud</span>
+                        <span class="bg-secondary-green bg-opacity-20 secondary-green px-3 py-1 rounded-full text-sm font-medium">Masa</span>
+                        <span class="bg-primary-green bg-opacity-20 primary-green px-3 py-1 rounded-full text-sm font-medium">Volumen</span>
+                    </div>
+                </div>
+                
+                <!-- Motivation Card -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-secondary-green card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-secondary-green w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-lightbulb text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold primary-blue">¿Por qué es importante?</h2>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed text-lg">
+                        Comprender los sistemas de medida y sus conversiones es <strong class="secondary-blue">imprescindible</strong> para profesionales en turismo, ingeniería y ciencias de la salud, donde la <strong class="secondary-green">exactitud</strong> es clave.
+                    </p>
+                    <div class="mt-6 bg-tertiary-green bg-opacity-10 p-4 rounded-lg">
+                        <p class="tertiary-green font-medium text-center">
+                            <i class="fas fa-star mr-2"></i>
+                            Herramientas para garantizar coherencia en cálculos profesionales
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Applications Preview -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold primary-blue mb-8 text-center">Aplicaciones en tu carrera</h3>
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="text-center floating-element" style="animation-delay: 0s;">
+                        <div class="bg-tertiary-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-utensils text-white text-2xl"></i>
+                        </div>
+                        <span class="text-sm font-medium primary-blue">Gastronomía</span>
+                    </div>
+                    <div class="text-center floating-element" style="animation-delay: 0.5s;">
+                        <div class="bg-quaternary-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-hard-hat text-white text-2xl"></i>
+                        </div>
+                        <span class="text-sm font-medium primary-blue">Ingeniería</span>
+                    </div>
+                    <div class="text-center floating-element" style="animation-delay: 1s;">
+                        <div class="bg-secondary-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-plane text-white text-2xl"></i>
+                        </div>
+                        <span class="text-sm font-medium primary-blue">Turismo</span>
+                    </div>
+                    <div class="text-center floating-element" style="animation-delay: 1.5s;">
+                        <div class="bg-primary-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-microscope text-white text-2xl"></i>
+                        </div>
+                        <span class="text-sm font-medium primary-blue">Ciencias</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-32 right-8 w-32 h-32 bg-quaternary-blue rounded-full opacity-10"></div>
+        <div class="absolute bottom-8 left-8 w-24 h-24 bg-tertiary-green rounded-full opacity-15"></div>
+        <div class="absolute top-1/2 right-1/4 w-16 h-16 bg-secondary-green rounded-full opacity-20 floating-element"></div>
+    </div>
+</body>
+</html>

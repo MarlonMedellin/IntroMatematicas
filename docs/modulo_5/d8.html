@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones Prácticas por Programa Académico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+        }
+        
+        .primary-blue { color: #172139; }
+        .secondary-blue { color: #195855; }
+        .tertiary-blue { color: #108181; }
+        .quaternary-blue { color: #00AEAC; }
+        
+        .primary-green { color: #B4C42C; }
+        .secondary-green { color: #E9901E; }
+        .tertiary-green { color: #FBBB28; }
+        
+        .bg-primary-blue { background-color: #172139; }
+        .bg-secondary-blue { background-color: #195855; }
+        .bg-tertiary-blue { background-color: #108181; }
+        .bg-quaternary-blue { background-color: #00AEAC; }
+        
+        .bg-primary-green { background-color: #B4C42C; }
+        .bg-secondary-green { background-color: #E9901E; }
+        .bg-tertiary-green { background-color: #FBBB28; }
+        
+        .main-title {
+            color: #172139;
+            font-size: 2.75rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accent-line {
+            height: 0.25rem;
+            width: 10rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin-bottom: 1.5rem;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.75rem;
+            box-shadow: 0 10px 30px rgba(23, 33, 57, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 6px solid;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .program-card:hover::before {
+            opacity: 1;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 45px rgba(23, 33, 57, 0.25);
+        }
+        
+        .program-card.engineering { border-top-color: #E9901E; }
+        .program-card.commerce { border-top-color: #108181; }
+        .program-card.gastronomy { border-top-color: #00AEAC; }
+        .program-card.biotech { border-top-color: #B4C42C; }
+        
+        .program-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+        
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .program-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #172139;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .problem-scenario {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #475569;
+            border-left: 4px solid;
+            position: relative;
+        }
+        
+        .problem-scenario.engineering { border-left-color: #E9901E; }
+        .problem-scenario.commerce { border-left-color: #108181; }
+        .problem-scenario.gastronomy { border-left-color: #00AEAC; }
+        .problem-scenario.biotech { border-left-color: #B4C42C; }
+        
+        .calculation-step {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 0.875rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 0.75rem 0;
+            font-size: 0.8rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculation-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .program-card:hover .calculation-step::before {
+            left: 100%;
+        }
+        
+        .result-highlight {
+            color: #FBBB28;
+            font-weight: bold;
+            font-size: 1.15em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .specialty-badge {
+            background: #FBBB28;
+            color: #172139;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 3;
+        }
+        
+        .data-highlight {
+            background: rgba(251, 187, 40, 0.2);
+            color: #172139;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .pulse-element {
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .stagger-animation {
+            animation: slideInUp 0.9s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .program-card:nth-child(1) .stagger-animation { animation-delay: 0.1s; }
+        .program-card:nth-child(2) .stagger-animation { animation-delay: 0.2s; }
+        .program-card:nth-child(3) .stagger-animation { animation-delay: 0.3s; }
+        .program-card:nth-child(4) .stagger-animation { animation-delay: 0.4s; }
+        
+        .conclusion-banner {
+            background: linear-gradient(135deg, #172139 0%, #195855 50%, #108181 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conclusion-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(251, 187, 40, 0.3) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .college-badge {
+            background: #FBBB28;
+            color: #172139;
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .interactive-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 4px;
+            animation: blink 2s ease-in-out infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .interactive-dot:nth-child(1) { background: #E9901E; animation-delay: 0s; }
+        .interactive-dot:nth-child(2) { background: #108181; animation-delay: 0.5s; }
+        .interactive-dot:nth-child(3) { background: #00AEAC; animation-delay: 1s; }
+        .interactive-dot:nth-child(4) { background: #B4C42C; animation-delay: 1.5s; }
+    </style>
+</head>
+<body>
+    <div class="slide relative overflow-hidden">
+        <!-- Header -->
+        <div class="px-12 py-5">
+            <!-- Title -->
+            <div class="mb-5">
+                <h1 class="main-title">Aplicaciones Prácticas</h1>
+                <h1 class="main-title">por Programa Académico</h1>
+                <div class="accent-line"></div>
+            </div>
+            
+            <!-- Programs Grid -->
+            <div class="grid grid-cols-2 gap-5 mb-5">
+                <!-- Engineering/Architecture -->
+                <div class="program-card engineering">
+                    <div class="specialty-badge">CONSTRUCCIÓN</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-secondary-green">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="program-title">Ingeniería Civil / Arquitectura</h3>
+                        
+                        <div class="problem-scenario engineering">
+                            <strong>Problema:</strong> Plano importado de EEUU indica una viga de 
+                            <span class="data-highlight">12 pies y 6 pulgadas</span>
+                            <br><small>Proveedor local requiere medida en metros</small>
+                        </div>
+                        
+                        <div class="text-sm mb-2">
+                            <strong class="secondary-green">Paso 1:</strong> 6 pulgadas = 0.5 pies → Total: 12.5 pies
+                        </div>
+                        
+                        <div class="calculation-step">
+                            $12.5 \text{ ft} \times \frac{0.3048 \text{ m}}{1 \text{ ft}} = \text{ }\text{ }$ <span class="result-highlight">3.81 m</span>
+                        </div>
+                        
+                        <div class="text-center text-xs secondary-green font-semibold mt-2">
+                            ✓ Especificación técnica convertida exitosamente
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commercial Management -->
+                <div class="program-card commerce">
+                    <div class="specialty-badge">COMERCIO</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-tertiary-blue">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3 class="program-title">Tecnología en Gestión Comercial</h3>
+                        
+                        <div class="problem-scenario commerce">
+                            <strong>Importación:</strong> Producto con peso neto de 
+                            <span class="data-highlight">50 lb por caja</span>
+                            <br><small>Manifiesto de aduana requiere peso en kg</small>
+                        </div>
+                        
+                        <div class="text-sm mb-2">
+                            <strong class="tertiary-blue">Conversión directa:</strong> Libras a kilogramos
+                        </div>
+                        
+                        <div class="calculation-step">
+                            $50 \text{ lb} \times \frac{0.4536 \text{ kg}}{1 \text{ lb}} = \text{ }\text{ }$ <span class="result-highlight">22.68 kg</span>
+                        </div>
+                        
+                        <div class="text-center text-xs tertiary-blue font-semibold mt-2">
+                            ✓ Documentación aduanera precisa
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gastronomy -->
+                <div class="program-card gastronomy">
+                    <div class="specialty-badge">CULINARIA</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-quaternary-blue">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="program-title">Profesional en Gastronomía</h3>
+                        
+                        <div class="problem-scenario gastronomy">
+                            <strong>Receta inglesa:</strong> Requiere 
+                            <span class="data-highlight">1 pinta de crema</span>
+                            <br><small>Balanza graduada en mililitros</small>
+                        </div>
+                        
+                        <div class="text-sm mb-2">
+                            <strong class="quaternary-blue">Conversión:</strong> 1 pinta US ≈ 16 fl oz
+                        </div>
+                        
+                        <div class="calculation-step">
+                            $16 \text{ fl oz} \times \frac{29.57 \text{ mL}}{1 \text{ fl oz}} = \text{ }\text{ }$ <span class="result-highlight">473 mL</span>
+                        </div>
+                        
+                        <div class="text-center text-xs quaternary-blue font-semibold mt-2">
+                            ✓ Receta adaptada correctamente
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Biotechnology -->
+                <div class="program-card biotech">
+                    <div class="specialty-badge">CIENCIAS</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-primary-green">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 class="program-title">Biotecnología / Ciencias de la Salud</h3>
+                        
+                        <div class="problem-scenario biotech">
+                            <strong>Equipo médico:</strong> Recipiente de 
+                            <span class="data-highlight">16 fl oz</span>
+                            <br><small>Protocolo requiere capacidad en litros</small>
+                        </div>
+                        
+                        <div class="text-sm mb-2">
+                            <strong class="primary-green">Paso 1:</strong> fl oz → mL → L
+                        </div>
+                        
+                        <div class="calculation-step">
+                            $16 \text{ fl oz} \times 29.57 \frac{\text{mL}}{\text{fl oz}} = 473.12 \text{ mL} = \text{ }\text{ }$ <span class="result-highlight">0.473 L</span>
+                        </div>
+                        
+                        <div class="text-center text-xs primary-green font-semibold mt-2">
+                            ✓ Especificación médica validada
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conclusion Banner -->
+            <div class="conclusion-banner">
+                <div class="college-badge">Colegio Mayor de Antioquia</div>
+                <h3 class="text-xl font-bold mb-2">
+                    Competencias Transversales en Sistemas de Medida
+                </h3>
+                <p class="text-base opacity-90 mb-3">
+                    Herramientas matemáticas aplicadas que fortalecen el perfil profesional 
+                    desde el <strong class="text-tertiary-green">primer semestre</strong>
+                </p>
+                <div class="flex items-center justify-center">
+                    <span class="interactive-dot"></span>
+                    <span class="interactive-dot"></span>
+                    <span class="interactive-dot"></span>
+                    <span class="interactive-dot"></span>
+                    <span class="ml-3 text-sm font-medium opacity-80">Preparación para retos profesionales reales</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-16 right-20 w-24 h-24 bg-secondary-green rounded-full opacity-10 floating-element"></div>
+        <div class="absolute bottom-32 left-16 w-20 h-20 bg-quaternary-blue rounded-full opacity-15 pulse-element"></div>
+        <div class="absolute top-1/4 right-8 secondary-green text-5xl opacity-20 floating-element" style="animation-delay: 1s;">⚙️</div>
+        <div class="absolute bottom-1/3 left-8 tertiary-blue text-4xl opacity-25 floating-element" style="animation-delay: 2s;">📐</div>
+        <div class="absolute top-2/3 right-1/3 quaternary-blue text-4xl opacity-20 floating-element" style="animation-delay: 0.5s;">🔬</div>
+        <div class="absolute top-20 left-1/4 primary-green text-3xl opacity-15 floating-element" style="animation-delay: 1.5s;">🍽️</div>
+    </div>
+</body>
+</html>
