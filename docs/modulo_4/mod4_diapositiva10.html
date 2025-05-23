@@ -1,9 +1,656 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 10</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repartos Proporcionales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            margin: 0 auto;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-title {
+            color: #172139;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .accent-line {
+            width: 10rem;
+            height: 0.3rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto 1rem;
+            animation: expandWidth 1.2s ease-out 0.3s both;
+        }
+
+        .subtitle {
+            color: #195855;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .distribution-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8f0 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .distribution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .direct-card {
+            border: 3px solid #B4C42C;
+            animation: slideInLeft 1s ease-out 0.7s both;
+        }
+
+        .inverse-card {
+            border: 3px solid #E9901E;
+            animation: slideInRight 1s ease-out 0.9s both;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .direct-icon {
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+        }
+
+        .inverse-icon {
+            background: linear-gradient(135deg, #E9901E 0%, #FBBB28 100%);
+        }
+
+        .card-title {
+            color: #172139;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .concept-description {
+            color: #195855;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .procedure-steps {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-title {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: #172139;
+            font-weight: 500;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .example-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid;
+        }
+
+        .direct-example {
+            border-color: #B4C42C;
+        }
+
+        .inverse-example {
+            border-color: #E9901E;
+        }
+
+        .example-title {
+            color: #172139;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .example-problem {
+            color: #195855;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .calculation-box {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #ffffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0.2rem;
+        }
+
+        .applications-section {
+            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+            border: 3px solid #00AEAC;
+            border-radius: 20px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out 1.1s both;
+        }
+
+        .applications-title {
+            color: #00AEAC;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .app-card {
+            background: #ffffff;
+            border: 2px solid #00AEAC;
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 174, 172, 0.2);
+        }
+
+        .app-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 174, 172, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .app-card:hover:before {
+            left: 100%;
+        }
+
+        .app-icon {
+            background: linear-gradient(135deg, #00AEAC 0%, #108181 100%);
+            color: #ffffff;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 auto 0.8rem;
+        }
+
+        .app-text {
+            color: #172139;
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Decorative Elements */
+        .decorative-math {
+            position: absolute;
+            font-size: 8rem;
+            font-weight: 900;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .math-1 {
+            top: 20%;
+            left: 10%;
+            color: #B4C42C;
+            transform: rotate(-15deg);
+        }
+
+        .math-2 {
+            top: 60%;
+            right: 15%;
+            color: #E9901E;
+            transform: rotate(10deg);
+        }
+
+        .floating-symbols {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 700;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .symbol-1 {
+            top: 15%;
+            right: 20%;
+            color: #195855;
+            animation-delay: 0s;
+        }
+
+        .symbol-2 {
+            bottom: 25%;
+            left: 15%;
+            color: #B4C42C;
+            animation-delay: 2s;
+        }
+
+        .symbol-3 {
+            top: 40%;
+            left: 80%;
+            color: #E9901E;
+            animation-delay: 4s;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 10rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+            66% {
+                transform: translateY(5px) rotate(-3deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .main-grid {
+                gap: 1.5rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1.5rem;
+            }
+            
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .decorative-math,
+            .floating-symbols {
+                display: none;
+            }
+        }
+
+        /* Content positioning */
+        .content-container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <div class="content-container">
+            <!-- Header Section -->
+            <div class="header-section">
+                <h1 class="main-title">Repartos Proporcionales</h1>
+                <div class="accent-line"></div>
+                <p class="subtitle">Distribución equitativa según índices de proporcionalidad directa e inversa</p>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="main-grid">
+                <!-- Direct Distribution Card -->
+                <div class="distribution-card direct-card">
+                    <div class="card-header">
+                        <div class="card-icon direct-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Reparto Directo</h2>
+                        </div>
+                    </div>
+                    
+                    <p class="concept-description">
+                        Divide una cantidad en partes <strong>directamente proporcionales</strong> a números índice. 
+                        A mayor índice → mayor parte recibida.
+                    </p>
+
+                    <div class="procedure-steps">
+                        <div class="step-title">
+                            <i class="fas fa-list-ol"></i>
+                            Procedimiento:
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Sumar todos los índices: $S = n_1 + n_2 + ... + n_k$</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Calcular constante: $k = \frac{\text{Total}}{S}$</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Cada parte = $k \times \text{índice respectivo}$</div>
+                        </div>
+                    </div>
+
+                    <div class="example-section direct-example">
+                        <div class="example-title">
+                            <i class="fas fa-calculator"></i>
+                            Ejemplo: Repartir $120.000 según edades 2, 3, 5
+                        </div>
+                        <div class="example-problem">
+                            Suma índices: 2+3+5 = 10<br>
+                            Constante: k = $120.000/10 = $12.000
+                        </div>
+                        <div class="calculation-box">
+                            Persona 1: $12.000 × 2 = <span class="result-highlight">$24.000</span><br>
+                            Persona 2: $12.000 × 3 = <span class="result-highlight">$36.000</span><br>
+                            Persona 3: $12.000 × 5 = <span class="result-highlight">$60.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inverse Distribution Card -->
+                <div class="distribution-card inverse-card">
+                    <div class="card-header">
+                        <div class="card-icon inverse-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Reparto Inverso</h2>
+                        </div>
+                    </div>
+                    
+                    <p class="concept-description">
+                        Divide una cantidad en partes <strong>inversamente proporcionales</strong> a números índice. 
+                        A mayor índice → menor parte recibida.
+                    </p>
+
+                    <div class="procedure-steps">
+                        <div class="step-title">
+                            <i class="fas fa-list-ol"></i>
+                            Procedimiento:
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Calcular inversos: $\frac{1}{n_1}, \frac{1}{n_2}, ..., \frac{1}{n_k}$</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Sumar inversos: $S_{inv} = \frac{1}{n_1} + \frac{1}{n_2} + ...$</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Cada parte = $\frac{\text{Total}}{S_{inv}} \times \frac{1}{\text{índice}}$</div>
+                        </div>
+                    </div>
+
+                    <div class="example-section inverse-example">
+                        <div class="example-title">
+                            <i class="fas fa-calculator"></i>
+                            Ejemplo: Bono $26.000 según faltas 2, 3
+                        </div>
+                        <div class="example-problem">
+                            Inversos: 1/2, 1/3<br>
+                            Suma: 1/2 + 1/3 = 5/6
+                        </div>
+                        <div class="calculation-box">
+                            Empleado 1: $26.000 × (6/5) × (1/2) = <span class="result-highlight">$15.600</span><br>
+                            Empleado 2: $26.000 × (6/5) × (1/3) = <span class="result-highlight">$10.400</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Section -->
+            <div class="applications-section">
+                <h2 class="applications-title">
+                    <i class="fas fa-briefcase"></i>
+                    Aplicaciones por Programa
+                </h2>
+                
+                <div class="app-grid">
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Gastronomía:</strong> Propina $60.000 según horas trabajadas: 6, 8, 10h
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Desarrollo Social:</strong> Fondo $5M inverso a familias con ingresos altos
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Arquitectura:</strong> Costos $150M por complejidad factores: 2, 5, 3
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Turismo:</strong> Ganancias $1M según inversión: $200K, $300K, $500K
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-math math-1">∝</div>
+        <div class="decorative-math math-2">1/x</div>
+        
+        <div class="floating-symbols symbol-1">k</div>
+        <div class="floating-symbols symbol-2">÷</div>
+        <div class="floating-symbols symbol-3">×</div>
+    </div>
 </body>
 </html>

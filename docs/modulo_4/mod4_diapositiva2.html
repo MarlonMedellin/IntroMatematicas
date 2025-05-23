@@ -1,9 +1,360 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1: Razones y Proporciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .title-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .session-badge {
+            display: inline-block;
+            background-color: #172139;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            white-space: nowrap;
+        }
+
+        .title-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .main-title-line {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .main-title-line:first-child {
+            margin-bottom: 0.5rem;
+        }
+
+        .main-title-line:last-child {
+            margin-bottom: 1rem;
+        }
+
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background-color: #FBBB28;
+        }
+
+        .objective-section {
+            max-width: 900px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .objective-title {
+            color: #195855;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .objective-text {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Decorative Elements */
+        .ratio-visual {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .ratio-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .ratio-box-1 { background-color: #B4C42C; }
+        .ratio-box-2 { background-color: #E9901E; }
+        .ratio-box-3 { background-color: #FBBB28; }
+
+        .ratio-symbol {
+            font-size: 2rem;
+            color: #172139;
+            font-weight: 700;
+        }
+
+        .proportion-visual {
+            position: absolute;
+            top: 120px;
+            right: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .proportion-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.25rem 0;
+        }
+
+        .fraction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 600;
+            color: #108181;
+        }
+
+        .numerator, .denominator {
+            padding: 0.25rem 0.5rem;
+        }
+
+        .fraction-line {
+            width: 30px;
+            height: 2px;
+            background-color: #108181;
+        }
+
+        .equals-sign {
+            font-size: 1.5rem;
+            color: #172139;
+            font-weight: 700;
+        }
+
+        .floating-concepts {
+            position: absolute;
+            font-weight: 600;
+            opacity: 0.2;
+            z-index: 1;
+            color: #195855;
+        }
+
+        .concept-1 {
+            top: 400px;
+            left: 80px;
+            font-size: 1.2rem;
+            transform: rotate(-15deg);
+        }
+
+        .concept-2 {
+            top: 450px;
+            right: 100px;
+            font-size: 1rem;
+            transform: rotate(10deg);
+        }
+
+        .concept-3 {
+            bottom: 150px;
+            left: 200px;
+            font-size: 1.1rem;
+            transform: rotate(-8deg);
+        }
+
+        .decorative-shapes {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            background-color: #00AEAC;
+            top: 350px;
+            left: 50px;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            background-color: #FBBB28;
+            top: 200px;
+            right: 80px;
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            background-color: #B4C42C;
+            bottom: 100px;
+            right: 200px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .main-title-line {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+            
+            .session-badge {
+                font-size: 1rem;
+                padding: 0.375rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .title-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .title-text-container {
+                align-items: flex-start;
+            }
+            
+            .main-title-line {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+            
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+            
+            .objective-text {
+                font-size: 1rem;
+                text-align: left;
+            }
+            
+            .ratio-visual,
+            .proportion-visual,
+            .floating-concepts {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Title Section -->
+            <div class="title-container">
+                <div class="session-badge">Sesión 1</div>
+                <div class="title-text-container">
+                    <h1 class="main-title-line">Razones y</h1>
+                    <h1 class="main-title-line">Proporciones</h1>
+                    <div class="accent-line"></div>
+                </div>
+            </div>
+
+            <!-- Objective Section -->
+            <div class="objective-section">
+                <h2 class="objective-title">Objetivo de Aprendizaje</h2>
+                <p class="objective-text">
+                    Comprender y aplicar los conceptos de razón y proporción como formas de comparar cantidades y establecer relaciones de igualdad entre ellas, identificando sus términos y la propiedad fundamental de las proporciones.
+                </p>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="ratio-visual">
+            <div class="ratio-box ratio-box-1">3</div>
+            <div class="ratio-symbol">:</div>
+            <div class="ratio-box ratio-box-2">4</div>
+        </div>
+
+        <div class="proportion-visual">
+            <div class="proportion-line">
+                <div class="fraction">
+                    <div class="numerator">a</div>
+                    <div class="fraction-line"></div>
+                    <div class="denominator">b</div>
+                </div>
+                <div class="equals-sign">=</div>
+                <div class="fraction">
+                    <div class="numerator">c</div>
+                    <div class="fraction-line"></div>
+                    <div class="denominator">d</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-concepts concept-1">antecedente</div>
+        <div class="floating-concepts concept-2">consecuente</div>
+        <div class="floating-concepts concept-3">extremos y medios</div>
+
+        <div class="decorative-shapes shape-1"></div>
+        <div class="decorative-shapes shape-2"></div>
+        <div class="decorative-shapes shape-3"></div>
+    </div>
 </body>
 </html>

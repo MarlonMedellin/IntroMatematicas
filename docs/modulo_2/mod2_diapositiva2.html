@@ -1,9 +1,300 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1: Números primos y criterios de divisibilidad</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 4rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .session-badge {
+            display: inline-block;
+            background-color: #172139;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            margin-bottom: 2rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .title-text {
+            flex: 1;
+        }
+        
+        .main-title-line {
+            color: #172139;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin: 0;
+        }
+        
+        .main-title-line:first-child {
+            margin-bottom: 0.5rem;
+        }
+        
+        .main-title-line:last-child {
+            margin-bottom: 1rem;
+        }
+        
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background-color: #FBBB28;
+            margin-bottom: 3rem;
+        }
+        
+        .title-icon {
+            font-size: 4rem;
+            color: #195855;
+            animation: pulse 2s infinite;
+        }
+        
+        .objective-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid #B4C42C;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .objective-title {
+            color: #172139;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .objective-text {
+            color: #195855;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .decorative-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-number {
+            position: absolute;
+            font-weight: 700;
+            opacity: 0.15;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .number-1 {
+            font-size: 5rem;
+            color: #00AEAC;
+            top: 10%;
+            right: 15%;
+            animation-delay: 0s;
+        }
+        
+        .number-2 {
+            font-size: 4rem;
+            color: #E9901E;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+        
+        .number-3 {
+            font-size: 3rem;
+            color: #108181;
+            top: 60%;
+            right: 5%;
+            animation-delay: 4s;
+        }
+        
+        .pattern-dots {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: radial-gradient(circle, #FBBB28 2px, transparent 2px);
+            background-size: 15px 15px;
+            opacity: 0.2;
+            top: 15%;
+            left: 5%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide {
+                padding: 2rem;
+            }
+            
+            .main-title-line {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+            
+            .title-icon {
+                font-size: 3rem;
+            }
+            
+            .floating-number {
+                opacity: 0.1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+            }
+            
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+            
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .main-title-line {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+            
+            .title-icon {
+                font-size: 2.5rem;
+            }
+            
+            .objective-section {
+                padding: 1.5rem;
+            }
+            
+            .objective-title {
+                font-size: 1.25rem;
+            }
+            
+            .objective-text {
+                font-size: 1rem;
+            }
+            
+            .floating-number {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Decorative Background Elements -->
+        <div class="decorative-elements">
+            <div class="floating-number number-1">2</div>
+            <div class="floating-number number-2">7</div>
+            <div class="floating-number number-3">11</div>
+            <div class="pattern-dots"></div>
+        </div>
+        
+        <!-- Session Badge -->
+        <div class="session-badge">Sesión 1</div>
+        
+        <!-- Title Section -->
+        <div class="title-container">
+            <div class="title-text">
+                <h1 class="main-title-line">Números primos y</h1>
+                <h1 class="main-title-line">criterios de divisibilidad</h1>
+                <div class="accent-line"></div>
+            </div>
+            <div class="title-icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+        </div>
+        
+        <!-- Learning Objective -->
+        <div class="objective-section">
+            <h2 class="objective-title">
+                <i class="fas fa-target" style="color: #B4C42C;"></i>
+                Objetivo de Aprendizaje
+            </h2>
+            <p class="objective-text">
+                Identificar números primos y aplicar correctamente los criterios de divisibilidad 
+                (por 2, 3, 5, 7, 11) para facilitar la descomposición de números y la resolución 
+                de problemas en diversos contextos profesionales y académicos.
+            </p>
+        </div>
+    </div>
 </body>
 </html>

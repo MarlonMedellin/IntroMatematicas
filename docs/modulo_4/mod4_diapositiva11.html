@@ -1,9 +1,527 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 11</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 4: Regla de Tres Compuesta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .title-content-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 4rem 160px;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 160px;
+            background-color: #172139;
+            z-index: 1;
+        }
+
+        .session-badge {
+            display: inline-block;
+            background-color: #172139;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .title-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .title-icon {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            animation: rotateIn 1.2s ease-out 0.5s both;
+        }
+
+        .title-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .main-title-line1 {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease-out 0.3s both;
+        }
+
+        .main-title-line2 {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out 0.5s both;
+        }
+
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background-color: #FBBB28;
+            margin: 0 auto 2rem;
+            animation: expandWidth 1.5s ease-out 0.7s both;
+        }
+
+        .subtitle {
+            color: #195855;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        /* Decorative Background Elements */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 180px;
+            height: 180px;
+            background-color: #00AEAC;
+            top: 450px;
+            left: -60px;
+        }
+
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            background-color: #FBBB28;
+            top: 180px;
+            right: -40px;
+        }
+
+        .pattern-grid {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(#172139 1px, transparent 1px),
+                linear-gradient(90deg, #172139 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+
+        .floating-numbers {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+            z-index: 1;
+            font-size: 3rem;
+        }
+
+        .number-1 {
+            top: 20%;
+            left: 15%;
+            color: #B4C42C;
+            animation-delay: 0s;
+        }
+
+        .number-2 {
+            top: 70%;
+            right: 20%;
+            color: #E9901E;
+            animation-delay: 3s;
+            font-size: 4rem;
+        }
+
+        .number-3 {
+            top: 45%;
+            left: 10%;
+            color: #195855;
+            animation-delay: 6s;
+        }
+
+        .math-symbol {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.1;
+            color: #195855;
+            z-index: 0;
+            font-size: 6rem;
+        }
+
+        .symbol-multiply {
+            top: 30%;
+            right: 15%;
+            content: '×';
+        }
+
+        .symbol-equals {
+            bottom: 40%;
+            left: 20%;
+            content: '=';
+        }
+
+        .symbol-proportion {
+            top: 60%;
+            left: 75%;
+            font-size: 8rem;
+            content: '∝';
+        }
+
+        .math-icons-bottom {
+            position: absolute;
+            bottom: 3rem;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .math-icons-bottom i {
+            color: #108181;
+            font-size: 3rem;
+            margin-right: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .math-icons-bottom i:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .math-icons-bottom i:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .complex-indicator {
+            position: absolute;
+            top: 20%;
+            right: 8%;
+            background: linear-gradient(135deg, #E9901E 0%, #FBBB28 100%);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transform: rotate(-8deg);
+            animation: pulse 3s infinite;
+            z-index: 2;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 8rem;
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-180deg) scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: rotate(-8deg) scale(1);
+            }
+            50% {
+                transform: rotate(-8deg) scale(1.05);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .title-content-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+                padding-top: 140px;
+            }
+
+            .main-title-line1,
+            .main-title-line2 {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+
+            .floating-numbers {
+                opacity: 0.3;
+            }
+
+            .math-symbol {
+                opacity: 0.05;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+            }
+
+            .title-content-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 100px;
+            }
+
+            .header-bar {
+                height: 100px;
+            }
+
+            .title-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .title-text {
+                align-items: center;
+            }
+
+            .main-title-line1,
+            .main-title-line2 {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+
+            .shape-1 {
+                width: 90px;
+                height: 90px;
+                top: 350px;
+                left: -30px;
+            }
+
+            .shape-2 {
+                width: 90px;
+                height: 90px;
+                top: 120px;
+                right: -20px;
+            }
+
+            .pattern-grid {
+                width: 150px;
+                height: 150px;
+            }
+
+            .floating-numbers,
+            .math-symbol {
+                display: none;
+            }
+
+            .math-icons-bottom {
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 0.5rem;
+            }
+
+            .math-icons-bottom i {
+                font-size: 2rem;
+                margin-right: 0.5rem !important;
+            }
+
+            .complex-indicator {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 1rem;
+                transform: rotate(0deg);
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Header Bar -->
+        <div class="header-bar"></div>
+
+        <!-- Main Content Container -->
+        <div class="title-content-container">
+            <!-- Session Badge -->
+            <div class="session-badge">Sesión 4</div>
+
+            <!-- Title Container with Icon -->
+            <div class="title-container">
+                <div class="title-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="title-text">
+                    <h1 class="main-title-line1">Regla de Tres</h1>
+                    <h1 class="main-title-line2">Compuesta</h1>
+                </div>
+            </div>
+
+            <!-- Accent Line -->
+            <div class="accent-line"></div>
+
+            <!-- Subtitle -->
+            <p class="subtitle">
+                Resolviendo problemas con múltiples magnitudes:<br>
+                <strong>Más de dos variables relacionadas simultáneamente</strong>
+            </p>
+
+            <!-- Complexity Indicator -->
+            <div class="complex-indicator">
+                <i class="fas fa-brain"></i> Nivel Avanzado
+            </div>
+        </div>
+
+        <!-- Decorative Background Elements -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="pattern-grid"></div>
+
+        <!-- Floating Numbers -->
+        <div class="floating-numbers number-1">3+</div>
+        <div class="floating-numbers number-2">×</div>
+        <div class="floating-numbers number-3">÷</div>
+
+        <!-- Math Symbols -->
+        <div class="math-symbol symbol-multiply">×</div>
+        <div class="math-symbol symbol-equals">=</div>
+        <div class="math-symbol symbol-proportion">∝</div>
+
+        <!-- Bottom Math Icons -->
+        <div class="math-icons-bottom">
+            <i class="fas fa-calculator"></i>
+            <i class="fas fa-chart-line"></i>
+            <i class="fas fa-expand-arrows-alt"></i>
+        </div>
+    </div>
 </body>
 </html>

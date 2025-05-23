@@ -1,9 +1,426 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 6</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concepto de Radicación</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background-color: #172139;
+            z-index: 1;
+        }
+        .session-tag {
+            position: absolute;
+            top: 34px;
+            left: 0;
+            display: inline-block;
+            background-color: #172139;
+            color: #ffffff;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            font-size: 1.25rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            z-index: 2;
+        }
+        .slide-title-container {
+            position: absolute;
+            top: 34px;
+            left: 180px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        .slide-title {
+            color: white;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .content-container {
+            position: absolute;
+            top: 140px;
+            width: 100%;
+            padding: 0 40px;
+            z-index: 2;
+        }
+        .definition-card {
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid #172139;
+        }
+        .definition-title {
+            color: #172139;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .definition-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(23, 33, 57, 0.1);
+            border-radius: 50%;
+            color: #172139;
+            font-size: 1.25rem;
+        }
+        .definition-content {
+            color: #2F3E5D;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .example-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .example-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .example-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            background-color: rgba(251, 187, 40, 0.15);
+            color: #FBBB28;
+        }
+        .example-title {
+            color: #172139;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .example-item {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 3px solid;
+        }
+        .square-root {
+            border-bottom-color: #B4C42C;
+        }
+        .cube-root {
+            border-bottom-color: #E9901E;
+        }
+        .neg-root {
+            border-bottom-color: #FBBB28;
+        }
+        .element-card {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 4px solid;
+        }
+        .element-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #172139;
+        }
+        .element-description {
+            font-size: 0.9rem;
+            color: #2F3E5D;
+            line-height: 1.4;
+        }
+        .index-element {
+            border-left-color: #B4C42C;
+        }
+        .radicand-element {
+            border-left-color: #E9901E;
+        }
+        .root-element {
+            border-left-color: #FBBB28;
+        }
+        .symbol-element {
+            border-left-color: #00AEAC;
+        }
+        .formula {
+            display: inline-block;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #172139;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .important-note {
+            background-color: rgba(25, 88, 85, 0.1);
+            border-left: 4px solid #195855;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #2F3E5D;
+        }
+        .important-title {
+            font-weight: 600;
+            color: #195855;
+            margin-bottom: 0.5rem;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .shape-1 {
+            width: 180px;
+            height: 180px;
+            background-color: #00AEAC;
+            bottom: -60px;
+            left: -60px;
+        }
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            background-color: #FBBB28;
+            top: 180px;
+            right: -40px;
+        }
+        .pattern-grid {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            background-image: linear-gradient(#172139 1px, transparent 1px), 
+                             linear-gradient(90deg, #172139 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+            color: #172139;
+            font-weight: 500;
+        }
+        .footer-icon {
+            color: #00AEAC;
+            font-size: 1.25rem;
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 1280px) {
+            .slide-title {
+                font-size: 2rem;
+            }
+            .session-tag {
+                font-size: 1rem;
+                padding: 0.4rem 1.25rem;
+            }
+            .elements-grid, .example-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-bar {
+                height: 100px;
+            }
+            .slide-title-container {
+                top: 25px;
+                left: 150px;
+            }
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            .session-tag {
+                top: 25px;
+                font-size: 0.875rem;
+                padding: 0.3rem 1rem;
+            }
+            .content-container {
+                top: 110px;
+                padding: 0 20px;
+            }
+            .definition-title {
+                font-size: 1.25rem;
+            }
+            .definition-content, .element-description {
+                font-size: 0.8rem;
+            }
+            .elements-grid, .example-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Barra de encabezado -->
+        <div class="header-bar"></div>
+        
+        <!-- Etiqueta de sesión -->
+        <div class="session-tag">Sesión 2</div>
+        
+        <!-- Título de la diapositiva -->
+        <div class="slide-title-container">
+            <h1 class="slide-title">Concepto de Radicación</h1>
+        </div>
+        
+        <!-- Contenedor principal -->
+        <div class="content-container">
+            <!-- Definición de Radicación -->
+            <div class="definition-card">
+                <h2 class="definition-title">
+                    <div class="definition-icon"><i class="fas fa-square-root-alt"></i></div>
+                    Operación inversa de la potenciación
+                </h2>
+                <div class="definition-content">
+                    <p>La <strong>radicación</strong> es la operación que permite encontrar la base (a) cuando se conoce la potencia (b) y el exponente (n).</p>
+                    <div class="formula">
+                        <span style="font-size: 1.2rem;">√<sup>n</sup>b = a</span> &nbsp;&nbsp; si y solo si &nbsp;&nbsp; <span>a<sup>n</sup> = b</span>
+                    </div>
+                    <p>Por ejemplo, si queremos encontrar un número que elevado al cuadrado sea 25:</p>
+                    <div class="formula">
+                        √25 = 5 &nbsp;&nbsp; porque &nbsp;&nbsp; 5<sup>2</sup> = 25
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Elementos de la Radicación -->
+            <h3 style="color: #172139; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px;">Elementos de la Radicación</h3>
+            <div class="elements-grid">
+                <!-- Índice -->
+                <div class="element-card index-element">
+                    <h4 class="element-title">Índice (n)</h4>
+                    <p class="element-description">Número ubicado sobre el radical. Indica a qué potencia se eleva la raíz para obtener el radicando. Si no se escribe, se asume que es 2 (raíz cuadrada).</p>
+                </div>
+                
+                <!-- Radicando -->
+                <div class="element-card radicand-element">
+                    <h4 class="element-title">Radicando (b)</h4>
+                    <p class="element-description">Es la cantidad que está dentro del símbolo radical. Es el número del cual se busca la raíz (el resultado de la potenciación).</p>
+                </div>
+                
+                <!-- Raíz -->
+                <div class="element-card root-element">
+                    <h4 class="element-title">Raíz (a)</h4>
+                    <p class="element-description">Es el resultado de la operación. Es el número que elevado al índice da como resultado el radicando.</p>
+                </div>
+                
+                <!-- Símbolo radical -->
+                <div class="element-card symbol-element">
+                    <h4 class="element-title">Símbolo radical (√)</h4>
+                    <p class="element-description">Es el signo que indica la operación de radicación. El índice se coloca en la parte superior y el radicando dentro.</p>
+                </div>
+            </div>
+            
+            <!-- Ejemplos -->
+            <div class="example-card">
+                <div class="example-header">
+                    <div class="example-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="example-title">Ejemplos de Radicación</h3>
+                </div>
+                <div class="example-grid">
+                    <!-- Ejemplo 1: Raíz cuadrada -->
+                    <div class="example-item square-root">
+                        <h4 style="color: #172139; font-weight: 600; margin-bottom: 8px;">Raíz Cuadrada</h4>
+                        <div class="formula">√25 = 5</div>
+                        <p style="font-size: 0.85rem; color: #2F3E5D; margin-top: 8px;">Porque 5<sup>2</sup> = 25</p>
+                    </div>
+                    
+                    <!-- Ejemplo 2: Raíz cúbica -->
+                    <div class="example-item cube-root">
+                        <h4 style="color: #172139; font-weight: 600; margin-bottom: 8px;">Raíz Cúbica</h4>
+                        <div class="formula"><span style="font-size: 1.2rem;">∛</span>8 = 2</div>
+                        <p style="font-size: 0.85rem; color: #2F3E5D; margin-top: 8px;">Porque 2<sup>3</sup> = 8</p>
+                    </div>
+                    
+                    <!-- Ejemplo 3: Raíz cúbica de negativo -->
+                    <div class="example-item neg-root">
+                        <h4 style="color: #172139; font-weight: 600; margin-bottom: 8px;">Raíz de Negativos</h4>
+                        <div class="formula"><span style="font-size: 1.2rem;">∛</span>-27 = -3</div>
+                        <p style="font-size: 0.85rem; color: #2F3E5D; margin-top: 8px;">Porque (-3)<sup>3</sup> = -27</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nota importante -->
+            <div class="important-note">
+                <h4 class="important-title">Importante:</h4>
+                <ul style="list-style-type: disc; margin-left: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">Si el índice es <strong>par</strong>, el radicando debe ser no negativo (≥0) para que la raíz sea un número real.</li>
+                    <li>Si el índice es <strong>impar</strong>, el radicando puede ser cualquier número real, y la raíz tendrá el mismo signo que el radicando.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Elementos decorativos -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="pattern-grid"></div>
+        
+        <!-- Pie de página -->
+        <div class="footer">
+            <i class="fas fa-book footer-icon"></i>
+            <span>Matemáticas Básicas - Colegio Mayor de Antioquia</span>
+        </div>
+    </div>
 </body>
 </html>

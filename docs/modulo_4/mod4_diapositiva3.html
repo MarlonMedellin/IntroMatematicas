@@ -1,9 +1,494 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razón entre dos Cantidades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            height: 100%;
+            align-items: start;
+        }
+
+        .left-content {
+            z-index: 2;
+        }
+
+        .right-content {
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            color: #172139;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .accent-line {
+            width: 6rem;
+            height: 0.25rem;
+            background-color: #FBBB28;
+            margin-bottom: 2rem;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-left: 4px solid #172139;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(23, 33, 57, 0.1);
+        }
+
+        .definition-text {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .definition-highlight {
+            background-color: #FBBB28;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #172139;
+        }
+
+        .ratio-formats {
+            background: linear-gradient(135deg, #f0f8f8 0%, #ffffff 100%);
+            border-left: 4px solid #195855;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .format-title {
+            color: #195855;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .format-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .format-math {
+            background-color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #172139;
+            border: 2px solid #195855;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .format-description {
+            color: #172139;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .terms-box {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%);
+            border-left: 4px solid #E9901E;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .terms-title {
+            color: #E9901E;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .term-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .term-symbol {
+            background-color: #E9901E;
+            color: #ffffff;
+            padding: 0.5rem;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            font-weight: 700;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .term-name {
+            font-weight: 600;
+            color: #172139;
+            font-size: 1rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0f9f0 0%, #ffffff 100%);
+            border: 2px solid #B4C42C;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-icon {
+            background-color: #B4C42C;
+            color: #ffffff;
+            padding: 0.8rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .example-title {
+            color: #172139;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .visual-ratio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px dashed #B4C42C;
+        }
+
+        .ratio-visual-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon-group {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 150px;
+        }
+
+        .person-icon {
+            font-size: 1.2rem;
+            color: #E9901E;
+        }
+
+        .male-icon {
+            color: #108181;
+        }
+
+        .ratio-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #172139;
+            text-align: center;
+        }
+
+        .ratio-symbol-large {
+            font-size: 2rem;
+            color: #172139;
+            font-weight: 700;
+        }
+
+        .result-box {
+            background-color: #ffffff;
+            border: 2px solid #FBBB28;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .result-text {
+            color: #172139;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .highlight-number {
+            background-color: #FBBB28;
+            color: #172139;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        /* Decorative Elements */
+        .decorative-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            background-color: #B4C42C;
+            top: 50px;
+            right: -75px;
+        }
+
+        .shape-2 {
+            width: 100px;
+            height: 100px;
+            background-color: #00AEAC;
+            bottom: 100px;
+            left: -50px;
+        }
+
+        .floating-math {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.05;
+            color: #195855;
+            z-index: 0;
+        }
+
+        .math-1 {
+            top: 150px;
+            right: 100px;
+            transform: rotate(15deg);
+        }
+
+        .math-2 {
+            bottom: 200px;
+            left: 100px;
+            transform: rotate(-20deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1280px) {
+            .content-container {
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1rem;
+            }
+            
+            .content-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .visual-ratio {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .decorative-shape,
+            .floating-math {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Left Content -->
+            <div class="left-content">
+                <h1 class="section-title">Razón entre dos Cantidades</h1>
+                <div class="accent-line"></div>
+
+                <div class="definition-box">
+                    <p class="definition-text">
+                        Una <span class="definition-highlight">razón</span> es el resultado de comparar dos cantidades mediante una división para determinar cuántas veces una cantidad contiene a la otra.
+                    </p>
+                </div>
+
+                <div class="ratio-formats">
+                    <h3 class="format-title">Formas de escribir una razón:</h3>
+                    <div class="format-item">
+                        <div class="format-math">$\frac{a}{b}$</div>
+                        <span class="format-description">Como fracción</span>
+                    </div>
+                    <div class="format-item">
+                        <div class="format-math">$a:b$</div>
+                        <span class="format-description">Se lee "a es a b"</span>
+                    </div>
+                </div>
+
+                <div class="terms-box">
+                    <h3 class="terms-title">Términos de una razón $\frac{a}{b}$:</h3>
+                    <div class="term-item">
+                        <div class="term-symbol">a</div>
+                        <span class="term-name">Antecedente</span>
+                    </div>
+                    <div class="term-item">
+                        <div class="term-symbol">b</div>
+                        <span class="term-name">Consecuente</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="right-content">
+                <div class="example-card">
+                    <div class="example-header">
+                        <div class="example-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="example-title">Ejemplo Práctico</h3>
+                    </div>
+
+                    <div class="visual-ratio">
+                        <div class="ratio-visual-box">
+                            <div class="icon-group">
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                                <i class="fas fa-female person-icon"></i>
+                            </div>
+                            <div class="ratio-text">20 mujeres</div>
+                        </div>
+
+                        <div class="ratio-symbol-large">:</div>
+
+                        <div class="ratio-visual-box">
+                            <div class="icon-group">
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                                <i class="fas fa-male person-icon male-icon"></i>
+                            </div>
+                            <div class="ratio-text">10 hombres</div>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <p class="result-text">
+                            Razón = $\frac{20}{10} = 2$<br>
+                            Hay <span class="highlight-number">2 mujeres</span> por cada hombre
+                        </p>
+                    </div>
+                </div>
+
+                <div class="example-card" style="background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%); border-color: #E9901E;">
+                    <div class="example-header">
+                        <div class="example-icon" style="background-color: #E9901E;">
+                            <i class="fas fa-cocktail"></i>
+                        </div>
+                        <h3 class="example-title">Aplicación Gastronómica</h3>
+                    </div>
+                    
+                    <p style="color: #172139; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1rem;">
+                        Para un cóctel, la razón entre jugo de naranja y ron es <strong>3:1</strong>
+                    </p>
+                    
+                    <div class="result-box" style="border-color: #E9901E;">
+                        <p class="result-text">
+                            Si usas <span class="highlight-number">150 ml</span> de jugo<br>
+                            Necesitas <span class="highlight-number">50 ml</span> de ron
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-shape shape-1"></div>
+        <div class="decorative-shape shape-2"></div>
+        <div class="floating-math math-1">a/b</div>
+        <div class="floating-math math-2">:</div>
+    </div>
 </body>
 </html>

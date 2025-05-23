@@ -1,9 +1,490 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Primos y Compuestos</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 3rem 4rem;
+            box-sizing: border-box;
+        }
+        
+        .title-section {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accent-line {
+            width: 6rem;
+            height: 0.25rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 1rem auto;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .concept-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(23, 33, 57, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(23, 33, 57, 0.15);
+        }
+        
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+        }
+        
+        .prime-card::before {
+            background: linear-gradient(90deg, #172139 0%, #195855 100%);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            color: white;
+        }
+        
+        .prime-icon {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+        }
+        
+        .composite-icon {
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+        }
+        
+        .card-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .definition {
+            color: #195855;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .examples-title {
+            color: #172139;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .number-bubble {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            animation: popIn 0.6s ease-out;
+        }
+        
+        .prime-number {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            box-shadow: 0 4px 15px rgba(23, 33, 57, 0.3);
+        }
+        
+        .composite-number {
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+            box-shadow: 0 4px 15px rgba(180, 196, 44, 0.3);
+        }
+        
+        .number-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .applications-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            color: white;
+            animation: slideInUp 1s ease-out 0.5s both;
+        }
+        
+        .applications-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .application-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .application-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .app-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #FBBB28;
+        }
+        
+        .app-description {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .decorative-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-math {
+            position: absolute;
+            font-weight: 700;
+            opacity: 0.05;
+            animation: floatSlow 15s infinite ease-in-out;
+        }
+        
+        .math-1 {
+            font-size: 8rem;
+            color: #172139;
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+        
+        .math-2 {
+            font-size: 6rem;
+            color: #B4C42C;
+            bottom: 10%;
+            left: 5%;
+            animation-delay: 5s;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-30px) rotate(5deg); 
+            }
+        }
+        
+        /* Stagger animation delays for number bubbles */
+        .number-bubble:nth-child(1) { animation-delay: 0.1s; }
+        .number-bubble:nth-child(2) { animation-delay: 0.2s; }
+        .number-bubble:nth-child(3) { animation-delay: 0.3s; }
+        .number-bubble:nth-child(4) { animation-delay: 0.4s; }
+        .number-bubble:nth-child(5) { animation-delay: 0.5s; }
+        .number-bubble:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide {
+                padding: 2rem;
+            }
+            
+            .content-grid {
+                gap: 1.5rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 1.75rem;
+            }
+            
+            .numbers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .floating-math {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Decorative Background -->
+        <div class="decorative-bg">
+            <div class="floating-math math-1">÷</div>
+            <div class="floating-math math-2">×</div>
+        </div>
+        
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1 class="main-title">Números Primos y Compuestos</h1>
+            <div class="accent-line"></div>
+        </div>
+        
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Prime Numbers Card -->
+            <div class="concept-card prime-card">
+                <div class="card-header">
+                    <div class="card-icon prime-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h2 class="card-title">Números Primos</h2>
+                </div>
+                
+                <p class="definition">
+                    Números naturales mayores que 1 que tienen únicamente <strong>dos divisores</strong>: 
+                    él mismo y el 1. Son los "bloques fundamentales" de todos los números.
+                </p>
+                
+                <div class="examples-title">
+                    <i class="fas fa-star" style="color: #FBBB28;"></i>
+                    Ejemplos
+                </div>
+                
+                <div class="numbers-grid">
+                    <div class="number-bubble prime-number">2</div>
+                    <div class="number-bubble prime-number">3</div>
+                    <div class="number-bubble prime-number">5</div>
+                    <div class="number-bubble prime-number">7</div>
+                    <div class="number-bubble prime-number">11</div>
+                    <div class="number-bubble prime-number">13</div>
+                </div>
+                
+                <div class="definition" style="font-size: 0.875rem; margin-bottom: 0;">
+                    <i class="fas fa-lightbulb" style="color: #E9901E; margin-right: 0.5rem;"></i>
+                    <strong>Nota:</strong> El 2 es el único número primo par.
+                </div>
+            </div>
+            
+            <!-- Composite Numbers Card -->
+            <div class="concept-card">
+                <div class="card-header">
+                    <div class="card-icon composite-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h2 class="card-title">Números Compuestos</h2>
+                </div>
+                
+                <p class="definition">
+                    Números naturales mayores que 1 que tienen <strong>más de dos divisores</strong>. 
+                    Pueden descomponerse como producto de números primos.
+                </p>
+                
+                <div class="examples-title">
+                    <i class="fas fa-cubes" style="color: #E9901E;"></i>
+                    Ejemplos
+                </div>
+                
+                <div class="numbers-grid">
+                    <div class="number-bubble composite-number">4</div>
+                    <div class="number-bubble composite-number">6</div>
+                    <div class="number-bubble composite-number">8</div>
+                    <div class="number-bubble composite-number">9</div>
+                    <div class="number-bubble composite-number">10</div>
+                    <div class="number-bubble composite-number">12</div>
+                </div>
+                
+                <div class="definition" style="font-size: 0.875rem; margin-bottom: 0;">
+                    <i class="fas fa-info-circle" style="color: #B4C42C; margin-right: 0.5rem;"></i>
+                    <strong>Ejemplo:</strong> 12 = 2 × 2 × 3 (divisores: 1, 2, 3, 4, 6, 12)
+                </div>
+            </div>
+        </div>
+        
+        <!-- Applications Section -->
+        <div class="applications-section">
+            <h3 class="applications-title">
+                <i class="fas fa-graduation-cap"></i>
+                Aplicaciones por Programa Académico
+            </h3>
+            
+            <div class="applications-grid">
+                <div class="application-item">
+                    <div class="app-title">
+                        <i class="fas fa-utensils" style="margin-right: 0.5rem;"></i>
+                        Gastronomía
+                    </div>
+                    <div class="app-description">
+                        Distribución de ingredientes: dividir 124 fresas en partes iguales para dos postres (número par).
+                    </div>
+                </div>
+                
+                <div class="application-item">
+                    <div class="app-title">
+                        <i class="fas fa-building" style="margin-right: 0.5rem;"></i>
+                        Arquitectura
+                    </div>
+                    <div class="app-description">
+                        Verificación de códigos de materiales con patrones de divisibilidad para validación de lotes.
+                    </div>
+                </div>
+                
+                <div class="application-item">
+                    <div class="app-title">
+                        <i class="fas fa-users" style="margin-right: 0.5rem;"></i>
+                        Desarrollo Social
+                    </div>
+                    <div class="app-description">
+                        Formar grupos de 3 personas con 117 voluntarios para proyectos comunitarios.
+                    </div>
+                </div>
+                
+                <div class="application-item">
+                    <div class="app-title">
+                        <i class="fas fa-flask" style="margin-right: 0.5rem;"></i>
+                        Biotecnología
+                    </div>
+                    <div class="app-description">
+                        Agrupar 1001 muestras de laboratorio en grupos iguales para análisis sistemático.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

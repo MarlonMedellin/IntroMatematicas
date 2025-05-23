@@ -1,9 +1,594 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 9</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerarquía de Operaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background-color: #172139;
+            z-index: 1;
+        }
+        .session-tag {
+            position: absolute;
+            top: 34px;
+            left: 0;
+            display: inline-block;
+            background-color: #172139;
+            color: #ffffff;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            font-size: 1.25rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            z-index: 2;
+        }
+        .slide-title-container {
+            position: absolute;
+            top: 34px;
+            left: 180px;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        .slide-title {
+            color: white;
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .content-container {
+            position: absolute;
+            top: 140px;
+            width: 100%;
+            padding: 0 40px;
+            z-index: 2;
+        }
+        .intro-section {
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 20px;
+            border-left: 5px solid #172139;
+        }
+        .intro-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .intro-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(23, 33, 57, 0.1);
+            border-radius: 50%;
+            color: #172139;
+            font-size: 1.25rem;
+        }
+        .intro-content {
+            color: #2F3E5D;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .hierarchy-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .hierarchy-step {
+            flex: 1;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .hierarchy-step:hover {
+            transform: translateY(-5px);
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #172139;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+            font-size: 1.75rem;
+        }
+        .icon-1 {
+            background-color: rgba(251, 187, 40, 0.15);
+            color: #FBBB28;
+        }
+        .icon-2 {
+            background-color: rgba(233, 144, 30, 0.15);
+            color: #E9901E;
+        }
+        .icon-3 {
+            background-color: rgba(180, 196, 44, 0.15);
+            color: #B4C42C;
+        }
+        .icon-4 {
+            background-color: rgba(0, 174, 172, 0.15);
+            color: #00AEAC;
+        }
+        .step-title {
+            color: #172139;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .step-description {
+            color: #2F3E5D;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .step-arrow {
+            position: absolute;
+            top: 50%;
+            right: -22px;
+            transform: translateY(-50%);
+            color: #172139;
+            opacity: 0.5;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+        .example-section {
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border-left: 5px solid #195855;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+        .example-left {
+            display: flex;
+            flex-direction: column;
+        }
+        .example-title {
+            color: #172139;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .example-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(25, 88, 85, 0.1);
+            border-radius: 50%;
+            color: #195855;
+            font-size: 1rem;
+        }
+        .expression {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.4rem;
+            color: #172139;
+            text-align: center;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .step-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .marker-1 {
+            background-color: #FBBB28;
+        }
+        .marker-2 {
+            background-color: #E9901E;
+        }
+        .marker-3 {
+            background-color: #B4C42C;
+        }
+        .marker-4 {
+            background-color: #00AEAC;
+        }
+        .step-text {
+            color: #2F3E5D;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        .mnemonic-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .mnemonic-title {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .mnemonic-box {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        .mnemonic-letter {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .letter-p {
+            background-color: #FBBB28;
+        }
+        .letter-e {
+            background-color: #E9901E;
+        }
+        .letter-md {
+            background-color: #B4C42C;
+        }
+        .letter-as {
+            background-color: #00AEAC;
+        }
+        .mnemonic-labels {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            width: 100%;
+        }
+        .mnemonic-label {
+            font-size: 0.7rem;
+            color: #2F3E5D;
+            text-align: center;
+            padding: 0.25rem;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .shape-1 {
+            width: 180px;
+            height: 180px;
+            background-color: #00AEAC;
+            bottom: -60px;
+            left: -60px;
+        }
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            background-color: #FBBB28;
+            top: 180px;
+            right: -40px;
+        }
+        .pattern-grid {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            background-image: linear-gradient(#172139 1px, transparent 1px), 
+                             linear-gradient(90deg, #172139 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+            color: #172139;
+            font-weight: 500;
+        }
+        .footer-icon {
+            color: #00AEAC;
+            font-size: 1.25rem;
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 1280px) {
+            .slide-title {
+                font-size: 2rem;
+            }
+            .session-tag {
+                font-size: 1rem;
+                padding: 0.4rem 1.25rem;
+            }
+            .hierarchy-container {
+                flex-wrap: wrap;
+            }
+            .hierarchy-step {
+                flex: 1 0 45%;
+            }
+            .step-arrow {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-bar {
+                height: 100px;
+            }
+            .slide-title-container {
+                top: 25px;
+                left: 150px;
+            }
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            .session-tag {
+                top: 25px;
+                font-size: 0.875rem;
+                padding: 0.3rem 1rem;
+            }
+            .content-container {
+                top: 110px;
+                padding: 0 20px;
+            }
+            .hierarchy-step {
+                flex: 1 0 100%;
+            }
+            .example-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Barra de encabezado -->
+        <div class="header-bar"></div>
+        
+        <!-- Etiqueta de sesión -->
+        <div class="session-tag">Sesión 3</div>
+        
+        <!-- Título de la diapositiva -->
+        <div class="slide-title-container">
+            <h1 class="slide-title">Jerarquía de Operaciones</h1>
+        </div>
+        
+        <!-- Contenedor principal -->
+        <div class="content-container">
+            <!-- Sección de introducción -->
+            <div class="intro-section">
+                <h2 class="intro-title">
+                    <div class="intro-icon"><i class="fas fa-sort-amount-down"></i></div>
+                    ¿Qué es la jerarquía de operaciones?
+                </h2>
+                <div class="intro-content">
+                    <p>Orden específico para resolver expresiones matemáticas con múltiples operaciones, garantizando que todos obtengamos el mismo resultado correcto. Es fundamental para resolver polinomios aritméticos.</p>
+                </div>
+            </div>
+            
+            <!-- Jerarquía en tarjetas -->
+            <div class="hierarchy-container">
+                <!-- Paso 1 -->
+                <div class="hierarchy-step" style="border-top: 4px solid #FBBB28;">
+                    <div class="step-number">1</div>
+                    <div class="step-icon icon-1">
+                        <i class="fas fa-brackets"></i>
+                    </div>
+                    <div class="step-title">Paréntesis</div>
+                    <div class="step-description">Primero, resolver operaciones dentro de signos de agrupación: ( ), [ ], { }</div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+                
+                <!-- Paso 2 -->
+                <div class="hierarchy-step" style="border-top: 4px solid #E9901E;">
+                    <div class="step-number">2</div>
+                    <div class="step-icon icon-2">
+                        <i class="fas fa-superscript"></i>
+                    </div>
+                    <div class="step-title">Potencias y Raíces</div>
+                    <div class="step-description">Calcular exponentes y radicales de izquierda a derecha</div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+                
+                <!-- Paso 3 -->
+                <div class="hierarchy-step" style="border-top: 4px solid #B4C42C;">
+                    <div class="step-number">3</div>
+                    <div class="step-icon icon-3">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="step-title">Multiplicación y División</div>
+                    <div class="step-description">Hacer todas las multiplicaciones y divisiones de izquierda a derecha</div>
+                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                </div>
+                
+                <!-- Paso 4 -->
+                <div class="hierarchy-step" style="border-top: 4px solid #00AEAC;">
+                    <div class="step-number">4</div>
+                    <div class="step-icon icon-4">
+                        <i class="fas fa-plus-minus"></i>
+                    </div>
+                    <div class="step-title">Suma y Resta</div>
+                    <div class="step-description">Por último, realizar todas las sumas y restas de izquierda a derecha</div>
+                </div>
+            </div>
+            
+            <!-- Ejemplo y mnemotécnica -->
+            <div class="example-section">
+                <!-- Ejemplo paso a paso -->
+                <div class="example-left">
+                    <h3 class="example-title">
+                        <div class="example-icon"><i class="fas fa-calculator"></i></div>
+                        Ejemplo paso a paso
+                    </h3>
+                    
+                    <div class="expression">
+                        2 + 3 × 5² - √16 ÷ 2
+                    </div>
+                    
+                    <div class="steps-container">
+                        <div class="step-item">
+                            <div class="step-marker marker-1">1</div>
+                            <div class="step-text">
+                                <strong>Paréntesis:</strong> No hay
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-marker marker-2">2</div>
+                            <div class="step-text">
+                                <strong>Potencias y Raíces:</strong> 5² = 25, √16 = 4<br>
+                                <span style="color: #195855;">La expresión queda: 2 + 3 × 25 - 4 ÷ 2</span>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-marker marker-3">3</div>
+                            <div class="step-text">
+                                <strong>Multiplicaciones y Divisiones:</strong> 3 × 25 = 75, 4 ÷ 2 = 2<br>
+                                <span style="color: #195855;">La expresión queda: 2 + 75 - 2</span>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-marker marker-4">4</div>
+                            <div class="step-text">
+                                <strong>Sumas y Restas:</strong> 2 + 75 = 77, 77 - 2 = 75<br>
+                                <span style="color: #195855;">Resultado final: 75</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mnemotécnica -->
+                <div class="mnemonic-container">
+                    <h3 class="mnemonic-title">Regla mnemotécnica: PEMDAS</h3>
+                    
+                    <div class="mnemonic-box">
+                        <div class="mnemonic-letter letter-p">P</div>
+                        <div class="mnemonic-letter letter-e">E</div>
+                        <div class="mnemonic-letter letter-md">M</div>
+                        <div class="mnemonic-letter letter-md">D</div>
+                        <div class="mnemonic-letter letter-as">A</div>
+                        <div class="mnemonic-letter letter-as">S</div>
+                    </div>
+                    
+                    <div class="mnemonic-labels">
+                        <div class="mnemonic-label" style="grid-column: span 2;">
+                            <strong>P</strong>aréntesis<br>
+                            <strong>E</strong>xponentes (Potencias, Raíces)
+                        </div>
+                        <div class="mnemonic-label" style="grid-column: span 2;">
+                            <strong>M</strong>ultiplicación, <strong>D</strong>ivisión<br>
+                            (de izquierda a derecha)
+                        </div>
+                        <div class="mnemonic-label" style="grid-column: span 2;">
+                            <strong>A</strong>dición, <strong>S</strong>ustracción<br>
+                            (de izquierda a derecha)
+                        </div>
+                    </div>
+                    
+                    <div style="background-color: #f0f4f8; border-radius: 8px; padding: 0.75rem; margin-top: 10px; width: 100%; border-left: 3px solid #172139;">
+                        <p style="font-size: 0.85rem; color: #2F3E5D;"><strong>Importante:</strong> La correcta aplicación de esta jerarquía es fundamental para resolver polinomios aritméticos con las seis operaciones básicas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Elementos decorativos -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="pattern-grid"></div>
+        
+        <!-- Pie de página -->
+        <div class="footer">
+            <i class="fas fa-book footer-icon"></i>
+            <span>Matemáticas Básicas - Colegio Mayor de Antioquia</span>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,9 +1,635 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 8</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 3: MCM y Solución de Problemas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 4rem 3rem 2rem 3rem;
+            box-sizing: border-box;
+        }
+        
+        .session-badge {
+            display: inline-block;
+            background: #172139;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            margin-bottom: 2rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: slideInRight 1s ease-out 0.2s both;
+        }
+        
+        .title-content h1 {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin: 0;
+        }
+        
+        .title-line-1 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .title-line-2 {
+            margin-bottom: 1rem;
+        }
+        
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background: #FBBB28;
+            margin-bottom: 0;
+        }
+        
+        .title-icon {
+            width: 6rem;
+            height: 6rem;
+            background: linear-gradient(135deg, #00AEAC 0%, #108181 100%);
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 15px 40px rgba(0, 174, 172, 0.3);
+            animation: pulse 3s infinite ease-in-out;
+        }
+        
+        .objective-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 8px solid #108181;
+            box-shadow: 0 15px 40px rgba(23, 33, 57, 0.08);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .objective-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #FBBB28 0%, #E9901E 100%);
+            border-radius: 50%;
+            opacity: 0.04;
+            animation: rotate 20s infinite linear;
+        }
+        
+        .objective-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: #172139;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .objective-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #108181 0%, #00AEAC 100%);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: white;
+        }
+        
+        .objective-text {
+            color: #195855;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        .concepts-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        
+        .concept-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(23, 33, 57, 0.08);
+            border-top: 4px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .concept-card:nth-child(1) {
+            border-top-color: #B4C42C;
+        }
+        
+        .concept-card:nth-child(2) {
+            border-top-color: #E9901E;
+        }
+        
+        .concept-card:nth-child(3) {
+            border-top-color: #FBBB28;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(23, 33, 57, 0.15);
+        }
+        
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: 0.06;
+            transform: translate(30%, -30%);
+        }
+        
+        .concept-card:nth-child(1)::before {
+            background: #B4C42C;
+        }
+        
+        .concept-card:nth-child(2)::before {
+            background: #E9901E;
+        }
+        
+        .concept-card:nth-child(3)::before {
+            background: #FBBB28;
+        }
+        
+        .concept-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            margin: 0 auto 1rem auto;
+        }
+        
+        .concept-1-icon {
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+        }
+        
+        .concept-2-icon {
+            background: linear-gradient(135deg, #E9901E 0%, #FBBB28 100%);
+        }
+        
+        .concept-3-icon {
+            background: linear-gradient(135deg, #FBBB28 0%, #B4C42C 100%);
+        }
+        
+        .concept-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .concept-description {
+            color: #195855;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .highlights-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            color: white;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlights-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, #FBBB28 0%, #E9901E 100%);
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .highlights-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+        
+        .highlight-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .highlight-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(251, 187, 40, 0.2);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            color: #FBBB28;
+        }
+        
+        .highlight-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #FBBB28;
+        }
+        
+        .highlight-text {
+            font-size: 0.875rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .decorative-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-number {
+            position: absolute;
+            font-weight: 700;
+            opacity: 0.03;
+            animation: floatSlow 25s infinite ease-in-out;
+        }
+        
+        .number-1 {
+            font-size: 6rem;
+            color: #172139;
+            top: 10%;
+            right: 8%;
+            animation-delay: 0s;
+        }
+        
+        .number-2 {
+            font-size: 4rem;
+            color: #B4C42C;
+            bottom: 25%;
+            left: 5%;
+            animation-delay: 12s;
+        }
+        
+        .math-symbols {
+            position: absolute;
+            top: 35%;
+            right: 3%;
+            font-size: 2rem;
+            color: #E9901E;
+            opacity: 0.05;
+            animation: pulse 6s infinite ease-in-out;
+            animation-delay: 3s;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.08;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.12;
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-30px) rotate(5deg); 
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide {
+                padding: 2rem;
+            }
+            
+            .title-content h1 {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+            
+            .concepts-preview {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+                padding-top: 100px;
+            }
+            
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+            
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .title-content h1 {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+            
+            .title-icon {
+                width: 4rem;
+                height: 4rem;
+                font-size: 1.75rem;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .floating-number,
+            .math-symbols {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Decorative Background -->
+        <div class="decorative-bg">
+            <div class="floating-number number-1">MCM</div>
+            <div class="floating-number number-2">∩</div>
+            <div class="math-symbols">×÷=</div>
+        </div>
+        
+        <!-- Session Badge -->
+        <div class="session-badge">
+            Sesión 3
+        </div>
+        
+        <!-- Title Section -->
+        <div class="title-container">
+            <div class="title-content">
+                <h1 class="title-line-1">Mínimo Común Múltiplo (MCM)</h1>
+                <h1 class="title-line-2">y Solución de Problemas</h1>
+                <div class="accent-line"></div>
+            </div>
+            <div class="title-icon">
+                <i class="fas fa-unite"></i>
+            </div>
+        </div>
+        
+        <!-- Learning Objective -->
+        <div class="objective-section">
+            <div class="objective-title">
+                <div class="objective-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                Objetivo de Aprendizaje
+            </div>
+            <p class="objective-text">
+                <strong>Calcular el Mínimo Común Múltiplo (MCM)</strong> de dos o más números y 
+                <strong>aplicar tanto el MCM como el MCD</strong> en la resolución de problemas prácticos, 
+                identificando cuándo usar cada concepto según el contexto del problema.
+            </p>
+        </div>
+        
+        <!-- Concepts Preview -->
+        <div class="concepts-preview">
+            <div class="concept-card">
+                <div class="concept-icon concept-1-icon">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <div class="concept-title">Concepto de MCM</div>
+                <p class="concept-description">
+                    Menor múltiplo común de dos o más números
+                </p>
+            </div>
+            
+            <div class="concept-card">
+                <div class="concept-icon concept-2-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="concept-title">Métodos de Cálculo</div>
+                <p class="concept-description">
+                    Factorización prima y método abreviado
+                </p>
+            </div>
+            
+            <div class="concept-card">
+                <div class="concept-icon concept-3-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <div class="concept-title">Resolución de Problemas</div>
+                <p class="concept-description">
+                    Aplicación práctica de MCM y MCD
+                </p>
+            </div>
+        </div>
+        
+        <!-- Key Highlights -->
+        <div class="highlights-section">
+            <div class="highlights-title">
+                <i class="fas fa-lightbulb"></i>
+                Conceptos Clave de esta Sesión
+            </div>
+            
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-header">
+                        <div class="highlight-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="highlight-title">Cuándo usar MCM</div>
+                    </div>
+                    <p class="highlight-text">
+                        Para encontrar coincidencias en ciclos, eventos repetitivos 
+                        o cantidades mínimas que contengan exactamente otras cantidades.
+                    </p>
+                </div>
+                
+                <div class="highlight-item">
+                    <div class="highlight-header">
+                        <div class="highlight-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="highlight-title">Cuándo usar MCD</div>
+                    </div>
+                    <p class="highlight-text">
+                        Para dividir cantidades en partes iguales del mayor tamaño posible, 
+                        sin desperdiciar material o recursos.
+                    </p>
+                </div>
+                
+                <div class="highlight-item">
+                    <div class="highlight-header">
+                        <div class="highlight-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="highlight-title">Diferencias Clave</div>
+                    </div>
+                    <p class="highlight-text">
+                        MCM busca el <strong>menor múltiplo común</strong>, 
+                        MCD busca el <strong>mayor divisor común</strong>.
+                    </p>
+                </div>
+                
+                <div class="highlight-item">
+                    <div class="highlight-header">
+                        <div class="highlight-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="highlight-title">Aplicaciones Reales</div>
+                    </div>
+                    <p class="highlight-text">
+                        Desde horarios de transporte hasta optimización de procesos 
+                        industriales y organización de recursos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

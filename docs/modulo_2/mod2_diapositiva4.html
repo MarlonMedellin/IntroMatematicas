@@ -1,9 +1,565 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criterios de Divisibilidad</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 2.5rem 3rem;
+            box-sizing: border-box;
+        }
+        
+        .title-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #195855;
+            font-weight: 500;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+        
+        .accent-line {
+            width: 6rem;
+            height: 0.25rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto;
+        }
+        
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .criteria-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(23, 33, 57, 0.08);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid;
+        }
+        
+        .criteria-card:nth-child(1) {
+            border-top-color: #172139;
+            animation-delay: 0.1s;
+        }
+        
+        .criteria-card:nth-child(2) {
+            border-top-color: #195855;
+            animation-delay: 0.2s;
+        }
+        
+        .criteria-card:nth-child(3) {
+            border-top-color: #108181;
+            animation-delay: 0.3s;
+        }
+        
+        .criteria-card:nth-child(4) {
+            border-top-color: #00AEAC;
+            animation-delay: 0.4s;
+        }
+        
+        .criteria-card:nth-child(5) {
+            border-top-color: #B4C42C;
+            animation-delay: 0.5s;
+        }
+        
+        .criteria-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(23, 33, 57, 0.15);
+        }
+        
+        .divisor-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .div-2 { background: linear-gradient(135deg, #172139 0%, #195855 100%); }
+        .div-3 { background: linear-gradient(135deg, #195855 0%, #108181 100%); }
+        .div-5 { background: linear-gradient(135deg, #108181 0%, #00AEAC 100%); }
+        .div-7 { background: linear-gradient(135deg, #00AEAC 0%, #B4C42C 100%); }
+        .div-11 { background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%); }
+        
+        .criterion-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .criterion-rule {
+            color: #195855;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            background: rgba(25, 88, 85, 0.05);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid #195855;
+        }
+        
+        .example-section {
+            margin-top: 1rem;
+        }
+        
+        .example-title {
+            color: #172139;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .example-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .example-number {
+            font-weight: 700;
+            color: #172139;
+        }
+        
+        .example-result {
+            font-weight: 600;
+            padding: 0.125rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.625rem;
+        }
+        
+        .divisible {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .not-divisible {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .applications-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: white;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        
+        .applications-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .application-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .application-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .app-program {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: #FBBB28;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .app-example {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+        
+        .decorative-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-math {
+            position: absolute;
+            font-weight: 700;
+            opacity: 0.03;
+            animation: floatSlow 20s infinite ease-in-out;
+        }
+        
+        .math-symbol-1 {
+            font-size: 6rem;
+            color: #172139;
+            top: 5%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+        
+        .math-symbol-2 {
+            font-size: 4rem;
+            color: #B4C42C;
+            bottom: 15%;
+            left: 8%;
+            animation-delay: 10s;
+        }
+        
+        .floating-numbers {
+            position: absolute;
+            font-weight: 700;
+            opacity: 0.08;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .float-num-1 {
+            font-size: 3rem;
+            color: #E9901E;
+            top: 20%;
+            left: 5%;
+            animation-delay: 1s;
+        }
+        
+        .float-num-2 {
+            font-size: 2.5rem;
+            color: #00AEAC;
+            top: 70%;
+            right: 5%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(3deg); 
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.08;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.12;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide {
+                padding: 2rem;
+            }
+            
+            .criteria-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+            }
+            
+            .criteria-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .applications-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .main-title {
+                font-size: 1.75rem;
+            }
+            
+            .floating-math,
+            .floating-numbers {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Decorative Background -->
+        <div class="decorative-bg">
+            <div class="floating-math math-symbol-1">÷</div>
+            <div class="floating-math math-symbol-2">%</div>
+            <div class="floating-numbers float-num-1">246</div>
+            <div class="floating-numbers float-num-2">357</div>
+        </div>
+        
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1 class="main-title">Criterios de Divisibilidad</h1>
+            <p class="subtitle">Reglas prácticas para identificar divisores sin realizar la división completa</p>
+            <div class="accent-line"></div>
+        </div>
+        
+        <!-- Criteria Grid -->
+        <div class="criteria-grid">
+            <!-- Divisibility by 2 -->
+            <div class="criteria-card">
+                <div class="divisor-number div-2">2</div>
+                <h3 class="criterion-title">Divisibilidad por 2</h3>
+                <div class="criterion-rule">
+                    <strong>Regla:</strong> Si la última cifra es par (0, 2, 4, 6, 8)
+                </div>
+                <div class="example-section">
+                    <div class="example-title">
+                        <i class="fas fa-calculator" style="color: #B4C42C;"></i>
+                        Ejemplos
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">348</span>
+                        <span class="example-result divisible">✓ SÍ</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">771</span>
+                        <span class="example-result not-divisible">✗ NO</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divisibility by 3 -->
+            <div class="criteria-card">
+                <div class="divisor-number div-3">3</div>
+                <h3 class="criterion-title">Divisibilidad por 3</h3>
+                <div class="criterion-rule">
+                    <strong>Regla:</strong> Si la suma de cifras es múltiplo de 3
+                </div>
+                <div class="example-section">
+                    <div class="example-title">
+                        <i class="fas fa-plus" style="color: #E9901E;"></i>
+                        Ejemplos
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">123 → 1+2+3=6</span>
+                        <span class="example-result divisible">✓ SÍ</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">541 → 5+4+1=10</span>
+                        <span class="example-result not-divisible">✗ NO</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divisibility by 5 -->
+            <div class="criteria-card">
+                <div class="divisor-number div-5">5</div>
+                <h3 class="criterion-title">Divisibilidad por 5</h3>
+                <div class="criterion-rule">
+                    <strong>Regla:</strong> Si la última cifra es 0 o 5
+                </div>
+                <div class="example-section">
+                    <div class="example-title">
+                        <i class="fas fa-hand-point-right" style="color: #00AEAC;"></i>
+                        Ejemplos
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">785</span>
+                        <span class="example-result divisible">✓ SÍ</span>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">1230</span>
+                        <span class="example-result divisible">✓ SÍ</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divisibility by 7 -->
+            <div class="criteria-card">
+                <div class="divisor-number div-7">7</div>
+                <h3 class="criterion-title">Divisibilidad por 7</h3>
+                <div class="criterion-rule">
+                    <strong>Regla:</strong> Separa última cifra, multiplícala por 2, resta del resto
+                </div>
+                <div class="example-section">
+                    <div class="example-title">
+                        <i class="fas fa-calculator" style="color: #B4C42C;"></i>
+                        Ejemplo: 343
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">34 - (3×2) = 28</span>
+                        <span class="example-result divisible">✓ SÍ</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Divisibility by 11 -->
+            <div class="criteria-card">
+                <div class="divisor-number div-11">11</div>
+                <h3 class="criterion-title">Divisibilidad por 11</h3>
+                <div class="criterion-rule">
+                    <strong>Regla:</strong> Diferencia entre suma de cifras en posiciones impares y pares
+                </div>
+                <div class="example-section">
+                    <div class="example-title">
+                        <i class="fas fa-exchange-alt" style="color: #E9901E;"></i>
+                        Ejemplo: 1353
+                    </div>
+                    <div class="example-item">
+                        <span class="example-number">(3+3)-(5+1)=0</span>
+                        <span class="example-result divisible">✓ SÍ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Applications Section -->
+        <div class="applications-section">
+            <h3 class="applications-title">
+                <i class="fas fa-graduation-cap"></i>
+                Aplicaciones Prácticas por Programa
+            </h3>
+            
+            <div class="applications-grid">
+                <div class="application-item">
+                    <div class="app-program">
+                        <i class="fas fa-store"></i>
+                        Gestión Comercial
+                    </div>
+                    <div class="app-example">
+                        240 camisetas en paquetes de 2, 3 o 5 unidades sin sobrantes
+                    </div>
+                </div>
+                
+                <div class="application-item">
+                    <div class="app-program">
+                        <i class="fas fa-utensils"></i>
+                        Gastronomía
+                    </div>
+                    <div class="app-example">
+                        165 bocadillos en bandejas con cantidades iguales
+                    </div>
+                </div>
+                
+                <div class="application-item">
+                    <div class="app-program">
+                        <i class="fas fa-drafting-compass"></i>
+                        Arquitectura
+                    </div>
+                    <div class="app-example">
+                        Cuadrícula en plano 187×121cm con divisiones cada 11cm
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+4 / 10
+Vista previa
+Código
+Pensando

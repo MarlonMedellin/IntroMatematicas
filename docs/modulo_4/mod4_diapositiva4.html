@@ -1,9 +1,548 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proporciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            height: 100%;
+            align-items: start;
+        }
+
+        .left-content {
+            z-index: 2;
+        }
+
+        .right-content {
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            color: #172139;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .accent-line {
+            width: 6rem;
+            height: 0.25rem;
+            background-color: #FBBB28;
+            margin-bottom: 2rem;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-left: 4px solid #172139;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(23, 33, 57, 0.1);
+        }
+
+        .definition-text {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .definition-highlight {
+            background-color: #FBBB28;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #172139;
+        }
+
+        .proportion-formula {
+            background-color: #ffffff;
+            border: 3px solid #195855;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .formula-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #195855;
+            margin-bottom: 0.5rem;
+        }
+
+        .formula-reading {
+            color: #172139;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .terms-section {
+            background: linear-gradient(135deg, #f0f8f8 0%, #ffffff 100%);
+            border-left: 4px solid #108181;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .terms-title {
+            color: #108181;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .terms-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .proportion-visual {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 2px dashed #108181;
+        }
+
+        .fraction-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .fraction-num, .fraction-den {
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            color: #ffffff;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .extremo {
+            background-color: #E9901E;
+        }
+
+        .medio {
+            background-color: #B4C42C;
+        }
+
+        .fraction-line {
+            width: 50px;
+            height: 3px;
+            background-color: #108181;
+            margin: 0.3rem 0;
+        }
+
+        .equals-visual {
+            font-size: 2rem;
+            color: #172139;
+            font-weight: 700;
+        }
+
+        .terms-legend {
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #172139;
+        }
+
+        .property-box {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%);
+            border-left: 4px solid #E9901E;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .property-title {
+            color: #E9901E;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .property-formula {
+            background-color: #ffffff;
+            border: 2px solid #E9901E;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #172139;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0f9f0 0%, #ffffff 100%);
+            border: 2px solid #B4C42C;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-icon {
+            background-color: #B4C42C;
+            color: #ffffff;
+            padding: 0.8rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .example-title {
+            color: #172139;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .problem-text {
+            color: #172139;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .solution-steps {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px dashed #B4C42C;
+        }
+
+        .step {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background-color: #f8f9f8;
+            border-radius: 6px;
+            border-left: 3px solid #B4C42C;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            background-color: #f0f9f0;
+            border-left-color: #195855;
+        }
+
+        .step-text {
+            color: #172139;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .application-card {
+            background: linear-gradient(135deg, #f8f5ff 0%, #ffffff 100%);
+            border: 2px solid #195855;
+            border-radius: 12px;
+            padding: 1.8rem;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-icon {
+            background-color: #195855;
+            color: #ffffff;
+            padding: 0.8rem;
+            border-radius: 50%;
+            font-size: 1.3rem;
+        }
+
+        .app-title {
+            color: #195855;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .app-text {
+            color: #172139;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Decorative Elements */
+        .decorative-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            background-color: #195855;
+            top: 80px;
+            right: -60px;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            background-color: #FBBB28;
+            bottom: 150px;
+            left: -40px;
+        }
+
+        .floating-equals {
+            position: absolute;
+            font-size: 4rem;
+            font-weight: 700;
+            opacity: 0.05;
+            color: #195855;
+            z-index: 0;
+            top: 200px;
+            right: 150px;
+            transform: rotate(20deg);
+        }
+
+        .floating-cross {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.05;
+            color: #E9901E;
+            z-index: 0;
+            bottom: 250px;
+            left: 150px;
+            transform: rotate(-15deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1280px) {
+            .content-container {
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1rem;
+            }
+            
+            .content-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .proportion-visual {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .terms-legend {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .decorative-shape,
+            .floating-equals,
+            .floating-cross {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Left Content -->
+            <div class="left-content">
+                <h1 class="section-title">Proporciones</h1>
+                <div class="accent-line"></div>
+
+                <div class="definition-box">
+                    <p class="definition-text">
+                        Una <span class="definition-highlight">proporción</span> es la igualdad entre dos razones.
+                    </p>
+                    <div class="proportion-formula">
+                        <div class="formula-text">$\frac{a}{b} = \frac{c}{d}$</div>
+                        <div class="formula-reading">"a es a b como c es a d"</div>
+                    </div>
+                </div>
+
+                <div class="terms-section">
+                    <h3 class="terms-title">Términos de una proporción:</h3>
+                    <div class="terms-visual">
+                        <div class="proportion-visual">
+                            <div class="fraction-visual">
+                                <div class="fraction-num extremo">a</div>
+                                <div class="fraction-line"></div>
+                                <div class="fraction-den medio">b</div>
+                            </div>
+                            <div class="equals-visual">=</div>
+                            <div class="fraction-visual">
+                                <div class="fraction-num medio">c</div>
+                                <div class="fraction-line"></div>
+                                <div class="fraction-den extremo">d</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terms-legend">
+                        <div class="legend-item">
+                            <div class="legend-color extremo"></div>
+                            <span class="legend-text">Extremos: a, d</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color medio"></div>
+                            <span class="legend-text">Medios: b, c</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-box">
+                    <h3 class="property-title">Propiedad Fundamental:</h3>
+                    <div class="property-formula">
+                        $a \times d = b \times c$
+                    </div>
+                    <p style="color: #172139; font-size: 0.9rem; margin-top: 0.8rem; font-style: italic;">
+                        El producto de los extremos = El producto de los medios
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="right-content">
+                <div class="example-card">
+                    <div class="example-header">
+                        <div class="example-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="example-title">Ejemplo: Encontrar la incógnita</h3>
+                    </div>
+
+                    <p class="problem-text">
+                        <strong>Problema:</strong> Encontrar el valor de $x$ en la proporción $\frac{3}{5} = \frac{6}{x}$
+                    </p>
+
+                    <div class="solution-steps">
+                        <div class="step">
+                            <p class="step-text"><strong>Paso 1:</strong> Aplicar la propiedad fundamental</p>
+                            <p class="step-text">$3 \times x = 5 \times 6$</p>
+                        </div>
+                        <div class="step">
+                            <p class="step-text"><strong>Paso 2:</strong> Simplificar</p>
+                            <p class="step-text">$3x = 30$</p>
+                        </div>
+                        <div class="step">
+                            <p class="step-text"><strong>Paso 3:</strong> Despejar $x$</p>
+                            <p class="step-text">$x = \frac{30}{3} = 10$</p>
+                        </div>
+                        <div class="step">
+                            <p class="step-text"><strong>Resultado:</strong> $\frac{3}{5} = \frac{6}{10}$ ✓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-card">
+                    <div class="app-header">
+                        <div class="app-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="app-title">Aplicación en Arquitectura</h3>
+                    </div>
+                    <p class="app-text">
+                        <strong>Escalas en planos:</strong> Si en un plano 2 cm representan 5 metros reales, y una pared mide 8 cm en el plano, ¿cuál es su longitud real?
+                    </p>
+                    <div style="background-color: #ffffff; margin-top: 1rem; padding: 1rem; border-radius: 6px; border: 2px solid #195855;">
+                        <p style="color: #172139; font-weight: 600; text-align: center;">
+                            $\frac{2 \text{ cm}}{5 \text{ m}} = \frac{8 \text{ cm}}{x \text{ m}} \Rightarrow x = 20$ metros
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-shape shape-1"></div>
+        <div class="decorative-shape shape-2"></div>
+        <div class="floating-equals">=</div>
+        <div class="floating-cross">×</div>
+    </div>
 </body>
 </html>

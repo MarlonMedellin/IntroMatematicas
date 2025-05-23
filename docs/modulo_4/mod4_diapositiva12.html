@@ -1,9 +1,753 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Diapositiva 12</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regla de Tres Compuesta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            margin: 0 auto;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-title {
+            color: #172139;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .accent-line {
+            width: 10rem;
+            height: 0.3rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto 1rem;
+            animation: expandWidth 1.2s ease-out 0.3s both;
+        }
+
+        .subtitle {
+            color: #195855;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8f0 100%);
+            border: 3px solid #195855;
+            border-radius: 20px;
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 1s ease-out 0.7s both;
+        }
+
+        .concept-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-icon {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .concept-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .concept-description {
+            color: #195855;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .procedure-list {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .procedure-title {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: #172139;
+            font-weight: 500;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+            color: #ffffff;
+            width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+            border: 3px solid #E9901E;
+            border-radius: 20px;
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            animation: slideInRight 1s ease-out 0.9s both;
+        }
+
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-icon {
+            background: linear-gradient(135deg, #E9901E 0%, #FBBB28 100%);
+            color: #ffffff;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .example-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .problem-statement {
+            background: rgba(23, 33, 57, 0.05);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #172139;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .data-table {
+            background: #ffffff;
+            border: 2px solid #195855;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            padding: 0.6rem;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .data-table td {
+            padding: 0.6rem;
+            text-align: center;
+            color: #172139;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .calculation-steps {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 1.2rem;
+        }
+
+        .calculation-title {
+            color: #E9901E;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .relation-analysis {
+            margin-bottom: 1rem;
+        }
+
+        .relation-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: #172139;
+            font-weight: 600;
+        }
+
+        .relation-direct {
+            background: #B4C42C;
+            color: #ffffff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .relation-inverse {
+            background: #E9901E;
+            color: #ffffff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .final-calculation {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #ffffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .applications-section {
+            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+            border: 3px solid #00AEAC;
+            border-radius: 20px;
+            padding: 1.8rem;
+            animation: fadeInUp 1s ease-out 1.1s both;
+        }
+
+        .applications-title {
+            color: #00AEAC;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .app-card {
+            background: #ffffff;
+            border: 2px solid #00AEAC;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 174, 172, 0.2);
+        }
+
+        .app-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 174, 172, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .app-card:hover:before {
+            left: 100%;
+        }
+
+        .app-icon {
+            background: linear-gradient(135deg, #00AEAC 0%, #108181 100%);
+            color: #ffffff;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 auto 0.8rem;
+        }
+
+        .app-text {
+            color: #172139;
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Decorative Elements */
+        .decorative-math {
+            position: absolute;
+            font-size: 6rem;
+            font-weight: 900;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .math-1 {
+            top: 15%;
+            left: 5%;
+            color: #B4C42C;
+            transform: rotate(-15deg);
+        }
+
+        .math-2 {
+            top: 50%;
+            right: 10%;
+            color: #E9901E;
+            transform: rotate(10deg);
+        }
+
+        .math-3 {
+            bottom: 20%;
+            left: 10%;
+            color: #195855;
+            transform: rotate(-8deg);
+        }
+
+        .floating-symbols {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 700;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .symbol-1 {
+            top: 20%;
+            right: 25%;
+            color: #195855;
+            animation-delay: 0s;
+        }
+
+        .symbol-2 {
+            bottom: 30%;
+            left: 20%;
+            color: #B4C42C;
+            animation-delay: 2s;
+        }
+
+        .symbol-3 {
+            top: 60%;
+            left: 85%;
+            color: #E9901E;
+            animation-delay: 4s;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 10rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+            66% {
+                transform: translateY(5px) rotate(-3deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .content-grid {
+                gap: 1.5rem;
+            }
+            
+            .main-title {
+                font-size: 2.3rem;
+            }
+
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .decorative-math,
+            .floating-symbols {
+                display: none;
+            }
+        }
+
+        /* Content positioning */
+        .content-container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    <div class="slide">
+        <div class="content-container">
+            <!-- Header Section -->
+            <div class="header-section">
+                <h1 class="main-title">Regla de Tres Compuesta</h1>
+                <div class="accent-line"></div>
+                <p class="subtitle">Resolviendo problemas con múltiples magnitudes relacionadas simultáneamente</p>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Concept and Procedure Card -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <div class="concept-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h2 class="concept-title">Concepto y Procedimiento</h2>
+                        </div>
+                    </div>
+                    
+                    <p class="concept-description">
+                        Se utiliza cuando intervienen <strong>más de dos magnitudes</strong> relacionadas entre sí. 
+                        El objetivo es encontrar el valor desconocido de una magnitud.
+                    </p>
+
+                    <div class="procedure-list">
+                        <div class="procedure-title">
+                            <i class="fas fa-list-ol"></i>
+                            Procedimiento General:
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div><strong>Identificar</strong> todas las magnitudes y la incógnita</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div><strong>Organizar datos</strong> en dos filas (conocidos vs. nuevos)</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div><strong>Analizar relaciones:</strong> directa o inversa con la incógnita</div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div><strong>Calcular factores</strong> y multiplicar por el valor conocido</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Card -->
+                <div class="example-card">
+                    <div class="example-header">
+                        <div class="example-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div>
+                            <h2 class="example-title">Ejemplo Práctico</h2>
+                        </div>
+                    </div>
+
+                    <div class="problem-statement">
+                        <strong>Problema:</strong> Si 4 obreros trabajando 6 h/día construyen 80 m de muro en 10 días, 
+                        ¿cuántos días necesitarán 6 obreros trabajando 8 h/día para construir 120 m?
+                    </div>
+
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Obreros</th>
+                                    <th>Horas/día</th>
+                                    <th>Metros</th>
+                                    <th>Días</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>4</td>
+                                    <td>6</td>
+                                    <td>80</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr style="background: #fff8f0;">
+                                    <td>6</td>
+                                    <td>8</td>
+                                    <td>120</td>
+                                    <td><strong>x</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="calculation-steps">
+                        <div class="calculation-title">
+                            <i class="fas fa-brain"></i>
+                            Análisis de Relaciones:
+                        </div>
+                        
+                        <div class="relation-analysis">
+                            <div class="relation-item">
+                                <span class="relation-inverse">INVERSA</span>
+                                Obreros vs Días: Factor = 4/6
+                            </div>
+                            <div class="relation-item">
+                                <span class="relation-inverse">INVERSA</span>
+                                Horas vs Días: Factor = 6/8
+                            </div>
+                            <div class="relation-item">
+                                <span class="relation-direct">DIRECTA</span>
+                                Metros vs Días: Factor = 120/80
+                            </div>
+                        </div>
+
+                        <div class="final-calculation">
+                            $x = 10 \times \frac{4}{6} \times \frac{6}{8} \times \frac{120}{80}$
+                            <br><br>
+                            $x = 10 \times \frac{4 \times 6 \times 120}{6 \times 8 \times 80} = 10 \times \frac{3}{4}$
+                            <br><br>
+                            <span class="result-highlight">x = 7.5 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Section -->
+            <div class="applications-section">
+                <h2 class="applications-title">
+                    <i class="fas fa-university"></i>
+                    Aplicaciones por Programa Académico
+                </h2>
+                
+                <div class="app-grid">
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Ingeniería Civil:</strong> 10 obreros, 2 km carretera, 15 días, 8h/día → ¿Días para 12 obreros, 3 km, 10h/día?
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Turismo:</strong> 3 agentes, 90 clientes, 5 días, 6h/día → ¿Clientes para 5 agentes, 10 días, 8h/día?
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-bread-slice"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Repostería:</strong> 4 hornos, 20 kg gas, 800 panes, 5h → ¿Gas para 6 hornos, 1200 panes, 8h?
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Biotecnología:</strong> 3 biorreactores, 150L cultivo, 6h, 80% eficiencia → ¿Litros para 5 reactores, 4h?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-math math-1">3+</div>
+        <div class="decorative-math math-2">×÷</div>
+        <div class="decorative-math math-3">∝</div>
+        
+        <div class="floating-symbols symbol-1">⟶</div>
+        <div class="floating-symbols symbol-2">×</div>
+        <div class="floating-symbols symbol-3">÷</div>
+    </div>
 </body>
 </html>
