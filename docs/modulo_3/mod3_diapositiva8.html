@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades y Aplicaciones de los Números Racionales</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .main-container {
+            padding: 1.5rem 2.5rem;
+            position: relative;
+            z-index: 2;
+            min-height: 720px;
+        }
+        
+        .slide-title {
+            color: #172139;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .title-accent {
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto 1rem;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .properties-panel {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .properties-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(251,187,40,0.2) 0%, transparent 70%);
+        }
+        
+        .panel-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #FBBB28;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .properties-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .property-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            border-left: 3px solid #FBBB28;
+            transition: all 0.3s ease;
+        }
+        
+        .property-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .property-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: #FBBB28;
+        }
+        
+        .property-formula {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .operations-panel {
+            background: white;
+            border: 3px solid #108181;
+            border-radius: 16px;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .operations-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #108181, #00AEAC, #B4C42C);
+        }
+        
+        .operations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .operation-card {
+            background: linear-gradient(135deg, rgba(16, 129, 129, 0.05), rgba(0, 174, 172, 0.05));
+            border-radius: 12px;
+            padding: 0.75rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .operation-card:hover {
+            border-color: #108181;
+            transform: scale(1.05);
+        }
+        
+        .operation-icon {
+            font-size: 1.5rem;
+            color: #108181;
+            margin-bottom: 0.5rem;
+        }
+        
+        .operation-name {
+            font-weight: 700;
+            color: #172139;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .operation-rule {
+            font-size: 0.7rem;
+            color: #2F3E5D;
+            line-height: 1.2;
+        }
+        
+        .types-summary {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #172139;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+        
+        .type-item {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .type-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .type-name {
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .type-example {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+        
+        .applications-showcase {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 8px 32px rgba(23, 33, 57, 0.1);
+            border: 2px solid #B4C42C;
+        }
+        
+        .showcase-title {
+            text-align: center;
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .program-card {
+            background: linear-gradient(135deg, rgba(180, 196, 44, 0.1), rgba(233, 144, 30, 0.1));
+            border-radius: 12px;
+            padding: 0.75rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .program-card:hover {
+            border-color: #B4C42C;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(180, 196, 44, 0.2);
+        }
+        
+        .program-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #195855;
+        }
+        
+        .program-name {
+            font-weight: 700;
+            color: #172139;
+            font-size: 0.7rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .program-use {
+            font-size: 0.65rem;
+            color: #2F3E5D;
+            line-height: 1.2;
+        }
+        
+        .key-concepts {
+            background: linear-gradient(135deg, #195855 0%, #108181 50%, #00AEAC 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .concepts-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #FBBB28;
+        }
+        
+        .concepts-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .concept-bubble {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .concept-bubble:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .arrow {
+            color: #FBBB28;
+            font-size: 1rem;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .floating-number {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.06;
+            animation: floatNumber 12s infinite ease-in-out;
+            color: #195855;
+        }
+        
+        @keyframes floatNumber {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.06; }
+            25% { transform: translateY(-15px) rotate(2deg); opacity: 0.08; }
+            50% { transform: translateY(-10px) rotate(-1deg); opacity: 0.04; }
+            75% { transform: translateY(-20px) rotate(1deg); opacity: 0.07; }
+        }
+        
+        .number-1 {
+            font-size: 5rem;
+            top: 5%;
+            left: 3%;
+            animation-delay: 0s;
+        }
+        
+        .number-2 {
+            font-size: 3rem;
+            top: 10%;
+            right: 5%;
+            animation-delay: 3s;
+        }
+        
+        .number-3 {
+            font-size: 4rem;
+            bottom: 15%;
+            left: 8%;
+            animation-delay: 6s;
+        }
+        
+        .number-4 {
+            font-size: 2.5rem;
+            bottom: 8%;
+            right: 10%;
+            animation-delay: 9s;
+        }
+        
+        .number-5 {
+            font-size: 3.5rem;
+            top: 50%;
+            left: 1%;
+            animation-delay: 1.5s;
+        }
+        
+        .number-6 {
+            font-size: 2.8rem;
+            top: 30%;
+            right: 2%;
+            animation-delay: 4.5s;
+        }
+        
+        .success-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #B4C42C, #E9901E);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 3;
+        }
+        
+        .pulse-icon {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1280px) {
+            .main-container {
+                padding: 1.25rem 2rem;
+            }
+            
+            .content-grid {
+                gap: 1.25rem;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .slide-title {
+                font-size: 1.5rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .operations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .concepts-flow {
+                flex-direction: column;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+            
+            .success-indicator {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 1rem;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Success Indicator -->
+        <div class="success-indicator">
+            <i class="fas fa-check-circle pulse-icon"></i>
+            Módulo Completado
+        </div>
+        
+        <!-- Floating Numbers -->
+        <div class="floating-elements">
+            <div class="floating-number number-1">¼</div>
+            <div class="floating-number number-2">⅜</div>
+            <div class="floating-number number-3">⅔</div>
+            <div class="floating-number number-4">½</div>
+            <div class="floating-number number-5">¾</div>
+            <div class="floating-number number-6">⅝</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-container">
+            <h1 class="slide-title">Síntesis: Sistema de los Números Racionales</h1>
+            <div class="title-accent"></div>
+            
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Properties Panel -->
+                <div class="properties-panel">
+                    <h2 class="panel-title">
+                        <i class="fas fa-cogs"></i>
+                        Propiedades Fundamentales
+                    </h2>
+                    
+                    <div class="properties-list">
+                        <div class="property-item">
+                            <div class="property-name">Conmutativa</div>
+                            <div class="property-formula">a/b + c/d = c/d + a/b</div>
+                        </div>
+                        
+                        <div class="property-item">
+                            <div class="property-name">Asociativa</div>
+                            <div class="property-formula">(a/b + c/d) + e/f = a/b + (c/d + e/f)</div>
+                        </div>
+                        
+                        <div class="property-item">
+                            <div class="property-name">Distributiva</div>
+                            <div class="property-formula">a/b × (c/d + e/f) = (a/b × c/d) + (a/b × e/f)</div>
+                        </div>
+                        
+                        <div class="property-item">
+                            <div class="property-name">Elemento Neutro</div>
+                            <div class="property-formula">Suma: 0 | Producto: 1</div>
+                        </div>
+                        
+                        <div class="property-item">
+                            <div class="property-name">Elemento Inverso</div>
+                            <div class="property-formula">Aditivo: -a/b | Multiplicativo: b/a</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operations Panel -->
+                <div class="operations-panel">
+                    <h2 class="panel-title" style="color: #172139;">
+                        <i class="fas fa-calculator"></i>
+                        Operaciones Básicas
+                    </h2>
+                    
+                    <div class="operations-grid">
+                        <div class="operation-card">
+                            <div class="operation-icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="operation-name">Suma</div>
+                            <div class="operation-rule">Homogéneas: sumar numeradores<br>Heterogéneas: usar MCM</div>
+                        </div>
+                        
+                        <div class="operation-card">
+                            <div class="operation-icon">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="operation-name">Resta</div>
+                            <div class="operation-rule">Mismo procedimiento que la suma</div>
+                        </div>
+                        
+                        <div class="operation-card">
+                            <div class="operation-icon">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="operation-name">Multiplicación</div>
+                            <div class="operation-rule">Numerador × numerador<br>Denominador × denominador</div>
+                        </div>
+                        
+                        <div class="operation-card">
+                            <div class="operation-icon">
+                                <i class="fas fa-divide"></i>
+                            </div>
+                            <div class="operation-name">División</div>
+                            <div class="operation-rule">Multiplicar por el recíproco<br>del divisor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Types Summary -->
+            <div class="types-summary">
+                <h3 class="panel-title" style="color: #172139; margin-bottom: 0.5rem;">
+                    <i class="fas fa-shapes"></i>
+                    Tipos de Fracciones
+                </h3>
+                
+                <div class="types-grid">
+                    <div class="type-item">
+                        <div class="type-name">Propias</div>
+                        <div class="type-example">2/3, 1/5</div>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-name">Impropias</div>
+                        <div class="type-example">5/2, 7/3</div>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-name">Mixtas</div>
+                        <div class="type-example">2¼, 1⅓</div>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-name">Enteras</div>
+                        <div class="type-example">6/3, 8/4</div>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-name">Decimales</div>
+                        <div class="type-example">3/10, 27/100</div>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-name">Compuestas</div>
+                        <div class="type-example">Fracciones anidadas</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Concepts Flow -->
+            <div class="key-concepts">
+                <h3 class="concepts-title">Flujo de Conceptos Clave</h3>
+                <div class="concepts-flow">
+                    <div class="concept-bubble">ℚ = {p/q}</div>
+                    <i class="fas fa-arrow-right arrow"></i>
+                    <div class="concept-bubble">Tipos</div>
+                    <i class="fas fa-arrow-right arrow"></i>
+                    <div class="concept-bubble">Equivalencia</div>
+                    <i class="fas fa-arrow-right arrow"></i>
+                    <div class="concept-bubble">Operaciones</div>
+                    <i class="fas fa-arrow-right arrow"></i>
+                    <div class="concept-bubble">Aplicaciones</div>
+                </div>
+            </div>
+            
+            <!-- Applications Showcase -->
+            <div class="applications-showcase">
+                <h3 class="showcase-title">
+                    <i class="fas fa-university"></i>
+                    Aplicaciones Transversales
+                </h3>
+                
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="program-name">Gastronomía</div>
+                        <div class="program-use">Recetas, porciones, medidas</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="program-name">Comercial</div>
+                        <div class="program-use">Costos, precios, descuentos</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="program-name">Turismo</div>
+                        <div class="program-use">Itinerarios, capacidades</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="program-name">Arquitectura</div>
+                        <div class="program-use">Escalas, proporciones</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <div class="program-name">Biotecnología</div>
+                        <div class="program-use">Soluciones, concentraciones</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="program-name">Seg. y Salud</div>
+                        <div class="program-use">Estadísticas, riesgos</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="program-name">Desarrollo Social</div>
+                        <div class="program-use">Presupuestos, indicadores</div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="program-name">Laboratorio</div>
+                        <div class="program-use">Análisis, muestras</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
