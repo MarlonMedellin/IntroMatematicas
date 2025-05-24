@@ -13,16 +13,25 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body, html {
+        html, body {
             font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
+            height: 100%;
+            /* overflow: hidden; */ /* Elimina esta línea para permitir scroll */
+        }
+        body {
+            min-height: 100vh;
+            width: 100%;
         }
         .slide {
-            width: 1280px;
-            min-height: 720px;
+            max-width: 1280px;
+            width: 100%;
+            min-height: 100vh; /* Cambia de 720px a 100vh para ocupar toda la pantalla */
             position: relative;
             background-color: #ffffff;
-            overflow: hidden;
+            /* overflow: hidden; */ /* Elimina esta línea para permitir scroll */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
         }
         .header-bar {
             position: absolute;
@@ -43,14 +52,16 @@
             z-index: 2;
         }
         .content-container {
-            position: absolute;
-            top: 140px;
+            /* Cambia position a relative y agrega padding-top para dejar espacio al header */
+            position: relative;
+            top: 0;
             left: 0;
             width: 100%;
             display: flex;
             flex-direction: column;
-            padding: 0 50px;
+            padding: 140px 50px 0 50px;
             z-index: 2;
+            flex: 1 1 auto;
         }
         .session-badge {
             display: inline-block;
@@ -152,19 +163,32 @@
             z-index: 0;
         }
         .footer {
-            position: absolute;
-            bottom: 20px;
-            right: 50px;
+            position: relative;
+            bottom: 0;
+            right: 0;
             display: flex;
             align-items: center;
             z-index: 1;
             color: #172139;
             font-weight: 500;
+            margin-top: 40px;
+            padding-bottom: 20px;
+            justify-content: flex-end;
         }
         .footer-icon {
             color: #00AEAC;
             font-size: 1.25rem;
             margin-right: 0.5rem;
+        }
+        @media (max-width: 900px) {
+            .slide {
+                min-width: 100vw;
+                max-width: 100vw;
+                padding: 0;
+            }
+            .content-container {
+                padding: 140px 10px 0 10px;
+            }
         }
     </style>
 </head>
