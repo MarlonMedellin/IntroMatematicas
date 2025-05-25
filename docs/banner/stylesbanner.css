@@ -13,7 +13,7 @@ body {
 
 .slide {
     width: 640px;
-    min-height: 360px;
+    min-height: 180px;
     position: relative;
     overflow: hidden;
     background-color: #ffffff;
