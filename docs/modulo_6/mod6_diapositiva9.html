@@ -16,19 +16,20 @@
         }
         body, html {
             font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
+            /* Eliminado overflow: hidden para permitir scroll */
         }
         .slide {
             width: 1280px;
             min-height: 720px;
             position: relative;
             background-color: #ffffff;
-            overflow: hidden;
+            /* Eliminado overflow: hidden para permitir scroll */
+            display: flex; /* Usando flexbox para estructura vertical */
+            flex-direction: column;
+            margin: 0 auto;
         }
         .header-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative; /* Cambiado de absolute a relative */
             width: 100%;
             height: 120px;
             background-color: #172139;
@@ -63,11 +64,11 @@
             line-height: 1.1;
         }
         .content-container {
-            position: absolute;
-            top: 140px;
+            position: relative; /* Cambiado de absolute a relative */
             width: 100%;
-            padding: 0 40px;
+            padding: 20px 40px 40px; /* Añadido padding inferior */
             z-index: 2;
+            flex: 1; /* Para que ocupe el espacio disponible */
         }
         .intro-section {
             background-color: #f8f8f8;
@@ -115,224 +116,198 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            overflow: hidden;
             transition: transform 0.3s ease;
+            position: relative;
         }
         .hierarchy-step:hover {
             transform: translateY(-5px);
         }
+        .step-1 {
+            border-top: 5px solid #B4C42C;
+        }
+        .step-2 {
+            border-top: 5px solid #E9901E;
+        }
+        .step-3 {
+            border-top: 5px solid #FBBB28;
+        }
+        .step-4 {
+            border-top: 5px solid #00AEAC;
+        }
         .step-number {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background-color: #172139;
+            font-weight: 700;
+            font-size: 1.2rem;
             color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
-        .step-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: 0.75rem;
-            font-size: 1.75rem;
+        .number-1 {
+            background-color: #B4C42C;
         }
-        .icon-1 {
-            background-color: rgba(251, 187, 40, 0.15);
-            color: #FBBB28;
+        .number-2 {
+            background-color: #E9901E;
         }
-        .icon-2 {
-            background-color: rgba(233, 144, 30, 0.15);
-            color: #E9901E;
+        .number-3 {
+            background-color: #FBBB28;
         }
-        .icon-3 {
-            background-color: rgba(180, 196, 44, 0.15);
-            color: #B4C42C;
-        }
-        .icon-4 {
-            background-color: rgba(0, 174, 172, 0.15);
-            color: #00AEAC;
+        .number-4 {
+            background-color: #00AEAC;
         }
         .step-title {
             color: #172139;
-            font-weight: 600;
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
             text-align: center;
         }
-        .step-description {
+        .step-content {
             color: #2F3E5D;
             font-size: 0.9rem;
             text-align: center;
+            margin-bottom: 0.75rem;
         }
-        .step-arrow {
-            position: absolute;
-            top: 50%;
-            right: -22px;
-            transform: translateY(-50%);
-            color: #172139;
-            opacity: 0.5;
-            font-size: 1.5rem;
-            z-index: 10;
+        .step-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .icon-1 {
+            color: #B4C42C;
+        }
+        .icon-2 {
+            color: #E9901E;
+        }
+        .icon-3 {
+            color: #FBBB28;
+        }
+        .icon-4 {
+            color: #00AEAC;
         }
         .example-section {
-            background-color: #f8f8f8;
+            background-color: white;
             border-radius: 12px;
             padding: 1.25rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
             border-left: 5px solid #195855;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 20px;
-        }
-        .example-left {
-            display: flex;
-            flex-direction: column;
         }
         .example-title {
             color: #172139;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .example-icon {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(25, 88, 85, 0.1);
             border-radius: 50%;
             color: #195855;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
-        .expression {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1rem;
+        .example-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
             margin-bottom: 1rem;
+        }
+        .example-expression {
             font-family: 'Times New Roman', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #172139;
-            text-align: center;
+            background-color: #f8f8f8;
+            padding: 0.75rem 1.2rem;
+            border-radius: 8px;
             font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        .steps-container {
+        .example-arrow {
+            font-size: 1.5rem;
+            color: #195855;
+        }
+        .example-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .step-box {
+            background-color: #f8f8f8;
+            padding: 0.75rem;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-        }
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .step-marker {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 600;
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-        .marker-1 {
-            background-color: #FBBB28;
-        }
-        .marker-2 {
-            background-color: #E9901E;
-        }
-        .marker-3 {
-            background-color: #B4C42C;
-        }
-        .marker-4 {
-            background-color: #00AEAC;
-        }
-        .step-text {
-            color: #2F3E5D;
-            font-size: 0.9rem;
-            flex-grow: 1;
-        }
-        .mnemonic-container {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
             text-align: center;
         }
-        .mnemonic-title {
+        .step-label {
+            color: #195855;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .step-formula {
+            font-family: 'Times New Roman', serif;
             color: #172139;
             font-size: 1.1rem;
+        }
+        .mnemonics-section {
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 20px;
+            border-left: 5px solid #FBBB28;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .mnemonics-title {
+            color: #172139;
             font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
-        .mnemonic-box {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 4px;
-            margin-bottom: 1rem;
-            width: 100%;
+        .mnemonics-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .mnemonic-letter {
-            width: 100%;
-            height: 50px;
+        .mnemonics-box {
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 6px;
             color: white;
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
         }
-        .letter-p {
-            background-color: #FBBB28;
-        }
-        .letter-e {
-            background-color: #E9901E;
-        }
-        .letter-md {
-            background-color: #B4C42C;
-        }
-        .letter-as {
-            background-color: #00AEAC;
-        }
-        .mnemonic-labels {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
+        .decorative-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-        }
-        .mnemonic-label {
-            font-size: 0.7rem;
-            color: #2F3E5D;
-            text-align: center;
-            padding: 0.25rem;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none; /* Para que no interfiera con el scroll */
         }
         .shape {
             position: absolute;
             border-radius: 50%;
             opacity: 0.15;
             z-index: 0;
+            pointer-events: none; /* Para que no interfiera con el scroll */
         }
         .shape-1 {
             width: 180px;
@@ -360,16 +335,19 @@
             background-size: 20px 20px;
             transform: rotate(15deg);
             z-index: 0;
+            pointer-events: none; /* Para que no interfiera con el scroll */
         }
         .footer {
-            position: absolute;
-            bottom: 20px;
-            right: 50px;
+            position: relative; /* Cambiado de absolute a relative */
+            width: 100%;
             display: flex;
             align-items: center;
+            justify-content: flex-end;
+            padding: 20px 50px;
             z-index: 1;
             color: #172139;
             font-weight: 500;
+            margin-top: 20px; /* Añadido margen superior para separación */
         }
         .footer-icon {
             color: #00AEAC;
@@ -389,10 +367,7 @@
                 flex-wrap: wrap;
             }
             .hierarchy-step {
-                flex: 1 0 45%;
-            }
-            .step-arrow {
-                display: none;
+                flex-basis: calc(50% - 8px);
             }
         }
         
@@ -413,14 +388,17 @@
                 padding: 0.3rem 1rem;
             }
             .content-container {
-                top: 110px;
-                padding: 0 20px;
+                padding: 10px 20px 30px;
             }
             .hierarchy-step {
-                flex: 1 0 100%;
+                flex-basis: 100%;
             }
-            .example-section {
-                grid-template-columns: 1fr;
+            .example-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .example-steps {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -428,161 +406,142 @@
 <body>
     <div class="slide">
         <!-- Barra de encabezado -->
-        <div class="header-bar"></div>
-        
-        <!-- Etiqueta de sesión -->
-        <div class="session-tag">Sesión 3</div>
-        
-        <!-- Título de la diapositiva -->
-        <div class="slide-title-container">
-            <h1 class="slide-title">Jerarquía de Operaciones</h1>
+        <div class="header-bar">
+            <!-- Etiqueta de sesión -->
+            <div class="session-tag">Sesión 3</div>
+            
+            <!-- Título de la diapositiva -->
+            <div class="slide-title-container">
+                <h1 class="slide-title">Jerarquía de Operaciones</h1>
+            </div>
         </div>
         
         <!-- Contenedor principal -->
         <div class="content-container">
-            <!-- Sección de introducción -->
+            <!-- Introducción -->
             <div class="intro-section">
                 <h2 class="intro-title">
                     <div class="intro-icon"><i class="fas fa-sort-amount-down"></i></div>
-                    ¿Qué es la jerarquía de operaciones?
+                    Jerarquía de Operaciones Extendida
                 </h2>
                 <div class="intro-content">
-                    <p>Orden específico para resolver expresiones matemáticas con múltiples operaciones, garantizando que todos obtengamos el mismo resultado correcto. Es fundamental para resolver polinomios aritméticos.</p>
+                    <p>Cuando una expresión matemática combina múltiples operaciones, es crucial seguir un orden específico para garantizar resultados correctos. Este orden, conocido como <strong>jerarquía de operaciones</strong>, asegura que todos obtengamos el mismo resultado al resolver expresiones complejas.</p>
                 </div>
             </div>
             
-            <!-- Jerarquía en tarjetas -->
+            <!-- Pasos de la jerarquía -->
             <div class="hierarchy-container">
-                <!-- Paso 1 -->
-                <div class="hierarchy-step" style="border-top: 4px solid #FBBB28;">
-                    <div class="step-number">1</div>
-                    <div class="step-icon icon-1">
-                        <i class="fas fa-brackets"></i>
-                    </div>
-                    <div class="step-title">Paréntesis</div>
-                    <div class="step-description">Primero, resolver operaciones dentro de signos de agrupación: ( ), [ ], { }</div>
-                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <!-- Paso 1: Paréntesis -->
+                <div class="hierarchy-step step-1">
+                    <div class="step-number number-1">1</div>
+                    <i class="fas fa-brackets step-icon icon-1"></i>
+                    <h3 class="step-title">Paréntesis y Signos de Agrupación</h3>
+                    <p class="step-content">Resolver primero las operaciones dentro de paréntesis ( ), corchetes [ ], y llaves { }.</p>
+                    <p class="step-content">Si hay varios niveles de agrupación, resolver de adentro hacia afuera.</p>
                 </div>
                 
-                <!-- Paso 2 -->
-                <div class="hierarchy-step" style="border-top: 4px solid #E9901E;">
-                    <div class="step-number">2</div>
-                    <div class="step-icon icon-2">
-                        <i class="fas fa-superscript"></i>
-                    </div>
-                    <div class="step-title">Potencias y Raíces</div>
-                    <div class="step-description">Calcular exponentes y radicales de izquierda a derecha</div>
-                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <!-- Paso 2: Potencias y Raíces -->
+                <div class="hierarchy-step step-2">
+                    <div class="step-number number-2">2</div>
+                    <i class="fas fa-superscript step-icon icon-2"></i>
+                    <h3 class="step-title">Potencias y Raíces</h3>
+                    <p class="step-content">Calcular todas las potencias y raíces de izquierda a derecha si hay varias en el mismo nivel.</p>
                 </div>
                 
-                <!-- Paso 3 -->
-                <div class="hierarchy-step" style="border-top: 4px solid #B4C42C;">
-                    <div class="step-number">3</div>
-                    <div class="step-icon icon-3">
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="step-title">Multiplicación y División</div>
-                    <div class="step-description">Hacer todas las multiplicaciones y divisiones de izquierda a derecha</div>
-                    <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+                <!-- Paso 3: Multiplicación y División -->
+                <div class="hierarchy-step step-3">
+                    <div class="step-number number-3">3</div>
+                    <i class="fas fa-times step-icon icon-3"></i>
+                    <h3 class="step-title">Multiplicación y División</h3>
+                    <p class="step-content">Realizar todas las multiplicaciones y divisiones en el orden que aparecen, de izquierda a derecha.</p>
                 </div>
                 
-                <!-- Paso 4 -->
-                <div class="hierarchy-step" style="border-top: 4px solid #00AEAC;">
-                    <div class="step-number">4</div>
-                    <div class="step-icon icon-4">
-                        <i class="fas fa-plus-minus"></i>
-                    </div>
-                    <div class="step-title">Suma y Resta</div>
-                    <div class="step-description">Por último, realizar todas las sumas y restas de izquierda a derecha</div>
+                <!-- Paso 4: Suma y Resta -->
+                <div class="hierarchy-step step-4">
+                    <div class="step-number number-4">4</div>
+                    <i class="fas fa-plus step-icon icon-4"></i>
+                    <h3 class="step-title">Suma y Resta</h3>
+                    <p class="step-content">Efectuar todas las sumas y restas en el orden que aparecen, de izquierda a derecha.</p>
                 </div>
             </div>
             
-            <!-- Ejemplo y mnemotécnica -->
+            <!-- Ejemplo -->
             <div class="example-section">
-                <!-- Ejemplo paso a paso -->
-                <div class="example-left">
-                    <h3 class="example-title">
-                        <div class="example-icon"><i class="fas fa-calculator"></i></div>
-                        Ejemplo paso a paso
-                    </h3>
-                    
-                    <div class="expression">
+                <h3 class="example-title">
+                    <div class="example-icon"><i class="fas fa-calculator"></i></div>
+                    Ejemplo de aplicación
+                </h3>
+                
+                <div class="example-content">
+                    <div class="example-expression">
                         2 + 3 × 5² - √16 ÷ 2
                     </div>
-                    
-                    <div class="steps-container">
-                        <div class="step-item">
-                            <div class="step-marker marker-1">1</div>
-                            <div class="step-text">
-                                <strong>Paréntesis:</strong> No hay
-                            </div>
-                        </div>
-                        
-                        <div class="step-item">
-                            <div class="step-marker marker-2">2</div>
-                            <div class="step-text">
-                                <strong>Potencias y Raíces:</strong> 5² = 25, √16 = 4<br>
-                                <span style="color: #195855;">La expresión queda: 2 + 3 × 25 - 4 ÷ 2</span>
-                            </div>
-                        </div>
-                        
-                        <div class="step-item">
-                            <div class="step-marker marker-3">3</div>
-                            <div class="step-text">
-                                <strong>Multiplicaciones y Divisiones:</strong> 3 × 25 = 75, 4 ÷ 2 = 2<br>
-                                <span style="color: #195855;">La expresión queda: 2 + 75 - 2</span>
-                            </div>
-                        </div>
-                        
-                        <div class="step-item">
-                            <div class="step-marker marker-4">4</div>
-                            <div class="step-text">
-                                <strong>Sumas y Restas:</strong> 2 + 75 = 77, 77 - 2 = 75<br>
-                                <span style="color: #195855;">Resultado final: 75</span>
-                            </div>
-                        </div>
+                    <div class="example-arrow">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </div>
+                    <div class="example-expression">
+                        2 + 3 × 25 - 4 ÷ 2
+                    </div>
+                    <div class="example-arrow">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </div>
+                    <div class="example-expression">
+                        2 + 75 - 2 = 75
                     </div>
                 </div>
                 
-                <!-- Mnemotécnica -->
-                <div class="mnemonic-container">
-                    <h3 class="mnemonic-title">Regla mnemotécnica: PEMDAS</h3>
-                    
-                    <div class="mnemonic-box">
-                        <div class="mnemonic-letter letter-p">P</div>
-                        <div class="mnemonic-letter letter-e">E</div>
-                        <div class="mnemonic-letter letter-md">M</div>
-                        <div class="mnemonic-letter letter-md">D</div>
-                        <div class="mnemonic-letter letter-as">A</div>
-                        <div class="mnemonic-letter letter-as">S</div>
+                <div class="example-steps">
+                    <div class="step-box">
+                        <div class="step-label">PASO 1</div>
+                        <div class="step-formula">5² = 25</div>
+                        <div class="step-formula">√16 = 4</div>
                     </div>
-                    
-                    <div class="mnemonic-labels">
-                        <div class="mnemonic-label" style="grid-column: span 2;">
-                            <strong>P</strong>aréntesis<br>
-                            <strong>E</strong>xponentes (Potencias, Raíces)
-                        </div>
-                        <div class="mnemonic-label" style="grid-column: span 2;">
-                            <strong>M</strong>ultiplicación, <strong>D</strong>ivisión<br>
-                            (de izquierda a derecha)
-                        </div>
-                        <div class="mnemonic-label" style="grid-column: span 2;">
-                            <strong>A</strong>dición, <strong>S</strong>ustracción<br>
-                            (de izquierda a derecha)
-                        </div>
+                    <div class="step-box">
+                        <div class="step-label">PASO 2</div>
+                        <div class="step-formula">3 × 25 = 75</div>
+                        <div class="step-formula">4 ÷ 2 = 2</div>
                     </div>
-                    
-                    <div style="background-color: #f0f4f8; border-radius: 8px; padding: 0.75rem; margin-top: 10px; width: 100%; border-left: 3px solid #172139;">
-                        <p style="font-size: 0.85rem; color: #2F3E5D;"><strong>Importante:</strong> La correcta aplicación de esta jerarquía es fundamental para resolver polinomios aritméticos con las seis operaciones básicas.</p>
+                    <div class="step-box">
+                        <div class="step-label">PASO 3</div>
+                        <div class="step-formula">2 + 75 = 77</div>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-label">PASO 4</div>
+                        <div class="step-formula">77 - 2 = 75</div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Nemotecnia PEMDAS/BODMAS -->
+            <div class="mnemonics-section">
+                <h4 class="mnemonics-title">Nemotecnia:</h4>
+                <div class="mnemonics-content">
+                    <div class="mnemonics-box" style="background-color: #B4C42C;">P</div>
+                    <div class="mnemonics-box" style="background-color: #E9901E;">E</div>
+                    <div class="mnemonics-box" style="background-color: #FBBB28;">M</div>
+                    <div class="mnemonics-box" style="background-color: #FBBB28;">D</div>
+                    <div class="mnemonics-box" style="background-color: #00AEAC;">A</div>
+                    <div class="mnemonics-box" style="background-color: #00AEAC;">S</div>
+                </div>
+                <div style="margin-left: 20px; color: #2F3E5D; font-size: 0.9rem;">
+                    <strong>P</strong>aréntesis, <strong>E</strong>xponentes, <strong>M</strong>ultiplicación, <strong>D</strong>ivisión, <strong>A</strong>dición, <strong>S</strong>ustracción
+                </div>
+            </div>
+            
+            <!-- Nota de aplicación -->
+            <div style="background-color: rgba(0, 174, 172, 0.1); border-radius: 10px; padding: 1rem; border-left: 4px solid #00AEAC;">
+                <p style="color: #2F3E5D; font-size: 0.95rem;">
+                    <strong style="color: #195855;">Aplicación en la vida real:</strong> La jerarquía de operaciones es crucial en ciencias e ingeniería. Por ejemplo, en Tecnología en Gestión de Procesos de Repostería y Panificación, al calcular costos de ingredientes, áreas de moldes (que involucran potencias) y ajustes proporcionales (que involucran raíces), seguir este orden evita errores costosos en el presupuesto.
+                </p>
             </div>
         </div>
         
-        <!-- Elementos decorativos -->
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="pattern-grid"></div>
+        <!-- Elementos decorativos en un contenedor separado -->
+        <div class="decorative-elements">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="pattern-grid"></div>
+        </div>
         
         <!-- Pie de página -->
         <div class="footer">
