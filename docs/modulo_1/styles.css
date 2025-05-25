@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Montserrat', sans-serif;
+    /* Eliminamos overflow: hidden para permitir scroll */
+}
+
+.slide {
+    width: 1280px; /* Ancho fijo para mantener el diseño de "diapositiva" */
+    min-height: 720px; /* Altura mínima para el contenido de la "diapositiva" */
+    position: relative; /* Para posicionar elementos internos de forma absoluta si es necesario */
+    background-color: #ffffff;
+    /* Eliminamos overflow: hidden para permitir scroll si el contenido excede */
+    /* Usamos flexbox para estructura vertical y centrado */
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; /* Centra la diapositiva en la página */
+}
+
+.header-bar {
+    position: relative; /* Cambiado de absolute a relative para flujo normal */
+    width: 100%;
+    height: 160px; /* Altura fija para la barra de encabezado */
+    background-color: #172139;
+    z-index: 1; /* Para estar por encima de otros elementos si se superponen */
+}
+
+.title-content-container {
+    /* Modificamos de position: absolute a position: relative para flujo normal */
+    position: relative;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    padding-left: 4rem; /* Espaciado interno izquierdo */
+    padding-right: 4rem; /* Espaciado interno derecho */
+    padding-top: 2rem; /* Ajustamos el padding-top */
+    padding-bottom: 2rem; /* Añadimos padding-bottom */
+    box-sizing: border-box; /* El padding no aumenta el tamaño total */
+    z-index: 2; /* Por encima de la barra de encabezado si es necesario */
+    text-align: center; /* Centra el texto */
+    flex: 1 1 auto; /* Permite que este contenedor crezca y ocupe el espacio disponible */
+}
+
+h1 {
+    color: #172139; /* Color del título principal */
+    font-size: 4.5rem; /* Tamaño de fuente grande */
+    line-height: 1; /* Altura de línea compacta */
+    font-weight: 700; /* Peso de la fuente (negrita) */
+    margin-bottom: 0; /* Sin margen inferior */
+}
+
+.accent-line {
+    height: 6px; /* Altura de la línea decorativa */
+    width: 320px; /* Ancho de la línea decorativa */
+    margin-top: 1.5rem; /* Margen superior */
+    margin-bottom: 1rem; /* Margen inferior */
+    background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%); /* Fondo con gradiente */
+}
+
+h2 {
+    color: #195855; /* Color del subtítulo */
+    font-size: 2.25rem; /* Tamaño de fuente del subtítulo */
+    line-height: 2.5rem; /* Altura de línea del subtítulo */
+    font-weight: 500; /* Peso de la fuente (medio) */
+}
+
+.shape {
+    position: absolute; /* Posicionamiento absoluto respecto al contenedor .slide */
+    border-radius: 50%; /* Hace que el div sea un círculo */
+    opacity: 0.2; /* Opacidad para efecto sutil */
+    z-index: 0; /* Detrás del contenido principal */
+    pointer-events: none; /* Para que no interfiera con el scroll o interacciones */
+}
+
+.shape-1 {
+    width: 180px;
+    height: 180px;
+    background-color: #00AEAC; /* Color del círculo */
+    top: 450px; /* Posición desde la parte superior */
+    left: -60px; /* Posición desde la izquierda (parcialmente fuera) */
+}
+
+.shape-2 {
+    width: 120px;
+    height: 120px;
+    background-color: #FBBB28; /* Color del círculo */
+    top: 180px; /* Posición desde la parte superior */
+    right: -40px; /* Posición desde la derecha (parcialmente fuera) */
+}
+
+.pattern-grid {
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 0; /* Alineado al fondo */
+    right: 0; /* Alineado a la derecha */
+    width: 300px;
+    height: 300px;
+    opacity: 0.1; /* Opacidad para efecto sutil */
+    background-image: linear-gradient(#172139 1px, transparent 1px), 
+                      linear-gradient(90deg, #172139 1px, transparent 1px); /* Patrón de rejilla */
+    background-size: 20px 20px; /* Tamaño de las celdas de la rejilla */
+    transform: rotate(15deg); /* Rotación ligera */
+    z-index: 0; /* Detrás del contenido principal */
+    pointer-events: none; /* No interfiere con interacciones */
+}
+
+.floating-numbers {
+    position: absolute; /* Posicionamiento absoluto */
+    font-weight: bold; /* Texto en negrita */
+    opacity: 0.5; /* Opacidad media */
+    z-index: 1; /* Por encima de elementos con z-index 0 */
+    animation: float 10s infinite ease-in-out; /* Animación de flotación */
+    pointer-events: none; /* No interfiere con interacciones */
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); } /* Estado inicial y final de la animación */
+    50% { transform: translateY(-20px); } /* Estado intermedio (movimiento hacia arriba) */
+}
+
+.math-symbol {
+    position: absolute; /* Posicionamiento absoluto */
+    font-weight: bold; /* Texto en negrita */
+    opacity: 0.1; /* Opacidad muy sutil */
+    color: #195855; /* Color del símbolo */
+    z-index: 0; /* Detrás del contenido principal */
+    pointer-events: none; /* No interfiere con interacciones */
+}
+
+.module-badge {
+    position: absolute; /* Posicionamiento absoluto respecto a .header-bar */
+    top: 20px; /* Espacio desde la parte superior de .header-bar */
+    left: 0; /* Alineado a la izquierda */
+    display: inline-block; /* Para que el padding funcione correctamente */
+    background-color: #172139; /* Color de fondo igual al header para integrarse */
+    color: white; /* Color del texto */
+    padding: 0.5rem 1.5rem 0.5rem 2rem; /* Espaciado interno */
+    font-weight: 500; /* Peso de la fuente */
+    font-size: 1.25rem; /* Tamaño de fuente */
+    border-top-right-radius: 9999px; /* Borde redondeado derecho superior */
+    border-bottom-right-radius: 9999px; /* Borde redondeado derecho inferior */
+    z-index: 2; /* Por encima de .header-bar si es necesario */
+}
+
+.footer {
+    width: 100%; /* Ocupa todo el ancho */
+    display: flex;
+    align-items: center; /* Centra los íconos verticalmente */
+    justify-content: flex-start; /* Alineado a la izquierda como los iconos originales */
+    margin-top: 40px; /* Margen superior para separarlo del contenido */
+    padding-bottom: 20px; /* Espaciado inferior */
+    padding-left: 4rem; /* Espaciado izquierdo, igual que .title-content-container */
+    position: relative; /* No usamos absolute ni fixed para que fluya con el contenido */
+    z-index: 1; /* Para asegurar que esté visible */
+}
+
+.footer i {
+    color: #108181; /* Color de los íconos */
+    font-size: 3rem; /* Tamaño de los íconos */
+    margin-right: 1.5rem; /* Espacio entre íconos */
+}
+
+/* Contenedor principal para el contenido central */
+.main-content {
+    flex: 1 1 auto; /* Permite que este contenedor crezca y ocupe el espacio vertical restante */
+    display: flex; /* Habilita flexbox para sus hijos */
+    flex-direction: column; /* Organiza los hijos en columna */
+    position: relative; /* Necesario para los elementos decorativos posicionados absolutamente */
+    min-height: 400px; /* Altura mínima para asegurar espacio para el contenido y decoraciones */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 1280px) { /* Ajustes para pantallas más pequeñas que el ancho de la "diapositiva" */
+    .slide {
+        width: 100%; /* La diapositiva ocupa todo el ancho disponible */
+        min-height: auto; /* La altura se ajusta al contenido */
+    }
+    h1 {
+        font-size: 3rem; /* Reduce el tamaño del título principal */
+        line-height: 1.1;
+    }
+    h2 {
+        font-size: 1.75rem; /* Reduce el tamaño del subtítulo */
+        line-height: 1.2;
+    }
+    .accent-line {
+        width: 250px; /* Reduce el ancho de la línea decorativa */
+    }
+    .title-content-container {
+        padding-left: 2rem; /* Reduce el padding lateral */
+        padding-right: 2rem;
+    }
+    .floating-numbers {
+        opacity: 0.3; /* Reduce la opacidad de los números flotantes */
+    }
+    .math-symbol {
+        opacity: 0.05; /* Reduce la opacidad de los símbolos matemáticos */
+    }
+    .footer {
+        padding-left: 2rem; /* Reduce el padding izquierdo del pie de página */
+    }
+}
+
+@media (max-width: 768px) { /* Ajustes para pantallas pequeñas (móviles) */
+    h1 {
+        font-size: 2.25rem; /* Reduce aún más el tamaño del título */
+    }
+    h2 {
+        font-size: 1.25rem; /* Reduce aún más el tamaño del subtítulo */
+    }
+    .accent-line {
+        width: 180px; /* Reduce aún más el ancho de la línea */
+        margin-top: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    .header-bar {
+        height: 100px; /* Reduce la altura de la barra de encabezado */
+    }
+    .title-content-container {
+        padding-left: 1rem; /* Reduce más el padding lateral */
+        padding-right: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .shape-1 {
+        width: 90px;
+        height: 90px;
+        top: 350px; /* Ajusta posición */
+        left: -30px;
+    }
+    .shape-2 {
+        width: 90px;
+        height: 90px;
+        top: 120px; /* Ajusta posición */
+        right: -20px;
+    }
+    .pattern-grid {
+        width: 150px;
+        height: 150px;
+    }
+    .floating-numbers, .math-symbol {
+        display: none; /* Oculta elementos decorativos complejos en pantallas muy pequeñas */
+    }
+    .module-badge {
+        font-size: 0.875rem; /* Reduce tamaño de fuente del badge */
+        padding: 0.25rem 1rem 0.25rem 1.5rem; /* Ajusta padding del badge */
+        top: 10px; /* Ajusta posición del badge */
+    }
+    .footer {
+        justify-content: center; /* Centra los íconos del pie de página */
+        padding-left: 1rem; /* Ajusta padding */
+        padding-right: 1rem;
+        margin-top: 20px;
+    }
+    .footer i {
+        font-size: 2rem; /* Reduce tamaño de los íconos */
+        margin-right: 0.5rem !important; /* Reduce espacio entre íconos */
+    }
+}
