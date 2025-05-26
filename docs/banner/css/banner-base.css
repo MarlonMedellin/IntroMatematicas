@@ -1,0 +1,213 @@
+/*
+ * banner-base.css
+ * Estilos base para banners educativos de matemáticas
+ * Header ajustado a 60px
+ */
+
+@import 'banner-variables.css';
+
+/* RESET Y BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-white);
+  overflow-x: hidden;
+}
+
+/* BANNER CONTAINER */
+.banner {
+  width: var(--banner-width);
+  min-height: var(--banner-height);
+  position: relative;
+  background: var(--color-white);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* HEADER BAR - 60PX */
+.banner__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);        /* 60px */
+  background-color: var(--color-primary);
+  z-index: var(--z-header);
+}
+
+/* CONTENT CONTAINER */
+.banner__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--header-height) 2rem 2rem;  /* 60px top padding */
+  box-sizing: border-box;
+  z-index: var(--z-content);
+  text-align: center;
+}
+
+/* TYPOGRAPHY */
+.banner__title {
+  color: var(--color-primary);
+  font-size: var(--font-size-title);
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-family);
+}
+
+.banner__accent-line {
+  height: 3px;
+  width: 160px;
+  background: var(--gradient-accent);
+  margin-bottom: 0.5rem;
+  border-radius: 1.5px;
+}
+
+.banner__subtitle {
+  color: var(--color-secondary);
+  font-size: var(--font-size-subtitle);
+  line-height: 1.25rem;
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+}
+
+/* DECORATIONS CONTAINER */
+.banner__decorations {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-decorative);
+  pointer-events: none;
+}
+
+/* GEOMETRIC SHAPES */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: var(--opacity-decorative);
+  z-index: var(--z-shapes);
+}
+
+.shape--small { width: 60px; height: 60px; }
+.shape--medium { width: 75px; height: 75px; }
+.shape--large { width: 90px; height: 90px; }
+
+.shape--primary { background-color: var(--color-teal); }
+.shape--accent { background-color: var(--color-accent-3); }
+
+.shape--pos-1 { top: 225px; left: -30px; }
+.shape--pos-2 { top: 90px; right: -20px; }
+
+/* PATTERN GRID */
+.pattern-grid {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  opacity: var(--opacity-pattern);
+  background-image: var(--gradient-pattern);
+  background-size: 10px 10px;
+  transform: rotate(15deg);
+  z-index: var(--z-background);
+}
+
+/* FLOATING ELEMENTS */
+.floating-element {
+  position: absolute;
+  font-weight: var(--font-weight-bold);
+  opacity: var(--opacity-floating);
+  animation: var(--animation-float);
+  z-index: var(--z-floating);
+  font-family: var(--font-family);
+}
+
+.floating-element--small { font-size: var(--font-size-floating-sm); }
+.floating-element--medium { font-size: var(--font-size-floating-md); }
+.floating-element--large { font-size: var(--font-size-floating-lg); }
+
+.floating-element--pos-1 { top: 100px; left: 50px; animation-delay: 0s; }
+.floating-element--pos-2 { top: 175px; right: 75px; animation-delay: 2s; }
+.floating-element--pos-3 { top: 250px; left: 100px; animation-delay: 4s; }
+.floating-element--pos-4 { top: 125px; right: 25px; animation-delay: 6s; }
+
+.floating-element--color-1 { color: var(--color-accent-1); }
+.floating-element--color-2 { color: var(--color-accent-2); }
+.floating-element--color-3 { color: var(--color-accent-3); }
+.floating-element--color-teal { color: var(--color-teal); }
+.floating-element--color-teal-dark { color: var(--color-teal-dark); }
+
+/* MATH SYMBOLS */
+.math-symbol {
+  position: absolute;
+  font-weight: var(--font-weight-bold);
+  opacity: var(--opacity-symbols);
+  color: var(--color-secondary);
+  z-index: var(--z-background);
+  font-family: var(--font-family);
+}
+
+.math-symbol--small { font-size: var(--font-size-symbol-sm); }
+.math-symbol--medium { font-size: var(--font-size-symbol-md); }
+.math-symbol--large { font-size: var(--font-size-symbol-lg); }
+
+.math-symbol--pos-1 { top: 150px; left: 25px; }
+.math-symbol--pos-2 { top: 200px; right: 50px; }
+.math-symbol--pos-3 { top: 75px; left: 150px; }
+
+/* FOOTER ICONS */
+.banner__footer {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  z-index: var(--z-footer);
+}
+
+.banner__footer i {
+  color: var(--color-teal-dark);
+  font-size: var(--font-size-icon);
+  margin-right: 0.75rem;
+}
+
+.banner__footer i:last-child {
+  margin-right: 0;
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-10px) translateZ(0); }
+}
+
+.floating-element {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-element { animation: none; }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .banner { width: 100%; max-width: 640px; min-height: 280px; }
+  .banner__title { font-size: 1.75rem; padding: 0 1rem; }
+  .banner__content { padding: 50px 1rem 1rem; }  /* Ajustado para 60px header */
+}
+
+@media (max-width: 480px) {
+  .banner { min-height: 240px; }
+  .banner__header { height: 45px; }              /* Reducido proporcionalmente */
+  .banner__title { font-size: 1.5rem; }
+  .banner__content { padding: 45px 1rem 1rem; }  /* Ajustado a 45px */
+}

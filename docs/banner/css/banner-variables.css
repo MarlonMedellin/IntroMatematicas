@@ -1,0 +1,74 @@
+/* 
+ * banner-variables.css
+ * Variables CSS para sistema de banners educativos de matemáticas
+ * Header ajustado a 60px
+ */
+
+:root {
+  /* COLORES PRINCIPALES */
+  --color-primary: #172139;           /* Azul oscuro - headers, títulos */
+  --color-secondary: #195855;         /* Verde azulado - subtítulos */
+  --color-white: #ffffff;             /* Fondo principal */
+  
+  /* Colores de acento */
+  --color-accent-1: #B4C42C;          /* Verde lima */
+  --color-accent-2: #E9901E;          /* Naranja */
+  --color-accent-3: #FBBB28;          /* Amarillo */
+  
+  /* Colores de apoyo */
+  --color-teal: #00AEAC;              /* Teal claro */
+  --color-teal-dark: #108181;         /* Teal oscuro */
+  
+  /* DIMENSIONES */
+  --banner-width: 640px;
+  --banner-height: 360px;
+  --header-height: 60px;              /* AJUSTADO: Era 80px, ahora 60px */
+  --header-height-compact: 40px;
+  
+  /* TIPOGRAFÍA */
+  --font-family: 'Montserrat', sans-serif;
+  --font-size-title: 2.25rem;
+  --font-size-subtitle: 1.125rem;
+  --font-size-floating-sm: 1.25rem;
+  --font-size-floating-md: 1.5rem;
+  --font-size-floating-lg: 2rem;
+  --font-size-symbol-sm: 2.5rem;
+  --font-size-symbol-md: 3rem;
+  --font-size-symbol-lg: 4rem;
+  --font-size-icon: 1.5rem;
+  
+  /* PESOS DE FUENTE */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Z-INDEX SYSTEM */
+  --z-background: 0;
+  --z-decorative: 1;
+  --z-shapes: 2;
+  --z-header: 10;
+  --z-content: 20;
+  --z-floating: 15;
+  --z-footer: 20;
+  
+  /* OPACIDADES */
+  --opacity-decorative: 0.2;
+  --opacity-floating: 0.5;
+  --opacity-symbols: 0.1;
+  --opacity-pattern: 0.1;
+  
+  /* ANIMACIONES */
+  --animation-float: float 10s infinite ease-in-out;
+  
+  /* GRADIENTES */
+  --gradient-accent: linear-gradient(90deg, 
+    var(--color-accent-1) 0%, 
+    var(--color-accent-2) 50%, 
+    var(--color-accent-3) 100%);
+  
+  --gradient-pattern: 
+    linear-gradient(var(--color-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-primary) 1px, transparent 1px);
+}
