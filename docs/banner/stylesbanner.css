@@ -56,8 +56,19 @@ body {
     align-items: center;
     padding: 80px 2rem 2rem 2rem;
     box-sizing: border-box;
-    z-index: 2;
+    z-index: 1000; /* Asegura que esté encima de todos los elementos */
     text-align: center;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* En pantallas pequeñas, refuerza el z-index y agrega fondo si es necesario */
+@media (max-width: 600px) {
+    .title-content-container {
+        z-index: 2000;
+        background: rgba(255,255,255,0.95); /* Opcional: fondo blanco semitransparente para mejor legibilidad */
+        padding: 40px 0.5rem 0.5rem 0.5rem;
+    }
 }
 
 .main-title {
