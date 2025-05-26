@@ -1,41 +1,69 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Números Primos, MCM y MCD</title>
-    <link rel="stylesheet" href="css/banner-base.css">
-</head>
-<body>
-    <div class="banner">
-        <!-- Header bar -->
-        <div class="banner__header"></div>
-        
-        <!-- Main content -->
-        <div class="banner__content">
-            <h1 class="banner__title">Números Primos, MCM y MCD</h1>
-            <div class="banner__accent-line"></div>
-            <p class="banner__subtitle">Conceptos fundamentales de teoría de números</p>
-        </div>
-        
-        <!-- Decorative elements -->
-        <div class="banner__decorations">
-            <!-- Geometric shapes -->
-            <div class="shape shape--small shape--primary shape--pos-1"></div>
-            <div class="shape shape--medium shape--accent shape--pos-2"></div>
-            
-            <!-- Floating numbers -->
-            <div class="floating-element floating-element--small floating-element--color-1 floating-element--pos-1">2</div>
-            <div class="floating-element floating-element--medium floating-element--color-2 floating-element--pos-2">3</div>
-            <div class="floating-element floating-element--small floating-element--color-3 floating-element--pos-3">5</div>
-            
-            <!-- Math symbols -->
-            <div class="math-symbol math-symbol--small math-symbol--pos-1">∞</div>
-            <div class="math-symbol math-symbol--medium math-symbol--pos-2">÷</div>
-            
-            <!-- Pattern grid -->
-            <div class="pattern-grid"></div>
-        </div>
+<!-- SECCIÓN 1: CARGA DE DEPENDENCIAS -->
+<script>
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true;
+        }
+        elemento.onload = () => console.log(`Recurso cargado: ${url}`);
+        elemento.onerror = () => console.error(`Error al cargar: ${url}`);
+        document.head.appendChild(elemento);
+    }
+    
+    // Cargar hoja de estilos principal
+    cargarRecurso('stylesheet', 'https://profemarlon.com/banner/css/banner-base.css');
+</script>
+<!-- FIN SECCIÓN 1 -->
+
+<!-- SECCIÓN 2: CONTENIDO PRINCIPAL -->
+<div class="banner">
+    <!-- Header bar -->
+    <div class="banner__header"></div>
+    
+    <!-- Main content -->
+    <div class="banner__content">
+        <h1 class="banner__title">Números Primos, MCM y MCD</h1>
+        <div class="banner__accent-line"></div>
+        <p class="banner__subtitle">Conceptos fundamentales de teoría de números</p>
     </div>
-</body>
-</html>
+    
+    <!-- Decorative elements -->
+    <div class="banner__decorations">
+        <!-- Geometric shapes -->
+        <div class="shape shape--small shape--primary shape--pos-1"></div>
+        <div class="shape shape--medium shape--accent shape--pos-2"></div>
+        
+        <!-- Floating numbers -->
+        <div class="floating-element floating-element--small floating-element--color-1 floating-element--pos-1">2</div>
+        <div class="floating-element floating-element--medium floating-element--color-2 floating-element--pos-2">3</div>
+        <div class="floating-element floating-element--small floating-element--color-3 floating-element--pos-3">5</div>
+        
+        <!-- Math symbols -->
+        <div class="math-symbol math-symbol--small math-symbol--pos-1">∞</div>
+        <div class="math-symbol math-symbol--medium math-symbol--pos-2">÷</div>
+        
+        <!-- Pattern grid -->
+        <div class="pattern-grid"></div>
+    </div>
+</div>
+<!-- FIN SECCIÓN 2 -->
+
+<!-- SECCIÓN 3: SCRIPTS FINALES -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Banner de Números Primos cargado correctamente');
+        
+        // Verificar que los estilos se hayan cargado
+        const bannerElement = document.querySelector('.banner');
+        if (bannerElement) {
+            console.log('Elementos del banner encontrados y listos');
+        } else {
+            console.warn('No se encontraron elementos del banner');
+        }
+    });
+</script>
+<!-- FIN SECCIÓN 3 -->
