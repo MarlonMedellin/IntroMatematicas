@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 2: Descomposición en Factores Primos y MCD</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 3rem 4rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .session-badge {
+            display: inline-block;
+            background: #172139;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            margin-bottom: 2rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: slideInRight 0.8s ease-out 0.2s both;
+        }
+        
+        .title-content {
+            flex: 1;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin: 0;
+        }
+        
+        .title-line-1 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .title-line-2 {
+            margin-bottom: 1rem;
+        }
+        
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background: #FBBB28;
+            margin-bottom: 2rem;
+        }
+        
+        .title-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 15px 35px rgba(23, 33, 57, 0.3);
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        .objective-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid #195855;
+            box-shadow: 0 10px 25px rgba(23, 33, 57, 0.08);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .objective-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            border-radius: 50%;
+            opacity: 0.05;
+            transform: translate(50%, -50%);
+        }
+        
+        .objective-title {
+            color: #172139;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .objective-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .objective-text {
+            color: #195855;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .key-concepts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+        
+        .concept-card {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(23, 33, 57, 0.3);
+        }
+        
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+        }
+        
+        .concept-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .concept-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #FBBB28;
+        }
+        
+        .concept-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin: 0;
+        }
+        
+        .concept-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .decorative-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            font-weight: 700;
+            opacity: 0.04;
+            animation: floatSlow 20s infinite ease-in-out;
+        }
+        
+        .math-symbol-1 {
+            font-size: 8rem;
+            color: #172139;
+            top: 5%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+        
+        .math-symbol-2 {
+            font-size: 6rem;
+            color: #B4C42C;
+            bottom: 10%;
+            left: 3%;
+            animation-delay: 10s;
+        }
+        
+        .factor-tree {
+            position: absolute;
+            bottom: 15%;
+            right: 8%;
+            font-size: 1.5rem;
+            color: #E9901E;
+            opacity: 0.1;
+            animation: pulse 3s infinite ease-in-out;
+            animation-delay: 5s;
+        }
+        
+        .prime-numbers {
+            position: absolute;
+            top: 20%;
+            left: 8%;
+            font-size: 2rem;
+            color: #00AEAC;
+            opacity: 0.06;
+            animation: float 15s infinite ease-in-out;
+            animation-delay: 2s;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-30px) rotate(5deg); 
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0); 
+            }
+            50% { 
+                transform: translateY(-20px); 
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide {
+                padding: 2rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+            
+            .title-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1rem;
+            }
+            
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+            
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+            
+            .key-concepts {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .title-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Decorative Background -->
+        <div class="decorative-bg">
+            <div class="floating-element math-symbol-1">×</div>
+            <div class="floating-element math-symbol-2">÷</div>
+            <div class="factor-tree">
+                120<br>
+                ↙ ↘<br>
+                2  60<br>
+                   ↙ ↘<br>
+                   2  30
+            </div>
+            <div class="prime-numbers">2·3·5·7·11</div>
+        </div>
+        
+        <!-- Session Badge -->
+        <div class="session-badge">Sesión 2</div>
+        
+        <!-- Title Container -->
+        <div class="title-container">
+            <div class="title-content">
+                <h1 class="main-title title-line-1">Descomposición en</h1>
+                <h1 class="main-title title-line-2">Factores Primos y MCD</h1>
+                <div class="accent-line"></div>
+            </div>
+            <div class="title-icon">
+                <i class="fas fa-sitemap"></i>
+            </div>
+        </div>
+        
+        <!-- Objective Section -->
+        <div class="objective-section">
+            <div class="objective-title">
+                <div class="objective-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                Objetivo de Aprendizaje
+            </div>
+            <p class="objective-text">
+                Realizar la <strong>descomposición de números en sus factores primos</strong> y calcular el 
+                <strong>Máximo Común Divisor (MCD)</strong> de dos o más números, aplicando estos conceptos 
+                para simplificar problemas y optimizar recursos en contextos profesionales y cotidianos.
+            </p>
+        </div>
+        
+        <!-- Key Concepts -->
+        <div class="key-concepts">
+            <div class="concept-card">
+                <div class="concept-header">
+                    <div class="concept-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="concept-title">Descomposición en Factores Primos</h3>
+                </div>
+                <p class="concept-description">
+                    Expresar cualquier número compuesto como producto único de números primos. 
+                    <strong>Ejemplo:</strong> 420 = 2² × 3 × 5 × 7
+                </p>
+            </div>
+            
+            <div class="concept-card">
+                <div class="concept-header">
+                    <div class="concept-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="concept-title">Máximo Común Divisor (MCD)</h3>
+                </div>
+                <p class="concept-description">
+                    El mayor número que divide exactamente a dos o más números. 
+                    <strong>Ejemplo:</strong> MCD(20, 30) = 10
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

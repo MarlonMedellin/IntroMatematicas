@@ -4,74 +4,732 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Introducción a las Matemáticas</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; padding: 2rem; }
-    nav ul { list-style: none; padding: 0; }
-    nav li { margin: 0.5rem 0; }
-    nav a { text-decoration: none; color: #0366d6; }
-    nav a:hover { text-decoration: underline; }
-    nav ul ul { padding-left: 1.5rem; margin-top: 0.3rem; margin-bottom: 0.7rem; }
-    nav strong { color: #333; font-size: 1.1rem; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: #f1f1f1;
+    }
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 2rem 0;
+      background: #f1f1f1;
+      background-image: linear-gradient(
+          90deg,
+          transparent 50px,
+          #ffb4b8 50px,
+          #ffb4b8 52px,
+          transparent 52px
+        ),
+        linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
+      background-size: 100% 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .modulo-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem 0;
+    }
+    .modulo-title {
+      color: #1565c0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+    .cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: flex-start;
+    }
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 16px 0 rgba(21,101,192,0.08), 0 1.5px 6px 0 rgba(21,101,192,0.10);
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 24px 0 rgba(21,101,192,0.16), 0 3px 12px 0 rgba(21,101,192,0.18);
+    }
+    .card-header {
+      height: 110px;
+      background: linear-gradient(90deg, #1976d2 60%, #64b5f6 100%);
+    }
+    .card-content {
+      padding: 1.2rem 1.2rem 0.5rem 1.2rem;
+      flex: 1;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a237e;
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.98rem;
+      color: #37474f;
+      margin-bottom: 0.5rem;
+      min-height: 48px;
+    }
+    .card-footer {
+      padding: 0.8rem 1.2rem 1.2rem 1.2rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .card-btn {
+      background: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px 0 rgba(25,118,210,0.10);
+    }
+    .card-btn:hover {
+      background: #0d47a1;
+    }
+    @media (max-width: 900px) {
+      .cards-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 95vw;
+        max-width: 340px;
+      }
+      .modulo-section {
+        padding: 0.5rem 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Bienvenid@ a IntroMatemáticas</h1>
-  <nav>
-    <ul>
-      <li>
-        <strong>Módulo 1</strong>
-        <ul>
-          <li><a href="modulo_1/seccion1/index.html">Sección 1</a></li>
-          <li><a href="modulo_1/seccion2/index.html">Sección 2</a></li>
-          <li><a href="modulo_1/seccion3/index.html">Sección 3</a></li>
-        </ul>
-      </li>
-      <li>
-        <strong>Módulo 2</strong>
-        <ul>
-          <li><a href="modulo_2/seccion_1/index.html">Sección 1</a></li>
-          <li><a href="modulo_2/seccion_2/index.html">Sección 2</a></li>
-          <li><a href="modulo_2/seccion_3/index.html">Sección 3</a></li>
-          <li><a href="modulo_2/seccion_4/index.html">Sección 4</a></li>
-        </ul>
-      </li>
-      <li>
-        <strong>Módulo 3</strong>
-        <ul>
-          <li><a href="modulo_3/seccion_1/index.html">Sección 1</a></li>
-          <li><a href="modulo_3/seccion_2/index.html">Sección 2</a></li>
-          <li><a href="modulo_3/seccion_3/index.html">Sección 3</a></li>
-          <li><a href="modulo_3/seccion_4/index.html">Sección 4</a></li>
-        </ul>
-      </li>
-      <li>
-        <strong>Módulo 4</strong>
-        <ul>
-          <li><a href="modulo_4/seccion_1/index.html">Sección 1</a></li>
-          <li><a href="modulo_4/seccion_2/index.html">Sección 2</a></li>
-          <li><a href="modulo_4/seccion_3/index.html">Sección 3</a></li>
-          <li><a href="modulo_4/seccion_4/index.html">Sección 4</a></li>
-        </ul>
-      </li>
-      <li>
-        <strong>Módulo 5</strong>
-        <ul>
-          <li><a href="modulo_5/seccion_1/index.html">Sección 1</a></li>
-          <li><a href="modulo_5/seccion_2/index.html">Sección 2</a></li>
-          <li><a href="modulo_5/seccion_3/index.html">Sección 3</a></li>
-          <li><a href="modulo_5/seccion_4/index.html">Sección 4</a></li>
-        </ul>
-      </li>
-      <li>
-        <strong>Módulo 6</strong>
-        <ul>
-          <li><a href="modulo_6/seccion_1/index.html">Sección 1</a></li>
-          <li><a href="modulo_6/seccion_2/index.html">Sección 2</a></li>
-          <li><a href="modulo_6/seccion_3/index.html">Sección 3</a></li>
-          <li><a href="modulo_6/seccion_4/index.html">Sección 4</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+  <div class="container">
+    <h1>Bienvenid@ a IntroMatemáticas</h1>
+
+    <!-- Módulo 1 -->
+    <section class="modulo-section">
+      <div class="modulo-title">Módulo 1 - Sistema de los Números Enteros</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 1</div>
+            <div class="card-desc">Introducción al conjunto de los números enteros y su importancia en las matemáticas básicas.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva1.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 2</div>
+            <div class="card-desc">Definición y ejemplos de números enteros, positivos, negativos y el cero.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva2.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 3</div>
+            <div class="card-desc">Reglas y ejemplos para sumar y restar números enteros correctamente.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva3.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 4</div>
+            <div class="card-desc">Cómo multiplicar y dividir números enteros, con ejemplos prácticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva4.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 5</div>
+            <div class="card-desc">Propiedades fundamentales de la suma y el producto en los números enteros.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva5.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 6</div>
+            <div class="card-desc">Uso de paréntesis y reglas de prioridad en operaciones con enteros.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva6.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 7</div>
+            <div class="card-desc">Introducción a los polinomios aritméticos y su relación con los números enteros.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva7.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 8</div>
+            <div class="card-desc">Resumen final y referencias para profundizar en el tema de los números enteros.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_1/mod1_diapositiva8.html">Ver Diapositiva</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 2 -->
+    <section class="modulo-section">
+      <div class="modulo-title">Módulo 2 - Números Primos, MCM y MCD</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 1</div>
+            <div class="card-desc">Presentación del módulo y su relevancia en la resolución de problemas matemáticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva1.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 2</div>
+            <div class="card-desc">Introducción a los números primos y reglas para determinar divisibilidad.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva2.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 3</div>
+            <div class="card-desc">Diferencias entre números primos y compuestos, con ejemplos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva3.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 4</div>
+            <div class="card-desc">Reglas prácticas para saber si un número es divisible por otro.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva4.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 5</div>
+            <div class="card-desc">Cómo descomponer números en factores primos y hallar el MCD.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva5.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 6</div>
+            <div class="card-desc">Métodos para descomponer números en sus factores primos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva6.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 7</div>
+            <div class="card-desc">Definición y cálculo del MCD entre dos o más números.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva7.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 8</div>
+            <div class="card-desc">Aplicación del MCM en la resolución de problemas matemáticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva8.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 9</div>
+            <div class="card-desc">Cómo calcular el MCM y su utilidad en operaciones matemáticas.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva9.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 10</div>
+            <div class="card-desc">Ejemplos y aplicaciones reales de los conceptos vistos en el módulo.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_2/mod2_diapositiva10.html">Ver Diapositiva</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 3 -->
+    <section class="modulo-section">
+      <div class="modulo-title">Módulo 3 - Sistema de los Números Racionales</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 1</div>
+            <div class="card-desc">Introducción al sistema de los números racionales y su importancia.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva1.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 2</div>
+            <div class="card-desc">Repaso de la descomposición en factores primos y el MCD en números racionales.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva2.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 3</div>
+            <div class="card-desc">Qué son los números racionales y cómo se representan.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva3.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 4</div>
+            <div class="card-desc">Clasificación de fracciones: propias, impropias y mixtas.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva4.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 5</div>
+            <div class="card-desc">Cómo simplificar y ampliar fracciones para obtener equivalentes.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva5.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 6</div>
+            <div class="card-desc">Métodos para sumar y restar fracciones y números racionales.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva6.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 7</div>
+            <div class="card-desc">Reglas y ejemplos para multiplicar y dividir fracciones.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva7.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 8</div>
+            <div class="card-desc">Propiedades clave y aplicaciones prácticas de los números racionales.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_3/mod3_diapositiva8.html">Ver Diapositiva</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 4 -->
+    <section class="modulo-section">
+      <div class="modulo-title">Módulo 4 - Razones, Proporciones y Regla de Tres</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 1</div>
+            <div class="card-desc">Introducción a las razones, proporciones y la regla de tres en matemáticas.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva1.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 2</div>
+            <div class="card-desc">Definición y ejemplos de razones y proporciones entre cantidades.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva2.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 3</div>
+            <div class="card-desc">Cómo calcular y entender la razón entre dos cantidades.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva3.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 4</div>
+            <div class="card-desc">Explicación de proporciones y su uso en problemas matemáticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva4.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 5</div>
+            <div class="card-desc">Introducción a la regla de tres simple y su aplicación.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva5.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 6</div>
+            <div class="card-desc">Cómo resolver problemas con la regla de tres simple directa.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva6.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 7</div>
+            <div class="card-desc">Aplicación de la regla de tres simple inversa en ejercicios prácticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva7.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 8</div>
+            <div class="card-desc">Uso de la regla de tres para calcular porcentajes y repartir cantidades.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva8.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 9</div>
+            <div class="card-desc">Cómo calcular porcentajes, aumentos y descuentos en problemas reales.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva9.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 10</div>
+            <div class="card-desc">Métodos para repartir cantidades de forma proporcional.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva10.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 11</div>
+            <div class="card-desc">Introducción a la regla de tres compuesta y su utilidad.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva11.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 12</div>
+            <div class="card-desc">Resolución de problemas con la regla de tres compuesta.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_4/mod4_diapositiva12.html">Ver Diapositiva</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 5 -->
+    <section class="modulo-section">
+      <div class="modulo-title">Módulo 5 - Sistemas de Medida</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 1</div>
+            <div class="card-desc">Presentación del módulo y su enfoque en sistemas de medida y conversiones.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva1.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 2</div>
+            <div class="card-desc">Breve introducción a los sistemas de medida y su importancia.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva2.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 3</div>
+            <div class="card-desc">Cómo utilizar factores de conversión para cambiar entre unidades.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva3.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 4</div>
+            <div class="card-desc">Descripción del SI y sus unidades fundamentales y derivadas.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva4.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 5</div>
+            <div class="card-desc">Ejemplos de uso del SI en diferentes programas académicos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva5.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 6</div>
+            <div class="card-desc">Introducción al sistema imperial y sus principales unidades.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva6.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 7</div>
+            <div class="card-desc">Cómo convertir unidades entre el sistema internacional y el imperial.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva7.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 8</div>
+            <div class="card-desc">Ejemplos de conversiones y aplicaciones en contextos académicos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_5/mod5_diapositiva8.html">Ver Diapositiva</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 6 -->
+    <section class="modulo-section">
+      <div class="modulo-title">Módulo 6 - Potenciación y Radicación</div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 1</div>
+            <div class="card-desc">Presentación del módulo sobre potenciación y radicación en matemáticas.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva1.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 2</div>
+            <div class="card-desc">Conceptos básicos y relevancia de la potenciación y radicación.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva2.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 3</div>
+            <div class="card-desc">Definición y ejemplos de potenciación en números reales.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva3.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 4</div>
+            <div class="card-desc">Principales propiedades y reglas de la potenciación.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva4.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 5</div>
+            <div class="card-desc">Ejemplos prácticos de potenciación en problemas matemáticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva5.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 6</div>
+            <div class="card-desc">Definición y ejemplos de radicación y raíces.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva6.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 7</div>
+            <div class="card-desc">Contenido específico de la séptima diapositiva del módulo.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva7.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 8</div>
+            <div class="card-desc">Introducción a los números irracionales y su relación con la radicación.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva8.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 9</div>
+            <div class="card-desc">Reglas de prioridad en operaciones con potencias y raíces.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva9.html">Ver Diapositiva</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-content">
+            <div class="card-title">Ver diapositiva 10</div>
+            <div class="card-desc">Aplicación de la potenciación y radicación en polinomios aritméticos.</div>
+          </div>
+          <div class="card-footer">
+            <a class="card-btn" href="modulo_6/mod6_diapositiva10.html">Ver Diapositiva</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>

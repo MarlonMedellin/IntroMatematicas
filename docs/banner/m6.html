@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potenciación y Radicación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+        }
+        
+        .slide {
+            width: 640px;
+            min-height: 360px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            margin: 0 auto;
+        }
+        
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #172139;
+            z-index: 1;
+        }
+        
+        .module-badge {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            background-color: #172139;
+            color: white;
+            padding: 0.25rem 0.75rem 0.25rem 1rem;
+            font-weight: 500;
+            font-size: 0.75rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            z-index: 2;
+        }
+        
+        .title-content-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 2rem 2rem 2rem;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-size: 2.25rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .accent-line {
+            height: 3px;
+            width: 160px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0.75rem 0 0.5rem 0;
+        }
+        
+        .subtitle {
+            color: #195855;
+            font-size: 1.125rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .shape-1 {
+            width: 90px;
+            height: 90px;
+            background-color: #00AEAC;
+            top: 225px;
+            left: -30px;
+        }
+        
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            background-color: #FBBB28;
+            top: 90px;
+            right: -20px;
+        }
+        
+        .pattern-grid {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(#172139 1px, transparent 1px),
+                linear-gradient(90deg, #172139 1px, transparent 1px);
+            background-size: 10px 10px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+        
+        .floating-numbers {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .number-1 {
+            font-size: 1.5rem;
+            color: #B4C42C;
+            top: 100px;
+            left: 75px;
+            animation-delay: 0s;
+        }
+        
+        .number-2 {
+            font-size: 1.75rem;
+            color: #00AEAC;
+            top: 150px;
+            right: 100px;
+            animation-delay: -3s;
+        }
+        
+        .number-3 {
+            font-size: 1.25rem;
+            color: #E9901E;
+            top: 225px;
+            left: 200px;
+            animation-delay: -5s;
+        }
+        
+        .number-4 {
+            font-size: 1.5rem;
+            color: #195855;
+            top: 75px;
+            right: 175px;
+            animation-delay: -2s;
+        }
+        
+        .math-symbol {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.1;
+            color: #195855;
+            z-index: 0;
+        }
+        
+        .symbol-1 {
+            font-size: 4.5rem;
+            top: 40%;
+            left: 5%;
+        }
+        
+        .symbol-2 {
+            font-size: 4rem;
+            top: 30%;
+            right: 10%;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        .footer i {
+            color: #108181;
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+        
+        .footer i:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Barra de encabezado -->
+        <div class="header-bar"></div>
+        
+        <!-- Contenedor principal del título -->
+        <div class="title-content-container">
+            <h1 class="main-title">Potenciación y Radicación</h1>
+            <div class="accent-line"></div>
+            <h2 class="subtitle">Introductorio de Matemáticas Básicas</h2>
+        </div>
+        
+        <!-- Elementos decorativos -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="pattern-grid"></div>
+        
+        <!-- Números flotantes decorativos -->
+        <div class="floating-numbers number-1">2<sup>3</sup></div>
+        <div class="floating-numbers number-2">√</div>
+        <div class="floating-numbers number-3">3<sup>2</sup></div>
+        <div class="floating-numbers number-4">∛</div>
+        
+        <!-- Símbolos matemáticos de fondo -->
+        <div class="math-symbol symbol-1">^</div>
+        <div class="math-symbol symbol-2">√</div>
+        
+        <!-- Pie de página -->
+        <div class="footer">
+            <i class="fas fa-superscript" aria-hidden="true"></i>
+            <i class="fas fa-square-root-alt" aria-hidden="true"></i>
+            <i class="fas fa-calculator" aria-hidden="true"></i>
+        </div>
+    </div>
+</body>
+</html>

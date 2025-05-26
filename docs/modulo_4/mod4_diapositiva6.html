@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regla de Tres Simple Directa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 3rem;
+            overflow: hidden;
+        }
+
+        .content-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            color: #172139;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .accent-line {
+            width: 6rem;
+            height: 0.25rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin-bottom: 2rem;
+        }
+
+        .definition-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border-left: 4px solid #172139;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(23, 33, 57, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .definition-title {
+            color: #172139;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .definition-icon {
+            background-color: #B4C42C;
+            color: #ffffff;
+            padding: 0.6rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+
+        .definition-text {
+            color: #172139;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background-color: #FBBB28;
+            color: #172139;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .relationship-visual {
+            background: linear-gradient(135deg, #f0f8f0 0%, #ffffff 100%);
+            border: 3px solid #B4C42C;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .relationship-title {
+            color: #B4C42C;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .visual-arrows {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .arrow-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .arrow-up {
+            font-size: 2.5rem;
+            color: #B4C42C;
+            animation: bounce 2s infinite;
+        }
+
+        .arrow-label {
+            color: #172139;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .plus-sign {
+            font-size: 2rem;
+            color: #E9901E;
+            font-weight: 700;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .formula-section {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%);
+            border: 3px solid #195855;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .formula-title {
+            color: #195855;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .formula-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .proportion-setup {
+            background-color: #ffffff;
+            border: 2px dashed #195855;
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            color: #172139;
+            font-weight: 600;
+            min-width: 200px;
+        }
+
+        .formula-result {
+            background-color: #195855;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f0f9f0 0%, #ffffff 100%);
+            border: 3px solid #E9901E;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .example-icon {
+            background-color: #E9901E;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .example-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .problem-statement {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid #E9901E;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-text {
+            color: #172139;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .solution-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            border-left: 3px solid #B4C42C;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(180, 196, 44, 0.2);
+        }
+
+        .step-number {
+            color: #B4C42C;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-content {
+            color: #172139;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        .final-answer {
+            background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .application-card {
+            background: linear-gradient(135deg, #f8f5ff 0%, #ffffff 100%);
+            border: 3px solid #108181;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-icon {
+            background-color: #108181;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .app-title {
+            color: #108181;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .app-scenario {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 2px solid #108181;
+            color: #172139;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .app-solution {
+            background-color: #108181;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Decorative Elements */
+        .decorative-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            background-color: #195855;
+            top: 100px;
+            right: -75px;
+        }
+
+        .shape-2 {
+            width: 100px;
+            height: 100px;
+            background-color: #FBBB28;
+            bottom: 150px;
+            left: -50px;
+        }
+
+        .floating-math {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.05;
+            color: #195855;
+            z-index: 0;
+        }
+
+        .math-1 {
+            top: 200px;
+            right: 100px;
+            transform: rotate(15deg);
+        }
+
+        .math-2 {
+            bottom: 200px;
+            left: 100px;
+            transform: rotate(-20deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1280px) {
+            .content-layout {
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem 1rem;
+            }
+            
+            .content-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .formula-visual {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .decorative-shape,
+            .floating-math {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="content-layout">
+            <!-- Left Column -->
+            <div class="left-column">
+                <div>
+                    <h1 class="section-title">Regla de Tres Simple Directa</h1>
+                    <div class="accent-line"></div>
+                </div>
+
+                <div class="definition-card">
+                    <h3 class="definition-title">
+                        <div class="definition-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        ¿Cuándo usarla?
+                    </h3>
+                    <p class="definition-text">
+                        Se utiliza cuando las dos magnitudes son <span class="highlight-box">directamente proporcionales</span>. 
+                        Si una magnitud aumenta, la otra también aumenta en la misma proporción.
+                    </p>
+                </div>
+
+                <div class="relationship-visual">
+                    <h3 class="relationship-title">Relación Directa</h3>
+                    <div class="visual-arrows">
+                        <div class="arrow-group">
+                            <i class="fas fa-arrow-up arrow-up"></i>
+                            <span class="arrow-label">Magnitud A<br>aumenta</span>
+                        </div>
+                        <div class="plus-sign">⟹</div>
+                        <div class="arrow-group">
+                            <i class="fas fa-arrow-up arrow-up" style="animation-delay: 0.5s;"></i>
+                            <span class="arrow-label">Magnitud B<br>aumenta</span>
+                        </div>
+                    </div>
+                    <p style="color: #172139; font-size: 0.9rem; font-style: italic;">
+                        El cociente entre las cantidades es constante
+                    </p>
+                </div>
+
+                <div class="formula-section">
+                    <h3 class="formula-title">Planteamiento</h3>
+                    <div class="formula-visual">
+                        <div class="proportion-setup">
+                            $$a_1 \longrightarrow b_1$$<br>
+                            $$a_2 \longrightarrow x$$
+                        </div>
+                        <div style="font-size: 2rem; color: #195855;">⟹</div>
+                        <div class="formula-result">
+                            $$x = \frac{b_1 \times a_2}{a_1}$$
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <div class="example-card">
+                    <div class="example-header">
+                        <div class="example-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="example-title">Ejemplo Práctico</h3>
+                    </div>
+
+                    <div class="problem-statement">
+                        <p class="problem-text">
+                            <strong>Problema:</strong> Si 3 cuadernos cuestan $7.500, ¿cuánto costarán 5 cuadernos?
+                        </p>
+                    </div>
+
+                    <div class="solution-steps">
+                        <div class="step">
+                            <div class="step-number">PASO 1: Identificar magnitudes</div>
+                            <div class="step-content">• Cuadernos y Costo ($)<br>• Relación: Directa (más cuadernos → más costo)</div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">PASO 2: Plantear la proporción</div>
+                            <div class="step-content">3 cuadernos → $7.500<br>5 cuadernos → $x$</div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">PASO 3: Aplicar la fórmula</div>
+                            <div class="step-content">$$x = \frac{\$7.500 \times 5}{3} = \frac{\$37.500}{3}$$</div>
+                        </div>
+
+                        <div class="final-answer">
+                            <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                            Respuesta: $12.500
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-card">
+                    <div class="app-header">
+                        <div class="app-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="app-title">Aplicación: Gestión Turística</h3>
+                    </div>
+
+                    <div class="app-scenario">
+                        <strong>Escenario:</strong> Un guía turístico cobra $80.000 por un recorrido de 4 horas. 
+                        ¿Cuánto cobrará por un recorrido de 6 horas manteniendo la misma tarifa por hora?
+                    </div>
+
+                    <div class="app-solution">
+                        4 horas → $80.000 | 6 horas → $x<br>
+                        $$x = \frac{\$80.000 \times 6}{4} = \$120.000$$
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-shape shape-1"></div>
+        <div class="decorative-shape shape-2"></div>
+        <div class="floating-math math-1">∝</div>
+        <div class="floating-math math-2">×</div>
+    </div>
+</body>
+</html>

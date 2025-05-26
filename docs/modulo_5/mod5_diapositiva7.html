@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversiones entre Sistemas SI e Imperial/Inglés</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+        }
+        
+        .primary-blue { color: #172139; }
+        .secondary-blue { color: #195855; }
+        .tertiary-blue { color: #108181; }
+        .quaternary-blue { color: #00AEAC; }
+        
+        .primary-green { color: #B4C42C; }
+        .secondary-green { color: #E9901E; }
+        .tertiary-green { color: #FBBB28; }
+        
+        .bg-primary-blue { background-color: #172139; }
+        .bg-secondary-blue { background-color: #195855; }
+        .bg-tertiary-blue { background-color: #108181; }
+        .bg-quaternary-blue { background-color: #00AEAC; }
+        
+        .bg-primary-green { background-color: #B4C42C; }
+        .bg-secondary-green { background-color: #E9901E; }
+        .bg-tertiary-green { background-color: #FBBB28; }
+        
+        .main-title {
+            color: #172139;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accent-line {
+            height: 0.25rem;
+            width: 8rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+        }
+        
+        .conversion-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(23, 33, 57, 0.12);
+            transition: all 0.4s ease;
+            border-top: 4px solid;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conversion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .conversion-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(23, 33, 57, 0.18);
+        }
+        
+        .conversion-card.length { border-top-color: #E9901E; }
+        .conversion-card.mass { border-top-color: #108181; }
+        .conversion-card.volume { border-top-color: #00AEAC; }
+        
+        .factor-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 1rem;
+        }
+        
+        .factor-table th {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 0.75rem 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        .factor-table td {
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.8rem;
+        }
+        
+        .factor-table td:first-child {
+            font-weight: 600;
+            color: #172139;
+        }
+        
+        .factor-table td:last-child {
+            font-weight: 700;
+            color: #FBBB28;
+        }
+        
+        .factor-table tr:hover {
+            background-color: #f8fafc;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .example-showcase {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid;
+            position: relative;
+        }
+        
+        .example-showcase.tourism { border-left-color: #B4C42C; }
+        .example-showcase.gastronomy { border-left-color: #E9901E; }
+        .example-showcase.general { border-left-color: #108181; }
+        
+        .step-formula {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 0.75rem 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .result-highlight {
+            color: #FBBB28;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .context-tag {
+            background: #FBBB28;
+            color: #172139;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        
+        .bi-directional-arrow {
+            background: linear-gradient(45deg, #108181, #00AEAC);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.25rem;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .pulse-element {
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+        
+        .stagger-animation {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .conversion-card:nth-child(1) .stagger-animation { animation-delay: 0.1s; }
+        .conversion-card:nth-child(2) .stagger-animation { animation-delay: 0.2s; }
+        .conversion-card:nth-child(3) .stagger-animation { animation-delay: 0.3s; }
+        
+        .practical-example {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(23, 33, 57, 0.1);
+            margin-top: 1rem;
+            border-left: 4px solid;
+        }
+        
+        .practical-example.tourism { border-left-color: #B4C42C; }
+        .practical-example.gastronomy { border-left-color: #E9901E; }
+        
+        .icon-badge {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .problem-text {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 1rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide relative overflow-hidden">
+        <!-- Header -->
+        <div class="px-12 py-4">
+            <!-- Title -->
+            <div class="mb-4">
+                <h1 class="main-title">Conversiones entre</h1>
+                <h1 class="main-title">Sistemas SI e Imperial</h1>
+                <div class="accent-line"></div>
+            </div>
+            
+            <!-- Introduction with conversion arrow -->
+            <div class="text-center mb-4">
+                <div class="flex items-center justify-center bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-3">
+                    <div class="flex items-center">
+                        <span class="text-lg font-bold primary-blue mr-3">SI</span>
+                        <div class="bi-directional-arrow">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <span class="text-lg font-bold primary-blue ml-3">Imperial</span>
+                    </div>
+                    <span class="ml-4 text-sm font-semibold tertiary-green">Factores de Conversión Clave</span>
+                </div>
+            </div>
+            
+            <!-- Conversion Factors Grid -->
+            <div class="grid grid-cols-3 gap-4 mb-4">
+                <!-- Length Conversions -->
+                <div class="conversion-card length">
+                    <div class="stagger-animation">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-badge bg-secondary-green">
+                                <i class="fas fa-ruler-horizontal"></i>
+                            </div>
+                            <h3 class="text-lg font-bold primary-blue ml-3">LONGITUD</h3>
+                        </div>
+                        
+                        <div class="factor-table">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Unidad</th>
+                                        <th>≈</th>
+                                        <th>Equivalente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1 pulgada</td>
+                                        <td>=</td>
+                                        <td>2.54 cm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 pie</td>
+                                        <td>≈</td>
+                                        <td>0.3048 m</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 metro</td>
+                                        <td>≈</td>
+                                        <td>3.28 pies</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 milla</td>
+                                        <td>≈</td>
+                                        <td>1.609 km</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mass Conversions -->
+                <div class="conversion-card mass">
+                    <div class="stagger-animation">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-badge bg-tertiary-blue">
+                                <i class="fas fa-weight-hanging"></i>
+                            </div>
+                            <h3 class="text-lg font-bold primary-blue ml-3">MASA</h3>
+                        </div>
+                        
+                        <div class="factor-table">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Unidad</th>
+                                        <th>≈</th>
+                                        <th>Equivalente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1 libra</td>
+                                        <td>≈</td>
+                                        <td>0.4536 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 kg</td>
+                                        <td>≈</td>
+                                        <td>2.205 libras</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 onza</td>
+                                        <td>≈</td>
+                                        <td>28.35 g</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volume Conversions -->
+                <div class="conversion-card volume">
+                    <div class="stagger-animation">
+                        <div class="flex items-center mb-3">
+                            <div class="icon-badge bg-quaternary-blue">
+                                <i class="fas fa-wine-bottle"></i>
+                            </div>
+                            <h3 class="text-lg font-bold primary-blue ml-3">VOLUMEN</h3>
+                        </div>
+                        
+                        <div class="factor-table">
+                            <table class="w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Unidad</th>
+                                        <th>≈</th>
+                                        <th>Equivalente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1 galón US</td>
+                                        <td>≈</td>
+                                        <td>3.785 L</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 litro</td>
+                                        <td>≈</td>
+                                        <td>0.264 gal</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 fl oz US</td>
+                                        <td>≈</td>
+                                        <td>29.57 mL</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Practical Examples -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Tourism Example -->
+                <div class="practical-example tourism">
+                    <div class="context-tag">TURISMO</div>
+                    <div class="flex items-center mb-3">
+                        <div class="icon-badge bg-primary-green">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4 class="text-lg font-bold primary-blue ml-3">Consulta Turística</h4>
+                    </div>
+                    
+                    <div class="problem-text">
+                        "¿A cuántas millas está el atractivo turístico?" - Turista estadounidense
+                        <br><strong class="primary-green">Distancia: 80 km</strong>
+                    </div>
+                    
+                    <div class="step-formula">
+                        $$80 \text{ km} \times \frac{0.621 \text{ mi}}{1 \text{ km}} = \text{ }\text{ }$$ <span class="result-highlight">49.68 millas</span>
+                    </div>
+                </div>
+                
+                <!-- Gastronomy Example -->
+                <div class="practical-example gastronomy">
+                    <div class="context-tag">GASTRONOMÍA</div>
+                    <div class="flex items-center mb-3">
+                        <div class="icon-badge bg-secondary-green">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4 class="text-lg font-bold primary-blue ml-3">Receta Internacional</h4>
+                    </div>
+                    
+                    <div class="problem-text">
+                        Receta requiere: <strong class="secondary-green">8 onzas líquidas</strong> de leche
+                        <br>Necesita conversión a mililitros
+                    </div>
+                    
+                    <div class="step-formula">
+                        $$8 \text{ fl oz} \times \frac{29.57 \text{ mL}}{1 \text{ fl oz}} = \text{ }\text{ }$$ <span class="result-highlight">236.56 mL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Insight -->
+            <div class="mt-4 bg-gradient-to-r from-blue-900 to-teal-800 rounded-xl p-4 text-white">
+                <div class="flex items-center justify-center">
+                    <div class="bg-tertiary-green w-12 h-12 rounded-lg flex items-center justify-center mr-4 floating-element">
+                        <i class="fas fa-exchange-alt text-white text-xl"></i>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-bold mb-1">Dominio de Conversiones Internacionales</h3>
+                        <p class="text-lg opacity-90">
+                            Competencia esencial para profesionales que trabajan con 
+                            <strong class="text-tertiary-green">estándares globales</strong> y clientes internacionales
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-16 right-16 w-20 h-20 bg-secondary-green rounded-full opacity-12 floating-element"></div>
+        <div class="absolute bottom-20 left-16 w-16 h-16 bg-quaternary-blue rounded-full opacity-15 pulse-element"></div>
+        <div class="absolute top-1/3 right-8 secondary-green text-4xl opacity-20 floating-element" style="animation-delay: 1s;">≈</div>
+        <div class="absolute bottom-1/4 left-8 tertiary-blue text-3xl opacity-25 floating-element" style="animation-delay: 2s;">⇄</div>
+        <div class="absolute top-2/3 right-1/4 quaternary-blue text-4xl opacity-20 floating-element" style="animation-delay: 0.5s;">×</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de los Números Enteros - Matemáticas Básicas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 160px;
+            background: #172139;
+            z-index: 1;
+        }
+
+        .title-content-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 160px 4rem 4rem 4rem;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+        }
+
+        h1 {
+            color: #172139;
+            font-size: 4.5rem;
+            line-height: 1;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .accent-line {
+            height: 6px;
+            width: 320px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin-bottom: 1rem;
+            border-radius: 3px;
+        }
+
+        h2 {
+            color: #195855;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 180px;
+            height: 180px;
+            background: #00AEAC;
+            top: 450px;
+            left: -60px;
+        }
+
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            background: #FBBB28;
+            top: 180px;
+            right: -40px;
+        }
+
+        .pattern-grid {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(#172139 1px, transparent 1px),
+                linear-gradient(90deg, #172139 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+
+        .floating-numbers {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+            z-index: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .floating-numbers:nth-child(1) {
+            top: 200px;
+            left: 100px;
+            font-size: 3rem;
+            color: #B4C42C;
+            animation-delay: 0s;
+        }
+
+        .floating-numbers:nth-child(2) {
+            top: 350px;
+            right: 150px;
+            font-size: 4rem;
+            color: #E9901E;
+            animation-delay: 2s;
+        }
+
+        .floating-numbers:nth-child(3) {
+            top: 500px;
+            left: 200px;
+            font-size: 2.5rem;
+            color: #FBBB28;
+            animation-delay: 4s;
+        }
+
+        .floating-numbers:nth-child(4) {
+            top: 250px;
+            right: 50px;
+            font-size: 3.5rem;
+            color: #108181;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .math-symbol {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.1;
+            color: #195855;
+            z-index: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .math-symbol:nth-child(1) {
+            top: 300px;
+            left: 50px;
+            font-size: 6rem;
+        }
+
+        .math-symbol:nth-child(2) {
+            top: 400px;
+            right: 100px;
+            font-size: 8rem;
+        }
+
+        .math-symbol:nth-child(3) {
+            top: 150px;
+            left: 300px;
+            font-size: 5rem;
+        }
+
+        .bottom-icons {
+            position: absolute;
+            bottom: 3rem;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .bottom-icons i {
+            color: #108181;
+            font-size: 3rem;
+            margin-right: 1.5rem;
+        }
+
+        .bottom-icons i:last-child {
+            margin-right: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .title-content-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+                padding-top: 140px;
+            }
+
+            h1 {
+                font-size: 3rem;
+                line-height: 1.1;
+            }
+
+            .accent-line {
+                width: 250px;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+                line-height: 1.2;
+            }
+
+            .floating-numbers {
+                opacity: 0.3;
+            }
+
+            .math-symbol {
+                opacity: 0.05;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-bar {
+                height: 100px;
+            }
+
+            .title-content-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 100px;
+            }
+
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            .accent-line {
+                width: 180px;
+                margin-top: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            .shape-1 {
+                width: 90px;
+                height: 90px;
+                top: 350px;
+                left: -30px;
+            }
+
+            .shape-2 {
+                width: 90px;
+                height: 90px;
+                top: 120px;
+                right: -20px;
+            }
+
+            .pattern-grid {
+                width: 150px;
+                height: 150px;
+            }
+
+            .floating-numbers,
+            .math-symbol {
+                display: none;
+            }
+
+            .bottom-icons {
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 0.5rem;
+            }
+
+            .bottom-icons i {
+                font-size: 2rem;
+                margin-right: 0.5rem !important;
+            }
+        }
+    </style>
+<style>
+    .genspark-badge-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .genspark-modal {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 10000;
+      justify-content: end;
+    }
+    
+    .genspark-modal-content {
+      background-color: white;
+      border-radius: 8px;
+      max-width: 450px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      .genspark-modal-content {
+        max-width: 90%;
+      }
+    }
+    
+    .genspark-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    
+    .genspark-title {
+      margin-bottom: 8px;
+      font-weight: normal;
+      display: inline;
+      font-size: 14px;
+    }
+    
+    .genspark-report {
+      color: #909499;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-bottom: 14px;
+      display: inline;
+    }
+    
+    .genspark-info {
+      margin: 25px 0;
+      color: #333;
+      font-size: 14px;
+    }
+    
+    .genspark-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .genspark-remove-btn {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      color: #333;
+      padding: 4px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      flex: 1;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    
+    .genspark-go-btn {
+      background-color: #222;
+      border: none;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      flex: 1;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+  </style></head>
+<body>
+    <div class="slide">
+        <!-- Header Bar -->
+        <div class="header-bar"></div>
+
+        <!-- Background Decorative Elements -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="pattern-grid"></div>
+
+        <!-- Floating Numbers -->
+        <div class="floating-numbers">-5</div>
+        <div class="floating-numbers">+8</div>
+        <div class="floating-numbers">0</div>
+        <div class="floating-numbers">-12</div>
+
+        <!-- Math Symbols -->
+        <div class="math-symbol">÷</div>
+        <div class="math-symbol">%</div>
+        <div class="math-symbol">=</div>
+
+        <!-- Main Title Content -->
+        <div class="title-content-container">
+            <h1>Sistema de los Números Enteros</h1>
+            <div class="accent-line"></div>
+            <h2>Introductorio de Matemáticas Básicas</h2>
+        </div>
+
+        <!-- Bottom Icons -->
+        <div class="bottom-icons">
+            <i class="fas fa-divide"></i>
+            <i class="fas fa-equals"></i>
+            <i class="fas fa-percentage"></i>
+        </div>
+    </div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDq9GDxdF5JU0tDclNWCEf7ATl2fioZzAnOD0SbILay8DmGFT5ex%2BRbTYvYr1bLqFJUDm8eaZ4BmhRGjcElnSfLW0o7xO1CFBeqDhLdUqCPeYqHc00qPDzXx4C3pCHCiG8VlMqtvD26jocx2KF28XEcUdytB5JA9BrlcX88BkDAVv7g5x6PbhusU0OUAAR4G5hzOtUh6GBFUIg7gKnu2EhCUvV%2BpJoYC%2F1NJqABzTDRCwtvtqYPvODVNPoP66sYCen7umBqpwwPWfqp5I9LGAAsIZaB8QFvkoUevXay4yhGdqMbUTBkMRbq6ZDrdT29OTgclcNKp4rkwzG%2F4VXOV9nW4IKUJFFY69TKjuOfjaseZ9hjNa3Mgr1Vl29NDJ%2BAS9%2Bc5Gb%2BDW85DwHD%2FEDIMgdC8oc8EkROk65NjQnnrzj%2FEyY9uH2IEJMBQNgY3Gb1tPPJkuNIO6mnXlfFtvntoAk7SVvdmNEfd3l38yP2AHfYMyxMElcbrydgn8xTi9kFu0u6qsEtOOIm6eZS4AYFs144JdeZb05yVDIH%2FAU%2Bi7JAu0Y6c8iw2delfd0hdsVzdOAaejxInIiYvmGUwOX1mL49kdnX8U64cq0B251JoybS5x9BPQqDAvLHQXiZZhdSWoDcJhAVk5bSokYRgoVn10qd37EeM8ql%2BitBk3U4YNzsa64ZqvjDrtDLFaSekdvYwSYp6nDTSbOZFItyDfx4WssJwbItYgZdS9GDPt8jz1RHzCMLx0qjVB2%2BzCwLBXM%2FG%2Bmg%3D%3D";
+        window.__genspark_locale = "es-ES";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDq9GDxdF5JU0tDclNWCEf7ATl2fioZzAnOD0SbILay8DmGFT5ex+RbTYvYr1bLqFJUDm8eaZ4BmhRGjcElnSfLW0o7xO1CFBeqDhLdUqCPeYqHc00qPDzXx4C3pCHCiG8VlMqtvD26jocx2KF28XEcUdytB5JA9BrlcX88BkDAVv7g5x6PbhusU0OUAAR4G5hzOtUh6GBFUIg7gKnu2EhCUvV+pJoYC/1NJqABzTDRCwtvtqYPvODVNPoP66sYCen7umBqpwwPWfqp5I9LGAAsIZaB8QFvkoUevXay4yhGdqMbUTBkMRbq6ZDrdT29OTgclcNKp4rkwzG/4VXOV9nW4IKUJFFY69TKjuOfjaseZ9hjNa3Mgr1Vl29NDJ+AS9+c5Gb+DW85DwHD/EDIMgdC8oc8EkROk65NjQnnrzj/EyY9uH2IEJMBQNgY3Gb1tPPJkuNIO6mnXlfFtvntoAk7SVvdmNEfd3l38yP2AHfYMyxMElcbrydgn8xTi9kFu0u6qsEtOOIm6eZS4AYFs144JdeZb05yVDIH/AU+i7JAu0Y6c8iw2delfd0hdsVzdOAaejxInIiYvmGUwOX1mL49kdnX8U64cq0B251JoybS5x9BPQqDAvLHQXiZZhdSWoDcJhAVk5bSokYRgoVn10qd37EeM8ql+itBk3U4YNzsa64ZqvjDrtDLFaSekdvYwSYp6nDTSbOZFItyDfx4WssJwbItYgZdS9GDPt8jz1RHzCMLx0qjVB2+zCwLBXM/G+mg==";
+    </script>
+    
+        
+        </body></html>

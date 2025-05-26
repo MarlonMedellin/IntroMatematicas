@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Fracciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .main-container {
+            padding: 2rem 3rem;
+            position: relative;
+            z-index: 2;
+            min-height: 720px;
+        }
+        
+        .slide-title {
+            color: #172139;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .title-accent {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto 1.5rem;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .fraction-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(23, 33, 57, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fraction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .fraction-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(23, 33, 57, 0.15);
+        }
+        
+        .card-proper {
+            --accent-color-1: #B4C42C;
+            --accent-color-2: #E9901E;
+        }
+        
+        .card-improper {
+            --accent-color-1: #172139;
+            --accent-color-2: #195855;
+        }
+        
+        .card-mixed {
+            --accent-color-1: #108181;
+            --accent-color-2: #00AEAC;
+        }
+        
+        .card-whole {
+            --accent-color-1: #E9901E;
+            --accent-color-2: #FBBB28;
+        }
+        
+        .card-decimal {
+            --accent-color-1: #195855;
+            --accent-color-2: #108181;
+        }
+        
+        .card-compound {
+            --accent-color-1: #FBBB28;
+            --accent-color-2: #B4C42C;
+        }
+        
+        .fraction-type {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .fraction-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: white;
+            background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
+        }
+        
+        .fraction-definition {
+            color: #2F3E5D;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .fraction-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .example-fraction {
+            background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
+            color: white;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 50px;
+        }
+        
+        .visual-fraction {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.75rem 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #172139;
+        }
+        
+        .fraction-display {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0.5rem;
+        }
+        
+        .numerator, .denominator {
+            line-height: 1;
+        }
+        
+        .fraction-line {
+            width: 100%;
+            height: 2px;
+            background: #172139;
+            margin: 2px 0;
+        }
+        
+        .application-note {
+            background: rgba(251, 187, 40, 0.1);
+            border-left: 3px solid #FBBB28;
+            padding: 0.5rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.75rem;
+            color: #172139;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: floatShape 12s infinite ease-in-out;
+        }
+        
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: #172139;
+            border-radius: 50%;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            background: #B4C42C;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            top: 15%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+        
+        .shape-3 {
+            width: 60px;
+            height: 120px;
+            background: #108181;
+            border-radius: 30px;
+            bottom: 20%;
+            left: 8%;
+            animation-delay: 6s;
+        }
+        
+        .shape-4 {
+            width: 90px;
+            height: 90px;
+            background: #E9901E;
+            border-radius: 20%;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 9s;
+        }
+        
+        .comparison-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .comparison-title {
+            color: #FBBB28;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .comparison-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .comparison-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .comparison-fraction {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FBBB28;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comparison-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1280px) {
+            .main-container {
+                padding: 1.5rem 2rem;
+            }
+            
+            .types-grid {
+                gap: 1rem;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .types-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .slide-title {
+                font-size: 1.75rem;
+            }
+            
+            .fraction-card {
+                padding: 1rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .floating-shapes {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Floating Shapes -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-container">
+            <h1 class="slide-title">Tipos de Fracciones</h1>
+            <div class="title-accent"></div>
+            
+            <div class="types-grid">
+                <!-- Fracción Propia -->
+                <div class="fraction-card card-proper">
+                    <div class="fraction-type">
+                        <div class="fraction-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        Fracción Propia
+                    </div>
+                    <div class="fraction-definition">
+                        Numerador menor que denominador. Representa cantidad menor que la unidad.
+                    </div>
+                    <div class="visual-fraction">
+                        <div class="fraction-display">
+                            <div class="numerator">2</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">3</div>
+                        </div>
+                        <span style="margin: 0 1rem;">,</span>
+                        <div class="fraction-display">
+                            <div class="numerator">4</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">7</div>
+                        </div>
+                    </div>
+                    <div class="application-note">
+                        <i class="fas fa-utensils mr-1"></i>
+                        Repostería: 3/4 taza de azúcar
+                    </div>
+                </div>
+                
+                <!-- Fracción Impropia -->
+                <div class="fraction-card card-improper">
+                    <div class="fraction-type">
+                        <div class="fraction-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        Fracción Impropia
+                    </div>
+                    <div class="fraction-definition">
+                        Numerador mayor o igual que denominador. Representa cantidad igual o mayor que la unidad.
+                    </div>
+                    <div class="visual-fraction">
+                        <div class="fraction-display">
+                            <div class="numerator">5</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">2</div>
+                        </div>
+                        <span style="margin: 0 1rem;">,</span>
+                        <div class="fraction-display">
+                            <div class="numerator">7</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">3</div>
+                        </div>
+                    </div>
+                    <div class="application-note">
+                        <i class="fas fa-building mr-1"></i>
+                        Arquitectura: 5/2 metros de altura
+                    </div>
+                </div>
+                
+                <!-- Fracción Mixta -->
+                <div class="fraction-card card-mixed">
+                    <div class="fraction-type">
+                        <div class="fraction-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        Fracción Mixta
+                    </div>
+                    <div class="fraction-definition">
+                        Número entero más fracción propia. Forma abreviada de suma.
+                    </div>
+                    <div class="visual-fraction">
+                        <span style="font-size: 1.5rem; font-weight: 700;">2</span>
+                        <div class="fraction-display">
+                            <div class="numerator">1</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">3</div>
+                        </div>
+                        <span style="margin: 0 0.5rem;">=</span>
+                        <div class="fraction-display">
+                            <div class="numerator">7</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">3</div>
+                        </div>
+                    </div>
+                    <div class="application-note">
+                        <i class="fas fa-calculator mr-1"></i>
+                        Conversión: entero × denominador + numerador
+                    </div>
+                </div>
+                
+                <!-- Fracción Entera -->
+                <div class="fraction-card card-whole">
+                    <div class="fraction-type">
+                        <div class="fraction-icon">
+                            <i class="fas fa-equals"></i>
+                        </div>
+                        Fracción Entera
+                    </div>
+                    <div class="fraction-definition">
+                        Numerador es múltiplo del denominador. Representa un número entero.
+                    </div>
+                    <div class="visual-fraction">
+                        <div class="fraction-display">
+                            <div class="numerator">6</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">3</div>
+                        </div>
+                        <span style="margin: 0 1rem;">=</span>
+                        <span style="font-size: 1.5rem; font-weight: 700;">2</span>
+                    </div>
+                    <div class="application-note">
+                        <i class="fas fa-check mr-1"></i>
+                        Resultado: número entero exacto
+                    </div>
+                </div>
+                
+                <!-- Fracción Decimal -->
+                <div class="fraction-card card-decimal">
+                    <div class="fraction-type">
+                        <div class="fraction-icon">
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        Fracción Decimal
+                    </div>
+                    <div class="fraction-definition">
+                        Denominador es potencia de 10. Base de números decimales.
+                    </div>
+                    <div class="visual-fraction">
+                        <div class="fraction-display">
+                            <div class="numerator">27</div>
+                            <div class="fraction-line"></div>
+                            <div class="denominator">100</div>
+                        </div>
+                        <span style="margin: 0 1rem;">=</span>
+                        <span style="font-size: 1.5rem; font-weight: 700;">0.27</span>
+                    </div>
+                    <div class="application-note">
+                        <i class="fas fa-chart-line mr-1"></i>
+                        Administración: IVA 19% = 19/100
+                    </div>
+                </div>
+                
+                <!-- Fracción Compuesta -->
+                <div class="fraction-card card-compound">
+                    <div class="fraction-type">
+                        <div class="fraction-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        Fracción Compuesta
+                    </div>
+                    <div class="fraction-definition">
+                        Numerador o denominador contienen otras fracciones.
+                    </div>
+                    <div class="visual-fraction" style="font-size: 1.25rem;">
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <div class="fraction-display" style="font-size: 0.875rem;">
+                                <div class="numerator">1</div>
+                                <div class="fraction-line"></div>
+                                <div class="denominator">2</div>
+                            </div>
+                            <div style="width: 40px; height: 2px; background: #172139; margin: 4px 0;"></div>
+                            <div class="fraction-display" style="font-size: 0.875rem;">
+                                <div class="numerator">3</div>
+                                <div class="fraction-line"></div>
+                                <div class="denominator">4</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="application-note">
+                        <i class="fas fa-divide mr-1"></i>
+                        Se resuelve como división de fracciones
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comparison Section -->
+            <div class="comparison-section">
+                <h3 class="comparison-title">
+                    <i class="fas fa-balance-scale mr-2"></i>
+                    Comparación Visual
+                </h3>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <div class="comparison-fraction">3/4</div>
+                        <div class="comparison-label">Propia: menor que 1</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-fraction">5/3</div>
+                        <div class="comparison-label">Impropia: mayor que 1</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-fraction">1⅔</div>
+                        <div class="comparison-label">Mixta: entero + fracción</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-fraction">8/4 = 2</div>
+                        <div class="comparison-label">Entera: resultado entero</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

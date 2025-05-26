@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polinomios aritméticos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .session-badge {
+            display: inline-block;
+            background: #172139;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-text {
+            flex: 1;
+        }
+
+        .title-text h1 {
+            color: #172139;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .accent-line {
+            width: 8rem;
+            height: 0.25rem;
+            background: #FBBB28;
+            margin-bottom: 1rem;
+        }
+
+        .title-icon {
+            font-size: 4rem;
+            color: #195855;
+            margin-left: 2rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .definition-section {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .definition-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(251, 187, 40, 0.15) 0%, transparent 70%);
+            animation: pulse 10s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+            50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+        }
+
+        .definition-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FBBB28;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .definition-title i {
+            margin-right: 0.5rem;
+        }
+
+        .definition-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .definition-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .definition-highlight {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #172139;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .example-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e9ecef;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .example-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .example-title {
+            color: #172139;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .example-title i {
+            color: #E9901E;
+            margin-right: 0.5rem;
+        }
+
+        .example-expression {
+            background: #172139;
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-expression::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FBBB28 0%, #E9901E 100%);
+        }
+
+        .solution-steps {
+            margin-bottom: 1rem;
+        }
+
+        .solution-step {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .solution-step:hover {
+            border-color: #108181;
+            background: #e9ecef;
+            transform: translateX(8px);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #108181;
+            color: #ffffff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-right: 1rem;
+        }
+
+        .step-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .step-calculation {
+            font-weight: 600;
+            color: #172139;
+            font-size: 1.1rem;
+        }
+
+        .step-result {
+            font-size: 0.9rem;
+            color: #195855;
+            margin-top: 0.25rem;
+        }
+
+        .final-result {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .comprehensive-example {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 2px solid #dee2e6;
+            margin-bottom: 1rem;
+        }
+
+        .comprehensive-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comprehensive-title i {
+            color: #B4C42C;
+            margin-right: 0.5rem;
+        }
+
+        .expression-showcase {
+            background: #172139;
+            color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .showcase-expression {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .showcase-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .showcase-step {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-step:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            color: #FBBB28;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .applications-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 2px solid #dee2e6;
+        }
+
+        .applications-title {
+            color: #172139;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .applications-title i {
+            color: #FBBB28;
+            margin-right: 0.5rem;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .app-card {
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            border-color: #108181;
+            box-shadow: 0 12px 25px rgba(23, 33, 57, 0.15);
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #108181 0%, #00AEAC 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+        }
+
+        .app-icon i {
+            color: #ffffff;
+            font-size: 1.8rem;
+        }
+
+        .app-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #172139;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-description {
+            font-size: 0.875rem;
+            color: #195855;
+            line-height: 1.4;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .floating-symbol {
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #195855;
+            animation: float 22s infinite ease-in-out;
+        }
+
+        .floating-symbol:nth-child(1) { top: 10%; left: 3%; animation-delay: 0s; }
+        .floating-symbol:nth-child(2) { top: 20%; right: 5%; animation-delay: 7s; }
+        .floating-symbol:nth-child(3) { bottom: 30%; left: 8%; animation-delay: 14s; }
+        .floating-symbol:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 21s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-50px) rotate(30deg); opacity: 0.12; }
+        }
+
+        /* Interactive animations */
+        .solution-step:hover .step-number {
+            background: #FBBB28;
+            color: #172139;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .slide { padding: 1.5rem; }
+            .title-text h1 { font-size: 2.5rem; line-height: 2.75rem; }
+            .main-content { gap: 1rem; }
+            .showcase-steps { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .slide { padding: 1rem; }
+            .title-container { flex-direction: column; align-items: flex-start; }
+            .title-text h1 { font-size: 2rem; line-height: 2.25rem; }
+            .title-icon { margin-left: 0; margin-top: 1rem; }
+            .main-content { grid-template-columns: 1fr; gap: 1rem; }
+            .applications-grid { grid-template-columns: 1fr; }
+            .showcase-steps { grid-template-columns: 1fr; }
+            .session-badge { font-size: 0.875rem; padding: 0.25rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Floating Background Elements -->
+        <div class="floating-elements">
+            <div class="floating-symbol">∫</div>
+            <div class="floating-symbol">∑</div>
+            <div class="floating-symbol">∏</div>
+            <div class="floating-symbol">∞</div>
+        </div>
+
+        <!-- Session Badge -->
+        <div class="session-badge">Sesión 6</div>
+
+        <!-- Title Section -->
+        <div class="title-container">
+            <div class="title-text">
+                <h1>Polinomios aritméticos</h1>
+                <div class="accent-line"></div>
+            </div>
+            <div class="title-icon">
+                <i class="fas fa-function"></i>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-content">
+            <!-- Definition Section -->
+            <div class="definition-section">
+                <div class="definition-title">
+                    <i class="fas fa-book-open"></i>
+                    Definición
+                </div>
+                <div class="definition-content">
+                    <div class="definition-text">
+                        Un <strong>polinomio aritmético</strong> es una expresión numérica que combina múltiples operaciones: suma, resta, multiplicación y división.
+                    </div>
+                    <div class="definition-text">
+                        Para resolverlos, se deben seguir las reglas de la <strong>jerarquía de operaciones</strong> y respetar los <strong>signos de agrupación</strong>.
+                    </div>
+                    <div class="definition-highlight">
+                        <i class="fas fa-key" style="margin-right: 0.5rem;"></i>
+                        Aplicar PEMDAS: Paréntesis → Exponentes → Multiplicación/División → Suma/Resta
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Section -->
+            <div class="example-section">
+                <div class="example-title">
+                    <i class="fas fa-calculator"></i>
+                    Ejemplo Paso a Paso
+                </div>
+                <div class="example-expression">
+                    2 + 3 × (-4) - [6 - (-2)]
+                </div>
+                <div class="solution-steps">
+                    <div class="solution-step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <div class="step-calculation">Resolver corchetes: [6 - (-2)] = [6 + 2]</div>
+                            <div class="step-result">= [8]</div>
+                        </div>
+                    </div>
+                    <div class="solution-step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <div class="step-calculation">Multiplicar: 3 × (-4)</div>
+                            <div class="step-result">= -12</div>
+                        </div>
+                    </div>
+                    <div class="solution-step">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <div class="step-calculation">Sumar y restar: 2 + (-12) - 8</div>
+                            <div class="step-result">= 2 - 12 - 8 = -18</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="final-result">
+                    <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                    Resultado Final: -18
+                </div>
+            </div>
+        </div>
+
+        <!-- Comprehensive Example -->
+        <div class="comprehensive-example">
+            <div class="comprehensive-title">
+                <i class="fas fa-cogs"></i>
+                Expresión Compleja Interactiva
+            </div>
+            <div class="expression-showcase">
+                <div class="showcase-expression">
+                    15 ÷ 3 + 2 × (8 - 5) - 4²
+                </div>
+                <div class="showcase-steps">
+                    <div class="showcase-step">
+                        <div class="step-label">Paréntesis</div>
+                        <div class="step-value">(8 - 5) = 3</div>
+                    </div>
+                    <div class="showcase-step">
+                        <div class="step-label">Potencias</div>
+                        <div class="step-value">4² = 16</div>
+                    </div>
+                    <div class="showcase-step">
+                        <div class="step-label">Multiplicar/Dividir</div>
+                        <div class="step-value">15÷3=5, 2×3=6</div>
+                    </div>
+                    <div class="showcase-step">
+                        <div class="step-label">Sumar/Restar</div>
+                        <div class="step-value">5+6-16=-5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Section -->
+        <div class="applications-section">
+            <div class="applications-title">
+                <i class="fas fa-graduation-cap"></i>
+                Aplicaciones por Programa Académico
+            </div>
+            <div class="applications-grid">
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="app-title">Turismo y Gastronomía</div>
+                    <div class="app-description">Combinación de costos, descuentos e impuestos en presupuestos gastronómicos</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="app-title">Ingeniería</div>
+                    <div class="app-description">Cálculos técnicos con varias operaciones interrelacionadas en proyectos</div>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="app-title">Salud</div>
+                    <div class="app-description">Cálculo de indicadores que requieren múltiples pasos aritméticos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

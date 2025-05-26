@@ -1,0 +1,260 @@
+<!-- HEAD DEFINITIONS GO HERE -->
+
+<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<script>
+    /**
+     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
+     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
+     * @param {string} url - URL DEL RECURSO.
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+        }
+
+        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
+        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+
+        document.head.appendChild(elemento);
+    }
+
+    // 5. CARGAR ESTILOS DE BOOTSTRAP DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+    // 6. CARGAR ICONOS DE BOOTSTRAP DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+
+    /**
+     * 7. AGREGAR ESTILOS PERSONALIZADOS MEDIANTE UN ELEMENTO .
+     */
+    (function agregarEstilosPersonalizados() {
+        const customStyles = document.createElement('style');
+        customStyles.textContent = `
+            /* 8. ESTILOS PERSONALIZADOS */
+            .problem-container {
+                background-color: #e0f2f2; /* 9. COLOR DE FONDO AJUSTADO A PALETA AZULES-VERDES */
+                color: #172139;           /* 10. TEXTO OSCURO AJUSTADO A PALETA AZULES-VERDES */
+                border-radius: 15px;
+                padding: 5%;
+            }
+            .accordion-button .bi {
+                margin-right: 10px;
+                color: #172139;           /* 11. COLOR DEL ICONO DEL BOTÓN DEL ACORDEÓN */
+            }
+            .accordion-button:not(.collapsed) .bi {
+                color: #00AEAC;           /* 12. COLOR DEL ICONO CUANDO ESTÁ ABIERTO */
+            }
+            .accordion-button {
+                color: #172139;           /* 13. COLOR DEL TEXTO DEL BOTÓN DEL ACORDEÓN */
+            }
+            .accordion-button:not(.collapsed) {
+                color: #172139;           /* 14. COLOR DEL TEXTO CUANDO ESTÁ ABIERTO */
+                background-color: #e0f2f2;/* 15. FONDO DEL BOTÓN CUANDO ESTÁ ABIERTO */
+                border-color: #108181;   /* 16. BORDE DEL BOTÓN CUANDO ESTÁ ABIERTO */
+            }
+            .accordion-header {
+                font-weight: bold;
+            }
+            .divider {
+                border-top: 2px solid #108181; /* 17. DIVISOR AJUSTADO A PALETA AZULES-VERDES */
+                margin: 3% 0;
+            }
+            .accordion-body-container {
+                padding: 3%;
+                border: 1px solid #108181; /* 18. BORDE AJUSTADO A PALETA AZULES-VERDES */
+                border-radius: 10px;
+                background-color: #e0f2f2;  /* 19. FONDO AJUSTADO A PALETA AZULES-VERDES */
+                color: #172139;             /* 20. TEXTO DEL CUERPO DEL ACORDEÓN */
+                margin-top: 2%;
+            }
+            .accordion-body-container strong {
+                color: #172139;             /* 21. TEXTO EN NEGRITA DENTRO DEL CUERPO */
+            }
+            /* 22. MEDIA QUERIES PARA MEJOR RESPONSIVIDAD */
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 1.75rem;
+                    padding: 3% 0;
+                }
+                .problem-container {
+                    padding: 4%;
+                }
+                .accordion-body-container {
+                    padding: 2%;
+                }
+            }
+            @media (max-width: 576px) {
+                h1 {
+                    font-size: 1.5rem;
+                    padding: 2% 0;
+                }
+                .problem-container {
+                    padding: 3%;
+                }
+                .accordion-body-container {
+                    padding: 1.5%;
+                }
+            }
+        `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+
+<!-- 2. SECCIÓN 2: TÍTULO -->
+<div class="container-fluid my-4" id="informacion-general-titulo" style="border:1px solid #00AEAC; border-radius:8px; background-color:#E3F7F2; padding:20px;">
+    <img src="https://colmayor.arrobamedellin.edu.co/pluginfile.php/280278/mod_page/intro/Mod1Diap1.png" style="width:100%; height:auto; border:none;" alt="Diapositiva 1">
+</div>
+<!-- FIN SECCIÓN 2: TÍTULO -->
+
+<!-- 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS PARA CIERRE AUTOMÁTICO) -->
+<div class="accordion" id="accordionModulo">
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso1" aria-expanded="false" aria-controls="collapsePaso1">
+                <i class="bi bi-123"></i> Introducción al conjunto de los números enteros
+            </button>
+        </h2>
+        <div id="collapsePaso1" class="accordion-collapse collapse" aria-labelledby="headingPaso1" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Introducción al conjunto ℤ que incluye números positivos, negativos y cero</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva2.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Accede a la explicación completa del conjunto de los números enteros
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso2" aria-expanded="false" aria-controls="collapsePaso2">
+                <i class="bi bi-plus-slash-minus"></i> Adición y sustracción con números enteros
+            </button>
+        </h2>
+        <div id="collapsePaso2" class="accordion-collapse collapse" aria-labelledby="headingPaso2" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Reglas para sumar y restar números enteros</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva3.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Descubre cómo sumar y restar correctamente con números enteros
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso3" aria-expanded="false" aria-controls="collapsePaso3">
+                <i class="bi bi-x-slash"></i> Multiplicación y división de números enteros
+            </button>
+        </h2>
+        <div id="collapsePaso3" class="accordion-collapse collapse" aria-labelledby="headingPaso3" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Reglas de signos y operaciones con multiplicación y división</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva4.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Aprende las reglas de multiplicación y división con enteros
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso5">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso5" aria-expanded="false" aria-controls="collapsePaso5">
+                <i class="bi bi-diagram-3"></i> Propiedades de la suma y del producto
+            </button>
+        </h2>
+        <div id="collapsePaso5" class="accordion-collapse collapse" aria-labelledby="headingPaso5" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Propiedades conmutativa, asociativa y distributiva de operaciones</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva5.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Explora las propiedades de la suma y el producto
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso6">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso6" aria-expanded="false" aria-controls="collapsePaso6">
+                <i class="bi bi-braces"></i> Signos de agrupación y jerarquía de operaciones
+            </button>
+        </h2>
+        <div id="collapsePaso6" class="accordion-collapse collapse" aria-labelledby="headingPaso6" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Uso de paréntesis, corchetes, llaves y orden de operaciones</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva6.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Descubre la jerarquía correcta en las operaciones
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso7">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso7" aria-expanded="false" aria-controls="collapsePaso7">
+                <i class="bi bi-calculator"></i> Polinomios aritméticos
+            </button>
+        </h2>
+        <div id="collapsePaso7" class="accordion-collapse collapse" aria-labelledby="headingPaso7" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Expresiones numéricas que combinan múltiples operaciones</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva7.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Explora los polinomios aritméticos
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso8">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso8" aria-expanded="false" aria-controls="collapsePaso8">
+                <i class="bi bi-bookmark-check"></i> Referencias y Conclusiones
+            </button>
+        </h2>
+        <div id="collapsePaso8" class="accordion-collapse collapse" aria-labelledby="headingPaso8" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <p>Consulta las fuentes utilizadas y las conclusiones del módulo.</p>
+                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva8.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                    Accede a las referencias y conclusiones del módulo
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS) -->
+
+<!-- 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
+<!-- CARGA DE SCRIPTS NECESARIOS PARA EL FUNCIONAMIENTO DE BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    /**
+     * 23. FUNCIONES ADICIONALES PARA ACORDEONES.
+     * @description ESTA FUNCIÓN INICIALIZA LOS ACORDEONES CERRADOS AL CARGAR LA PÁGINA.
+     */
+    function initAccordions() {
+        const accordions = document.querySelectorAll('.accordion-collapse'); // 24. SELECCIONA TODOS LOS ACORDEONES
+        accordions.forEach(accordion => accordion.classList.remove('show')); // 25. REMUEVE 'SHOW'
+    }
+
+    /**
+     * 26. FUNCIONALIDAD PARA REGISTRAR EN CONSOLA EL ESTADO DE UN ACORDEÓN.
+     * @description IMPRIME EN CONSOLA SI UN ACORDEÓN ESTÁ ABIERTO O CERRADO.
+     * @param {string} idAcordeon - ID DEL ACORDEÓN A VERIFICAR.
+     */
+    function logEstadoAcordeon(idAcordeon) {
+        const acordeon = document.getElementById(idAcordeon); // 27. SELECCIONA ACORDEÓN POR ID
+        if (acordeon) {
+            const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO'; // 28. DETERMINA ESTADO
+            console.log(`El acordeón con ID '${idAcordeon}' está ${estado}.`);
+        } else {
+            console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`); // 29. ADVIERTE SI NO EXISTE
+        }
+    }
+
+    // 30. EVENTO QUE SE DISPARA AL CARGAR COMPLETAMENTE EL DOM
+    document.addEventListener('DOMContentLoaded', () => {
+        initAccordions(); // 31. INICIALIZA ACORDEONES
+        console.log('Acordeones inicializados y cerrados correctamente.');
+    });
+</script>
+<!-- FIN 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->

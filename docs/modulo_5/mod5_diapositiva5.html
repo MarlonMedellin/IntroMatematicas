@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones Prácticas del SI por Programa Académico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+        }
+        
+        .primary-blue { color: #172139; }
+        .secondary-blue { color: #195855; }
+        .tertiary-blue { color: #108181; }
+        .quaternary-blue { color: #00AEAC; }
+        
+        .primary-green { color: #B4C42C; }
+        .secondary-green { color: #E9901E; }
+        .tertiary-green { color: #FBBB28; }
+        
+        .bg-primary-blue { background-color: #172139; }
+        .bg-secondary-blue { background-color: #195855; }
+        .bg-tertiary-blue { background-color: #108181; }
+        .bg-quaternary-blue { background-color: #00AEAC; }
+        
+        .bg-primary-green { background-color: #B4C42C; }
+        .bg-secondary-green { background-color: #E9901E; }
+        .bg-tertiary-green { background-color: #FBBB28; }
+        
+        .main-title {
+            color: #172139;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accent-line {
+            height: 0.25rem;
+            width: 8rem;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(23, 33, 57, 0.12);
+            transition: all 0.4s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(23, 33, 57, 0.2);
+        }
+        
+        .program-card.gastronomy { border-top-color: #E9901E; }
+        .program-card.safety { border-top-color: #108181; }
+        .program-card.architecture { border-top-color: #00AEAC; }
+        .program-card.laboratory { border-top-color: #B4C42C; }
+        
+        .program-icon {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .program-icon::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            background: inherit;
+            opacity: 0.8;
+            z-index: -1;
+        }
+        
+        .conversion-showcase {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-left: 4px solid;
+            position: relative;
+        }
+        
+        .conversion-showcase.gastronomy { border-left-color: #E9901E; }
+        .conversion-showcase.safety { border-left-color: #108181; }
+        .conversion-showcase.architecture { border-left-color: #00AEAC; }
+        .conversion-showcase.laboratory { border-left-color: #B4C42C; }
+        
+        .formula-display {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+        
+        .highlight-result {
+            color: #FBBB28;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .floating-element {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-element {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        .program-badge {
+            background: linear-gradient(45deg, #172139, #195855);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .real-world-tag {
+            background: #FBBB28;
+            color: #172139;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        
+        .stagger-animation {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .program-card:nth-child(1) .stagger-animation { animation-delay: 0.1s; }
+        .program-card:nth-child(2) .stagger-animation { animation-delay: 0.2s; }
+        .program-card:nth-child(3) .stagger-animation { animation-delay: 0.3s; }
+        .program-card:nth-child(4) .stagger-animation { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="slide relative overflow-hidden">
+        <!-- Header -->
+        <div class="px-16 py-6">
+            <!-- Title -->
+            <div class="mb-6">
+                <h1 class="main-title">Aplicaciones Prácticas</h1>
+                <h1 class="main-title">del SI por Programa</h1>
+                <div class="accent-line"></div>
+            </div>
+            
+            <!-- Subtitle -->
+            <div class="text-center mb-8">
+                <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-4 inline-block">
+                    <p class="text-lg primary-blue font-semibold">
+                        <i class="fas fa-graduation-cap secondary-green mr-2"></i>
+                        Ejemplos contextualizados para diferentes carreras del Colegio Mayor de Antioquia
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Programs Grid -->
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Gastronomy -->
+                <div class="program-card gastronomy">
+                    <div class="real-world-tag">CASO REAL</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-secondary-green">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="program-badge">Gastronomía y Culinaria</div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">Receta Internacional</h3>
+                        <p class="text-gray-700 mb-3 text-center">
+                            Una receta indica <strong class="secondary-green">0.5 kg</strong> de harina. 
+                            El chef necesita la medida en gramos para su balanza.
+                        </p>
+                        
+                        <div class="conversion-showcase gastronomy">
+                            <div class="flex items-center justify-center mb-2">
+                                <i class="fas fa-arrow-right secondary-green text-xl mr-3"></i>
+                                <span class="font-semibold primary-blue">Conversión necesaria</span>
+                            </div>
+                            <div class="formula-display">
+                                $$0.5 \text{ kg} \times \frac{1000 \text{ g}}{1 \text{ kg}} = \text{ }\text{ }\text{ }$$<span class="highlight-result">500 g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Safety and Health -->
+                <div class="program-card safety">
+                    <div class="real-world-tag">CASO REAL</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-tertiary-blue">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <div class="program-badge">Seguridad y Salud en el Trabajo</div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">Distancia Segura</h3>
+                        <p class="text-gray-700 mb-3 text-center">
+                            La distancia segura a una maquinaria es de <strong class="tertiary-blue">150 cm</strong>. 
+                            Se debe indicar en metros para el manual.
+                        </p>
+                        
+                        <div class="conversion-showcase safety">
+                            <div class="flex items-center justify-center mb-2">
+                                <i class="fas fa-arrow-right tertiary-blue text-xl mr-3"></i>
+                                <span class="font-semibold primary-blue">Conversión necesaria</span>
+                            </div>
+                            <div class="formula-display">
+                                $$150 \text{ cm} \times \frac{1 \text{ m}}{100 \text{ cm}} = \text{ }\text{ }\text{ }$$<span class="highlight-result">1.5 m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Architecture -->
+                <div class="program-card architecture">
+                    <div class="real-world-tag">CASO REAL</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-quaternary-blue">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="program-badge">Arquitectura / Construcciones</div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">Especificación Técnica</h3>
+                        <p class="text-gray-700 mb-3 text-center">
+                            Un plano especifica <strong class="quaternary-blue">2500 mm</strong> para una pieza. 
+                            El proveedor la vende por centímetros.
+                        </p>
+                        
+                        <div class="conversion-showcase architecture">
+                            <div class="flex items-center justify-center mb-2">
+                                <i class="fas fa-arrow-right quaternary-blue text-xl mr-3"></i>
+                                <span class="font-semibold primary-blue">Conversión necesaria</span>
+                            </div>
+                            <div class="formula-display">
+                                $$2500 \text{ mm} \times \frac{1 \text{ cm}}{10 \text{ mm}} = \text{ }\text{ }\text{ }$$<span class="highlight-result">250 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laboratory -->
+                <div class="program-card laboratory">
+                    <div class="real-world-tag">CASO REAL</div>
+                    <div class="stagger-animation">
+                        <div class="program-icon bg-primary-green">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="program-badge">Bacteriología y Lab. Clínico</div>
+                        <h3 class="text-xl font-bold primary-blue text-center mb-3">Preparación de Solución</h3>
+                        <p class="text-gray-700 mb-3 text-center">
+                            Se necesita preparar <strong class="primary-green">0.25 L</strong> de solución. 
+                            Los recipientes están graduados en mL.
+                        </p>
+                        
+                        <div class="conversion-showcase laboratory">
+                            <div class="flex items-center justify-center mb-2">
+                                <i class="fas fa-arrow-right primary-green text-xl mr-3"></i>
+                                <span class="font-semibold primary-blue">Conversión necesaria</span>
+                            </div>
+                            <div class="formula-display">
+                                $$0.25 \text{ L} \times \frac{1000 \text{ mL}}{1 \text{ L}} = \text{ }\text{ }\text{ }$$<span class="highlight-result">250 mL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Insight -->
+            <div class="mt-8 bg-gradient-to-r from-blue-900 to-teal-800 rounded-xl p-6 text-white">
+                <div class="flex items-center justify-center">
+                    <div class="bg-tertiary-green w-12 h-12 rounded-lg flex items-center justify-center mr-4 floating-element">
+                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-bold mb-2">Importancia del Dominio del SI</h3>
+                        <p class="text-lg opacity-90">
+                            El manejo preciso de conversiones del SI es <strong class="text-tertiary-green">fundamental</strong> 
+                            para la exactitud profesional en todas las áreas del conocimiento
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-12 w-24 h-24 bg-secondary-green rounded-full opacity-10 floating-element"></div>
+        <div class="absolute bottom-20 left-12 w-20 h-20 bg-quaternary-blue rounded-full opacity-15 pulse-element"></div>
+        <div class="absolute top-1/2 right-8 tertiary-green text-5xl opacity-20 floating-element" style="animation-delay: 1s;">kg</div>
+        <div class="absolute bottom-1/3 left-8 secondary-blue text-4xl opacity-25 floating-element" style="animation-delay: 2s;">m</div>
+    </div>
+</body>
+</html>

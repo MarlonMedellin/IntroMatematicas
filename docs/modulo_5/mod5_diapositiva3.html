@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión 1: Factores de Conversión</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            background: #FFFFFF;
+        }
+        
+        .primary-blue { color: #172139; }
+        .secondary-blue { color: #195855; }
+        .tertiary-blue { color: #108181; }
+        .quaternary-blue { color: #00AEAC; }
+        
+        .primary-green { color: #B4C42C; }
+        .secondary-green { color: #E9901E; }
+        .tertiary-green { color: #FBBB28; }
+        
+        .bg-primary-blue { background-color: #172139; }
+        .bg-secondary-blue { background-color: #195855; }
+        .bg-tertiary-blue { background-color: #108181; }
+        .bg-quaternary-blue { background-color: #00AEAC; }
+        
+        .bg-primary-green { background-color: #B4C42C; }
+        .bg-secondary-green { background-color: #E9901E; }
+        .bg-tertiary-green { background-color: #FBBB28; }
+        
+        .session-badge {
+            display: inline-block;
+            background-color: #172139;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding: 0.5rem 1.5rem;
+            border-top-right-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+        }
+        
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .accent-line {
+            height: 0.25rem;
+            width: 8rem;
+            background-color: #FBBB28;
+        }
+        
+        .concept-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 6px solid #108181;
+            transition: all 0.3s ease;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(23, 33, 57, 0.15);
+        }
+        
+        .example-step {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .example-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+        }
+        
+        .example-step:hover {
+            border-color: #108181;
+            box-shadow: 0 8px 20px rgba(16, 129, 129, 0.15);
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(23, 33, 57, 0.25);
+        }
+        
+        .math-symbol {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FBBB28;
+            margin: 0 1rem;
+        }
+        
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .pulse-element {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        @media (max-width: 1280px) {
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide relative overflow-hidden">
+        <!-- Header -->
+        <div class="px-16 py-8">
+            <!-- Session Badge and Title -->
+            <div class="title-container">
+                <div class="session-badge">Sesión 1</div>
+                <div>
+                    <h1 class="main-title">Factores de</h1>
+                    <h1 class="main-title">Conversión</h1>
+                    <div class="accent-line"></div>
+                </div>
+            </div>
+            
+            <!-- Content Grid -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Concept Explanation -->
+                <div class="concept-card rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-tertiary-blue w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-exchange-alt text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold primary-blue">¿Qué es un Factor de Conversión?</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <p class="text-gray-700 text-lg leading-relaxed">
+                            Es una <strong class="secondary-blue">fracción</strong> donde el numerador y denominador son cantidades <strong class="tertiary-green">iguales</strong> expresadas en unidades distintas.
+                        </p>
+                        
+                        <div class="bg-white rounded-lg p-4 border-l-4 border-quaternary-blue">
+                            <p class="text-gray-600 font-medium">
+                                <i class="fas fa-key tertiary-green mr-2"></i>
+                                <strong>Valor = 1</strong> (porque numerador = denominador)
+                            </p>
+                        </div>
+                        
+                        <div class="flex items-center justify-center py-4">
+                            <span class="text-2xl primary-blue font-bold">Objetivo:</span>
+                            <span class="math-symbol">→</span>
+                            <span class="text-lg secondary-green font-medium">Cancelar unidades originales</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual Example -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold primary-blue text-center mb-4">
+                        <i class="fas fa-lightbulb secondary-green mr-2"></i>
+                        Ejemplo Práctico
+                    </h3>
+                    
+                    <!-- Problem -->
+                    <div class="example-step">
+                        <h4 class="font-semibold primary-blue mb-2">Problema:</h4>
+                        <p class="text-gray-700">Convertir <strong class="tertiary-blue">2 horas</strong> a <strong class="secondary-green">minutos</strong></p>
+                    </div>
+                    
+                    <!-- Known Data -->
+                    <div class="example-step">
+                        <h4 class="font-semibold primary-blue mb-2">Dato conocido:</h4>
+                        <div class="text-center bg-tertiary-green bg-opacity-10 rounded-lg p-3">
+                            <span class="text-xl font-bold tertiary-green">1 hora = 60 minutos</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Solution -->
+                    <div class="formula-box floating-element">
+                        <div class="text-lg mb-2 opacity-90">Solución:</div>
+                        <div class="flex items-center justify-center flex-wrap text-xl font-bold">
+                            <span>2 horas</span>
+                            <span class="math-symbol">×</span>
+                            <span class="bg-white bg-opacity-20 px-3 py-1 rounded">
+                                <span class="text-tertiary-green">60 minutos</span>
+                                <br>
+                                <hr class="border-white my-1">
+                                <span class="text-gray-300">1 hora</span>
+                            </span>
+                            <span class="math-symbol">=</span>
+                            <span class="text-tertiary-green text-2xl pulse-element">120 minutos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Points -->
+            <div class="mt-12 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6">
+                <h3 class="text-xl font-bold primary-blue mb-4 text-center">
+                    <i class="fas fa-star secondary-green mr-2"></i>
+                    Puntos Clave del Proceso
+                </h3>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-tertiary-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 floating-element">
+                            <span class="text-white text-2xl font-bold">1</span>
+                        </div>
+                        <p class="text-sm font-medium primary-blue">Identifica la unidad a eliminar</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-secondary-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 floating-element" style="animation-delay: 0.5s;">
+                            <span class="text-white text-2xl font-bold">2</span>
+                        </div>
+                        <p class="text-sm font-medium primary-blue">Colócala en el denominador del factor</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-tertiary-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 floating-element" style="animation-delay: 1s;">
+                            <span class="text-white text-2xl font-bold">3</span>
+                        </div>
+                        <p class="text-sm font-medium primary-blue">La unidad deseada va en el numerador</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-12 w-24 h-24 bg-quaternary-blue rounded-full opacity-10 floating-element"></div>
+        <div class="absolute bottom-20 left-12 w-32 h-32 bg-secondary-green rounded-full opacity-15 floating-element" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 right-1/4 tertiary-green text-6xl opacity-20 floating-element" style="animation-delay: 1.5s;">×</div>
+    </div>
+</body>
+</html>

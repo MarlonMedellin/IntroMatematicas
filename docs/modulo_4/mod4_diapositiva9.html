@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentajes y Aumentos/Descuentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            margin: 0 auto;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            color: #172139;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .accent-line {
+            width: 8rem;
+            height: 0.3rem;
+            background: linear-gradient(90deg, #E9901E 0%, #FBBB28 50%, #B4C42C 100%);
+            margin: 0 auto 1.5rem;
+            animation: expandWidth 1.2s ease-out 0.3s both;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f0f5ff 0%, #ffffff 100%);
+            border: 3px solid #195855;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.5s both;
+        }
+
+        .definition-text {
+            color: #172139;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .percentage-highlight {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #ffffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0 0.3rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .problems-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8f0 100%);
+            border: 3px solid #B4C42C;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 1s ease-out 0.7s both;
+        }
+
+        .problems-title {
+            color: #B4C42C;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .problems-title i {
+            font-size: 1.8rem;
+        }
+
+        .problem-type {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #E9901E;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .problem-type:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 20px rgba(233, 144, 30, 0.2);
+        }
+
+        .problem-number {
+            background: linear-gradient(135deg, #E9901E 0%, #FBBB28 100%);
+            color: #ffffff;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            float: left;
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .problem-description {
+            color: #172139;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-left: 3rem;
+            line-height: 1.3;
+        }
+
+        .example-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f0ff 100%);
+            border: 3px solid #195855;
+            border-radius: 20px;
+            padding: 2rem;
+            animation: slideInRight 1s ease-out 0.9s both;
+        }
+
+        .example-title {
+            color: #195855;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .example-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid #195855;
+            margin-bottom: 1rem;
+        }
+
+        .problem-statement {
+            color: #172139;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .solution-steps {
+            background: linear-gradient(135deg, #f0f8f8 0%, #ffffff 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: #172139;
+            font-weight: 500;
+        }
+
+        .step-icon {
+            background-color: #195855;
+            color: #ffffff;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .formula-display {
+            background: linear-gradient(135deg, #195855 0%, #108181 100%);
+            color: #ffffff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        .bottom-applications {
+            background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+            border: 3px solid #00AEAC;
+            border-radius: 20px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out 1.1s both;
+        }
+
+        .applications-title {
+            color: #00AEAC;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .app-card {
+            background: #ffffff;
+            border: 2px solid #00AEAC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 174, 172, 0.2);
+        }
+
+        .app-icon {
+            background: linear-gradient(135deg, #00AEAC 0%, #108181 100%);
+            color: #ffffff;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .app-text {
+            color: #172139;
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Giant percentage symbol decoration */
+        .giant-percent {
+            position: absolute;
+            font-size: 12rem;
+            color: #FBBB28;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            z-index: 0;
+            font-weight: 900;
+        }
+
+        /* Floating decorative elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .float-1 {
+            top: 100px;
+            left: 100px;
+            font-size: 2rem;
+            color: #E9901E;
+            animation-delay: 0s;
+        }
+
+        .float-2 {
+            top: 200px;
+            right: 100px;
+            font-size: 1.5rem;
+            color: #B4C42C;
+            animation-delay: 2s;
+        }
+
+        .float-3 {
+            bottom: 150px;
+            left: 200px;
+            font-size: 1.8rem;
+            color: #195855;
+            animation-delay: 4s;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 8rem;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1280px) {
+            .content-grid {
+                gap: 1.5rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 1.5rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .application-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .giant-percent,
+            .floating-element {
+                display: none;
+            }
+        }
+
+        /* Content positioning */
+        .content-container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="content-container">
+            <!-- Header Section -->
+            <div class="header-section">
+                <h1 class="main-title">Porcentajes y Aumentos/Descuentos</h1>
+                <div class="accent-line"></div>
+                
+                <div class="definition-box">
+                    <p class="definition-text">
+                        El <span class="percentage-highlight">porcentaje (%)</span> es una forma de expresar una proporción 
+                        tomando como base el número <strong>100</strong>. 
+                        La regla de tres es la herramienta fundamental para resolver problemas de porcentajes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Types of Problems Section -->
+                <div class="problems-section">
+                    <h2 class="problems-title">
+                        <i class="fas fa-list-ol"></i>
+                        Tipos de Problemas
+                    </h2>
+                    
+                    <div class="problem-type">
+                        <div class="problem-number">1</div>
+                        <div class="problem-description">
+                            <strong>Hallar un % de un número:</strong><br>
+                            ¿Cuál es el 15% de 200?
+                        </div>
+                    </div>
+                    
+                    <div class="problem-type">
+                        <div class="problem-number">2</div>
+                        <div class="problem-description">
+                            <strong>Hallar qué % es un número de otro:</strong><br>
+                            ¿Qué % es 40 de 160?
+                        </div>
+                    </div>
+                    
+                    <div class="problem-type">
+                        <div class="problem-number">3</div>
+                        <div class="problem-description">
+                            <strong>Hallar un número dado su %:</strong><br>
+                            Si el 20% de un número es 50, ¿cuál es el número?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Section -->
+                <div class="example-section">
+                    <h2 class="example-title">
+                        <i class="fas fa-calculator"></i>
+                        Ejemplo Paso a Paso
+                    </h2>
+                    
+                    <div class="example-card">
+                        <div class="problem-statement">
+                            <strong>Problema:</strong> Una tienda ofrece un descuento del 15% en un artículo que cuesta $80.000. 
+                            ¿Cuánto es el descuento y cuál es el precio final?
+                        </div>
+                        
+                        <div class="solution-steps">
+                            <div class="step">
+                                <div class="step-icon">1</div>
+                                <div>Calcular el 15% de $80.000</div>
+                            </div>
+                            
+                            <div class="formula-display">
+                                $$\frac{\$80.000 \times 15}{100} = \$12.000$$
+                            </div>
+                            
+                            <div class="step">
+                                <div class="step-icon">2</div>
+                                <div>Precio final = $80.000 - $12.000 = <strong>$68.000</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Section -->
+            <div class="bottom-applications">
+                <h2 class="applications-title">
+                    <i class="fas fa-briefcase"></i>
+                    Aplicaciones por Programa
+                </h2>
+                
+                <div class="application-grid">
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Gestión Comercial:</strong> Calcular IVA (19%) sobre ventas de $250.000
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Gastronomía:</strong> Descuentos sucesivos: 20% + 10% sobre precio de $50.000
+                        </div>
+                    </div>
+                    
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="app-text">
+                            <strong>Turismo:</strong> Aumento 10% temporada alta + descuento 5% pago anticipado
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="giant-percent">%</div>
+        <div class="floating-element float-1">15%</div>
+        <div class="floating-element float-2">×</div>
+        <div class="floating-element float-3">÷100</div>
+    </div>
+</body>
+</html>

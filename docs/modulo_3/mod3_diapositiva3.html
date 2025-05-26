@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definición del Sistema de los Números Racionales</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: #FFFFFF;
+            overflow: hidden;
+        }
+        
+        .main-container {
+            padding: 3rem 4rem;
+            position: relative;
+            z-index: 2;
+            min-height: 720px;
+        }
+        
+        .slide-title {
+            color: #172139;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .title-accent {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0 auto 2rem;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .definition-card {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .definition-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 4s infinite ease-in-out;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -20px); }
+        }
+        
+        .definition-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #FBBB28;
+        }
+        
+        .math-formula {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 500;
+            border: 2px solid rgba(251,187,40,0.3);
+        }
+        
+        .examples-card {
+            background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
+            color: #172139;
+            padding: 2rem;
+            border-radius: 16px;
+            position: relative;
+        }
+        
+        .examples-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #172139;
+        }
+        
+        .example-item {
+            background: rgba(255,255,255,0.9);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        
+        .example-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .fraction-display {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #172139;
+        }
+        
+        .applications-section {
+            background: linear-gradient(135deg, #108181 0%, #00AEAC 100%);
+            padding: 1.5rem;
+            border-radius: 16px;
+            color: white;
+            grid-column: 1 / -1;
+        }
+        
+        .applications-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #FBBB28;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        .application-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .application-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .application-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #FBBB28;
+        }
+        
+        .application-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .floating-math {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.15;
+            animation: floatMath 8s infinite ease-in-out;
+            z-index: 1;
+            color: #195855;
+        }
+        
+        @keyframes floatMath {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+        
+        .math-1 {
+            font-size: 4rem;
+            top: 50px;
+            left: 50px;
+            animation-delay: 0s;
+        }
+        
+        .math-2 {
+            font-size: 3rem;
+            top: 150px;
+            right: 80px;
+            animation-delay: 2s;
+        }
+        
+        .math-3 {
+            font-size: 5rem;
+            bottom: 100px;
+            left: 100px;
+            animation-delay: 4s;
+        }
+        
+        .math-4 {
+            font-size: 2.5rem;
+            bottom: 200px;
+            right: 150px;
+            animation-delay: 6s;
+        }
+        
+        .highlight-box {
+            background: rgba(251,187,40,0.2);
+            border-left: 4px solid #FBBB28;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .key-point {
+            color: #172139;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1280px) {
+            .main-container {
+                padding: 2rem;
+            }
+            
+            .content-grid {
+                gap: 1.5rem;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .slide-title {
+                font-size: 1.75rem;
+            }
+            
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-math {
+                display: none;
+            }
+            
+            .definition-card,
+            .examples-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Floating Math Symbols -->
+        <div class="floating-math math-1">ℚ</div>
+        <div class="floating-math math-2">p/q</div>
+        <div class="floating-math math-3">∈</div>
+        <div class="floating-math math-4">≠0</div>
+        
+        <!-- Main Content -->
+        <div class="main-container">
+            <h1 class="slide-title">Definición del Sistema de los Números Racionales (ℚ)</h1>
+            <div class="title-accent"></div>
+            
+            <div class="content-grid">
+                <!-- Definition Card -->
+                <div class="definition-card">
+                    <h2 class="definition-title">
+                        <i class="fas fa-book-open mr-2"></i>
+                        Definición Matemática
+                    </h2>
+                    <p class="mb-3">Un número racional es cualquier número que puede expresarse como:</p>
+                    
+                    <div class="math-formula">
+                        <strong>p/q</strong> donde p, q ∈ ℤ y q ≠ 0
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="key-point">
+                            <i class="fas fa-lightbulb mr-2 text-yellow-400"></i>
+                            El conjunto ℚ incluye fracciones y decimales que representan partes de un todo
+                        </div>
+                    </div>
+                    
+                    <div class="math-formula">
+                        ℚ = {p/q | p ∈ ℤ, q ∈ ℤ, q ≠ 0}
+                    </div>
+                </div>
+                
+                <!-- Examples Card -->
+                <div class="examples-card">
+                    <h2 class="examples-title">
+                        <i class="fas fa-calculator mr-2"></i>
+                        Ejemplos Prácticos
+                    </h2>
+                    
+                    <div class="example-item">
+                        <span class="fraction-display">1/2</span>
+                        <span class="text-sm">Un medio</span>
+                    </div>
+                    
+                    <div class="example-item">
+                        <span class="fraction-display">-3/4</span>
+                        <span class="text-sm">Menos tres cuartos</span>
+                    </div>
+                    
+                    <div class="example-item">
+                        <span class="fraction-display">5/1 = 5</span>
+                        <span class="text-sm">Número entero</span>
+                    </div>
+                    
+                    <div class="example-item">
+                        <span class="fraction-display">0.75 = 3/4</span>
+                        <span class="text-sm">Decimal</span>
+                    </div>
+                    
+                    <div class="example-item">
+                        <span class="fraction-display">-2.5 = -5/2</span>
+                        <span class="text-sm">Decimal negativo</span>
+                    </div>
+                </div>
+                
+                <!-- Applications Section -->
+                <div class="applications-section">
+                    <h2 class="applications-title">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        Aplicaciones por Programa Académico
+                    </h2>
+                    
+                    <div class="applications-grid">
+                        <div class="application-item">
+                            <div class="application-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="application-text">
+                                <strong>Gastronomía:</strong> 1/4 litro de leche en recetas
+                            </div>
+                        </div>
+                        
+                        <div class="application-item">
+                            <div class="application-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="application-text">
+                                <strong>Ing. Comercial:</strong> 2/5 del mercado como participación
+                            </div>
+                        </div>
+                        
+                        <div class="application-item">
+                            <div class="application-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="application-text">
+                                <strong>Biotecnología:</strong> Concentraciones en soluciones
+                            </div>
+                        </div>
+                        
+                        <div class="application-item">
+                            <div class="application-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="application-text">
+                                <strong>Arquitectura:</strong> Proporciones y medidas precisas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

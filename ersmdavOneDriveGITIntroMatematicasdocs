@@ -1,0 +1,206 @@
+[33mcommit a0d6f1de0fb70dfbe033d4d12c127dd741d7a784[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Fri May 23 16:04:38 2025 -0500
+
+    Modificacion de nombres de archivos del modulo 5 y creacion de los enlaces de las diapositivas del modulo 5
+
+[33mcommit cc66ddb11272bba3289356552a6d22a8401eacfb[m
+Merge: 6fd21be 7f03e67
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Fri May 23 15:45:16 2025 -0500
+
+    Merge branch 'main' with resolved conflicts
+
+[33mcommit 6fd21be1e7c8f94595c6d8e4b8f200a8a7fd9010[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Fri May 23 15:37:38 2025 -0500
+
+    Reorganización de archivos del módulo 5: Nuevos documentos y diagramas agregados
+
+[33mcommit 7f03e67aba6d7f2effa94f49b8bb25f585bf458f[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Thu May 22 20:59:22 2025 -0500
+
+    Update index.html
+
+[33mcommit 853ac92f3b0fb375f5ed555debd074b47b20d35e[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Thu May 22 20:57:44 2025 -0500
+
+    feat: añadidos enlaces a las diapositivas del Módulo 1 en index.html y corregida codificación de caracteres
+
+[33mcommit bb91d10cd64c34fe78529348e2486de6e20fb4bf[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Thu May 22 20:51:42 2025 -0500
+
+    refactor: renombrados archivos HTML del módulo 1 con formato mod1_diapositiva#.html
+
+[33mcommit 1b9a9f9bc998f956c89e03f90cbe2cf4a1a76ee7[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Thu May 22 20:45:28 2025 -0500
+
+    Add HTML documents for Polinomios Aritméticos and References & Conclusions
+    
+    - Created d7.html for the "Polinomios aritméticos" session, including definitions, examples, and applications.
+    - Created d8.html for "Referencias y Conclusiones," summarizing the module and providing references.
+    - Implemented responsive design and interactive elements for better user experience.
+
+[33mcommit b9aed94098b5054e237e80512dcf813f43e5e405[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Thu May 22 20:41:52 2025 -0500
+
+    Agrega archivos HTML del modulo 1
+
+[33mcommit dfbb3bb1f24c38d389c78c8bc814be3158570170[m
+Author: Marlon David Arcila Vanegas <mdav@outlook.com>
+Date:   Thu May 22 18:12:40 2025 -0500
+
+    Update documentation: modify FUENTES content, reorganize module 3 and 4 docs, add new images and PDF resources
+
+[33mcommit e23dd3cb5f132875aa29332f030ad898ffb43431[m
+Author: Marlon David Arcila Vanegas <mdav@outlook.com>
+Date:   Thu May 22 17:17:14 2025 -0500
+
+    feat: Actualizacion de recursos - Agregando imagenes de los modulos 1 y 2, PDF de numeros primos, y titulos. Limpieza de archivos HTML antiguos
+
+[33mcommit 9c697bda31063378651d6d9cc75327389eb8b7de[m
+Author: Marlon David Arcila Vanegas <98528589@colmayor.loc>
+Date:   Thu May 22 15:02:09 2025 -0500
+
+    feat: Agregando fuentes del contenido matematico - archivos .md y .tex de las sesiones
+
+[33mcommit 5902bd34b72ca29bb8761a93ba57236910d0b477[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:43:45 2025 -0500
+
+    feat: agregar estructura jerárquica completa al índice con todas las secciones de cada módulo
+
+[33mcommit 9dc4e981c7c7d126a584b88abf720b5226ab8540[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:37:15 2025 -0500
+
+    refactor: mejorar estructura HTML del índice y actualizar enlaces a módulos
+
+[33mcommit ddbf0430282baac0ce9bc2deef63bb441d1674d2[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Wed May 21 22:30:22 2025 -0500
+
+    Delete docs/index.txt
+
+[33mcommit ee25366bc15e5f94cfb1e1dbc251f23613cd8023[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Wed May 21 22:28:43 2025 -0500
+
+    Update index.html
+
+[33mcommit 2568383da6b8e6c3253675b867aaee8f841f5cb1[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:27:42 2025 -0500
+
+    feat: agregar index.txt con enlaces a secciones de módulos
+
+[33mcommit 7b3f2911f065a9c42fa949333ea0b361aad55eb3[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:22:07 2025 -0500
+
+    refactor: renombrar directorios de modX a modulo_X
+
+[33mcommit 8d426c9ebcbed60aaf29ad21d25835144c3a7186[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:20:49 2025 -0500
+
+    refactor: renombrar carpetas de seccion-X a seccion_X
+
+[33mcommit 20d441f479be27846311cf93dd9d4d23a0696812[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:19:26 2025 -0500
+
+    refactor: renombrar diap-1.html a index.html y eliminar archivos extras
+
+[33mcommit 6cf39a72b372e8ddf00184c63fb1af652701cc41[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Wed May 21 22:16:32 2025 -0500
+
+    feat: agregar estructura de módulos 2-6 con sus secciones
+
+[33mcommit 256f5f424690f83e535db3d5f7344c29eb37c038[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Wed May 21 14:47:09 2025 -0500
+
+    Update index.html
+
+[33mcommit bf31a0f5f6b88bba5b4d6c47ac8b29100f5adfea[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Wed May 21 14:46:37 2025 -0500
+
+    Update index.html
+
+[33mcommit 103040ee43c894612417bd36307aa223a86a9ff5[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Wed May 21 14:45:56 2025 -0500
+
+    Update index.html
+    
+    diap 2 mod1
+
+[33mcommit 97f5736aab7efe42b3f2352ae268ff9d476ce9b1[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Wed May 21 14:45:11 2025 -0500
+
+    Update index.html
+    
+    diap mod1
+
+[33mcommit 45546db53a2839fdb135db09c43d9b4c57577608[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Sat May 17 16:02:39 2025 -0500
+
+    Actualizacion del archivo index de la carpeta raiz
+
+[33mcommit 7b3ca44d69a0a82e39b6fb750c0970835c070c2b[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Sat May 17 15:59:02 2025 -0500
+
+    Correccion estructura de directorios
+
+[33mcommit 25d014f27a848ef6d217a3b1cddf9d45a33ea6d3[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Sat May 17 15:56:21 2025 -0500
+
+    Cargando la diapositiva 2 y 3 de seccion 1 y 2 modulo 1
+
+[33mcommit 4ce1648dd34314398d7e2b0e5cb63685967957f5[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Sat May 17 15:52:17 2025 -0500
+
+    Cargando la diapositiva 1 de seccion 1 modulo 1
+
+[33mcommit 332ddcfd3609f9ef2925006f5a9da9e0248c2024[m
+Author: Marlon Arcila-vanegas <mdav@outlook.com>
+Date:   Sat May 17 15:30:06 2025 -0500
+
+    Test de archivo bat
+
+[33mcommit 527f84bf75c2a300d8821300ac9a983fcc32584d[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Sat May 17 19:07:05 2025 +0000
+
+    cambios en index de la seccion 1 modulo 1
+
+[33mcommit 8c1886149c78e2d1dab57c5efdde81d5b902febb[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Sat May 17 18:13:56 2025 +0000
+
+    Arrancó el site en /docs con CNAME y escritura modulo/seccion1
+
+[33mcommit d69f6c327ef4bd736c9cae1d4577474cf6600a93[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Sat May 17 13:04:35 2025 -0500
+
+    Create CNAME
+
+[33mcommit d8de0b94d4711fc837c8d669f21dc5f07deef18f[m
+Author: Profe Marlon Arcila <90739795+MarlonMedellin@users.noreply.github.com>
+Date:   Sat May 17 13:00:51 2025 -0500
+
+    Initial commit

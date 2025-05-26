@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Primos, MCM y MCD - Matemáticas Básicas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            width: 640px;
+            min-height: 360px;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+            overflow: hidden;
+        }
+        
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #172139;
+            z-index: 1;
+        }
+        
+        .title-content-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 2rem 2rem 2rem;
+            box-sizing: border-box;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .main-title {
+            color: #172139;
+            font-size: 2.25rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .accent-line {
+            height: 3px;
+            width: 160px;
+            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            margin: 0.75rem auto 0.5rem auto;
+        }
+        
+        .subtitle {
+            color: #195855;
+            font-size: 1.125rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .shape-1 {
+            width: 90px;
+            height: 90px;
+            background-color: #00AEAC;
+            top: 225px;
+            left: -30px;
+        }
+        
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            background-color: #FBBB28;
+            top: 90px;
+            right: -20px;
+        }
+        
+        .pattern-grid {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(#172139 1px, transparent 1px),
+                linear-gradient(90deg, #172139 1px, transparent 1px);
+            background-size: 10px 10px;
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+        
+        .floating-numbers {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .number-1 {
+            font-size: 1.5rem;
+            color: #B4C42C;
+            top: 100px;
+            left: 50px;
+            animation-delay: 0s;
+        }
+        
+        .number-2 {
+            font-size: 2rem;
+            color: #E9901E;
+            top: 175px;
+            right: 75px;
+            animation-delay: 2s;
+        }
+        
+        .number-3 {
+            font-size: 1.25rem;
+            color: #108181;
+            top: 250px;
+            left: 100px;
+            animation-delay: 4s;
+        }
+        
+        .number-4 {
+            font-size: 1.75rem;
+            color: #00AEAC;
+            top: 125px;
+            right: 25px;
+            animation-delay: 6s;
+        }
+        
+        .math-symbol {
+            position: absolute;
+            font-weight: bold;
+            opacity: 0.1;
+            color: #195855;
+            z-index: 0;
+        }
+        
+        .symbol-1 {
+            font-size: 3rem;
+            top: 150px;
+            left: 25px;
+        }
+        
+        .symbol-2 {
+            font-size: 4rem;
+            top: 200px;
+            right: 50px;
+        }
+        
+        .symbol-3 {
+            font-size: 2.5rem;
+            top: 150px;
+            left: 150px;
+        }
+        
+        .bottom-icons {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        .icon {
+            color: #108181;
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+        
+        .icon:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Header Bar -->
+        <div class="header-bar"></div>
+        
+        <!-- Background Decorative Elements -->
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="pattern-grid"></div>
+        
+        <!-- Floating Numbers -->
+        <div class="floating-numbers number-1">7</div>
+        <div class="floating-numbers number-2">23</div>
+        <div class="floating-numbers number-3">11</div>
+        <div class="floating-numbers number-4">5</div>
+        
+        <!-- Math Symbols -->
+        <div class="math-symbol symbol-1">×</div>
+        <div class="math-symbol symbol-2">÷</div>
+        <div class="math-symbol symbol-3">=</div>
+        
+        <!-- Main Content -->
+        <div class="title-content-container">
+            <h1 class="main-title">Números Primos, Mínimo Común Múltiplo (MCM) y Máximo Común Divisor (MCD)</h1>
+            <div class="accent-line"></div>
+            <h2 class="subtitle">Introductorio de Matemáticas Básicas</h2>
+        </div>
+        
+        <!-- Bottom Icons -->
+        <div class="bottom-icons">
+            <i class="fas fa-calculator icon"></i>
+            <i class="fas fa-divide icon"></i>
+            <i class="fas fa-times icon"></i>
+        </div>
+    </div>
+</body>
+</html>

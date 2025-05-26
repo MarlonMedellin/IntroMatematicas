@@ -1,0 +1,186 @@
+/* --- CONTENEDOR RESPONSIVO --- */
+.slide {
+    width: 100%;
+    max-width: 1280px;        /* ancho máximo en desktop */
+    margin: 0 auto;           /* centra en pantallas grandes */
+    position: relative;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 16 / 9;     /* mantiene proporción 16:9 */
+    overflow: hidden;
+}
+
+.slide-400 {
+    min-height: 400px;
+    height: 400px;
+    max-height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- TIPOGRAFÍA FLUIDA --- */
+h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1;
+}
+
+h2 {
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
+    line-height: 1.2;
+}
+
+.accent-line {
+    width: clamp(180px, 30vw, 320px);
+}
+
+/* --- ÁREA DE CONTENIDO --- */
+.title-content-container {
+    position: relative;
+    width: 100%;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    flex: 1 1 auto;
+}
+
+/* --- FORMAS DECORATIVAS --- */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape-1 {
+    width: clamp(90px, 14%, 180px);
+    height: clamp(90px, 14%, 180px);
+    top: 62.5%;   /* 450px de 720px ≈ 62.5% */
+    left: -5%;
+    background-color: #00AEAC;
+}
+
+.shape-2 {
+    width: clamp(60px, 9.4%, 120px);
+    height: clamp(60px, 9.4%, 120px);
+    top: 25%;     /* 180px de 720px ≈ 25% */
+    right: -3%;
+    background-color: #FBBB28;
+}
+
+/* --- PATRÓN DE REJILLA --- */
+.pattern-grid {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: clamp(150px, 23.4%, 300px);  /* 300px de 1280px ≈ 23.4% */
+    height: clamp(150px, 23.4%, 300px);
+    opacity: 0.1;
+    background-image:
+      linear-gradient(#172139 1px, transparent 1px),
+      linear-gradient(90deg, #172139 1px, transparent 1px);
+    background-size: 20px 20px;
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* --- ELEMENTOS FLOTANTES --- */
+.floating-numbers {
+    position: absolute;
+    font-weight: bold;
+    opacity: 0.5;
+    animation: float 10s infinite ease-in-out;
+    pointer-events: none;
+}
+
+/* convertimos posiciones fijas a porcentajes */
+.floating-numbers:nth-of-type(1) { /* 2³ */
+    top: 27.8%;   /* 200px/720px */
+    left: 1.2%;   /* 15% */
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
+.floating-numbers:nth-of-type(2) { /* √ */
+    top: 41.7%;   /* 300px/720px */
+    left: 80%;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+}
+.floating-numbers:nth-of-type(3) { /* 3² */
+    top: 62.5%;   /* 450px/720px */
+    left: 40%;
+    font-size: clamp(1.25rem, 3vw, 2.5rem);
+}
+.floating-numbers:nth-of-type(4) { /* ∛ */
+    top: 20.8%;   /* 150px/720px */
+    left: 65%;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* --- SÍMBOLOS MATEMÁTICOS GRANDES --- */
+.math-symbol {
+    position: absolute;
+    font-weight: bold;
+    opacity: 0.1;
+    color: #195855;
+    pointer-events: none;
+}
+
+.math-symbol:nth-of-type(1) { /* ^ */
+    top: 40%;
+    left: 5%;
+    font-size: clamp(5rem, 15vw, 9rem);
+}
+.math-symbol:nth-of-type(2) { /* √ */
+    top: 30%;
+    right: 10%;
+    font-size: clamp(4rem, 12vw, 8rem);
+}
+
+/* --- BADGE Y FOOTER --- */
+.module-badge {
+    position: absolute;
+    top: clamp(8px, 2vw, 20px);
+    left: 0;
+    background-color: #172139;
+    color: white;
+    padding: clamp(0.25rem,1vw,0.5rem) clamp(1rem,3vw,1.5rem)
+             clamp(0.25rem,1vw,0.5rem) clamp(1.5rem,4vw,2rem);
+    font-size: clamp(0.75rem, 1.5vw, 1.25rem);
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+    z-index: 2;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 4rem) 0 clamp(0.5rem, 2vw, 2rem) clamp(1rem,3vw,4rem);
+    z-index: 1;
+}
+
+.footer i {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-right: clamp(0.5rem, 2vw, 1.5rem);
+    color: #108181;
+}
+
+/* --- ANIMACIÓN --- */
+@keyframes float {
+    0%,100%   { transform: translateY(0); }
+    50%       { transform: translateY(-20px); }
+}
+
+/* --- MEDIA QUERIES ADICIONALES --- */
+@media (max-width: 768px) {
+    .pattern-grid, .shape, .math-symbol, .floating-numbers {
+        display: none;  /* oculta decoraciones en móviles */
+    }
+}
