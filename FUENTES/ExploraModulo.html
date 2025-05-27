@@ -1,0 +1,235 @@
+<!-- HEAD DEFINITIONS GO HERE -->
+
+<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<script>
+    /**
+     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
+     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
+     * @param {string} url - URL DEL RECURSO.
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+        }
+
+        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
+        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+
+        document.head.appendChild(elemento);
+    }
+
+    // 5. CARGAR ESTILOS DE BOOTSTRAP DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+    // 6. CARGAR ICONOS DE BOOTSTRAP DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+
+    /**
+     * 7. AGREGAR ESTILOS PERSONALIZADOS MEDIANTE UN ELEMENTO .
+     */
+    (function agregarEstilosPersonalizados() {
+        const customStyles = document.createElement('style');
+        customStyles.textContent = `
+            /* 8. ESTILOS PERSONALIZADOS */
+            .problem-container {
+                background-color: #e0f2f2; /* 9. COLOR DE FONDO AJUSTADO A PALETA AZULES-VERDES */
+                color: #172139;           /* 10. TEXTO OSCURO AJUSTADO A PALETA AZULES-VERDES */
+                border-radius: 15px;
+                padding: 5%;
+            }
+            .accordion-button .bi {
+                margin-right: 10px;
+                color: #172139;           /* 11. COLOR DEL ICONO DEL BOTÓN DEL ACORDEÓN */
+            }
+            .accordion-button:not(.collapsed) .bi {
+                color: #00AEAC;           /* 12. COLOR DEL ICONO CUANDO ESTÁ ABIERTO */
+            }
+            .accordion-button {
+                color: #172139;           /* 13. COLOR DEL TEXTO DEL BOTÓN DEL ACORDEÓN */
+            }
+            .accordion-button:not(.collapsed) {
+                color: #172139;           /* 14. COLOR DEL TEXTO CUANDO ESTÁ ABIERTO */
+                background-color: #e0f2f2;/* 15. FONDO DEL BOTÓN CUANDO ESTÁ ABIERTO */
+                border-color: #108181;   /* 16. BORDE DEL BOTÓN CUANDO ESTÁ ABIERTO */
+            }
+            .accordion-header {
+                font-weight: bold;
+            }
+            .divider {
+                border-top: 2px solid #108181; /* 17. DIVISOR AJUSTADO A PALETA AZULES-VERDES */
+                margin: 3% 0;
+            }
+            .accordion-body-container {
+                padding: 3%;
+                border: 1px solid #108181; /* 18. BORDE AJUSTADO A PALETA AZULES-VERDES */
+                border-radius: 10px;
+                background-color: #e0f2f2;  /* 19. FONDO AJUSTADO A PALETA AZULES-VERDES */
+                color: #172139;             /* 20. TEXTO DEL CUERPO DEL ACORDEÓN */
+                margin-top: 2%;
+            }
+            .accordion-body-container strong {
+                color: #172139;             /* 21. TEXTO EN NEGRITA DENTRO DEL CUERPO */
+            }
+            /* 22. MEDIA QUERIES PARA MEJOR RESPONSIVIDAD */
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 1.75rem;
+                    padding: 3% 0;
+                }
+                .problem-container {
+                    padding: 4%;
+                }
+                .accordion-body-container {
+                    padding: 2%;
+                }
+            }
+            @media (max-width: 576px) {
+                h1 {
+                    font-size: 1.5rem;
+                    padding: 2% 0;
+                }
+                .problem-container {
+                    padding: 3%;
+                }
+                .accordion-body-container {
+                    padding: 1.5%;
+                }
+            }
+        `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+
+<!-- 2. SECCIÓN 2: TÍTULO -->
+<div class="container-fluid my-4" id="informacion-general-titulo" style="border: 1px solid #00AEAC; border-radius: 8px; background-color: #E3F7F2; padding: 20px;">
+    <h2 style="color: #172139; margin: 0; display: flex; align-items: center; font-weight: bold;">
+        <i class="bi bi-calculator" style="color: #00AEAC; margin-right: 10px;"></i>
+        Potenciación, Radicación y Polinomios Aritméticos: Operaciones Avanzadas y sus Propiedades.
+    </h2>
+    <hr style="border: none; border-top: 1px solid #00AEAC; margin: 10px 0;">
+</div>
+<!-- FIN SECCIÓN 2: TÍTULO -->
+
+<!-- 3. SECCIÓN 3: ACORDEÓN PASO 1 -->
+<div class="accordion" id="accordionPaso1">
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso1" aria-expanded="false" aria-controls="collapsePaso1">
+                <i class="bi bi-journal-text"></i> Introducción al módulo
+            </button>
+        </h2>
+        <div id="collapsePaso1" class="accordion-collapse collapse" aria-labelledby="headingPaso1" data-bs-parent="#accordionPaso1">
+            <div class="accordion-body-container py-3">
+                <p>
+                    En este módulo dominaremos los conceptos de Potenciación y Radicación, repasando las reglas de los exponentes y las propiedades de las raíces. Abordaremos el cálculo de potencias, la extracción de raíces cuadradas, cúbicas y superiores, y estudiaremos números irracionales asociados. Resolveremos polinomios aritméticos que integren potenciación y radicación. Estas matemáticas aplicadas forman parte del núcleo de formación básica de un estudiante de primer semestre en el Colegio Mayor de Antioquia.
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN 3. SECCIÓN 3: ACORDEÓN PASO 1 -->
+
+<!-- 4. SECCIÓN 4: ACORDEÓN PASO 2 -->
+<div class="accordion" id="accordionPaso2">
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso2" aria-expanded="false" aria-controls="collapsePaso2">
+                <i class="bi bi-bar-chart-line-fill"></i> Motivación del módulo
+            </button>
+        </h2>
+        <div id="collapsePaso2" class="accordion-collapse collapse" aria-labelledby="headingPaso2" data-bs-parent="#accordionPaso2">
+            <div class="accordion-body-container py-3">
+                <p>
+                    La potenciación y la radicación son esenciales para modelar fenómenos como el crecimiento exponencial, el cálculo de volúmenes y la resolución de ecuaciones en ingeniería y ciencias. Este módulo aporta competencias aplicadas de gran pertinencia, permitiendo al estudiante analizar patrones de cambio y realizar estimaciones precisas. Al fortalecer estas habilidades, los alumnos estarán mejor preparados para enfrentar desafíos de cursos posteriores y proyectos profesionales.
+
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN 4. SECCIÓN 4: ACORDEÓN PASO 2 -->
+
+<!-- 5. SECCIÓN 5: ACORDEÓN PASO 3 -->
+<div class="accordion" id="accordionPaso3">
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso3" aria-expanded="false" aria-controls="collapsePaso3">
+                <i class="bi bi-map"></i> Mapa conceptual de los conceptos del módulo
+            </button>
+        </h2>
+        <div id="collapsePaso3" class="accordion-collapse collapse" aria-labelledby="headingPaso3" data-bs-parent="#accordionPaso3">
+            <div class="accordion-body-container py-3">
+                <!-- AGREGADO: ENLACE A IMAGEN CON MODAL Y REFERENCIA APA 7 -->
+                <p>Haz clic en la imagen para verla en detalle:</p>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#mapaModal">
+                    <img src="https://colmayor.arrobamedellin.edu.co/pluginfile.php/276364/mod_page/content/2/mod-2-mapa.png" alt="Mapa conceptual" class="img-fluid" style="max-width:200px; border:1px solid #108181; border-radius:4px;">
+                </a>
+
+                <!-- MODAL PARA IMAGEN -->
+                <div class="modal fade" id="mapaModal" tabindex="-1" aria-labelledby="mapaModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mapaModalLabel">Mapa conceptual del módulo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="https://colmayor.arrobamedellin.edu.co/pluginfile.php/276364/mod_page/content/2/mod-2-mapa.png" alt="Mapa conceptual completo" class="img-fluid">
+                                <p class="mt-3" style="font-size:0.85em; color:#666;">
+                                    Arcila, M. (2025). Mapa conceptual del módulo [Imagen]. Creado con ChatGPT Plus por Marlon Arcila.
+                                    https://colmayor.arrobamedellin.edu.co/pluginfile.php/276364/mod_page/content/2/mod-2-mapa.png
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN AGREGADO: IMAGEN Y REFERENCIA -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN 5. SECCIÓN 5: ACORDEÓN PASO 3 -->
+
+<!-- 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
+<!-- CARGA DE SCRIPTS NECESARIOS PARA EL FUNCIONAMIENTO DE BOOTSTRAP -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    /**
+     * 23. FUNCIONES ADICIONALES PARA ACORDEONES.
+     * @description ESTA FUNCIÓN INICIALIZA LOS ACORDEONES CERRADOS AL CARGAR LA PÁGINA.
+     */
+    function initAccordions() {
+        const accordions = document.querySelectorAll('.accordion-collapse'); // 24. SELECCIONA TODOS LOS ACORDEONES
+        accordions.forEach(accordion => accordion.classList.remove('show')); // 25. REMUEVE 'SHOW'
+    }
+
+    /**
+     * 26. FUNCIONALIDAD PARA REGISTRAR EN CONSOLA EL ESTADO DE UN ACORDEÓN.
+     * @description IMPRIME EN CONSOLA SI UN ACORDEÓN ESTÁ ABIERTO O CERRADO.
+     * @param {string} idAcordeon - ID DEL ACORDEÓN A VERIFICAR.
+     */
+    function logEstadoAcordeon(idAcordeon) {
+        const acordeon = document.getElementById(idAcordeon); // 27. SELECCIONA ACORDEÓN POR ID
+        if (acordeon) {
+            const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO'; // 28. DETERMINA ESTADO
+            console.log(`El acordeón con ID '${idAcordeon}' está ${estado}.`);
+        } else {
+            console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`); // 29. ADVIERTE SI NO EXISTE
+        }
+    }
+
+    // 30. EVENTO QUE SE DISPARA AL CARGAR COMPLETAMENTE EL DOM
+    document.addEventListener('DOMContentLoaded', () => {
+        initAccordions(); // 31. INICIALIZA ACORDEONES
+        console.log('Acordeones inicializados y cerrados correctamente.');
+    });
+</script>
+<!-- FIN 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
