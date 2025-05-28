@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual - Sistema de Números Enteros</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const MapaConceptual = () => {
+            const [hoveredNode, setHoveredNode] = useState(null);
+
+            // Colores del esquema proporcionado
+            const colors = {
+                azul1: '#172139',
+                azul2: '#195855', 
+                azul3: '#108181',
+                azul4: '#00AEAC',
+                verde1: '#B4C42C',
+                verde2: '#E9901E',
+                verde3: '#FBBB28'
+            };
+
+            const ConceptNode = ({ id, x, y, title, subtitle, color, size = 'md', width, height }) => {
+                const sizeClasses = {
+                    sm: { w: 140, h: 70, text: 'text-xs' },
+                    md: { w: 180, h: 90, text: 'text-sm' },
+                    lg: { w: 220, h: 110, text: 'text-base' },
+                    xl: { w: 280, h: 140, text: 'text-lg' }
+                };
+
+                const nodeSize = sizeClasses[size];
+                const nodeWidth = width || nodeSize.w;
+                const nodeHeight = height || nodeSize.h;
+
+                return (
+                    <div
+                        className={`absolute ${nodeSize.text} transform -translate-x-1/2 -translate-y-1/2 
+                                   rounded-2xl shadow-xl transition-all duration-300 cursor-pointer
+                                   ${hoveredNode === id ? 'scale-110 shadow-2xl z-20' : 'z-10'}
+                                   border-2 border-white/30 backdrop-blur-sm`}
+                        style={{ 
+                            left: `${x}px`, 
+                            top: `${y}px`,
+                            width: `${nodeWidth}px`,
+                            height: `${nodeHeight}px`,
+                            backgroundColor: color,
+                            fontFamily: 'Montserrat, sans-serif'
+                        }}
+                        onMouseEnter={() => setHoveredNode(id)}
+                        onMouseLeave={() => setHoveredNode(null)}
+                    >
+                        <div className="h-full flex flex-col justify-center items-center text-white p-4">
+                            <div className="font-bold text-center leading-tight mb-1 uppercase">
+                                {title}
+                            </div>
+                            {subtitle && (
+                                <div className="font-light text-center opacity-90 text-xs">
+                                    {subtitle}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                );
+            };
+
+            const ConnectionLine = ({ x1, y1, x2, y2, color = colors.azul3 }) => {
+                return (
+                    <line
+                        x1={x1}
+                        y1={y1}
+                        x2={x2}
+                        y2={y2}
+                        stroke={color}
+                        strokeWidth="3"
+                        className="opacity-80"
+                        markerEnd="url(#arrowhead)"
+                    />
+                );
+            };
+
+            return (
+                <div className="w-full min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 relative overflow-auto">
+                    {/* Título principal */}
+                    <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30 text-center">
+                        <h1 
+                            className="text-5xl font-bold mb-2"
+                            style={{ 
+                                fontFamily: 'Montserrat, sans-serif',
+                                color: colors.azul1
+                            }}
+                        >
+                            SISTEMA DE LOS NÚMEROS ENTEROS
+                        </h1>
+                        <div 
+                            className="text-xl font-light mb-8"
+                            style={{ 
+                                fontFamily: 'Montserrat, sans-serif',
+                                color: colors.azul2
+                            }}
+                        >
+                            Conceptos Fundamentales y Relaciones
+                        </div>
+                    </div>
+
+                    {/* SVG para las conexiones */}
+                    <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 5 }}>
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                                    refX="10" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill={colors.azul3} />
+                            </marker>
+                        </defs>
+
+                        {/* Conexiones desde el centro a conceptos principales */}
+                        <ConnectionLine x1={640} y1={320} x2={320} y2={240} color={colors.azul3} />
+                        <ConnectionLine x1={640} y1={320} x2={960} y2={240} color={colors.azul3} />
+                        <ConnectionLine x1={640} y1={320} x2={320} y2={500} color={colors.verde2} />
+                        <ConnectionLine x1={640} y1={320} x2={960} y2={500} color={colors.verde2} />
+                        <ConnectionLine x1={640} y1={320} x2={640} y2={570} color={colors.verde1} />
+
+                        {/* Conexiones a conceptos específicos */}
+                        <ConnectionLine x1={320} y1={240} x2={160} y2={160} color={colors.azul4} />
+                        <ConnectionLine x1={320} y1={240} x2={480} y2={160} color={colors.azul4} />
+                        
+                        <ConnectionLine x1={960} y1={240} x2={800} y2={160} color={colors.azul4} />
+                        <ConnectionLine x1={960} y1={240} x2={1120} y2={160} color={colors.azul4} />
+
+                        <ConnectionLine x1={320} y1={500} x2={160} y2={620} color={colors.verde3} />
+                        <ConnectionLine x1={320} y1={500} x2={480} y2={620} color={colors.verde3} />
+
+                        <ConnectionLine x1={960} y1={500} x2={800} y2={620} color={colors.verde3} />
+                        <ConnectionLine x1={960} y1={500} x2={1120} y2={620} color={colors.verde3} />
+
+                        {/* Conexiones desde polinomios aritméticos */}
+                        <ConnectionLine x1={640} y1={570} x2={520} y2={680} color={colors.verde1} />
+                        <ConnectionLine x1={640} y1={570} x2={760} y2={680} color={colors.verde1} />
+                    </svg>
+
+                    {/* Nodo central */}
+                    <ConceptNode
+                        id="central"
+                        x={640}
+                        y={320}
+                        title="NÚMEROS ENTEROS"
+                        subtitle="ℤ = {..., -2, -1, 0, 1, 2, ...}"
+                        color={colors.azul1}
+                        size="xl"
+                    />
+
+                    {/* Conceptos principales */}
+                    <ConceptNode
+                        id="representacion"
+                        x={320}
+                        y={240}
+                        title="REPRESENTACIÓN"
+                        subtitle="Formas de expresar"
+                        color={colors.azul2}
+                        size="lg"
+                    />
+
+                    <ConceptNode
+                        id="operaciones"
+                        x={960}
+                        y={240}
+                        title="OPERACIONES"
+                        subtitle="Suma, Resta, Multiplicación, División"
+                        color={colors.azul2}
+                        size="lg"
+                    />
+
+                    <ConceptNode
+                        id="propiedades"
+                        x={320}
+                        y={500}
+                        title="PROPIEDADES"
+                        subtitle="Características internas"
+                        color={colors.verde2}
+                        size="lg"
+                    />
+
+                    <ConceptNode
+                        id="aplicaciones"
+                        x={960}
+                        y={500}
+                        title="APLICACIONES"
+                        subtitle="Uso práctico"
+                        color={colors.verde2}
+                        size="lg"
+                    />
+
+                    <ConceptNode
+                        id="polinomios"
+                        x={640}
+                        y={570}
+                        title="POLINOMIOS ARITMÉTICOS"
+                        subtitle="Expresiones complejas"
+                        color={colors.verde1}
+                        size="lg"
+                    />
+
+                    {/* Conceptos específicos - Representación */}
+                    <ConceptNode
+                        id="recta"
+                        x={160}
+                        y={160}
+                        title="Recta Numérica"
+                        color={colors.azul4}
+                        size="sm"
+                    />
+
+                    <ConceptNode
+                        id="valor-abs"
+                        x={480}
+                        y={160}
+                        title="Valor Absoluto"
+                        subtitle="|x|"
+                        color={colors.azul4}
+                        size="sm"
+                    />
+
+                    {/* Conceptos específicos - Operaciones */}
+                    <ConceptNode
+                        id="ley-signos"
+                        x={800}
+                        y={160}
+                        title="Ley de Signos"
+                        subtitle="Multiplicación y División"
+                        color={colors.azul4}
+                        size="sm"
+                    />
+
+                    <ConceptNode
+                        id="suma-resta"
+                        x={1120}
+                        y={160}
+                        title="Suma y Resta"
+                        color={colors.azul4}
+                        size="sm"
+                    />
+
+                    {/* Conceptos específicos - Propiedades */}
+                    <ConceptNode
+                        id="primos"
+                        x={160}
+                        y={620}
+                        title="Números Primos"
+                        color={colors.verde3}
+                        size="sm"
+                    />
+
+                    <ConceptNode
+                        id="divisibilidad"
+                        x={480}
+                        y={620}
+                        title="Divisibilidad"
+                        color={colors.verde3}
+                        size="sm"
+                    />
+
+                    {/* Conceptos específicos - Aplicaciones */}
+                    <ConceptNode
+                        id="mcd"
+                        x={800}
+                        y={620}
+                        title="MCD"
+                        subtitle="Máximo Común Divisor"
+                        color={colors.verde3}
+                        size="sm"
+                    />
+
+                    <ConceptNode
+                        id="mcm"
+                        x={1120}
+                        y={620}
+                        title="MCM"
+                        subtitle="Mínimo Común Múltiplo"
+                        color={colors.verde3}
+                        size="sm"
+                    />
+
+                    {/* Conceptos específicos - Polinomios Aritméticos */}
+                    <ConceptNode
+                        id="signos-agrupacion"
+                        x={520}
+                        y={680}
+                        title="Signos de Agrupación"
+                        subtitle="( ), [ ], { }"
+                        color={colors.verde1}
+                        size="sm"
+                    />
+
+                    <ConceptNode
+                        id="jerarquia"
+                        x={760}
+                        y={680}
+                        title="Jerarquía de Operaciones"
+                        subtitle="Orden de resolución"
+                        color={colors.verde1}
+                        size="sm"
+                    />
+
+                    {/* Leyenda */}
+                    <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-200">
+                        <h3 
+                            className="font-bold text-lg mb-4"
+                            style={{ 
+                                fontFamily: 'Montserrat, sans-serif',
+                                color: colors.azul1
+                            }}
+                        >
+                            LEYENDA
+                        </h3>
+                        <div className="space-y-3 text-sm">
+                            <div className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-lg shadow-sm" style={{ backgroundColor: colors.azul1 }}></div>
+                                <span style={{ fontFamily: 'Montserrat, sans-serif' }} className="font-medium">Concepto Central</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-lg shadow-sm" style={{ backgroundColor: colors.azul2 }}></div>
+                                <span style={{ fontFamily: 'Montserrat, sans-serif' }} className="font-medium">Conceptos Fundamentales</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-lg shadow-sm" style={{ backgroundColor: colors.verde2 }}></div>
+                                <span style={{ fontFamily: 'Montserrat, sans-serif' }} className="font-medium">Propiedades y Aplicaciones</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-5 h-5 rounded-lg shadow-sm" style={{ backgroundColor: colors.azul4 }}></div>
+                                <span style={{ fontFamily: 'Montserrat, sans-serif' }} className="font-medium">Conceptos Específicos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Panel de información */}
+                    {hoveredNode && (
+                        <div className="absolute top-40 right-8 bg-white/98 backdrop-blur-sm rounded-xl p-6 shadow-2xl max-w-sm border border-gray-200"
+                             style={{ zIndex: 40 }}>
+                            <div 
+                                className="font-bold text-lg mb-3"
+                                style={{ 
+                                    fontFamily: 'Montserrat, sans-serif',
+                                    color: colors.azul1
+                                }}
+                            >
+                                {hoveredNode === 'central' && 'Conjunto ℤ'}
+                                {hoveredNode === 'representacion' && 'Formas de Representar'}
+                                {hoveredNode === 'operaciones' && 'Operaciones Básicas'}
+                                {hoveredNode === 'propiedades' && 'Propiedades Numéricas'}
+                                {hoveredNode === 'aplicaciones' && 'Aplicaciones Prácticas'}
+                                {hoveredNode === 'polinomios' && 'Expresiones Complejas'}
+                                {hoveredNode === 'recta' && 'Representación Gráfica'}
+                                {hoveredNode === 'valor-abs' && 'Distancia al Origen'}
+                                {hoveredNode === 'ley-signos' && 'Reglas de Operación'}
+                                {hoveredNode === 'suma-resta' && 'Operaciones Básicas'}
+                                {hoveredNode === 'primos' && 'Números Especiales'}
+                                {hoveredNode === 'divisibilidad' && 'Criterios de División'}
+                                {hoveredNode === 'mcd' && 'Máximo Común Divisor'}
+                                {hoveredNode === 'mcm' && 'Mínimo Común Múltiplo'}
+                                {hoveredNode === 'signos-agrupacion' && 'Signos de Agrupación'}
+                                {hoveredNode === 'jerarquia' && 'Jerarquía de Operaciones'}
+                            </div>
+                            <div 
+                                className="text-sm leading-relaxed"
+                                style={{ 
+                                    fontFamily: 'Montserrat, sans-serif',
+                                    color: colors.azul2
+                                }}
+                            >
+                                {hoveredNode === 'central' && 'Los números enteros incluyen positivos, negativos y cero, formando la base de la aritmética avanzada.'}
+                                {hoveredNode === 'representacion' && 'La recta numérica y el valor absoluto permiten visualizar y medir los números enteros.'}
+                                {hoveredNode === 'operaciones' && 'Las cuatro operaciones fundamentales: suma, resta, multiplicación y división con enteros.'}
+                                {hoveredNode === 'propiedades' && 'Divisibilidad, números primos y factorización son fundamentales para el análisis numérico.'}
+                                {hoveredNode === 'aplicaciones' && 'MCD y MCM son herramientas esenciales para resolver problemas matemáticos complejos.'}
+                                {hoveredNode === 'polinomios' && 'Combinación de operaciones múltiples con jerarquía y signos de agrupación.'}
+                                {hoveredNode === 'recta' && 'Representación visual de los enteros en una línea ordenada.'}
+                                {hoveredNode === 'valor-abs' && 'Medida de la distancia de un número al cero, siempre positiva.'}
+                                {hoveredNode === 'ley-signos' && 'Reglas para determinar el signo del resultado en multiplicación y división.'}
+                                {hoveredNode === 'suma-resta' && 'Operaciones fundamentales con números enteros.'}
+                                {hoveredNode === 'primos' && 'Números con exactamente dos divisores: 1 y él mismo.'}
+                                {hoveredNode === 'divisibilidad' && 'Reglas para determinar si un número divide a otro exactamente.'}
+                                {hoveredNode === 'mcd' && 'El mayor número que divide exactamente a varios números dados.'}
+                                {hoveredNode === 'mcm' && 'El menor número que es múltiplo de varios números dados.'}
+                                {hoveredNode === 'signos-agrupacion' && 'Paréntesis, corchetes y llaves que establecen el orden de las operaciones.'}
+                                {hoveredNode === 'jerarquia' && 'Reglas que determinan qué operaciones realizar primero en expresiones complejas.'}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        ReactDOM.render(<MapaConceptual />, document.getElementById('root'));
+    </script>
+</body>
+</html>
