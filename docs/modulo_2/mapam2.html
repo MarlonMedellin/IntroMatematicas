@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Primos, MCM y MCD - Mapa Conceptual</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            padding: 2rem;
+        }
+        
+        .mermaid-container {
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            overflow-x: auto;
+            min-height: 500px;
+        }
+        
+        .legend-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .legend-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .color-central { background: #2c3e50; border: 2px solid white; }
+        .color-fundamental { background: #27ae60; border: 2px solid white; }
+        .color-methods { background: #e67e22; border: 2px solid white; }
+        .color-specific { background: #17a2b8; border: 2px solid white; }
+        .color-criteria { background: #fff3cd; border: 2px solid #856404; }
+        .color-applications { background: #6f42c1; border: 2px solid white; }
+        
+        .tip-container {
+            height: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .content-section {
+                padding: 1rem;
+            }
+            .legend-container {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-3 p-md-4">
+        <div class="main-container">
+            <div class="header">
+                <h1>NÚMEROS PRIMOS, MCM Y MCD</h1>
+                <p>Herramientas Fundamentales para la Descomposición y Relación entre Números</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mermaid-container">
+                            <div class="mermaid">
+                                graph LR
+                                    A[NÚMEROS PRIMOS MCM Y MCD]
+                                    
+                                    B[NÚMEROS PRIMOS Y COMPUESTOS]
+                                    D[DESCOMPOSICIÓN FACTORIAL]
+                                    E[MÁXIMO COMÚN DIVISOR MCD]
+                                    F[MÍNIMO COMÚN MÚLTIPLO MCM]
+                                    
+                                    B1[Números Primos]
+                                    B2[Números Compuestos]
+                                    B3[Concepto de Divisor]
+                                    
+                                    C[CRITERIOS DE DIVISIBILIDAD]
+                                    C1[Divisibilidad por 2]
+                                    C2[Divisibilidad por 3]
+                                    C3[Divisibilidad por 5]
+                                    C4[Divisibilidad por 7]
+                                    C5[Divisibilidad por 11]
+                                    
+                                    D1[Factores Primos]
+                                    D2[Teorema Fundamental]
+                                    D3[Método División Sucesiva]
+                                    
+                                    B11[Mayor que 1]
+                                    B12[Solo dos divisores]
+                                    B13[Ejemplos: 2, 3, 5, 7, 11]
+                                    
+                                    B21[Más de dos divisores]
+                                    B22[Ejemplos: 4, 6, 8, 9, 12]
+                                    
+                                    C11[Última cifra par]
+                                    C21[Suma cifras múltiplo 3]
+                                    C31[Última cifra 0 o 5]
+                                    C41[Método separación y resta]
+                                    C51[Diferencia sumas alternadas]
+                                    
+                                    E1[Definición MCD]
+                                    E2[Método Factorización Prima]
+                                    E3[Método Abreviado]
+                                    
+                                    F1[Definición MCM]
+                                    F2[Método Factorización Prima]
+                                    F3[Método Abreviado]
+                                    
+                                    E21[Factores Comunes]
+                                    E22[Menor Exponente]
+                                    
+                                    F21[Todos los Factores]
+                                    F22[Mayor Exponente]
+                                    
+                                    G[APLICACIONES DEL MCD]
+                                    H[APLICACIONES DEL MCM]
+                                    I[PROBLEMAS COMBINADOS]
+                                    
+                                    G1[Repartir partes iguales]
+                                    G2[Máximo tamaño posible]
+                                    G3[Dividir sin desperdicios]
+                                    
+                                    H1[Coincidencias temporales]
+                                    H2[Ciclos repetitivos]
+                                    H3[Menor cantidad común]
+                                    
+                                    I1[Análisis de situaciones]
+                                    I2[Identificación de método]
+                                    I3[Resolución práctica]
+                                    
+                                    %% Conexiones principales ajustadas
+                                    A --> B
+                                    A --> D
+                                    A --> E
+                                    A --> F
+                                    
+                                    %% Conexiones de conceptos fundamentales
+                                    B --> B1
+                                    B --> B2
+                                    B --> B3
+                                    
+                                    %% Criterios ahora dependen del concepto de divisor
+                                    B3 --> C
+                                    C --> C1
+                                    C --> C2
+                                    C --> C3
+                                    C --> C4
+                                    C --> C5
+                                    
+                                    D --> D1
+                                    D --> D2
+                                    D --> D3
+                                    
+                                    %% Conexiones de detalles específicos
+                                    B1 --> B11
+                                    B1 --> B12
+                                    B1 --> B13
+                                    
+                                    B2 --> B21
+                                    B2 --> B22
+                                    
+                                    C1 --> C11
+                                    C2 --> C21
+                                    C3 --> C31
+                                    C4 --> C41
+                                    C5 --> C51
+                                    
+                                    %% Conexiones MCD y MCM
+                                    E --> E1
+                                    E --> E2
+                                    E --> E3
+                                    
+                                    F --> F1
+                                    F --> F2
+                                    F --> F3
+                                    
+                                    E2 --> E21
+                                    E2 --> E22
+                                    
+                                    F2 --> F21
+                                    F2 --> F22
+                                    
+                                    %% Aplicaciones ahora dependen de sus conceptos padre
+                                    E --> G
+                                    F --> H
+                                    
+                                    %% Problemas combinados depende de ambas aplicaciones
+                                    G --> I
+                                    H --> I
+                                    
+                                    G --> G1
+                                    G --> G2
+                                    G --> G3
+                                    
+                                    H --> H1
+                                    H --> H2
+                                    H --> H3
+                                    
+                                    I --> I1
+                                    I --> I2
+                                    I --> I3
+                                    
+                                    %% Estilos de nodos
+                                    classDef central fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff
+                                    classDef fundamental fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff
+                                    classDef methods fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff
+                                    classDef specific fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
+                                    classDef criteria fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+                                    classDef details fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+                                    classDef applications fill:#6f42c1,stroke:#fff,stroke-width:2px,color:#fff
+                                    
+                                    %% Aplicación de estilos
+                                    class A central
+                                    class B,D fundamental
+                                    class E,F,G,H methods
+                                    class B1,B2,D1,E1,F1,C specific
+                                    class C1,C2,C3,C4,C5,E2,F2,E3,F3 criteria
+                                    class B11,B12,B13,B21,B22,C11,C21,C31,C41,C51,E21,E22,F21,F22,G1,G2,G3,H1,H2,H3,I1,I2,I3 details
+                                    class I,B3,D2,D3 applications
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12 col-md-8">
+                        <div class="legend-container">
+                            <div class="legend-title">
+                                🗂️ LEYENDA
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                    <div class="legend-item">
+                                        <div class="legend-color color-central"></div>
+                                        <span><strong>Concepto Central</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color color-fundamental"></div>
+                                        <span><strong>Conceptos Fundamentales</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="legend-item">
+                                        <div class="legend-color color-methods"></div>
+                                        <span><strong>Métodos y Procedimientos</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color color-specific"></div>
+                                        <span><strong>Conceptos Específicos</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="legend-item">
+                                        <div class="legend-color color-criteria"></div>
+                                        <span><strong>Criterios y Reglas</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color color-applications"></div>
+                                        <span><strong>Aplicaciones Prácticas</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="tip-container">
+                            <div class="alert alert-info h-100 d-flex align-items-center">
+                                <div>
+                                    <strong>💡 Tip:</strong> Observa cómo las aplicaciones del MCD y MCM derivan de sus conceptos respectivos, y cómo los problemas combinados requieren ambos métodos. Los criterios de divisibilidad se fundamentan en el concepto básico de divisor.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Segoe UI, sans-serif',
+                fontSize: '18px',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#fff',
+                lineColor: '#333'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 40,
+                rankSpacing: 80,
+                padding: 20
+            }
+        });
+
+        // Ajustar el tamaño de fuente según el dispositivo
+        function adjustFontSize() {
+            const mermaidElements = document.querySelectorAll('.mermaid text');
+            const width = window.innerWidth;
+            
+            mermaidElements.forEach(element => {
+                if (width < 576) {
+                    element.style.fontSize = '13px';
+                } else if (width < 768) {
+                    element.style.fontSize = '15px';
+                } else {
+                    element.style.fontSize = '17px';
+                }
+            });
+        }
+
+        // Aplicar ajustes después de que Mermaid renderice
+        setTimeout(adjustFontSize, 1000);
+        window.addEventListener('resize', adjustFontSize);
+    </script>
+</body>
+</html>
