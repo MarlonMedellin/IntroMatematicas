@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de los Números Racionales - Mapa Conceptual Simplificado</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        .content-section {
+            padding: 2rem;
+        }
+        
+        .mermaid-container {
+            background: #fefefe;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: #007bff #f8f9fa;
+        }
+        
+        .mermaid-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .mermaid-container::-webkit-scrollbar-track {
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .mermaid-container::-webkit-scrollbar-thumb {
+            background: #007bff;
+            border-radius: 10px;
+        }
+        
+        .mermaid-container::-webkit-scrollbar-thumb:hover {
+            background: #0056b3;
+        }
+        
+        .legend-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid #dee2e6;
+        }
+        
+        .legend-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+        
+        .legend-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 0.7rem;
+            flex-shrink: 0;
+        }
+        
+        .improvements {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        
+        .improvements h6 {
+            color: #0c5460;
+            font-weight: 600;
+        }
+        
+        .improvements ul {
+            color: #155724;
+            margin-bottom: 0;
+        }
+        
+        /* Responsive typography */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .header p { font-size: 1rem; }
+            .content-section { padding: 1rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .header h1 { font-size: 1.7rem; }
+            .header p { font-size: 0.9rem; }
+            .legend-item { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-3 p-md-4">
+        <div class="main-container">
+            <div class="header">
+                <h1><i class="fas fa-calculator"></i> SISTEMA DE LOS NÚMEROS RACIONALES</h1>
+                <p>Fundamentos, Operaciones, Propiedades y Aplicaciones</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mermaid-container">
+                            <div class="mermaid">
+graph LR
+    A[NÚMEROS RACIONALES Q]
+    
+    %% Operaciones Básicas (4 categorías claras)
+    B[FUNDAMENTOS]
+    C[OPERACIONES]
+    D[PROPIEDADES]
+    E[APLICACIONES]
+    
+    %% FUNDAMENTOS - Subnivel 1
+    B1[Definición del Conjunto]
+    B2[Tipos de Fracciones]
+    B3[Equivalencias]
+    
+    %% FUNDAMENTOS - Subnivel 2
+    B11[Forma p/q donde q≠0]
+    B12[Incluye Números Enteros]
+    B13[Representación Decimal]
+    
+    B21[Fracción Propia/Impropia]
+    B22[Fracción Mixta]
+    B23[Fracción Decimal]
+    
+    B31[Simplificación por MCD]
+    B32[Amplificación por Múltiplos]
+    
+    %% OPERACIONES - Subnivel 1
+    C1[Adición y Sustracción]
+    C2[Multiplicación]
+    C3[División]
+    
+    %% OPERACIONES - Subnivel 2
+    C11[Fracciones Homogéneas: Sumar numeradores]
+    C12[Fracciones Heterogéneas: MCM de denominadores]
+    
+    C21[Multiplicar numeradores entre sí]
+    C22[Multiplicar denominadores entre sí]
+    
+    C31[Multiplicar por el recíproco]
+    C32[Producto cruzado]
+    
+    %% PROPIEDADES
+    D1[Conmutativa]
+    D2[Asociativa]
+    D3[Inverso Aditivo]
+    D4[Inverso Multiplicativo]
+    
+    %% APLICACIONES
+    E1[Gastronomía y Recetas]
+    E2[Arquitectura y Escalas]
+    E3[Administración y Porcentajes]
+    E4[Ciencias de la Salud]
+    
+    %% CONVERSIONES (ahora como Detalles y Métodos)
+    F1[Simplificación a Mínima Expresión]
+    F2[Amplificación]
+    F3[Comparación de Fracciones]
+    
+    %% Conexiones principales (jerarquía clara)
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+    A --> F1
+    A --> F2
+    A --> F3
+    
+    %% Conexiones FUNDAMENTOS
+    B --> B1
+    B --> B2
+    B --> B3
+    
+    B1 --> B11
+    B1 --> B12
+    B1 --> B13
+    
+    B2 --> B21
+    B2 --> B22
+    B2 --> B23
+    
+    B3 --> B31
+    B3 --> B32
+    
+    %% Conexiones OPERACIONES
+    C --> C1
+    C --> C2
+    C --> C3
+    
+    C1 --> C11
+    C1 --> C12
+    
+    C2 --> C21
+    C2 --> C22
+    
+    C3 --> C31
+    C3 --> C32
+    
+    %% Conexiones PROPIEDADES
+    D --> D1
+    D --> D2
+    D --> D3
+    D --> D4
+    
+    %% Conexiones APLICACIONES
+    E --> E1
+    E --> E2
+    E --> E3
+    E --> E4
+    
+    %% Solo UNA conexión estratégica: Simplificación apoya a Operaciones
+    F1 --> C
+    
+    %% Estilos por categoría
+    classDef conceptoCentral fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff,font-weight:bold,font-size:18px
+    classDef ramas fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold,font-size:16px
+    classDef subnivel1 fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold,font-size:15px
+    classDef subnivel2 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404,font-weight:500,font-size:14px
+    classDef propiedades fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold,font-size:14px
+    classDef aplicaciones fill:#6f42c1,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold,font-size:14px
+    
+    %% Aplicar estilos
+    class A conceptoCentral
+    class B,C ramas
+    class D propiedades
+    class E aplicaciones
+    class B1,B2,B3,C1,C2,C3 subnivel1
+    class B11,B12,B13,B21,B22,B23,B31,B32,C11,C12,C21,C22,C31,C32,D1,D2,D3,D4,E1,E2,E3,E4,F1,F2,F3 subnivel2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12 col-md-7">
+                        <div class="legend-section">
+                            <div class="legend-title">
+                                <i class="fas fa-info-circle"></i>LEYENDA
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="legend-item">
+                                        <div class="legend-circle" style="background: #2c3e50;"></div>
+                                        <span><strong>Concepto Central</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-circle" style="background: #27ae60;"></div>
+                                        <span><strong>Operaciones Básicas</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-circle" style="background: #17a2b8;"></div>
+                                        <span><strong>Conceptos Específicos</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-circle" style="background: #fff3cd; border: 2px solid #856404;"></div>
+                                        <span><strong>Detalles y Métodos</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="legend-item">
+                                        <div class="legend-circle" style="background: #e67e22;"></div>
+                                        <span><strong>Propiedades Matemáticas</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-circle" style="background: #6f42c1;"></div>
+                                        <span><strong>Aplicaciones Prácticas</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5 mt-3 mt-md-0">
+                        <div class="alert alert-info">
+                            <h6><i class="fas fa-lightbulb"></i> Tip</h6>
+                            <p class="mb-0">Haz clic y arrastra para navegar por el diagrama en dispositivos táctiles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Segoe UI, sans-serif',
+                fontSize: '16px',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#fff',
+                lineColor: '#333'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 60,
+                rankSpacing: 80,
+                padding: 20
+            }
+        });
+
+        // Responsive font adjustment
+        function adjustMermaidFont() {
+            const width = window.innerWidth;
+            let fontSize = '16px';
+            let nodeSpacing = 60;
+            let rankSpacing = 80;
+            
+            if (width <= 768) {
+                fontSize = '14px';
+                nodeSpacing = 50;
+                rankSpacing = 60;
+            }
+            if (width <= 576) {
+                fontSize = '12px';
+                nodeSpacing = 40;
+                rankSpacing = 50;
+            }
+            
+            mermaid.initialize({ 
+                startOnLoad: true,
+                theme: 'base',
+                themeVariables: {
+                    fontFamily: 'Segoe UI, sans-serif',
+                    fontSize: fontSize,
+                    primaryTextColor: '#fff',
+                    primaryBorderColor: '#fff',
+                    lineColor: '#333'
+                },
+                flowchart: {
+                    useMaxWidth: false,
+                    htmlLabels: true,
+                    curve: 'basis',
+                    nodeSpacing: nodeSpacing,
+                    rankSpacing: rankSpacing,
+                    padding: 20
+                }
+            });
+        }
+
+        window.addEventListener('resize', adjustMermaidFont);
+        adjustMermaidFont();
+    </script>
+</body>
+</html>
