@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual - Razones, Proporciones y Regla de Tres</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            margin: 5px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            padding: 25px;
+        }
+        
+        .diagram-container {
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px solid #e9ecef;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        
+        /* Scrollbar personalizada para el diagrama */
+        .diagram-container::-webkit-scrollbar {
+            height: 12px;
+        }
+        
+        .diagram-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 6px;
+        }
+        
+        .diagram-container::-webkit-scrollbar-thumb {
+            background: #34495e;
+            border-radius: 6px;
+        }
+        
+        .diagram-container::-webkit-scrollbar-thumb:hover {
+            background: #2c3e50;
+        }
+        
+        .mermaid {
+            font-family: 'Segoe UI', sans-serif !important;
+            min-width: 1400px; /* Ancho mínimo para layout horizontal */
+        }
+        
+        .legend-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .legend-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tip-section {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .tip-section .alert {
+            margin: 0;
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: #0c5460;
+        }
+        
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.6rem; }
+            .header p { font-size: 1rem; }
+            .content-section { padding: 15px; }
+            .mermaid { min-width: 1200px; }
+        }
+        
+        @media (max-width: 576px) {
+            .header h1 { font-size: 1.4rem; }
+            .header p { font-size: 0.9rem; }
+            .content-section { padding: 10px; }
+            .mermaid { min-width: 1000px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-3 p-md-4">
+        <div class="main-container">
+            <div class="header">
+                <h1>RAZONES, PROPORCIONES Y REGLA DE TRES</h1>
+                <p>Fundamentos de la Comparación y la Proporcionalidad</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="diagram-container">
+                            <div class="mermaid">
+graph LR
+    A[RAZONES PROPORCIONES Y REGLA DE TRES]
+    
+    B[FUNDAMENTOS BÁSICOS]
+    C[REGLA DE TRES SIMPLE]
+    D[APLICACIONES AVANZADAS]
+    E[REGLA DE TRES COMPUESTA]
+    
+    B1[Razón]
+    B2[Proporción]
+    B3[Propiedad Fundamental]
+    
+    C1[Directa]
+    C2[Inversa]
+    
+    D1[Porcentajes]
+    D2[Repartos Proporcionales]
+    D3[Aumentos y Descuentos]
+    
+    E1[Múltiples Magnitudes]
+    E2[Análisis de Relaciones]
+    
+    B11["Antecedente/Consecuente<br/>a/b donde a=antecedente, b=consecuente"]
+    B13[Comparación de Cantidades]
+    
+    B21["Extremos/Medios<br/>a/b = c/d<br/>Extremos: a,d | Medios: b,c"]
+    B23[Igualdad de Razones]
+    
+    B31["Producto Extremos = Producto Medios<br/>a×d = b×c<br/>Resolución de Incógnitas"]
+    
+    C11[Magnitudes Directamente Proporcionales]
+    C12["↑A → ↑B / ↓A → ↓B<br/>Variación Conjunta"]
+    
+    C21[Magnitudes Inversamente Proporcionales]
+    C22["↑A → ↓B / ↓A → ↑B<br/>Variación Opuesta"]
+    C23[Producto Constante]
+    
+    D11["Porcentajes (%)<br/>Base 100"]
+    D13["Descuentos IVA<br/>Ej: Tienda 20% descuento"]
+    
+    D21["Reparto Directo<br/>Ej: Ganancias según inversión"]
+    D22["Reparto Inverso<br/>Ej: Bonos según faltas"]
+    D23[Números Índice]
+    
+    D31["Descuentos Sucesivos<br/>Ej: Hotel temporada + pago anticipado"]
+    D32["Aumentos Sucesivos<br/>Ej: Inflación + impuestos"]
+    D33[Factores Multiplicativos]
+    
+    E11["Tres o Más Variables<br/>Ej: Obreros-Horas-Días-Metros"]
+    E12[Relaciones Complejas]
+    E13["Planteamiento Matricial<br/>Ej: Arquitectura construcción"]
+    
+    E21["Identificación Directa<br/>Ej: Más hornos→Más producción"]
+    E22["Identificación Inversa<br/>Ej: Más trabajadores→Menos tiempo"]
+    E23[Factores de Cálculo]
+    
+    D211[Constante de Proporcionalidad]
+    D212[Suma de Índices]
+    D213["Distribución Equitativa<br/>Ej: Herencia familiar"]
+    
+    D221[Inversos de Índices]
+    D222[Suma de Inversos]
+    D223["Distribución Inversa<br/>Ej: Bono empleados"]
+    
+    E231["Factor Directo<br/>nuevo/original"]
+    E232["Factor Inverso<br/>original/nuevo"]
+    E233[Multiplicación de Factores]
+    
+    APLICACIONES[APLICACIONES PRÁCTICAS]
+    AP1["Gestión Comercial<br/>Cálculo IVA ventas"]
+    AP2["Gastronomía<br/>Recetas porciones"]
+    AP3["Arquitectura<br/>Escalas planos"]
+    AP4["Gestión Turística<br/>Mapas distancias"]
+    AP5["Ingeniería<br/>Materiales construcción"]
+    
+    %% Conexiones principales
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+    
+    B --> B1
+    B --> B2
+    B --> B3
+    
+    C --> C1
+    C --> C2
+    
+    D --> D1
+    D --> D2
+    D --> D3
+    
+    E --> E1
+    E --> E2
+    
+    %% Conexiones secundarias
+    B1 --> B11
+    B1 --> B13
+    
+    B2 --> B21
+    B2 --> B23
+    
+    B3 --> B31
+    
+    C1 --> C11
+    C1 --> C12
+    
+    C2 --> C21
+    C2 --> C22
+    C2 --> C23
+    
+    D1 --> D11
+    D1 --> D13
+    
+    D2 --> D21
+    D2 --> D22
+    D2 --> D23
+    
+    D3 --> D31
+    D3 --> D32
+    D3 --> D33
+    
+    E1 --> E11
+    E1 --> E12
+    E1 --> E13
+    
+    E2 --> E21
+    E2 --> E22
+    E2 --> E23
+    
+    %% Conexiones terciarias
+    D21 --> D211
+    D21 --> D212
+    D21 --> D213
+    
+    D22 --> D221
+    D22 --> D222
+    D22 --> D223
+    
+    E23 --> E231
+    E23 --> E232
+    E23 --> E233
+    
+    %% Aplicaciones
+    A --> APLICACIONES
+    APLICACIONES --> AP1
+    APLICACIONES --> AP2
+    APLICACIONES --> AP3
+    APLICACIONES --> AP4
+    APLICACIONES --> AP5
+    
+    %% Estilos
+    classDef conceptoCentral fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff,font-weight:bold,font-size:15px
+    classDef fundamentales fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500,font-size:13px
+    classDef aplicaciones fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500,font-size:13px
+    classDef especificos fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500,font-size:12px
+    classDef operaciones fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404,font-weight:500,font-size:11px
+    classDef detalles fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057,font-weight:400,font-size:10px
+    classDef practicas fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724,font-weight:500,font-size:12px
+    
+    class A conceptoCentral
+    class B,C fundamentales
+    class D,E,APLICACIONES aplicaciones
+    class B1,B2,B3,C1,C2,D1,D2,D3,E1,E2 especificos
+    class B11,B13,B21,B23,B31,C11,C12,C21,C22,C23,D11,D13,D21,D22,D23,D31,D32,D33,E11,E12,E13,E21,E22,E23 operaciones
+    class D211,D212,D213,D221,D222,D223,E231,E232,E233 detalles
+    class AP1,AP2,AP3,AP4,AP5 practicas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="legend-section">
+                            <div class="legend-title">
+                                <i class="fas fa-list-ul"></i>
+                                LEYENDA
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #2c3e50;"></div>
+                                        <span><strong>Concepto Central:</strong> Tema principal del módulo</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #27ae60;"></div>
+                                        <span><strong>Fundamentos:</strong> Conceptos básicos esenciales</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #e67e22;"></div>
+                                        <span><strong>Aplicaciones:</strong> Regla de tres y usos prácticos</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #17a2b8;"></div>
+                                        <span><strong>Conceptos Específicos:</strong> Elementos y propiedades</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #fff3cd; border-color: #856404;"></div>
+                                        <span><strong>Operaciones:</strong> Métodos y procedimientos</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #d4edda; border-color: #155724;"></div>
+                                        <span><strong>Aplicaciones Prácticas:</strong> Campos profesionales</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-4">
+                        <div class="tip-section">
+                            <div class="alert alert-info">
+                                <strong><i class="fas fa-lightbulb"></i> Tip:</strong> Usa el scroll horizontal para navegar por todo el diagrama. El mapa muestra la progresión desde conceptos básicos hasta aplicaciones complejas de izquierda a derecha.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Segoe UI, sans-serif',
+                fontSize: '14px',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#fff',
+                lineColor: '#333'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 80,
+                rankSpacing: 120,
+                padding: 20
+            }
+        });
+    </script>
+</body>
+</html>
