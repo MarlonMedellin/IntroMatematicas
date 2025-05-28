@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Medida y Conversiones - Mapa Conceptual</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            padding: 2rem;
+        }
+        
+        .mermaid-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            border: 2px solid #e9ecef;
+        }
+        
+        .legend-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid #dee2e6;
+        }
+        
+        .legend-title {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 0.7rem;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .tip-section {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-content {
+            color: #0c5460;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        /* Scrollbar personalizada */
+        .mermaid-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .mermaid-container::-webkit-scrollbar-track {
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+        
+        .mermaid-container::-webkit-scrollbar-thumb {
+            background: #6c757d;
+            border-radius: 4px;
+        }
+        
+        .mermaid-container::-webkit-scrollbar-thumb:hover {
+            background: #495057;
+        }
+        
+        /* Estilos específicos para nodos Mermaid */
+        .mermaid .node rect {
+            rx: 8px;
+            ry: 8px;
+        }
+        
+        .mermaid .node text {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.4;
+        }
+        
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .content-section {
+                padding: 1rem;
+            }
+            
+            .legend-item {
+                font-size: 0.85rem;
+            }
+            
+            .tip-content {
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .legend-item {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-3 p-md-4">
+        <div class="main-container">
+            <div class="header">
+                <h1>SISTEMAS DE MEDIDA Y CONVERSIONES</h1>
+                <p>Aplicaciones de Factores de Conversión entre SI y Sistema Imperial</p>
+            </div>
+            
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mermaid-container">
+                            <div class="mermaid">
+                                graph LR
+                                    A[APLICACIONES DE SISTEMAS DE MEDIDA] --> B[FACTORES DE CONVERSION]
+                                    A --> C[SISTEMA INTERNACIONAL SI]
+                                    A --> D[SISTEMA IMPERIAL INGLES]
+                                    A --> E[CONVERSIONES ENTRE SISTEMAS]
+                                    
+                                    B --> B1[Concepto de Factor]
+                                    B --> B2[Metodologia de Aplicacion]
+                                    B --> B3[Equivalencias Unitarias]
+                                    
+                                    B1 --> B11["Fracción donde numerador/denominador<br/>son cantidades equivalentes<br/>Factor = a/b = 1"]
+                                    B2 --> B21["2 horas × (60 min/1 hora) = 120 min<br/>Factor: 60 min/1 hora<br/>Cancela unidades originales"]
+                                    B3 --> B31["• 1 km = 1000 m<br/>• 1 kg = 1000 g<br/>• 1 ft = 12 in<br/>• 1 gal = 4 qt"]
+                                    
+                                    C --> C1["UNIDADES SI<br/>Longitud: m, km, cm, mm<br/>Masa: kg, g, t, mg<br/>Volumen: L, mL, m³, cm³"]
+                                    
+                                    D --> D1["UNIDADES IMPERIALES<br/>Longitud: in, ft, yd, mi<br/>Masa: oz, lb, ton<br/>Volumen: fl oz, pt, qt, gal"]
+                                    
+                                    E --> E1[Factores Longitud]
+                                    E --> E2[Factores Masa]
+                                    E --> E3[Factores Volumen]
+                                    
+                                    E1 --> E11["1 in = 2.54 cm<br/>1 ft = 30.48 cm<br/>1 mi = 1.609 km<br/>1 m = 3.28 ft"]
+                                    
+                                    E2 --> E21["1 lb = 0.4536 kg<br/>1 kg = 2.205 lb<br/>1 oz = 28.35 g"]
+                                    
+                                    E3 --> E31["1 gal = 3.785 L<br/>1 L = 0.264 gal<br/>1 fl oz = 29.57 mL"]
+                                    
+                                    A --> F[APLICACIONES PRACTICAS]
+                                    F --> F1[Gastronomia Culinaria]
+                                    F --> F2[Gestion Turistica]
+                                    F --> F3[Arquitectura Ingenieria]
+                                    F --> F4[Bacteriologia Laboratorio]
+                                    F --> F5[Seguridad Salud Trabajo]
+                                    F --> F6[Gestion Comercial]
+                                    
+                                    F1 --> F11["Conversión de recetas internacionales<br/>Medidas de ingredientes sólidos/líquidos<br/>Equivalencias para balanzas y utensilios<br/>Adaptación porciones y pesos"]
+                                    F2 --> F21["Información distancias a turistas extranjeros<br/>Conversión de mapas y rutas<br/>Especificaciones de equipaje y peso<br/>Itinerarios con medidas locales"]
+                                    F3 --> F31["Interpretación de planos internacionales<br/>Especificaciones técnicas de materiales<br/>Dimensiones de estructuras y espacios<br/>Normativas constructivas globales"]
+                                    F4 --> F41["Preparación de soluciones y reactivos<br/>Medidas precisas para análisis<br/>Equipos con escalas diferentes<br/>Reportes de laboratorio internacionales"]
+                                    F5 --> F51["Distancias de seguridad reglamentarias<br/>Especificaciones de equipos importados<br/>Normativas internacionales de trabajo<br/>Medidas antropométricas globales"]
+                                    F6 --> F61["Manifiestos de aduana y peso de carga<br/>Especificaciones de productos importados<br/>Conversión para cotizaciones internacionales<br/>Logística y almacenamiento global"]
+                                    
+                                    classDef centralNode fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff,font-weight:bold,font-size:15px
+                                    classDef fundamentalNode fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold,font-size:13px
+                                    classDef applicationNode fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold,font-size:13px
+                                    classDef specificNode fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500,font-size:12px
+                                    classDef operationNode fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404,font-weight:500,font-size:11px
+                                    classDef detailNode fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057,font-weight:400,font-size:10px
+                                    
+                                    class A centralNode
+                                    class B,C,D,E fundamentalNode
+                                    class F,F1,F2,F3,F4,F5,F6 applicationNode
+                                    class B1,B2,B3,C1,D1,E1,E2,E3 specificNode
+                                    class B11,B21,B31,E11,E21,E31 operationNode
+                                    class F11,F21,F31,F41,F51,F61 detailNode
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12 col-md-8">
+                        <div class="legend-section">
+                            <div class="legend-title">
+                                <i class="fas fa-list-ul"></i>LEYENDA
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #2c3e50;"></div>
+                                        <span><strong>Concepto Central</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #27ae60;"></div>
+                                        <span><strong>Conceptos Fundamentales</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #e67e22;"></div>
+                                        <span><strong>Aplicaciones Prácticas</strong></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #17a2b8;"></div>
+                                        <span><strong>Conceptos Específicos</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #fff3cd; border: 2px solid #856404;"></div>
+                                        <span><strong>Definiciones y Factores</strong></span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: #f8f9fa; border: 1px solid #6c757d;"></div>
+                                        <span><strong>Aplicaciones Detalladas</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mt-3 mt-md-0">
+                        <div class="tip-section">
+                            <p class="tip-content">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                <strong>💡 Tip:</strong> Utiliza scroll horizontal para navegar por todo el diagrama. Los nodos agrupados muestran definiciones completas, factores de conversión y aplicaciones específicas por programa académico.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cargar Mermaid antes de la inicialización -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
+    
+    <script>
+        // Esperar a que el DOM y Mermaid estén listos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si Mermaid está disponible
+            if (typeof mermaid !== 'undefined') {
+                initializeMermaid();
+            } else {
+                // Si Mermaid no está disponible, intentar cargar después de un pequeño delay
+                setTimeout(function() {
+                    if (typeof mermaid !== 'undefined') {
+                        initializeMermaid();
+                    } else {
+                        console.error('Mermaid no se pudo cargar correctamente');
+                    }
+                }, 500);
+            }
+        });
+
+        function initializeMermaid() {
+            mermaid.initialize({ 
+                startOnLoad: true,
+                theme: 'base',
+                themeVariables: {
+                    fontFamily: 'Segoe UI, sans-serif',
+                    fontSize: '14px',
+                    primaryTextColor: '#333',
+                    primaryBorderColor: '#333',
+                    lineColor: '#666',
+                    background: '#fff'
+                },
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true,
+                    curve: 'basis',
+                    nodeSpacing: 50,
+                    rankSpacing: 80,
+                    padding: 20
+                }
+            });
+            
+            // Renderizar el diagrama manualmente si es necesario
+            mermaid.contentLoaded();
+        }
+    </script>
+</body>
+</html>

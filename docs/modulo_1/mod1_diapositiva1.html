@@ -1,10 +1,45 @@
-<html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de los Números Enteros - Matemáticas Básicas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#172139',
+                        'primary-teal': '#195855',
+                        'primary-light-teal': '#108181',
+                        'accent-yellow': '#FBBB28',
+                        'accent-orange': '#E9901E',
+                        'accent-green': '#B4C42C',
+                        'accent-cyan': '#00AEAC'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        :root {
+            --primary-dark: #172139;
+            --primary-teal: #195855;
+            --primary-light-teal: #108181;
+            --accent-yellow: #FBBB28;
+            --accent-orange: #E9901E;
+            --accent-green: #B4C42C;
+            --accent-cyan: #00AEAC;
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-light-teal) 100%);
+            --gradient-accent: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-orange) 50%, var(--accent-yellow) 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,12 +53,13 @@
         }
 
         .slide {
-            width: 1280px;
-            min-height: 720px;
+            width: min(1280px, 100vw);
+            min-height: 100vh;
             margin: 0 auto;
             position: relative;
             background: #ffffff;
             overflow: hidden;
+            aspect-ratio: 16/9;
         }
 
         .header-bar {
@@ -53,28 +89,31 @@
         }
 
         h1 {
-            color: #172139;
-            font-size: 4.5rem;
-            line-height: 1;
+            color: var(--primary-dark);
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            line-height: 1.1;
             font-weight: 700;
             font-family: 'Montserrat', sans-serif;
             margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
         }
 
         .accent-line {
             height: 6px;
-            width: 320px;
-            background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
+            width: clamp(180px, 25vw, 320px);
+            background: var(--gradient-accent);
             margin-bottom: 1rem;
             border-radius: 3px;
+            animation: expandWidth 1.2s ease-out 0.3s both;
         }
 
         h2 {
-            color: #195855;
-            font-size: 2.25rem;
-            line-height: 2.5rem;
+            color: var(--primary-teal);
+            font-size: clamp(1.25rem, 2.5vw, 2.25rem);
+            line-height: 1.2;
             font-weight: 500;
             font-family: 'Montserrat', sans-serif;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
 
         .shape {
@@ -161,6 +200,39 @@
             50% { transform: translateY(-20px); }
         }
 
+        @keyframes fadeInDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: clamp(180px, 25vw, 320px); }
+        }
+
+        /* Animate sequence delays */
+        .animate-sequence > *:nth-child(1) { animation-delay: 0.1s; }
+        .animate-sequence > *:nth-child(2) { animation-delay: 0.3s; }
+        .animate-sequence > *:nth-child(3) { animation-delay: 0.5s; }
+        .animate-sequence > *:nth-child(4) { animation-delay: 0.7s; }
+
         .math-symbol {
             position: absolute;
             font-weight: bold;
@@ -210,23 +282,7 @@
         /* Responsive Design */
         @media (max-width: 1280px) {
             .title-content-container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-                padding-top: 140px;
-            }
-
-            h1 {
-                font-size: 3rem;
-                line-height: 1.1;
-            }
-
-            .accent-line {
-                width: 250px;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-                line-height: 1.2;
+                padding: clamp(140px, 15vh, 160px) clamp(1rem, 4vw, 4rem) clamp(2rem, 8vh, 4rem);
             }
 
             .floating-numbers {
@@ -244,23 +300,7 @@
             }
 
             .title-content-container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-                padding-top: 100px;
-            }
-
-            h1 {
-                font-size: 2.25rem;
-            }
-
-            .accent-line {
-                width: 180px;
-                margin-top: 1rem;
-                margin-bottom: 0.75rem;
-            }
-
-            h2 {
-                font-size: 1.25rem;
+                padding: 100px 1rem 2rem;
             }
 
             .shape-1 {
@@ -299,111 +339,7 @@
                 margin-right: 0.5rem !important;
             }
         }
-    </style>
-<style>
-    .genspark-badge-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 12px;
-      font-size: 12px;
-      cursor: pointer;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .genspark-modal {
-      display: none;
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      z-index: 10000;
-      justify-content: end;
-    }
-    
-    .genspark-modal-content {
-      background-color: white;
-      border-radius: 8px;
-      max-width: 450px;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 20px;
-      position: relative;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      font-size: 14px;
-    }
-    @media (max-width: 768px) {
-      .genspark-modal-content {
-        max-width: 90%;
-      }
-    }
-    
-    .genspark-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    
-    .genspark-title {
-      margin-bottom: 8px;
-      font-weight: normal;
-      display: inline;
-      font-size: 14px;
-    }
-    
-    .genspark-report {
-      color: #909499;
-      text-decoration: underline;
-      cursor: pointer;
-      margin-bottom: 14px;
-      display: inline;
-    }
-    
-    .genspark-info {
-      margin: 25px 0;
-      color: #333;
-      font-size: 14px;
-    }
-    
-    .genspark-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .genspark-remove-btn {
-      background-color: #f5f5f5;
-      border: 1px solid #ddd;
-      color: #333;
-      padding: 4px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      flex: 1;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-    
-    .genspark-go-btn {
-      background-color: #222;
-      border: none;
-      color: white;
-      padding: 4px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      flex: 1;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-  </style></head>
+    </style></head>
 <body>
     <div class="slide">
         <!-- Header Bar -->
@@ -426,7 +362,7 @@
         <div class="math-symbol">=</div>
 
         <!-- Main Title Content -->
-        <div class="title-content-container">
+        <div class="title-content-container animate-sequence">
             <h1>Sistema de los Números Enteros</h1>
             <div class="accent-line"></div>
             <h2>Introductorio de Matemáticas Básicas</h2>
@@ -439,14 +375,5 @@
             <i class="fas fa-percentage"></i>
         </div>
     </div>
-
-<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
-    <script id="html_badge_script1">
-        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDq9GDxdF5JU0tDclNWCEf7ATl2fioZzAnOD0SbILay8DmGFT5ex%2BRbTYvYr1bLqFJUDm8eaZ4BmhRGjcElnSfLW0o7xO1CFBeqDhLdUqCPeYqHc00qPDzXx4C3pCHCiG8VlMqtvD26jocx2KF28XEcUdytB5JA9BrlcX88BkDAVv7g5x6PbhusU0OUAAR4G5hzOtUh6GBFUIg7gKnu2EhCUvV%2BpJoYC%2F1NJqABzTDRCwtvtqYPvODVNPoP66sYCen7umBqpwwPWfqp5I9LGAAsIZaB8QFvkoUevXay4yhGdqMbUTBkMRbq6ZDrdT29OTgclcNKp4rkwzG%2F4VXOV9nW4IKUJFFY69TKjuOfjaseZ9hjNa3Mgr1Vl29NDJ%2BAS9%2Bc5Gb%2BDW85DwHD%2FEDIMgdC8oc8EkROk65NjQnnrzj%2FEyY9uH2IEJMBQNgY3Gb1tPPJkuNIO6mnXlfFtvntoAk7SVvdmNEfd3l38yP2AHfYMyxMElcbrydgn8xTi9kFu0u6qsEtOOIm6eZS4AYFs144JdeZb05yVDIH%2FAU%2Bi7JAu0Y6c8iw2delfd0hdsVzdOAaejxInIiYvmGUwOX1mL49kdnX8U64cq0B251JoybS5x9BPQqDAvLHQXiZZhdSWoDcJhAVk5bSokYRgoVn10qd37EeM8ql%2BitBk3U4YNzsa64ZqvjDrtDLFaSekdvYwSYp6nDTSbOZFItyDfx4WssJwbItYgZdS9GDPt8jz1RHzCMLx0qjVB2%2BzCwLBXM%2FG%2Bmg%3D%3D";
-        window.__genspark_locale = "es-ES";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDq9GDxdF5JU0tDclNWCEf7ATl2fioZzAnOD0SbILay8DmGFT5ex+RbTYvYr1bLqFJUDm8eaZ4BmhRGjcElnSfLW0o7xO1CFBeqDhLdUqCPeYqHc00qPDzXx4C3pCHCiG8VlMqtvD26jocx2KF28XEcUdytB5JA9BrlcX88BkDAVv7g5x6PbhusU0OUAAR4G5hzOtUh6GBFUIg7gKnu2EhCUvV+pJoYC/1NJqABzTDRCwtvtqYPvODVNPoP66sYCen7umBqpwwPWfqp5I9LGAAsIZaB8QFvkoUevXay4yhGdqMbUTBkMRbq6ZDrdT29OTgclcNKp4rkwzG/4VXOV9nW4IKUJFFY69TKjuOfjaseZ9hjNa3Mgr1Vl29NDJ+AS9+c5Gb+DW85DwHD/EDIMgdC8oc8EkROk65NjQnnrzj/EyY9uH2IEJMBQNgY3Gb1tPPJkuNIO6mnXlfFtvntoAk7SVvdmNEfd3l38yP2AHfYMyxMElcbrydgn8xTi9kFu0u6qsEtOOIm6eZS4AYFs144JdeZb05yVDIH/AU+i7JAu0Y6c8iw2delfd0hdsVzdOAaejxInIiYvmGUwOX1mL49kdnX8U64cq0B251JoybS5x9BPQqDAvLHQXiZZhdSWoDcJhAVk5bSokYRgoVn10qd37EeM8ql+itBk3U4YNzsa64ZqvjDrtDLFaSekdvYwSYp6nDTSbOZFItyDfx4WssJwbItYgZdS9GDPt8jz1RHzCMLx0qjVB2+zCwLBXM/G+mg==";
-    </script>
-    
-        
-        </body></html>
+</body>
+</html>
