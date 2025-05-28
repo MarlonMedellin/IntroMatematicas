@@ -55,6 +55,15 @@
             overflow-x: auto;
         }
         
+        .mermaid svg {
+            font-size: 16px !important;
+        }
+        
+        .mermaid .node text {
+            font-size: 15px !important;
+            font-weight: 500 !important;
+        }
+        
         .legend {
             background: #f8f9fa;
             border-radius: 10px;
@@ -98,8 +107,12 @@
                 padding: 1rem;
             }
             
-            .mermaid {
-                font-size: 12px;
+            .mermaid svg {
+                font-size: 14px !important;
+            }
+            
+            .mermaid .node text {
+                font-size: 13px !important;
             }
         }
         
@@ -110,6 +123,14 @@
             
             .legend-item {
                 font-size: 0.85rem;
+            }
+            
+            .mermaid svg {
+                font-size: 12px !important;
+            }
+            
+            .mermaid .node text {
+                font-size: 11px !important;
             }
         }
     </style>
@@ -132,60 +153,112 @@
                     <div class="col-12 col-lg-9">
                         <div class="mermaid">
 graph TD
-    A[NUMEROS ENTEROS Z] --> B[FUNDAMENTOS BASICOS]
-    A --> C[OPERACIONES FUNDAMENTALES]
-    A --> D[EXPRESIONES ARITMETICAS]
-    A --> E[TEORIA DE NUMEROS]
-    A --> F[APLICACIONES AVANZADAS]
+    %% Nivel 1 - Concepto Central
+    A[NUMEROS ENTEROS Z]
     
-    B --> B1[Conjunto Z]
-    B --> B2[Representacion Geometrica]
-    B --> B3[Valor Absoluto]
+    %% Nivel 2 - Conceptos Principales
+    B[FUNDAMENTOS BASICOS]
+    C[OPERACIONES FUNDAMENTALES]
     
-    B1 --> B1A[Enteros Positivos]
-    B1 --> B1B[Cero]
-    B1 --> B1C[Enteros Negativos]
+    %% Nivel 3 - Fundamentos Básicos
+    B1[Conjunto Z]
+    B2[Representacion Geometrica]  
+    B3[Valor Absoluto]
+    B4[Adicion]
     
-    C --> C1[Adicion]
-    C --> C2[Sustraccion]
-    C --> C3[Multiplicacion]
-    C --> C4[Division]
+    %% Nivel 3 - Operaciones Fundamentales
+    C1[Sustraccion]
+    C2[Multiplicacion]
+    C3[Division]
     
-    C1 --> C1A[Signos Iguales]
-    C1 --> C1B[Signos Diferentes]
-    C1 --> C1C[Propiedades]
+    %% Nivel 4 - Detalles de Operaciones
+    B1A[Enteros Positivos]
+    B1B[Cero]
+    B1C[Enteros Negativos]
+    B4A[Signos Iguales]
+    B4B[Signos Diferentes]
+    B4C[Propiedades]
+    C1A[Regla de Sustraccion]
+    C2A[Ley de Signos]
+    C2A1[Signos Iguales Positivo]
+    C2A2[Signos Diferentes Negativo]
     
-    C2 --> C2A[Regla de Sustraccion]
-    C3 --> C3A[Ley de Signos]
-    C4 --> C3A
+    %% Nivel 5 - Conceptos Intermedios
+    D[EXPRESIONES ARITMETICAS]
+    E[TEORIA DE NUMEROS]
     
-    C3A --> C3A1[Signos Iguales Positivo]
-    C3A --> C3A2[Signos Diferentes Negativo]
+    %% Nivel 6 - Detalles Intermedios
+    D1[Polinomios Aritmeticos]
+    D2[Con Signos de Agrupacion]
+    E1[Clasificacion]
+    E2[Divisibilidad]
+    E3[Factorizacion]
     
-    D --> D1[Polinomios Aritmeticos]
-    D --> D2[Con Signos de Agrupacion]
+    %% Nivel 7 - Detalles de Teoría
+    E1A[Numeros Primos]
+    E1B[Numeros Compuestos]
+    E2A[Criterios de Divisibilidad]
+    E3A[Descomposicion en Factores Primos]
     
-    E --> E1[Clasificacion]
-    E --> E2[Divisibilidad]
-    E --> E3[Factorizacion]
+    %% Nivel 8 - Aplicaciones
+    F[APLICACIONES AVANZADAS]
+    F1[MCD]
+    F2[MCM]
+    F3[Relacion MCD y MCM]
     
-    E1 --> E1A[Numeros Primos]
-    E1 --> E1B[Numeros Compuestos]
+    %% Conexiones principales
+    A --> B
+    A --> C
     
-    E2 --> E2A[Criterios de Divisibilidad]
+    B --> B1
+    B --> B2
+    B --> B3
+    B --> B4
     
-    E3 --> E3A[Descomposicion en Factores Primos]
+    C --> C1
+    C --> C2
+    C --> C3
     
-    F --> F1[MCD]
-    F --> F2[MCM]
+    B1 --> B1A
+    B1 --> B1B
+    B1 --> B1C
     
-    E3A --> F1
-    E3A --> F2
+    B4 --> B4A
+    B4 --> B4B
+    B4 --> B4C
     
-    F1 --> F3[Relacion MCD y MCM]
+    C1 --> C1A
+    C2 --> C2A
+    C3 --> C2A
+    
+    C2A --> C2A1
+    C2A --> C2A2
+    
+    A --> D
+    A --> E
+    
+    D --> D1
+    D --> D2
+    
+    E --> E1
+    E --> E2
+    E --> E3
+    
+    E1 --> E1A
+    E1 --> E1B
+    
+    E2 --> E2A
+    
+    E3 --> E3A
+    
+    E3A --> F
+    F --> F1
+    F --> F2
+    
+    F1 --> F3
     F2 --> F3
     
-    %% Colores según la categorización
+    %% Colores según la categorización con mejor contraste
     style A fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff
     
     style B fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff
@@ -197,20 +270,37 @@ graph TD
     style B1 fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
     style B2 fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
     style B3 fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
-    style C3A fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
     style D fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
     style D1 fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
     style D2 fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
     
-    style C1 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style C2 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style C3 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style C4 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style E1 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style E2 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style E3 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style F1 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
-    style F2 fill:#ffc107,stroke:#333,stroke-width:2px,color:#333
+    %% Operaciones con fondo amarillo claro para mejor contraste
+    style B4 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style C1 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style C2 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style C3 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style E1 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style E2 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style E3 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style F1 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    style F2 fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    
+    %% Detalles con fondo muy claro para contraste
+    style B1A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style B1B fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style B1C fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style B4A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style B4B fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style B4C fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style C1A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style C2A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style C2A1 fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style C2A2 fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style E1A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style E1B fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style E2A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style E3A fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
+    style F3 fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057
                         </div>
                     </div>
                     
@@ -271,12 +361,17 @@ graph TD
             theme: 'base',
             themeVariables: {
                 fontFamily: 'Segoe UI, sans-serif',
-                fontSize: '14px'
+                fontSize: '16px',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#fff',
+                lineColor: '#333'
             },
             flowchart: {
                 useMaxWidth: true,
                 htmlLabels: true,
-                curve: 'basis'
+                curve: 'basis',
+                nodeSpacing: 20,
+                rankSpacing: 30
             }
         });
         
