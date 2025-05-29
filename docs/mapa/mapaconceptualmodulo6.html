@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potenciación y Radicación - Mapa Conceptual</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .main-container-horizontal {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 85vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin: 8px 0 0 0;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section-horizontal {
+            padding: 25px 20px;
+        }
+
+        .mermaid-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            max-width: 100%;
+            padding: 25px 0;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .mermaid-container::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .mermaid-container::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 5px;
+        }
+
+        .mermaid-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #64748b, #475569);
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .mermaid-container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #475569, #334155);
+        }
+
+        .mermaid {
+            min-width: 1600px;
+            width: max-content;
+            font-family: 'Segoe UI', sans-serif !important;
+        }
+
+        .legend-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .legend-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+        }
+
+        .legend-circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .legend-text {
+            font-size: 0.9rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .tip-container {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 1px solid #64b5f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .tip-title {
+            color: #1565c0;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-text {
+            color: #0d47a1;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .mermaid {
+                min-width: 1200px;
+                font-size: 11px;
+            }
+            
+            .mermaid-container {
+                padding: 15px 0;
+            }
+
+            .content-section-horizontal {
+                padding: 20px 15px;
+            }
+
+            .legend-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mermaid {
+                min-width: 1000px;
+                font-size: 9px;
+            }
+
+            .legend-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section-horizontal {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-2 p-md-3">
+        <div class="main-container-horizontal">
+            <div class="header">
+                <h1><i class="fas fa-calculator me-3"></i>POTENCIACIÓN Y RADICACIÓN</h1>
+                <p>Operaciones Avanzadas y sus Propiedades Fundamentales</p>
+            </div>
+            
+            <div class="content-section-horizontal">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mermaid-container">
+                            <div class="mermaid">
+                                graph LR
+                                    A["🔢 POTENCIACIÓN<br/>Y RADICACIÓN"]
+                                    
+                                    %% Nivel 2 - Conceptos Principales
+                                    B["⬆️ POTENCIACIÓN"]
+                                    C["√ RADICACIÓN"]
+                                    D["📝 POLINOMIOS<br/>ARITMÉTICOS"]
+                                    E["∞ NÚMEROS<br/>IRRACIONALES"]
+                                    F["🎯 APLICACIONES<br/>PRÁCTICAS"]
+                                    
+                                    %% Nivel 3 - Elementos Fundamentales
+                                    B1["🔧 Elementos de<br/>la Potenciación"]
+                                    B2["⚡ Propiedades de<br/>la Potenciación"]
+                                    C1["🔧 Elementos de<br/>la Radicación"]
+                                    C2["⚡ Propiedades de<br/>la Radicación"]
+                                    D1["📊 Jerarquía de<br/>Operaciones"]
+                                    E1["📈 Irracionales<br/>Importantes"]
+                                    F1["🎓 Programas<br/>Académicos"]
+                                    
+                                    %% Nivel 4 - Componentes Agrupados
+                                    B11["a^n = b<br/>a: base, n: exponente<br/>b: potencia"]
+                                    B21["Potenciación (7 leyes):<br/>1. aᵐ × aⁿ = aᵐ⁺ⁿ<br/>2. aᵐ ÷ aⁿ = aᵐ⁻ⁿ<br/>3. (aᵐ)ⁿ = aᵐˣⁿ<br/>4. (a×b)ⁿ = aⁿ × bⁿ<br/>5. (a/b)ⁿ = aⁿ/bⁿ<br/>6. a⁰ = 1<br/>7. a⁻ⁿ = 1/aⁿ"]
+                                    C11["∛b = a<br/>n: índice, b: radicando<br/>a: raíz"]
+                                    C21["Radicación (4 leyes):<br/>1. ⁿ√(a×b) = ⁿ√a × ⁿ√b<br/>2. ⁿ√(a/b) = ⁿ√a ÷ ⁿ√b<br/>3. ᵐ√(ⁿ√a) = ᵐˣⁿ√a<br/>4. ⁿ√(aᵐ) = aᵐ/ⁿ"]
+                                    E11["π, √n, e, φ<br/>Decimales infinitos<br/>no periódicos"]
+                                    
+                                    %% Nivel 4 - Jerarquía de Operaciones
+                                    D11["📋 Con Signos de Agrupación<br/>Se resuelve del más interno<br/>al más externo"]
+                                    D12["📋 Sin Signos de Agrupación<br/>1º Potencias y raíces<br/>2º Multiplicaciones y divisiones<br/>3º Sumas y restas"]
+                                    
+                                    %% Nivel 4 - Programas Académicos
+                                    F11["🧬 Biotecnología"]
+                                    F12["🏗️ Ingeniería Civil"]
+                                    F13["🏛️ Arquitectura"]
+                                    F14["🌱 Gestión Ambiental"]
+                                    F15["💼 Administración"]
+                                    F16["👨‍🍳 Gastronomía"]
+                                    F17["🗺️ Gestión Turística"]
+                                    F18["🔬 Salud"]
+                                    
+                                    %% Nivel 5 - Aplicaciones Detalladas
+                                    G11["Crecimiento poblacional<br/>exponencial de bacterias"]
+                                    G12["Cálculos estructurales<br/>con volúmenes al cubo"]
+                                    G13["Áreas, diagonales y<br/>proporciones áureas"]
+                                    G14["Modelos de decaimiento<br/>de contaminantes"]
+                                    G15["Interés compuesto y<br/>crecimiento financiero"]
+                                    G16["Cálculos de áreas de<br/>moldes y proporciones"]
+                                    G17["Modelos financieros<br/>de inversión hotelera"]
+                                    G18["Dosificación médica<br/>según peso corporal"]
+                                    
+                                    %% Conexiones principales - Nivel 1 a 2
+                                    A --> B
+                                    A --> C
+                                    A --> D
+                                    A --> E
+                                    A --> F
+                                    
+                                    %% Conexiones Nivel 2 a 3
+                                    B --> B1
+                                    B --> B2
+                                    C --> C1
+                                    C --> C2
+                                    D --> D1
+                                    E --> E1
+                                    F --> F1
+                                    
+                                    %% Conexiones Nivel 3 a 4
+                                    B1 --> B11
+                                    B2 --> B21
+                                    C1 --> C11
+                                    C2 --> C21
+                                    E1 --> E11
+                                    D1 --> D11
+                                    D1 --> D12
+                                    
+                                    %% Conexiones a Programas
+                                    F1 --> F11
+                                    F1 --> F12
+                                    F1 --> F13
+                                    F1 --> F14
+                                    F1 --> F15
+                                    F1 --> F16
+                                    F1 --> F17
+                                    F1 --> F18
+                                    
+                                    %% Conexiones a Aplicaciones Detalladas
+                                    F11 --> G11
+                                    F12 --> G12
+                                    F13 --> G13
+                                    F14 --> G14
+                                    F15 --> G15
+                                    F16 --> G16
+                                    F17 --> G17
+                                    F18 --> G18
+                                    
+                                    %% Estilos de nodos por categoría (Paleta Base de Conocimiento)
+                                    classDef conceptoCentral fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff,font-weight:bold
+                                    classDef fundamentales fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500
+                                    classDef conceptosEspecificos fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500
+                                    classDef propiedadesAplicaciones fill:#e67e22,stroke:#fff,stroke-width:2px,color:#fff,font-weight:500
+                                    classDef operacionesMetodos fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404,font-weight:600
+                                    classDef detallesEspecificos fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#495057,font-weight:400
+                                    
+                                    %% Aplicar estilos
+                                    class A conceptoCentral
+                                    class B,C fundamentales
+                                    class D,B2,C2 conceptosEspecificos
+                                    class E,F propiedadesAplicaciones
+                                    class B1,C1,D1,E1,F1,B11,C11,B21,C21,E11,D11,D12 operacionesMetodos
+                                    class F11,F12,F13,F14,F15,F16,F17,F18,G11,G12,G13,G14,G15,G16,G17,G18 detallesEspecificos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-9">
+                        <div class="legend-container">
+                            <div class="legend-title">
+                                <i class="fas fa-palette"></i>
+                                LEYENDA DE CONCEPTOS
+                            </div>
+                            <div class="legend-grid">
+                                <div class="legend-item">
+                                    <div class="legend-circle" style="background-color: #2c3e50; border-color: white;"></div>
+                                    <span class="legend-text">Concepto Central</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle" style="background-color: #27ae60; border-color: white;"></div>
+                                    <span class="legend-text">Conceptos Fundamentales</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle" style="background-color: #17a2b8; border-color: white;"></div>
+                                    <span class="legend-text">Conceptos Específicos</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle" style="background-color: #e67e22; border-color: white;"></div>
+                                    <span class="legend-text">Propiedades y Aplicaciones</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle" style="background-color: #fff3cd; border-color: #856404;"></div>
+                                    <span class="legend-text">Operaciones y Métodos</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle" style="background-color: #f8f9fa; border-color: #6c757d;"></div>
+                                    <span class="legend-text">Detalles Específicos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-3">
+                        <div class="tip-container">
+                            <div class="tip-title">
+                                <i class="fas fa-info-circle"></i>
+                                Tip
+                            </div>
+                            <div class="tip-text">
+                                💡 Tip: Utiliza scroll horizontal para navegar por todo el diagrama. Los nodos agrupados muestran definiciones completas, factores de conversión y aplicaciones específicas por programa académico.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuración de Mermaid para orientación horizontal
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontFamily: 'Segoe UI, sans-serif',
+                fontSize: '13px',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#fff',
+                lineColor: '#64748b',
+                clusterBkg: 'transparent',
+                clusterBorder: 'transparent'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                nodeSpacing: 50,
+                rankSpacing: 80,
+                diagramPadding: 40,
+                wrappingWidth: 180
+            }
+        });
+
+        // Función para mejorar la navegación horizontal en móviles
+        function initHorizontalNavigation() {
+            const container = document.querySelector('.mermaid-container');
+            let isScrolling = false;
+            let startX = 0;
+            let scrollLeft = 0;
+
+            container.addEventListener('touchstart', (e) => {
+                isScrolling = true;
+                startX = e.touches[0].pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!isScrolling) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - container.offsetLeft;
+                const walk = (x - startX) * 2;
+                container.scrollLeft = scrollLeft - walk;
+            });
+
+            container.addEventListener('touchend', () => {
+                isScrolling = false;
+            });
+        }
+
+        // Inicializar navegación al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            initHorizontalNavigation();
+            
+            // Añadir indicador visual de scroll
+            const container = document.querySelector('.mermaid-container');
+            const scrollIndicator = document.createElement('div');
+            scrollIndicator.innerHTML = '<i class="fas fa-arrows-alt-h"></i> Desliza horizontalmente';
+            scrollIndicator.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: rgba(44, 62, 80, 0.9);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 12px;
+                z-index: 100;
+                animation: fadeOut 4s ease-in-out forwards;
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeOut {
+                    0%, 70% { opacity: 1; }
+                    100% { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            container.style.position = 'relative';
+            container.appendChild(scrollIndicator);
+        });
+    </script>
+</body>
+</html>
