@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Matemático - Colegio Mayor de Antioquia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/juegomath.css">
+
+</head>
+<body>
+    <div class="game-header">
+        <h1 class="game-title"><i class="fas fa-calculator"></i> Desafío Matemático Aplicado</h1>
+
+        <div class="program-indicator" id="currentProgram">
+            <i class="fas fa-graduation-cap program-icon"></i>Contexto Académico Multidisciplinario
+        </div>
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-item">
+            <span class="stat-value timer" id="timer">60</span>
+            <span class="stat-label"><i class="fas fa-clock"></i> Tiempo</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value streak" id="streak">0</span>
+            <span class="stat-label"><i class="fas fa-fire"></i> Racha</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value score" id="score">0</span>
+            <span class="stat-label"><i class="fas fa-trophy"></i> Puntos</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value accuracy" id="accuracy">100%</span>
+            <span class="stat-label"><i class="fas fa-bullseye"></i> Precisión</span>
+        </div>
+    </div>
+
+    <div class="powerups-container">
+        <button class="powerup skip" id="skipPowerup" onclick="useSkip()">
+            <i class="fas fa-forward"></i> Saltar (3)
+        </button>
+        <button class="powerup time" id="timePowerup" onclick="useTimeBoost()">
+            <i class="fas fa-plus-circle"></i> +30s (2)
+        </button>
+        <button class="powerup hint" id="hintPowerup" onclick="useHint()">
+            <i class="fas fa-lightbulb"></i> Pista (2)
+        </button>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">Pregunta 1 de 10</div>
+    </div>
+
+    <div class="current-question" id="questionContainer">
+        <div class="question-context" id="questionContext">
+            <i class="fas fa-utensils"></i> Un restaurante de Gastronomía y Culinaria necesita calcular costos
+        </div>
+        <div class="question-text" id="questionText">Problema matemático</div>
+        <div class="math-expression" id="mathExpression">
+            480,000 + (-125,000)
+        </div>
+        <div class="answer-container">
+            <input type="text" class="answer-input" id="answerInput" placeholder="?" maxlength="10">
+            <button class="check-btn" id="checkBtn" onclick="checkAnswer()">
+                <i class="fas fa-check"></i> Verificar
+            </button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+        <div class="hint-display" id="hintDisplay"></div>
+    </div>
+
+    <div class="achievements">
+        <h3><i class="fas fa-medal"></i> Logros</h3>
+        <div class="achievement locked" id="achievement1"><i class="fas fa-fire"></i> Primera Racha</div>
+        <div class="achievement locked" id="achievement2"><i class="fas fa-bolt"></i> Velocista</div>
+        <div class="achievement locked" id="achievement3"><i class="fas fa-bullseye"></i> Perfeccionista</div>
+        <div class="achievement locked" id="achievement4"><i class="fas fa-rocket"></i> Máquina</div>
+        <div class="achievement locked" id="achievement5"><i class="fas fa-brain"></i> Genio Matemático</div>
+    </div>
+
+    <div class="combo-display" id="comboDisplay"></div>
+
+    <div class="game-over" id="gameOver">
+        <div class="game-over-content">
+            <h2 id="gameOverTitle"><i class="fas fa-trophy"></i> ¡Desafío Completado!</h2>
+            <p id="finalStats"></p>
+            <div class="incorrect-answers" id="incorrectAnswers"></div>
+            <button class="restart-btn" onclick="restartGame()">
+                <i class="fas fa-redo"></i> Nuevo Desafío
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer con atribución Creative Commons -->
+    <footer style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(23, 33, 57, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 8px 15px;
+        text-align: center;
+        font-size: 0.8em;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.8);
+        border-top: 1px solid rgba(251, 187, 40, 0.3);
+    ">
+        <i class="fab fa-creative-commons"></i> 
+        <i class="fab fa-creative-commons-by"></i> 
+        <i class="fab fa-creative-commons-nc"></i> 
+        <i class="fab fa-creative-commons-nd"></i>
+        Este recurso gamificado fue desarrollado por el <strong style="color: #FBBB28;">Profe Marlon Arcila</strong> | 
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" style="color: #00AEAC; text-decoration: none;">
+            CC BY-NC-ND 4.0
+        </a>
+    </footer>
+
+    <script src="js/juegomath.js"></script>
+
+</body>
+</html>
