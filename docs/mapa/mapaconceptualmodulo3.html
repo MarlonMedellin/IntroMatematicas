@@ -10,6 +10,19 @@
     
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Agregar después de Font Awesome y antes de Mermaid: -->
+<!-- MathJax -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+</script>
     
     <!-- Mermaid JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
@@ -338,7 +351,7 @@ graph LR
                                 Tip
                             </div>
                             <div class="tip-content">
-                                💡 Haz clic y arrastra para navegar por el diagrama en dispositivos táctiles.
+                                💡 Utiliza navegación táctil o mouse para explorar el diagrama. Las flechas del teclado también funcionan cuando el diagrama está enfocado.
                             </div>
                         </div>
                     </div>
