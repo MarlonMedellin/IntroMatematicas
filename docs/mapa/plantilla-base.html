@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITULO}} - Mapa Conceptual</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Mermaid JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="shared-mapa-styles.css">
+    
+    <!-- Estilos específicos del módulo -->
+    <style>
+        {{ESTILOS_ESPECIFICOS}}
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-2 p-md-3">
+        <div class="main-container">
+            <!-- Header -->
+            <div class="header">
+                <h1>{{TITULO_COMPLETO}}</h1>
+                <p>{{SUBTITULO}}</p>
+            </div>
+            
+            <!-- Content -->
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mermaid-container">
+                            <div class="mermaid">
+{{DIAGRAMA_MERMAID}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Leyenda y Tips -->
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-8">
+                        <div class="legend-container">
+                            <div class="legend-title">
+                                <i class="fas fa-list-ul"></i>
+                                LEYENDA
+                            </div>
+                            <div class="legend-grid">
+{{LEYENDA_ITEMS}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                        <div class="tip-container">
+                            <div class="tip-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Tip
+                            </div>
+                            <div class="tip-content">
+                                {{TIP_CONTENIDO}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script compartido -->
+    <script src="shared-mapa-script.js"></script>
+    
+    <!-- Scripts específicos del módulo -->
+    <script>
+        {{SCRIPTS_ESPECIFICOS}}
+    </script>
+</body>
+</html>

@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potenciación y Radicación - Mapa Conceptual</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Mermaid JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="shared-mapa-styles.css">
     <style>
         body {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -213,13 +234,13 @@
 </head>
 <body>
     <div class="container-fluid p-2 p-md-3">
-        <div class="main-container-horizontal">
+        <div class="main-container">
             <div class="header">
-                <h1><i class="fas fa-calculator me-3"></i>POTENCIACIÓN Y RADICACIÓN</h1>
+                <h1><i class="fas fa-calculator me-2"></i>POTENCIACIÓN Y RADICACIÓN</h1>
                 <p>Operaciones Avanzadas y sus Propiedades Fundamentales</p>
             </div>
             
-            <div class="content-section-horizontal">
+            <div class="content-section">
                 <div class="row">
                     <div class="col-12">
                         <div class="mermaid-container">
@@ -340,141 +361,75 @@
                 </div>
                 
                 <div class="row mt-4">
-                    <div class="col-12 col-lg-9">
+                    <div class="col-12 col-lg-8">
                         <div class="legend-container">
                             <div class="legend-title">
-                                <i class="fas fa-palette"></i>
-                                LEYENDA DE CONCEPTOS
+                                <i class="fas fa-list-ul"></i>
+                                LEYENDA
                             </div>
                             <div class="legend-grid">
                                 <div class="legend-item">
-                                    <div class="legend-circle" style="background-color: #2c3e50; border-color: white;"></div>
-                                    <span class="legend-text">Concepto Central</span>
+                                    <div class="legend-circle color-central"></div>
+                                    <span><strong>Concepto Central</strong></span>
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-circle" style="background-color: #27ae60; border-color: white;"></div>
-                                    <span class="legend-text">Conceptos Fundamentales</span>
+                                    <div class="legend-circle color-fundamental"></div>
+                                    <span><strong>Conceptos Fundamentales</strong></span>
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-circle" style="background-color: #17a2b8; border-color: white;"></div>
-                                    <span class="legend-text">Conceptos Específicos</span>
+                                    <div class="legend-circle color-specific"></div>
+                                    <span><strong>Conceptos Específicos</strong></span>
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-circle" style="background-color: #e67e22; border-color: white;"></div>
-                                    <span class="legend-text">Propiedades y Aplicaciones</span>
+                                    <div class="legend-circle color-warning"></div>
+                                    <span><strong>Propiedades y Aplicaciones</strong></span>
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-circle" style="background-color: #fff3cd; border-color: #856404;"></div>
-                                    <span class="legend-text">Operaciones y Métodos</span>
+                                    <div class="legend-circle color-operations"></div>
+                                    <span><strong>Operaciones y Métodos</strong></span>
                                 </div>
                                 <div class="legend-item">
-                                    <div class="legend-circle" style="background-color: #f8f9fa; border-color: #6c757d;"></div>
-                                    <span class="legend-text">Detalles Específicos</span>
+                                    <div class="legend-circle color-details"></div>
+                                    <span><strong>Detalles Específicos</strong></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-12 col-lg-3">
+                    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
                         <div class="tip-container">
                             <div class="tip-title">
-                                <i class="fas fa-info-circle"></i>
+                                <i class="fas fa-lightbulb"></i>
                                 Tip
                             </div>
-                            <div class="tip-text">
-                                💡 Tip: Utiliza scroll horizontal para navegar por todo el diagrama. Los nodos agrupados muestran definiciones completas, factores de conversión y aplicaciones específicas por programa académico.
+                            <div class="tip-content">
+                                💡 Utiliza navegación táctil o mouse para explorar el diagrama. Las flechas del teclado también funcionan cuando el diagrama está enfocado.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Referencias y Créditos -->
+            <div class="references-section">
+                <div class="references-title">
+                    <i class="fas fa-book"></i>
+                    Referencias
+                </div>
+                <div class="reference-item">
+                    Arcila Vanegas, M. D., & Gómez Noreña, Y. E. (2016). <em>Aritmética: teoría, ejemplos y problemas</em> (1ª ed.). Instituto Tecnológico Metropolitano; Institución Universitaria Colegio Mayor de Antioquia.
+                </div>
+                <div class="credits">
+                    Mapa conceptual elaborado por Marlon Arcila (2025). Contenido adaptado del texto de referencia.
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Configuración de Mermaid para orientación horizontal
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-                fontFamily: 'Segoe UI, sans-serif',
-                fontSize: '13px',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#fff',
-                lineColor: '#64748b',
-                clusterBkg: 'transparent',
-                clusterBorder: 'transparent'
-            },
-            flowchart: {
-                useMaxWidth: false,
-                htmlLabels: true,
-                curve: 'basis',
-                nodeSpacing: 50,
-                rankSpacing: 80,
-                diagramPadding: 40,
-                wrappingWidth: 180
-            }
-        });
-
-        // Función para mejorar la navegación horizontal en móviles
-        function initHorizontalNavigation() {
-            const container = document.querySelector('.mermaid-container');
-            let isScrolling = false;
-            let startX = 0;
-            let scrollLeft = 0;
-
-            container.addEventListener('touchstart', (e) => {
-                isScrolling = true;
-                startX = e.touches[0].pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-            });
-
-            container.addEventListener('touchmove', (e) => {
-                if (!isScrolling) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - container.offsetLeft;
-                const walk = (x - startX) * 2;
-                container.scrollLeft = scrollLeft - walk;
-            });
-
-            container.addEventListener('touchend', () => {
-                isScrolling = false;
-            });
-        }
-
-        // Inicializar navegación al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            initHorizontalNavigation();
-            
-            // Añadir indicador visual de scroll
-            const container = document.querySelector('.mermaid-container');
-            const scrollIndicator = document.createElement('div');
-            scrollIndicator.innerHTML = '<i class="fas fa-arrows-alt-h"></i> Desliza horizontalmente';
-            scrollIndicator.style.cssText = `
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                background: rgba(44, 62, 80, 0.9);
-                color: white;
-                padding: 5px 10px;
-                border-radius: 15px;
-                font-size: 12px;
-                z-index: 100;
-                animation: fadeOut 4s ease-in-out forwards;
-            `;
-            
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeOut {
-                    0%, 70% { opacity: 1; }
-                    100% { opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            container.style.position = 'relative';
-            container.appendChild(scrollIndicator);
-        });
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script compartido -->
+    <script src="shared-mapa-script.js"></script>
 </body>
 </html>

@@ -1,0 +1,467 @@
+/* ========================================
+   ESTILOS COMPARTIDOS PARA MAPAS CONCEPTUALES
+   Versión optimizada combinando mejores prácticas
+   ======================================== */
+
+/* Variables CSS para consistencia */
+:root {
+    --color-primary: #2c3e50;
+    --color-primary-light: #34495e;
+    --color-success: #27ae60;
+    --color-info: #17a2b8;
+    --color-warning: #e67e22;
+    --color-light: #f8f9fa;
+    --color-dark: #495057;
+    --color-border: #dee2e6;
+    --color-scroll: #6c757d;
+    
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    
+    --border-radius: 15px;
+    --border-radius-small: 10px;
+    --shadow-main: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-small: 0 2px 8px rgba(0,0,0,0.05);
+    
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition: all 0.3s ease;
+}
+
+/* Reset y base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--gradient-bg);
+    min-height: 100vh;
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.main-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-main);
+    overflow: hidden;
+    min-height: 85vh;
+}
+
+/* Header estandarizado */
+.header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+}
+
+.header p {
+    margin: 0.5rem 0 0 0;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+/* Contenido principal */
+.content-section {
+    padding: 2rem 1rem;
+}
+
+/* Contenedor del diagrama - OPTIMIZADO */
+.mermaid-container {
+    background: #fafafa;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-small);
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    
+    /* Scroll optimizado */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scroll) var(--color-light);
+    
+    /* Navegación táctil */
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Indicadores visuales */
+    position: relative;
+}
+
+/* Scrollbar personalizada WebKit */
+.mermaid-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.mermaid-container::-webkit-scrollbar-track {
+    background: var(--color-light);
+    border-radius: 6px;
+    margin: 0 10px;
+}
+
+.mermaid-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--color-info), var(--color-primary));
+    border-radius: 6px;
+    border: 2px solid var(--color-light);
+    transition: var(--transition);
+}
+
+.mermaid-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #138496, #1a252f);
+    transform: scale(1.05);
+}
+
+/* Diagrama Mermaid - ESTANDARIZADO */
+.mermaid {
+    font-family: var(--font-family) !important;
+    min-width: 1000px; /* Ancho estándar optimizado */
+    max-width: 1200px; /* Límite máximo */
+    width: max-content;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Nodos estandarizados - Cajas cuadradas con radio y border */
+.mermaid .node text {
+    font-family: var(--font-family) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    line-height: 1.3 !important;
+}
+
+.mermaid .node rect,
+.mermaid .node polygon {
+    stroke-width: 1px !important;
+    rx: 8px !important;
+    ry: 8px !important;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    transition: var(--transition);
+    border-radius: 8px !important;
+}
+
+.mermaid .node:hover rect,
+.mermaid .node:hover polygon {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transform: scale(1.02);
+    stroke-width: 2px !important;
+}
+
+/* Forzar forma cuadrada para todos los nodos */
+.mermaid .node rect {
+    shape-rendering: geometricPrecision;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* Leyenda estandarizada */
+.legend-container {
+    background: var(--color-light);
+    border-radius: var(--border-radius-small);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-small);
+}
+
+.legend-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+.legend-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Tip container */
+.tip-container {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border: 1px solid #64b5f6;
+    border-radius: var(--border-radius-small);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.tip-content {
+    color: #1565c0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.tip-title {
+    color: #1565c0;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Indicador de scroll horizontal - NUEVO */
+.scroll-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(44, 62, 80, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    z-index: 100;
+    animation: fadeInOut 5s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20%, 80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* RESPONSIVIDAD OPTIMIZADA */
+@media (max-width: 1024px) {
+    .mermaid {
+        min-width: 900px;
+        font-size: 13px;
+    }
+    
+    .mermaid .node text {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .mermaid-container {
+        padding: 1rem 0.5rem;
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .mermaid {
+        min-width: 800px;
+        font-size: 12px;
+    }
+    
+    .mermaid .node text {
+        font-size: 12px !important;
+    }
+    
+    .legend-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .legend-item {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .content-section {
+        padding: 1rem 0.5rem;
+    }
+    
+    .mermaid {
+        min-width: 700px;
+        font-size: 11px;
+    }
+    
+    .mermaid .node text {
+        font-size: 11px !important;
+    }
+    
+    .legend-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tip-container {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .mermaid {
+        min-width: 600px;
+        font-size: 10px;
+    }
+    
+    .mermaid .node text {
+        font-size: 10px !important;
+    }
+}
+
+/* Clases de colores estandarizadas para Mermaid */
+.color-central { background: var(--color-primary) !important; }
+.color-fundamental { background: var(--color-success) !important; }
+.color-specific { background: var(--color-info) !important; }
+.color-warning { background: var(--color-warning) !important; }
+.color-operations { background: #fff3cd; border-color: #856404 !important; }
+.color-details { background: var(--color-light); border-color: var(--color-scroll) !important; }
+
+/* Utilidades */
+.text-center { text-align: center; }
+.mb-0 { margin-bottom: 0; }
+.mt-4 { margin-top: 1.5rem; }
+.d-flex { display: flex; }
+.align-items-center { align-items: center; }
+.gap-2 { gap: 0.5rem; }
+
+/* Estados de carga */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-border);
+    border-top: 2px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Referencias y créditos */
+.references-section {
+    background: var(--color-light);
+    border-top: 2px solid var(--color-border);
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
+.references-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reference-item {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    text-align: justify;
+    padding-left: 1rem;
+    text-indent: -1rem;
+}
+
+.credits {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Estilos para MathJax */
+.MathJax {
+    font-size: inherit !important;
+}
+
+.MathJax_Display {
+    margin: 0.5rem 0 !important;
+}
+
+/* Responsive para referencias */
+@media (max-width: 768px) {
+    .references-section {
+        padding: 1.5rem 0.75rem;
+    }
+    
+    .reference-item {
+        font-size: 0.8rem;
+        padding-left: 0.5rem;
+        text-indent: -0.5rem;
+    }
+    
+    .credits {
+        font-size: 0.8rem;
+    }
+}

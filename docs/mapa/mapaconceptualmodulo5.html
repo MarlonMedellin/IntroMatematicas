@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistemas de Medida y Conversiones - Mapa Conceptual</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Mermaid JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="shared-mapa-styles.css">
     <style>
         body {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -170,10 +192,10 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid p-3 p-md-4">
+    <div class="container-fluid p-2 p-md-3">
         <div class="main-container">
             <div class="header">
-                <h1>SISTEMAS DE MEDIDA Y CONVERSIONES</h1>
+                <h1><i class="fas fa-ruler me-2"></i>SISTEMAS DE MEDIDA Y CONVERSIONES</h1>
                 <p>Aplicaciones de Factores de Conversión entre SI y Sistema Imperial</p>
             </div>
             
@@ -183,14 +205,14 @@
                         <div class="mermaid-container">
                             <div class="mermaid">
                                 graph LR
-                                    A[APLICACIONES DE SISTEMAS DE MEDIDA] --> B[FACTORES DE CONVERSION]
-                                    A --> C[SISTEMA INTERNACIONAL SI]
-                                    A --> D[SISTEMA IMPERIAL INGLES]
-                                    A --> E[CONVERSIONES ENTRE SISTEMAS]
+                                    A["📏 APLICACIONES DE<br/>SISTEMAS DE MEDIDA"] --> B["🔧 FACTORES DE<br/>CONVERSIÓN"]
+                                    A --> C["🌍 SISTEMA<br/>INTERNACIONAL SI"]
+                                    A --> D["🇺🇸 SISTEMA<br/>IMPERIAL INGLÉS"]
+                                    A --> E["⚡ CONVERSIONES<br/>ENTRE SISTEMAS"]
                                     
-                                    B --> B1[Concepto de Factor]
-                                    B --> B2[Metodologia de Aplicacion]
-                                    B --> B3[Equivalencias Unitarias]
+                                    B --> B1["📋 Concepto de Factor"]
+                                    B --> B2["📊 Metodología de Aplicación"]
+                                    B --> B3["📐 Equivalencias Unitarias"]
                                     
                                     B1 --> B11["Fracción donde numerador/denominador<br/>son cantidades equivalentes<br/>Factor = a/b = 1"]
                                     B2 --> B21["2 horas × (60 min/1 hora) = 120 min<br/>Factor: 60 min/1 hora<br/>Cancela unidades originales"]
@@ -200,9 +222,9 @@
                                     
                                     D --> D1["UNIDADES IMPERIALES<br/>Longitud: in, ft, yd, mi<br/>Masa: oz, lb, ton<br/>Volumen: fl oz, pt, qt, gal"]
                                     
-                                    E --> E1[Factores Longitud]
-                                    E --> E2[Factores Masa]
-                                    E --> E3[Factores Volumen]
+                                    E --> E1["📏 Factores Longitud"]
+                                    E --> E2["⚖️ Factores Masa"]
+                                    E --> E3["🥤 Factores Volumen"]
                                     
                                     E1 --> E11["1 in = 2.54 cm<br/>1 ft = 30.48 cm<br/>1 mi = 1.609 km<br/>1 m = 3.28 ft"]
                                     
@@ -210,13 +232,13 @@
                                     
                                     E3 --> E31["1 gal = 3.785 L<br/>1 L = 0.264 gal<br/>1 fl oz = 29.57 mL"]
                                     
-                                    A --> F[APLICACIONES PRACTICAS]
-                                    F --> F1[Gastronomia Culinaria]
-                                    F --> F2[Gestion Turistica]
-                                    F --> F3[Arquitectura Ingenieria]
-                                    F --> F4[Bacteriologia Laboratorio]
-                                    F --> F5[Seguridad Salud Trabajo]
-                                    F --> F6[Gestion Comercial]
+                                    A --> F["🎯 APLICACIONES<br/>PRÁCTICAS"]
+                                    F --> F1["👨‍🍳 Gastronomía Culinaria"]
+                                    F --> F2["🗺️ Gestión Turística"]
+                                    F --> F3["🏗️ Arquitectura Ingeniería"]
+                                    F --> F4["🔬 Bacteriología Laboratorio"]
+                                    F --> F5["🦺 Seguridad Salud Trabajo"]
+                                    F --> F6["💼 Gestión Comercial"]
                                     
                                     F1 --> F11["Conversión de recetas internacionales<br/>Medidas de ingredientes sólidos/líquidos<br/>Equivalencias para balanzas y utensilios<br/>Adaptación porciones y pesos"]
                                     F2 --> F21["Información distancias a turistas extranjeros<br/>Conversión de mapas y rutas<br/>Especificaciones de equipaje y peso<br/>Itinerarios con medidas locales"]
@@ -244,102 +266,74 @@
                 </div>
                 
                 <div class="row mt-4">
-                    <div class="col-12 col-md-8">
-                        <div class="legend-section">
+                    <div class="col-12 col-lg-8">
+                        <div class="legend-container">
                             <div class="legend-title">
-                                <i class="fas fa-list-ul"></i>LEYENDA
+                                <i class="fas fa-list-ul"></i>
+                                LEYENDA
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: #2c3e50;"></div>
-                                        <span><strong>Concepto Central</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: #27ae60;"></div>
-                                        <span><strong>Conceptos Fundamentales</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: #e67e22;"></div>
-                                        <span><strong>Aplicaciones Prácticas</strong></span>
-                                    </div>
+                            <div class="legend-grid">
+                                <div class="legend-item">
+                                    <div class="legend-circle color-central"></div>
+                                    <span><strong>Concepto Central</strong></span>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: #17a2b8;"></div>
-                                        <span><strong>Conceptos Específicos</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: #fff3cd; border: 2px solid #856404;"></div>
-                                        <span><strong>Definiciones y Factores</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: #f8f9fa; border: 1px solid #6c757d;"></div>
-                                        <span><strong>Aplicaciones Detalladas</strong></span>
-                                    </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-fundamental"></div>
+                                    <span><strong>Conceptos Fundamentales</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-warning"></div>
+                                    <span><strong>Aplicaciones Prácticas</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-specific"></div>
+                                    <span><strong>Conceptos Específicos</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-operations"></div>
+                                    <span><strong>Definiciones y Factores</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-details"></div>
+                                    <span><strong>Aplicaciones Detalladas</strong></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 mt-3 mt-md-0">
-                        <div class="tip-section">
-                            <p class="tip-content">
-                                <i class="fas fa-lightbulb me-2"></i>
-                                <strong>💡 Tip:</strong> Utiliza scroll horizontal para navegar por todo el diagrama. Los nodos agrupados muestran definiciones completas, factores de conversión y aplicaciones específicas por programa académico.
-                            </p>
+                    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                        <div class="tip-container">
+                            <div class="tip-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Tip
+                            </div>
+                            <div class="tip-content">
+                                💡 Utiliza navegación táctil o mouse para explorar el diagrama. Las flechas del teclado también funcionan cuando el diagrama está enfocado.
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Referencias y Créditos -->
+            <div class="references-section">
+                <div class="references-title">
+                    <i class="fas fa-book"></i>
+                    Referencias
+                </div>
+                <div class="reference-item">
+                    Arcila Vanegas, M. D., & Gómez Noreña, Y. E. (2016). <em>Aritmética: teoría, ejemplos y problemas</em> (1ª ed.). Instituto Tecnológico Metropolitano; Institución Universitaria Colegio Mayor de Antioquia.
+                </div>
+                <div class="credits">
+                    Mapa conceptual elaborado por Marlon Arcila (2025). Contenido adaptado del texto de referencia.
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Cargar Mermaid antes de la inicialización -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        // Esperar a que el DOM y Mermaid estén listos
-        document.addEventListener('DOMContentLoaded', function() {
-            // Verificar si Mermaid está disponible
-            if (typeof mermaid !== 'undefined') {
-                initializeMermaid();
-            } else {
-                // Si Mermaid no está disponible, intentar cargar después de un pequeño delay
-                setTimeout(function() {
-                    if (typeof mermaid !== 'undefined') {
-                        initializeMermaid();
-                    } else {
-                        console.error('Mermaid no se pudo cargar correctamente');
-                    }
-                }, 500);
-            }
-        });
-
-        function initializeMermaid() {
-            mermaid.initialize({ 
-                startOnLoad: true,
-                theme: 'base',
-                themeVariables: {
-                    fontFamily: 'Segoe UI, sans-serif',
-                    fontSize: '14px',
-                    primaryTextColor: '#333',
-                    primaryBorderColor: '#333',
-                    lineColor: '#666',
-                    background: '#fff'
-                },
-                flowchart: {
-                    useMaxWidth: true,
-                    htmlLabels: true,
-                    curve: 'basis',
-                    nodeSpacing: 50,
-                    rankSpacing: 80,
-                    padding: 20
-                }
-            });
-            
-            // Renderizar el diagrama manualmente si es necesario
-            mermaid.contentLoaded();
-        }
-    </script>
+    <!-- Script compartido -->
+    <script src="shared-mapa-script.js"></script>
 </body>
 </html>

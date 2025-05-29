@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Números Primos, MCM y MCD - Mapa Conceptual</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    
+    <!-- Mermaid JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="shared-mapa-styles.css">
+    
     <style>
         body {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -123,10 +146,10 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid p-3 p-md-4">
+    <div class="container-fluid p-2 p-md-3">
         <div class="main-container">
             <div class="header">
-                <h1>NÚMEROS PRIMOS, MCM Y MCD</h1>
+                <h1><i class="fas fa-calculator me-2"></i>NÚMEROS PRIMOS, MCM Y MCD</h1>
                 <p>Herramientas Fundamentales para la Descomposición y Relación entre Números</p>
             </div>
             
@@ -136,12 +159,12 @@
                         <div class="mermaid-container">
                             <div class="mermaid">
                                 graph LR
-                                    A[NÚMEROS PRIMOS MCM Y MCD]
+                                    A["🔢 NÚMEROS PRIMOS<br/>MCM Y MCD"]
                                     
                                     B[NÚMEROS PRIMOS Y COMPUESTOS]
                                     D[DESCOMPOSICIÓN FACTORIAL]
-                                    E[MÁXIMO COMÚN DIVISOR MCD]
-                                    F[MÍNIMO COMÚN MÚLTIPLO MCM]
+                                    E["🔧 MÁXIMO COMÚN<br/>DIVISOR MCD"]
+                                    F["🔧 MÍNIMO COMÚN<br/>MÚLTIPLO MCM"]
                                     
                                     B1[Números Primos]
                                     B2[Números Compuestos]
@@ -185,8 +208,8 @@
                                     F21[Todos los Factores]
                                     F22[Mayor Exponente]
                                     
-                                    G[APLICACIONES DEL MCD]
-                                    H[APLICACIONES DEL MCM]
+                                    G["🎯 APLICACIONES<br/>DEL MCD"]
+                                    H["🎯 APLICACIONES<br/>DEL MCM"]
                                     I[PROBLEMAS COMBINADOS]
                                     
                                     G1[Repartir partes iguales]
@@ -296,99 +319,74 @@
                 </div>
                 
                 <div class="row mt-4">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-lg-8">
                         <div class="legend-container">
                             <div class="legend-title">
-                                🗂️ LEYENDA
+                                <i class="fas fa-list-ul"></i>
+                                LEYENDA
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-md-4">
-                                    <div class="legend-item">
-                                        <div class="legend-color color-central"></div>
-                                        <span><strong>Concepto Central</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color color-fundamental"></div>
-                                        <span><strong>Conceptos Fundamentales</strong></span>
-                                    </div>
+                            <div class="legend-grid">
+                                <div class="legend-item">
+                                    <div class="legend-circle color-central"></div>
+                                    <span><strong>Concepto Central</strong></span>
                                 </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="legend-item">
-                                        <div class="legend-color color-methods"></div>
-                                        <span><strong>Métodos y Procedimientos</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color color-specific"></div>
-                                        <span><strong>Conceptos Específicos</strong></span>
-                                    </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-fundamental"></div>
+                                    <span><strong>Conceptos Fundamentales</strong></span>
                                 </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="legend-item">
-                                        <div class="legend-color color-criteria"></div>
-                                        <span><strong>Criterios y Reglas</strong></span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <div class="legend-color color-applications"></div>
-                                        <span><strong>Aplicaciones Prácticas</strong></span>
-                                    </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-warning"></div>
+                                    <span><strong>Métodos y Procedimientos</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-specific"></div>
+                                    <span><strong>Conceptos Específicos</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-operations"></div>
+                                    <span><strong>Criterios y Reglas</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-details"></div>
+                                    <span><strong>Aplicaciones Prácticas</strong></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
                         <div class="tip-container">
-                            <div class="alert alert-info h-100 d-flex align-items-center">
-                                <div>
-                                    <strong>💡 Tip:</strong> Observa cómo las aplicaciones del MCD y MCM derivan de sus conceptos respectivos, y cómo los problemas combinados requieren ambos métodos. Los criterios de divisibilidad se fundamentan en el concepto básico de divisor.
-                                </div>
+                            <div class="tip-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Tip
+                            </div>
+                            <div class="tip-content">
+                                💡 Utiliza navegación táctil o mouse para explorar el diagrama. Las flechas del teclado también funcionan cuando el diagrama está enfocado.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <!-- Referencias y Créditos -->
+            <div class="references-section">
+                <div class="references-title">
+                    <i class="fas fa-book"></i>
+                    Referencias
+                </div>
+                <div class="reference-item">
+                    Arcila Vanegas, M. D., & Gómez Noreña, Y. E. (2016). <em>Aritmética: teoría, ejemplos y problemas</em> (1ª ed.). Instituto Tecnológico Metropolitano; Institución Universitaria Colegio Mayor de Antioquia.
+                </div>
+                <div class="credits">
+                    Mapa conceptual elaborado por Marlon Arcila (2025). Contenido adaptado del texto de referencia.
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-                fontFamily: 'Segoe UI, sans-serif',
-                fontSize: '18px',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#fff',
-                lineColor: '#333'
-            },
-            flowchart: {
-                useMaxWidth: true,
-                htmlLabels: true,
-                curve: 'basis',
-                nodeSpacing: 40,
-                rankSpacing: 80,
-                padding: 20
-            }
-        });
-
-        // Ajustar el tamaño de fuente según el dispositivo
-        function adjustFontSize() {
-            const mermaidElements = document.querySelectorAll('.mermaid text');
-            const width = window.innerWidth;
-            
-            mermaidElements.forEach(element => {
-                if (width < 576) {
-                    element.style.fontSize = '13px';
-                } else if (width < 768) {
-                    element.style.fontSize = '15px';
-                } else {
-                    element.style.fontSize = '17px';
-                }
-            });
-        }
-
-        // Aplicar ajustes después de que Mermaid renderice
-        setTimeout(adjustFontSize, 1000);
-        window.addEventListener('resize', adjustFontSize);
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script compartido -->
+    <script src="shared-mapa-script.js"></script>
 </body>
 </html>

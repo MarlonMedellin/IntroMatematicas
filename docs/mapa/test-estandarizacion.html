@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Estandarización - Mapas Conceptuales</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Mermaid JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.min.js"></script>
+    
+    <!-- Estilos compartidos -->
+    <link rel="stylesheet" href="shared-mapa-styles.css">
+    
+    <style>
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+        }
+        
+        .test-card h6 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-2 p-md-3">
+        <div class="main-container">
+            <!-- Header -->
+            <div class="header">
+                <h1><i class="fas fa-check-circle me-2"></i>TEST DE ESTANDARIZACIÓN</h1>
+                <p>Validación de Mejoras Técnicas en Mapas Conceptuales</p>
+            </div>
+            
+            <!-- Content -->
+            <div class="content-section">
+                <!-- Resumen de Mejoras -->
+                <div class="test-grid">
+                    <div class="test-card">
+                        <h6><i class="fas fa-mobile-alt me-2"></i>Responsividad</h6>
+                        <span class="status success">✓ Optimizada</span>
+                        <p class="mt-2 mb-0 small">Anchos estandarizados: 600px-1200px según dispositivo</p>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h6><i class="fas fa-hand-pointer me-2"></i>Navegación Táctil</h6>
+                        <span class="status success">✓ Mejorada</span>
+                        <p class="mt-2 mb-0 small">Touch, mouse y teclado optimizados</p>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h6><i class="fas fa-arrows-alt-h me-2"></i>Scroll Horizontal</h6>
+                        <span class="status success">✓ Unificado</span>
+                        <p class="mt-2 mb-0 small">Indicadores visuales y smooth scrolling</p>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h6><i class="fas fa-code me-2"></i>JavaScript</h6>
+                        <span class="status success">✓ Centralizado</span>
+                        <p class="mt-2 mb-0 small">Un solo archivo shared-mapa-script.js</p>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h6><i class="fas fa-palette me-2"></i>CSS</h6>
+                        <span class="status success">✓ Estandarizado</span>
+                        <p class="mt-2 mb-0 small">Variables CSS y clases reutilizables</p>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h6><i class="fas fa-universal-access me-2"></i>Accesibilidad</h6>
+                        <span class="status success">✓ Mejorada</span>
+                        <p class="mt-2 mb-0 small">Navegación por teclado y roles ARIA</p>
+                    </div>
+                </div>
+                
+                <!-- Diagrama de Prueba -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="mb-3"><i class="fas fa-vial me-2"></i>Diagrama de Prueba</h4>
+                        <div class="mermaid-container">
+                            <div class="mermaid">
+graph LR
+    A[ESTANDARIZACIÓN TÉCNICA] --> B[CSS COMPARTIDO]
+    A --> C[JAVASCRIPT UNIFICADO]
+    A --> D[NAVEGACIÓN OPTIMIZADA]
+    
+    B --> B1[Variables CSS]
+    B --> B2[Clases Reutilizables]
+    B --> B3[Responsividad]
+    
+    C --> C1[Configuración Mermaid]
+    C --> C2[Touch Navigation]
+    C --> C3[Accessibility]
+    
+    D --> D1[Mouse + Touch + Keyboard]
+    D --> D2[Scroll Indicators]
+    D --> D3[Smooth Animations]
+    
+    %% Estilos
+    classDef central fill:#2c3e50,stroke:#fff,stroke-width:3px,color:#fff
+    classDef success fill:#27ae60,stroke:#fff,stroke-width:2px,color:#fff
+    classDef feature fill:#17a2b8,stroke:#fff,stroke-width:2px,color:#fff
+    classDef detail fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404
+    
+    class A central
+    class B,C,D success
+    class B1,B2,B3,C1,C2,C3,D1,D2,D3 detail
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Leyenda y Tips -->
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-8">
+                        <div class="legend-container">
+                            <div class="legend-title">
+                                <i class="fas fa-list-ul"></i>
+                                LEYENDA
+                            </div>
+                            <div class="legend-grid">
+                                <div class="legend-item">
+                                    <div class="legend-circle color-central"></div>
+                                    <span><strong>Concepto Central</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-fundamental"></div>
+                                    <span><strong>Mejoras Principales</strong></span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-circle color-operations"></div>
+                                    <span><strong>Características Técnicas</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                        <div class="tip-container">
+                            <div class="tip-title">
+                                <i class="fas fa-lightbulb"></i>
+                                Resultado
+                            </div>
+                            <div class="tip-content">
+                                ✅ Los 6 módulos ahora usan la misma estructura técnica, optimizada para móvil y desktop, con navegación táctil mejorada y JavaScript centralizado.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enlaces a Módulos -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5><i class="fas fa-link me-2"></i>Módulos Estandarizados</h5>
+                        <div class="test-grid">
+                            <a href="mapaconceptualmodulo1.html" class="test-card text-decoration-none">
+                                <h6 class="text-primary">Módulo 1: Números Enteros</h6>
+                                <span class="status info">Actualizado</span>
+                            </a>
+                            <a href="mapaconceptualmodulo2.html" class="test-card text-decoration-none">
+                                <h6 class="text-primary">Módulo 2: Primos, MCM, MCD</h6>
+                                <span class="status info">Actualizado</span>
+                            </a>
+                            <a href="mapaconceptualmodulo3.html" class="test-card text-decoration-none">
+                                <h6 class="text-primary">Módulo 3: Números Racionales</h6>
+                                <span class="status info">Actualizado</span>
+                            </a>
+                            <a href="mapaconceptualmodulo4.html" class="test-card text-decoration-none">
+                                <h6 class="text-primary">Módulo 4: Razones y Proporciones</h6>
+                                <span class="status info">Actualizado</span>
+                            </a>
+                            <a href="mapaconceptualmodulo5.html" class="test-card text-decoration-none">
+                                <h6 class="text-primary">Módulo 5: Sistemas de Medida</h6>
+                                <span class="status info">Actualizado</span>
+                            </a>
+                            <a href="mapaconceptualmodulo6.html" class="test-card text-decoration-none">
+                                <h6 class="text-primary">Módulo 6: Potenciación y Radicación</h6>
+                                <span class="status info">Actualizado</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script compartido -->
+    <script src="shared-mapa-script.js"></script>
+</body>
+</html>
