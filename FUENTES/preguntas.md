@@ -26,6 +26,10 @@
 **Concepto:** Conjunto ℤ
 **Definición:** Símbolo que representa al conjunto de los números enteros.
 
+### Pareja 6
+**Concepto:** Suma de Enteros  
+**Definición:** Operación que combina enteros positivos y negativos correctamente.
+
 ---
 
 ## **Módulo 2: Números Primos, MCM y MCD**
@@ -49,6 +53,10 @@
 ### Pareja 5
 **Concepto:** Criterios de Divisibilidad
 **Definición:** Reglas para determinar si un número divide a otro.
+
+### Pareja 6
+**Concepto:** Descomposición Prima  
+**Definición:** Expresar un número como producto de factores primos únicos.
 
 ---
 
@@ -74,6 +82,10 @@
 **Concepto:** Fracción Impropia
 **Definición:** Fracción donde el numerador es mayor que el denominador.
 
+### Pareja 6
+**Concepto:** Número Decimal  
+**Definición:** Representación de fracciones mediante una expresión con punto decimal.
+
 ---
 
 ## **Módulo 4: Razones, Proporciones y Regla de Tres**
@@ -97,6 +109,10 @@
 ### Pareja 5
 **Concepto:** Porcentaje
 **Definición:** Proporción que expresa una cantidad como fracción de cien.
+
+### Pareja 6
+**Concepto:** Proporcionalidad Directa  
+**Definición:** Relación donde al aumentar una cantidad, la otra también.
 
 ---
 
@@ -122,6 +138,10 @@
 **Concepto:** Conversión entre Sistemas
 **Definición:** Proceso de cambiar medidas del sistema métrico al imperial.
 
+### Pareja 6
+**Concepto:** Unidad de Masa  
+**Definición:** Medida estándar para expresar la cantidad de materia física.
+
 ---
 
 ## **Módulo 6: Potenciación y Radicación**
@@ -146,8 +166,12 @@
 **Concepto:** Jerarquía de Operaciones
 **Definición:** Orden específico para resolver expresiones matemáticas con múltiples operaciones.
 
+### Pareja 6
+**Concepto:** Raíz Cuadrada  
+**Definición:** Número que multiplicado por sí mismo da el original.
+
 ---
 
-**Total: 30 parejas de flashcards**
+**Total: 36 parejas de flashcards**
 **Formato:** Cada definición contiene exactamente 10 palabras
 **Uso:** Juego educativo de memorización y refuerzo conceptual
