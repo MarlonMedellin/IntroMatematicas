@@ -128,7 +128,7 @@
 
 ### Pareja 3
 **Concepto:** Sistema Imperial
-**Definición:** Sistema de medidas usado principalmente en Estados Unidos tradicionalmente.
+**Definición:** Sistema de medidas usado principalmente en Estados Unidos y Reino Unido.
 
 ### Pareja 4
 **Concepto:** Unidades de Longitud
@@ -136,11 +136,11 @@
 
 ### Pareja 5
 **Concepto:** Conversión entre Sistemas
-**Definición:** Proceso de cambiar medidas del sistema métrico al imperial.
+**Definición:** Proceso de cambiar medidas del sistema métrico al imperial o viceversa.
 
 ### Pareja 6
-**Concepto:** Unidad de Masa  
-**Definición:** Medida estándar para expresar la cantidad de materia física.
+**Concepto:** Unidades de Masa  
+**Definición:** Medidas estándar para expresar la cantidad de materia en un objeto físico.
 
 ---
 
@@ -156,11 +156,11 @@
 
 ### Pareja 3
 **Concepto:** Exponente
-**Definición:** Número que indica cuántas veces se multiplica la base.
+**Definición:** Número que indica cuántas veces se multiplica la base por sí misma.
 
 ### Pareja 4
 **Concepto:** Números Irracionales
-**Definición:** Números con expansión decimal infinita no periódica como raíces.
+**Definición:** Números con expansión decimal infinita no periódica como algunas raíces.
 
 ### Pareja 5
 **Concepto:** Jerarquía de Operaciones
@@ -168,7 +168,7 @@
 
 ### Pareja 6
 **Concepto:** Raíz Cuadrada  
-**Definición:** Número que multiplicado por sí mismo da el original.
+**Definición:** Número que multiplicado por sí mismo da el número original.
 
 ---
 
