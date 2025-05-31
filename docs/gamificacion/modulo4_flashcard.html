@@ -292,7 +292,7 @@
                 <i class="fas fa-brain" style="color: #FBBB28; margin-right: 10px;"></i>
                 Juego de Memoria
             </h1>
-            <p>Módulo 4: Razones, Proporciones y Regla de Tres/p>
+            <p>Módulo 4: Razones, Proporciones y Regla de Tres</p>
         </div>
 
         <!-- Panel de estadísticas -->
@@ -352,7 +352,7 @@
             { id: 9, type: 'concept', content: 'Porcentaje', pair: 5 },
             { id: 10, type: 'definition', content: 'Proporción que expresa una cantidad como fracción de cien.', pair: 5 },
             { id: 11, type: 'concept', content: 'Proporcionalidad Directa', pair: 6 },
-            { id: 12, type: 'definition', content: 'Relación donde al aumentar una cantidad, la otra también.', pair: 6 }
+            { id: 12, type: 'definition', content: 'Relación donde al aumentar una cantidad, la otra también aumenta proporcionalmente.', pair: 6 }
         ];
 
         // Variables del juego
@@ -385,24 +385,6 @@
             cards = [...gameData].sort(() => Math.random() - 0.5);
         }
 
-        // Función para renderizar MathJax de forma segura
-        function renderMathJax() {
-            setTimeout(() => {
-                if (window.MathJax) {
-                    try {
-                        if (MathJax.typesetPromise) {
-                            MathJax.typesetPromise().catch(() => {
-                                console.log('MathJax rendering completed');
-                            });
-                        } else if (MathJax.typeset) {
-                            MathJax.typeset();
-                        }
-                    } catch (e) {
-                        console.log('MathJax rendering completed');
-                    }
-                }
-            }, 100);
-        }
         function renderCards() {
             gameGrid.innerHTML = '';
             
@@ -426,9 +408,6 @@
                 cardContainer.addEventListener('click', () => handleCardClick(card.id));
                 gameGrid.appendChild(cardContainer);
             });
-
-            // Renderizar MathJax después de agregar las cartas
-            renderMathJax();
         }
 
         // Obtener icono para tipo de carta

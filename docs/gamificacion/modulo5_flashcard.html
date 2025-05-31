@@ -346,13 +346,13 @@
             { id: 3, type: 'concept', content: 'Sistema Internacional', pair: 2 },
             { id: 4, type: 'definition', content: 'Sistema métrico estándar mundial basado en metro kilogramo segundo.', pair: 2 },
             { id: 5, type: 'concept', content: 'Sistema Imperial', pair: 3 },
-            { id: 6, type: 'definition', content: 'Sistema de medidas usado principalmente en Estados Unidos tradicionalmente.', pair: 3 },
+            { id: 6, type: 'definition', content: 'Sistema de medidas usado principalmente en Estados Unidos y Reino Unido.', pair: 3 },
             { id: 7, type: 'concept', content: 'Unidades de Longitud', pair: 4 },
             { id: 8, type: 'definition', content: 'Medidas para expresar distancias como metros, centímetros, kilómetros, pulgadas.', pair: 4 },
             { id: 9, type: 'concept', content: 'Conversión entre Sistemas', pair: 5 },
-            { id: 10, type: 'definition', content: 'Proceso de cambiar medidas del sistema métrico al imperial.', pair: 5 },
-            { id: 11, type: 'concept', content: 'Unidad de Masa', pair: 6 },
-            { id: 12, type: 'definition', content: 'Medida estándar para expresar la cantidad de materia física.', pair: 6 }
+            { id: 10, type: 'definition', content: 'Proceso de cambiar medidas del sistema métrico al imperial o viceversa.', pair: 5 },
+            { id: 11, type: 'concept', content: 'Unidades de Masa', pair: 6 },
+            { id: 12, type: 'definition', content: 'Medidas estándar para expresar la cantidad de materia en un objeto físico.', pair: 6 }
         ];
 
         // Variables del juego
@@ -385,24 +385,6 @@
             cards = [...gameData].sort(() => Math.random() - 0.5);
         }
 
-        // Función para renderizar MathJax de forma segura
-        function renderMathJax() {
-            setTimeout(() => {
-                if (window.MathJax) {
-                    try {
-                        if (MathJax.typesetPromise) {
-                            MathJax.typesetPromise().catch(() => {
-                                console.log('MathJax rendering completed');
-                            });
-                        } else if (MathJax.typeset) {
-                            MathJax.typeset();
-                        }
-                    } catch (e) {
-                        console.log('MathJax rendering completed');
-                    }
-                }
-            }, 100);
-        }
         function renderCards() {
             gameGrid.innerHTML = '';
             
@@ -426,9 +408,6 @@
                 cardContainer.addEventListener('click', () => handleCardClick(card.id));
                 gameGrid.appendChild(cardContainer);
             });
-
-            // Renderizar MathJax después de agregar las cartas
-            renderMathJax();
         }
 
         // Obtener icono para tipo de carta

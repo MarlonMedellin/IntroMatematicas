@@ -385,24 +385,6 @@
             cards = [...gameData].sort(() => Math.random() - 0.5);
         }
 
-        // Función para renderizar MathJax de forma segura
-        function renderMathJax() {
-            setTimeout(() => {
-                if (window.MathJax) {
-                    try {
-                        if (MathJax.typesetPromise) {
-                            MathJax.typesetPromise().catch(() => {
-                                console.log('MathJax rendering completed');
-                            });
-                        } else if (MathJax.typeset) {
-                            MathJax.typeset();
-                        }
-                    } catch (e) {
-                        console.log('MathJax rendering completed');
-                    }
-                }
-            }, 100);
-        }
         function renderCards() {
             gameGrid.innerHTML = '';
             
@@ -426,9 +408,6 @@
                 cardContainer.addEventListener('click', () => handleCardClick(card.id));
                 gameGrid.appendChild(cardContainer);
             });
-
-            // Renderizar MathJax después de agregar las cartas
-            renderMathJax();
         }
 
         // Obtener icono para tipo de carta

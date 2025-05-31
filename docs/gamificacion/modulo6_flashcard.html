@@ -346,13 +346,13 @@
             { id: 3, type: 'concept', content: 'Radicación', pair: 2 },
             { id: 4, type: 'definition', content: 'Operación inversa de potenciación que encuentra la base original.', pair: 2 },
             { id: 5, type: 'concept', content: 'Exponente', pair: 3 },
-            { id: 6, type: 'definition', content: 'Número que indica cuántas veces se multiplica la base.', pair: 3 },
+            { id: 6, type: 'definition', content: 'Número que indica cuántas veces se multiplica la base por sí misma.', pair: 3 },
             { id: 7, type: 'concept', content: 'Números Irracionales', pair: 4 },
-            { id: 8, type: 'definition', content: 'Números con expansión decimal infinita no periódica como raíces.', pair: 4 },
+            { id: 8, type: 'definition', content: 'Números con expansión decimal infinita no periódica como algunas raíces.', pair: 4 },
             { id: 9, type: 'concept', content: 'Jerarquía de Operaciones', pair: 5 },
             { id: 10, type: 'definition', content: 'Orden específico para resolver expresiones matemáticas con múltiples operaciones.', pair: 5 },
             { id: 11, type: 'concept', content: 'Raíz Cuadrada', pair: 6 },
-            { id: 12, type: 'definition', content: 'Número que multiplicado por sí mismo da el original.', pair: 6 }
+            { id: 12, type: 'definition', content: 'Número que multiplicado por sí mismo da el número original.', pair: 6 }
         ];
 
         // Variables del juego
@@ -385,24 +385,6 @@
             cards = [...gameData].sort(() => Math.random() - 0.5);
         }
 
-        // Función para renderizar MathJax de forma segura
-        function renderMathJax() {
-            setTimeout(() => {
-                if (window.MathJax) {
-                    try {
-                        if (MathJax.typesetPromise) {
-                            MathJax.typesetPromise().catch(() => {
-                                console.log('MathJax rendering completed');
-                            });
-                        } else if (MathJax.typeset) {
-                            MathJax.typeset();
-                        }
-                    } catch (e) {
-                        console.log('MathJax rendering completed');
-                    }
-                }
-            }, 100);
-        }
         function renderCards() {
             gameGrid.innerHTML = '';
             
@@ -426,9 +408,6 @@
                 cardContainer.addEventListener('click', () => handleCardClick(card.id));
                 gameGrid.appendChild(cardContainer);
             });
-
-            // Renderizar MathJax después de agregar las cartas
-            renderMathJax();
         }
 
         // Obtener icono para tipo de carta

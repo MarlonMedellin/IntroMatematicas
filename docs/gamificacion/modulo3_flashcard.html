@@ -292,7 +292,7 @@
                 <i class="fas fa-brain" style="color: #FBBB28; margin-right: 10px;"></i>
                 Juego de Memoria
             </h1>
-            <p>Módulo 3: Sistema de los Números Racionales/p>
+            <p>Módulo 3: Sistema de los Números Racionales</p>
         </div>
 
         <!-- Panel de estadísticas -->
@@ -344,9 +344,9 @@
             { id: 1, type: 'concept', content: 'Números Racionales', pair: 1 },
             { id: 2, type: 'definition', content: 'Números expresables como cociente de dos enteros, denominador diferente cero.', pair: 1 },
             { id: 3, type: 'concept', content: 'Fracciones Equivalentes', pair: 2 },
-            { id: 4, type: 'definition', content: 'Fracciones que representan la misma cantidad con numeradores denominadores.', pair: 2 },
+            { id: 4, type: 'definition', content: 'Fracciones que representan la misma cantidad con numeradores y denominadores diferentes.', pair: 2 },
             { id: 5, type: 'concept', content: 'Simplificación', pair: 3 },
-            { id: 6, type: 'definition', content: 'Reducir fracción dividiendo numerador denominador por su máximo común.', pair: 3 },
+            { id: 6, type: 'definition', content: 'Reducir fracción dividiendo numerador y denominador por su máximo común divisor.', pair: 3 },
             { id: 7, type: 'concept', content: 'Fracción Propia', pair: 4 },
             { id: 8, type: 'definition', content: 'Fracción donde el numerador es menor que el denominador.', pair: 4 },
             { id: 9, type: 'concept', content: 'Fracción Impropia', pair: 5 },
@@ -385,24 +385,6 @@
             cards = [...gameData].sort(() => Math.random() - 0.5);
         }
 
-        // Función para renderizar MathJax de forma segura
-        function renderMathJax() {
-            setTimeout(() => {
-                if (window.MathJax) {
-                    try {
-                        if (MathJax.typesetPromise) {
-                            MathJax.typesetPromise().catch(() => {
-                                console.log('MathJax rendering completed');
-                            });
-                        } else if (MathJax.typeset) {
-                            MathJax.typeset();
-                        }
-                    } catch (e) {
-                        console.log('MathJax rendering completed');
-                    }
-                }
-            }, 100);
-        }
         function renderCards() {
             gameGrid.innerHTML = '';
             
@@ -426,9 +408,6 @@
                 cardContainer.addEventListener('click', () => handleCardClick(card.id));
                 gameGrid.appendChild(cardContainer);
             });
-
-            // Renderizar MathJax después de agregar las cartas
-            renderMathJax();
         }
 
         // Obtener icono para tipo de carta
