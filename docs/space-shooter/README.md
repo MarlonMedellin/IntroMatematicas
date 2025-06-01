@@ -301,7 +301,7 @@ Este proyecto está licenciado bajo **Creative Commons BY-NC-ND 4.0**
 ### Contacto y Redes
 - 📺 **YouTube**: [@MarlonDavidArcila](https://www.youtube.com/@MarlonDavidArcila)
 - 💼 **LinkedIn**: [marlon-arcila](https://www.linkedin.com/in/marlon-arcila)
-- 🌐 **Institución**: [Colegio Mayor de Antioquia](https://www.colmayor.edu.co)
+
 
 ---
 
@@ -342,7 +342,7 @@ Este proyecto está licenciado bajo **Creative Commons BY-NC-ND 4.0**
 
 <div align="center">
 
-[![Colegio Mayor](https://img.shields.io/badge/Colegio%20Mayor%20de%20Antioquia-Educación%20Superior-blue)](https://www.colmayor.edu.co)
+
 [![CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 **Desarrollado con ❤️ para la educación matemática**

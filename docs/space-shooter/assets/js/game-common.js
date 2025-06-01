@@ -1,5 +1,5 @@
 /**
- * Common functions for the space shooter game
+ * Common functions for the space shooter game ESTE ARCHIVO LO PUEDO BORRAR YA NO ES NECESARIO
  */
 
 // Initialize the game when a module page is loaded
