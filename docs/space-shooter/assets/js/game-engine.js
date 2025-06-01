@@ -1,7 +1,7 @@
 // ============================================
 // MOTOR DEL JUEGO - SPACE SHOOTER MATEMÁTICO
 // Desarrollado por Profe Marlon Arcila
-// VERSION CORREGIDA
+// VERSIÓN CORREGIDA - Sincronización pregunta-respuesta
 // ============================================
 
 class SpaceShooterEngine {
@@ -10,7 +10,7 @@ class SpaceShooterEngine {
         this.questions = questions;
         this.state = {
             score: 0,
-            lives: 3,
+            lives: 3,              // Vidas originales
             level: 1,
             accuracy: 100,
             currentQuestionIndex: 0,
@@ -40,68 +40,50 @@ class SpaceShooterEngine {
         
         this.elements = {};
         this.gameStartTime = null;
+        this.pauseSpawning = false;  // Flag para pausar spawning durante cambios de pregunta
     }
 
     // ============================================
     // INICIALIZACIÓN
     // ============================================
     init() {
-        try {
-            console.log('🚀 Iniciando Space Shooter Engine...');
-            this.cacheElements();
-            this.createStars();
-            this.setupControls();
-            this.setupUI();
-            this.generateNewQuestion();
-            console.log('✅ Space Shooter Engine inicializado correctamente');
-        } catch (error) {
-            console.error('❌ Error durante la inicialización:', error);
-            alert('Error al inicializar el juego. Por favor, recarga la página.');
-        }
+        this.cacheElements();
+        this.createStars();
+        this.setupControls();
+        this.setupUI();
+        
+        // CRÍTICO: Asegurar que la primera pregunta se cargue correctamente
+        this.pauseSpawning = false;
+        this.generateNewQuestion();
+        
+        console.log('🚀 Space Shooter Engine initialized with first question ready');
     }
 
     cacheElements() {
-        console.log('📦 Cacheando elementos del DOM...');
-        
-        // Lista de elementos requeridos
-        const requiredElements = {
-            gameArea: 'gameArea',
-            spaceship: 'spaceship',
-            score: 'score',
-            lives: 'lives',
-            level: 'level',
-            accuracy: 'accuracy',
-            currentQuestion: 'currentQuestion',
-            questionInstruction: 'questionInstruction',
-            feedback: 'feedback',
-            progressBar: 'progressBar',
-            progressText: 'progressText',
-            startBtn: 'startBtn',
-            pauseBtn: 'pauseBtn',
-            restartBtn: 'restartBtn',
-            backBtn: 'backBtn',
-            completionModal: 'completionModal',
-            reflectionContent: 'reflectionContent'
+        this.elements = {
+            gameArea: document.getElementById('gameArea'),
+            spaceship: document.getElementById('spaceship'),
+            score: document.getElementById('score'),
+            lives: document.getElementById('lives'),
+            level: document.getElementById('level'),
+            accuracy: document.getElementById('accuracy'),
+            currentQuestion: document.getElementById('currentQuestion'),
+            questionInstruction: document.getElementById('questionInstruction'),
+            feedback: document.getElementById('feedback'),
+            progressBar: document.getElementById('progressBar'),
+            progressText: document.getElementById('progressText'),
+            startBtn: document.getElementById('startBtn'),
+            pauseBtn: document.getElementById('pauseBtn'),
+            restartBtn: document.getElementById('restartBtn'),
+            backBtn: document.getElementById('backBtn'),
+            completionModal: document.getElementById('completionModal'),
+            reflectionContent: document.getElementById('reflectionContent')
         };
-
-        // Cachear elementos y verificar que existan
-        for (const [key, id] of Object.entries(requiredElements)) {
-            const element = document.getElementById(id);
-            if (!element) {
-                console.warn(`⚠️ Elemento no encontrado: ${id}`);
-            }
-            this.elements[key] = element;
-        }
-
-        console.log('✅ Elementos cacheados:', Object.keys(this.elements).filter(k => this.elements[k]).length);
     }
 
     createStars() {
         const starsContainer = document.getElementById('stars');
-        if (!starsContainer) {
-            console.warn('⚠️ Contenedor de estrellas no encontrado');
-            return;
-        }
+        if (!starsContainer) return;
         
         const starCount = window.innerWidth < 768 ? 30 : 50;
         
@@ -117,54 +99,22 @@ class SpaceShooterEngine {
     }
 
     setupUI() {
-        console.log('🎮 Configurando interfaz de usuario...');
-        
         // Configurar información del juego
-        const gameTitle = document.getElementById('gameTitle');
-        const gameSubtitle = document.getElementById('gameSubtitle');
+        document.title = this.config.gameInfo.title;
+        document.getElementById('gameTitle').textContent = this.config.gameInfo.title;
+        document.getElementById('gameSubtitle').textContent = this.config.gameInfo.subtitle;
+        this.elements.questionInstruction.textContent = this.config.gameInfo.instruction;
         
-        if (gameTitle) gameTitle.textContent = this.config.gameInfo.title;
-        if (gameSubtitle) gameSubtitle.textContent = this.config.gameInfo.subtitle;
-        if (this.elements.questionInstruction) {
-            this.elements.questionInstruction.textContent = this.config.gameInfo.instruction;
-        }
-        
-        // Event listeners para botones con verificación
-        if (this.elements.startBtn) {
-            this.elements.startBtn.addEventListener('click', () => {
-                console.log('🚀 Botón Start presionado');
-                this.startGame();
-            });
-        }
-        
-        if (this.elements.pauseBtn) {
-            this.elements.pauseBtn.addEventListener('click', () => {
-                console.log('⏸️ Botón Pause presionado');
-                this.togglePause();
-            });
-        }
-        
-        if (this.elements.restartBtn) {
-            this.elements.restartBtn.addEventListener('click', () => {
-                console.log('🔄 Botón Restart presionado');
-                this.restartGame();
-            });
-        }
-        
-        if (this.elements.backBtn) {
-            this.elements.backBtn.addEventListener('click', () => {
-                console.log('🔙 Botón Back presionado');
-                this.goBack();
-            });
-        }
+        // Event listeners para botones
+        this.elements.startBtn.addEventListener('click', () => this.startGame());
+        this.elements.pauseBtn.addEventListener('click', () => this.togglePause());
+        this.elements.restartBtn.addEventListener('click', () => this.restartGame());
+        this.elements.backBtn.addEventListener('click', () => this.goBack());
         
         this.updateUI();
-        console.log('✅ UI configurada correctamente');
     }
 
     setupControls() {
-        console.log('🎮 Configurando controles...');
-        
         // Controles de teclado
         document.addEventListener('keydown', (e) => {
             if (!this.state.isRunning || this.state.isPaused) return;
@@ -225,72 +175,56 @@ class SpaceShooterEngine {
                     e.preventDefault();
                     if (action) action();
                 });
-            } else {
-                console.warn(`⚠️ Control móvil no encontrado: ${elementId}`);
             }
         };
 
         setupMobileControl('moveLeft', 'left');
         setupMobileControl('moveRight', 'right');
         setupMobileControl('shoot', null, () => this.shoot());
-        
-        console.log('✅ Controles configurados');
     }
 
     // ============================================
     // CONTROL DEL JUEGO
     // ============================================
     startGame() {
-        try {
-            this.state.isRunning = true;
-            this.state.isPaused = false;
-            this.gameStartTime = Date.now();
-            
-            if (this.elements.startBtn) this.elements.startBtn.style.display = 'none';
-            if (this.elements.pauseBtn) this.elements.pauseBtn.style.display = 'inline-flex';
-            
-            this.state.lastTime = performance.now();
-            this.gameLoop();
-            console.log('🎮 Juego iniciado');
-        } catch (error) {
-            console.error('❌ Error al iniciar el juego:', error);
-        }
+        this.state.isRunning = true;
+        this.state.isPaused = false;
+        this.gameStartTime = Date.now();
+        
+        this.elements.startBtn.style.display = 'none';
+        this.elements.pauseBtn.style.display = 'inline-flex';
+        
+        this.state.lastTime = performance.now();
+        this.gameLoop();
+        console.log('🎮 Game started');
     }
 
     togglePause() {
         this.state.isPaused = !this.state.isPaused;
-        if (this.elements.pauseBtn) {
-            this.elements.pauseBtn.innerHTML = this.state.isPaused ? 
-                '<i class="fas fa-play"></i> Continuar' : 
-                '<i class="fas fa-pause"></i> Pausar';
-        }
+        this.elements.pauseBtn.innerHTML = this.state.isPaused ? 
+            '<i class="fas fa-play"></i> Continuar' : 
+            '<i class="fas fa-pause"></i> Pausar';
         
         if (!this.state.isPaused) {
             this.state.lastTime = performance.now();
             this.gameLoop();
         }
-        console.log(this.state.isPaused ? '⏸️ Juego pausado' : '▶️ Juego reanudado');
+        console.log(this.state.isPaused ? '⏸️ Game paused' : '▶️ Game resumed');
     }
 
     restartGame() {
-        try {
-            this.stopGame();
-            this.resetGameState();
-            this.cleanupAllElements();
-            this.resetSpaceshipPosition();
-            this.generateNewQuestion();
-            this.updateUI();
-            this.updateProgress();
-            
-            // Ocultar modal de finalización
-            if (this.elements.completionModal) {
-                this.elements.completionModal.style.display = 'none';
-            }
-            
-            console.log('🔄 Juego reiniciado');
-        } catch (error) {
-            console.error('❌ Error al reiniciar el juego:', error);
-        }
+        this.stopGame();
+        this.resetGameState();
+        this.cleanupAllElements();
+        this.resetSpaceshipPosition();
+        this.generateNewQuestion();
+        this.updateUI();
+        this.updateProgress();
+        
+        // Ocultar modal de finalización
+        this.elements.completionModal.style.display = 'none';
+        
+        console.log('🔄 Game restarted');
     }
 
     stopGame() {
@@ -304,7 +238,7 @@ class SpaceShooterEngine {
         this.state = {
             ...this.state,
             score: 0,
-            lives: 3,
+            lives: 3,              // Vidas originales
             level: 1,
             accuracy: 100,
             currentQuestionIndex: 0,
@@ -332,9 +266,11 @@ class SpaceShooterEngine {
             spacePressed: false 
         };
 
+        this.pauseSpawning = false;  // Resetear flag de spawning
+
         // Resetear UI
-        if (this.elements.startBtn) this.elements.startBtn.style.display = 'inline-flex';
-        if (this.elements.pauseBtn) this.elements.pauseBtn.style.display = 'none';
+        this.elements.startBtn.style.display = 'inline-flex';
+        this.elements.pauseBtn.style.display = 'none';
     }
 
     goBack() {
@@ -352,11 +288,7 @@ class SpaceShooterEngine {
         this.state.deltaTime = currentTime - this.state.lastTime;
         this.state.lastTime = currentTime;
 
-        try {
-            this.update();
-        } catch (error) {
-            console.error('❌ Error en el game loop:', error);
-        }
+        this.update();
         
         this.state.animationId = requestAnimationFrame(() => this.gameLoop());
     }
@@ -375,18 +307,28 @@ class SpaceShooterEngine {
     // GESTIÓN DE PREGUNTAS
     // ============================================
     generateNewQuestion() {
+        // Verificar si se completaron todas las preguntas
         if (this.state.currentQuestionIndex >= this.questions.questions.length) {
             this.completeGame();
             return;
         }
         
+        // CRÍTICO: Limpiar TODOS los enemigos antes de cambiar pregunta
+        this.cleanupEnemiesOnly();
+        
+        // CRÍTICO: Pausar spawning temporalmente para evitar respuestas incorrectas
+        this.pauseSpawning = true;
+        
+        // Establecer nueva pregunta
         this.state.currentQuestion = this.questions.questions[this.state.currentQuestionIndex];
-        if (this.elements.currentQuestion) {
-            this.elements.currentQuestion.textContent = this.state.currentQuestion.question + ' = ?';
-        }
+        this.elements.currentQuestion.textContent = this.state.currentQuestion.question + ' = ?';
         this.updateProgress();
         
-        console.log('📝 Nueva pregunta:', this.state.currentQuestion.question);
+        // CRÍTICO: Reanudar spawning después de un pequeño delay para asegurar sincronización
+        setTimeout(() => {
+            this.pauseSpawning = false;
+            console.log(`📝 Question ${this.state.currentQuestionIndex + 1}/${this.questions.questions.length} READY: "${this.state.currentQuestion.question}" → Correct: "${this.state.currentQuestion.answer}"`);
+        }, 300);
     }
 
     updateProgress() {
@@ -404,8 +346,6 @@ class SpaceShooterEngine {
     // MECÁNICAS DE JUEGO
     // ============================================
     moveSpaceship() {
-        if (!this.elements.spaceship) return;
-        
         const speed = this.config.gameplay.spaceshipSpeed * (this.state.deltaTime / 16);
         
         if (this.keys.left && this.state.spaceshipX > 5) {
@@ -419,7 +359,7 @@ class SpaceShooterEngine {
     }
 
     shoot() {
-        if (!this.state.isRunning || this.state.isPaused || !this.elements.gameArea) return;
+        if (!this.state.isRunning || this.state.isPaused) return;
         
         this.state.totalShots++;
         this.updateAccuracy();
@@ -439,10 +379,15 @@ class SpaceShooterEngine {
         this.state.bullets.push(bullet);
         this.elements.gameArea.appendChild(bulletElement);
         
-        console.log('💥 Disparo realizado');
+        console.log('💥 Bullet fired');
     }
 
     spawnEnemies() {
+        // CRÍTICO: No spawning si está pausado para cambio de pregunta
+        if (this.pauseSpawning) {
+            return;
+        }
+        
         const currentTime = performance.now();
         const spawnInterval = Math.max(1000, 
             this.config.gameplay.spawnInterval - 
@@ -458,14 +403,41 @@ class SpaceShooterEngine {
     }
 
     spawnEnemy() {
-        if (!this.state.currentQuestion || !this.elements.gameArea) return;
+        // CRÍTICO: Verificaciones estrictas antes de generar enemigo
+        if (!this.state.currentQuestion) {
+            console.error('❌ SYNC ERROR: No current question available');
+            return;
+        }
+        
+        if (this.pauseSpawning) {
+            console.warn('⏸️ Spawning paused for question transition');
+            return;
+        }
+        
+        if (this.state.currentQuestionIndex >= this.questions.questions.length) {
+            console.warn('⚠️ No more questions available');
+            return;
+        }
+        
+        // Verificar que la pregunta actual corresponde al índice
+        const expectedQuestion = this.questions.questions[this.state.currentQuestionIndex];
+        if (this.state.currentQuestion !== expectedQuestion) {
+            console.error('❌ SYNC ERROR: Question mismatch!', {
+                current: this.state.currentQuestion,
+                expected: expectedQuestion
+            });
+            // Corregir sincronización
+            this.state.currentQuestion = expectedQuestion;
+        }
 
         const isCorrect = Math.random() < this.config.gameplay.correctEnemyChance;
         let answer;
         
         if (isCorrect) {
+            // Usar la respuesta correcta de la pregunta ACTUAL verificada
             answer = this.state.currentQuestion.answer;
         } else {
+            // Generar respuesta incorrecta basada en la pregunta ACTUAL verificada
             const wrongAnswers = this.questions.generateWrongAnswers(
                 this.state.currentQuestion.answer, 
                 this.state.currentQuestion.type
@@ -480,7 +452,10 @@ class SpaceShooterEngine {
             answer: answer,
             isCorrect: isCorrect,
             element: null,
-            id: Date.now() + Math.random()
+            id: Date.now() + Math.random(),
+            questionId: this.state.currentQuestionIndex,  // Para tracking
+            questionText: this.state.currentQuestion.question,  // Para debugging
+            correctAnswer: this.state.currentQuestion.answer   // Para debugging
         };
         
         const enemyElement = document.createElement('div');
@@ -498,25 +473,26 @@ class SpaceShooterEngine {
         this.state.enemies.push(enemy);
         this.elements.gameArea.appendChild(enemyElement);
         
-        console.log(`👾 Enemigo generado: ${answer} (${isCorrect ? 'correcto' : 'incorrecto'})`);
+        console.log(`👾 Enemy spawned - Q${this.state.currentQuestionIndex + 1}: "${this.state.currentQuestion.question}" → Answer: "${answer}" (${isCorrect ? 'CORRECT✅' : 'wrong❌'}) | Expected: "${this.state.currentQuestion.answer}"`);
     }
 
     updateEnemies() {
-        if (!this.elements.gameArea) return;
-        
         const speed = (this.config.gameplay.enemySpeed + 
                       this.state.level * this.config.difficulty.speedIncrease) * 
                       (this.state.deltaTime / 16);
 
         this.state.enemies.forEach((enemy, index) => {
             enemy.y += speed;
-            if (enemy.element) {
-                enemy.element.style.top = enemy.y + 'px';
-            }
+            enemy.element.style.top = enemy.y + 'px';
             
             if (enemy.y > this.elements.gameArea.offsetHeight + 50) {
                 if (enemy.isCorrect) {
-                    this.loseLife("¡Perdiste la respuesta correcta!");
+                    // Si una respuesta correcta llega al fondo, solo perdemos vida
+                    // PERO NO avanzamos la pregunta - la pregunta sigue siendo la misma
+                    this.loseLife("¡Se escapó la respuesta correcta!");
+                } else {
+                    // Si una respuesta incorrecta llega al fondo, no pasa nada malo
+                    console.log('💨 Incorrect answer escaped - no penalty');
                 }
                 this.removeEnemy(index);
             }
@@ -524,15 +500,11 @@ class SpaceShooterEngine {
     }
 
     updateBullets() {
-        if (!this.elements.gameArea) return;
-        
         const speed = this.config.gameplay.bulletSpeed * (this.state.deltaTime / 16);
         
         this.state.bullets.forEach((bullet, index) => {
             bullet.y += speed;
-            if (bullet.element) {
-                bullet.element.style.bottom = bullet.y + 'px';
-            }
+            bullet.element.style.bottom = bullet.y + 'px';
             
             if (bullet.y > this.elements.gameArea.offsetHeight + 50) {
                 this.removeBullet(index);
@@ -552,11 +524,9 @@ class SpaceShooterEngine {
             } else {
                 particle.x += particle.vx * (this.state.deltaTime / 16);
                 particle.y += particle.vy * (this.state.deltaTime / 16);
-                if (particle.element) {
-                    particle.element.style.left = particle.x + 'px';
-                    particle.element.style.top = particle.y + 'px';
-                    particle.element.style.opacity = particle.life / this.config.visual.particleDuration;
-                }
+                particle.element.style.left = particle.x + 'px';
+                particle.element.style.top = particle.y + 'px';
+                particle.element.style.opacity = particle.life / this.config.visual.particleDuration;
             }
         });
     }
@@ -584,6 +554,17 @@ class SpaceShooterEngine {
     }
 
     handleCollision(bullet, enemy, bulletIndex, enemyIndex) {
+        // VERIFICACIÓN DE SINCRONIZACIÓN: Detectar si el enemigo corresponde a la pregunta actual
+        if (enemy.questionId !== this.state.currentQuestionIndex) {
+            console.error('❌ DESYNC DETECTED!', {
+                enemyQuestionId: enemy.questionId,
+                currentQuestionIndex: this.state.currentQuestionIndex,
+                enemyAnswer: enemy.answer,
+                currentQuestion: this.state.currentQuestion?.question,
+                expectedAnswer: this.state.currentQuestion?.answer
+            });
+        }
+        
         this.createExplosion(enemy.x + 75, enemy.y + 40);
         this.createParticles(enemy.x + 75, enemy.y + 40, enemy.isCorrect);
         
@@ -620,7 +601,7 @@ class SpaceShooterEngine {
         
         this.showFeedback(message, 'correct');
         
-        // Avanzar a la siguiente pregunta
+        // LÓGICA ORIGINAL: Avanzar a la siguiente pregunta cuando aciertas
         setTimeout(() => {
             this.state.currentQuestionIndex++;
             this.generateNewQuestion();
@@ -630,13 +611,14 @@ class SpaceShooterEngine {
             }
         }, 1000);
         
-        console.log(`✅ Respuesta correcta! Puntos: ${this.state.score}, Combo: ${this.state.comboCount}`);
+        console.log(`✅ Correct answer! Advancing to next question. Score: ${this.state.score}, Combo: ${this.state.comboCount}`);
     }
 
     handleIncorrectAnswer() {
-        this.state.comboCount = 0;
+        this.state.comboCount = 0; // Romper combo
         this.loseLife('¡Respuesta incorrecta!');
-        console.log('❌ Respuesta incorrecta!');
+        
+        console.log('❌ Incorrect answer! Combo broken.');
     }
 
     loseLife(message) {
@@ -646,6 +628,8 @@ class SpaceShooterEngine {
         if (this.state.lives <= 0) {
             this.endGame();
         }
+        // IMPORTANTE: NO avanzar pregunta cuando se pierde vida
+        // La pregunta solo avanza cuando se dispara a respuesta incorrecta
     }
 
     levelUp() {
@@ -653,15 +637,13 @@ class SpaceShooterEngine {
         const message = `🎉 ¡Nivel ${this.state.level}!`;
         this.showFeedback(message, 'correct');
         
-        console.log(`📈 Subiste de nivel! Nuevo nivel: ${this.state.level}`);
+        console.log(`📈 Level up! New level: ${this.state.level}`);
     }
 
     // ============================================
     // EFECTOS VISUALES
     // ============================================
     createExplosion(x, y) {
-        if (!this.elements.gameArea) return;
-        
         const explosion = document.createElement('div');
         explosion.className = 'explosion';
         explosion.style.left = x + 'px';
@@ -677,10 +659,8 @@ class SpaceShooterEngine {
     }
 
     createParticles(x, y, isCorrect) {
-        if (!this.elements.gameArea) return;
-        
         const particleCount = this.config.gameplay.particleCount;
-        const color = isCorrect ? '#00ff88' : '#ff4444';
+        const color = isCorrect ? '#00AEAC' : '#ff4444';
         
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -714,8 +694,6 @@ class SpaceShooterEngine {
     }
 
     showFeedback(message, type) {
-        if (!this.elements.feedback) return;
-        
         const feedback = this.elements.feedback;
         feedback.textContent = message;
         feedback.className = `feedback ${type} show`;
@@ -732,18 +710,16 @@ class SpaceShooterEngine {
         this.state.gameCompleted = true;
         this.stopGame();
         this.showCompletionModal();
-        console.log('🏆 Juego completado exitosamente!');
+        console.log('🏆 Game completed successfully!');
     }
 
     endGame() {
         this.stopGame();
         this.showCompletionModal(false);
-        console.log('💀 Juego terminado');
+        console.log('💀 Game ended');
     }
 
     showCompletionModal(success = true) {
-        if (!this.elements.completionModal || !this.elements.reflectionContent) return;
-        
         const modal = this.elements.completionModal;
         const reflectionContent = this.elements.reflectionContent;
         
@@ -788,15 +764,14 @@ class SpaceShooterEngine {
     }
 
     updateUI() {
-        if (this.elements.score) this.elements.score.textContent = this.state.score.toLocaleString();
-        if (this.elements.level) this.elements.level.textContent = this.state.level;
-        if (this.elements.accuracy) this.elements.accuracy.textContent = this.state.accuracy + '%';
+        this.elements.score.textContent = this.state.score.toLocaleString();
+        this.elements.level.textContent = this.state.level;
+        this.elements.accuracy.textContent = this.state.accuracy + '%';
         
-        if (this.elements.lives) {
-            const hearts = '❤️'.repeat(Math.max(0, this.state.lives));
-            const emptyHearts = '💔'.repeat(Math.max(0, 3 - this.state.lives));
-            this.elements.lives.textContent = hearts + emptyHearts;
-        }
+        // Volver a 3 vidas máximo
+        const hearts = '❤️'.repeat(Math.max(0, this.state.lives));
+        const emptyHearts = '💔'.repeat(Math.max(0, 3 - this.state.lives));
+        this.elements.lives.textContent = hearts + emptyHearts;
     }
 
     generateGenericWrongAnswer(correctAnswer) {
@@ -830,6 +805,24 @@ class SpaceShooterEngine {
         }
     }
 
+    cleanupEnemiesOnly() {
+        // CRÍTICO: Limpiar todos los enemigos y pausar spawning durante transición
+        this.pauseSpawning = true;
+        
+        let cleanedCount = 0;
+        this.state.enemies.forEach(enemy => {
+            if (enemy.element && enemy.element.parentNode) {
+                enemy.element.parentNode.removeChild(enemy.element);
+                cleanedCount++;
+            }
+        });
+        this.state.enemies = [];
+        
+        console.log(`🧹 Cleaned ${cleanedCount} enemies for question transition`);
+        
+        // El pauseSpawning se reactivará en generateNewQuestion()
+    }
+
     cleanupAllElements() {
         this.state.enemies.forEach(enemy => {
             if (enemy.element && enemy.element.parentNode) {
@@ -849,10 +842,8 @@ class SpaceShooterEngine {
             }
         });
 
-        if (this.elements.gameArea) {
-            const explosions = this.elements.gameArea.querySelectorAll('.explosion');
-            explosions.forEach(explosion => explosion.remove());
-        }
+        const explosions = this.elements.gameArea.querySelectorAll('.explosion');
+        explosions.forEach(explosion => explosion.remove());
     }
 
     cleanupObjects() {
@@ -861,9 +852,7 @@ class SpaceShooterEngine {
 
     resetSpaceshipPosition() {
         this.state.spaceshipX = 50;
-        if (this.elements.spaceship) {
-            this.elements.spaceship.style.left = '50%';
-        }
+        this.elements.spaceship.style.left = '50%';
     }
 }
 

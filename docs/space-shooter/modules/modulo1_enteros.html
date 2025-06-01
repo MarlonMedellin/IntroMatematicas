@@ -1,186 +1,173 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 1: Números Enteros - Space Shooter Matemático</title>
-    <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/space-game.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Estrellas de fondo -->
-    <div class="stars" id="stars"></div>
+// ============================================
+// MÓDULO 1: SISTEMA DE LOS NÚMEROS ENTEROS
+// VERSIÓN CORREGIDA - Balance de gameplay ajustado
+// ============================================
 
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1 id="gameTitle">🔢 Space Shooter - Números Enteros</h1>
-            <p id="gameSubtitle">¡Domina las operaciones con números positivos y negativos!</p>
-        </div>
+const Modulo1Config = {
+    gameInfo: {
+        title: "🔢 Space Shooter - Números Enteros",
+        subtitle: "¡Domina las operaciones con números positivos y negativos!",
+        instruction: "Dispara a las respuestas correctas para defender la galaxia matemática"
+    },
+    
+    gameplay: {
+        enemySpeed: 0.6,              // Velocidad moderada
+        bulletSpeed: 4,
+        spaceshipSpeed: 1.5,
+        spawnInterval: 3500,          // Balance entre frecuencia y tiempo de reacción
+        correctEnemyChance: 0.4,      // 40% de respuestas correctas
+        maxEnemiesOnScreen: 3,
+        levelUpRequirement: 5,
+        particleCount: 8
+    },
+    
+    scoring: {
+        correctAnswer: 100,
+        levelBonus: 50,
+        comboMultiplier: 1.3,
+        accuracyBonus: 25
+    },
+    
+    difficulty: {
+        speedIncrease: 0.1,
+        spawnDecrease: 200,
+        maxLevel: 5
+    },
+    
+    visual: {
+        explosionDuration: 600,
+        feedbackDuration: 1800,
+        particleDuration: 1000,
+        glowIntensity: 0.8
+    }
+};
 
-        <!-- Panel de estadísticas -->
-        <div class="stats-panel">
-            <div class="stat-item">
-                <i class="fas fa-star" style="color: #FBBB28;"></i>
-                <span class="stat-value" id="score">0</span>
-                <span class="stat-label">Puntos</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-heart" style="color: #dc3545;"></i>
-                <span class="stat-value" id="lives">❤️❤️❤️</span>
-                <span class="stat-label">Vidas</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-level-up-alt" style="color: #B4C42C;"></i>
-                <span class="stat-value" id="level">1</span>
-                <span class="stat-label">Nivel</span>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-bullseye" style="color: #00AEAC;"></i>
-                <span class="stat-value" id="accuracy">100%</span>
-                <span class="stat-label">Precisión</span>
-            </div>
-        </div>
-
-        <!-- Barra de progreso -->
-        <div class="progress-container">
-            <div class="progress-text" id="progressText">Pregunta 1 de 10</div>
-            <div class="progress-bar-bg">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </div>
-
-        <!-- Problema actual -->
-        <div class="current-problem">
-            <div class="problem-text" id="currentQuestion">Preparando misión matemática...</div>
-            <div class="problem-instruction" id="questionInstruction">Dispara a las respuestas correctas para defender la galaxia matemática</div>
-        </div>
-
-        <!-- Área de juego -->
-        <div class="game-container">
-            <div class="game-area" id="gameArea">
-                <div class="spaceship" id="spaceship">
-                    <div class="spaceship-glow"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Instrucciones -->
-        <div class="instructions">
-            <strong>🎮 Controles:</strong> 
-            <span style="color: #00AEAC; background: rgba(0, 174, 172, 0.2); padding: 3px 8px; border-radius: 5px; font-weight: bold;">← →</span> Mover nave | 
-            <span style="color: #00AEAC; background: rgba(0, 174, 172, 0.2); padding: 3px 8px; border-radius: 5px; font-weight: bold;">ESPACIO</span> Disparar | 
-            <span style="color: #B4C42C; font-weight: bold;">¡Destruye solo las respuestas correctas!</span>
-        </div>
-
-        <!-- Controles móviles -->
-        <div class="mobile-controls" id="mobileControls">
-            <button class="mobile-btn" id="moveLeft">←</button>
-            <button class="mobile-btn" id="shoot">🔥</button>
-            <button class="mobile-btn" id="moveRight">→</button>
-        </div>
-
-        <!-- Controles principales -->
-        <div class="controls">
-            <button class="btn" id="startBtn">
-                <i class="fas fa-rocket"></i> Iniciar Misión
-            </button>
-            <button class="btn secondary" id="pauseBtn" style="display:none;">
-                <i class="fas fa-pause"></i> Pausar
-            </button>
-            <button class="btn" id="restartBtn">
-                <i class="fas fa-redo"></i> Reiniciar
-            </button>
-            <button class="btn danger" id="backBtn">
-                <i class="fas fa-arrow-left"></i> Volver al Menú
-            </button>
-        </div>
-
-        <!-- Sistema de feedback -->
-        <div class="feedback-container">
-            <div class="feedback" id="feedback"></div>
-        </div>
-
-        <!-- Modal de finalización -->
-        <div class="completion-modal" id="completionModal">
-            <div class="modal-content">
-                <div id="reflectionContent">
-                    <!-- El contenido se carga dinámicamente -->
-                </div>
-                <div class="navigation-controls">
-                    <button class="btn" onclick="document.getElementById('completionModal').style.display='none'; gameEngine.restartGame();">
-                        <i class="fas fa-redo"></i> Jugar de Nuevo
-                    </button>
-                    <button class="btn secondary" onclick="window.location.href='../index.html'">
-                        <i class="fas fa-home"></i> Menú Principal
-                    </button>
-                    <button class="btn" onclick="window.location.href='modulo2_primos.html'">
-                        <i class="fas fa-arrow-right"></i> Siguiente Módulo
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <div class="footer-credit">
-                <i class="fas fa-graduation-cap" style="color: #FBBB28; margin-right: 5px;"></i>
-                Recurso gamificado desarrollado por el Profe Marlon Arcila
-            </div>
-            <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
-                    <i class="fab fa-youtube" style="color: #E9901E;"></i>
-                    Canal de YouTube
-                </a>
-                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
-                    <i class="fab fa-linkedin" style="color: #108181;"></i>
-                    LinkedIn
-                </a>
-            </div>
-            <div class="footer-license">
-                <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
-                Licenciado bajo Creative Commons 
-                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
-                    BY-NC-ND 4.0
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="../assets/data/modulo1-questions.js"></script>
-    <script src="../assets/js/game-engine.js"></script>
-    <script>
-        // Inicialización del juego
-        let gameEngine;
+const Modulo1Questions = {
+    subject: "Números Enteros",
+    description: "Operaciones básicas con números positivos, negativos y valor absoluto",
+    
+    questions: [
+        {
+            question: "-8 + 5",
+            answer: "-3",
+            type: "suma",
+            difficulty: 1,
+            topic: "Suma con negativos",
+            timeLimit: 10000
+        },
+        {
+            question: "15 - (-7)",
+            answer: "22",
+            type: "resta",
+            difficulty: 1,
+            topic: "Resta de negativos",
+            timeLimit: 10000
+        },
+        {
+            question: "(-3) + (-9)",
+            answer: "-12",
+            type: "suma",
+            difficulty: 1,
+            topic: "Suma de negativos",
+            timeLimit: 8000
+        },
+        {
+            question: "20 - 35",
+            answer: "-15",
+            type: "resta",
+            difficulty: 1,
+            topic: "Resta básica",
+            timeLimit: 8000
+        },
+        {
+            question: "|-12|",
+            answer: "12",
+            type: "valor_absoluto",
+            difficulty: 1,
+            topic: "Valor absoluto",
+            timeLimit: 5000
+        },
+        {
+            question: "(-4) + 4",
+            answer: "0",
+            type: "suma",
+            difficulty: 1,
+            topic: "Suma con opuestos",
+            timeLimit: 5000
+        },
+        {
+            question: "-6 - 8",
+            answer: "-14",
+            type: "resta",
+            difficulty: 1,
+            topic: "Resta con negativos",
+            timeLimit: 8000
+        },
+        {
+            question: "25 + (-10)",
+            answer: "15",
+            type: "suma",
+            difficulty: 1,
+            topic: "Suma mixta",
+            timeLimit: 8000
+        },
+        {
+            question: "|−7| + |3|",
+            answer: "10",
+            type: "valor_absoluto",
+            difficulty: 2,
+            topic: "Suma de valores absolutos",
+            timeLimit: 10000
+        },
+        {
+            question: "(-15) + 20",
+            answer: "5",
+            type: "suma",
+            difficulty: 1,
+            topic: "Suma mixta",
+            timeLimit: 8000
+        }
+    ],
+    
+    // Generador de respuestas incorrectas plausibles
+    generateWrongAnswers: function(correctAnswer, questionType) {
+        const correct = parseInt(correctAnswer);
+        const wrongAnswers = [];
         
-        document.addEventListener('DOMContentLoaded', function() {
-            // Crear instancia del motor del juego
-            gameEngine = new SpaceShooterEngine(Modulo1Config, Modulo1Questions);
-            
-            // Inicializar el juego
-            gameEngine.init();
-            
-            console.log('🚀 Módulo 1: Números Enteros - Iniciado');
-        });
+        // Generar variaciones comunes de error
+        wrongAnswers.push(
+            (-correct).toString(),           // Signo opuesto
+            (correct + 1).toString(),        // Sumar 1
+            (correct - 1).toString(),        // Restar 1
+            (Math.abs(correct)).toString(),  // Valor absoluto
+            (correct + 5).toString(),        // Sumar 5
+            (correct - 5).toString()         // Restar 5
+        );
+        
+        // Para valor absoluto, agregar variaciones específicas
+        if (questionType === 'valor_absoluto') {
+            wrongAnswers.push(
+                (-Math.abs(correct)).toString(),
+                (Math.abs(correct) + 1).toString(),
+                (Math.abs(correct) - 1).toString()
+            );
+        }
+        
+        // Filtrar respuestas únicas y diferentes de la correcta
+        return [...new Set(wrongAnswers)]
+            .filter(ans => ans !== correctAnswer)
+            .slice(0, 5);
+    },
+    
+    // Reflexión educativa del módulo
+    reflection: {
+        title: "Reflexión y Feedback del Módulo 1",
+        content: `El dominio rápido de operaciones con números enteros es fundamental en todos los programas académicos del Colegio Mayor de Antioquia. En **Gastronomía**, calcular rápidamente temperaturas de cocción, tiempos de preparación y ajustes de recetas te hace más eficiente en la cocina profesional. En **Turismo**, manejar variaciones de precios, ocupación hotelera y cambios de itinerario requiere agilidad mental con números positivos y negativos. En **Arquitectura y Construcción**, interpretar cotas, niveles y dimensiones sin dudar te permite tomar decisiones precisas sobre el terreno. En **Ciencias de la Salud**, calcular dosificaciones, cambios de signos vitales y resultados de laboratorio con velocidad puede ser crítico para la atención al paciente.`,
+        feedback: `La velocidad en estas operaciones no es solo una habilidad matemática, sino una competencia profesional que demuestra dominio de tu campo. Cuando puedes hacer estos cálculos automáticamente, tu mente se libera para concentrarse en la creatividad, la innovación y la resolución de problemas complejos. Los empleadores valoran profesionales que no se detienen en cálculos básicos, sino que fluyen naturalmente hacia el análisis y la toma de decisiones estratégicas.`
+    }
+};
 
-        // Funciones globales para el modal
-        window.restartCurrentGame = function() {
-            document.getElementById('completionModal').style.display = 'none';
-            gameEngine.restartGame();
-        };
-
-        window.goToMainMenu = function() {
-            window.location.href = '../index.html';
-        };
-
-        window.goToNextModule = function() {
-            window.location.href = 'modulo2_primos.html';
-        };
-    </script>
-</body>
-</html>
+// Exportar para uso en los módulos de juego
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { Modulo1Config, Modulo1Questions };
+}
