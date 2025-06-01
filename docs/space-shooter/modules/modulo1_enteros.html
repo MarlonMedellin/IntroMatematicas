@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Números Enteros - Space Shooter Matemático</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/space-game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Estrellas de fondo -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 id="gameTitle">🔢 Space Shooter - Números Enteros</h1>
+            <p id="gameSubtitle">¡Domina las operaciones con números positivos y negativos!</p>
+        </div>
+
+        <!-- Panel de estadísticas -->
+        <div class="stats-panel">
+            <div class="stat-item">
+                <i class="fas fa-star" style="color: #FBBB28;"></i>
+                <span class="stat-value" id="score">0</span>
+                <span class="stat-label">Puntos</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-heart" style="color: #dc3545;"></i>
+                <span class="stat-value" id="lives">❤️❤️❤️</span>
+                <span class="stat-label">Vidas</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-level-up-alt" style="color: #B4C42C;"></i>
+                <span class="stat-value" id="level">1</span>
+                <span class="stat-label">Nivel</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-bullseye" style="color: #00AEAC;"></i>
+                <span class="stat-value" id="accuracy">100%</span>
+                <span class="stat-label">Precisión</span>
+            </div>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div class="progress-container">
+            <div class="progress-text" id="progressText">Pregunta 1 de 10</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- Problema actual -->
+        <div class="current-problem">
+            <div class="problem-text" id="currentQuestion">Preparando misión matemática...</div>
+            <div class="problem-instruction" id="questionInstruction">Dispara a las respuestas correctas para defender la galaxia matemática</div>
+        </div>
+
+        <!-- Área de juego -->
+        <div class="game-container">
+            <div class="game-area" id="gameArea">
+                <div class="spaceship" id="spaceship">
+                    <div class="spaceship-glow"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="instructions">
+            <strong>🎮 Controles:</strong> 
+            <span style="color: #00AEAC; background: rgba(0, 174, 172, 0.2); padding: 3px 8px; border-radius: 5px; font-weight: bold;">← →</span> Mover nave | 
+            <span style="color: #00AEAC; background: rgba(0, 174, 172, 0.2); padding: 3px 8px; border-radius: 5px; font-weight: bold;">ESPACIO</span> Disparar | 
+            <span style="color: #B4C42C; font-weight: bold;">¡Destruye solo las respuestas correctas!</span>
+        </div>
+
+        <!-- Controles móviles -->
+        <div class="mobile-controls" id="mobileControls">
+            <button class="mobile-btn" id="moveLeft">←</button>
+            <button class="mobile-btn" id="shoot">🔥</button>
+            <button class="mobile-btn" id="moveRight">→</button>
+        </div>
+
+        <!-- Controles principales -->
+        <div class="controls">
+            <button class="btn" id="startBtn">
+                <i class="fas fa-rocket"></i> Iniciar Misión
+            </button>
+            <button class="btn secondary" id="pauseBtn" style="display:none;">
+                <i class="fas fa-pause"></i> Pausar
+            </button>
+            <button class="btn" id="restartBtn">
+                <i class="fas fa-redo"></i> Reiniciar
+            </button>
+            <button class="btn danger" id="backBtn">
+                <i class="fas fa-arrow-left"></i> Volver al Menú
+            </button>
+        </div>
+
+        <!-- Sistema de feedback -->
+        <div class="feedback-container">
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <!-- Modal de finalización -->
+        <div class="completion-modal" id="completionModal">
+            <div class="modal-content">
+                <div id="reflectionContent">
+                    <!-- El contenido se carga dinámicamente -->
+                </div>
+                <div class="navigation-controls">
+                    <button class="btn" onclick="document.getElementById('completionModal').style.display='none'; gameEngine.restartGame();">
+                        <i class="fas fa-redo"></i> Jugar de Nuevo
+                    </button>
+                    <button class="btn secondary" onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i> Menú Principal
+                    </button>
+                    <button class="btn" onclick="window.location.href='modulo2_primos.html'">
+                        <i class="fas fa-arrow-right"></i> Siguiente Módulo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-credit">
+                <i class="fas fa-graduation-cap" style="color: #FBBB28; margin-right: 5px;"></i>
+                Recurso gamificado desarrollado por el Profe Marlon Arcila
+            </div>
+            <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-youtube" style="color: #E9901E;"></i>
+                    Canal de YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-linkedin" style="color: #108181;"></i>
+                    LinkedIn
+                </a>
+            </div>
+            <div class="footer-license">
+                <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
+                Licenciado bajo Creative Commons 
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                    BY-NC-ND 4.0
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/data/modulo1-questions.js"></script>
+    <script src="../assets/js/game-engine.js"></script>
+    <script>
+        // Inicialización del juego
+        let gameEngine;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Crear instancia del motor del juego
+            gameEngine = new SpaceShooterEngine(Modulo1Config, Modulo1Questions);
+            
+            // Inicializar el juego
+            gameEngine.init();
+            
+            console.log('🚀 Módulo 1: Números Enteros - Iniciado');
+        });
+
+        // Funciones globales para el modal
+        window.restartCurrentGame = function() {
+            document.getElementById('completionModal').style.display = 'none';
+            gameEngine.restartGame();
+        };
+
+        window.goToMainMenu = function() {
+            window.location.href = '../index.html';
+        };
+
+        window.goToNextModule = function() {
+            window.location.href = 'modulo2_primos.html';
+        };
+    </script>
+</body>
+</html>

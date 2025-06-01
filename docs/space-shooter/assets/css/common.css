@@ -1,0 +1,354 @@
+/* 
+ * Matemáticas Space Shooter - Estilos Comunes
+ * Adaptado del sistema de flashcards para space shooter
+ * Desarrollado por Profe Marlon Arcila
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #172139 0%, #195855 100%);
+    padding: 10px;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* === HEADER === */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: 500;
+    margin: 0 0 15px 0;
+    opacity: 0.9;
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    opacity: 0.8;
+    color: #B4C42C;
+    font-weight: 500;
+}
+
+/* === PANEL DE ESTADÍSTICAS (para juegos) === */
+.stats-panel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 0 auto 20px auto;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.restart-btn {
+    background-color: #00AEAC;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+    background-color: #108181;
+    transform: scale(1.05);
+}
+
+.restart-btn:focus {
+    outline: 3px solid #FBBB28;
+    outline-offset: 2px;
+}
+
+/* === BOTONES COMUNES === */
+.btn {
+    background-color: #00AEAC;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    background-color: #108181;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 174, 172, 0.3);
+}
+
+.btn:focus {
+    outline: 3px solid #FBBB28;
+    outline-offset: 2px;
+}
+
+.btn.secondary {
+    background-color: #B4C42C;
+    color: #172139;
+}
+
+.btn.secondary:hover {
+    background-color: #9aaa24;
+}
+
+.btn.danger {
+    background-color: #dc3545;
+}
+
+.btn.danger:hover {
+    background-color: #c82333;
+}
+
+/* === MENSAJE DE VICTORIA/FEEDBACK === */
+.victory-message {
+    background-color: #B4C42C;
+    color: #172139;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 0 auto 20px auto;
+    max-width: 600px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(180, 196, 44, 0.3);
+    display: none;
+}
+
+.victory-message.show {
+    display: block;
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.victory-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* === FOOTER === */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.footer-license {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.footer-license a {
+    color: #00AEAC;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.footer-license a:hover {
+    text-decoration: underline;
+}
+
+/* === ESTADOS DE ERROR === */
+.error-message {
+    background-color: #dc3545;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+    animation: slideDown 0.5s ease-out;
+}
+
+/* === FEEDBACK EDUCATIVO === */
+.reflection-panel {
+    background-color: rgba(180, 196, 44, 0.15);
+    border: 2px solid #B4C42C;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.reflection-panel h3 {
+    color: #B4C42C;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reflection-panel p {
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.reflection-panel strong {
+    color: #FBBB28;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .stats-panel {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .container {
+        padding: 5px;
+    }
+
+    .header {
+        padding: 15px 10px;
+    }
+
+    .footer {
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+
+    .header {
+        padding: 10px;
+    }
+
+    .reflection-panel {
+        padding: 20px 15px;
+    }
+}
+
+/* === ACCESIBILIDAD === */
+@media (prefers-reduced-motion: reduce) {
+    .victory-message.show {
+        animation: none;
+    }
+    
+    .btn {
+        transition: none;
+    }
+}
+
+/* === ESTADO DE CARGA === */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 4px solid #00AEAC;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === UTILIDADES === */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+
+.hidden { display: none; }
+.visible { display: block; }
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
