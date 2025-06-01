@@ -1,5 +1,6 @@
 // ============================================
 // MÓDULO 1: SISTEMA DE LOS NÚMEROS ENTEROS
+// VERSIÓN CORREGIDA - Balance de gameplay ajustado
 // ============================================
 
 const Modulo1Config = {
@@ -10,13 +11,13 @@ const Modulo1Config = {
     },
     
     gameplay: {
-        enemySpeed: 0.6,              // Más lento para matemáticas
+        enemySpeed: 0.6,              // Velocidad moderada
         bulletSpeed: 4,
         spaceshipSpeed: 1.5,
-        spawnInterval: 4000,          // 4 segundos entre enemigos
+        spawnInterval: 3500,          // Balance entre frecuencia y tiempo de reacción
         correctEnemyChance: 0.4,      // 40% de respuestas correctas
         maxEnemiesOnScreen: 3,
-        levelUpRequirement: 5,        // 5 respuestas correctas para subir nivel
+        levelUpRequirement: 5,
         particleCount: 8
     },
     
@@ -161,7 +162,7 @@ const Modulo1Questions = {
     // Reflexión educativa del módulo
     reflection: {
         title: "Reflexión y Feedback del Módulo 1",
-        content: `El dominio rápido de operaciones con números enteros es fundamental en todos los programas académicos de una universidad. En Gastronomía, calcular rápidamente temperaturas de cocción, tiempos de preparación y ajustes de recetas te hace más eficiente en la cocina profesional. En Turismo, manejar variaciones de precios, ocupación hotelera y cambios de itinerario requiere agilidad mental con números positivos y negativos. En Arquitectura y Construcción, interpretar cotas, niveles y dimensiones sin dudar te permite tomar decisiones precisas sobre el terreno. En Ciencias de la Salud, calcular dosificaciones, cambios de signos vitales y resultados de laboratorio con velocidad puede ser crítico para la atención al paciente.`,
+        content: `El dominio rápido de operaciones con números enteros es fundamental en todos los programas académicos del Colegio Mayor de Antioquia. En **Gastronomía**, calcular rápidamente temperaturas de cocción, tiempos de preparación y ajustes de recetas te hace más eficiente en la cocina profesional. En **Turismo**, manejar variaciones de precios, ocupación hotelera y cambios de itinerario requiere agilidad mental con números positivos y negativos. En **Arquitectura y Construcción**, interpretar cotas, niveles y dimensiones sin dudar te permite tomar decisiones precisas sobre el terreno. En **Ciencias de la Salud**, calcular dosificaciones, cambios de signos vitales y resultados de laboratorio con velocidad puede ser crítico para la atención al paciente.`,
         feedback: `La velocidad en estas operaciones no es solo una habilidad matemática, sino una competencia profesional que demuestra dominio de tu campo. Cuando puedes hacer estos cálculos automáticamente, tu mente se libera para concentrarse en la creatividad, la innovación y la resolución de problemas complejos. Los empleadores valoran profesionales que no se detienen en cálculos básicos, sino que fluyen naturalmente hacia el análisis y la toma de decisiones estratégicas.`
     }
 };

@@ -1,5 +1,6 @@
 // ============================================
 // MÓDULO 2: NÚMEROS PRIMOS, MCM Y MCD
+// VERSIÓN CORREGIDA - Balance de gameplay ajustado
 // ============================================
 
 const Modulo2Config = {
@@ -13,7 +14,7 @@ const Modulo2Config = {
         enemySpeed: 0.5,              // Más lento para pensar
         bulletSpeed: 4,
         spaceshipSpeed: 1.5,
-        spawnInterval: 4500,          // Más tiempo entre enemigos
+        spawnInterval: 4000,          // Más tiempo para problemas complejos
         correctEnemyChance: 0.35,     // 35% de respuestas correctas
         maxEnemiesOnScreen: 3,
         levelUpRequirement: 5,
@@ -169,7 +170,7 @@ const Modulo2Questions = {
     
     reflection: {
         title: "Reflexión y Feedback del Módulo 2",
-        content: `Los números primos, MCM y MCD son herramientas de optimización esenciales en todos los programas. En Gestión Gastronómica, optimizar entregas de ingredientes, planificar menús cíclicos y distribuir personal eficientemente requiere estos conceptos. En Gestión Comercial y Turística, programar promociones, organizar grupos de turistas y calcular descuentos óptimos usa directamente MCM y MCD. En Construcción y Arquitectura, calcular medidas exactas, distribuir materiales sin desperdicios y planificar cronogramas de trabajo depende de estas operaciones. En Biotecnología y Laboratorio, sincronizar experimentos, distribuir muestras y programar análisis requiere dominar estos patrones matemáticos.`,
-        feedback: `Desarrollar velocidad en estos cálculos te convierte en un solucionador de problemas más eficiente. En el mundo laboral, la capacidad de optimizar recursos rápidamente te distingue como un profesional estratégico. Estas habilidades matemáticas se traducen directamente en ahorro de tiempo, reducción de costos y mejora de procesos, competencias que los empleadores buscan activamente en graduados.`
+        content: `Los números primos, MCM y MCD son herramientas de optimización esenciales en todos los programas del Colegio Mayor. En **Gestión Gastronómica**, optimizar entregas de ingredientes, planificar menús cíclicos y distribuir personal eficientemente requiere estos conceptos. En **Gestión Comercial y Turística**, programar promociones, organizar grupos de turistas y calcular descuentos óptimos usa directamente MCM y MCD. En **Construcción y Arquitectura**, calcular medidas exactas, distribuir materiales sin desperdicios y planificar cronogramas de trabajo depende de estas operaciones. En **Biotecnología y Laboratorio**, sincronizar experimentos, distribuir muestras y programar análisis requiere dominar estos patrones matemáticos.`,
+        feedback: `Desarrollar velocidad en estos cálculos te convierte en un solucionador de problemas más eficiente. En el mundo laboral, la capacidad de optimizar recursos rápidamente te distingue como un profesional estratégico. Estas habilidades matemáticas se traducen directamente en ahorro de tiempo, reducción de costos y mejora de procesos, competencias que los empleadores buscan activamente en graduados del Colegio Mayor de Antioquia.`
     }
 };
