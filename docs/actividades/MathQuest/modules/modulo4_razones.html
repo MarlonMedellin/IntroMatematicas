@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathQuest Matemático - Módulo 4: Razones, Proporciones y Regla de Tres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+</head>
+<body>
+    <!-- 🚀 HEADER -->
+    <div class="lab-header">
+        <h1 class="lab-title">
+            <i class="fas fa-flask"></i>
+            Laboratorio Matemático - Módulo 4
+        </h1>
+        <p class="lab-subtitle">
+            <i class="fas fa-balance-scale"></i>
+            Razones, Proporciones y Regla de Tres - Colegio Mayor de Antioquia
+        </p>
+    </div>
+
+    <!-- 📊 ESTADÍSTICAS -->
+    <div class="stats-panel">
+        <div class="stat-item">
+            <div class="stat-value" id="currentExperiment">1</div>
+            <div class="stat-label">
+                <i class="fas fa-flask"></i>
+                Experimento
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="correctAnswers">0</div>
+            <div class="stat-label">
+                <i class="fas fa-check-circle"></i>
+                Correctas
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="accuracy">100%</div>
+            <div class="stat-label">
+                <i class="fas fa-bullseye"></i>
+                Precisión
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="score">0</div>
+            <div class="stat-label">
+                <i class="fas fa-star"></i>
+                Puntos
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔬 ÁREA DE EXPERIMENTO -->
+    <div class="experiment-container">
+        <div class="experiment-card">
+            <div class="experiment-number" id="experimentNumber">
+                Experimento 1/10
+            </div>
+
+            <!-- Contexto del problema -->
+            <div class="experiment-context">
+                <div class="context-icon" id="contextIcon">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <div class="context-text" id="contextText">
+                    Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.
+                </div>
+            </div>
+
+            <!-- Pregunta principal -->
+            <div class="experiment-question" id="questionText">
+                ¿Cuántos km puede recorrer con 15 litros?
+            </div>
+
+            <!-- Área de cálculo -->
+            <div class="calculation-area">
+                <div class="calculation-label">
+                    <i class="fas fa-calculator"></i>
+                    Realiza tu cálculo:
+                </div>
+                <input 
+                    type="text" 
+                    class="answer-input" 
+                    id="answerInput" 
+                    placeholder="Escribe tu respuesta aquí..."
+                    maxlength="20"
+                >
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">
+                    <i class="fas fa-check"></i>
+                    Verificar Respuesta
+                </button>
+                <button class="btn btn-secondary" id="hintBtn" onclick="showHint()">
+                    <i class="fas fa-lightbulb"></i>
+                    Mostrar Pista
+                </button>
+                <button class="btn btn-warning" id="skipBtn" onclick="skipQuestion()">
+                    <i class="fas fa-forward"></i>
+                    Saltar Pregunta
+                </button>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-container">
+                <div class="feedback" id="feedback"></div>
+            </div>
+
+            <!-- Pistas -->
+            <div class="hint-container" id="hintContainer">
+                <div class="hint-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Pista:
+                </div>
+                <div class="hint-text" id="hintText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📈 PROGRESO -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+        </div>
+        <div class="progress-text" id="progressText">
+            Experimento 1 de 10 completado
+        </div>
+    </div>
+
+    <!-- 🎉 PANTALLA DE VICTORIA -->
+    <div class="victory-screen" id="victoryScreen">
+        <div class="victory-content">
+            <div class="victory-title">
+                <i class="fas fa-trophy"></i>
+                ¡Laboratorio Completado!
+            </div>
+            <div class="victory-stats" id="victoryStats">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="restartLab()">
+                    <i class="fas fa-redo"></i>
+                    Repetir Laboratorio
+                </button>
+                <button class="btn btn-secondary" onclick="goToNextModule()">
+                    <i class="fas fa-arrow-right"></i>
+                    Siguiente Módulo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📄 FOOTER -->
+    <div class="footer">
+        <div class="footer-text">
+            <i class="fas fa-graduation-cap" style="color: var(--accent-color);"></i>
+            Recurso educativo desarrollado por el <strong>Profe Marlon Arcila</strong>
+        </div>
+        <div class="footer-license">
+            <i class="fab fa-creative-commons"></i>
+            Licenciado bajo Creative Commons 
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a>
+        </div>
+    </div>
+
+    <script>
+        // 🧪 DATOS DEL MÓDULO 4: RAZONES, PROPORCIONES Y REGLA DE TRES
+        const experiments = [
+            {
+                context: "Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.",
+                icon: "fas fa-bus",
+                question: "¿Cuántos km puede recorrer con 15 litros?",
+                calculation: "60:5 = x:15",
+                answer: "180",
+                hint: "Plantea la proporción: 60 km / 5 litros = x km / 15 litros. Multiplica cruzado: 60 × 15 = 5 × x, entonces 900 = 5x, por lo tanto x = 180",
+                explanation: "Proporción: 60:5 = x:15. Resolviendo: x = (60 × 15) ÷ 5 = 900 ÷ 5 = 180 km"
+            },
+            {
+                context: "En una cocina, 4 cocineros pueden preparar 12 platos en una hora.",
+                icon: "fas fa-utensils",
+                question: "¿Cuántos platos pueden preparar 6 cocineros en una hora?",
+                calculation: "4:12 = 6:x",
+                answer: "18",
+                hint: "Proporcionalidad directa: 4 cocineros / 12 platos = 6 cocineros / x platos. Multiplica cruzado: 4x = 12 × 6 = 72, entonces x = 18",
+                explanation: "Proporción: 4:12 = 6:x. Resolviendo: x = (6 × 12) ÷ 4 = 72 ÷ 4 = 18 platos"
+            },
+            {
+                context: "Una clínica aumentó sus consultas en 25%. Si antes atendía 80 pacientes diarios.",
+                icon: "fas fa-user-md",
+                question: "¿Cuántos pacientes atiende ahora?",
+                calculation: "80 + (25% × 80)",
+                answer: "100",
+                hint: "Aumento del 25%: calcula 25% de 80 = 0.25 × 80 = 20. Luego suma: 80 + 20 = 100 pacientes",
+                explanation: "Pacientes iniciales: 80. Aumento: 25% de 80 = 20 pacientes. Total: 80 + 20 = 100 pacientes"
+            },
+            {
+                context: "En una construcción, la relación cemento:arena es 2:5. Si se usan 8 bultos de cemento.",
+                icon: "fas fa-hard-hat",
+                question: "¿Cuántos bultos de arena se necesitan?",
+                calculation: "2:5 = 8:x",
+                answer: "20",
+                hint: "Proporción: 2 cemento / 5 arena = 8 cemento / x arena. Multiplica cruzado: 2x = 5 × 8 = 40, entonces x = 20",
+                explanation: "Proporción: 2:5 = 8:x. Resolviendo: x = (8 × 5) ÷ 2 = 40 ÷ 2 = 20 bultos de arena"
+            },
+            {
+                context: "Un laboratorio reduce sus gastos al 75% del mes anterior. Si gastó $1,200,000 el mes pasado.",
+                icon: "fas fa-flask",
+                question: "¿Cuánto gastó este mes?",
+                calculation: "75% × 1,200,000",
+                answer: "900000",
+                hint: "75% = 0.75. Entonces: 0.75 × 1,200,000 = 900,000",
+                explanation: "Gastos este mes: 75% de $1,200,000 = 0.75 × 1,200,000 = $900,000"
+            },
+            {
+                context: "Una agencia de publicidad produce 5 comerciales en 15 días.",
+                icon: "fas fa-bullhorn",
+                question: "¿Cuántos comerciales produce en 30 días?",
+                calculation: "5:15 = x:30",
+                answer: "10",
+                hint: "Proporción: 5 comerciales / 15 días = x comerciales / 30 días. Multiplica cruzado: 5 × 30 = 15x, entonces 150 = 15x, por lo tanto x = 10",
+                explanation: "Proporción: 5:15 = x:30. Resolviendo: x = (5 × 30) ÷ 15 = 150 ÷ 15 = 10 comerciales"
+            },
+            {
+                context: "En un hotel, la ocupación actual y la ocupación objetivo están en proporción 3:4. Si la ocupación actual es 60 habitaciones.",
+                icon: "fas fa-hotel",
+                question: "¿Cuál es la ocupación objetivo?",
+                calculation: "3:4 = 60:x",
+                answer: "80",
+                hint: "Proporción: 3 actual / 4 objetivo = 60 actual / x objetivo. Multiplica cruzado: 3x = 4 × 60 = 240, entonces x = 80",
+                explanation: "Proporción: 3:4 = 60:x. Resolviendo: x = (60 × 4) ÷ 3 = 240 ÷ 3 = 80 habitaciones"
+            },
+            {
+                context: "Un medicamento veterinario se dosifica en proporción 2:1 (ml de medicamento por kg de peso). Si un animal pesa 15 kg.",
+                icon: "fas fa-syringe",
+                question: "¿Cuántos ml de medicamento necesita?",
+                calculation: "2:1 = x:15",
+                answer: "30",
+                hint: "Proporción: 2 ml / 1 kg = x ml / 15 kg. Multiplica cruzado: 2 × 15 = 1 × x, entonces x = 30 ml",
+                explanation: "Proporción: 2:1 = x:15. Resolviendo: x = (2 × 15) ÷ 1 = 30 ml de medicamento"
+            },
+            {
+                context: "En una empresa, la relación entre ingresos y gastos debe ser 5:3. Si los gastos son $600,000.",
+                icon: "fas fa-chart-line",
+                question: "¿Cuáles deben ser los ingresos?",
+                calculation: "5:3 = x:600,000",
+                answer: "1000000",
+                hint: "Proporción: 5 ingresos / 3 gastos = x ingresos / 600,000 gastos. Multiplica cruzado: 5 × 600,000 = 3x, entonces 3,000,000 = 3x, por lo tanto x = 1,000,000",
+                explanation: "Proporción: 5:3 = x:600,000. Resolviendo: x = (5 × 600,000) ÷ 3 = 3,000,000 ÷ 3 = $1,000,000"
+            },
+            {
+                context: "Una receta para 4 personas requiere 200g de harina.",
+                icon: "fas fa-bread-slice",
+                question: "¿Cuánta harina se necesita para 14 personas?",
+                calculation: "4:200 = 14:x",
+                answer: "700",
+                hint: "Proporción: 4 personas / 200g = 14 personas / x gramos. Multiplica cruzado: 4x = 200 × 14 = 2,800, entonces x = 700g",
+                explanation: "Proporción: 4:200 = 14:x. Resolviendo: x = (14 × 200) ÷ 4 = 2,800 ÷ 4 = 700g de harina"
+            }
+        ];
+
+        // 🎮 VARIABLES DEL JUEGO
+        let currentExperiment = 0;
+        let correctAnswers = 0;
+        let totalAttempts = 0;
+        let score = 0;
+        let hintsUsed = 0;
+        let skipsUsed = 0;
+
+        // 🚀 INICIALIZAR JUEGO
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExperiment();
+            
+            // Event listener para Enter
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            
+            // Focus en el input
+            document.getElementById('answerInput').focus();
+        });
+
+        // 📝 CARGAR EXPERIMENTO ACTUAL
+        function loadExperiment() {
+            if (currentExperiment >= experiments.length) {
+                showVictoryScreen();
+                return;
+            }
+
+            const experiment = experiments[currentExperiment];
+            
+            // Actualizar interfaz
+            document.getElementById('experimentNumber').textContent = `Experimento ${currentExperiment + 1}/10`;
+            document.getElementById('currentExperiment').textContent = currentExperiment + 1;
+            document.getElementById('contextIcon').innerHTML = `<i class="${experiment.icon}"></i>`;
+            document.getElementById('contextText').textContent = experiment.context;
+            document.getElementById('questionText').textContent = experiment.question;
+            
+            // Limpiar input y feedback
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('hintContainer').classList.remove('show');
+            
+            // Habilitar botones
+            document.getElementById('checkBtn').disabled = false;
+            document.getElementById('hintBtn').disabled = false;
+            
+            // Actualizar progreso
+            updateProgress();
+        }
+
+        // ✅ VERIFICAR RESPUESTA
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correctAnswer = experiments[currentExperiment].answer.toLowerCase();
+            const feedback = document.getElementById('feedback');
+            
+            if (!userAnswer) {
+                showFeedback('Escribe una respuesta antes de verificar', 'incorrect');
+                return;
+            }
+            
+            totalAttempts++;
+            
+            // Normalizar respuestas para comparación flexible
+            const normalizeAnswer = (answer) => {
+                return answer
+                    .replace(/[\s,$%°ckmlgpacientesplatoshabitacionescomerciales]/g, '')
+                    .replace(/km/g, '')
+                    .replace(/platos?/g, '')
+                    .replace(/pacientes?/g, '')
+                    .replace(/bultos?/g, '')
+                    .replace(/comerciales?/g, '')
+                    .replace(/habitaciones?/g, '')
+                    .replace(/gramos?/g, '')
+                    .replace(/arena/g, '')
+                    .toLowerCase();
+            };
+            
+            const normalizedUser = normalizeAnswer(userAnswer);
+            const normalizedCorrect = normalizeAnswer(correctAnswer);
+            
+            // Verificar si la respuesta es correcta (permitir variaciones)
+            const isCorrect = normalizedUser === normalizedCorrect || 
+                             // Permitir respuestas numéricas exactas para el Módulo 4
+                             userAnswer.includes('180') && correctAnswer.includes('180') ||
+                             userAnswer.includes('18') && correctAnswer.includes('18') ||
+                             userAnswer.includes('100') && correctAnswer.includes('100') ||
+                             userAnswer.includes('20') && correctAnswer.includes('20') ||
+                             userAnswer.includes('900000') && correctAnswer.includes('900000') ||
+                             userAnswer.includes('10') && correctAnswer.includes('10') ||
+                             userAnswer.includes('80') && correctAnswer.includes('80') ||
+                             userAnswer.includes('30') && correctAnswer.includes('30') ||
+                             userAnswer.includes('1000000') && correctAnswer.includes('1000000') ||
+                             userAnswer.includes('700') && correctAnswer.includes('700') ||
+                             // Permitir variaciones con comas
+                             (userAnswer.includes('900,000') || userAnswer.includes('900000')) && correctAnswer.includes('900000') ||
+                             (userAnswer.includes('1,000,000') || userAnswer.includes('1000000')) && correctAnswer.includes('1000000');
+            
+            if (isCorrect) {
+                correctAnswers++;
+                score += calculatePoints();
+                
+                showFeedback(`¡Excelente! ${experiments[currentExperiment].explanation}`, 'correct');
+                
+                // Continuar al siguiente experimento después de 3 segundos
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 3000);
+                
+            } else {
+                showFeedback(`Incorrecto. ${experiments[currentExperiment].explanation}`, 'incorrect');
+                
+                // Mostrar respuesta correcta y continuar
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 4000);
+            }
+            
+            document.getElementById('checkBtn').disabled = true;
+            updateStats();
+        }
+
+        // 📊 CALCULAR PUNTOS
+        function calculatePoints() {
+            let points = 100; // Puntos base
+            
+            // Bonus por no usar pistas
+            if (hintsUsed === 0) points += 50;
+            
+            // Penalización por usar pistas/saltos
+            points -= (hintsUsed * 10);
+            points -= (skipsUsed * 20);
+            
+            return Math.max(points, 10); // Mínimo 10 puntos
+        }
+
+        // 💡 MOSTRAR PISTA
+        function showHint() {
+            const hint = experiments[currentExperiment].hint;
+            document.getElementById('hintText').textContent = hint;
+            document.getElementById('hintContainer').classList.add('show');
+            document.getElementById('hintBtn').disabled = true;
+            hintsUsed++;
+        }
+
+        // ⏭️ SALTAR PREGUNTA
+        function skipQuestion() {
+            skipsUsed++;
+            totalAttempts++;
+            
+            showFeedback(`Pregunta saltada. ${experiments[currentExperiment].explanation}`, 'incorrect');
+            
+            setTimeout(() => {
+                currentExperiment++;
+                loadExperiment();
+            }, 3000);
+            
+            updateStats();
+        }
+
+        // 💬 MOSTRAR FEEDBACK
+        function showFeedback(message, type) {
+            const feedback = document.getElementById('feedback');
+            const icon = type === 'correct' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
+            
+            feedback.innerHTML = `${icon} ${message}`;
+            feedback.className = `feedback ${type}`;
+            feedback.style.display = 'flex';
+        }
+
+        // 📈 ACTUALIZAR ESTADÍSTICAS
+        function updateStats() {
+            document.getElementById('correctAnswers').textContent = correctAnswers;
+            document.getElementById('score').textContent = score;
+            
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        // 📊 ACTUALIZAR PROGRESO
+        function updateProgress() {
+            const progress = ((currentExperiment) / experiments.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = 
+                `Experimento ${currentExperiment} de ${experiments.length} completado`;
+        }
+
+        // 🏆 MOSTRAR PANTALLA DE VICTORIA
+        function showVictoryScreen() {
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            
+            let performanceMessage = '';
+            if (accuracy >= 90) performanceMessage = '¡Científico Excepcional! 🏆';
+            else if (accuracy >= 70) performanceMessage = '¡Buen Trabajo! 👍';
+            else if (accuracy >= 50) performanceMessage = '¡Sigue Practicando! 📚';
+            else performanceMessage = '¡Continúa Aprendiendo! 💪';
+            
+            document.getElementById('victoryStats').innerHTML = `
+                <h3>${performanceMessage}</h3>
+                <p><strong>Experimentos Correctos:</strong> ${correctAnswers}/${experiments.length}</p>
+                <p><strong>Precisión:</strong> ${accuracy}%</p>
+                <p><strong>Puntuación Final:</strong> ${score} puntos</p>
+                <p><strong>Pistas Usadas:</strong> ${hintsUsed}</p>
+                <p><strong>Preguntas Saltadas:</strong> ${skipsUsed}</p>
+            `;
+            
+            document.getElementById('victoryScreen').style.display = 'flex';
+        }
+
+        // 🔄 REINICIAR LABORATORIO
+        function restartLab() {
+            currentExperiment = 0;
+            correctAnswers = 0;
+            totalAttempts = 0;
+            score = 0;
+            hintsUsed = 0;
+            skipsUsed = 0;
+            
+            document.getElementById('victoryScreen').style.display = 'none';
+            updateStats();
+            loadExperiment();
+        }
+
+        // ➡️ IR AL SIGUIENTE MÓDULO
+        function goToNextModule() {
+            alert('¡Felicitaciones! Dirígete al Módulo 4: Razones, Proporciones y Regla de Tres');
+            // Aquí puedes redirigir al siguiente módulo
+            // window.location.href = 'modulo4_proporciones_lab.html';
+        }
+
+        // 🎹 EFECTOS DE SONIDO SIMPLES
+        function playSound(frequency, duration = 200) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration / 1000);
+            } catch (e) {
+                // Silencioso si no hay soporte de audio
+            }
+        }
+
+        // 🎊 EFECTOS VISUALES
+        function createSparkles() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Añadir efectos cuando se responde correctamente
+        const originalShowFeedback = showFeedback;
+        showFeedback = function(message, type) {
+            originalShowFeedback(message, type);
+            if (type === 'correct') {
+                playSound(523); // Nota C5
+                createSparkles();
+            } else {
+                playSound(220); // Nota A3
+            }
+        };
+    </script>
+</body>
+</html>

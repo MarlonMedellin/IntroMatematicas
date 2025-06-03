@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathQuest Matemático - Módulo 2: Números Primos, MCM y MCD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+</head>
+<body>
+    <!-- 🚀 HEADER -->
+    <div class="lab-header">
+        <h1 class="lab-title">
+            <i class="fas fa-flask"></i>
+            Laboratorio Matemático - Módulo 2
+        </h1>
+        <p class="lab-subtitle">
+            <i class="fas fa-calculator"></i>
+            Números Primos, MCM y MCD - Colegio Mayor de Antioquia
+        </p>
+    </div>
+
+    <!-- 📊 ESTADÍSTICAS -->
+    <div class="stats-panel">
+        <div class="stat-item">
+            <div class="stat-value" id="currentExperiment">1</div>
+            <div class="stat-label">
+                <i class="fas fa-flask"></i>
+                Experimento
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="correctAnswers">0</div>
+            <div class="stat-label">
+                <i class="fas fa-check-circle"></i>
+                Correctas
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="accuracy">100%</div>
+            <div class="stat-label">
+                <i class="fas fa-bullseye"></i>
+                Precisión
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="score">0</div>
+            <div class="stat-label">
+                <i class="fas fa-star"></i>
+                Puntos
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔬 ÁREA DE EXPERIMENTO -->
+    <div class="experiment-container">
+        <div class="experiment-card">
+            <div class="experiment-number" id="experimentNumber">
+                Experimento 1/10
+            </div>
+
+            <!-- Contexto del problema -->
+            <div class="experiment-context">
+                <div class="context-icon" id="contextIcon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="context-text" id="contextText">
+                    Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días.
+                </div>
+            </div>
+
+            <!-- Pregunta principal -->
+            <div class="experiment-question" id="questionText">
+                ¿Cada cuántos días coinciden todas las entregas?
+            </div>
+
+            <!-- Área de cálculo -->
+            <div class="calculation-area">
+                <div class="calculation-label">
+                    <i class="fas fa-calculator"></i>
+                    Realiza tu cálculo:
+                </div>
+                <input 
+                    type="text" 
+                    class="answer-input" 
+                    id="answerInput" 
+                    placeholder="Escribe tu respuesta aquí..."
+                    maxlength="20"
+                >
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">
+                    <i class="fas fa-check"></i>
+                    Verificar Respuesta
+                </button>
+                <button class="btn btn-secondary" id="hintBtn" onclick="showHint()">
+                    <i class="fas fa-lightbulb"></i>
+                    Mostrar Pista
+                </button>
+                <button class="btn btn-warning" id="skipBtn" onclick="skipQuestion()">
+                    <i class="fas fa-forward"></i>
+                    Saltar Pregunta
+                </button>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-container">
+                <div class="feedback" id="feedback"></div>
+            </div>
+
+            <!-- Pistas -->
+            <div class="hint-container" id="hintContainer">
+                <div class="hint-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Pista:
+                </div>
+                <div class="hint-text" id="hintText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📈 PROGRESO -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+        </div>
+        <div class="progress-text" id="progressText">
+            Experimento 1 de 10 completado
+        </div>
+    </div>
+
+    <!-- 🎉 PANTALLA DE VICTORIA -->
+    <div class="victory-screen" id="victoryScreen">
+        <div class="victory-content">
+            <div class="victory-title">
+                <i class="fas fa-trophy"></i>
+                ¡Laboratorio Completado!
+            </div>
+            <div class="victory-stats" id="victoryStats">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="restartLab()">
+                    <i class="fas fa-redo"></i>
+                    Repetir Laboratorio
+                </button>
+                <button class="btn btn-secondary" onclick="goToNextModule()">
+                    <i class="fas fa-arrow-right"></i>
+                    Siguiente Módulo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📄 FOOTER -->
+    <div class="footer">
+        <div class="footer-text">
+            <i class="fas fa-graduation-cap" style="color: var(--accent-color);"></i>
+            Recurso educativo desarrollado por el <strong>Profe Marlon Arcila</strong>
+        </div>
+        <div class="footer-license">
+            <i class="fab fa-creative-commons"></i>
+            Licenciado bajo Creative Commons 
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a>
+        </div>
+    </div>
+
+    <script>
+        // 🧪 DATOS DEL MÓDULO 2: NÚMEROS PRIMOS, MCM Y MCD
+        const experiments = [
+            {
+                context: "Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días.",
+                icon: "fas fa-truck",
+                question: "¿Cada cuántos días coinciden todas las entregas?",
+                calculation: "MCM(6, 8, 12)",
+                answer: "24",
+                hint: "El MCM es el menor múltiplo común. Factoriza: 6=2×3, 8=2³, 12=2²×3. MCM = 2³×3 = 24",
+                explanation: "Para que coincidan todas las entregas, necesitamos el MCM(6,8,12) = 24 días"
+            },
+            {
+                context: "En una clínica veterinaria hay 36 pastillas de un medicamento y 48 de otro. Se quieren distribuir en dosis iguales usando el mayor número de pastillas por dosis.",
+                icon: "fas fa-pills",
+                question: "¿Cuántas pastillas por dosis?",
+                calculation: "MCD(36, 48)",
+                answer: "12",
+                hint: "El MCD es el mayor divisor común. Factoriza: 36=2²×3², 48=2⁴×3. MCD = 2²×3 = 12",
+                explanation: "Para el mayor número de pastillas por dosis, necesitamos el MCD(36,48) = 12 pastillas por dosis"
+            },
+            {
+                context: "Una bacteria se reproduce cada 11 minutos.",
+                icon: "fas fa-microscope",
+                question: "¿Es 11 un número primo?",
+                calculation: "Verificar divisores de 11",
+                answer: "Sí",
+                hint: "Un número primo solo tiene dos divisores: 1 y él mismo. Verifica si 11 tiene otros divisores",
+                explanation: "11 es primo porque solo es divisible por 1 y por 11. No tiene otros divisores"
+            },
+            {
+                context: "Un arquitecto diseña ventanas en grupos de 15.",
+                icon: "fas fa-window-maximize",
+                question: "¿Es 15 divisible por 3?",
+                calculation: "15 ÷ 3",
+                answer: "Sí",
+                hint: "Un número es divisible por 3 si la suma de sus cifras es divisible por 3. Para 15: 1+5=6, y 6 es divisible por 3",
+                explanation: "15 ÷ 3 = 5, por lo tanto 15 es divisible por 3"
+            },
+            {
+                context: "En una panadería, el horno 1 hace pan cada 6 minutos y el horno 2 cada 9 minutos.",
+                icon: "fas fa-bread-slice",
+                question: "¿Cada cuántos minutos producen pan simultáneamente?",
+                calculation: "MCM(6, 9)",
+                answer: "18",
+                hint: "Factoriza: 6=2×3, 9=3². MCM = 2×3² = 18",
+                explanation: "Para que produzcan simultáneamente, necesitamos el MCM(6,9) = 18 minutos"
+            },
+            {
+                context: "Un laboratorio tiene 42 muestras de sangre y 56 muestras de orina. Quiere organizarlas en bandejas con igual cantidad de muestras.",
+                icon: "fas fa-vial",
+                question: "¿Cuál es el mayor número de muestras por bandeja?",
+                calculation: "MCD(42, 56)",
+                answer: "14",
+                hint: "Factoriza: 42=2×3×7, 56=2³×7. MCD = 2×7 = 14",
+                explanation: "Para el mayor número de muestras por bandeja, necesitamos el MCD(42,56) = 14 muestras"
+            },
+            {
+                context: "Una emisora programa un comercial especial cada 17 minutos.",
+                icon: "fas fa-radio",
+                question: "¿17 es un número primo?",
+                calculation: "Verificar divisores de 17",
+                answer: "Sí",
+                hint: "Verifica si 17 tiene divisores entre 2 y √17 ≈ 4.1. Prueba con 2, 3, 4",
+                explanation: "17 es primo porque solo es divisible por 1 y por 17. No tiene otros divisores"
+            },
+            {
+                context: "Necesitas identificar números primos en un rango específico.",
+                icon: "fas fa-list-ol",
+                question: "¿Cuántos números primos hay entre 20 y 30?",
+                calculation: "Verificar: 21, 22, 23, 24, 25, 26, 27, 28, 29",
+                answer: "2",
+                hint: "Revisa cada número: 21=3×7, 22=2×11, 23=primo, 24=2³×3, 25=5², 26=2×13, 27=3³, 28=2²×7, 29=primo",
+                explanation: "Entre 20 y 30 hay 2 números primos: 23 y 29"
+            },
+            {
+                context: "Un hotel programa mantenimiento de habitaciones cada 20 días y mantenimiento de áreas comunes cada 30 días.",
+                icon: "fas fa-hotel",
+                question: "¿Cada cuántos días coinciden ambos mantenimientos?",
+                calculation: "MCM(20, 30)",
+                answer: "60",
+                hint: "Factoriza: 20=2²×5, 30=2×3×5. MCM = 2²×3×5 = 60",
+                explanation: "Para que coincidan ambos mantenimientos, necesitamos el MCM(20,30) = 60 días"
+            },
+            {
+                context: "Un sistema de seguridad tiene código 35. Para descifrarlo necesitas sus factores primos.",
+                icon: "fas fa-lock",
+                question: "¿Cuáles son los factores primos de 35?",
+                calculation: "35 ÷ factores primos",
+                answer: "5 × 7",
+                hint: "Divide 35 entre números primos pequeños: 35 ÷ 5 = 7, y 7 es primo",
+                explanation: "35 = 5 × 7. Los factores primos de 35 son 5 y 7"
+            }
+        ];
+
+        // 🎮 VARIABLES DEL JUEGO
+        let currentExperiment = 0;
+        let correctAnswers = 0;
+        let totalAttempts = 0;
+        let score = 0;
+        let hintsUsed = 0;
+        let skipsUsed = 0;
+
+        // 🚀 INICIALIZAR JUEGO
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExperiment();
+            
+            // Event listener para Enter
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            
+            // Focus en el input
+            document.getElementById('answerInput').focus();
+        });
+
+        // 📝 CARGAR EXPERIMENTO ACTUAL
+        function loadExperiment() {
+            if (currentExperiment >= experiments.length) {
+                showVictoryScreen();
+                return;
+            }
+
+            const experiment = experiments[currentExperiment];
+            
+            // Actualizar interfaz
+            document.getElementById('experimentNumber').textContent = `Experimento ${currentExperiment + 1}/10`;
+            document.getElementById('currentExperiment').textContent = currentExperiment + 1;
+            document.getElementById('contextIcon').innerHTML = `<i class="${experiment.icon}"></i>`;
+            document.getElementById('contextText').textContent = experiment.context;
+            document.getElementById('questionText').textContent = experiment.question;
+            
+            // Limpiar input y feedback
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('hintContainer').classList.remove('show');
+            
+            // Habilitar botones
+            document.getElementById('checkBtn').disabled = false;
+            document.getElementById('hintBtn').disabled = false;
+            
+            // Actualizar progreso
+            updateProgress();
+        }
+
+        // ✅ VERIFICAR RESPUESTA
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correctAnswer = experiments[currentExperiment].answer.toLowerCase();
+            const feedback = document.getElementById('feedback');
+            
+            if (!userAnswer) {
+                showFeedback('Escribe una respuesta antes de verificar', 'incorrect');
+                return;
+            }
+            
+            totalAttempts++;
+            
+            // Verificar si la respuesta es correcta (permitir variaciones)
+            const isCorrect = userAnswer === correctAnswer || 
+                             userAnswer === correctAnswer.replace('°c', '') ||
+                             (correctAnswer.includes('sí') && (userAnswer.includes('sí') || userAnswer.includes('si') || userAnswer.includes('sobrevive')));
+            
+            if (isCorrect) {
+                correctAnswers++;
+                score += calculatePoints();
+                
+                showFeedback(`¡Excelente! ${experiments[currentExperiment].explanation}`, 'correct');
+                
+                // Continuar al siguiente experimento después de 3 segundos
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 3000);
+                
+            } else {
+                showFeedback(`Incorrecto. ${experiments[currentExperiment].explanation}`, 'incorrect');
+                
+                // Mostrar respuesta correcta y continuar
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 4000);
+            }
+            
+            document.getElementById('checkBtn').disabled = true;
+            updateStats();
+        }
+
+        // 📊 CALCULAR PUNTOS
+        function calculatePoints() {
+            let points = 100; // Puntos base
+            
+            // Bonus por no usar pistas
+            if (hintsUsed === 0) points += 50;
+            
+            // Penalización por usar pistas/saltos
+            points -= (hintsUsed * 10);
+            points -= (skipsUsed * 20);
+            
+            return Math.max(points, 10); // Mínimo 10 puntos
+        }
+
+        // 💡 MOSTRAR PISTA
+        function showHint() {
+            const hint = experiments[currentExperiment].hint;
+            document.getElementById('hintText').textContent = hint;
+            document.getElementById('hintContainer').classList.add('show');
+            document.getElementById('hintBtn').disabled = true;
+            hintsUsed++;
+        }
+
+        // ⏭️ SALTAR PREGUNTA
+        function skipQuestion() {
+            skipsUsed++;
+            totalAttempts++;
+            
+            showFeedback(`Pregunta saltada. ${experiments[currentExperiment].explanation}`, 'incorrect');
+            
+            setTimeout(() => {
+                currentExperiment++;
+                loadExperiment();
+            }, 3000);
+            
+            updateStats();
+        }
+
+        // 💬 MOSTRAR FEEDBACK
+        function showFeedback(message, type) {
+            const feedback = document.getElementById('feedback');
+            const icon = type === 'correct' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
+            
+            feedback.innerHTML = `${icon} ${message}`;
+            feedback.className = `feedback ${type}`;
+            feedback.style.display = 'flex';
+        }
+
+        // 📈 ACTUALIZAR ESTADÍSTICAS
+        function updateStats() {
+            document.getElementById('correctAnswers').textContent = correctAnswers;
+            document.getElementById('score').textContent = score;
+            
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        // 📊 ACTUALIZAR PROGRESO
+        function updateProgress() {
+            const progress = ((currentExperiment) / experiments.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = 
+                `Experimento ${currentExperiment} de ${experiments.length} completado`;
+        }
+
+        // 🏆 MOSTRAR PANTALLA DE VICTORIA
+        function showVictoryScreen() {
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            
+            let performanceMessage = '';
+            if (accuracy >= 90) performanceMessage = '¡Científico Excepcional! 🏆';
+            else if (accuracy >= 70) performanceMessage = '¡Buen Trabajo! 👍';
+            else if (accuracy >= 50) performanceMessage = '¡Sigue Practicando! 📚';
+            else performanceMessage = '¡Continúa Aprendiendo! 💪';
+            
+            document.getElementById('victoryStats').innerHTML = `
+                <h3>${performanceMessage}</h3>
+                <p><strong>Experimentos Correctos:</strong> ${correctAnswers}/${experiments.length}</p>
+                <p><strong>Precisión:</strong> ${accuracy}%</p>
+                <p><strong>Puntuación Final:</strong> ${score} puntos</p>
+                <p><strong>Pistas Usadas:</strong> ${hintsUsed}</p>
+                <p><strong>Preguntas Saltadas:</strong> ${skipsUsed}</p>
+            `;
+            
+            document.getElementById('victoryScreen').style.display = 'flex';
+        }
+
+        // 🔄 REINICIAR LABORATORIO
+        function restartLab() {
+            currentExperiment = 0;
+            correctAnswers = 0;
+            totalAttempts = 0;
+            score = 0;
+            hintsUsed = 0;
+            skipsUsed = 0;
+            
+            document.getElementById('victoryScreen').style.display = 'none';
+            updateStats();
+            loadExperiment();
+        }
+
+        // ➡️ IR AL SIGUIENTE MÓDULO
+        function goToNextModule() {
+            alert('¡Felicitaciones! Dirígete al Módulo 2: Números Primos, MCM y MCD');
+            // Aquí puedes redirigir al siguiente módulo
+            // window.location.href = 'modulo2_primos_lab.html';
+        }
+
+        // 🎹 EFECTOS DE SONIDO SIMPLES
+        function playSound(frequency, duration = 200) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration / 1000);
+            } catch (e) {
+                // Silencioso si no hay soporte de audio
+            }
+        }
+
+        // 🎊 EFECTOS VISUALES
+        function createSparkles() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Añadir efectos cuando se responde correctamente
+        const originalShowFeedback = showFeedback;
+        showFeedback = function(message, type) {
+            originalShowFeedback(message, type);
+            if (type === 'correct') {
+                playSound(523); // Nota C5
+                createSparkles();
+            } else {
+                playSound(220); // Nota A3
+            }
+        };
+    </script>
+</body>
+</html>
