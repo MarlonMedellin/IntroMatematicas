@@ -7,179 +7,66 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
-      min-height: 100vh;
-      background: #f1f1f1;
+      background: #f9f9f9;
+      color: #222;
     }
-    .container {
-      width: 100%;
-      min-height: 100vh;
-      padding: 2rem 0;
-      background: #f1f1f1;
-      background-image: linear-gradient(
-          90deg,
-          transparent 50px,
-          #ffb4b8 50px,
-          #ffb4b8 52px,
-          transparent 52px
-        ),
-        linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
-      background-size: 100% 30px;
-    }
-    h1 {
+    h1, h2 {
       text-align: center;
-      color: #1a237e;
-      margin-bottom: 2rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      margin: 1.5rem 0 1rem 0;
     }
-    .modulo-section {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 1rem 0;
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.2rem; color: #1976d2; }
+    .container, .juegos-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 1.5rem auto;
+      padding: 0 0.5rem;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
     }
-    .modulo-title {
-      color: #1565c0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-      text-align: left;
-    }
-    .cards-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: flex-start;
-    }
-    .card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 4px 16px 0 rgba(21,101,192,0.08), 0 1.5px 6px 0 rgba(21,101,192,0.10);
-      width: 320px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: transform 0.15s;
-    }
-    .card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 8px 24px 0 rgba(21,101,192,0.16), 0 3px 12px 0 rgba(21,101,192,0.18);
-    }
-    .card-header {
-      height: 110px;
-      background: linear-gradient(90deg, #1976d2 60%, #64b5f6 100%);
-    }
-    .card-content {
-      padding: 1.2rem 1.2rem 0.5rem 1.2rem;
-      flex: 1;
-    }
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #1a237e;
-      margin-bottom: 0.5rem;
-    }
-    .card-desc {
-      font-size: 0.98rem;
-      color: #37474f;
-      margin-bottom: 0.5rem;
-      min-height: 48px;
-    }
-    .card-footer {
-      padding: 0.8rem 1.2rem 1.2rem 1.2rem;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .card-btn {
-      background: #1976d2;
-      color: #fff;
-      border: none;
-      border-radius: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: background 0.2s;
-      text-decoration: none;
-      text-transform: uppercase;
-      box-shadow: 0 2px 8px 0 rgba(25,118,210,0.10);
-    }
-    .card-btn:hover {
-      background: #0d47a1;
-    }
-    @media (max-width: 900px) {
-      .cards-grid {
-        flex-direction: column;
-        align-items: center;
-      }
-      .card {
-        width: 95vw;
-        max-width: 340px;
-      }
-      .modulo-section {
-        padding: 0.5rem 0;
-      }
-    }
-    /* Estilos para las tablas de juegos */
-    .juegos-container {
-      max-width: 1100px;
-      margin: 40px auto 0 auto;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      padding: 2rem 1rem;
-    }
-    .juegos-container h1 {
-      color: #1976d2;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    .juegos-container h2 {
-      color: #1976d2;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    .juegos-container table {
+    table {
       width: 100%;
       border-collapse: collapse;
+      margin-bottom: 1.5rem;
       background: #fff;
-      margin-bottom: 2.5rem;
     }
-    .juegos-container th, .juegos-container td {
-      border: 1px solid #e0e0e0;
-      padding: 0.7rem 0.5rem;
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem 0.3rem;
+      font-size: 1rem;
       text-align: left;
-      vertical-align: middle;
     }
-    .juegos-container th {
+    th {
       background: #1976d2;
       color: #fff;
       font-weight: 600;
     }
-    .juegos-container tr:nth-child(even) {
-      background: #f3f6fa;
+    tr:nth-child(even) {
+      background: #f3f3f3;
     }
-    .juegos-container button.copy-btn {
+    .copy-btn {
       background: none;
       border: none;
       cursor: pointer;
       padding: 0 0.2rem;
-      vertical-align: middle;
     }
-    .juegos-container button.copy-btn img {
+    .copy-btn img {
       width: 18px;
       height: 18px;
       opacity: 0.7;
-      transition: opacity 0.2s;
     }
-    .juegos-container button.copy-btn:hover img {
+    .copy-btn:hover img {
       opacity: 1;
+    }
+    @media (max-width: 700px) {
+      table, th, td { font-size: 0.95rem; }
+      table { min-width: 480px; }
+      .container, .juegos-container { padding: 0 0.1rem; }
+      .table-responsive { overflow-x: auto; }
     }
   </style>
 </head>
