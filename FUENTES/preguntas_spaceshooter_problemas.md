@@ -253,7 +253,11 @@ La potenciación y radicación modelan los fenómenos de crecimiento acelerado y
 
 **Feedback:** La fluidez con potencias y raíces refleja capacidad de pensamiento exponencial, una competencia crucial en la era digital donde los cambios son acelerados y las oportunidades crecen geométricamente. Los profesionales que entienden intuitivamente estos patrones pueden anticipar tendencias, identificar oportunidades de crecimiento y tomar decisiones estratégicas en entornos dinámicos. Esta habilidad matemática se traduce en visión empresarial y capacidad de innovación, cualidades altamente valoradas en el mercado laboral actual.
 
-#Nueva version 3
+
+
+
+--------------------------------------------------------------------------------------
+# Nueva version 3
 # Preguntas Contextualizadas - Matemáticas Básicas
 ## Curso Introductorio - Instituciones de Educación Superior
 
