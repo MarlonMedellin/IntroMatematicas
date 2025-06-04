@@ -1,5 +1,4 @@
 <!-- HEAD DEFINITIONS GO HERE -->
-
 <!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
 <script>
     /**
@@ -9,7 +8,6 @@
      */
     function cargarRecurso(tipo, url) {
         const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
-
         if (tipo === 'stylesheet') {
             elemento.rel = 'stylesheet';
             elemento.href = url;
@@ -17,18 +15,14 @@
             elemento.src = url;
             elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
         }
-
         elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
         elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
-
         document.head.appendChild(elemento);
     }
-
     // 5. CARGAR ESTILOS DE BOOTSTRAP DESDE CDN
     cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
     // 6. CARGAR ICONOS DE BOOTSTRAP DESDE CDN
     cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
-
     /**
      * 7. AGREGAR ESTILOS PERSONALIZADOS MEDIANTE UN ELEMENTO .
      */
@@ -105,7 +99,6 @@
     })();
 </script>
 <!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
-
 <!-- 2. SECCIÓN 2: TÍTULO -->
 <div class="container-fluid my-4" id="informacion-general-titulo" style="border:1px solid #00AEAC; border-radius:8px; background-color:#E3F7F2; padding:20px;">
     <!-- BANNER DE MÓDULO ENTEROS -->
@@ -113,33 +106,27 @@
         <div class="banner">
             <!-- Header bar -->
             <div class="banner__header"></div>
-
             <!-- Module number with decoration -->
             <div class="banner__module-decoration"></div>
             <div class="banner__module-number"></div>
-
             <!-- Main content -->
             <div class="banner__content">
                 <h1 class="banner__title">Revisa lo que has aprendido y pon a prueba tus habilidades</h1>
                 <div class="banner__accent-line"></div>
-                <p class="banner__subtitle">Módulo de Sistema de los números enteros</p>
+                <p class="banner__subtitle">Módulo de Razón, proporción y regla de tres</p>
             </div>
-
             <!-- Decorative elements -->
             <div class="banner__decorations">
                 <!-- Geometric shapes -->
                 <div class="shape shape--small shape--primary shape--pos-1"></div>
                 <div class="shape shape--medium shape--accent shape--pos-2"></div>
-
                 <!-- Floating numbers -->
-                <div class="floating-element floating-element--small floating-element--color-1 floating-element--pos-1">-2</div>
-                <div class="floating-element floating-element--medium floating-element--color-2 floating-element--pos-2">0</div>
-                <div class="floating-element floating-element--small floating-element--color-3 floating-element--pos-3">+5</div>
-
+                <div class="floating-element floating-element--small floating-element--color-1 floating-element--pos-1">2:3</div>
+                <div class="floating-element floating-element--medium floating-element--color-2 floating-element--pos-2">x3</div>
+                <div class="floating-element floating-element--small floating-element--color-3 floating-element--pos-3">4:6</div>
                 <!-- Math symbols -->
-                <div class="math-symbol math-symbol--small math-symbol--pos-1">ℤ</div>
-                <div class="math-symbol math-symbol--medium math-symbol--pos-2">±</div>
-
+                <div class="math-symbol math-symbol--small math-symbol--pos-1">%</div>
+                <div class="math-symbol math-symbol--medium math-symbol--pos-2">∝</div>
                 <!-- Pattern grid -->
                 <div class="pattern-grid"></div>
             </div>
@@ -148,7 +135,6 @@
     <!-- FIN BANNER DE MÓDULO ENTEROS -->
 </div>
 <!-- FIN SECCIÓN 2: TÍTULO -->
-
 <!-- ESTILOS Y SCRIPTS DEL BANNER (NO DUPLICAR SI YA EXISTEN EN EL HEAD) -->
 <script>
     (function agregarEstilosBannerEnteros() {
@@ -408,84 +394,202 @@
 </script>
 <!-- FIN ESTILOS Y SCRIPTS DEL BANNER -->
 
+<!-- PÁRRAFO INTRODUCTORIO PARA LOS TRES ACORDEONES -->
+<div class="container-fluid my-4" style="background-color: #f8f9fa; border: 2px solid #00AEAC; border-radius: 10px; padding: 20px;">
+    <p style="text-align: center; font-size: 1.1em; font-weight: bold; color: #172139; margin: 0;">
+        <strong>Domina razón, proporción y regla de tres: aplicación en problemas de proporcionalidad, porcentajes y repartos proporcionales en tres retos gamificados.</strong>
+    </p>
+</div>
+
 <!-- 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS PARA CIERRE AUTOMÁTICO) -->
 <div class="accordion" id="accordionModulo">
     <div class="accordion-item mb-4">
         <h2 class="accordion-header" id="headingPaso1">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso1" aria-expanded="false" aria-controls="collapsePaso1">
-                <i class="bi bi-123"></i> Repasa y fortalece tus bases en números enteros
+                <i class="bi bi-123"></i> Fortalece conceptos de razón, proporción y regla de tres
             </button>
         </h2>
         <div id="collapsePaso1" class="accordion-collapse collapse" aria-labelledby="headingPaso1" data-bs-parent="#accordionModulo">
             <div class="accordion-body-container py-3">
-                <p>
-                    <i class="bi bi-lightbulb" style="color:#00AEAC;"></i>
-                    ¡Bienvenido/a! Esta actividad está diseñada para que revises y consolides los conceptos fundamentales del conjunto ℤ, que incluye números positivos, negativos y el cero.<br><br>
-                    <i class="bi bi-emoji-smile" style="color:#FBBB28;"></i>
-                    Recuerda: equivocarse es parte del aprendizaje. Si fallas, ¡puedes intentarlo cuantas veces quieras! Lo importante es que te animes a participar y a fortalecer tu confianza en matemáticas.<br><br>
-                    <i class="bi bi-info-circle" style="color:#00AEAC;"></i>
-                    <strong>Esta es una actividad de práctica, no tiene incidencia en la nota del curso introductorio.</strong> Aprovecha este espacio para aprender y mejorar sin presión.
-                </p>
-                <a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
-                    <i class="bi bi-controller"></i> ¡Comienza el reto y demuestra tu actitud proactiva!
-                </a>
+                <h4><i class="bi bi-bullseye" style="color:#00AEAC;"></i> <strong>Objetivo de la Actividad</strong></h4>
+                <p>¡Bienvenido/a! Esta actividad está diseñada para que revises y consolides los <strong>conceptos fundamentales de razón, proporción y regla de tres</strong>, herramientas esenciales para resolver problemas de proporcionalidad en diversas situaciones.</p>
+                
+                <h4><i class="bi bi-collection" style="color:#FBBB28;"></i> <strong>¿Cómo Funciona el Juego Flashcard?</strong></h4>
+                <p>El juego consiste en <strong>emparejar conceptos matemáticos con sus definiciones correspondientes</strong>. Tu misión es:</p>
+                <ul>
+                    <li>Hacer clic en las cartas para voltearlas</li>
+                    <li>Encontrar los pares correctos (concepto + definición)</li>
+                    <li>Completar el juego en el menor tiempo posible</li>
+                    <li>Usar la menor cantidad de movimientos</li>
+                </ul>
+                
+                <h4><i class="bi bi-controller" style="color:#00AEAC;"></i> <strong>Formas de Jugar</strong></h4>
+                <p><strong>Con mouse:</strong> Haz clic directamente en las cartas<br>
+                <strong>Con teclado:</strong></p>
+                <ul>
+                    <li>Usa <strong>Tab</strong> para navegar entre cartas</li>
+                    <li>Presiona <strong>Enter</strong> o <strong>Espacio</strong> para voltear las cartas</li>
+                </ul>
+                
+                <h4><i class="bi bi-heart" style="color:#B4C42C;"></i> <strong>Mentalidad de Aprendizaje</strong></h4>
+                <p>Recuerda: <strong>equivocarse es parte del aprendizaje</strong>. Si no aciertas al primer intento, ¡puedes intentarlo cuantas veces quieras! Lo importante es que te animes a participar y fortalecer tu confianza en matemáticas.</p>
+                
+                <h4><i class="bi bi-info-circle" style="color:#E9901E;"></i> <strong>Información Importante</strong></h4>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>Esta es una actividad de práctica que NO tiene incidencia en la nota del curso introductorio.</strong><br>
+                    Aprovecha este espacio para aprender, experimentar y mejorar sin presión. ¡Disfruta el proceso de descubrimiento!
+                </div>
+                
+                <h4><i class="bi bi-rocket-takeoff" style="color:#00AEAC;"></i> <strong>¿Listo para el Desafío?</strong></h4>
+                <p>Pon a prueba tu conocimiento sobre razón, proporción y regla de tres mientras desarrollas tu agilidad mental y memoria. ¡Cada partida es una oportunidad para reforzar conceptos clave!</p>
+                
+                <h4><i class="bi bi-trophy" style="color:#FBBB28;"></i> <strong>¿Te atreves a batir tu propio récord?</strong></h4>
+                <p style="font-style: italic;">Cada intento es una oportunidad para mejorar tu tiempo y reducir el número de movimientos.</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo4_flashcard.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold; font-size: 1.1em; color: #172139;">
+                        <i class="bi bi-play-circle" style="color:#00AEAC;"></i> ¡Comienza el reto y demuestra tu actitud proactiva!
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+    
     <div class="accordion-item mb-4">
         <h2 class="accordion-header" id="headingPaso2">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso2" aria-expanded="false" aria-controls="collapsePaso2">
-                <i class="bi bi-lightning-charge"></i> ¡Desafía tu mente con sumas y restas de números enteros!
+                <i class="bi bi-lightning-charge"></i> ¡Domina la regla de tres y los cálculos proporcionales!
             </button>
         </h2>
         <div id="collapsePaso2" class="accordion-collapse collapse" aria-labelledby="headingPaso2" data-bs-parent="#accordionModulo">
             <div class="accordion-body-container py-3">
-                <p>
-                    <i class="bi bi-emoji-sunglasses" style="color:#00AEAC;"></i>
-                    ¿Te animas a poner a prueba tu lógica y destreza resolviendo operaciones de adición y sustracción con números enteros? Cada intento es una oportunidad para aprender y mejorar.<br><br>
-                    <i class="bi bi-arrow-repeat" style="color:#43a047;"></i>
-                    Si cometes errores, ¡no te preocupes! Puedes volver a intentarlo las veces que necesites.<br><br>
-                    <i class="bi bi-info-circle" style="color:#FBBB28;"></i>
-                    <strong>Recuerda: esta actividad es solo de práctica y no afecta tu nota del curso.</strong> ¡Participa con entusiasmo y disfruta el proceso de aprendizaje!
-                </p>
-                <a href="https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
-                    <i class="bi bi-controller"></i> ¡Juega ahora y reta tus conocimientos en números enteros!
-                </a>
+                <h4><i class="bi bi-bullseye" style="color:#00AEAC;"></i> <strong>Objetivo de la Actividad</strong></h4>
+                <p>¿Te animas a poner a prueba tu <strong>lógica y destreza</strong> resolviendo problemas con regla de tres y proporciones? Prepárate para una aventura matemática donde cada cálculo proporcional cuenta.</p>
+                
+                <h4><i class="bi bi-rocket" style="color:#FBBB28;"></i> <strong>¿Cómo Funciona Space Shooter Matemático?</strong></h4>
+                <p><strong>Space Shooter</strong> es un juego educativo donde debes resolver problemas de proporcionalidad disparando a las respuestas correctas. Tu misión como piloto espacial es:</p>
+                <ul>
+                    <li>Leer el problema de proporción o regla de tres en la parte superior de la pantalla</li>
+                    <li>Aplicar regla de tres simple directa, inversa o compuesta según corresponda</li>
+                    <li>Disparar únicamente a las respuestas correctas</li>
+                    <li>Completar <strong>10 preguntas</strong> para finalizar el módulo</li>
+                </ul>
+                
+                <h4><i class="bi bi-controller" style="color:#00AEAC;"></i> <strong>Controles del Juego</strong></h4>
+                <p><strong>Movimiento de la nave:</strong></p>
+                <ul>
+                    <li><strong>Flechas izquierda/derecha</strong> o teclas <strong>A/D</strong> para desplazarte</li>
+                    <li><strong>Barra espaciadora</strong> para disparar</li>
+                </ul>
+                <div style="background: #ffebee; border: 1px solid #ffcdd2; border-radius: 8px; padding: 10px; margin: 10px 0;">
+                    <strong>⚠️ Estrategia importante:</strong> Evita disparar a respuestas incorrectas o perderás vida. ¡Identifica bien si es proporción directa o inversa antes de disparar!
+                </div>
+                
+                <h4><i class="bi bi-lightning" style="color:#E9901E;"></i> <strong>Desarrollo de Habilidades</strong></h4>
+                <p>Cada intento es una oportunidad para:</p>
+                <ul>
+                    <li>Mejorar tu velocidad en cálculos proporcionales</li>
+                    <li>Fortalecer tu comprensión de regla de tres</li>
+                    <li>Desarrollar precisión en la identificación de proporciones</li>
+                    <li>Aumentar tu confianza con problemas de proporcionalidad</li>
+                </ul>
+                
+                <h4><i class="bi bi-heart" style="color:#B4C42C;"></i> <strong>Mentalidad de Crecimiento</strong></h4>
+                <p>Si cometes errores, <strong>¡no te preocupes!</strong> Puedes volver a intentarlo las veces que necesites. Cada error es una oportunidad valiosa para aprender y perfeccionar tu técnica.</p>
+                
+                <h4><i class="bi bi-info-circle" style="color:#E9901E;"></i> <strong>Información Importante</strong></h4>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>Esta actividad es solo de práctica y NO afecta tu nota del curso.</strong><br>
+                    ¡Participa con entusiasmo y disfruta el proceso de aprendizaje! La diversión y el aprendizaje van de la mano.
+                </div>
+                
+                <h4><i class="bi bi-trophy" style="color:#FBBB28;"></i> <strong>¿Listo para la Misión Espacial?</strong></h4>
+                <p>Combina la emoción de un videojuego con el poder de las matemáticas. ¡Demuestra que eres un experto en proporciones defendiendo la galaxia matemática!</p>
+                
+                <h4><i class="bi bi-star" style="color:#00AEAC;"></i> <strong>¿Puedes completar las 10 preguntas sin perder ninguna vida?</strong></h4>
+                <p style="font-style: italic;">Este es el desafío adicional para los más valientes.</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://profemarlon.com/actividades/space-shooter/modules/modulo4_proporciones.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold; font-size: 1.1em; color: #172139;">
+                        <i class="bi bi-play-circle" style="color:#00AEAC;"></i> ¡Juega ahora y reta tus conocimientos sobre proporciones!
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+    
     <div class="accordion-item mb-4">
         <h2 class="accordion-header" id="headingPaso3">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso3" aria-expanded="false" aria-controls="collapsePaso3">
-                <i class="bi bi-globe-americas"></i> Aplica los enteros en contextos reales y profesionales
+                <i class="bi bi-globe-americas"></i> Aplica razón y proporción en contextos reales y profesionales
             </button>
         </h2>
         <div id="collapsePaso3" class="accordion-collapse collapse" aria-labelledby="headingPaso3" data-bs-parent="#accordionModulo">
             <div class="accordion-body-container py-3">
-                <div class="alert alert-warning" style="background:#fffbe6; border:1px solid #ffe082; color:#8a6d3b; font-size:1.05em;">
-                    <strong>Nota:</strong> En esta actividad de aprendizaje, el sistema te ofrece ayudas contextuales para apoyarte en la resolución de los retos. Cada vez que utilices una ayuda, tu puntaje disminuirá un poco. Recuerda que este puntaje es solo para medir tu progreso personal y <b>no afecta tu calificación final</b> del curso.
+                <h4><i class="bi bi-bullseye" style="color:#00AEAC;"></i> <strong>Objetivo de la Actividad</strong></h4>
+                <p>En esta sección podrás poner en práctica los <strong>conceptos de razón, proporción, regla de tres y repartos proporcionales en situaciones reales</strong>, conectando las matemáticas con tu futuro profesional y la vida cotidiana.</p>
+                
+                <h4><i class="bi bi-flask" style="color:#FBBB28;"></i> <strong>¿Cómo Funciona MathQuest Laboratorio?</strong></h4>
+                <p><strong>MathQuest</strong> simula un <strong>laboratorio matemático interactivo</strong> donde te conviertes en un investigador resolviendo problemas contextualizados. Tu proceso de investigación incluye:</p>
+                <ul>
+                    <li>Leer cuidadosamente el problema planteado</li>
+                    <li>Identificar si se trata de proporción directa, inversa o compuesta</li>
+                    <li>Aplicar regla de tres simple o compuesta según corresponda</li>
+                    <li>Realizar el cálculo en el área de trabajo designada</li>
+                    <li>Ingresar tu respuesta en el sistema</li>
+                    <li>Verificar si tu solución es correcta</li>
+                    <li>Completar <strong>10 experimentos</strong> con la mayor precisión posible</li>
+                </ul>
+                
+                <h4><i class="bi bi-controller" style="color:#00AEAC;"></i> <strong>Herramientas del Laboratorio</strong></h4>
+                <p><strong>Área de cálculo:</strong> Espacio dedicado para tus cálculos proporcionales y regla de tres<br>
+                <strong>Sistema de pistas:</strong> Ayudas contextuales disponibles cuando las necesites<br>
+                <strong>Función saltar:</strong> Opción para avanzar si encuentras una pregunta muy desafiante</p>
+                
+                <h4><i class="bi bi-lightbulb" style="color:#E9901E;"></i> <strong>Sistema de Ayudas Inteligente</strong></h4>
+                <div style="background: #e3f2fd; border: 1px solid #90caf9; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>📊 Información sobre Puntajes:</strong> El sistema te ofrece ayudas contextuales para apoyarte en la resolución de los retos. Cada vez que utilices una ayuda, tu puntaje disminuirá un poco.<br><br>
+                    Este puntaje es <strong>solo para medir tu progreso personal</strong> y <strong>NO afecta tu calificación final</strong> del curso.
                 </div>
-                <p>
-                    <i class="bi bi-briefcase" style="color:#00AEAC;"></i>
-                    En esta sección podrás poner en práctica los conceptos de números enteros en situaciones y aplicaciones reales, relacionadas con los distintos programas universitarios de áreas como arquitectura, ingeniería, salud, administración, ciencias sociales y educación. Descubre cómo los enteros son útiles en problemas cotidianos y profesionales.<br><br>
-                    <i class="bi bi-arrow-repeat" style="color:#43a047;"></i>
-                    Si tu respuesta no es correcta al primer intento, ¡no te desanimes! Tienes la oportunidad de intentarlo cuantas veces lo necesites hasta dominar el tema.<br><br>
-                    <i class="bi bi-info-circle" style="color:#FBBB28;"></i>
-                    <strong>Recuerda: esta actividad es de práctica y no influye en tu calificación.</strong> Aprovecha este espacio para explorar, experimentar y aprender de manera activa y sin presión.
-                </p>
-                <a href="https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
-                    <i class="bi bi-controller"></i> ¡Explora los retos y demuestra cómo aplicas los números enteros en diferentes contextos!
-                </a>
+                
+                <h4><i class="bi bi-building" style="color:#B4C42C;"></i> <strong>Contextos Profesionales Incluidos</strong></h4>
+                <p>Descubre cómo la razón, proporción y regla de tres son útiles en <strong>problemas reales</strong> de:</p>
+                <ul>
+                    <li><strong>Administración de Empresas Turísticas</strong> - Cálculo de tarifas proporcionales y distribución de recursos</li>
+                    <li><strong>Gastronomía y Culinaria</strong> - Escalado de recetas y cálculo de ingredientes por porciones</li>
+                    <li><strong>Arquitectura</strong> - Escalas de planos y proporciones en diseños arquitectónicos</li>
+                    <li><strong>Ingeniería Ambiental</strong> - Cálculos de concentraciones y diluciones proporcionales</li>
+                    <li><strong>Bacteriología y Laboratorio Clínico</strong> - Preparación de soluciones y análisis proporcionales</li>
+                    <li><strong>Tecnología en Gestión Comercial</strong> - Análisis de costos, precios y márgenes proporcionales</li>
+                </ul>
+                
+                <h4><i class="bi bi-heart" style="color:#195855;"></i> <strong>Mentalidad Investigativa</strong></h4>
+                <p>Si tu respuesta no es correcta al primer intento, <strong>¡no te desanimes!</strong> Tienes la oportunidad de intentarlo cuantas veces lo necesites hasta dominar el tema. Cada error es parte del proceso científico de descubrimiento.</p>
+                
+                <h4><i class="bi bi-info-circle" style="color:#E9901E;"></i> <strong>Información Importante</strong></h4>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>Esta actividad es de práctica y NO influye en tu calificación.</strong><br>
+                    Aprovecha este espacio para explorar, experimentar y aprender de manera activa y sin presión. ¡La curiosidad es tu mejor herramienta!
+                </div>
+                
+                <h4><i class="bi bi-rocket-takeoff" style="color:#00AEAC;"></i> <strong>¿Listo para tu Misión Investigativa?</strong></h4>
+                <p>Conecta las matemáticas con tu carrera profesional y descubre el poder práctico de la razón, proporción y regla de tres en el mundo real. ¡Cada experimento te acerca más a ser un experto!</p>
+                
+                <h4><i class="bi bi-trophy" style="color:#FBBB28;"></i> <strong>¿Puedes completar los 10 experimentos usando el menor número de pistas posible?</strong></h4>
+                <p style="font-style: italic;">Este es tu desafío adicional para demostrar tu dominio del tema.</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://profemarlon.com/actividades/MathQuest/modules/modulo4_razones.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold; font-size: 1.1em; color: #172139;">
+                        <i class="bi bi-play-circle" style="color:#00AEAC;"></i> ¡Explora los retos y demuestra cómo aplicas razón y proporción en diferentes contextos!
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
     <!-- FIN 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS) -->
-
     <!-- 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
     <!-- CARGA DE SCRIPTS NECESARIOS PARA EL FUNCIONAMIENTO DE BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
         /**
          * 23. FUNCIONES ADICIONALES PARA ACORDEONES.
@@ -495,7 +599,6 @@
             const accordions = document.querySelectorAll('.accordion-collapse'); // 24. SELECCIONA TODOS LOS ACORDEONES
             accordions.forEach(accordion => accordion.classList.remove('show')); // 25. REMUEVE 'SHOW'
         }
-
         /**
          * 26. FUNCIONALIDAD PARA REGISTRAR EN CONSOLA EL ESTADO DE UN ACORDEÓN.
          * @description IMPRIME EN CONSOLA SI UN ACORDEÓN ESTÁ ABIERTO O CERRADO.
@@ -510,7 +613,6 @@
                 console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`); // 29. ADVIERTE SI NO EXISTE
             }
         }
-
         // 30. EVENTO QUE SE DISPARA AL CARGAR COMPLETAMENTE EL DOM
         document.addEventListener('DOMContentLoaded', () => {
             initAccordions(); // 31. INICIALIZA ACORDEONES
