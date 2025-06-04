@@ -1,0 +1,53 @@
+Analicemos la estructura y contenido de este archivo HTML del curso introductorio de matemáticas:
+
+## **Ajustes para este archivo**
+###crea un parrafo en un contenedorantes del primer acordeon explicando que estas actividades tienen como proposito afianzar los conceptos del modulo. indica que tienen una progresion que va desde los conceptual, procedimiental hasta la aplicacion en solucion de problemas.
+
+**ajusta cada texto a las aprticularidades del contenido del modulo**
+
+## **Los Tres Acordeones Principales**
+
+### **🔢 Primer Acordeón: CONCEPTOS/DEFINICIONES**
+- **Título**: "Repasa y fortalece tus bases en números enteros"
+- **Tipo de texto**: Explicativo y motivacional
+- **Contenido**:
+  - Introducción al conjunto ℤ (números positivos, negativos y cero)
+  - Mensaje de motivación sobre el aprendizaje y los errores
+  - Énfasis en que es actividad de práctica sin calificación
+- **Enlace**: Flashcard Game (actividad de tarjetas conceptuales)
+
+### **⚡ Segundo Acordeón: OPERATIVIDAD/OPERACIONES**
+- **Título**: "¡Desafía tu mente con sumas y restas de números enteros!"
+- **Tipo de texto**: Desafiante y operativo
+- **Contenido**:
+  - Enfoque en operaciones de adición y sustracción
+  - Motivación para practicar lógica y destreza
+  - Refuerzo del mensaje sobre intentos múltiples
+- **Enlace**: MathQuest (juego de operaciones matemáticas)
+
+### **🌍 Tercer Acordeón: APLICACIÓN/PROBLEMAS CONTEXTUALIZADOS**
+- **Título**: "Aplica los enteros en contextos reales y profesionales"
+- **Tipo de texto**: Contextual y aplicativo
+- **Contenido**:
+  - **Alerta especial** sobre el sistema de ayudas y puntajes
+  - Aplicaciones en **programas universitarios específicos**: arquitectura, ingeniería, salud, administración, ciencias sociales, educación
+  - Conexión con situaciones profesionales y cotidianas del **Colegio Mayor de Antioquia**
+- **Enlace**: MathQuest (retos contextualizados)
+
+## **Conserva estos tipos Texto**
+
+1. **Textos Motivacionales**: Uso frecuente de emojis y íconos, lenguaje alentador
+2. **Textos Informativos**: Aclaraciones sobre la naturaleza no calificada de las actividades
+3. **Textos Instructivos**: Explicaciones sobre cómo usar las herramientas
+4. **Textos Contextuales**: Conexión con la realidad profesional y académica
+5. **Textos Técnicos**: Referencias matemáticas (conjunto ℤ, operaciones)
+
+## **Estructura Pedagógica**
+ coloca los enlaces en cada acordeon y en este orden
+
+ escribe unas instrucciones simples para explicar como se debe desarrllar cada una de las actividades
+ https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html
+
+https://profemarlon.com/actividades/space-shooter/modules/modulo1_enteros.html
+
+https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html
