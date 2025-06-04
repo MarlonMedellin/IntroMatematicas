@@ -16,6 +16,9 @@ Analicemos la estructura y contenido de este archivo HTML del curso introductori
   - Énfasis en que es actividad de práctica sin calificación
 - **Enlace**: Flashcard Game (actividad de tarjetas conceptuales)
 
+### instruccion del juego de flashcard
+El juego consiste en emparejar conceptos matemáticos con sus definiciones correspondientes. Los jugadores deben hacer clic en las cartas para voltearlas y encontrar los pares correctos, intentando completar el juego en el menor tiempo y con la menor cantidad de movimientos posibles. Se puede jugar con el mouse o usando el teclado (Tab para navegar y Enter/Espacio para voltear cartas).
+
 ### **⚡ Segundo Acordeón: OPERATIVIDAD/OPERACIONES**
 - **Título**: "¡Desafía tu mente con sumas y restas de números enteros!"
 - **Tipo de texto**: Desafiante y operativo
@@ -25,6 +28,9 @@ Analicemos la estructura y contenido de este archivo HTML del curso introductori
   - Refuerzo del mensaje sobre intentos múltiples
 - **Enlace**: MathQuest (juego de operaciones matemáticas)
 
+### instrucciones del juego space shooter
+Space Shooter es un juego educativo donde debes resolver operaciones matemáticas disparando a las respuestas correctas. Usa las flechas izquierda/derecha (o A/D) para mover tu nave y la barra espaciadora para disparar. Lee la operación en la parte superior, identifica la respuesta correcta entre los enemigos y dispara solo a ellos. Evita disparar a respuestas incorrectas o perderás vida. Completa 10 preguntas para finalizar el módulo.
+
 ### **🌍 Tercer Acordeón: APLICACIÓN/PROBLEMAS CONTEXTUALIZADOS**
 - **Título**: "Aplica los enteros en contextos reales y profesionales"
 - **Tipo de texto**: Contextual y aplicativo
@@ -33,6 +39,11 @@ Analicemos la estructura y contenido de este archivo HTML del curso introductori
   - Aplicaciones en **programas universitarios específicos**: arquitectura, ingeniería, salud, administración, ciencias sociales, educación
   - Conexión con situaciones profesionales y cotidianas del **Colegio Mayor de Antioquia**
 - **Enlace**: MathQuest (retos contextualizados)
+
+### Instrucciones del juego mathquest
+MathQuest es una simulacion de un laboratorio matemático interactivo donde debes resolver problemas matemáticos contextualizados. Lee el problema, realiza el cálculo en el área designada, ingresa tu respuesta y verifica si es correcta. Puedes usar pistas si necesitas ayuda o saltar preguntas difíciles. El objetivo es completar los 10 experimentos con la mayor precisión posible. 
+
+
 
 ## **Conserva estos tipos Texto**
 
@@ -45,9 +56,185 @@ Analicemos la estructura y contenido de este archivo HTML del curso introductori
 ## **Estructura Pedagógica**
  coloca los enlaces en cada acordeon y en este orden
 
- escribe unas instrucciones simples para explicar como se debe desarrllar cada una de las actividades
- https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html
+toma toda esta infroamcion y dame una nueva estructura simple, comprensible y que tenga el alcance de todas las caracteristicas dadas
 
+### ejemplo
+## **Características Pedagógicas Conservadas**
+
+### **Tipos de Texto Integrados:**
+- ✅ **Motivacionales**: Íconos, emojis y lenguaje alentador
+- ✅ **Informativos**: Claridad sobre naturaleza no calificada
+- ✅ **Instructivos**: Explicaciones detalladas de cada juego
+- ✅ **Contextuales**: Conexión con programas del Colegio Mayor
+- ✅ **Técnicos**: Referencias matemáticas precisas (ℤ, operaciones)
+
+### **Progresión Estructurada:**
+**CONCEPTUAL** → **PROCEDIMENTAL** → **APLICATIVO**
+
+1. **Flashcard Game**: Comprensión de definiciones
+2. **Space Shooter**: Automatización de operaciones  
+3. **MathQuest**: Resolución de problemas contextualizados
+
+
+### texto de trabajo se puede borrar
+
+
+## **Parrafo introductorio para los tres acordeones**
+**Domina los números enteros con tres retos gamificados: memorización conceptual, precisión operativa y resolución de problemas en contextos profesionales reales.** colocar este parrafo en un contenedor previo a los acordeones
+
+---
+
+### **🔢 PRIMER ACORDEÓN: CONCEPTOS/DEFINICIONES**
+
+**Título del Acordeón:**
+> "Repasa y fortalece tus bases en números enteros"
+
+## **NUEVA ESTRUCTURA PARA EL PRIMER ACORDEÓN**
+
+### **🎯 Objetivo de la Actividad**
+¡Bienvenido/a! Esta actividad está diseñada para que revises y consolides los **conceptos fundamentales del conjunto ℤ** (números enteros), que incluye números positivos, negativos y el cero.
+
+### **🃏 ¿Cómo Funciona el Juego Flashcard?**
+El juego consiste en **emparejar conceptos matemáticos con sus definiciones correspondientes**. Tu misión es:
+- Hacer clic en las cartas para voltearlas
+- Encontrar los pares correctos (concepto + definición)
+- Completar el juego en el menor tiempo posible
+- Usar la menor cantidad de movimientos
+
+### **🎮 Formas de Jugar**
+**Con mouse:** Haz clic directamente en las cartas
+**Con teclado:** 
+- Usa **Tab** para navegar entre cartas
+- Presiona **Enter** o **Espacio** para voltear las cartas
+
+### **💪 Mentalidad de Aprendizaje**
+Recuerda: **equivocarse es parte del aprendizaje**. Si no aciertas al primer intento, ¡puedes intentarlo cuantas veces quieras! Lo importante es que te animes a participar y fortalecer tu confianza en matemáticas.
+
+### **📚 Información Importante**
+> **Esta es una actividad de práctica que NO tiene incidencia en la nota del curso introductorio.**
+> 
+> Aprovecha este espacio para aprender, experimentar y mejorar sin presión. ¡Disfruta el proceso de descubrimiento!
+
+### **🚀 ¿Listo para el Desafío?**
+Pon a prueba tu conocimiento sobre números enteros mientras desarrollas tu agilidad mental y memoria. ¡Cada partida es una oportunidad para reforzar conceptos clave!
+
+---
+
+**💡 Sugerencia adicional:** Podrías agregar al final una sección tipo "**🏆 ¿Te atreves a batir tu propio récord?**" para motivar múltiples intentos y mejorar el tiempo/movimientos.
+
+**Enlace:**
+> ¡Comienza el reto y demuestra tu actitud proactiva!
+
+---
+
+### **⚡ SEGUNDO ACORDEÓN: OPERATIVIDAD/OPERACIONES**
+
+**Título del Acordeón:**
+> "¡Desafía tu mente con sumas y restas de números enteros!"
+
+## **NUEVA ESTRUCTURA PARA EL SEGUNDO ACORDEÓN**
+
+### **🎯 Objetivo de la Actividad**
+¿Te animas a poner a prueba tu **lógica y destreza** resolviendo operaciones de adición y sustracción con números enteros? Prepárate para una aventura matemática donde cada cálculo cuenta.
+
+### **🚀 ¿Cómo Funciona Space Shooter Matemático?**
+**Space Shooter** es un juego educativo donde debes resolver operaciones matemáticas disparando a las respuestas correctas. Tu misión como piloto espacial es:
+- Leer la operación matemática en la parte superior de la pantalla
+- Identificar la respuesta correcta entre los enemigos
+- Disparar únicamente a las respuestas correctas
+- Completar **10 preguntas** para finalizar el módulo
+
+### **🎮 Controles del Juego**
+**Movimiento de la nave:**
+- **Flechas izquierda/derecha** o teclas **A/D** para desplazarte
+- **Barra espaciadora** para disparar
+
+**⚠️ Estrategia importante:** Evita disparar a respuestas incorrectas o perderás vida. ¡Calcula bien antes de disparar!
+
+### **⚡ Desarrollo de Habilidades**
+Cada intento es una oportunidad para:
+- Mejorar tu velocidad de cálculo mental
+- Fortalecer tu comprensión de operaciones con enteros
+- Desarrollar precisión bajo presión
+- Aumentar tu confianza matemática
+
+### **💪 Mentalidad de Crecimiento**
+Si cometes errores, **¡no te preocupes!** Puedes volver a intentarlo las veces que necesites. Cada error es una oportunidad valiosa para aprender y perfeccionar tu técnica.
+
+### **📚 Información Importante**
+> **Esta actividad es solo de práctica y NO afecta tu nota del curso.**
+> 
+> ¡Participa con entusiasmo y disfruta el proceso de aprendizaje! La diversión y el aprendizaje van de la mano.
+
+### **🏆 ¿Listo para la Misión Espacial?**
+Combina la emoción de un videojuego con el poder de las matemáticas. ¡Demuestra que eres un as de los números enteros defendiendo la galaxia matemática!
+
+---
+
+**💡 Bonus:** Podrías añadir "**🌟 ¿Puedes completar las 10 preguntas sin perder ninguna vida?**" para crear un desafío adicional.
+
+**Enlace:**
+> ¡Juega ahora y reta tus conocimientos en números enteros!
+
+---
+
+### **🌍 TERCER ACORDEÓN: APLICACIÓN/PROBLEMAS CONTEXTUALIZADOS**
+
+**Título del Acordeón:**
+> "Aplica los enteros en contextos reales y profesionales"
+
+## **NUEVA ESTRUCTURA PARA EL TERCER ACORDEÓN**
+
+### **🎯 Objetivo de la Actividad**
+En esta sección podrás poner en práctica los **conceptos de números enteros en situaciones reales**, conectando las matemáticas con tu futuro profesional y la vida cotidiana.
+
+### **🔬 ¿Cómo Funciona MathQuest Laboratorio?**
+**MathQuest** simula un **laboratorio matemático interactivo** donde te conviertes en un investigador resolviendo problemas contextualizados. Tu proceso de investigación incluye:
+- Leer cuidadosamente el problema planteado
+- Realizar el cálculo en el área de trabajo designada
+- Ingresar tu respuesta en el sistema
+- Verificar si tu solución es correcta
+- Completar **10 experimentos** con la mayor precisión posible
+
+### **🎮 Herramientas del Laboratorio**
+**Área de cálculo:** Espacio dedicado para tus operaciones y razonamientos
+**Sistema de pistas:** Ayudas contextuales disponibles cuando las necesites
+**Función saltar:** Opción para avanzar si encuentras una pregunta muy desafiante
+
+### **💡 Sistema de Ayudas Inteligente**
+> **📊 Información sobre Puntajes:** El sistema te ofrece ayudas contextuales para apoyarte en la resolución de los retos. Cada vez que utilices una ayuda, tu puntaje disminuirá un poco. 
+> 
+> Este puntaje es **solo para medir tu progreso personal** y **NO afecta tu calificación final** del curso.
+
+### **🏛️ Contextos Profesionales Incluidos**
+Descubre cómo los números enteros son útiles en **problemas reales** de:
+- **Arquitectura** - Cálculos de niveles y estructuras
+- **Ingeniería** - Análisis de fuerzas y temperaturas  
+- **Salud** - Interpretación de resultados clínicos
+- **Administración** - Gestión de presupuestos y balances
+- **Ciencias Sociales** - Análisis de datos estadísticos
+- **Educación** - Diseño de actividades de aprendizaje
+
+### **💪 Mentalidad Investigativa**
+Si tu respuesta no es correcta al primer intento, **¡no te desanimes!** Tienes la oportunidad de intentarlo cuantas veces lo necesites hasta dominar el tema. Cada error es parte del proceso científico de descubrimiento.
+
+### **📚 Información Importante**
+> **Esta actividad es de práctica y NO influye en tu calificación.**
+> 
+> Aprovecha este espacio para explorar, experimentar y aprender de manera activa y sin presión. ¡La curiosidad es tu mejor herramienta!
+
+### **🚀 ¿Listo para tu Misión Investigativa?**
+Conecta las matemáticas con tu carrera profesional y descubre el poder práctico de los números enteros en el mundo real. ¡Cada experimento te acerca más a ser un experto!
+
+---
+
+**💡 Desafío adicional:** "**🏆 ¿Puedes completar los 10 experimentos usando el menor número de pistas posible?**"
+
+**Enlace:**
+> ¡Explora los retos y demuestra cómo aplicas los números enteros en diferentes contextos!
+
+---
+URL 
+https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html
 https://profemarlon.com/actividades/space-shooter/modules/modulo1_enteros.html
-
 https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html
