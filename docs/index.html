@@ -7,125 +7,712 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
-      min-height: 100vh;
-      background: #f1f1f1;
+      background: #f9f9f9;
+      color: #222;
     }
-    .container {
-      width: 100%;
-      min-height: 100vh;
-      padding: 2rem 0;
-      background: #f1f1f1;
-      background-image: linear-gradient(
-          90deg,
-          transparent 50px,
-          #ffb4b8 50px,
-          #ffb4b8 52px,
-          transparent 52px
-        ),
-        linear-gradient(#e1e1e1 0.1em, transparent 0.1em);
-      background-size: 100% 30px;
-    }
-    h1 {
+    h1, h2 {
       text-align: center;
-      color: #1a237e;
-      margin-bottom: 2rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      margin: 1.5rem 0 1rem 0;
     }
-    .modulo-section {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 1rem 0;
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.2rem; color: #1976d2; }
+    .container, .juegos-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 1.5rem auto;
+      padding: 0 0.5rem;
+      background: none;
+      box-shadow: none;
+      border-radius: 0;
     }
-    .modulo-title {
-      color: #1565c0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem 0.3rem;
+      font-size: 1rem;
       text-align: left;
     }
-    .cards-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: flex-start;
-    }
-    .card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 4px 16px 0 rgba(21,101,192,0.08), 0 1.5px 6px 0 rgba(21,101,192,0.10);
-      width: 320px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: transform 0.15s;
-    }
-    .card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 8px 24px 0 rgba(21,101,192,0.16), 0 3px 12px 0 rgba(21,101,192,0.18);
-    }
-    .card-header {
-      height: 110px;
-      background: linear-gradient(90deg, #1976d2 60%, #64b5f6 100%);
-    }
-    .card-content {
-      padding: 1.2rem 1.2rem 0.5rem 1.2rem;
-      flex: 1;
-    }
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #1a237e;
-      margin-bottom: 0.5rem;
-    }
-    .card-desc {
-      font-size: 0.98rem;
-      color: #37474f;
-      margin-bottom: 0.5rem;
-      min-height: 48px;
-    }
-    .card-footer {
-      padding: 0.8rem 1.2rem 1.2rem 1.2rem;
-      display: flex;
-      justify-content: flex-end;
-    }
-    .card-btn {
+    th {
       background: #1976d2;
       color: #fff;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background: #f3f3f3;
+    }
+    .copy-btn {
+      background: none;
       border: none;
-      border-radius: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 1px;
       cursor: pointer;
-      transition: background 0.2s;
-      text-decoration: none;
-      text-transform: uppercase;
-      box-shadow: 0 2px 8px 0 rgba(25,118,210,0.10);
+      padding: 0 0.2rem;
     }
-    .card-btn:hover {
-      background: #0d47a1;
+    .copy-btn img {
+      width: 18px;
+      height: 18px;
+      opacity: 0.7;
     }
-    @media (max-width: 900px) {
-      .cards-grid {
-        flex-direction: column;
-        align-items: center;
-      }
-      .card {
-        width: 95vw;
-        max-width: 340px;
-      }
-      .modulo-section {
-        padding: 0.5rem 0;
-      }
+    .copy-btn:hover img {
+      opacity: 1;
+    }
+    @media (max-width: 700px) {
+      table, th, td { font-size: 0.95rem; }
+      table { min-width: 480px; }
+      .container, .juegos-container { padding: 0 0.1rem; }
+      .table-responsive { overflow-x: auto; }
     }
   </style>
 </head>
 <body>
+  <!-- Tablas de Juegos -->
+  <div class="juegos-container">
+    <h1>Tablas de Módulos de Juegos</h1>
+    <h2>Flashcard Game</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre del módulo (copiar)</th>
+          <th>Hipervínculo público</th>
+          <th>Enlace público (copiar)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="fc1">modulo1_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc1')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html</a></td>
+          <td><span id="fc1-link">https://profemarlon.com/actividades/flashcard-game/modules/modulo1_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc1-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="fc2">modulo2_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc2')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo2_flashcard.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/flashcard-game/modules/modulo2_flashcard.html</a></td>
+          <td><span id="fc2-link">https://profemarlon.com/actividades/flashcard-game/modules/modulo2_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc2-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="fc3">modulo3_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc3')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo3_flashcard.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/flashcard-game/modules/modulo3_flashcard.html</a></td>
+          <td><span id="fc3-link">https://profemarlon.com/actividades/flashcard-game/modules/modulo3_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc3-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="fc4">modulo4_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc4')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo4_flashcard.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/flashcard-game/modules/modulo4_flashcard.html</a></td>
+          <td><span id="fc4-link">https://profemarlon.com/actividades/flashcard-game/modules/modulo4_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc4-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="fc5">modulo5_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc5')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo5_flashcard.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/flashcard-game/modules/modulo5_flashcard.html</a></td>
+          <td><span id="fc5-link">https://profemarlon.com/actividades/flashcard-game/modules/modulo5_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc5-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="fc6">modulo6_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc6')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo6_flashcard.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/flashcard-game/modules/modulo6_flashcard.html</a></td>
+          <td><span id="fc6-link">https://profemarlon.com/actividades/flashcard-game/modules/modulo6_flashcard.html</span>
+            <button class="copy-btn" onclick="copiar('fc6-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>MathQuest</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre del módulo (copiar)</th>
+          <th>Hipervínculo público</th>
+          <th>Enlace público (copiar)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="mq1">modulo1_enteros.html</span>
+            <button class="copy-btn" onclick="copiar('mq1')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html</a></td>
+          <td><span id="mq1-link">https://profemarlon.com/actividades/MathQuest/modules/modulo1_enteros.html</span>
+            <button class="copy-btn" onclick="copiar('mq1-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="mq2">modulo2_mcm_mcd.html</span>
+            <button class="copy-btn" onclick="copiar('mq2')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/MathQuest/modules/modulo2_mcm_mcd.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/MathQuest/modules/modulo2_mcm_mcd.html</a></td>
+          <td><span id="mq2-link">https://profemarlon.com/actividades/MathQuest/modules/modulo2_mcm_mcd.html</span>
+            <button class="copy-btn" onclick="copiar('mq2-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="mq3">modulo3_racionales.html</span>
+            <button class="copy-btn" onclick="copiar('mq3')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/MathQuest/modules/modulo3_racionales.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/MathQuest/modules/modulo3_racionales.html</a></td>
+          <td><span id="mq3-link">https://profemarlon.com/actividades/MathQuest/modules/modulo3_racionales.html</span>
+            <button class="copy-btn" onclick="copiar('mq3-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="mq4">modulo4_razones.html</span>
+            <button class="copy-btn" onclick="copiar('mq4')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/MathQuest/modules/modulo4_razones.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/MathQuest/modules/modulo4_razones.html</a></td>
+          <td><span id="mq4-link">https://profemarlon.com/actividades/MathQuest/modules/modulo4_razones.html</span>
+            <button class="copy-btn" onclick="copiar('mq4-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="mq5">modulo5_medidas.html</span>
+            <button class="copy-btn" onclick="copiar('mq5')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/MathQuest/modules/modulo5_medidas.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/MathQuest/modules/modulo5_medidas.html</a></td>
+          <td><span id="mq5-link">https://profemarlon.com/actividades/MathQuest/modules/modulo5_medidas.html</span>
+            <button class="copy-btn" onclick="copiar('mq5-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="mq6">modulo6_pot_rad.html</span>
+            <button class="copy-btn" onclick="copiar('mq6')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/MathQuest/modules/modulo6_pot_rad.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/MathQuest/modules/modulo6_pot_rad.html</a></td>
+          <td><span id="mq6-link">https://profemarlon.com/actividades/MathQuest/modules/modulo6_pot_rad.html</span>
+            <button class="copy-btn" onclick="copiar('mq6-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Space Shooter</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre del módulo (copiar)</th>
+          <th>Hipervínculo público</th>
+          <th>Enlace público (copiar)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="ss1">modulo1_enteros.html</span>
+            <button class="copy-btn" onclick="copiar('ss1')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/space-shooter/modules/modulo1_enteros.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/space-shooter/modules/modulo1_enteros.html</a></td>
+          <td><span id="ss1-link">https://profemarlon.com/actividades/space-shooter/modules/modulo1_enteros.html</span>
+            <button class="copy-btn" onclick="copiar('ss1-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="ss2">modulo2_primos.html</span>
+            <button class="copy-btn" onclick="copiar('ss2')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/space-shooter/modules/modulo2_primos.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/space-shooter/modules/modulo2_primos.html</a></td>
+          <td><span id="ss2-link">https://profemarlon.com/actividades/space-shooter/modules/modulo2_primos.html</span>
+            <button class="copy-btn" onclick="copiar('ss2-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="ss3">modulo3_racionales.html</span>
+            <button class="copy-btn" onclick="copiar('ss3')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/space-shooter/modules/modulo3_racionales.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/space-shooter/modules/modulo3_racionales.html</a></td>
+          <td><span id="ss3-link">https://profemarlon.com/actividades/space-shooter/modules/modulo3_racionales.html</span>
+            <button class="copy-btn" onclick="copiar('ss3-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="ss4">modulo4_proporciones.html</span>
+            <button class="copy-btn" onclick="copiar('ss4')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/space-shooter/modules/modulo4_proporciones.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/space-shooter/modules/modulo4_proporciones.html</a></td>
+          <td><span id="ss4-link">https://profemarlon.com/actividades/space-shooter/modules/modulo4_proporciones.html</span>
+            <button class="copy-btn" onclick="copiar('ss4-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="ss5">modulo5_medidas.html</span>
+            <button class="copy-btn" onclick="copiar('ss5')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/space-shooter/modules/modulo5_medidas.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/space-shooter/modules/modulo5_medidas.html</a></td>
+          <td><span id="ss5-link">https://profemarlon.com/actividades/space-shooter/modules/modulo5_medidas.html</span>
+            <button class="copy-btn" onclick="copiar('ss5-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="ss6">modulo6_potencias.html</span>
+            <button class="copy-btn" onclick="copiar('ss6')" title="Copiar nombre del módulo"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+          <td><a href="https://profemarlon.com/actividades/space-shooter/modules/modulo6_potencias.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/actividades/space-shooter/modules/modulo6_potencias.html</a></td>
+          <td><span id="ss6-link">https://profemarlon.com/actividades/space-shooter/modules/modulo6_potencias.html</span>
+            <button class="copy-btn" onclick="copiar('ss6-link')" title="Copiar enlace"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function copiar(id) {
+      const texto = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(texto);
+    }
+  </script>
+
+  <!-- Tablas de Diapositivas por Módulo -->
+  <div class="juegos-container">
+    <!-- Módulo 1 -->
+    <h2>Módulo 1 - Sistema de los Números Enteros</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de la diapositiva</th>
+          <th>URL pública</th>
+          <th>URL pública (copiar)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="m1d1">Ver diapositiva 1</span> <button class="copy-btn" onclick="copiar('m1d1')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva1.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva1.html</a></td>
+          <td><span id="m1d1-link">https://profemarlon.com/modulo_1/mod1_diapositiva1.html</span> <button class="copy-btn" onclick="copiar('m1d1-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción al conjunto de los números enteros y su importancia en las matemáticas básicas.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d2">Ver diapositiva 2</span> <button class="copy-btn" onclick="copiar('m1d2')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva2.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva2.html</a></td>
+          <td><span id="m1d2-link">https://profemarlon.com/modulo_1/mod1_diapositiva2.html</span> <button class="copy-btn" onclick="copiar('m1d2-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Definición y ejemplos de números enteros, positivos, negativos y el cero.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d3">Ver diapositiva 3</span> <button class="copy-btn" onclick="copiar('m1d3')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva3.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva3.html</a></td>
+          <td><span id="m1d3-link">https://profemarlon.com/modulo_1/mod1_diapositiva3.html</span> <button class="copy-btn" onclick="copiar('m1d3-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Reglas y ejemplos para sumar y restar números enteros correctamente.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d4">Ver diapositiva 4</span> <button class="copy-btn" onclick="copiar('m1d4')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva4.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva4.html</a></td>
+          <td><span id="m1d4-link">https://profemarlon.com/modulo_1/mod1_diapositiva4.html</span> <button class="copy-btn" onclick="copiar('m1d4-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo multiplicar y dividir números enteros, con ejemplos prácticos.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d5">Ver diapositiva 5</span> <button class="copy-btn" onclick="copiar('m1d5')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva5.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva5.html</a></td>
+          <td><span id="m1d5-link">https://profemarlon.com/modulo_1/mod1_diapositiva5.html</span> <button class="copy-btn" onclick="copiar('m1d5-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Propiedades fundamentales de la suma y el producto en los números enteros.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d6">Ver diapositiva 6</span> <button class="copy-btn" onclick="copiar('m1d6')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva6.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva6.html</a></td>
+          <td><span id="m1d6-link">https://profemarlon.com/modulo_1/mod1_diapositiva6.html</span> <button class="copy-btn" onclick="copiar('m1d6-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Uso de paréntesis y reglas de prioridad en operaciones con enteros.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d7">Ver diapositiva 7</span> <button class="copy-btn" onclick="copiar('m1d7')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva7.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva7.html</a></td>
+          <td><span id="m1d7-link">https://profemarlon.com/modulo_1/mod1_diapositiva7.html</span> <button class="copy-btn" onclick="copiar('m1d7-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción a los polinomios aritméticos y su relación con los números enteros.</td>
+        </tr>
+        <tr>
+          <td><span id="m1d8">Ver diapositiva 8</span> <button class="copy-btn" onclick="copiar('m1d8')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_1/mod1_diapositiva8.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_1/mod1_diapositiva8.html</a></td>
+          <td><span id="m1d8-link">https://profemarlon.com/modulo_1/mod1_diapositiva8.html</span> <button class="copy-btn" onclick="copiar('m1d8-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Resumen final y referencias para profundizar en el tema de los números enteros.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Módulo 2 -->
+    <h2>Módulo 2 - Números Primos, MCM y MCD</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de la diapositiva</th>
+          <th>URL pública</th>
+          <th>URL pública (copiar)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="m2d1">Ver diapositiva 1</span> <button class="copy-btn" onclick="copiar('m2d1')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva1.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva1.html</a></td>
+          <td><span id="m2d1-link">https://profemarlon.com/modulo_2/mod2_diapositiva1.html</span> <button class="copy-btn" onclick="copiar('m2d1-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Presentación del módulo y su relevancia en la resolución de problemas matemáticos.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d2">Ver diapositiva 2</span> <button class="copy-btn" onclick="copiar('m2d2')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva2.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva2.html</a></td>
+          <td><span id="m2d2-link">https://profemarlon.com/modulo_2/mod2_diapositiva2.html</span> <button class="copy-btn" onclick="copiar('m2d2-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción a los números primos y reglas para determinar divisibilidad.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d3">Ver diapositiva 3</span> <button class="copy-btn" onclick="copiar('m2d3')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva3.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva3.html</a></td>
+          <td><span id="m2d3-link">https://profemarlon.com/modulo_2/mod2_diapositiva3.html</span> <button class="copy-btn" onclick="copiar('m2d3-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Diferencias entre números primos y compuestos, con ejemplos.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d4">Ver diapositiva 4</span> <button class="copy-btn" onclick="copiar('m2d4')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva4.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva4.html</a></td>
+          <td><span id="m2d4-link">https://profemarlon.com/modulo_2/mod2_diapositiva4.html</span> <button class="copy-btn" onclick="copiar('m2d4-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Reglas prácticas para saber si un número es divisible por otro.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d5">Ver diapositiva 5</span> <button class="copy-btn" onclick="copiar('m2d5')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva5.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva5.html</a></td>
+          <td><span id="m2d5-link">https://profemarlon.com/modulo_2/mod2_diapositiva5.html</span> <button class="copy-btn" onclick="copiar('m2d5-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo descomponer números en factores primos y hallar el MCD.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d6">Ver diapositiva 6</span> <button class="copy-btn" onclick="copiar('m2d6')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva6.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva6.html</a></td>
+          <td><span id="m2d6-link">https://profemarlon.com/modulo_2/mod2_diapositiva6.html</span> <button class="copy-btn" onclick="copiar('m2d6-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Métodos para descomponer números en sus factores primos.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d7">Ver diapositiva 7</span> <button class="copy-btn" onclick="copiar('m2d7')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva7.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva7.html</a></td>
+          <td><span id="m2d7-link">https://profemarlon.com/modulo_2/mod2_diapositiva7.html</span> <button class="copy-btn" onclick="copiar('m2d7-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Definición y cálculo del MCD entre dos o más números.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d8">Ver diapositiva 8</span> <button class="copy-btn" onclick="copiar('m2d8')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva8.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva8.html</a></td>
+          <td><span id="m2d8-link">https://profemarlon.com/modulo_2/mod2_diapositiva8.html</span> <button class="copy-btn" onclick="copiar('m2d8-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Aplicación del MCM en la resolución de problemas matemáticos.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d9">Ver diapositiva 9</span> <button class="copy-btn" onclick="copiar('m2d9')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva9.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva9.html</a></td>
+          <td><span id="m2d9-link">https://profemarlon.com/modulo_2/mod2_diapositiva9.html</span> <button class="copy-btn" onclick="copiar('m2d9-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo calcular el MCM y su utilidad en operaciones matemáticas.</td>
+        </tr>
+        <tr>
+          <td><span id="m2d10">Ver diapositiva 10</span> <button class="copy-btn" onclick="copiar('m2d10')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_2/mod2_diapositiva10.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_2/mod2_diapositiva10.html</a></td>
+          <td><span id="m2d10-link">https://profemarlon.com/modulo_2/mod2_diapositiva10.html</span> <button class="copy-btn" onclick="copiar('m2d10-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Ejemplos y aplicaciones reales de los conceptos vistos en el módulo.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Módulo 3 -->
+    <h2>Módulo 3 - Sistema de los Números Racionales</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de la diapositiva</th>
+          <th>URL pública</th>
+          <th>URL pública (copiar)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="m3d1">Ver diapositiva 1</span> <button class="copy-btn" onclick="copiar('m3d1')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva1.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva1.html</a></td>
+          <td><span id="m3d1-link">https://profemarlon.com/modulo_3/mod3_diapositiva1.html</span> <button class="copy-btn" onclick="copiar('m3d1-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción al sistema de los números racionales y su importancia.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d2">Ver diapositiva 2</span> <button class="copy-btn" onclick="copiar('m3d2')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva2.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva2.html</a></td>
+          <td><span id="m3d2-link">https://profemarlon.com/modulo_3/mod3_diapositiva2.html</span> <button class="copy-btn" onclick="copiar('m3d2-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Repaso de la descomposición en factores primos y el MCD en números racionales.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d3">Ver diapositiva 3</span> <button class="copy-btn" onclick="copiar('m3d3')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva3.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva3.html</a></td>
+          <td><span id="m3d3-link">https://profemarlon.com/modulo_3/mod3_diapositiva3.html</span> <button class="copy-btn" onclick="copiar('m3d3-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Qué son los números racionales y cómo se representan.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d4">Ver diapositiva 4</span> <button class="copy-btn" onclick="copiar('m3d4')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva4.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva4.html</a></td>
+          <td><span id="m3d4-link">https://profemarlon.com/modulo_3/mod3_diapositiva4.html</span> <button class="copy-btn" onclick="copiar('m3d4-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Clasificación de fracciones: propias, impropias y mixtas.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d5">Ver diapositiva 5</span> <button class="copy-btn" onclick="copiar('m3d5')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva5.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva5.html</a></td>
+          <td><span id="m3d5-link">https://profemarlon.com/modulo_3/mod3_diapositiva5.html</span> <button class="copy-btn" onclick="copiar('m3d5-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo simplificar y ampliar fracciones para obtener equivalentes.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d6">Ver diapositiva 6</span> <button class="copy-btn" onclick="copiar('m3d6')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva6.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva6.html</a></td>
+          <td><span id="m3d6-link">https://profemarlon.com/modulo_3/mod3_diapositiva6.html</span> <button class="copy-btn" onclick="copiar('m3d6-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Métodos para sumar y restar fracciones y números racionales.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d7">Ver diapositiva 7</span> <button class="copy-btn" onclick="copiar('m3d7')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva7.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva7.html</a></td>
+          <td><span id="m3d7-link">https://profemarlon.com/modulo_3/mod3_diapositiva7.html</span> <button class="copy-btn" onclick="copiar('m3d7-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Reglas y ejemplos para multiplicar y dividir fracciones.</td>
+        </tr>
+        <tr>
+          <td><span id="m3d8">Ver diapositiva 8</span> <button class="copy-btn" onclick="copiar('m3d8')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_3/mod3_diapositiva8.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_3/mod3_diapositiva8.html</a></td>
+          <td><span id="m3d8-link">https://profemarlon.com/modulo_3/mod3_diapositiva8.html</span> <button class="copy-btn" onclick="copiar('m3d8-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Propiedades clave y aplicaciones prácticas de los números racionales.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Módulo 4 -->
+    <h2>Módulo 4 - Razones, Proporciones y Regla de Tres</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de la diapositiva</th>
+          <th>URL pública</th>
+          <th>URL pública (copiar)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="m4d1">Ver diapositiva 1</span> <button class="copy-btn" onclick="copiar('m4d1')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva1.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva1.html</a></td>
+          <td><span id="m4d1-link">https://profemarlon.com/modulo_4/mod4_diapositiva1.html</span> <button class="copy-btn" onclick="copiar('m4d1-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción a las razones, proporciones y la regla de tres en matemáticas.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d2">Ver diapositiva 2</span> <button class="copy-btn" onclick="copiar('m4d2')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva2.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva2.html</a></td>
+          <td><span id="m4d2-link">https://profemarlon.com/modulo_4/mod4_diapositiva2.html</span> <button class="copy-btn" onclick="copiar('m4d2-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Definición y ejemplos de razones y proporciones entre cantidades.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d3">Ver diapositiva 3</span> <button class="copy-btn" onclick="copiar('m4d3')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva3.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva3.html</a></td>
+          <td><span id="m4d3-link">https://profemarlon.com/modulo_4/mod4_diapositiva3.html</span> <button class="copy-btn" onclick="copiar('m4d3-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo calcular y entender la razón entre dos cantidades.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d4">Ver diapositiva 4</span> <button class="copy-btn" onclick="copiar('m4d4')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva4.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva4.html</a></td>
+          <td><span id="m4d4-link">https://profemarlon.com/modulo_4/mod4_diapositiva4.html</span> <button class="copy-btn" onclick="copiar('m4d4-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Explicación de proporciones y su uso en problemas matemáticos.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d5">Ver diapositiva 5</span> <button class="copy-btn" onclick="copiar('m4d5')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva5.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva5.html</a></td>
+          <td><span id="m4d5-link">https://profemarlon.com/modulo_4/mod4_diapositiva5.html</span> <button class="copy-btn" onclick="copiar('m4d5-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción a la regla de tres simple y su aplicación.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d6">Ver diapositiva 6</span> <button class="copy-btn" onclick="copiar('m4d6')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva6.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva6.html</a></td>
+          <td><span id="m4d6-link">https://profemarlon.com/modulo_4/mod4_diapositiva6.html</span> <button class="copy-btn" onclick="copiar('m4d6-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo resolver problemas con la regla de tres simple directa.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d7">Ver diapositiva 7</span> <button class="copy-btn" onclick="copiar('m4d7')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva7.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva7.html</a></td>
+          <td><span id="m4d7-link">https://profemarlon.com/modulo_4/mod4_diapositiva7.html</span> <button class="copy-btn" onclick="copiar('m4d7-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Aplicación de la regla de tres simple inversa en ejercicios prácticos.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d8">Ver diapositiva 8</span> <button class="copy-btn" onclick="copiar('m4d8')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva8.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva8.html</a></td>
+          <td><span id="m4d8-link">https://profemarlon.com/modulo_4/mod4_diapositiva8.html</span> <button class="copy-btn" onclick="copiar('m4d8-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Uso de la regla de tres para calcular porcentajes y repartir cantidades.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d9">Ver diapositiva 9</span> <button class="copy-btn" onclick="copiar('m4d9')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva9.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva9.html</a></td>
+          <td><span id="m4d9-link">https://profemarlon.com/modulo_4/mod4_diapositiva9.html</span> <button class="copy-btn" onclick="copiar('m4d9-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo calcular porcentajes, aumentos y descuentos en problemas reales.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d10">Ver diapositiva 10</span> <button class="copy-btn" onclick="copiar('m4d10')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva10.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva10.html</a></td>
+          <td><span id="m4d10-link">https://profemarlon.com/modulo_4/mod4_diapositiva10.html</span> <button class="copy-btn" onclick="copiar('m4d10-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Métodos para repartir cantidades de forma proporcional.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d11">Ver diapositiva 11</span> <button class="copy-btn" onclick="copiar('m4d11')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva11.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva11.html</a></td>
+          <td><span id="m4d11-link">https://profemarlon.com/modulo_4/mod4_diapositiva11.html</span> <button class="copy-btn" onclick="copiar('m4d11-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción a la regla de tres compuesta y su utilidad.</td>
+        </tr>
+        <tr>
+          <td><span id="m4d12">Ver diapositiva 12</span> <button class="copy-btn" onclick="copiar('m4d12')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_4/mod4_diapositiva12.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_4/mod4_diapositiva12.html</a></td>
+          <td><span id="m4d12-link">https://profemarlon.com/modulo_4/mod4_diapositiva12.html</span> <button class="copy-btn" onclick="copiar('m4d12-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Resolución de problemas con la regla de tres compuesta.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Módulo 5 -->
+    <h2>Módulo 5 - Sistemas de Medida</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de la diapositiva</th>
+          <th>URL pública</th>
+          <th>URL pública (copiar)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="m5d1">Ver diapositiva 1</span> <button class="copy-btn" onclick="copiar('m5d1')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva1.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva1.html</a></td>
+          <td><span id="m5d1-link">https://profemarlon.com/modulo_5/mod5_diapositiva1.html</span> <button class="copy-btn" onclick="copiar('m5d1-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Presentación del módulo y su enfoque en sistemas de medida y conversiones.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d2">Ver diapositiva 2</span> <button class="copy-btn" onclick="copiar('m5d2')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva2.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva2.html</a></td>
+          <td><span id="m5d2-link">https://profemarlon.com/modulo_5/mod5_diapositiva2.html</span> <button class="copy-btn" onclick="copiar('m5d2-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Breve introducción a los sistemas de medida y su importancia.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d3">Ver diapositiva 3</span> <button class="copy-btn" onclick="copiar('m5d3')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva3.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva3.html</a></td>
+          <td><span id="m5d3-link">https://profemarlon.com/modulo_5/mod5_diapositiva3.html</span> <button class="copy-btn" onclick="copiar('m5d3-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo utilizar factores de conversión para cambiar entre unidades.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d4">Ver diapositiva 4</span> <button class="copy-btn" onclick="copiar('m5d4')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva4.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva4.html</a></td>
+          <td><span id="m5d4-link">https://profemarlon.com/modulo_5/mod5_diapositiva4.html</span> <button class="copy-btn" onclick="copiar('m5d4-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Descripción del SI y sus unidades fundamentales y derivadas.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d5">Ver diapositiva 5</span> <button class="copy-btn" onclick="copiar('m5d5')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva5.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva5.html</a></td>
+          <td><span id="m5d5-link">https://profemarlon.com/modulo_5/mod5_diapositiva5.html</span> <button class="copy-btn" onclick="copiar('m5d5-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Ejemplos de uso del SI en diferentes programas académicos.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d6">Ver diapositiva 6</span> <button class="copy-btn" onclick="copiar('m5d6')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva6.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva6.html</a></td>
+          <td><span id="m5d6-link">https://profemarlon.com/modulo_5/mod5_diapositiva6.html</span> <button class="copy-btn" onclick="copiar('m5d6-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción al sistema imperial y sus principales unidades.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d7">Ver diapositiva 7</span> <button class="copy-btn" onclick="copiar('m5d7')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva7.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva7.html</a></td>
+          <td><span id="m5d7-link">https://profemarlon.com/modulo_5/mod5_diapositiva7.html</span> <button class="copy-btn" onclick="copiar('m5d7-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Cómo convertir unidades entre el sistema internacional y el imperial.</td>
+        </tr>
+        <tr>
+          <td><span id="m5d8">Ver diapositiva 8</span> <button class="copy-btn" onclick="copiar('m5d8')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_5/mod5_diapositiva8.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_5/mod5_diapositiva8.html</a></td>
+          <td><span id="m5d8-link">https://profemarlon.com/modulo_5/mod5_diapositiva8.html</span> <button class="copy-btn" onclick="copiar('m5d8-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Ejemplos de conversiones y aplicaciones en contextos académicos.</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Módulo 6 -->
+    <h2>Módulo 6 - Potenciación y Radicación</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de la diapositiva</th>
+          <th>URL pública</th>
+          <th>URL pública (copiar)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="m6d1">Ver diapositiva 1</span> <button class="copy-btn" onclick="copiar('m6d1')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva1.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva1.html</a></td>
+          <td><span id="m6d1-link">https://profemarlon.com/modulo_6/mod6_diapositiva1.html</span> <button class="copy-btn" onclick="copiar('m6d1-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Presentación del módulo sobre potenciación y radicación en matemáticas.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d2">Ver diapositiva 2</span> <button class="copy-btn" onclick="copiar('m6d2')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva2.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva2.html</a></td>
+          <td><span id="m6d2-link">https://profemarlon.com/modulo_6/mod6_diapositiva2.html</span> <button class="copy-btn" onclick="copiar('m6d2-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Conceptos básicos y relevancia de la potenciación y radicación.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d3">Ver diapositiva 3</span> <button class="copy-btn" onclick="copiar('m6d3')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva3.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva3.html</a></td>
+          <td><span id="m6d3-link">https://profemarlon.com/modulo_6/mod6_diapositiva3.html</span> <button class="copy-btn" onclick="copiar('m6d3-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Definición y ejemplos de potenciación en números reales.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d4">Ver diapositiva 4</span> <button class="copy-btn" onclick="copiar('m6d4')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva4.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva4.html</a></td>
+          <td><span id="m6d4-link">https://profemarlon.com/modulo_6/mod6_diapositiva4.html</span> <button class="copy-btn" onclick="copiar('m6d4-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Principales propiedades y reglas de la potenciación.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d5">Ver diapositiva 5</span> <button class="copy-btn" onclick="copiar('m6d5')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva5.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva5.html</a></td>
+          <td><span id="m6d5-link">https://profemarlon.com/modulo_6/mod6_diapositiva5.html</span> <button class="copy-btn" onclick="copiar('m6d5-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Ejemplos prácticos de potenciación en problemas matemáticos.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d6">Ver diapositiva 6</span> <button class="copy-btn" onclick="copiar('m6d6')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva6.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva6.html</a></td>
+          <td><span id="m6d6-link">https://profemarlon.com/modulo_6/mod6_diapositiva6.html</span> <button class="copy-btn" onclick="copiar('m6d6-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Definición y ejemplos de radicación y raíces.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d7">Ver diapositiva 7</span> <button class="copy-btn" onclick="copiar('m6d7')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva7.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva7.html</a></td>
+          <td><span id="m6d7-link">https://profemarlon.com/modulo_6/mod6_diapositiva7.html</span> <button class="copy-btn" onclick="copiar('m6d7-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Contenido específico de la séptima diapositiva del módulo.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d8">Ver diapositiva 8</span> <button class="copy-btn" onclick="copiar('m6d8')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva8.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva8.html</a></td>
+          <td><span id="m6d8-link">https://profemarlon.com/modulo_6/mod6_diapositiva8.html</span> <button class="copy-btn" onclick="copiar('m6d8-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Introducción a los números irracionales y su relación con la radicación.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d9">Ver diapositiva 9</span> <button class="copy-btn" onclick="copiar('m6d9')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva9.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva9.html</a></td>
+          <td><span id="m6d9-link">https://profemarlon.com/modulo_6/mod6_diapositiva9.html</span> <button class="copy-btn" onclick="copiar('m6d9-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Reglas de prioridad en operaciones con potencias y raíces.</td>
+        </tr>
+        <tr>
+          <td><span id="m6d10">Ver diapositiva 10</span> <button class="copy-btn" onclick="copiar('m6d10')" title="Copiar nombre de la diapositiva"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td><a href="https://profemarlon.com/modulo_6/mod6_diapositiva10.html" target="_blank" rel="noopener noreferrer">https://profemarlon.com/modulo_6/mod6_diapositiva10.html</a></td>
+          <td><span id="m6d10-link">https://profemarlon.com/modulo_6/mod6_diapositiva10.html</span> <button class="copy-btn" onclick="copiar('m6d10-link')" title="Copiar URL pública"><img src='https://img.icons8.com/material-outlined/24/000000/copy.png' alt="Copiar"/></button></td>
+          <td>Aplicación de la potenciación y radicación en polinomios aritméticos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function copiar(id) {
+      const texto = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(texto);
+    }
+  </script>
+
+  <!-- CONTENIDO ORIGINAL DE RESPALDO -->
   <div class="container">
     <h1>Bienvenid@ a IntroMatemáticas</h1>
 

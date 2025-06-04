@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Potenciación y Radicación</title>
+    <meta name="description" content="Juego educativo de memoria para aprender conceptos de potenciación y radicación">
+    
+    <!-- Google Fonts - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Estilos del juego -->
+    <link rel="stylesheet" href="../assets/css/flashcard.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-brain" style="color: #FBBB28; margin-right: 10px;"></i>
+                Juego de Memoria
+            </h1>
+            <p>Módulo 6: Potenciación y Radicación</p>
+        </div>
+
+        <!-- Panel de estadísticas -->
+        <div class="stats-panel">
+            <div class="stat-item">
+                <i class="fas fa-stopwatch" style="color: #FBBB28;"></i>
+                <div class="stat-value" id="timer">00:00</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-mouse-pointer" style="color: #E9901E;"></i>
+                <div class="stat-value" id="moves">0 movimientos</div>
+            </div>
+            <button class="restart-btn" onclick="restartGame()">
+                <i class="fas fa-redo" style="margin-right: 5px;"></i>
+                Reiniciar
+            </button>
+        </div>
+
+        <!-- Mensaje de victoria -->
+        <div class="victory-message" id="victoryMessage">
+            <i class="fas fa-trophy victory-icon"></i>
+            <span id="victoryText">¡Felicitaciones! Completaste el juego.</span>
+        </div>
+
+        <!-- Grid de cartas -->
+        <div class="game-grid" id="gameGrid">
+            <!-- Las cartas se generan dinámicamente -->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-credit">
+                <i class="fas fa-graduation-cap" style="color: #FBBB28; margin-right: 5px;"></i>
+                Recurso gamificado desarrollado por el Profe Marlon Arcila
+            </div>
+            <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-youtube" style="color: #E9901E;"></i>
+                    Canal de YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-linkedin" style="color: #108181;"></i>
+                    LinkedIn
+                </a>
+            </div>
+            <div class="footer-license">
+                <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
+                Licenciado bajo Creative Commons 
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                    BY-NC-ND 4.0
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript del juego -->
+    <script src="../assets/js/flashcard.js"></script>
+    <script>
+        // Datos específicos del Módulo 6: Potenciación y Radicación
+        // Datos del juego
+        const gameData = [
+            { id: 1, type: 'concept', content: 'Potenciación', pair: 1 },
+            { id: 2, type: 'definition', content: 'Operación que representa multiplicación repetida de un mismo número.', pair: 1 },
+            { id: 3, type: 'concept', content: 'Radicación', pair: 2 },
+            { id: 4, type: 'definition', content: 'Operación inversa de potenciación que encuentra la base original.', pair: 2 },
+            { id: 5, type: 'concept', content: 'Exponente', pair: 3 },
+            { id: 6, type: 'definition', content: 'Número que indica cuántas veces se multiplica la base por sí misma.', pair: 3 },
+            { id: 7, type: 'concept', content: 'Números Irracionales', pair: 4 },
+            { id: 8, type: 'definition', content: 'Números con expansión decimal infinita no periódica como algunas raíces.', pair: 4 },
+            { id: 9, type: 'concept', content: 'Jerarquía de Operaciones', pair: 5 },
+            { id: 10, type: 'definition', content: 'Orden específico para resolver expresiones matemáticas con múltiples operaciones.', pair: 5 },
+            { id: 11, type: 'concept', content: 'Raíz Cuadrada', pair: 6 },
+            { id: 12, type: 'definition', content: 'Número que multiplicado por sí mismo da el número original.', pair: 6 }
+        ];
+
+        // Inicializar el juego cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const game = new FlashcardGame(gameData);
+                console.log('✅ Módulo 6: Potenciación y Radicación cargado correctamente');
+            } catch (error) {
+                console.error('❌ Error al inicializar el juego:', error);
+                alert('Error al cargar el juego. Por favor, recarga la página.');
+            }
+        });
+    </script>
+</body>
+</html>

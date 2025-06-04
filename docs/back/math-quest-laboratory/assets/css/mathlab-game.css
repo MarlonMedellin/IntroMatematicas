@@ -1,0 +1,824 @@
+/* 
+ * Math Quest Laboratory - Estilos Específicos del Laboratorio
+ * Extiende common.css del ecosistema del Colegio Mayor de Antioquia
+ * Desarrollado por Profe Marlon Arcila
+ * Versión: 1.0.0
+ */
+
+/* =========================================
+   VARIABLES ESPECÍFICAS DEL LABORATORIO
+   ========================================= */
+
+:root {
+    /* Variables específicas del laboratorio que extienden common.css */
+    --lab-workspace-bg: rgba(0, 174, 172, 0.1);
+    --lab-step-border: rgba(180, 196, 44, 0.3);
+    --lab-hint-glow: 0 0 15px rgba(251, 187, 40, 0.5);
+    --lab-success-glow: 0 0 20px rgba(0, 255, 136, 0.4);
+    --lab-error-glow: 0 0 20px rgba(255, 68, 68, 0.4);
+    --lab-glass-effect: backdrop-filter: blur(10px);
+    --lab-border-radius: 12px;
+    --lab-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --lab-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --lab-shadow-heavy: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL DEL LABORATORIO
+   ========================================= */
+
+.lab-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: calc(100vh - 200px);
+}
+
+/* =========================================
+   CONTENEDOR DEL EXPERIMENTO
+   ========================================= */
+
+.experiment-container {
+    background: var(--lab-workspace-bg);
+    border-radius: var(--lab-border-radius);
+    padding: 30px;
+    margin-bottom: 25px;
+    var(--lab-glass-effect);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--lab-shadow-light);
+    transition: var(--lab-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.experiment-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 50%, 
+        var(--accent-color) 100%);
+    border-radius: var(--lab-border-radius) var(--lab-border-radius) 0 0;
+}
+
+.experiment-container:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--lab-shadow-heavy);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   HEADER DEL EXPERIMENTO
+   ========================================= */
+
+.experiment-header {
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.experiment-header h3 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 600;
+    color: var(--accent-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.experiment-header h3 i {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+/* =========================================
+   CONTEXTO DEL PROBLEMA
+   ========================================= */
+
+.problem-context {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--lab-border-radius);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--accent-color);
+    position: relative;
+}
+
+.problem-context::before {
+    content: '🚀';
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    background: var(--dark-bg);
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.problem-context p {
+    margin: 12px 0;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.problem-context p:first-child {
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.problem-context p:last-child {
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   ÁREA DE TRABAJO
+   ========================================= */
+
+.workspace-area {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--lab-border-radius);
+    padding: 25px;
+    margin: 25px 0;
+    border: 2px solid var(--lab-step-border);
+    position: relative;
+}
+
+.workspace-area h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.workspace-area h4 i {
+    color: var(--secondary-color);
+}
+
+/* =========================================
+   PASOS DE SOLUCIÓN
+   ========================================= */
+
+.solution-steps {
+    margin: 20px 0;
+}
+
+.solution-step {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid var(--lab-step-border);
+    border-radius: 10px;
+    transition: var(--lab-transition);
+    gap: 15px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.solution-step::before {
+    content: attr(data-step);
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.solution-step:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(180, 196, 44, 0.5);
+}
+
+.solution-step.completed {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: var(--success-color);
+    box-shadow: var(--lab-success-glow);
+}
+
+.solution-step.completed::before {
+    background: var(--success-color);
+    content: '✓';
+}
+
+.solution-step.error {
+    background: rgba(255, 68, 68, 0.1);
+    border-color: var(--error-color);
+    box-shadow: var(--lab-error-glow);
+    animation: shake 0.5s ease-in-out;
+}
+
+.solution-step.error::before {
+    background: var(--error-color);
+    content: '✗';
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* =========================================
+   ELEMENTOS DE LOS PASOS
+   ========================================= */
+
+.step-label {
+    font-weight: 600;
+    color: var(--accent-color);
+    min-width: 60px;
+    font-size: 0.95rem;
+}
+
+.step-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    flex: 1;
+    min-width: 120px;
+}
+
+.step-operation {
+    font-family: 'Courier New', monospace;
+    color: var(--secondary-color);
+    font-weight: 600;
+    background: rgba(180, 196, 44, 0.1);
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+/* =========================================
+   CAMPOS DE ENTRADA
+   ========================================= */
+
+.step-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--lab-transition);
+    min-width: 80px;
+    max-width: 120px;
+    text-align: center;
+}
+
+.step-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.step-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(251, 187, 40, 0.2);
+}
+
+.step-input.completed {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+.step-input.error {
+    background: rgba(255, 68, 68, 0.2);
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+
+.step-input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   RESPUESTA FINAL
+   ========================================= */
+
+.final-answer {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(251, 187, 40, 0.1);
+    border-radius: var(--lab-border-radius);
+    border: 2px solid rgba(251, 187, 40, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.final-answer label {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    min-width: 140px;
+}
+
+.final-answer .step-input.final {
+    background: rgba(251, 187, 40, 0.2);
+    border-color: var(--accent-color);
+    font-size: 1.1rem;
+    min-width: 120px;
+    max-width: 180px;
+}
+
+.final-answer .step-input.final:focus {
+    box-shadow: 0 0 0 4px rgba(251, 187, 40, 0.3);
+}
+
+/* =========================================
+   CONTROLES DEL LABORATORIO
+   ========================================= */
+
+.lab-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.lab-controls button {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--lab-transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.lab-controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--lab-shadow-light);
+}
+
+.lab-controls button:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.lab-controls button:active {
+    transform: translateY(0);
+}
+
+/* Botones específicos */
+.hint-button {
+    background-color: var(--warning-color);
+    position: relative;
+}
+
+.hint-button.available {
+    animation: hint-pulse 2s infinite;
+}
+
+@keyframes hint-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(233, 144, 30, 0.4); 
+    }
+    50% { 
+        box-shadow: var(--lab-hint-glow);
+    }
+}
+
+.verify-button {
+    background-color: var(--secondary-color);
+}
+
+.next-button {
+    background-color: var(--primary-color);
+}
+
+.lab-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.lab-controls button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   PROGRESO DE PASOS
+   ========================================= */
+
+.step-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.step-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--lab-transition);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.step-indicator.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--dark-bg);
+    box-shadow: 0 0 15px rgba(251, 187, 40, 0.4);
+    transform: scale(1.1);
+}
+
+.step-indicator.completed {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.step-indicator.error {
+    background: var(--error-color);
+    border-color: var(--error-color);
+    color: white;
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Conectores entre indicadores */
+.step-progress .step-indicator:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(100% + 7.5px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+}
+
+.step-progress .step-indicator.completed:not(:last-child)::after {
+    background: var(--success-color);
+}
+
+/* =========================================
+   SISTEMA DE HINTS
+   ========================================= */
+
+.hint-display {
+    background: rgba(233, 144, 30, 0.1);
+    border: 2px solid rgba(233, 144, 30, 0.3);
+    border-radius: var(--lab-border-radius);
+    padding: 20px;
+    margin: 20px 0;
+    display: none;
+    animation: slideDown 0.5s ease-out;
+}
+
+.hint-display.show {
+    display: block;
+}
+
+.hint-display .hint-icon {
+    float: left;
+    font-size: 1.5rem;
+    color: var(--warning-color);
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.hint-display .hint-content {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-left: 40px;
+}
+
+.hint-display .hint-level {
+    background: var(--warning-color);
+    color: var(--dark-bg);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    float: right;
+    margin-top: -5px;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   FEEDBACK DE PASOS
+   ========================================= */
+
+.step-feedback {
+    background: rgba(0, 174, 172, 0.1);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 var(--lab-border-radius) var(--lab-border-radius) 0;
+    padding: 15px;
+    margin: 10px 0;
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.step-feedback.show {
+    display: block;
+}
+
+.step-feedback.success {
+    background: rgba(0, 255, 136, 0.1);
+    border-left-color: var(--success-color);
+}
+
+.step-feedback.error {
+    background: rgba(255, 68, 68, 0.1);
+    border-left-color: var(--error-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 768px) {
+    .lab-container {
+        padding: 15px;
+    }
+    
+    .experiment-container {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .solution-step {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+        gap: 10px;
+    }
+    
+    .solution-step::before {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+    }
+    
+    .step-input {
+        margin-top: 10px;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .final-answer {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .final-answer label {
+        min-width: auto;
+    }
+    
+    .lab-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .lab-controls button {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .step-progress {
+        gap: 10px;
+    }
+    
+    .step-indicator {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+    
+    .problem-context {
+        padding: 20px;
+    }
+    
+    .workspace-area {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .experiment-container {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .problem-context {
+        padding: 15px;
+    }
+    
+    .workspace-area {
+        padding: 15px;
+    }
+    
+    .solution-step {
+        padding: 15px 10px;
+    }
+    
+    .step-indicator {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+    
+    .step-progress {
+        gap: 8px;
+    }
+    
+    .hint-display .hint-content {
+        margin-left: 0;
+    }
+    
+    .hint-display .hint-icon {
+        float: none;
+        margin: 0 0 10px 0;
+        text-align: center;
+        display: block;
+    }
+}
+
+/* =========================================
+   ACCESIBILIDAD
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .experiment-container,
+    .solution-step,
+    .step-input,
+    .step-indicator,
+    .lab-controls button {
+        transition: none;
+    }
+    
+    .hint-display.show,
+    .step-feedback.show {
+        animation: none;
+    }
+    
+    .hint-button.available {
+        animation: none;
+    }
+    
+    .solution-step.error {
+        animation: none;
+    }
+    
+    .step-indicator.error {
+        animation: none;
+    }
+}
+
+/* =========================================
+   ESTADOS DE CARGA
+   ========================================= */
+
+.lab-container.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.lab-container.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border: 5px solid var(--primary-color);
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   UTILIDADES
+   ========================================= */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+
+.hidden { display: none; }
+.visible { display: block; }
+
+/* =========================================
+   EFECTOS ESPECIALES
+   ========================================= */
+
+.celebration-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--success-color);
+    border-radius: 50%;
+    animation: float 3s ease-out forwards;
+}
+
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0);
+    }
+}

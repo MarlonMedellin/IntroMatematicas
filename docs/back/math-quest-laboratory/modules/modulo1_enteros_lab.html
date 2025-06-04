@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quest Laboratory - Módulo 1: Números Enteros</title>
+    <meta name="description" content="Laboratorio de resolución de problemas complejos con números enteros - Colegio Mayor de Antioquia">
+    <meta name="keywords" content="matemáticas, números enteros, laboratorio, educación, gamificación">
+    <meta name="author" content="Profe Marlon Arcila - Colegio Mayor de Antioquia">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Math Quest Laboratory - Números Enteros">
+    <meta property="og:description" content="Resuelve experimentos espaciales con números enteros paso a paso">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <!-- Google Fonts - Montserrat (Reutilizado del ecosistema) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons (Reutilizado del ecosistema) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- CSS Stylesheets -->
+    <!-- ✅ REUTILIZADO - Estilos base del ecosistema -->
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <!-- 🆕 NUEVO - Estilos específicos del laboratorio -->
+    <link rel="stylesheet" href="../assets/css/mathlab-game.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="../assets/js/mathlab-engine.js" as="script">
+    <link rel="preload" href="../assets/data/modulo1-lab-problems.js" as="script">
+</head>
+<body>
+    <!-- ✅ REUTILIZADO - Estructura base del ecosistema -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-flask" style="color: #FBBB28; margin-right: 15px;"></i>
+                Math Quest Laboratory
+            </h1>
+            <p>Módulo 1: Sistema de los Números Enteros</p>
+            <div class="subtitle">
+                <i class="fas fa-rocket" style="color: #00AEAC; margin-right: 8px;"></i>
+                Resuelve experimentos espaciales paso a paso, sin prisa
+            </div>
+        </div>
+
+        <!-- ✅ REUTILIZADO - Panel de estadísticas adaptado del Space Shooter -->
+        <div class="stats-panel">
+            <div class="stat-item">
+                <i class="fas fa-vial"></i>
+                <div class="stat-label">Experimento</div>
+                <div class="stat-value" id="experiment-count">1/10</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                <div class="stat-label">Puntos</div>
+                <div class="stat-value" id="score">0</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-brain"></i>
+                <div class="stat-label">Independencia</div>
+                <div class="stat-value" id="independence">0</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <div class="stat-label">Tiempo</div>
+                <div class="stat-value" id="timer">00:00</div>
+            </div>
+            <div class="stat-item">
+                <!-- ✅ REUTILIZADO - Botón de reinicio del Space Shooter -->
+                <button class="restart-btn" onclick="restartLaboratory()" id="restart-btn">
+                    <i class="fas fa-redo"></i> Reiniciar
+                </button>
+            </div>
+        </div>
+
+        <!-- ✅ REUTILIZADO - Mensaje de victoria adaptado -->
+        <div class="victory-message" id="victory-message">
+            <i class="fas fa-trophy victory-icon"></i>
+            <div id="victory-text">¡Laboratorio completado!</div>
+            <div id="victory-stats">¡Excelente trabajo científico!</div>
+        </div>
+
+        <!-- ✅ REUTILIZADO - Mensaje de error -->
+        <div class="error-message" id="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div id="error-text">Error en el laboratorio</div>
+        </div>
+
+        <!-- 🆕 NUEVO - Área principal del laboratorio -->
+        <div id="lab-area" class="lab-container">
+            <!-- Contenido dinámico generado por JavaScript -->
+            <div class="loading-message">
+                <i class="fas fa-atom fa-spin" style="font-size: 2rem; color: #00AEAC; margin-bottom: 15px;"></i>
+                <p>Preparando el laboratorio espacial...</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Cargando experimentos de números enteros</p>
+            </div>
+        </div>
+
+        <!-- 🆕 NUEVO - Área de feedback pedagógico -->
+        <div id="feedback-area" class="feedback-container" style="display: none;">
+            <!-- Feedback específico para cada experimento -->
+        </div>
+
+        <!-- ✅ REUTILIZADO - Barra de progreso -->
+        <div class="progress-container" style="margin: 20px auto; max-width: 600px;">
+            <div class="progress-label">
+                <span>Progreso del Módulo</span>
+                <span id="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- ✅ REUTILIZADO - Footer del ecosistema -->
+        <div class="footer">
+            <div class="footer-credit">
+                <i class="fas fa-graduation-cap" style="color: #FBBB28; margin-right: 5px;"></i>
+                Recurso gamificado desarrollado por el Profe Marlon Arcila
+            </div>
+            <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" 
+                   style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-youtube" style="color: #E9901E;"></i>
+                    Canal de YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" 
+                   style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-linkedin" style="color: #108181;"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/MarlonMedellin" target="_blank" 
+                   style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-github" style="color: #FBBB28;"></i>
+                    GitHub
+                </a>
+            </div>
+            <div class="footer-license">
+                <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
+                Licenciado bajo Creative Commons 
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                    BY-NC-ND 4.0
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🆕 NUEVO - Modal de reflexión educativa -->
+    <div id="reflection-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-lightbulb" style="color: #FBBB28; margin-right: 10px;"></i>
+                    Reflexión Educativa
+                </h3>
+                <button class="modal-close" onclick="closeReflectionModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="reflection-content">
+                <!-- Contenido de reflexión generado dinámicamente -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="goToMainMenu()">
+                    <i class="fas fa-home"></i> Menú Principal
+                </button>
+                <button class="btn btn-secondary" onclick="restartLaboratory()">
+                    <i class="fas fa-redo"></i> Repetir Laboratorio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🆕 NUEVO - Modal de ayuda -->
+    <div id="help-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-question-circle" style="color: #00AEAC; margin-right: 10px;"></i>
+                    ¿Cómo usar el laboratorio?
+                </h3>
+                <button class="modal-close" onclick="closeHelpModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h4><i class="fas fa-play"></i> Cómo jugar</h4>
+                    <ol>
+                        <li><strong>Lee el experimento:</strong> Cada problema está contextualizado en una situación espacial</li>
+                        <li><strong>Resuelve paso a paso:</strong> Completa cada paso en el área de trabajo</li>
+                        <li><strong>Usa pistas si necesitas:</strong> Máximo 3 pistas por experimento</li>
+                        <li><strong>Verifica tu respuesta:</strong> El sistema valida cada paso</li>
+                        <li><strong>Avanza al siguiente:</strong> Completa los 10 experimentos del módulo</li>
+                    </ol>
+                </div>
+                <div class="help-section">
+                    <h4><i class="fas fa-keyboard"></i> Controles</h4>
+                    <ul>
+                        <li><strong>Tab:</strong> Navegar entre campos</li>
+                        <li><strong>Enter:</strong> Verificar paso actual</li>
+                        <li><strong>Escape:</strong> Solicitar pista</li>
+                        <li><strong>Ctrl + R:</strong> Reiniciar experimento</li>
+                    </ul>
+                </div>
+                <div class="help-section">
+                    <h4><i class="fas fa-trophy"></i> Sistema de puntuación</h4>
+                    <ul>
+                        <li><strong>+50 puntos:</strong> Por cada paso correcto</li>
+                        <li><strong>+200 puntos:</strong> Por completar un experimento</li>
+                        <li><strong>+100 puntos:</strong> Bonus por resolver sin pistas</li>
+                        <li><strong>-25 puntos:</strong> Por usar pistas (pedagógico)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeHelpModal()">
+                    <i class="fas fa-check"></i> Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button for Help -->
+    <div class="fab-help" onclick="openHelpModal()" title="Ayuda">
+        <i class="fas fa-question"></i>
+    </div>
+
+    <!-- JavaScript Dependencies -->
+    <!-- 🆕 NUEVO - Datos del módulo específico -->
+    <script src="../assets/data/modulo1-lab-problems.js"></script>
+    
+    <!-- 🆕 NUEVO - Motor principal del laboratorio -->
+    <script src="../assets/js/mathlab-engine.js"></script>
+    
+    <!-- 🆕 NUEVO - Controlador del área de trabajo -->
+    <script src="../assets/js/workspace-controller.js"></script>
+    
+    <!-- 🆕 NUEVO - Sistema de hints -->
+    <script src="../assets/js/hint-system.js"></script>
+    
+    <!-- 🆕 NUEVO - Validador de pasos -->
+    <script src="../assets/js/step-validator.js"></script>
+
+    <!-- ✅ REUTILIZADO - Patrón de inicialización del ecosistema -->
+    <script>
+        // Variables globales del laboratorio
+        let labEngine = null;
+        let startTime = null;
+        let timerInterval = null;
+
+        // ✅ REUTILIZADO - Inicialización adaptada del Space Shooter
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔬 Iniciando Math Quest Laboratory - Módulo 1...');
+            
+            try {
+                // Verificar que los datos están disponibles
+                if (typeof Modulo1LabConfig === 'undefined' || typeof Modulo1LabProblems === 'undefined') {
+                    throw new Error('Datos del módulo no disponibles');
+                }
+                
+                // Crear instancia del motor del laboratorio
+                labEngine = new MathLabEngine(Modulo1LabConfig, Modulo1LabProblems);
+                
+                // Inicializar laboratorio
+                labEngine.init();
+                
+                // Iniciar cronómetro
+                startTimer();
+                
+                // Hacer disponible globalmente para debugging
+                window.labEngine = labEngine;
+                
+                console.log('✅ Math Quest Laboratory iniciado correctamente');
+                
+                // Mostrar mensaje de bienvenida
+                showWelcomeMessage();
+                
+            } catch (error) {
+                console.error('❌ Error iniciando laboratorio:', error);
+                showError('Error iniciando el laboratorio. Por favor recarga la página.');
+            }
+        });
+
+        // ✅ REUTILIZADO - Funciones de utilidad del Space Shooter
+        function restartLaboratory() {
+            if (labEngine) {
+                if (confirm('¿Estás seguro de que quieres reiniciar el laboratorio? Se perderá todo el progreso.')) {
+                    labEngine.restart();
+                    resetTimer();
+                    startTimer();
+                }
+            }
+        }
+
+        function goToMainMenu() {
+            if (confirm('¿Deseas regresar al menú principal? Se perderá el progreso actual.')) {
+                window.location.href = '../index.html';
+            }
+        }
+
+        // 🆕 NUEVO - Funciones específicas del laboratorio
+        function showWelcomeMessage() {
+            const welcomeHTML = `
+                <div class="welcome-popup" id="welcome-popup">
+                    <div class="welcome-content">
+                        <div class="welcome-header">
+                            <i class="fas fa-rocket" style="font-size: 2rem; color: #FBBB28; margin-bottom: 10px;"></i>
+                            <h3>¡Bienvenido al Laboratorio Espacial!</h3>
+                        </div>
+                        <div class="welcome-body">
+                            <p>Vas a resolver <strong>10 experimentos</strong> con números enteros.</p>
+                            <p>Cada experimento te presenta una situación espacial que debes resolver <strong>paso a paso</strong>.</p>
+                            <p><strong>No hay límite de tiempo</strong> - enfócate en comprender cada paso.</p>
+                            <div class="welcome-tips">
+                                <h4><i class="fas fa-lightbulb"></i> Consejos:</h4>
+                                <ul>
+                                    <li>Lee cuidadosamente cada experimento</li>
+                                    <li>Resuelve paso a paso en el área de trabajo</li>
+                                    <li>Usa las pistas si las necesitas (máximo 3 por problema)</li>
+                                    <li>¡Diviértete aprendiendo matemáticas!</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="welcome-footer">
+                            <button class="btn btn-primary" onclick="closeWelcomeMessage()">
+                                <i class="fas fa-flask"></i> ¡Comenzar Experimentos!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', welcomeHTML);
+        }
+
+        function closeWelcomeMessage() {
+            const welcomePopup = document.getElementById('welcome-popup');
+            if (welcomePopup) {
+                welcomePopup.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => {
+                    welcomePopup.remove();
+                }, 300);
+            }
+        }
+
+        // Timer functions
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function resetTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            startTime = null;
+            document.getElementById('timer').textContent = '00:00';
+        }
+
+        function updateTimer() {
+            if (startTime) {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Modal functions
+        function openHelpModal() {
+            document.getElementById('help-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHelpModal() {
+            document.getElementById('help-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeReflectionModal() {
+            document.getElementById('reflection-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ✅ REUTILIZADO - Función de error del Space Shooter
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            
+            if (errorElement && errorText) {
+                errorText.textContent = message;
+                errorElement.classList.add('show');
+                
+                setTimeout(() => {
+                    errorElement.classList.remove('show');
+                }, 5000);
+            }
+        }
+
+        // Event listeners para accesibilidad
+        document.addEventListener('keydown', function(event) {
+            // ESC para solicitar pista
+            if (event.key === 'Escape') {
+                if (labEngine && typeof labEngine.requestHint === 'function') {
+                    labEngine.requestHint();
+                }
+            }
+            
+            // Ctrl + R para reiniciar
+            if (event.ctrlKey && event.key === 'r') {
+                event.preventDefault();
+                restartLaboratory();
+            }
+            
+            // F1 para ayuda
+            if (event.key === 'F1') {
+                event.preventDefault();
+                openHelpModal();
+            }
+        });
+
+        // Prevenir pérdida accidental de progreso
+        window.addEventListener('beforeunload', function(event) {
+            if (labEngine && labEngine.state.currentProblemIndex > 0) {
+                const message = '¿Estás seguro de que quieres salir? Se perderá el progreso del laboratorio.';
+                event.returnValue = message;
+                return message;
+            }
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            // Medir tiempo de carga
+            const loadTime = performance.now();
+            console.log(`🚀 Laboratorio cargado en ${Math.round(loadTime)}ms`);
+            
+            // Analytics básicos (si están disponibles)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'lab_loaded', {
+                    'event_category': 'Math Lab',
+                    'event_label': 'Modulo 1 - Enteros',
+                    'value': Math.round(loadTime)
+                });
+            }
+        });
+    </script>
+
+    <!-- CSS adicional para modales y componentes específicos -->
+    <style>
+        /* Estilos para modales */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header {
+            padding: 20px 25px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #FBBB28;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .modal-body {
+            padding: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .modal-footer {
+            padding: 15px 25px 25px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* FAB Help Button */
+        .fab-help {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(180, 196, 44, 0.3);
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .fab-help:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(180, 196, 44, 0.4);
+        }
+
+        /* Welcome popup */
+        .welcome-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .welcome-content {
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid rgba(251, 187, 40, 0.3);
+        }
+
+        .welcome-tips {
+            text-align: left;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .welcome-tips h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .welcome-tips ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .welcome-tips li {
+            margin: 5px 0;
+        }
+
+        .help-section {
+            margin-bottom: 25px;
+        }
+
+        .help-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .help-section ul, .help-section ol {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .help-section li {
+            margin: 8px 0;
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .progress-container {
+            margin: 20px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .fab-help {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10px;
+            }
+
+            .welcome-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</body>
+</html>

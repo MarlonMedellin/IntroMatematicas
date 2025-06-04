@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Matemático - Módulo 5: Aplicaciones y Sistemas de Medida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 🎨 VARIABLES CSS - Reutilizando la paleta del ecosistema */
+        :root {
+            --primary-color: #00AEAC;
+            --secondary-color: #B4C42C;
+            --accent-color: #FBBB28;
+            --background-dark: #172139;
+            --background-light: #195855;
+            --text-light: #ffffff;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* 🚀 HEADER */
+        .lab-header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(251, 187, 40, 0.3);
+        }
+
+        .lab-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .lab-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.9;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        /* 📊 PANEL DE ESTADÍSTICAS */
+        .stats-panel {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .stat-label i {
+            color: var(--primary-color);
+        }
+
+        /* 🎯 ÁREA DE EXPERIMENTO */
+        .experiment-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .experiment-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(251, 187, 40, 0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .experiment-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 174, 172, 0.3);
+        }
+
+        .experiment-context {
+            background: rgba(180, 196, 44, 0.15);
+            border: 1px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .context-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            flex-shrink: 0;
+        }
+
+        .context-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .experiment-question {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 25px 0;
+            text-align: center;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .calculation-area {
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px dashed rgba(251, 187, 40, 0.4);
+        }
+
+        .calculation-label {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            border: 3px solid rgba(251, 187, 40, 0.3);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(251, 187, 40, 0.3);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .answer-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* 🔽 BOTONES */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #108181);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 174, 172, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 174, 172, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-color), #8a9a1f);
+            color: var(--background-dark);
+            box-shadow: 0 4px 15px rgba(180, 196, 44, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(180, 196, 44, 0.4);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--accent-color), #d49a1e);
+            color: var(--background-dark);
+            box-shadow: 0 4px 15px rgba(251, 187, 40, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* 💬 FEEDBACK */
+        .feedback-container {
+            margin: 25px 0;
+            min-height: 60px;
+        }
+
+        .feedback {
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .feedback.correct {
+            background: rgba(40, 167, 69, 0.2);
+            border: 2px solid var(--success-color);
+            color: #90ee90;
+            display: flex;
+        }
+
+        .feedback.incorrect {
+            background: rgba(220, 53, 69, 0.2);
+            border: 2px solid var(--error-color);
+            color: #ff6b6b;
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 💡 PISTAS */
+        .hint-container {
+            background: rgba(251, 187, 40, 0.1);
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .hint-container.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .hint-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hint-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* 📈 PROGRESO */
+        .progress-container {
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            height: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            transition: width 0.8s ease;
+            border-radius: 25px;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 🎉 PANTALLA DE VICTORIA */
+        .victory-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .victory-content {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .victory-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .victory-stats {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* 📱 RESPONSIVE */
+        @media (max-width: 768px) {
+            .stats-panel {
+                flex-direction: column;
+                gap: 20px;
+                padding: 25px;
+            }
+
+            .stat-item {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .experiment-card {
+                padding: 25px 20px;
+                margin: 20px 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* 🎨 EFECTOS ESPECIALES */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-license {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        .footer-license a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 🚀 HEADER -->
+    <div class="lab-header">
+        <h1 class="lab-title">
+            <i class="fas fa-flask"></i>
+            Laboratorio Matemático - Módulo 5
+        </h1>
+        <p class="lab-subtitle">
+            <i class="fas fa-ruler-combined"></i>
+            Aplicaciones y Sistemas de Medida - Colegio Mayor de Antioquia
+        </p>
+    </div>
+
+    <!-- 📊 ESTADÍSTICAS -->
+    <div class="stats-panel">
+        <div class="stat-item">
+            <div class="stat-value" id="currentExperiment">1</div>
+            <div class="stat-label">
+                <i class="fas fa-flask"></i>
+                Experimento
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="correctAnswers">0</div>
+            <div class="stat-label">
+                <i class="fas fa-check-circle"></i>
+                Correctas
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="accuracy">100%</div>
+            <div class="stat-label">
+                <i class="fas fa-bullseye"></i>
+                Precisión
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="score">0</div>
+            <div class="stat-label">
+                <i class="fas fa-star"></i>
+                Puntos
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔬 ÁREA DE EXPERIMENTO -->
+    <div class="experiment-container">
+        <div class="experiment-card">
+            <div class="experiment-number" id="experimentNumber">
+                Experimento 1/10
+            </div>
+
+            <!-- Contexto del problema -->
+            <div class="experiment-context">
+                <div class="context-icon" id="contextIcon">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <div class="context-text" id="contextText">
+                    Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.
+                </div>
+            </div>
+
+            <!-- Pregunta principal -->
+            <div class="experiment-question" id="questionText">
+                ¿Cuántos km puede recorrer con 15 litros?
+            </div>
+
+            <!-- Área de cálculo -->
+            <div class="calculation-area">
+                <div class="calculation-label">
+                    <i class="fas fa-calculator"></i>
+                    Realiza tu cálculo:
+                </div>
+                <input 
+                    type="text" 
+                    class="answer-input" 
+                    id="answerInput" 
+                    placeholder="Escribe tu respuesta aquí..."
+                    maxlength="20"
+                >
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">
+                    <i class="fas fa-check"></i>
+                    Verificar Respuesta
+                </button>
+                <button class="btn btn-secondary" id="hintBtn" onclick="showHint()">
+                    <i class="fas fa-lightbulb"></i>
+                    Mostrar Pista
+                </button>
+                <button class="btn btn-warning" id="skipBtn" onclick="skipQuestion()">
+                    <i class="fas fa-forward"></i>
+                    Saltar Pregunta
+                </button>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-container">
+                <div class="feedback" id="feedback"></div>
+            </div>
+
+            <!-- Pistas -->
+            <div class="hint-container" id="hintContainer">
+                <div class="hint-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Pista:
+                </div>
+                <div class="hint-text" id="hintText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📈 PROGRESO -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+        </div>
+        <div class="progress-text" id="progressText">
+            Experimento 1 de 10 completado
+        </div>
+    </div>
+
+    <!-- 🎉 PANTALLA DE VICTORIA -->
+    <div class="victory-screen" id="victoryScreen">
+        <div class="victory-content">
+            <div class="victory-title">
+                <i class="fas fa-trophy"></i>
+                ¡Laboratorio Completado!
+            </div>
+            <div class="victory-stats" id="victoryStats">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="restartLab()">
+                    <i class="fas fa-redo"></i>
+                    Repetir Laboratorio
+                </button>
+                <button class="btn btn-secondary" onclick="goToNextModule()">
+                    <i class="fas fa-arrow-right"></i>
+                    Siguiente Módulo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📄 FOOTER -->
+    <div class="footer">
+        <div class="footer-text">
+            <i class="fas fa-graduation-cap" style="color: var(--accent-color);"></i>
+            Recurso educativo desarrollado por el <strong>Profe Marlon Arcila</strong>
+        </div>
+        <div class="footer-license">
+            <i class="fab fa-creative-commons"></i>
+            Licenciado bajo Creative Commons 
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a>
+        </div>
+    </div>
+
+    <script>
+        // 🧪 DATOS DEL MÓDULO 5: APLICACIONES Y SISTEMAS DE MEDIDA
+        const experiments = [
+            {
+                context: "Una ambulancia recorre 3.5 km hasta el hospital.",
+                icon: "fas fa-ambulance",
+                question: "¿Cuántos metros recorre?",
+                calculation: "3.5 × 1,000",
+                answer: "3500",
+                hint: "Para convertir kilómetros a metros, multiplica por 1,000: 3.5 × 1,000 = 3,500 metros",
+                explanation: "3.5 km × 1,000 = 3,500 metros recorridos por la ambulancia"
+            },
+            {
+                context: "Un edificio tiene 1,200 metros de altura total incluyendo antenas.",
+                icon: "fas fa-building",
+                question: "¿Cuántos km de altura tiene?",
+                calculation: "1,200 ÷ 1,000",
+                answer: "1.2",
+                hint: "Para convertir metros a kilómetros, divide entre 1,000: 1,200 ÷ 1,000 = 1.2 km",
+                explanation: "1,200 metros ÷ 1,000 = 1.2 km de altura total del edificio"
+            },
+            {
+                context: "En un laboratorio se pesaron 2,500 gramos de una muestra.",
+                icon: "fas fa-weight",
+                question: "¿Cuántos kg son?",
+                calculation: "2,500 ÷ 1,000",
+                answer: "2.5",
+                hint: "Para convertir gramos a kilogramos, divide entre 1,000: 2,500 ÷ 1,000 = 2.5 kg",
+                explanation: "2,500 gramos ÷ 1,000 = 2.5 kg de muestra pesada"
+            },
+            {
+                context: "Una cirugía veterinaria dura 180 minutos.",
+                icon: "fas fa-user-md",
+                question: "¿Cuántas horas son?",
+                calculation: "180 ÷ 60",
+                answer: "3",
+                hint: "Para convertir minutos a horas, divide entre 60: 180 ÷ 60 = 3 horas",
+                explanation: "180 minutos ÷ 60 = 3 horas de duración de la cirugía"
+            },
+            {
+                context: "Un tanque de medicamento líquido contiene 3,200 ml.",
+                icon: "fas fa-flask",
+                question: "¿Cuántos litros son?",
+                calculation: "3,200 ÷ 1,000",
+                answer: "3.2",
+                hint: "Para convertir mililitros a litros, divide entre 1,000: 3,200 ÷ 1,000 = 3.2 litros",
+                explanation: "3,200 ml ÷ 1,000 = 3.2 litros de medicamento líquido"
+            },
+            {
+                context: "Una ventana en construcción mide 80 cm de ancho.",
+                icon: "fas fa-window-maximize",
+                question: "¿Cuántos mm son?",
+                calculation: "80 × 10",
+                answer: "800",
+                hint: "Para convertir centímetros a milímetros, multiplica por 10: 80 × 10 = 800 mm",
+                explanation: "80 cm × 10 = 800 mm de ancho de la ventana"
+            },
+            {
+                context: "Un proceso de fermentación en gastronomía dura 2.5 horas.",
+                icon: "fas fa-wine-bottle",
+                question: "¿Cuántos minutos son?",
+                calculation: "2.5 × 60",
+                answer: "150",
+                hint: "Para convertir horas a minutos, multiplica por 60: 2.5 × 60 = 150 minutos",
+                explanation: "2.5 horas × 60 = 150 minutos de fermentación"
+            },
+            {
+                context: "Un medicamento pesa 450 gramos por dosis.",
+                icon: "fas fa-pills",
+                question: "¿Cuántos kg pesa?",
+                calculation: "450 ÷ 1,000",
+                answer: "0.45",
+                hint: "Para convertir gramos a kilogramos, divide entre 1,000: 450 ÷ 1,000 = 0.45 kg",
+                explanation: "450 gramos ÷ 1,000 = 0.45 kg por dosis de medicamento"
+            },
+            {
+                context: "Una oficina de turismo tiene un área de 6 m².",
+                icon: "fas fa-map-marked-alt",
+                question: "¿Cuántos cm² son?",
+                calculation: "6 × 10,000",
+                answer: "60000",
+                hint: "Para convertir metros cuadrados a centímetros cuadrados, multiplica por 10,000: 6 × 10,000 = 60,000 cm²",
+                explanation: "6 m² × 10,000 = 60,000 cm² de área de la oficina"
+            },
+            {
+                context: "Un vehículo de transporte turístico viaja a 80 km/h durante 1.5 horas.",
+                icon: "fas fa-bus",
+                question: "¿Qué distancia recorre?",
+                calculation: "80 × 1.5",
+                answer: "120",
+                hint: "Distancia = velocidad × tiempo. Entonces: 80 km/h × 1.5 h = 120 km",
+                explanation: "80 km/h × 1.5 horas = 120 km de distancia recorrida"
+            }
+        ];
+
+        // 🎮 VARIABLES DEL JUEGO
+        let currentExperiment = 0;
+        let correctAnswers = 0;
+        let totalAttempts = 0;
+        let score = 0;
+        let hintsUsed = 0;
+        let skipsUsed = 0;
+
+        // 🚀 INICIALIZAR JUEGO
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExperiment();
+            
+            // Event listener para Enter
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            
+            // Focus en el input
+            document.getElementById('answerInput').focus();
+        });
+
+        // 📝 CARGAR EXPERIMENTO ACTUAL
+        function loadExperiment() {
+            if (currentExperiment >= experiments.length) {
+                showVictoryScreen();
+                return;
+            }
+
+            const experiment = experiments[currentExperiment];
+            
+            // Actualizar interfaz
+            document.getElementById('experimentNumber').textContent = `Experimento ${currentExperiment + 1}/10`;
+            document.getElementById('currentExperiment').textContent = currentExperiment + 1;
+            document.getElementById('contextIcon').innerHTML = `<i class="${experiment.icon}"></i>`;
+            document.getElementById('contextText').textContent = experiment.context;
+            document.getElementById('questionText').textContent = experiment.question;
+            
+            // Limpiar input y feedback
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('hintContainer').classList.remove('show');
+            
+            // Habilitar botones
+            document.getElementById('checkBtn').disabled = false;
+            document.getElementById('hintBtn').disabled = false;
+            
+            // Actualizar progreso
+            updateProgress();
+        }
+
+        // ✅ VERIFICAR RESPUESTA
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correctAnswer = experiments[currentExperiment].answer.toLowerCase();
+            const feedback = document.getElementById('feedback');
+            
+            if (!userAnswer) {
+                showFeedback('Escribe una respuesta antes de verificar', 'incorrect');
+                return;
+            }
+            
+            totalAttempts++;
+            
+            // Normalizar respuestas para comparación flexible
+            const normalizeAnswer = (answer) => {
+                return answer
+                    .replace(/[\s,$%°ckmlgpacientesplatoshabitacionescomerciales]/g, '')
+                    .replace(/km/g, '')
+                    .replace(/platos?/g, '')
+                    .replace(/pacientes?/g, '')
+                    .replace(/bultos?/g, '')
+                    .replace(/comerciales?/g, '')
+                    .replace(/habitaciones?/g, '')
+                    .replace(/gramos?/g, '')
+                    .replace(/arena/g, '')
+                    .toLowerCase();
+            };
+            
+            const normalizedUser = normalizeAnswer(userAnswer);
+            const normalizedCorrect = normalizeAnswer(correctAnswer);
+            
+            // Verificar si la respuesta es correcta (permitir variaciones)
+            const isCorrect = normalizedUser === normalizedCorrect || 
+                             // Permitir respuestas numéricas exactas para el Módulo 4
+                             userAnswer.includes('180') && correctAnswer.includes('180') ||
+                             userAnswer.includes('18') && correctAnswer.includes('18') ||
+                             userAnswer.includes('100') && correctAnswer.includes('100') ||
+                             userAnswer.includes('20') && correctAnswer.includes('20') ||
+                             userAnswer.includes('900000') && correctAnswer.includes('900000') ||
+                             userAnswer.includes('10') && correctAnswer.includes('10') ||
+                             userAnswer.includes('80') && correctAnswer.includes('80') ||
+                             userAnswer.includes('30') && correctAnswer.includes('30') ||
+                             userAnswer.includes('1000000') && correctAnswer.includes('1000000') ||
+                             userAnswer.includes('700') && correctAnswer.includes('700') ||
+                             // Permitir variaciones con comas
+                             (userAnswer.includes('900,000') || userAnswer.includes('900000')) && correctAnswer.includes('900000') ||
+                             (userAnswer.includes('1,000,000') || userAnswer.includes('1000000')) && correctAnswer.includes('1000000');
+            
+            if (isCorrect) {
+                correctAnswers++;
+                score += calculatePoints();
+                
+                showFeedback(`¡Excelente! ${experiments[currentExperiment].explanation}`, 'correct');
+                
+                // Continuar al siguiente experimento después de 3 segundos
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 3000);
+                
+            } else {
+                showFeedback(`Incorrecto. ${experiments[currentExperiment].explanation}`, 'incorrect');
+                
+                // Mostrar respuesta correcta y continuar
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 4000);
+            }
+            
+            document.getElementById('checkBtn').disabled = true;
+            updateStats();
+        }
+
+        // 📊 CALCULAR PUNTOS
+        function calculatePoints() {
+            let points = 100; // Puntos base
+            
+            // Bonus por no usar pistas
+            if (hintsUsed === 0) points += 50;
+            
+            // Penalización por usar pistas/saltos
+            points -= (hintsUsed * 10);
+            points -= (skipsUsed * 20);
+            
+            return Math.max(points, 10); // Mínimo 10 puntos
+        }
+
+        // 💡 MOSTRAR PISTA
+        function showHint() {
+            const hint = experiments[currentExperiment].hint;
+            document.getElementById('hintText').textContent = hint;
+            document.getElementById('hintContainer').classList.add('show');
+            document.getElementById('hintBtn').disabled = true;
+            hintsUsed++;
+        }
+
+        // ⏭️ SALTAR PREGUNTA
+        function skipQuestion() {
+            skipsUsed++;
+            totalAttempts++;
+            
+            showFeedback(`Pregunta saltada. ${experiments[currentExperiment].explanation}`, 'incorrect');
+            
+            setTimeout(() => {
+                currentExperiment++;
+                loadExperiment();
+            }, 3000);
+            
+            updateStats();
+        }
+
+        // 💬 MOSTRAR FEEDBACK
+        function showFeedback(message, type) {
+            const feedback = document.getElementById('feedback');
+            const icon = type === 'correct' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
+            
+            feedback.innerHTML = `${icon} ${message}`;
+            feedback.className = `feedback ${type}`;
+            feedback.style.display = 'flex';
+        }
+
+        // 📈 ACTUALIZAR ESTADÍSTICAS
+        function updateStats() {
+            document.getElementById('correctAnswers').textContent = correctAnswers;
+            document.getElementById('score').textContent = score;
+            
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        // 📊 ACTUALIZAR PROGRESO
+        function updateProgress() {
+            const progress = ((currentExperiment) / experiments.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = 
+                `Experimento ${currentExperiment} de ${experiments.length} completado`;
+        }
+
+        // 🏆 MOSTRAR PANTALLA DE VICTORIA
+        function showVictoryScreen() {
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            
+            let performanceMessage = '';
+            if (accuracy >= 90) performanceMessage = '¡Científico Excepcional! 🏆';
+            else if (accuracy >= 70) performanceMessage = '¡Buen Trabajo! 👍';
+            else if (accuracy >= 50) performanceMessage = '¡Sigue Practicando! 📚';
+            else performanceMessage = '¡Continúa Aprendiendo! 💪';
+            
+            document.getElementById('victoryStats').innerHTML = `
+                <h3>${performanceMessage}</h3>
+                <p><strong>Experimentos Correctos:</strong> ${correctAnswers}/${experiments.length}</p>
+                <p><strong>Precisión:</strong> ${accuracy}%</p>
+                <p><strong>Puntuación Final:</strong> ${score} puntos</p>
+                <p><strong>Pistas Usadas:</strong> ${hintsUsed}</p>
+                <p><strong>Preguntas Saltadas:</strong> ${skipsUsed}</p>
+            `;
+            
+            document.getElementById('victoryScreen').style.display = 'flex';
+        }
+
+        // 🔄 REINICIAR LABORATORIO
+        function restartLab() {
+            currentExperiment = 0;
+            correctAnswers = 0;
+            totalAttempts = 0;
+            score = 0;
+            hintsUsed = 0;
+            skipsUsed = 0;
+            
+            document.getElementById('victoryScreen').style.display = 'none';
+            updateStats();
+            loadExperiment();
+        }
+
+        // ➡️ IR AL SIGUIENTE MÓDULO
+        function goToNextModule() {
+            alert('¡Felicitaciones! Dirígete al Módulo 5: Aplicaciones y Sistemas de Medida');
+            // Aquí puedes redirigir al siguiente módulo
+            // window.location.href = 'modulo5_medidas_lab.html';
+        }
+
+        // 🎹 EFECTOS DE SONIDO SIMPLES
+        function playSound(frequency, duration = 200) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration / 1000);
+            } catch (e) {
+                // Silencioso si no hay soporte de audio
+            }
+        }
+
+        // 🎊 EFECTOS VISUALES
+        function createSparkles() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Añadir efectos cuando se responde correctamente
+        const originalShowFeedback = showFeedback;
+        showFeedback = function(message, type) {
+            originalShowFeedback(message, type);
+            if (type === 'correct') {
+                playSound(523); // Nota C5
+                createSparkles();
+            } else {
+                playSound(220); // Nota A3
+            }
+        };
+    </script>
+</body>
+</html>

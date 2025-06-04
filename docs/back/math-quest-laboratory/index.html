@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quest Laboratory - Colegio Mayor de Antioquia</title>
+    <meta name="description" content="Laboratorio de resolución de problemas matemáticos complejos - Sistema educativo gamificado del Colegio Mayor de Antioquia">
+    <meta name="keywords" content="matemáticas, laboratorio, educación, gamificación, resolución de problemas, Colegio Mayor">
+    <meta name="author" content="Profe Marlon Arcila - Colegio Mayor de Antioquia">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Math Quest Laboratory - Laboratorio Matemático">
+    <meta property="og:description" content="Resuelve experimentos matemáticos complejos paso a paso en nuestro laboratorio espacial">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts - Montserrat (Reutilizado del ecosistema) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons (Reutilizado del ecosistema) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- CSS Stylesheets -->
+    <!-- ✅ REUTILIZADO - Estilos base del ecosistema -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <!-- 🆕 NUEVO - Estilos específicos del laboratorio -->
+    <link rel="stylesheet" href="assets/css/mathlab-game.css">
+    
+    <style>
+        /* Estilos específicos para la página principal */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-section h2 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 500;
+            margin: 20px 0;
+            opacity: 0.9;
+            line-height: 1.4;
+            color: #B4C42C;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin: 15px auto;
+            max-width: 600px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .module-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            text-decoration: none;
+            color: white;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--primary-color) 0%, 
+                var(--secondary-color) 50%, 
+                var(--accent-color) 100%);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #FBBB28;
+            box-shadow: 0 12px 30px rgba(251, 187, 40, 0.25);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .module-card:focus {
+            outline: 3px solid #FBBB28;
+            outline-offset: 2px;
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .module-number {
+            background: linear-gradient(135deg, #00AEAC, #108181);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 174, 172, 0.3);
+        }
+
+        .module-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+            color: #FBBB28;
+            line-height: 1.2;
+        }
+
+        .module-description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            opacity: 0.9;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .module-concepts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .concept-tag {
+            background: rgba(180, 196, 44, 0.25);
+            color: #B4C42C;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(180, 196, 44, 0.3);
+        }
+
+        .module-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .module-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .stat-item i {
+            color: #00AEAC;
+            width: 16px;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #B4C42C, #8a9a1f);
+            color: #172139;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(180, 196, 44, 0.3);
+        }
+
+        .module-card:hover .play-button {
+            background: linear-gradient(135deg, #FBBB28, #d49a1e);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(251, 187, 40, 0.4);
+        }
+
+        /* Sección de características */
+        .features-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 35px;
+            margin: 50px auto;
+            max-width: 900px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .features-title {
+            color: #FBBB28;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .features-subtitle {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, rgba(251, 187, 40, 0.2), rgba(180, 196, 44, 0.2));
+            color: #FBBB28;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border: 2px solid rgba(251, 187, 40, 0.3);
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #00AEAC;
+            font-size: 1.1rem;
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Sección de comparación */
+        .comparison-section {
+            background: rgba(0, 174, 172, 0.1);
+            border-radius: 15px;
+            padding: 35px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 2px solid rgba(0, 174, 172, 0.2);
+        }
+
+        .comparison-title {
+            text-align: center;
+            color: #00AEAC;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .comparison-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-item h4 {
+            color: #FBBB28;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .comparison-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .cta-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #B4C42C;
+            margin-bottom: 15px;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #00AEAC, #108181);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 174, 172, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 174, 172, 0.4);
+            background: linear-gradient(135deg, #108181, #0a6b6b);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 15px;
+            }
+
+            .module-card {
+                padding: 25px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section {
+                padding: 30px 15px;
+            }
+
+            .features-section {
+                padding: 25px;
+                margin: 30px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .module-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .module-number {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .module-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .play-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animaciones de entrada */
+        .module-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .module-card:nth-child(1) { animation-delay: 0.1s; }
+        .module-card:nth-child(2) { animation-delay: 0.2s; }
+        .module-card:nth-child(3) { animation-delay: 0.3s; }
+        .module-card:nth-child(4) { animation-delay: 0.4s; }
+        .module-card:nth-child(5) { animation-delay: 0.5s; }
+        .module-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px;
+            border: 4px solid #00AEAC;
+            border-top: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-flask" style="color: #FBBB28; margin-right: 15px;"></i>
+                Math Quest Laboratory
+            </h1>
+            <p>Laboratorio de Resolución de Problemas Matemáticos</p>
+            <div class="subtitle">
+                <i class="fas fa-university" style="color: #00AEAC; margin-right: 8px;"></i>
+                Colegio Mayor de Antioquia - Curso Introductorio
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h2>
+                <i class="fas fa-rocket" style="color: #00AEAC; margin-right: 10px;"></i>
+                Experimenta con las matemáticas como un verdadero científico espacial
+            </h2>
+            <p class="hero-description">
+                Resuelve problemas matemáticos complejos paso a paso en nuestro laboratorio espacial. 
+                Cada experimento te desafía a pensar profundamente y comprender los conceptos fundamentales.
+            </p>
+            <div class="hero-description">
+                <strong>🔬 Sin límite de tiempo • 💡 Pistas inteligentes • 🎯 Enfoque en comprensión profunda</strong>
+            </div>
+        </div>
+
+        <!-- Modules Grid -->
+        <div class="modules-grid">
+            <!-- Módulo 1: Números Enteros -->
+            <a href="modules/modulo1_enteros_lab.html" class="module-card" data-module="1">
+                <div class="module-header">
+                    <div class="module-number">1</div>
+                    <h3 class="module-title">Sistema de los Números Enteros</h3>
+                </div>
+                <p class="module-description">
+                    Experimenta con operaciones complejas usando números positivos, negativos y el valor absoluto en situaciones espaciales realistas.
+                </p>
+                <div class="module-concepts">
+                    <span class="concept-tag">Suma de negativos</span>
+                    <span class="concept-tag">Valor absoluto</span>
+                    <span class="concept-tag">Coordenadas</span>
+                    <span class="concept-tag">Secuencias</span>
+                </div>
+                <div class="module-footer">
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-flask"></i>
+                            <span>10 experimentos</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3-5 min c/u</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span>Dificultad: ★★☆</span>
+                        </div>
+                    </div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                        Experimentar
+                    </button>
+                </div>
+            </a>
+
+            <!-- Módulo 2: Números Primos, MCM y MCD -->
+            <a href="modules/modulo2_primos_lab.html" class="module-card" data-module="2">
+                <div class="module-header">
+                    <div class="module-number">2</div>
+                    <h3 class="module-title">Números Primos, MCM y MCD</h3>
+                </div>
+                <p class="module-description">
+                    Descubre patrones matemáticos y optimiza recursos espaciales usando factorización, números primos y divisibilidad.
+                </p>
+                <div class="module-concepts">
+                    <span class="concept-tag">Factorización</span>
+                    <span class="concept-tag">Divisibilidad</span>
+                    <span class="concept-tag">Optimización</span>
+                    <span class="concept-tag">Patrones</span>
+                </div>
+                <div class="module-footer">
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-flask"></i>
+                            <span>10 experimentos</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>4-6 min c/u</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span>Dificultad: ★★★</span>
+                        </div>
+                    </div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                        Experimentar
+                    </button>
+                </div>
+            </a>
+
+            <!-- Módulo 3: Números Racionales -->
+            <a href="modules/modulo3_racionales_lab.html" class="module-card" data-module="3">
+                <div class="module-header">
+                    <div class="module-number">3</div>
+                    <h3 class="module-title">Sistema de los Números Racionales</h3>
+                </div>
+                <p class="module-description">
+                    Trabaja con fracciones y decimales en contextos espaciales que requieren precisión absoluta y cálculos exactos.
+                </p>
+                <div class="module-concepts">
+                    <span class="concept-tag">Fracciones</span>
+                    <span class="concept-tag">Decimales</span>
+                    <span class="concept-tag">Proporciones</span>
+                    <span class="concept-tag">Precisión</span>
+                </div>
+                <div class="module-footer">
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-flask"></i>
+                            <span>10 experimentos</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3-5 min c/u</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span>Dificultad: ★★☆</span>
+                        </div>
+                    </div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                        Experimentar
+                    </button>
+                </div>
+            </a>
+
+            <!-- Módulo 4: Razones, Proporciones y Regla de Tres -->
+            <a href="modules/modulo4_proporciones_lab.html" class="module-card" data-module="4">
+                <div class="module-header">
+                    <div class="module-number">4</div>
+                    <h3 class="module-title">Razones y Proporciones</h3>
+                </div>
+                <p class="module-description">
+                    Analiza relaciones proporcionales y escalamientos en sistemas espaciales complejos usando regla de tres avanzada.
+                </p>
+                <div class="module-concepts">
+                    <span class="concept-tag">Proporciones</span>
+                    <span class="concept-tag">Escalamiento</span>
+                    <span class="concept-tag">Regla de tres</span>
+                    <span class="concept-tag">Relaciones</span>
+                </div>
+                <div class="module-footer">
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-flask"></i>
+                            <span>10 experimentos</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>4-6 min c/u</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span>Dificultad: ★★★</span>
+                        </div>
+                    </div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                        Experimentar
+                    </button>
+                </div>
+            </a>
+
+            <!-- Módulo 5: Aplicaciones y Sistemas de Medida -->
+            <a href="modules/modulo5_medidas_lab.html" class="module-card" data-module="5">
+                <div class="module-header">
+                    <div class="module-number">5</div>
+                    <h3 class="module-title">Sistemas de Medida</h3>
+                </div>
+                <p class="module-description">
+                    Domina conversiones entre sistemas de medida en contextos espaciales internacionales y aplicaciones técnicas.
+                </p>
+                <div class="module-concepts">
+                    <span class="concept-tag">Conversiones</span>
+                    <span class="concept-tag">Sistema métrico</span>
+                    <span class="concept-tag">Unidades</span>
+                    <span class="concept-tag">Factores</span>
+                </div>
+                <div class="module-footer">
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-flask"></i>
+                            <span>10 experimentos</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3-4 min c/u</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span>Dificultad: ★★☆</span>
+                        </div>
+                    </div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                        Experimentar
+                    </button>
+                </div>
+            </a>
+
+            <!-- Módulo 6: Potenciación y Radicación -->
+            <a href="modules/modulo6_potencias_lab.html" class="module-card" data-module="6">
+                <div class="module-header">
+                    <div class="module-number">6</div>
+                    <h3 class="module-title">Potenciación y Radicación</h3>
+                </div>
+                <p class="module-description">
+                    Explora crecimiento exponencial y relaciones geométricas en sistemas espaciales avanzados con raíces y potencias.
+                </p>
+                <div class="module-concepts">
+                    <span class="concept-tag">Exponentes</span>
+                    <span class="concept-tag">Raíces</span>
+                    <span class="concept-tag">Crecimiento</span>
+                    <span class="concept-tag">Geometría</span>
+                </div>
+                <div class="module-footer">
+                    <div class="module-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-flask"></i>
+                            <span>10 experimentos</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>4-5 min c/u</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-star"></i>
+                            <span>Dificultad: ★★★</span>
+                        </div>
+                    </div>
+                    <button class="play-button">
+                        <i class="fas fa-play"></i>
+                        Experimentar
+                    </button>
+                </div>
+            </a>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h3 class="features-title">
+                <i class="fas fa-star" style="margin-right: 10px;"></i>
+                Características del Laboratorio
+            </h3>
+            <p class="features-subtitle">
+                Diseñado para el aprendizaje profundo y la comprensión duradera
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-title">Enfoque Reflexivo</div>
+                    <div class="feature-description">Sin presión de tiempo. Enfócate en comprender cada paso del proceso.</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="feature-title">Pistas Inteligentes</div>
+                    <div class="feature-description">Sistema adaptativo de ayuda que se ajusta a tu estilo de aprendizaje.</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="feature-title">Resolución Paso a Paso</div>
+                    <div class="feature-description">Descompone problemas complejos en pasos manejables y verificables.</div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="feature-title">Contextualizado</div>
+                    <div class="feature-description">Problemas aplicados a tu carrera profesional en el Colegio Mayor.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div class="comparison-section">
+            <h3 class="comparison-title">
+                <i class="fas fa-balance-scale" style="margin-right: 10px;"></i>
+                Ecosistema Educativo Completo
+            </h3>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h4><i class="fas fa-brain"></i> Flashcards</h4>
+                    <p>Memorización de conceptos y definiciones fundamentales</p>
+                </div>
+                <div class="comparison-item">
+                    <h4><i class="fas fa-rocket"></i> Space Shooter</h4>
+                    <p>Velocidad mental en operaciones básicas automáticas</p>
+                </div>
+                <div class="comparison-item">
+                    <h4><i class="fas fa-flask"></i> Math Laboratory</h4>
+                    <p>Comprensión profunda de problemas complejos aplicados</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3 class="cta-title">¿Listo para ser un científico matemático?</h3>
+            <p class="cta-description">
+                Comienza tu aventura en el laboratorio espacial más avanzado para el aprendizaje matemático.
+                Cada experimento te acerca más al dominio completo de las matemáticas.
+            </p>
+            <a href="modules/modulo1_enteros_lab.html" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Comenzar Primer Experimento
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-credit">
+                <i class="fas fa-graduation-cap" style="color: #FBBB28; margin-right: 5px;"></i>
+                Recurso gamificado desarrollado por el Profe Marlon Arcila
+            </div>
+            <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" 
+                   style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-youtube" style="color: #E9901E;"></i>
+                    Canal de YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" 
+                   style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-linkedin" style="color: #108181;"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/MarlonMedellin" target="_blank" 
+                   style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-github" style="color: #FBBB28;"></i>
+                    GitHub
+                </a>
+            </div>
+            <div class="footer-license">
+                <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
+                Licenciado bajo Creative Commons 
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                    BY-NC-ND 4.0
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efecto hover mejorado para las tarjetas con datos tracking
+        document.querySelectorAll('.module-card').forEach(card => {
+            const moduleNumber = card.dataset.module;
+            
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                
+                // Analytics tracking si está disponible
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'module_hover', {
+                        'event_category': 'Math Lab',
+                        'event_label': `Modulo ${moduleNumber}`,
+                        'value': parseInt(moduleNumber)
+                    });
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            // Tracking de clicks
+            card.addEventListener('click', function(e) {
+                // Analytics tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'module_click', {
+                        'event_category': 'Math Lab',
+                        'event_label': `Modulo ${moduleNumber}`,
+                        'value': parseInt(moduleNumber)
+                    });
+                }
+                
+                // Efecto visual de loading
+                this.classList.add('loading');
+                
+                // Remover loading después de que la página nueva cargue
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 1000);
+            });
+        });
+
+        // Animación de entrada escalonada
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.module-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+            
+            // Tracking de page load
+            const loadTime = performance.now();
+            console.log(`🚀 Math Lab Index cargado en ${Math.round(loadTime)}ms`);
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'event_category': 'Math Lab',
+                    'event_label': 'Index Page',
+                    'value': Math.round(loadTime)
+                });
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            // Navegación con números (1-6 para módulos)
+            const moduleNumber = parseInt(event.key);
+            if (moduleNumber >= 1 && moduleNumber <= 6) {
+                const moduleCard = document.querySelector(`[data-module="${moduleNumber}"]`);
+                if (moduleCard) {
+                    moduleCard.click();
+                }
+            }
+            
+            // Enter en el primer módulo
+            if (event.key === 'Enter' && !event.ctrlKey && !event.altKey) {
+                const firstModule = document.querySelector('[data-module="1"]');
+                if (firstModule) {
+                    firstModule.click();
+                }
+            }
+        });
+
+        // Intersection Observer para animaciones adicionales
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar secciones adicionales
+            document.querySelectorAll('.features-section, .comparison-section, .cta-section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease';
+                observer.observe(section);
+            });
+        }
+
+        // Service Worker para PWA (si está disponible)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('SW registrado exitosamente');
+                })
+                .catch(error => {
+                    console.log('SW registro falló');
+                });
+        }
+
+        // Detectar tema oscuro del sistema
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-theme');
+        }
+
+        // Error handling global
+        window.addEventListener('error', function(event) {
+            console.error('Error en Math Lab Index:', event.error);
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    'description': event.error.message,
+                    'fatal': false
+                });
+            }
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            // Medir Core Web Vitals si está disponible
+            if ('web-vital' in window) {
+                getCLS(console.log);
+                getFID(console.log);
+                getLCP(console.log);
+            }
+        });
+    </script>
+</body>
+</html>

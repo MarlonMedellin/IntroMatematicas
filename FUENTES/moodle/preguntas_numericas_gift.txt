@@ -1,0 +1,44 @@
+// Módulo 1: Sistema de los Números Enteros - Preguntas Numéricas
+// Instrucción: Todas las respuestas deben ser solo números, sin unidades ni separadores de miles
+
+$CATEGORY: preguntas_modulo1
+
+::P1-Diferencia-Temperatura:: Un chef de Gastronomía y Culinaria está ajustando una receta que originalmente sirve para 8 personas, pero necesita prepararla para 12 personas. Si la receta original requiere -3°C en el congelador por 2 horas, luego +180°C en el horno por 45 minutos, ¿cuál es la diferencia total de temperatura entre estos dos procesos?
+**IMPORTANTE: Responda solo con el número, sin unidades (°C) ni separadores de miles.**
+{#183}
+
+::P2-Ganancias-Hotel:: Un estudiante de Administración de Empresas Turísticas debe calcular las ganancias/pérdidas de un hotel durante una semana. Los resultados diarios fueron: Lunes +$450.000, Martes -$120.000, Miércoles +$380.000, Jueves -$75.000, Viernes +$520.000, Sábado +$680.000, Domingo +$95.000. ¿Cuál fue el resultado total de la semana?
+**IMPORTANTE: Responda solo con el número, sin símbolo de pesos ($) ni separadores de miles.**
+{#1930000}
+
+::P3-Diferencia-Altura:: En un proyecto de Construcciones Civiles, las mediciones del terreno muestran las siguientes alturas respecto al nivel del mar: Punto A: +15m, Punto B: -8m, Punto C: +22m, Punto D: -12m. ¿Cuál es la diferencia de altura entre el punto más alto y el más bajo?
+**IMPORTANTE: Responda solo con el número, sin unidades (m) ni separadores de miles.**
+{#34}
+
+::P4-Temperatura-Final:: Un laboratorista de Bacteriología debe registrar cambios de temperatura en un cultivo. La temperatura inicial es +37°C, luego baja 15°C, después sube 8°C, luego baja 12°C y finalmente sube 6°C. ¿Cuál es la temperatura final?
+**IMPORTANTE: Responda solo con el número, sin unidades (°C) ni separadores de miles.**
+{#24}
+
+::P5-Nivel-Rio:: En Ingeniería Ambiental, se monitorea el nivel de un río. Durante 5 días consecutivos, el nivel cambió: Día 1: +12cm, Día 2: -8cm, Día 3: -15cm, Día 4: +20cm, Día 5: -7cm. Si el nivel inicial era +145cm, ¿cuál es el nivel final?
+**IMPORTANTE: Responda solo con el número, sin unidades (cm) ni separadores de miles.**
+{#147}
+
+::P6-Altura-Proyecto:: Un delineante de Arquitectura e Ingeniería necesita calcular la diferencia de cotas en un plano. Las cotas son: Cota superior +8.50m, Cota de referencia 0.00m, Cota inferior -3.25m. ¿Cuál es la altura total del proyecto?
+**IMPORTANTE: Responda solo con el número usando punto como separador de decimales, sin unidades (m) ni separadores de miles.**
+{#11.75}
+
+::P7-Aprobacion-Candidato:: En Comunicación Social, una encuesta muestra variaciones en la aprobación de un candidato durante 6 semanas: +5%, -3%, +8%, -12%, +15%, -6%. Si comenzó con 45% de aprobación, ¿cuál es su aprobación final?
+**IMPORTANTE: Responda solo con el número, sin símbolo de porcentaje (%) ni separadores de miles.**
+{#52}
+
+::P8-pH-Final:: Un estudiante de Biotecnología registra cambios de pH en una solución durante un experimento: pH inicial 7, luego +2, después -5, luego +1, finalmente -2. ¿Cuál es el pH final?
+**IMPORTANTE: Responda solo con el número, sin unidades ni separadores de miles.**
+{#3}
+
+::P9-Poblacion-Actual:: En Planeación y Desarrollo Social, se analiza el crecimiento poblacional de un municipio en 4 años: Año 1: +1.200 habitantes, Año 2: -450 habitantes, Año 3: +890 habitantes, Año 4: -320 habitantes. Si la población inicial era 15.680 habitantes, ¿cuál es la población actual?
+**IMPORTANTE: Responda solo con el número, sin unidades (habitantes) ni separadores de miles.**
+{#17000}
+
+::P10-Precio-Final:: En Ingeniería Comercial, se analizan las variaciones del precio de un producto durante una semana: Lunes $25.000, Martes bajó $3.000, Miércoles subió $1.500, Jueves bajó $4.200, Viernes subió $2.800. ¿Cuál es el precio final?
+**IMPORTANTE: Responda solo con el número, sin símbolo de pesos ($) ni separadores de miles.**
+{#22100}

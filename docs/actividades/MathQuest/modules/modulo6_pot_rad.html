@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathQuest Introductorio de Matemáticas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+</head>
+<body>
+    <!-- 🚀 HEADER -->
+    <div class="lab-header">
+        <h1 class="lab-title">
+            <i class="fas fa-flask"></i>
+            Laboratorio Matemático - Módulo 6
+        </h1>
+        <p class="lab-subtitle">
+            <i class="fas fa-superscript"></i>
+            Potenciación y Radicación - Colegio Mayor de Antioquia
+        </p>
+    </div>
+
+    <!-- 📊 ESTADÍSTICAS -->
+    <div class="stats-panel">
+        <div class="stat-item">
+            <div class="stat-value" id="currentExperiment">1</div>
+            <div class="stat-label">
+                <i class="fas fa-flask"></i>
+                Experimento
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="correctAnswers">0</div>
+            <div class="stat-label">
+                <i class="fas fa-check-circle"></i>
+                Correctas
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="accuracy">100%</div>
+            <div class="stat-label">
+                <i class="fas fa-bullseye"></i>
+                Precisión
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="score">0</div>
+            <div class="stat-label">
+                <i class="fas fa-star"></i>
+                Puntos
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔬 ÁREA DE EXPERIMENTO -->
+    <div class="experiment-container">
+        <div class="experiment-card">
+            <div class="experiment-number" id="experimentNumber">
+                Experimento 1/10
+            </div>
+
+            <!-- Contexto del problema -->
+            <div class="experiment-context">
+                <div class="context-icon" id="contextIcon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <div class="context-text" id="contextText">
+                    En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias.
+                </div>
+            </div>
+
+            <!-- Pregunta principal -->
+            <div class="experiment-question" id="questionText">
+                ¿Cuántas bacterias habrá después de 4 horas?
+            </div>
+
+            <!-- Área de cálculo -->
+            <div class="calculation-area">
+                <div class="calculation-label">
+                    <i class="fas fa-calculator"></i>
+                    Realiza tu cálculo:
+                </div>
+                <input 
+                    type="text" 
+                    class="answer-input" 
+                    id="answerInput" 
+                    placeholder="Escribe tu respuesta aquí..."
+                    maxlength="20"
+                >
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">
+                    <i class="fas fa-check"></i>
+                    Verificar Respuesta
+                </button>
+                <button class="btn btn-secondary" id="hintBtn" onclick="showHint()">
+                    <i class="fas fa-lightbulb"></i>
+                    Mostrar Pista
+                </button>
+                <button class="btn btn-warning" id="skipBtn" onclick="skipQuestion()">
+                    <i class="fas fa-forward"></i>
+                    Saltar Pregunta
+                </button>
+            </div>
+
+            <!-- Feedback -->
+            <div class="feedback-container">
+                <div class="feedback" id="feedback"></div>
+            </div>
+
+            <!-- Pistas -->
+            <div class="hint-container" id="hintContainer">
+                <div class="hint-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Pista:
+                </div>
+                <div class="hint-text" id="hintText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📈 PROGRESO -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+        </div>
+        <div class="progress-text" id="progressText">
+            Experimento 1 de 10 completado
+        </div>
+    </div>
+
+    <!-- 🎉 PANTALLA DE VICTORIA -->
+    <div class="victory-screen" id="victoryScreen">
+        <div class="victory-content">
+            <div class="victory-title">
+                <i class="fas fa-trophy"></i>
+                ¡Laboratorio Completado!
+            </div>
+            <div class="victory-stats" id="victoryStats">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="restartLab()">
+                    <i class="fas fa-redo"></i>
+                    Repetir Laboratorio
+                </button>
+                <button class="btn btn-secondary" onclick="goToNextModule()">
+                    <i class="fas fa-graduation-cap"></i>
+                    ¡Curso Completado!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📄 FOOTER -->
+    <div class="footer">
+        <div class="footer-text">
+            <i class="fas fa-graduation-cap" style="color: var(--accent-color);"></i>
+            Recurso educativo desarrollado por el <strong>Profe Marlon Arcila</strong>
+        </div>
+        <div class="footer-license">
+            <i class="fab fa-creative-commons"></i>
+            Licenciado bajo Creative Commons 
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a>
+        </div>
+    </div>
+
+    <script>
+        // 🧪 DATOS DEL MÓDULO 6: POTENCIACIÓN Y RADICACIÓN
+        const experiments = [
+            {
+                context: "En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias.",
+                icon: "fas fa-microscope",
+                question: "¿Cuántas bacterias habrá después de 4 horas?",
+                calculation: "3 × 2⁴ = 3 × 16",
+                answer: "48",
+                hint: "Primero calcula 2⁴ = 2 × 2 × 2 × 2 = 16, luego multiplica: 3 × 16 = 48 bacterias",
+                explanation: "3 × 2⁴ = 3 × 16 = 48 bacterias después de 4 horas de duplicación"
+            },
+            {
+                context: "Un arquitecto diseña una plaza circular con radio de 8 metros. (usa π ≈ 3)",
+                icon: "fas fa-circle",
+                question: "¿Cuál es el área de la plaza?",
+                calculation: "Área = π × r² = 3 × 8²",
+                answer: "192",
+                hint: "Área del círculo = π × r². Calcula: 8² = 64, luego 3 × 64 = 192 m²",
+                explanation: "Área = 3 × 8² = 3 × 64 = 192 m² de área de la plaza circular"
+            },
+            {
+                context: "Una inversión turística se duplica cada año durante 3 años. Si la inversión inicial fue $50,000.",
+                icon: "fas fa-chart-line",
+                question: "¿Cuánto vale al final?",
+                calculation: "50,000 × 2³",
+                answer: "400000",
+                hint: "Calcula 2³ = 2 × 2 × 2 = 8, luego multiplica: 50,000 × 8 = 400,000",
+                explanation: "50,000 × 2³ = 50,000 × 8 = $400,000 valor final de la inversión"
+            },
+            {
+                context: "Un laboratorio tiene un área cuadrada de 144 m².",
+                icon: "fas fa-square",
+                question: "¿Cuánto mide cada lado?",
+                calculation: "Lado = √144",
+                answer: "12",
+                hint: "Busca un número que multiplicado por sí mismo dé 144. √144 = 12 porque 12 × 12 = 144",
+                explanation: "Lado = √144 = 12 metros cada lado del laboratorio cuadrado"
+            },
+            {
+                context: "En gastronomía, el tiempo de cocción aumenta con el cuadrado del grosor del corte. Si un corte de 3 cm sigue la fórmula (grosor)² × 10.",
+                icon: "fas fa-utensils",
+                question: "¿Cuánto tiempo tardará en cocinarse?",
+                calculation: "3² × 10",
+                answer: "90",
+                hint: "Calcula 3² = 3 × 3 = 9, luego multiplica: 9 × 10 = 90 minutos",
+                explanation: "3² × 10 = 9 × 10 = 90 minutos de tiempo de cocción"
+            },
+            {
+                context: "En una clínica, el costo de un tratamiento se reduce progresivamente. Si el costo inicial es $100,000 y se reduce cada mes a la raíz cuadrada del mes anterior durante 2 meses.",
+                icon: "fas fa-calculator",
+                question: "¿Cuál es el costo final aproximado?",
+                calculation: "√(√100,000)",
+                answer: "18000",
+                hint: "Primer mes: √100,000 ≈ 316. Segundo mes: √316 ≈ 18. Respuesta aproximada: $18,000",
+                explanation: "√(√100,000) = √316 ≈ 18, por lo tanto aproximadamente $18,000"
+            },
+            {
+                context: "Una empresa de comunicación organiza sus equipos en formación cuadrada de 9×9 personas.",
+                icon: "fas fa-users",
+                question: "¿Cuántas personas hay en total?",
+                calculation: "9²",
+                answer: "81",
+                hint: "9² = 9 × 9 = 81 personas en total",
+                explanation: "9² = 9 × 9 = 81 personas organizadas en formación cuadrada"
+            },
+            {
+                context: "En construcción, la resistencia de un material es proporcional a 4³.",
+                icon: "fas fa-hard-hat",
+                question: "¿Cuál es el factor de resistencia?",
+                calculation: "4³",
+                answer: "64",
+                hint: "4³ = 4 × 4 × 4. Primero: 4 × 4 = 16, luego: 16 × 4 = 64",
+                explanation: "4³ = 4 × 4 × 4 = 64 unidades de resistencia del material"
+            },
+            {
+                context: "Un hotel tiene un lobby cuadrado con área de 225 m².",
+                icon: "fas fa-hotel",
+                question: "¿Cuál es la longitud de cada lado?",
+                calculation: "Lado = √225",
+                answer: "15",
+                hint: "Busca un número que multiplicado por sí mismo dé 225. √225 = 15 porque 15 × 15 = 225",
+                explanation: "Lado = √225 = 15 metros cada lado del lobby cuadrado"
+            },
+            {
+                context: "Una campaña publicitaria multiplica su alcance por 3² cada semana. Después de 2 semanas el alcance se multiplicó según (3²)² y comenzó con 2,000 personas.",
+                icon: "fas fa-bullhorn",
+                question: "¿Cuál es el alcance final?",
+                calculation: "2,000 × (3²)² = 2,000 × 9²",
+                answer: "162000",
+                hint: "Primero: 3² = 9, luego (3²)² = 9² = 81. Finalmente: 2,000 × 81 = 162,000 personas",
+                explanation: "2,000 × (3²)² = 2,000 × 9² = 2,000 × 81 = 162,000 personas de alcance final"
+            }
+        ];
+
+        // 🎮 VARIABLES DEL JUEGO
+        let currentExperiment = 0;
+        let correctAnswers = 0;
+        let totalAttempts = 0;
+        let score = 0;
+        let hintsUsed = 0;
+        let skipsUsed = 0;
+
+        // 🚀 INICIALIZAR JUEGO
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExperiment();
+            
+            // Event listener para Enter
+            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+            
+            // Focus en el input
+            document.getElementById('answerInput').focus();
+        });
+
+        // 📝 CARGAR EXPERIMENTO ACTUAL
+        function loadExperiment() {
+            if (currentExperiment >= experiments.length) {
+                showVictoryScreen();
+                return;
+            }
+
+            const experiment = experiments[currentExperiment];
+            
+            // Actualizar interfaz
+            document.getElementById('experimentNumber').textContent = `Experimento ${currentExperiment + 1}/10`;
+            document.getElementById('currentExperiment').textContent = currentExperiment + 1;
+            document.getElementById('contextIcon').innerHTML = `<i class="${experiment.icon}"></i>`;
+            document.getElementById('contextText').textContent = experiment.context;
+            document.getElementById('questionText').textContent = experiment.question;
+            
+            // Limpiar input y feedback
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('hintContainer').classList.remove('show');
+            
+            // Habilitar botones
+            document.getElementById('checkBtn').disabled = false;
+            document.getElementById('hintBtn').disabled = false;
+            
+            // Actualizar progreso
+            updateProgress();
+        }
+
+        // ✅ VERIFICAR RESPUESTA
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correctAnswer = experiments[currentExperiment].answer.toLowerCase();
+            const feedback = document.getElementById('feedback');
+            
+            if (!userAnswer) {
+                showFeedback('Escribe una respuesta antes de verificar', 'incorrect');
+                return;
+            }
+            
+            totalAttempts++;
+            
+            // Normalizar respuestas para comparación flexible
+            const normalizeAnswer = (answer) => {
+                return answer
+                    .replace(/[\s,$%°cbacteriasm²personasunidades]/g, '')
+                    .replace(/bacterias?/g, '')
+                    .replace(/metros?/g, '')
+                    .replace(/m²?/g, '')
+                    .replace(/personas?/g, '')
+                    .replace(/unidades?/g, '')
+                    .replace(/minutos?/g, '')
+                    .replace(/aproximadamente/g, '')
+                    .toLowerCase();
+            };
+            
+            const normalizedUser = normalizeAnswer(userAnswer);
+            const normalizedCorrect = normalizeAnswer(correctAnswer);
+            
+            // Verificar si la respuesta es correcta (permitir variaciones)
+            const isCorrect = normalizedUser === normalizedCorrect || 
+                             // Permitir respuestas numéricas exactas para el Módulo 6
+                             userAnswer.includes('48') && correctAnswer.includes('48') ||
+                             userAnswer.includes('192') && correctAnswer.includes('192') ||
+                             userAnswer.includes('400000') && correctAnswer.includes('400000') ||
+                             userAnswer.includes('12') && correctAnswer.includes('12') ||
+                             userAnswer.includes('90') && correctAnswer.includes('90') ||
+                             userAnswer.includes('18000') && correctAnswer.includes('18000') ||
+                             userAnswer.includes('81') && correctAnswer.includes('81') ||
+                             userAnswer.includes('64') && correctAnswer.includes('64') ||
+                             userAnswer.includes('15') && correctAnswer.includes('15') ||
+                             userAnswer.includes('162000') && correctAnswer.includes('162000') ||
+                             // Permitir variaciones con comas para números grandes
+                             (userAnswer.includes('400,000') || userAnswer.includes('400000')) && correctAnswer.includes('400000') ||
+                             (userAnswer.includes('162,000') || userAnswer.includes('162000')) && correctAnswer.includes('162000') ||
+                             (userAnswer.includes('18,000') || userAnswer.includes('18000')) && correctAnswer.includes('18000') ||
+                             // Permitir respuestas con unidades
+                             (userAnswer.includes('48') && userAnswer.includes('bacteria')) ||
+                             (userAnswer.includes('192') && userAnswer.includes('m²')) ||
+                             (userAnswer.includes('12') && userAnswer.includes('metro')) ||
+                             (userAnswer.includes('90') && userAnswer.includes('minuto')) ||
+                             (userAnswer.includes('81') && userAnswer.includes('persona')) ||
+                             (userAnswer.includes('15') && userAnswer.includes('metro'));
+            
+            if (isCorrect) {
+                correctAnswers++;
+                score += calculatePoints();
+                
+                showFeedback(`¡Excelente! ${experiments[currentExperiment].explanation}`, 'correct');
+                
+                // Continuar al siguiente experimento después de 3 segundos
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 3000);
+                
+            } else {
+                showFeedback(`Incorrecto. ${experiments[currentExperiment].explanation}`, 'incorrect');
+                
+                // Mostrar respuesta correcta y continuar
+                setTimeout(() => {
+                    currentExperiment++;
+                    loadExperiment();
+                }, 4000);
+            }
+            
+            document.getElementById('checkBtn').disabled = true;
+            updateStats();
+        }
+
+        // 📊 CALCULAR PUNTOS
+        function calculatePoints() {
+            let points = 100; // Puntos base
+            
+            // Bonus por no usar pistas
+            if (hintsUsed === 0) points += 50;
+            
+            // Penalización por usar pistas/saltos
+            points -= (hintsUsed * 10);
+            points -= (skipsUsed * 20);
+            
+            return Math.max(points, 10); // Mínimo 10 puntos
+        }
+
+        // 💡 MOSTRAR PISTA
+        function showHint() {
+            const hint = experiments[currentExperiment].hint;
+            document.getElementById('hintText').textContent = hint;
+            document.getElementById('hintContainer').classList.add('show');
+            document.getElementById('hintBtn').disabled = true;
+            hintsUsed++;
+        }
+
+        // ⏭️ SALTAR PREGUNTA
+        function skipQuestion() {
+            skipsUsed++;
+            totalAttempts++;
+            
+            showFeedback(`Pregunta saltada. ${experiments[currentExperiment].explanation}`, 'incorrect');
+            
+            setTimeout(() => {
+                currentExperiment++;
+                loadExperiment();
+            }, 3000);
+            
+            updateStats();
+        }
+
+        // 💬 MOSTRAR FEEDBACK
+        function showFeedback(message, type) {
+            const feedback = document.getElementById('feedback');
+            const icon = type === 'correct' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
+            
+            feedback.innerHTML = `${icon} ${message}`;
+            feedback.className = `feedback ${type}`;
+            feedback.style.display = 'flex';
+        }
+
+        // 📈 ACTUALIZAR ESTADÍSTICAS
+        function updateStats() {
+            document.getElementById('correctAnswers').textContent = correctAnswers;
+            document.getElementById('score').textContent = score;
+            
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        // 📊 ACTUALIZAR PROGRESO
+        function updateProgress() {
+            const progress = ((currentExperiment) / experiments.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = 
+                `Experimento ${currentExperiment} de ${experiments.length} completado`;
+        }
+
+        // 🏆 MOSTRAR PANTALLA DE VICTORIA
+        function showVictoryScreen() {
+            const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
+            
+            let performanceMessage = '';
+            if (accuracy >= 90) performanceMessage = '¡Científico Excepcional! 🏆';
+            else if (accuracy >= 70) performanceMessage = '¡Buen Trabajo! 👍';
+            else if (accuracy >= 50) performanceMessage = '¡Sigue Practicando! 📚';
+            else performanceMessage = '¡Continúa Aprendiendo! 💪';
+            
+            document.getElementById('victoryStats').innerHTML = `
+                <h3>${performanceMessage}</h3>
+                <p><strong>Experimentos Correctos:</strong> ${correctAnswers}/${experiments.length}</p>
+                <p><strong>Precisión:</strong> ${accuracy}%</p>
+                <p><strong>Puntuación Final:</strong> ${score} puntos</p>
+                <p><strong>Pistas Usadas:</strong> ${hintsUsed}</p>
+                <p><strong>Preguntas Saltadas:</strong> ${skipsUsed}</p>
+            `;
+            
+            document.getElementById('victoryScreen').style.display = 'flex';
+        }
+
+        // 🔄 REINICIAR LABORATORIO
+        function restartLab() {
+            currentExperiment = 0;
+            correctAnswers = 0;
+            totalAttempts = 0;
+            score = 0;
+            hintsUsed = 0;
+            skipsUsed = 0;
+            
+            document.getElementById('victoryScreen').style.display = 'none';
+            updateStats();
+            loadExperiment();
+        }
+
+        // ➡️ IR AL SIGUIENTE MÓDULO
+        function goToNextModule() {
+            alert('¡FELICITACIONES! 🎉 Has completado todo el Laboratorio Matemático del Colegio Mayor de Antioquia. ¡Eres un científico matemático completo!');
+            // Aquí puedes redirigir a la página principal o certificado
+            // window.location.href = 'index.html';
+        }
+
+        // 🎹 EFECTOS DE SONIDO SIMPLES
+        function playSound(frequency, duration = 200) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration / 1000);
+            } catch (e) {
+                // Silencioso si no hay soporte de audio
+            }
+        }
+
+        // 🎊 EFECTOS VISUALES
+        function createSparkles() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+
+        // Añadir efectos cuando se responde correctamente
+        const originalShowFeedback = showFeedback;
+        showFeedback = function(message, type) {
+            originalShowFeedback(message, type);
+            if (type === 'correct') {
+                playSound(523); // Nota C5
+                createSparkles();
+            } else {
+                playSound(220); // Nota A3
+            }
+        };
+    </script>
+</body>
+</html>

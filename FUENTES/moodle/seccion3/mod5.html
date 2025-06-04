@@ -1,0 +1,623 @@
+<!-- HEAD DEFINITIONS GO HERE -->
+<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<script>
+    /**
+     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
+     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
+     * @param {string} url - URL DEL RECURSO.
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+        }
+        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
+        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+        document.head.appendChild(elemento);
+    }
+    // 5. CARGAR ESTILOS DE BOOTSTRAP DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+    // 6. CARGAR ICONOS DE BOOTSTRAP DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+    /**
+     * 7. AGREGAR ESTILOS PERSONALIZADOS MEDIANTE UN ELEMENTO .
+     */
+    (function agregarEstilosPersonalizados() {
+        const customStyles = document.createElement('style');
+        customStyles.textContent = `
+            /* 8. ESTILOS PERSONALIZADOS */
+            .problem-container {
+                background-color: #e0f2f2; /* 9. COLOR DE FONDO AJUSTADO A PALETA AZULES-VERDES */
+                color: #172139;           /* 10. TEXTO OSCURO AJUSTADO A PALETA AZULES-VERDES */
+                border-radius: 15px;
+                padding: 5%;
+            }
+            .accordion-button .bi {
+                margin-right: 10px;
+                color: #172139;           /* 11. COLOR DEL ICONO DEL BOTÓN DEL ACORDEÓN */
+            }
+            .accordion-button:not(.collapsed) .bi {
+                color: #00AEAC;           /* 12. COLOR DEL ICONO CUANDO ESTÁ ABIERTO */
+            }
+            .accordion-button {
+                color: #172139;           /* 13. COLOR DEL TEXTO DEL BOTÓN DEL ACORDEÓN */
+            }
+            .accordion-button:not(.collapsed) {
+                color: #172139;           /* 14. COLOR DEL TEXTO CUANDO ESTÁ ABIERTO */
+                background-color: #e0f2f2;/* 15. FONDO DEL BOTÓN CUANDO ESTÁ ABIERTO */
+                border-color: #108181;   /* 16. BORDE DEL BOTÓN CUANDO ESTÁ ABIERTO */
+            }
+            .accordion-header {
+                font-weight: bold;
+            }
+            .divider {
+                border-top: 2px solid #108181; /* 17. DIVISOR AJUSTADO A PALETA AZULES-VERDES */
+                margin: 3% 0;
+            }
+            .accordion-body-container {
+                padding: 3%;
+                border: 1px solid #108181; /* 18. BORDE AJUSTADO A PALETA AZULES-VERDES */
+                border-radius: 10px;
+                background-color: #e0f2f2;  /* 19. FONDO AJUSTADO A PALETA AZULES-VERDES */
+                color: #172139;             /* 20. TEXTO DEL CUERPO DEL ACORDEÓN */
+                margin-top: 2%;
+            }
+            .accordion-body-container strong {
+                color: #172139;             /* 21. TEXTO EN NEGRITA DENTRO DEL CUERPO */
+            }
+            /* 22. MEDIA QUERIES PARA MEJOR RESPONSIVIDAD */
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 1.75rem;
+                    padding: 3% 0;
+                }
+                .problem-container {
+                    padding: 4%;
+                }
+                .accordion-body-container {
+                    padding: 2%;
+                }
+            }
+            @media (max-width: 576px) {
+                h1 {
+                    font-size: 1.5rem;
+                    padding: 2% 0;
+                }
+                .problem-container {
+                    padding: 3%;
+                }
+                .accordion-body-container {
+                    padding: 1.5%;
+                }
+            }
+        `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- 2. SECCIÓN 2: TÍTULO -->
+<div class="container-fluid my-4" id="informacion-general-titulo" style="border:1px solid #00AEAC; border-radius:8px; background-color:#E3F7F2; padding:20px;">
+    <!-- BANNER DE MÓDULO ENTEROS -->
+    <div class="banner-container">
+        <div class="banner">
+            <!-- Header bar -->
+            <div class="banner__header"></div>
+            <!-- Module number with decoration -->
+            <div class="banner__module-decoration"></div>
+            <div class="banner__module-number"></div>
+            <!-- Main content -->
+            <div class="banner__content">
+                <h1 class="banner__title">Revisa lo que has aprendido y pon a prueba tus habilidades</h1>
+                <div class="banner__accent-line"></div>
+                <p class="banner__subtitle">Módulo de Factores de conversión y sistemas de medida</p>
+            </div>
+            <!-- Decorative elements -->
+            <div class="banner__decorations">
+                <!-- Geometric shapes -->
+                <div class="shape shape--small shape--primary shape--pos-1"></div>
+                <div class="shape shape--medium shape--accent shape--pos-2"></div>
+                <!-- Floating numbers -->
+                <div class="floating-element floating-element--small floating-element--color-1 floating-element--pos-1">1m</div>
+                <div class="floating-element floating-element--medium floating-element--color-2 floating-element--pos-2">3.28ft</div>
+                <div class="floating-element floating-element--small floating-element--color-3 floating-element--pos-3">1kg</div>
+                <!-- Math symbols -->
+                <div class="math-symbol math-symbol--small math-symbol--pos-1">SI</div>
+                <div class="math-symbol math-symbol--medium math-symbol--pos-2">×</div>
+                <!-- Pattern grid -->
+                <div class="pattern-grid"></div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN BANNER DE MÓDULO ENTEROS -->
+</div>
+<!-- FIN SECCIÓN 2: TÍTULO -->
+<!-- ESTILOS Y SCRIPTS DEL BANNER (NO DUPLICAR SI YA EXISTEN EN EL HEAD) -->
+<script>
+    (function agregarEstilosBannerEnteros() {
+        if (document.getElementById('banner-enteros-styles')) return;
+        const customStyles = document.createElement('style');
+        customStyles.id = 'banner-enteros-styles';
+        customStyles.textContent = `
+        :root {
+            --color-primary: #172139;
+            --color-secondary: #195855;
+            --color-white: #ffffff;
+            --color-teal: #108181;
+            --color-teal-dark: #00AEAC;
+            --color-accent-1: #FBBB28;
+            --color-accent-2: #E9901E;
+            --color-accent-3: #B4C42C;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-weight-bold: 700;
+            --font-weight-medium: 500;
+            --font-size-title: 1.5rem;
+            --font-size-subtitle: 0.9rem;
+            --font-size-floating-sm: 0.7rem;
+            --font-size-floating-md: 0.8rem;
+            --font-size-symbol-sm: 0.8rem;
+            --font-size-symbol-md: 1rem;
+            --font-size-icon: 0.9rem;
+            --font-size-module-number: 2.5rem;
+            --banner-width: 100%;
+            --banner-height: 80px;
+            --header-height: 15px;
+            --opacity-decorative: 0.15;
+            --opacity-pattern: 0.05;
+            --opacity-floating: 0.3;
+            --opacity-symbols: 0.2;
+            --gradient-accent: linear-gradient(90deg, var(--color-teal), var(--color-accent-1));
+            --gradient-pattern: radial-gradient(circle at 50% 50%, var(--color-teal-dark) 1px, transparent 1px);
+            --z-header: 10;
+            --z-content: 20;
+            --z-decorative: 5;
+            --z-shapes: 3;
+            --z-background: 1;
+            --z-floating: 4;
+            --z-footer: 15;
+            --z-module-number: 25;
+            --animation-float: float 6s ease-in-out infinite;
+            --animation-pulse: pulse 4s ease-in-out infinite;
+        }
+        .banner-container * { margin: 0; padding: 0; box-sizing: border-box; }
+        .banner-container {
+            font-family: var(--font-family);
+            background: var(--color-white);
+            overflow: hidden;
+            margin: 0;
+        }
+        .banner {
+            width: var(--banner-width);
+            height: var(--banner-height);
+            max-height: 80px;
+            position: relative;
+            background: var(--color-white);
+            overflow: hidden;
+            margin: 0 auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        .banner__header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: var(--color-primary);
+            z-index: var(--z-header);
+        }
+        .banner__module-number {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: var(--font-size-module-number);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            z-index: var(--z-module-number);
+            font-family: var(--font-family);
+        }
+        .banner__module-decoration {
+            position: absolute;
+            left: 0.7rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            border: 3px solid var(--color-teal);
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: var(--z-decorative);
+            animation: var(--animation-pulse);
+        }
+        .banner__module-decoration::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--color-accent-1);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: var(--animation-pulse);
+            animation-delay: 1s;
+        }
+        .banner__content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--header-height) 4rem 0.5rem;
+            box-sizing: border-box;
+            z-index: var(--z-content);
+            text-align: center;
+            margin-left: 2rem;
+        }
+        .banner__title {
+            color: var(--color-primary);
+            font-size: var(--font-size-title);
+            line-height: 1.2;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 0.25rem;
+            font-family: var(--font-family);
+        }
+        .banner__accent-line {
+            height: 2px;
+            width: 100px;
+            background: var(--gradient-accent);
+            margin-bottom: 0.25rem;
+            border-radius: 1px;
+        }
+        .banner__subtitle {
+            color: var(--color-secondary);
+            font-size: var(--font-size-subtitle);
+            line-height: 1.1;
+            font-weight: var(--font-weight-medium);
+            font-family: var(--font-family);
+        }
+        .banner__decorations {
+            position: absolute;
+            inset: 0;
+            z-index: var(--z-decorative);
+            pointer-events: none;
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: var(--opacity-decorative);
+            z-index: var(--z-shapes);
+        }
+        .shape--small { width: 20px; height: 20px; }
+        .shape--medium { width: 25px; height: 25px; }
+        .shape--primary { background-color: var(--color-teal); }
+        .shape--accent { background-color: var(--color-accent-3); }
+        .shape--pos-1 { top: 45px; left: 80px; }
+        .shape--pos-2 { top: 25px; right: -8px; }
+        .floating-element {
+            position: absolute;
+            font-weight: var(--font-weight-bold);
+            opacity: var(--opacity-floating);
+            animation: var(--animation-float);
+            z-index: var(--z-floating);
+            font-family: var(--font-family);
+        }
+        .floating-element--small { font-size: var(--font-size-floating-sm); }
+        .floating-element--medium { font-size: var(--font-size-floating-md); }
+        .floating-element--pos-1 { top: 30px; left: 120px; animation-delay: 0s; }
+        .floating-element--pos-2 { top: 45px; right: 25px; animation-delay: 2s; }
+        .floating-element--pos-3 { top: 55px; left: 140px; animation-delay: 4s; }
+        .floating-element--color-1 { color: var(--color-accent-1); }
+        .floating-element--color-2 { color: var(--color-accent-2); }
+        .floating-element--color-3 { color: var(--color-accent-3); }
+        .floating-element--color-teal { color: var(--color-teal); }
+        .math-symbol {
+            position: absolute;
+            font-weight: var(--font-weight-bold);
+            opacity: var(--opacity-symbols);
+            color: var(--color-secondary);
+            z-index: var(--z-background);
+            font-family: var(--font-family);
+        }
+        .math-symbol--small { font-size: var(--font-size-symbol-sm); }
+        .math-symbol--medium { font-size: var(--font-size-symbol-md); }
+        .math-symbol--pos-1 { top: 35px; left: 100px; }
+        .math-symbol--pos-2 { top: 50px; right: 15px; }
+        .pattern-grid {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            opacity: var(--opacity-pattern);
+            background-image: var(--gradient-pattern);
+            background-size: 5px 5px;
+            transform: rotate(15deg);
+            z-index: var(--z-background);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateZ(0); }
+            50% { transform: translateY(-5px) translateZ(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-50%) scale(1.1); opacity: 0.8; }
+        }
+        .floating-element { will-change: transform; backface-visibility: hidden; }
+        .banner__module-decoration { will-change: transform; backface-visibility: hidden; }
+        @media (prefers-reduced-motion: reduce) {
+            .floating-element { animation: none; }
+            .banner__module-decoration { animation: none; }
+            .banner__module-decoration::after { animation: none; }
+        }
+        @media (max-width: 768px) {
+            .banner { width: 100%; max-width: 640px; }
+            .banner__title { font-size: 1.25rem; padding: 0 0.5rem; }
+            .banner__content { padding: var(--header-height) 3rem 0.25rem 4rem; }
+            .banner__module-number { font-size: 2rem; }
+            .banner__module-decoration { width: 35px; height: 35px; }
+            .banner__module-decoration::after { width: 35px; height: 35px; }
+        }
+        @media (max-width: 480px) {
+            .banner__header { height: 12px; }
+            .banner__title { font-size: 1.1rem; }
+            .banner__content { padding: 12px 2.5rem 0.25rem 3.5rem; }
+            .banner__accent-line { width: 80px; }
+            .banner__module-number { font-size: 1.8rem; left: 0.5rem; }
+            .banner__module-decoration { width: 30px; height: 30px; left: 0.3rem; }
+            .banner__module-decoration::after { width: 30px; height: 30px; }
+        }
+    `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<script>
+    // Funciones personalizadas para el banner
+    document.addEventListener('DOMContentLoaded', () => {
+        // Ajuste responsivo inicial
+        const banner = document.querySelector('.banner');
+        if (banner && window.innerWidth < 480) {
+            banner.style.maxWidth = '100%';
+        }
+    });
+    window.addEventListener('resize', () => {
+        const banner = document.querySelector('.banner');
+        if (banner && window.innerWidth < 480) {
+            banner.style.maxWidth = '100%';
+        }
+    });
+</script>
+<!-- FIN ESTILOS Y SCRIPTS DEL BANNER -->
+
+<!-- PÁRRAFO INTRODUCTORIO PARA LOS TRES ACORDEONES -->
+<div class="container-fluid my-4" style="background-color: #f8f9fa; border: 2px solid #00AEAC; border-radius: 10px; padding: 20px;">
+    <p style="text-align: center; font-size: 1.1em; font-weight: bold; color: #172139; margin: 0;">
+        <strong>Domina factores de conversión para transformar unidades entre sistemas de medida (SI e Imperial) y resolver problemas de manera eficiente en tres retos gamificados.</strong>
+    </p>
+</div>
+
+<!-- 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS PARA CIERRE AUTOMÁTICO) -->
+<div class="accordion" id="accordionModulo">
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso1" aria-expanded="false" aria-controls="collapsePaso1">
+                <i class="bi bi-123"></i> Domina conceptos de factores de conversión y sistemas de medida
+            </button>
+        </h2>
+        <div id="collapsePaso1" class="accordion-collapse collapse" aria-labelledby="headingPaso1" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <h4><i class="bi bi-bullseye" style="color:#00AEAC;"></i> <strong>Objetivo de la Actividad</strong></h4>
+                <p>¡Bienvenido/a! Esta actividad está diseñada para que revises y consolides los <strong>conceptos fundamentales de factores de conversión y sistemas de medida</strong>, herramientas esenciales para transformar unidades entre el Sistema Internacional (SI) y el Sistema Imperial.</p>
+                
+                <h4><i class="bi bi-collection" style="color:#FBBB28;"></i> <strong>¿Cómo Funciona el Juego Flashcard?</strong></h4>
+                <p>El juego consiste en <strong>emparejar conceptos matemáticos con sus definiciones correspondientes</strong>. Tu misión es:</p>
+                <ul>
+                    <li>Hacer clic en las cartas para voltearlas</li>
+                    <li>Encontrar los pares correctos (concepto + definición)</li>
+                    <li>Completar el juego en el menor tiempo posible</li>
+                    <li>Usar la menor cantidad de movimientos</li>
+                </ul>
+                
+                <h4><i class="bi bi-controller" style="color:#00AEAC;"></i> <strong>Formas de Jugar</strong></h4>
+                <p><strong>Con mouse:</strong> Haz clic directamente en las cartas<br>
+                <strong>Con teclado:</strong></p>
+                <ul>
+                    <li>Usa <strong>Tab</strong> para navegar entre cartas</li>
+                    <li>Presiona <strong>Enter</strong> o <strong>Espacio</strong> para voltear las cartas</li>
+                </ul>
+                
+                <h4><i class="bi bi-heart" style="color:#B4C42C;"></i> <strong>Mentalidad de Aprendizaje</strong></h4>
+                <p>Recuerda: <strong>equivocarse es parte del aprendizaje</strong>. Si no aciertas al primer intento, ¡puedes intentarlo cuantas veces quieras! Lo importante es que te animes a participar y fortalecer tu confianza en matemáticas.</p>
+                
+                <h4><i class="bi bi-info-circle" style="color:#E9901E;"></i> <strong>Información Importante</strong></h4>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>Esta es una actividad de práctica que NO tiene incidencia en la nota del curso introductorio.</strong><br>
+                    Aprovecha este espacio para aprender, experimentar y mejorar sin presión. ¡Disfruta el proceso de descubrimiento!
+                </div>
+                
+                <h4><i class="bi bi-rocket-takeoff" style="color:#00AEAC;"></i> <strong>¿Listo para el Desafío?</strong></h4>
+                <p>Pon a prueba tu conocimiento sobre factores de conversión, sistemas de medida y transformación de unidades mientras desarrollas tu agilidad mental y memoria. ¡Cada partida es una oportunidad para reforzar conceptos clave!</p>
+                
+                <h4><i class="bi bi-trophy" style="color:#FBBB28;"></i> <strong>¿Te atreves a batir tu propio récord?</strong></h4>
+                <p style="font-style: italic;">Cada intento es una oportunidad para mejorar tu tiempo y reducir el número de movimientos.</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://profemarlon.com/actividades/flashcard-game/modules/modulo5_flashcard.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold; font-size: 1.1em; color: #172139;">
+                        <i class="bi bi-play-circle" style="color:#00AEAC;"></i> ¡Comienza el reto y demuestra tu actitud proactiva!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso2" aria-expanded="false" aria-controls="collapsePaso2">
+                <i class="bi bi-lightning-charge"></i> ¡Pon a prueba tu destreza convirtiendo unidades de medida!
+            </button>
+        </h2>
+        <div id="collapsePaso2" class="accordion-collapse collapse" aria-labelledby="headingPaso2" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <h4><i class="bi bi-bullseye" style="color:#00AEAC;"></i> <strong>Objetivo de la Actividad</strong></h4>
+                <p>¿Te animas a poner a prueba tu <strong>lógica y destreza</strong> realizando conversiones entre diferentes sistemas de medida? Prepárate para una aventura matemática donde cada factor de conversión cuenta.</p>
+                
+                <h4><i class="bi bi-rocket" style="color:#FBBB28;"></i> <strong>¿Cómo Funciona Space Shooter Matemático?</strong></h4>
+                <p><strong>Space Shooter</strong> es un juego educativo donde debes convertir unidades de medida disparando a las respuestas correctas. Tu misión como piloto espacial es:</p>
+                <ul>
+                    <li>Leer el problema de conversión de unidades en la parte superior de la pantalla</li>
+                    <li>Aplicar factores de conversión entre sistemas SI e Imperial según corresponda</li>
+                    <li>Disparar únicamente a las respuestas correctas</li>
+                    <li>Completar <strong>10 preguntas</strong> para finalizar el módulo</li>
+                </ul>
+                
+                <h4><i class="bi bi-controller" style="color:#00AEAC;"></i> <strong>Controles del Juego</strong></h4>
+                <p><strong>Movimiento de la nave:</strong></p>
+                <ul>
+                    <li><strong>Flechas izquierda/derecha</strong> o teclas <strong>A/D</strong> para desplazarte</li>
+                    <li><strong>Barra espaciadora</strong> para disparar</li>
+                </ul>
+                <div style="background: #ffebee; border: 1px solid #ffcdd2; border-radius: 8px; padding: 10px; margin: 10px 0;">
+                    <strong>⚠️ Estrategia importante:</strong> Evita disparar a respuestas incorrectas o perderás vida. ¡Verifica bien los factores de conversión antes de disparar!
+                </div>
+                
+                <h4><i class="bi bi-lightning" style="color:#E9901E;"></i> <strong>Desarrollo de Habilidades</strong></h4>
+                <p>Cada intento es una oportunidad para:</p>
+                <ul>
+                    <li>Mejorar tu velocidad en conversiones de unidades</li>
+                    <li>Fortalecer tu comprensión de sistemas de medida</li>
+                    <li>Desarrollar precisión en la aplicación de factores de conversión</li>
+                    <li>Aumentar tu confianza con problemas de transformación de unidades</li>
+                </ul>
+                
+                <h4><i class="bi bi-heart" style="color:#B4C42C;"></i> <strong>Mentalidad de Crecimiento</strong></h4>
+                <p>Si cometes errores, <strong>¡no te preocupes!</strong> Puedes volver a intentarlo las veces que necesites. Cada error es una oportunidad valiosa para aprender y perfeccionar tu técnica.</p>
+                
+                <h4><i class="bi bi-info-circle" style="color:#E9901E;"></i> <strong>Información Importante</strong></h4>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>Esta actividad es solo de práctica y NO afecta tu nota del curso.</strong><br>
+                    ¡Participa con entusiasmo y disfruta el proceso de aprendizaje! La diversión y el aprendizaje van de la mano.
+                </div>
+                
+                <h4><i class="bi bi-trophy" style="color:#FBBB28;"></i> <strong>¿Listo para la Misión Espacial?</strong></h4>
+                <p>Combina la emoción de un videojuego con el poder de las matemáticas. ¡Demuestra que eres un experto en conversiones de unidades defendiendo la galaxia matemática!</p>
+                
+                <h4><i class="bi bi-star" style="color:#00AEAC;"></i> <strong>¿Puedes completar las 10 preguntas sin perder ninguna vida?</strong></h4>
+                <p style="font-style: italic;">Este es el desafío adicional para los más valientes.</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://profemarlon.com/actividades/space-shooter/modules/modulo5_medidas.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold; font-size: 1.1em; color: #172139;">
+                        <i class="bi bi-play-circle" style="color:#00AEAC;"></i> ¡Juega ahora y reta tus conocimientos sobre conversiones de unidades!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso3" aria-expanded="false" aria-controls="collapsePaso3">
+                <i class="bi bi-globe-americas"></i> Aplica conversiones de unidades en contextos reales y profesionales
+            </button>
+        </h2>
+        <div id="collapsePaso3" class="accordion-collapse collapse" aria-labelledby="headingPaso3" data-bs-parent="#accordionModulo">
+            <div class="accordion-body-container py-3">
+                <h4><i class="bi bi-bullseye" style="color:#00AEAC;"></i> <strong>Objetivo de la Actividad</strong></h4>
+                <p>En esta sección podrás poner en práctica los <strong>conceptos de factores de conversión y transformación de unidades en situaciones reales</strong>, conectando las matemáticas con tu futuro profesional y la vida cotidiana.</p>
+                
+                <h4><i class="bi bi-flask" style="color:#FBBB28;"></i> <strong>¿Cómo Funciona MathQuest Laboratorio?</strong></h4>
+                <p><strong>MathQuest</strong> simula un <strong>laboratorio matemático interactivo</strong> donde te conviertes en un investigador resolviendo problemas contextualizados. Tu proceso de investigación incluye:</p>
+                <ul>
+                    <li>Leer cuidadosamente el problema planteado</li>
+                    <li>Identificar las unidades de origen y destino en la conversión</li>
+                    <li>Aplicar factores de conversión entre sistemas SI e Imperial</li>
+                    <li>Realizar el cálculo en el área de trabajo designada</li>
+                    <li>Ingresar tu respuesta en el sistema</li>
+                    <li>Verificar si tu solución es correcta</li>
+                    <li>Completar <strong>10 experimentos</strong> con la mayor precisión posible</li>
+                </ul>
+                
+                <h4><i class="bi bi-controller" style="color:#00AEAC;"></i> <strong>Herramientas del Laboratorio</strong></h4>
+                <p><strong>Área de cálculo:</strong> Espacio dedicado para tus conversiones y factores de conversión<br>
+                <strong>Sistema de pistas:</strong> Ayudas contextuales disponibles cuando las necesites<br>
+                <strong>Función saltar:</strong> Opción para avanzar si encuentras una pregunta muy desafiante</p>
+                
+                <h4><i class="bi bi-lightbulb" style="color:#E9901E;"></i> <strong>Sistema de Ayudas Inteligente</strong></h4>
+                <div style="background: #e3f2fd; border: 1px solid #90caf9; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>📊 Información sobre Puntajes:</strong> El sistema te ofrece ayudas contextuales para apoyarte en la resolución de los retos. Cada vez que utilices una ayuda, tu puntaje disminuirá un poco.<br><br>
+                    Este puntaje es <strong>solo para medir tu progreso personal</strong> y <strong>NO afecta tu calificación final</strong> del curso.
+                </div>
+                
+                <h4><i class="bi bi-building" style="color:#B4C42C;"></i> <strong>Contextos Profesionales Incluidos</strong></h4>
+                <p>Descubre cómo las conversiones de unidades son útiles en <strong>problemas reales</strong> de:</p>
+                <ul>
+                    <li><strong>Construcciones Civiles</strong> - Conversiones entre metros y pies en proyectos de construcción</li>
+                    <li><strong>Ingeniería Ambiental</strong> - Transformación de unidades en mediciones ambientales y calidad del aire</li>
+                    <li><strong>Gastronomía y Culinaria</strong> - Conversión de temperaturas y medidas en recetas internacionales</li>
+                    <li><strong>Tecnología en Delineante de Arquitectura e Ingeniería</strong> - Escalas y conversiones en planos técnicos</li>
+                    <li><strong>Biotecnología</strong> - Conversiones de volúmenes y concentraciones en laboratorio</li>
+                    <li><strong>Tecnología en Gestión Catastral</strong> - Transformación de unidades en medición de terrenos</li>
+                </ul>
+                
+                <h4><i class="bi bi-heart" style="color:#195855;"></i> <strong>Mentalidad Investigativa</strong></h4>
+                <p>Si tu respuesta no es correcta al primer intento, <strong>¡no te desanimes!</strong> Tienes la oportunidad de intentarlo cuantas veces lo necesites hasta dominar el tema. Cada error es parte del proceso científico de descubrimiento.</p>
+                
+                <h4><i class="bi bi-info-circle" style="color:#E9901E;"></i> <strong>Información Importante</strong></h4>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin: 10px 0;">
+                    <strong>Esta actividad es de práctica y NO influye en tu calificación.</strong><br>
+                    Aprovecha este espacio para explorar, experimentar y aprender de manera activa y sin presión. ¡La curiosidad es tu mejor herramienta!
+                </div>
+                
+                <h4><i class="bi bi-rocket-takeoff" style="color:#00AEAC;"></i> <strong>¿Listo para tu Misión Investigativa?</strong></h4>
+                <p>Conecta las matemáticas con tu carrera profesional y descubre el poder práctico de las conversiones de unidades en el mundo real. ¡Cada experimento te acerca más a ser un experto!</p>
+                
+                <h4><i class="bi bi-trophy" style="color:#FBBB28;"></i> <strong>¿Puedes completar los 10 experimentos usando el menor número de pistas posible?</strong></h4>
+                <p style="font-style: italic;">Este es tu desafío adicional para demostrar tu dominio del tema.</p>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://profemarlon.com/actividades/MathQuest/modules/modulo5_medidas.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold; font-size: 1.1em; color: #172139;">
+                        <i class="bi bi-play-circle" style="color:#00AEAC;"></i> ¡Explora los retos y demuestra cómo aplicas conversiones de unidades en diferentes contextos!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS) -->
+    <!-- 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
+    <!-- CARGA DE SCRIPTS NECESARIOS PARA EL FUNCIONAMIENTO DE BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /**
+         * 23. FUNCIONES ADICIONALES PARA ACORDEONES.
+         * @description ESTA FUNCIÓN INICIALIZA LOS ACORDEONES CERRADOS AL CARGAR LA PÁGINA.
+         */
+        function initAccordions() {
+            const accordions = document.querySelectorAll('.accordion-collapse'); // 24. SELECCIONA TODOS LOS ACORDEONES
+            accordions.forEach(accordion => accordion.classList.remove('show')); // 25. REMUEVE 'SHOW'
+        }
+        /**
+         * 26. FUNCIONALIDAD PARA REGISTRAR EN CONSOLA EL ESTADO DE UN ACORDEÓN.
+         * @description IMPRIME EN CONSOLA SI UN ACORDEÓN ESTÁ ABIERTO O CERRADO.
+         * @param {string} idAcordeon - ID DEL ACORDEÓN A VERIFICAR.
+         */
+        function logEstadoAcordeon(idAcordeon) {
+            const acordeon = document.getElementById(idAcordeon); // 27. SELECCIONA ACORDEÓN POR ID
+            if (acordeon) {
+                const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO'; // 28. DETERMINA ESTADO
+                console.log(`El acordeón con ID '${idAcordeon}' está ${estado}.`);
+            } else {
+                console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`); // 29. ADVIERTE SI NO EXISTE
+            }
+        }
+        // 30. EVENTO QUE SE DISPARA AL CARGAR COMPLETAMENTE EL DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            initAccordions(); // 31. INICIALIZA ACORDEONES
+            console.log('Acordeones inicializados y cerrados correctamente.');
+        });
+    </script>
+    <!-- FIN 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
+</div>

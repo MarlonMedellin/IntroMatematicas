@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Sistema de los Números Racionales</title>
+    
+    <!-- Google Fonts - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #172139 0%, #195855 100%);
+            padding: 10px;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 500;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .stats-panel {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 0 auto 20px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .restart-btn {
+            background-color: #00AEAC;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background-color: #108181;
+            transform: scale(1.05);
+        }
+
+        .victory-message {
+            background-color: #B4C42C;
+            color: #172139;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 0 auto 20px auto;
+            max-width: 600px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(180, 196, 44, 0.3);
+            display: none;
+        }
+
+        .victory-message.show {
+            display: block;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .victory-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card-container {
+            height: 120px;
+            border-radius: 15px;
+            cursor: pointer;
+            perspective: 1000px;
+            transition: transform 0.3s ease;
+        }
+
+        .card-container:hover {
+            transform: scale(1.02);
+        }
+
+        .card-container.matched {
+            cursor: default;
+        }
+
+        .card-container.matched:hover {
+            transform: scale(1);
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            position: relative;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .card-back {
+            background-color: #172139;
+            border: 3px solid #00AEAC;
+        }
+
+        .card-back i {
+            font-size: 3rem;
+            color: #00AEAC;
+        }
+
+        .card-front {
+            transform: rotateY(180deg);
+            padding: 15px;
+            flex-direction: column;
+            border: 3px solid transparent;
+            text-align: center;
+        }
+
+        .card-front.concept {
+            background-color: #108181;
+            color: white;
+        }
+
+        .card-front.definition {
+            background-color: #B4C42C;
+            color: #172139;
+        }
+
+        .card-front.matched {
+            border: 3px solid #FBBB28;
+            box-shadow: 0 0 20px rgba(251, 187, 40, 0.5);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .card-content {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            line-height: 1.3;
+        }
+
+        .card-content.concept {
+            font-weight: 700;
+        }
+
+        .card-content.definition {
+            font-weight: 500;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-credit {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer-license {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        .footer-license a {
+            color: #00AEAC;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .footer-license a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .stats-panel {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .game-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .card-container {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-brain" style="color: #FBBB28; margin-right: 10px;"></i>
+                Juego de Memoria
+            </h1>
+            <p>Módulo 3: Sistema de los Números Racionales</p>
+        </div>
+
+        <!-- Panel de estadísticas -->
+        <div class="stats-panel">
+            <div class="stat-item">
+                <i class="fas fa-stopwatch" style="color: #FBBB28;"></i>
+                <div class="stat-value" id="timer">00:00</div>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-mouse-pointer" style="color: #E9901E;"></i>
+                <div class="stat-value" id="moves">0 movimientos</div>
+            </div>
+            <button class="restart-btn" onclick="restartGame()">
+                <i class="fas fa-redo" style="margin-right: 5px;"></i>
+                Reiniciar
+            </button>
+        </div>
+
+        <!-- Mensaje de victoria -->
+        <div class="victory-message" id="victoryMessage">
+            <i class="fas fa-trophy victory-icon"></i>
+            <span id="victoryText">¡Felicitaciones! Completaste el juego.</span>
+        </div>
+
+        <!-- Grid de cartas -->
+        <div class="game-grid" id="gameGrid">
+            <!-- Las cartas se generan dinámicamente -->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-credit">
+                <i class="fas fa-graduation-cap" style="color: #FBBB28; margin-right: 5px;"></i>
+                Recurso gamificado desarrollado por el Profe Marlon Arcila
+            </div>
+            <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-youtube" style="color: #E9901E;"></i>
+                    Canal de YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                    <i class="fab fa-linkedin" style="color: #108181;"></i>
+                    LinkedIn
+                </a>
+            </div>
+            <div class="footer-license">
+                <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
+                Licenciado bajo Creative Commons 
+                <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+                    BY-NC-ND 4.0
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos del juego
+        const gameData = [
+            { id: 1, type: 'concept', content: 'Números Racionales', pair: 1 },
+            { id: 2, type: 'definition', content: 'Números expresables como cociente de dos enteros, denominador diferente cero.', pair: 1 },
+            { id: 3, type: 'concept', content: 'Fracciones Equivalentes', pair: 2 },
+            { id: 4, type: 'definition', content: 'Fracciones que representan la misma cantidad con numeradores y denominadores diferentes.', pair: 2 },
+            { id: 5, type: 'concept', content: 'Simplificación', pair: 3 },
+            { id: 6, type: 'definition', content: 'Reducir fracción dividiendo numerador y denominador por su máximo común divisor.', pair: 3 },
+            { id: 7, type: 'concept', content: 'Fracción Propia', pair: 4 },
+            { id: 8, type: 'definition', content: 'Fracción donde el numerador es menor que el denominador.', pair: 4 },
+            { id: 9, type: 'concept', content: 'Fracción Impropia', pair: 5 },
+            { id: 10, type: 'definition', content: 'Fracción donde el numerador es mayor que el denominador.', pair: 5 },
+            { id: 11, type: 'concept', content: 'Número Decimal', pair: 6 },
+            { id: 12, type: 'definition', content: 'Representación de fracciones mediante una expresión con punto decimal.', pair: 6 }
+        ];
+
+        // Variables del juego
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = [];
+        let moves = 0;
+        let gameTime = 0;
+        let gameTimer = null;
+        let isGameActive = false;
+        let gameWon = false;
+
+        // Elementos del DOM
+        const gameGrid = document.getElementById('gameGrid');
+        const timerElement = document.getElementById('timer');
+        const movesElement = document.getElementById('moves');
+        const victoryMessage = document.getElementById('victoryMessage');
+        const victoryText = document.getElementById('victoryText');
+
+        // Inicializar juego
+        function initGame() {
+            shuffleCards();
+            renderCards();
+            resetStats();
+            startTimer();
+        }
+
+        // Barajar cartas
+        function shuffleCards() {
+            cards = [...gameData].sort(() => Math.random() - 0.5);
+        }
+
+        function renderCards() {
+            gameGrid.innerHTML = '';
+            
+            cards.forEach(card => {
+                const cardContainer = document.createElement('div');
+                cardContainer.className = 'card-container';
+                cardContainer.dataset.cardId = card.id;
+                
+                cardContainer.innerHTML = `
+                    <div class="card" id="card-${card.id}">
+                        <div class="card-face card-back">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div class="card-face card-front ${card.type}">
+                            <i class="card-icon ${getCardIcon(card.type)}"></i>
+                            <div class="card-content ${card.type}">${card.content}</div>
+                        </div>
+                    </div>
+                `;
+                
+                cardContainer.addEventListener('click', () => handleCardClick(card.id));
+                gameGrid.appendChild(cardContainer);
+            });
+        }
+
+        // Obtener icono para tipo de carta
+        function getCardIcon(type) {
+            return type === 'concept' ? 'fas fa-lightbulb' : 'fas fa-book-open';
+        }
+
+        // Manejar clic en carta
+        function handleCardClick(cardId) {
+            if (flippedCards.length === 2 || 
+                flippedCards.includes(cardId) || 
+                matchedPairs.includes(cardId) ||
+                gameWon) {
+                return;
+            }
+
+            // Voltear carta
+            const cardElement = document.getElementById(`card-${cardId}`);
+            cardElement.classList.add('flipped');
+            flippedCards.push(cardId);
+
+            if (flippedCards.length === 2) {
+                moves++;
+                updateMoves();
+                
+                const [firstCardId, secondCardId] = flippedCards;
+                const firstCard = cards.find(card => card.id === firstCardId);
+                const secondCard = cards.find(card => card.id === secondCardId);
+
+                if (firstCard.pair === secondCard.pair) {
+                    // Par encontrado
+                    setTimeout(() => {
+                        matchedPairs.push(firstCardId, secondCardId);
+                        markCardsAsMatched(firstCardId, secondCardId);
+                        flippedCards = [];
+                        
+                        // Verificar si el juego terminó
+                        if (matchedPairs.length === cards.length) {
+                            endGame();
+                        }
+                    }, 1000);
+                } else {
+                    // No es par
+                    setTimeout(() => {
+                        const firstCardElement = document.getElementById(`card-${firstCardId}`);
+                        const secondCardElement = document.getElementById(`card-${secondCardId}`);
+                        firstCardElement.classList.remove('flipped');
+                        secondCardElement.classList.remove('flipped');
+                        flippedCards = [];
+                    }, 1500);
+                }
+            }
+        }
+
+        // Marcar cartas como emparejadas
+        function markCardsAsMatched(cardId1, cardId2) {
+            const card1Container = document.querySelector(`[data-card-id="${cardId1}"]`);
+            const card2Container = document.querySelector(`[data-card-id="${cardId2}"]`);
+            const card1Front = card1Container.querySelector('.card-front');
+            const card2Front = card2Container.querySelector('.card-front');
+            
+            card1Container.classList.add('matched');
+            card2Container.classList.add('matched');
+            card1Front.classList.add('matched');
+            card2Front.classList.add('matched');
+        }
+
+        // Reiniciar juego
+        function restartGame() {
+            flippedCards = [];
+            matchedPairs = [];
+            gameWon = false;
+            victoryMessage.classList.remove('show');
+            
+            // Remover clases de cartas volteadas y emparejadas
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('flipped');
+            });
+            document.querySelectorAll('.card-container').forEach(container => {
+                container.classList.remove('matched');
+            });
+            document.querySelectorAll('.card-front').forEach(front => {
+                front.classList.remove('matched');
+            });
+            
+            shuffleCards();
+            renderCards();
+            resetStats();
+            startTimer();
+        }
+
+        // Resetear estadísticas
+        function resetStats() {
+            moves = 0;
+            gameTime = 0;
+            updateMoves();
+            updateTimer();
+        }
+
+        // Iniciar timer
+        function startTimer() {
+            isGameActive = true;
+            if (gameTimer) clearInterval(gameTimer);
+            
+            gameTimer = setInterval(() => {
+                if (isGameActive && !gameWon) {
+                    gameTime++;
+                    updateTimer();
+                }
+            }, 1000);
+        }
+
+        // Actualizar timer
+        function updateTimer() {
+            const mins = Math.floor(gameTime / 60);
+            const secs = gameTime % 60;
+            timerElement.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Actualizar movimientos
+        function updateMoves() {
+            movesElement.textContent = `${moves} movimientos`;
+        }
+
+        // Terminar juego
+        function endGame() {
+            gameWon = true;
+            isGameActive = false;
+            clearInterval(gameTimer);
+            
+            const mins = Math.floor(gameTime / 60);
+            const secs = gameTime % 60;
+            const timeText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            
+            victoryText.textContent = `¡Felicitaciones! Completaste el juego en ${timeText} con ${moves} movimientos.`;
+            victoryMessage.classList.add('show');
+        }
+
+        // Inicializar cuando la página esté cargada
+        document.addEventListener('DOMContentLoaded', function() {
+            initGame();
+        });
+    </script>
+</body>
+</html>
