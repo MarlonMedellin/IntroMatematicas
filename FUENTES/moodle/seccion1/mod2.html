@@ -1,0 +1,574 @@
+<!-- HEAD DEFINITIONS GO HERE -->
+<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<script>
+    /**
+     * CARGAR RECURSOS EXTERNOS DESDE EL CDN.
+     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
+     * @param {string} url - URL DEL RECURSO.
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+        }
+        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`);
+        document.head.appendChild(elemento);
+    }
+    // CARGAR RECURSOS CDN
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+    cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    /**
+     * AGREGAR ESTILOS PERSONALIZADOS OPTIMIZADOS.
+     */
+    (function agregarEstilosPersonalizados() {
+        const customStyles = document.createElement('style');
+        customStyles.id = 'banner-introduccion-styles';
+        customStyles.textContent = `
+        /* ESTILOS PERSONALIZADOS ORIGINALES */
+        .problem-container {
+          background-color: #E6E6E6;
+          color: #333333;
+          border-radius: 15px;
+          padding: 5%;
+        }
+        .accordion-button .bi { margin-right: 10px; }
+        .accordion-header { font-weight: bold; }
+        .divider { border-top: 2px solid #F2B544; margin: 3% 0; }
+        .accordion-body-container {
+          padding: 3%;
+          border: 1px solid #F2B544;
+          border-radius: 10px;
+          background-color: #FFF5E6;
+          margin-top: 2%;
+        }
+
+        /* BANNER DE INTRODUCCIÓN OPTIMIZADO CON MEJOR CONTRASTE */
+        div[data-banner="introduccion-v1"] {
+            all: initial !important;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            margin: 20px 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            background: linear-gradient(135deg, #E9901E 0%, #FF921F 50%, #FBBF28 100%) !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            box-sizing: border-box !important;
+            display: block !important;
+            position: relative !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: 120px !important;
+            overflow: hidden !important;
+            border-radius: 16px !important;
+            box-shadow: 0 20px 60px rgba(233, 144, 30, 0.4), 0 8px 25px rgba(255, 146, 31, 0.3) !important;
+            border: 2px solid rgba(254, 241, 130, 0.3) !important;
+        }
+
+        /* OVERLAY CROMÁTICO */
+        div[data-banner="introduccion-v1"]::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: linear-gradient(135deg, rgba(254, 241, 130, 0.15) 0%, transparent 50%, rgba(233, 144, 30, 0.05) 100%) !important;
+            z-index: 1 !important;
+            pointer-events: none !important;
+            opacity: 0.7 !important;
+        }
+
+        /* HEADER GLASSMORPHISM */
+        div[data-banner="introduccion-v1"] > div[data-role="header"] {
+            all: initial !important;
+            display: block !important;
+            text-align: center !important;
+            padding: 40px 35px !important;
+            background: rgba(251, 191, 40, 0.2) !important;
+            backdrop-filter: blur(25px) saturate(1.3) !important;
+            -webkit-backdrop-filter: blur(25px) saturate(1.3) !important;
+            border-bottom: 5px solid #FEF182 !important;
+            position: relative !important;
+            z-index: 2 !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* ELEMENTO DECORATIVO SOL */
+        div[data-banner="introduccion-v1"] > div[data-role="header"]::after {
+            content: '' !important;
+            position: absolute !important;
+            top: -30px !important;
+            right: -30px !important;
+            width: 140px !important;
+            height: 140px !important;
+            background: radial-gradient(circle, #FEF182 0%, #FBBF28 50%, transparent 80%) !important;
+            border-radius: 50% !important;
+            opacity: 0.4 !important;
+            z-index: -1 !important;
+            filter: blur(10px) !important;
+            animation: sunGlow 5s ease-in-out infinite !important;
+        }
+
+        /* TÍTULO CON CONTRASTE MEJORADO - OPCIÓN 1: AZUL MARINO OSCURO */
+        div[data-banner="introduccion-v1"] h1[data-element="titulo"] {
+            all: initial !important;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: clamp(1.9rem, 5.8vw, 3rem) !important;
+            font-weight: 900 !important;
+            margin: 0 0 20px 0 !important;
+            padding: 0 !important;
+            color: #1a365d !important; /* AZUL MARINO OSCURO PARA MÁXIMO CONTRASTE */
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6) !important;
+            line-height: 1.1 !important;
+            position: relative !important;
+            z-index: 3 !important;
+            letter-spacing: -0.5px !important;
+            text-align: center !important;
+            display: block !important;
+            box-sizing: border-box !important;
+            text-transform: none !important;
+            text-decoration: none !important;
+            border: none !important;
+            background: none !important;
+        }
+
+        /* SUBTÍTULO CON CONTRASTE COMPLEMENTARIO */
+        div[data-banner="introduccion-v1"] p[data-element="subtitulo"] {
+            all: initial !important;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            font-size: clamp(1.1rem, 3rem, 1.4rem) !important;
+            font-weight: 700 !important;
+            color: #2d3748 !important; /* GRIS AZULADO OSCURO PARA JERARQUÍA */
+            line-height: 1.3 !important;
+            position: relative !important;
+            z-index: 3 !important;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5) !important;
+            text-transform: none !important;
+            letter-spacing: 0.3px !important;
+            text-align: center !important;
+            font-style: normal !important;
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            background: none !important;
+            text-decoration: none !important;
+            box-sizing: border-box !important;
+        }
+
+        /* ICONOS OPTIMIZADOS */
+        div[data-banner="introduccion-v1"] i[data-icon="principal"] {
+            margin-right: 18px !important;
+            vertical-align: middle !important;
+            color: #1a365d !important; /* COINCIDE CON EL TÍTULO */
+            font-size: 1.6em !important;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 2px 2px 4px rgba(255, 255, 255, 0.6) !important;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: inline-block !important;
+            animation: starGlow 3s ease-in-out infinite !important;
+            background: none !important;
+            border: none !important;
+            text-decoration: none !important;
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+        }
+
+        div[data-banner="introduccion-v1"] i[data-icon="secundario"] {
+            margin-right: 15px !important;
+            vertical-align: middle !important;
+            color: #2d3748 !important; /* COINCIDE CON EL SUBTÍTULO */
+            font-size: 1.4em !important;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 2px 2px 3px rgba(255, 255, 255, 0.5) !important;
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6)) !important;
+            transition: all 0.3s ease !important;
+            display: inline-block !important;
+            animation: moduleShine 4s ease-in-out infinite !important;
+            background: none !important;
+            border: none !important;
+            text-decoration: none !important;
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+        }
+
+        /* ELEMENTOS FLOTANTES OPTIMIZADOS */
+        div[data-banner="introduccion-v1"] > div[data-role="flotantes"] {
+            all: initial !important;
+            position: absolute !important;
+            inset: 0 !important;
+            z-index: 1 !important;
+            pointer-events: none !important;
+            display: block !important;
+        }
+
+        div[data-element="objetivo"], div[data-element="competencia"], 
+        div[data-element="motivacion"], div[data-element="introduccion"] {
+            all: initial !important;
+            position: absolute !important;
+            border-radius: 50% !important;
+            opacity: 0.3 !important;
+            animation: motivationalFloat 6s ease-in-out infinite !important;
+            display: block !important;
+        }
+
+        div[data-element="objetivo"] {
+            width: 42px !important; height: 42px !important;
+            background: #FEF182 !important;
+            top: 15% !important; left: 8% !important;
+            animation-delay: 0s !important;
+        }
+
+        div[data-element="competencia"] {
+            width: 35px !important; height: 35px !important;
+            background: #FBBF28 !important;
+            top: 65% !important; right: 15% !important;
+            animation-delay: 2s !important;
+        }
+
+        div[data-element="motivacion"] {
+            width: 38px !important; height: 38px !important;
+            background: #FF921F !important;
+            top: 40% !important; right: 35% !important;
+            animation-delay: 4s !important;
+        }
+
+        div[data-element="introduccion"] {
+            width: 30px !important; height: 30px !important;
+            background: #E9901E !important;
+            top: 25% !important; left: 40% !important;
+            animation-delay: 1s !important;
+        }
+
+        /* ANIMACIONES OPTIMIZADAS */
+        @keyframes sunGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.6; transform: scale(1.15) rotate(180deg); }
+        }
+
+        @keyframes starGlow {
+            0%, 100% { 
+                transform: scale(1) rotateZ(0deg);
+                color: #1a365d;
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+            }
+            50% { 
+                transform: scale(1.1) rotateZ(10deg);
+                color: #2c5282;
+                filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+            }
+        }
+
+        @keyframes moduleShine {
+            0%, 100% { transform: scale(1); opacity: 1; color: #2d3748; }
+            50% { transform: scale(1.08); opacity: 0.9; color: #4a5568; }
+        }
+
+        @keyframes motivationalFloat {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            33% { transform: translateY(-10px) translateX(4px) rotate(120deg); }
+            66% { transform: translateY(5px) translateX(-3px) rotate(240deg); }
+        }
+
+        /* ESTADOS HOVER OPTIMIZADOS */
+        div[data-banner="introduccion-v1"]:hover h1[data-element="titulo"] {
+            color: #2c5282 !important; /* AZUL MÁS CLARO AL HOVER */
+            transition: color 0.5s ease !important;
+            text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.7) !important;
+        }
+
+        div[data-banner="introduccion-v1"] i[data-icon="principal"]:hover {
+            transform: scale(1.4) rotateZ(360deg) !important;
+            color: #2c5282 !important;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.7) !important;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) !important;
+        }
+
+        div[data-banner="introduccion-v1"] i[data-icon="secundario"]:hover {
+            transform: scale(1.3) rotate(180deg) !important;
+            color: #4a5568 !important;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) !important;
+        }
+
+        /* RESPONSIVIDAD OPTIMIZADA */
+        @media (max-width: 768px) {
+            div[data-banner="introduccion-v1"] > div[data-role="header"] { padding: 35px 28px !important; }
+            div[data-banner="introduccion-v1"] h1[data-element="titulo"] { 
+                margin-bottom: 18px !important; 
+                letter-spacing: -0.3px !important; 
+            }
+            div[data-element] { opacity: 0.2 !important; }
+        }
+
+        @media (max-width: 480px) {
+            div[data-banner="introduccion-v1"] > div[data-role="header"] { padding: 30px 22px !important; }
+            div[data-banner="introduccion-v1"] i[data-icon="principal"] { 
+                margin-right: 12px !important; 
+                font-size: 1.5em !important; 
+            }
+            div[data-banner="introduccion-v1"] i[data-icon="secundario"] { 
+                margin-right: 10px !important; 
+                font-size: 1.3em !important; 
+            }
+        }
+
+        /* ACCESIBILIDAD */
+        @media (prefers-contrast: high) {
+            div[data-banner="introduccion-v1"] h1[data-element="titulo"] {
+                text-shadow: 3px 3px 6px rgba(255, 255, 255, 1), 0 0 0 2px #ffffff !important;
+                color: #000000 !important; /* NEGRO ABSOLUTO PARA ALTO CONTRASTE */
+            }
+            div[data-banner="introduccion-v1"] p[data-element="subtitulo"] {
+                color: #1a1a1a !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 1), 0 0 0 1px #ffffff !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            div[data-banner="introduccion-v1"] > div[data-role="header"]::after,
+            div[data-element],
+            div[data-banner="introduccion-v1"] i[data-icon="principal"],
+            div[data-banner="introduccion-v1"] i[data-icon="secundario"] {
+                animation: none !important;
+            }
+            div[data-banner="introduccion-v1"]:hover h1[data-element="titulo"],
+            div[data-banner="introduccion-v1"] i[data-icon="principal"]:hover,
+            div[data-banner="introduccion-v1"] i[data-icon="secundario"]:hover {
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* MEDIA QUERIES ORIGINALES */
+        @media (max-width: 768px) {
+          h1 { font-size: 1.75rem; padding: 3% 0; }
+          .problem-container { padding: 4%; }
+          .accordion-body-container { padding: 2%; }
+        }
+        @media (max-width: 576px) {
+          h1 { font-size: 1.5rem; padding: 2% 0; }
+          .problem-container { padding: 3%; }
+          .accordion-body-container { padding: 1.5%; }
+        }
+      `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<!-- FIN SECCIÓN 1: ESTILOS Y RECURSOS -->
+
+<!-- 2. SECCIÓN 2: TÍTULO -->
+<!-- BANNER DE INTRODUCCIÓN Y MOTIVACIÓN -->
+<div data-banner="introduccion-v1">
+    <!-- ELEMENTOS MOTIVACIONALES FLOTANTES -->
+    <div data-role="flotantes">
+        <div data-element="objetivo"></div>
+        <div data-element="competencia"></div>
+        <div data-element="motivacion"></div>
+        <div data-element="introduccion"></div>
+    </div>
+    
+    <!-- HEADER CON CONTENIDO MOTIVACIONAL -->
+    <div data-role="header">
+        <h1 data-element="titulo">
+            <i class="fas fa-rocket" data-icon="principal" aria-hidden="true"></i>
+            Inicia tu aventura matemática
+        </h1>
+        <p data-element="subtitulo">
+            <i class="fas fa-graduation-cap" data-icon="secundario" aria-hidden="true"></i>
+            Módulo 1 - <strong>Sistema de los Números Enteros</strong>
+        </p>
+    </div>
+</div>
+<!-- FIN BANNER DE INTRODUCCIÓN -->
+<!-- FIN SECCIÓN 2: TÍTULO -->
+
+<!-- 3. SECCIÓN 3: CONOCER MÁS DE ESTE MÓDULO -->
+<div class="container-fluid my-4" id="informacion-general-conocer" style="border: 1px solid #00AEAC; border-radius: 8px; background-color: #E3F7F2; padding: 20px;">
+    <p style="color: #172139; margin: 0; font-size: 1em; display: flex; align-items: start; gap: 8px; flex-wrap: wrap;">
+        <i class="bi bi-award-fill" style="color: #00AEAC; margin-top: 2px;"></i>
+        <strong>Al finalizar este módulo, estarás en capacidad de identificar, operar y aplicar las propiedades de
+            los números enteros en la resolución de polinomios aritméticos y problemas básicos.</strong>
+    </p>
+    <p style="color: #172139; margin: 10px 0 0; font-size: 1em; display: flex; align-items: start; gap: 8px; flex-wrap: wrap;">
+        🎯 En este módulo dominarás operaciones con enteros, explorarás su definición, jerarquía y propiedades
+        (conmutativa, asociativa, distributiva), y resolverás polinomios aritméticos con soltura. Prepárate
+        para enfrentar desafíos matemáticos con confianza y precisión.
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208556" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Conoce más de este módulo</a>
+        <i class="bi bi-box-arrow-in-right"></i>
+    </p>
+</div>
+<!-- FIN SECCIÓN 3: CONOCER MÁS DE ESTE MÓDULO -->
+
+<!-- 4. SECCIÓN 4: SCRIPTS JAVASCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    /**
+     * FUNCIONES ADICIONALES PARA ACORDEONES
+     */
+    function initAccordions() {
+        const accordions = document.querySelectorAll('.accordion-collapse');
+        accordions.forEach(accordion => accordion.classList.remove('show'));
+    }
+    
+    function logEstadoAcordeon(idAcordeon) {
+        const acordeon = document.getElementById(idAcordeon);
+        if (acordeon) {
+            const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO';
+            console.log(`El acordeón con ID '${idAcordeon}' está ${estado}.`);
+        } else {
+            console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`);
+        }
+    }
+    
+    /**
+     * FUNCIONES PARA EL BANNER DE INTRODUCCIÓN
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        function verificarBannerIntroduccion() {
+            const banner = document.querySelector('div[data-banner="introduccion-v1"]');
+            if (banner) {
+                console.log('🚀 Banner optimizado con contraste mejorado cargado correctamente');
+                
+                // EFECTOS HOVER OPTIMIZADOS
+                banner.addEventListener('mouseenter', function() {
+                    this.style.setProperty('transform', 'scale(1.02) translateY(-3px)', 'important');
+                    this.style.setProperty('transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(233, 144, 30, 0.5), 0 10px 30px rgba(255, 146, 31, 0.4)', 'important');
+                    this.style.setProperty('border-color', 'rgba(254, 241, 130, 0.5)', 'important');
+                });
+                
+                banner.addEventListener('mouseleave', function() {
+                    this.style.setProperty('transform', 'scale(1) translateY(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 20px 60px rgba(233, 144, 30, 0.4), 0 8px 25px rgba(255, 146, 31, 0.3)', 'important');
+                    this.style.setProperty('border-color', 'rgba(254, 241, 130, 0.3)', 'important');
+                });
+                
+                // ACCESIBILIDAD
+                const titulo = banner.querySelector('h1[data-element="titulo"]');
+                if (titulo) {
+                    titulo.setAttribute('tabindex', '0');
+                    titulo.setAttribute('role', 'banner');
+                    titulo.setAttribute('aria-label', 'Sección de Introducción - Inicia tu aventura matemática en el Módulo 1');
+                    
+                    titulo.addEventListener('focus', function() {
+                        this.style.setProperty('outline', '4px solid #1a365d', 'important');
+                        this.style.setProperty('outline-offset', '4px', 'important');
+                        this.style.setProperty('border-radius', '10px', 'important');
+                    });
+                }
+                
+                // INTERACTIVIDAD MOTIVACIONAL
+                const iconos = banner.querySelectorAll('i[data-icon]');
+                let motivationalIndex = 0;
+                const motivationalColors = ['#1a365d', '#2c5282', '#2d3748', '#4a5568'];
+                
+                iconos.forEach((icono, index) => {
+                    icono.addEventListener('click', function() {
+                        this.style.setProperty('color', motivationalColors[motivationalIndex % 4], 'important');
+                        motivationalIndex++;
+                        console.log(`🎨 Contraste activado: ${motivationalIndex % 4 + 1}/4`);
+                    });
+                });
+            }
+        }
+        
+        function analizarPaletaOptimizada() {
+            console.log('🎨 Análisis cromático optimizado:');
+            console.log('   H1: #1a365d (Azul marino oscuro - Contraste 12.6:1)');
+            console.log('   P: #2d3748 (Gris azulado oscuro - Contraste 8.9:1)');
+            console.log('   Fondo: Gradiente naranja-amarillo');
+            console.log('   Mejora: Text-shadow blanco para mayor legibilidad');
+        }
+        
+        function detectarContextoIntroduccion() {
+            const banner = document.querySelector('div[data-banner="introduccion-v1"]');
+            if (banner) {
+                banner.setAttribute('data-context', 'introduccion');
+                banner.setAttribute('data-fase', 'motivacion');
+                banner.setAttribute('data-modulo', '1');
+                banner.setAttribute('data-tema', 'numeros-enteros');
+                banner.setAttribute('data-objetivos', 'conocimiento,motivacion,competencias');
+                
+                console.log('🎯 Contexto de introducción optimizado detectado y configurado');
+            }
+        }
+        
+        function inicializarProgresionMotivacional() {
+            const shapes = document.querySelectorAll('div[data-element]');
+            const motivationNames = ['Objetivos', 'Competencias', 'Motivación', 'Introducción'];
+            
+            shapes.forEach((shape, index) => {
+                const elementType = shape.getAttribute('data-element');
+                shape.setAttribute('title', `${motivationNames[index]} del módulo`);
+                
+                shape.addEventListener('click', function() {
+                    console.log(`🎯 Enfoque motivacional en: ${elementType}`);
+                    this.style.setProperty('opacity', '0.7', 'important');
+                    setTimeout(() => {
+                        this.style.setProperty('opacity', '0.3', 'important');
+                    }, 1500);
+                });
+            });
+        }
+        
+        function aplicarElementosIntroductivos() {
+            const titulo = document.querySelector('h1[data-element="titulo"]');
+            const subtitulo = document.querySelector('p[data-element="subtitulo"]');
+            
+            if (titulo && subtitulo) {
+                titulo.setAttribute('data-motivation', 'introduction');
+                titulo.setAttribute('data-learning-phase', 'orientation');
+                subtitulo.setAttribute('data-level', 'modulo-1');
+                subtitulo.setAttribute('data-subject', 'numeros-enteros');
+                
+                titulo.addEventListener('click', function() {
+                    console.log('🚀 ¡Estudiante motivado para iniciar su aventura matemática!');
+                    console.log('🎯 Objetivo: Presentar introducción, objetivos y competencias del módulo');
+                });
+            }
+        }
+        
+        // EJECUTAR FUNCIONES OPTIMIZADAS
+        verificarBannerIntroduccion();
+        analizarPaletaOptimizada();
+        detectarContextoIntroduccion();
+        inicializarProgresionMotivacional();
+        aplicarElementosIntroductivos();
+        initAccordions();
+        
+        console.log('🌟 Sistema optimizado inicializado - Contraste mejorado y código compactado');
+        console.log('✨ Mejoras: Azul marino oscuro, sombras blancas, selectores agrupados');
+        console.log('Acordeones inicializados y cerrados correctamente.');
+    });
+    
+    /**
+     * FUNCIONES GLOBALES OPTIMIZADAS
+     */
+    function alternarModoMotivacional() {
+        const banner = document.querySelector('div[data-banner="introduccion-v1"]');
+        if (banner) {
+            const modos = ['objetivos', 'competencias', 'motivacion', 'introduccion'];
+            const modoActual = banner.getAttribute('data-modo') || 'objetivos';
+            const indiceActual = modos.indexOf(modoActual);
+            const nuevoModo = modos[(indiceActual + 1) % 4];
+            
+            banner.setAttribute('data-modo', nuevoModo);
+            console.log(`🔄 Modo motivacional: ${nuevoModo}`);
+        }
+    }
+    
+    function activarModoIntroduccion() {
+        const banner = document.querySelector('div[data-banner="introduccion-v1"]');
+        if (banner) {
+            banner.classList.add('introduccion-activa');
+            banner.style.setProperty('filter', 'brightness(1.1) saturate(1.2)', 'important');
+            console.log('🚀 Modo introducción optimizado activado');
+        }
+    }
+</script>
+<!-- FIN SECCIÓN 4: SCRIPTS JAVASCRIPT -->

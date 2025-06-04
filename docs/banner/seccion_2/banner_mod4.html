@@ -1,0 +1,482 @@
+<!-- HEAD DEFINITIONS GO HERE -->
+<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<script>
+    /**
+     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
+     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
+     * @param {string} url - URL DEL RECURSO.
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+        }
+        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
+        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+        document.head.appendChild(elemento);
+    }
+    // 5. CARGAR FUENTE MONTSERRAT DESDE CDN
+    cargarRecurso('stylesheet', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    // 6. CARGAR ICONOS DE FONT AWESOME DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    /**
+     * 7. AGREGAR ESTILOS CON TEORÍA DEL COLOR APLICADA.
+     */
+    (function agregarEstilosTeoriaColor() {
+        const customStyles = document.createElement('style');
+        customStyles.textContent = `
+            /* 8. VARIABLES CSS BASADAS EN TEORÍA DEL COLOR */
+            :root {
+                /* 9. PALETA MONOCROMÁTICA AZUL - COLORES PRIMARIOS */
+                --color-primary-dark: #1a365d;      /* 10. AZUL NAVY - CMYK 100/91/27/15 APROX */
+                --color-primary-medium: #2563eb;     /* 11. AZUL MEDIO - CMYK 83/41/0/0 APROX */
+                --color-primary-light: #3b82f6;     /* 12. AZUL CLARO - CMYK 70/14/0/0 APROX */
+                --color-primary-bright: #1d4ed8;    /* 13. AZUL SATURADO - CMYK 94/66/0/0 APROX */
+                
+                /* 14. COLORES COMPLEMENTARIOS Y DE ACENTO */
+                --color-accent-warm: #f59e0b;       /* 15. NARANJA COMPLEMENTARIO (CONTRASTE CÁLIDO) */
+                --color-accent-gold: #fbbf24;       /* 16. DORADO (ANÁLOGO CÁLIDO) */
+                --color-neutral-light: #f8fafc;     /* 17. NEUTRAL CLARO */
+                --color-neutral-dark: #0f172a;      /* 18. NEUTRAL OSCURO */
+                
+                /* 19. GRADIENTES CON ARMONÍA CROMÁTICA */
+                --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-medium) 100%);
+                --gradient-accent: linear-gradient(90deg, var(--color-accent-warm) 0%, var(--color-accent-gold) 100%);
+                --gradient-overlay: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%, rgba(251, 191, 36, 0.05) 100%);
+                
+                /* 20. TRANSPARENCIAS PARA LAYERING */
+                --alpha-light: rgba(248, 250, 252, 0.95);
+                --alpha-medium: rgba(37, 99, 235, 0.15);
+                --alpha-accent: rgba(245, 158, 11, 0.3);
+            }
+
+            /* 21. RESETEO DE ESTILOS PARA EL BANNER */
+            .color-theory-banner * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* 22. CONTENEDOR PRINCIPAL CON ESQUEMA MONOCROMÁTICO */
+            .color-theory-banner {
+                font-family: 'Montserrat', sans-serif;
+                background: var(--gradient-primary);                 /* 23. GRADIENTE MONOCROMÁTICO AZUL */
+                color: var(--color-neutral-light);
+                overflow: hidden;
+                border-radius: 12px;
+                margin: 20px 0;
+                position: relative;
+                box-shadow: 0 10px 40px rgba(26, 54, 93, 0.3);      /* 24. SOMBRA EN TONO PRIMARIO */
+            }
+
+            /* 25. OVERLAY CON TEORÍA DE CONTRASTE */
+            .color-theory-banner::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--gradient-overlay);                 /* 26. OVERLAY PARA BALANCE CROMÁTICO */
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            /* 27. HEADER CON GLASSMORPHISM Y CONTRASTE VISUAL */
+            .theory-header {
+                text-align: center;
+                padding: 30px 25px;
+                background: var(--alpha-medium);                     /* 28. FONDO SEMI-TRANSPARENTE AZUL */
+                backdrop-filter: blur(15px) saturate(1.2);           /* 29. GLASSMORPHISM MEJORADO */
+                border-bottom: 3px solid var(--color-accent-warm);   /* 30. LÍNEA DE ACENTO COMPLEMENTARIA */
+                position: relative;
+                z-index: 2;
+                overflow: hidden;
+            }
+
+            /* 31. ELEMENTO DECORATIVO CON COLOR DE ACENTO */
+            .theory-header::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, var(--color-accent-gold) 0%, transparent 70%);
+                opacity: 0.6;                                        /* 32. TRANSPARENCIA PARA SUTILEZA */
+                z-index: -1;
+                animation: pulseGlow 4s ease-in-out infinite;        /* 33. ANIMACIÓN DE RESPLANDOR */
+            }
+
+            /* 34. TÍTULO PRINCIPAL CON JERARQUÍA CROMÁTICA */
+            .theory-title {
+                font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+                font-weight: 800;                                    /* 35. PESO EXTRABOLD PARA JERARQUÍA */
+                margin-bottom: 15px;
+                color: var(--color-neutral-light);                   /* 36. BLANCO PARA MÁXIMO CONTRASTE */
+                text-shadow: 
+                    2px 2px 4px var(--color-primary-dark),          /* 37. SOMBRA EN COLOR PRIMARIO OSCURO */
+                    0 0 20px rgba(251, 191, 36, 0.3);               /* 38. RESPLANDOR EN COLOR DE ACENTO */
+                line-height: 1.1;
+                position: relative;
+                z-index: 3;
+            }
+
+            /* 39. SUBTÍTULO CON COLOR ANÁLOGO */
+            .theory-subtitle {
+                font-size: clamp(1rem, 2.8vw, 1.3rem);
+                font-weight: 600;
+                color: var(--color-accent-gold);                     /* 40. COLOR DE ACENTO DORADO */
+                line-height: 1.3;
+                position: relative;
+                z-index: 3;
+                text-shadow: 1px 1px 3px var(--color-primary-dark); /* 41. SOMBRA PARA LEGIBILIDAD */
+            }
+
+            /* 42. ICONOS CON REALCE CROMÁTICO MÁXIMO */
+            .theory-title i,
+            .theory-subtitle i {
+                margin-right: 12px;
+                vertical-align: middle;
+                color: #ff6b35;                                      /* 43. NARANJA VIBRANTE PARA MÁXIMO CONTRASTE */
+                font-size: 1.3em;                                   /* 44. TAMAÑO AUMENTADO PARA PROMINENCIA */
+                text-shadow: 
+                    0 0 10px rgba(255, 107, 53, 0.6),               /* 45. RESPLANDOR NARANJA */
+                    0 0 20px rgba(255, 107, 53, 0.4),               /* 46. RESPLANDOR EXTENDIDO */
+                    2px 2px 4px rgba(0, 0, 0, 0.3);                 /* 47. SOMBRA PARA PROFUNDIDAD */
+                filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.5)); /* 48. FILTRO DE RESPLANDOR ADICIONAL */
+                transition: all 0.3s ease;                          /* 49. TRANSICIÓN SUAVE */
+                display: inline-block;                               /* 50. PARA APLICAR TRANSFORMACIONES */
+            }
+
+            /* 45. ELEMENTO DECORATIVO INFERIOR CON CONTRASTE COMPLEMENTARIO */
+            .accent-bar {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80%;
+                height: 4px;
+                background: var(--gradient-accent);                  /* 46. BARRA DE ACENTO COMPLEMENTARIO */
+                border-radius: 2px;
+                z-index: 4;
+                box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);    /* 47. SOMBRA EN COLOR DE ACENTO */
+            }
+
+            /* 48. ELEMENTOS FLOTANTES CON ESQUEMA TRIÁDICO */
+            .floating-shapes {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .shape-1,
+            .shape-2,
+            .shape-3 {
+                position: absolute;
+                border-radius: 50%;
+                opacity: 0.4;                                        /* 49. TRANSPARENCIA PARA NO COMPETIR */
+                animation: floatRotate 8s ease-in-out infinite;      /* 50. ANIMACIÓN SUAVE */
+            }
+
+            .shape-1 {
+                width: 40px;
+                height: 40px;
+                background: var(--color-primary-light);              /* 51. AZUL CLARO */
+                top: 20%;
+                left: 10%;
+                animation-delay: 0s;
+            }
+
+            .shape-2 {
+                width: 25px;
+                height: 25px;
+                background: var(--color-accent-warm);                /* 52. NARANJA COMPLEMENTARIO */
+                top: 60%;
+                right: 15%;
+                animation-delay: 2.5s;
+            }
+
+            .shape-3 {
+                width: 30px;
+                height: 30px;
+                background: var(--color-primary-bright);             /* 53. AZUL SATURADO */
+                top: 40%;
+                right: 35%;
+                animation-delay: 5s;
+            }
+
+            /* 54. ANIMACIONES CON TEORÍA DE MOVIMIENTO */
+            @keyframes pulseGlow {
+                0%, 100% { 
+                    opacity: 0.4; 
+                    transform: scale(1);                             /* 55. ESCALA NORMAL */
+                }
+                50% { 
+                    opacity: 0.8; 
+                    transform: scale(1.1);                           /* 56. EXPANSIÓN SUTIL */
+                }
+            }
+
+            @keyframes floatRotate {
+                0%, 100% { 
+                    transform: translateY(0) rotate(0deg);           /* 57. POSICIÓN INICIAL */
+                }
+                33% { 
+                    transform: translateY(-10px) rotate(120deg);     /* 58. MOVIMIENTO CIRCULAR */
+                }
+                66% { 
+                    transform: translateY(5px) rotate(240deg);       /* 59. CONTINUACIÓN DEL CICLO */
+                }
+            }
+
+            /* 60. HOVER STATES CON RETROALIMENTACIÓN CROMÁTICA */
+            .color-theory-banner:hover .theory-title {
+                color: var(--color-accent-gold);                     /* 61. CAMBIO A COLOR DE ACENTO */
+                transition: color 0.4s ease;                         /* 62. TRANSICIÓN SUAVE */
+            }
+
+            .color-theory-banner:hover .accent-bar {
+                width: 90%;                                          /* 63. EXPANSIÓN DE BARRA DE ACENTO */
+                transition: width 0.4s ease;                         /* 64. TRANSICIÓN FLUIDA */
+            }
+
+            /* 65. EFECTOS ESPECIALES PARA ICONOS */
+            .theory-title i:hover,
+            .theory-subtitle i:hover {
+                transform: scale(1.2) rotate(10deg);                 /* 66. ESCALADO Y ROTACIÓN SUTIL */
+                color: #ff8c42;                                      /* 67. NARANJA MÁS CLARO AL HOVER */
+                text-shadow: 
+                    0 0 15px rgba(255, 140, 66, 0.8),               /* 68. RESPLANDOR INTENSIFICADO */
+                    0 0 30px rgba(255, 140, 66, 0.6),               /* 69. RESPLANDOR EXPANDIDO */
+                    3px 3px 6px rgba(0, 0, 0, 0.4);                 /* 70. SOMBRA MÁS PROMINENTE */
+                filter: drop-shadow(0 0 12px rgba(255, 140, 66, 0.7)); /* 71. FILTRO INTENSIFICADO */
+            }
+
+            /* 72. ANIMACIÓN PULSE PARA ICONOS */
+            .theory-title i,
+            .theory-subtitle i {
+                animation: iconPulse 2s ease-in-out infinite;        /* 73. ANIMACIÓN DE PULSACIÓN */
+            }
+
+            @keyframes iconPulse {
+                0%, 100% { 
+                    transform: scale(1);                             /* 74. ESCALA NORMAL */
+                    filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.5));
+                }
+                50% { 
+                    transform: scale(1.05);                          /* 75. LIGERA EXPANSIÓN */
+                    filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.7));
+                }
+            }
+
+            /* 65. MEDIA QUERIES CON CONSISTENCIA CROMÁTICA */
+            @media (max-width: 768px) {
+                .theory-header {
+                    padding: 25px 20px;                              /* 66. PADDING REDUCIDO */
+                }
+                
+                .theory-title {
+                    margin-bottom: 10px;                             /* 67. MARGEN COMPACTO */
+                }
+                
+                .shape-1,
+                .shape-2,
+                .shape-3 {
+                    opacity: 0.2;                                    /* 68. MENOR OPACIDAD EN MÓVIL */
+                }
+            }
+
+            @media (max-width: 480px) {
+                .theory-header {
+                    padding: 20px 15px;                              /* 69. PADDING MÍNIMO */
+                }
+                
+                .theory-title i,
+                .theory-subtitle i {
+                    margin-right: 8px;                               /* 70. ESPACIADO REDUCIDO */
+                    font-size: 1.2em;                                /* 71. TAMAÑO LIGERAMENTE REDUCIDO EN MÓVIL */
+                    text-shadow: 
+                        0 0 8px rgba(255, 107, 53, 0.5),             /* 72. RESPLANDOR ADAPTADO */
+                        2px 2px 3px rgba(0, 0, 0, 0.3);              /* 73. SOMBRA SIMPLIFICADA */
+                }
+                
+                .accent-bar {
+                    width: 70%;                                      /* 74. BARRA MÁS ESTRECHA */
+                    height: 3px;                                     /* 75. ALTURA REDUCIDA */
+                }
+            }
+
+            /* 73. ACCESIBILIDAD CON CONTRASTE MEJORADO */
+            @media (prefers-contrast: high) {
+                .theory-title {
+                    text-shadow: 3px 3px 6px var(--color-neutral-dark); /* 74. MAYOR CONTRASTE */
+                    color: #ffffff;                                   /* 75. BLANCO PURO */
+                }
+                
+                .theory-subtitle {
+                    color: var(--color-accent-gold);                 /* 76. MANTENER COLOR DE ACENTO */
+                    text-shadow: 2px 2px 4px var(--color-neutral-dark); /* 77. SOMBRA MÁS FUERTE */
+                }
+                
+                .theory-header {
+                    border-bottom: 4px solid var(--color-accent-warm); /* 78. BORDE MÁS GRUESO */
+                }
+            }
+
+            /* 79. REDUCCIÓN DE MOVIMIENTO PARA ACCESIBILIDAD */
+            @media (prefers-reduced-motion: reduce) {
+                .theory-header::after,
+                .shape-1,
+                .shape-2,
+                .shape-3,
+                .theory-title i,
+                .theory-subtitle i {
+                    animation: none;                                  /* 80. SIN ANIMACIONES */
+                }
+                
+                .color-theory-banner:hover .theory-title,
+                .color-theory-banner:hover .accent-bar,
+                .theory-title i:hover,
+                .theory-subtitle i:hover {
+                    transition: none;                                 /* 81. SIN TRANSICIONES */
+                    transform: none;                                  /* 82. SIN TRANSFORMACIONES */
+                }
+            }
+        `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+
+<!-- 2. SECCIÓN 2: BANNER CON TEORÍA DEL COLOR APLICADA -->
+<div class="color-theory-banner">
+    <!-- 82. ELEMENTOS DECORATIVOS FLOTANTES -->
+    <div class="floating-shapes">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+    </div>
+    
+    <!-- 83. HEADER CON JERARQUÍA CROMÁTICA -->
+    <div class="theory-header">
+        <h1 class="theory-title">
+            <i class="fas fa-flask" aria-hidden="true"></i>
+            ¡Explora cada sección y profundiza en los conceptos clave!
+        </h1>
+        <p class="theory-subtitle">
+            <i class="fas fa-calculator" aria-hidden="true"></i>
+            Módulo 4 - Razones, Proporciones y regla de Tres
+
+        </p>
+        
+        <!-- 84. BARRA DE ACENTO COMPLEMENTARIO -->
+        <div class="accent-bar"></div>
+    </div>
+</div>
+<!-- FIN 2. SECCIÓN 2: BANNER CON TEORÍA DEL COLOR -->
+
+<!-- 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y TEORÍA CROMÁTICA -->
+<script>
+    /**
+     * 85. FUNCIONES PARA OPTIMIZAR LA EXPERIENCIA CROMÁTICA.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        // 86. VERIFICAR CARGA DEL BANNER CON TEORÍA DEL COLOR
+        function verificarBannerTeoriaColor() {
+            const banner = document.querySelector('.color-theory-banner');
+            if (banner) {
+                console.log('🎨 Banner con Teoría del Color cargado correctamente'); // 87. CONFIRMACIÓN CROMÁTICA
+                
+                // 88. APLICAR EFECTOS DINÁMICOS BASADOS EN TEORÍA DEL COLOR
+                banner.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.01) translateY(-2px)';     // 89. ELEVACIÓN SUTIL
+                    this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'; // 90. EASING SUAVE
+                    this.style.boxShadow = '0 20px 60px rgba(26, 54, 93, 0.4)'; // 91. SOMBRA EXPANSIVA
+                });
+                
+                banner.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) translateY(0)';           // 92. RETORNO A POSICIÓN
+                    this.style.boxShadow = '0 10px 40px rgba(26, 54, 93, 0.3)'; // 93. SOMBRA ORIGINAL
+                });
+                
+                // 94. MEJORAR ACCESIBILIDAD CON FOCUS VISIBLE
+                const titulo = banner.querySelector('.theory-title');
+                if (titulo) {
+                    titulo.setAttribute('tabindex', '0');                       // 95. HACER FOCUSEABLE
+                    titulo.setAttribute('role', 'banner');                      // 96. ROLE SEMÁNTICO
+                    titulo.setAttribute('aria-label', 'Laboratorio Matemático Módulo 1 - Sistema de Números Enteros'); // 97. DESCRIPCIÓN COMPLETA
+                    
+                    // 98. FOCUS VISUAL CON COLORES DE ACENTO
+                    titulo.addEventListener('focus', function() {
+                        this.style.outline = '3px solid #f59e0b';               // 99. OUTLINE EN COLOR DE ACENTO
+                        this.style.outlineOffset = '2px';                       // 100. SEPARACIÓN DEL OUTLINE
+                    });
+                }
+            } else {
+                console.warn('⚠️ No se encontró el banner con teoría del color'); // 101. ADVERTENCIA DE ERROR
+            }
+        }
+        
+        // 102. FUNCIÓN PARA DETECCIÓN DE PREFERENCIAS DE CONTRASTE
+        function detectarPreferenciasVisuales() {
+            const banner = document.querySelector('.color-theory-banner');
+            if (banner) {
+                // 103. VERIFICAR PREFERENCIA DE CONTRASTE ALTO
+                if (window.matchMedia('(prefers-contrast: high)').matches) {
+                    banner.classList.add('high-contrast-mode');                 // 104. CLASE PARA ALTO CONTRASTE
+                    console.log('🔆 Modo de alto contraste activado');
+                }
+                
+                // 105. VERIFICAR PREFERENCIA DE MOVIMIENTO REDUCIDO
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    banner.classList.add('reduced-motion-mode');                // 106. CLASE PARA MOVIMIENTO REDUCIDO
+                    console.log('🔇 Modo de movimiento reducido activado');
+                }
+            }
+        }
+        
+        // 107. FUNCIÓN PARA ANÁLISIS CROMÁTICO EN TIEMPO REAL
+        function analizarContrasteCromatico() {
+            const computedStyle = getComputedStyle(document.documentElement);
+            const primaryDark = computedStyle.getPropertyValue('--color-primary-dark').trim();
+            const accentGold = computedStyle.getPropertyValue('--color-accent-gold').trim();
+            
+            console.log('🎨 Análisis cromático:');                              // 108. INICIO DE ANÁLISIS
+            console.log(`   Primario oscuro: ${primaryDark}`);                 // 109. COLOR PRIMARIO
+            console.log(`   Acento dorado: ${accentGold}`);                    // 110. COLOR DE ACENTO
+            console.log('   Esquema aplicado: Monocromático azul + complementario naranja'); // 111. ESQUEMA IDENTIFICADO
+        }
+        
+        // 112. EJECUTAR TODAS LAS VERIFICACIONES
+        verificarBannerTeoriaColor();
+        detectarPreferenciasVisuales();
+        analizarContrasteCromatico();
+        
+        // 113. LOG FINAL DE INICIALIZACIÓN CROMÁTICA
+        console.log('🚀 Sistema de Teoría del Color inicializado - Iconos con realce cromático máximo aplicado');
+        console.log('🔥 Efectos especiales: Resplandor naranja, animación pulse, y hover dinámico en iconos');
+    });
+    
+    /**
+     * 114. FUNCIÓN EXPERIMENTAL PARA ALTERNAR ESQUEMAS CROMÁTICOS
+     * @description PERMITE CAMBIAR ENTRE DIFERENTES ESQUEMAS DE COLOR
+     */
+    function alternarEsquemaCromatico() {
+        const banner = document.querySelector('.color-theory-banner');
+        if (banner) {
+            banner.classList.toggle('esquema-analogico');                        // 115. TOGGLE ESQUEMA ANÁLOGO
+            const esAnalogico = banner.classList.contains('esquema-analogico');
+            console.log(`🎨 Esquema cromático: ${esAnalogico ? 'Análogo' : 'Monocromático + Complementario'}`); // 116. LOG DEL CAMBIO
+        }
+    }
+</script>
+<!-- FIN 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y TEORÍA CROMÁTICA -->

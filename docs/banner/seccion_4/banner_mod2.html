@@ -1,0 +1,571 @@
+<!-- HEAD DEFINITIONS GO HERE -->
+<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<script>
+    /**
+     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
+     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
+     * @param {string} url - URL DEL RECURSO.
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+        }
+        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
+        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+        document.head.appendChild(elemento);
+    }
+    // 5. CARGAR FUENTE MONTSERRAT DESDE CDN
+    cargarRecurso('stylesheet', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+    // 6. CARGAR ICONOS DE FONT AWESOME DESDE CDN
+    cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    /**
+     * 7. AGREGAR ESTILOS CON PALETA VERDE Y TEORÍA DEL COLOR.
+     */
+    (function agregarEstilosEvaluacionVerde() {
+        const customStyles = document.createElement('style');
+        customStyles.textContent = `
+            /* 8. VARIABLES CSS BASADAS EN PALETA VERDE PANTONE */
+            :root {
+                /* 9. PALETA ANÁLOGA VERDE - COLORES PRINCIPALES */
+                --verde-oscuro: #103B45;           /* 10. PANTONE 567 C - BASE OSCURA */
+                --verde-medio: #007363;            /* 11. PANTONE 3295 C - MEDIO SATURADO */
+                --verde-claro: #4A9B8E;            /* 12. PANTONE 7489 C APROX - CLARO */
+                --verde-agua: #6FB3A0;             /* 13. TONO INTERMEDIO CALCULADO */
+                
+                /* 14. COLOR DE ACENTO COMPLEMENTARIO */
+                --acento-dorado: #B8A832;         /* 15. PANTONE 583 C APROX - ACENTO CÁLIDO */
+                --acento-amarillo: #D4C441;       /* 16. VARIANTE MÁS CLARA DEL ACENTO */
+                
+                /* 17. NEUTRALES PARA CONTRASTE */
+                --blanco-puro: #ffffff;            /* 18. MÁXIMO CONTRASTE */
+                --gris-claro: #f8fafa;            /* 19. NEUTRAL MUY CLARO */
+                --negro-texto: #1a1a1a;           /* 20. TEXTO OSCURO */
+                
+                /* 21. GRADIENTES ARMÓNICOS */
+                --gradiente-principal: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
+                --gradiente-acento: linear-gradient(90deg, var(--acento-dorado) 0%, var(--acento-amarillo) 100%);
+                --gradiente-overlay: linear-gradient(135deg, rgba(74, 155, 142, 0.1) 0%, transparent 50%, rgba(184, 168, 50, 0.05) 100%);
+                
+                /* 22. TRANSPARENCIAS PARA LAYERING */
+                --alpha-verde-claro: rgba(111, 179, 160, 0.15);
+                --alpha-acento: rgba(184, 168, 50, 0.3);
+                --alpha-blanco: rgba(255, 255, 255, 0.95);
+            }
+
+            /* 23. RESETEO DE ESTILOS PARA EL BANNER */
+            .evaluacion-banner * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* 24. CONTENEDOR PRINCIPAL CON JERARQUÍA CROMÁTICA */
+            .evaluacion-banner {
+                font-family: 'Montserrat', sans-serif;
+                background: var(--gradiente-principal);               /* 25. GRADIENTE VERDE ANÁLOGO */
+                color: var(--blanco-puro);
+                overflow: hidden;
+                border-radius: 15px;
+                margin: 20px 0;
+                position: relative;
+                box-shadow: 
+                    0 15px 35px rgba(16, 59, 69, 0.4),               /* 26. SOMBRA PRINCIPAL VERDE OSCURO */
+                    0 5px 15px rgba(0, 115, 99, 0.3);               /* 27. SOMBRA SECUNDARIA VERDE MEDIO */
+            }
+
+            /* 28. OVERLAY PARA EQUILIBRIO CROMÁTICO */
+            .evaluacion-banner::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--gradiente-overlay);                 /* 29. OVERLAY SUTIL PARA ARMONÍA */
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            /* 30. HEADER CON CONTRASTE DE VALOR OPTIMIZADO */
+            .eval-header {
+                text-align: center;
+                padding: 35px 30px;
+                background: var(--alpha-verde-claro);                 /* 31. FONDO SEMI-TRANSPARENTE */
+                backdrop-filter: blur(20px) saturate(1.3);            /* 32. GLASSMORPHISM AVANZADO */
+                border-bottom: 4px solid var(--acento-dorado);        /* 33. LÍNEA DE ACENTO FOCAL */
+                position: relative;
+                z-index: 2;
+                overflow: hidden;
+            }
+
+            /* 34. ELEMENTOS DECORATIVOS CON PUNTO FOCAL */
+            .eval-header::after {
+                content: '';
+                position: absolute;
+                top: -20px;
+                right: -20px;
+                width: 120px;
+                height: 120px;
+                background: radial-gradient(circle, var(--acento-amarillo) 0%, transparent 70%);
+                opacity: 0.4;                                         /* 35. TRANSPARENCIA PARA SUTILEZA */
+                z-index: -1;
+                animation: floatGlow 5s ease-in-out infinite;         /* 36. ANIMACIÓN SUAVE */
+            }
+
+            /* 37. TÍTULO PRINCIPAL CON MÁXIMO CONTRASTE */
+            .eval-title {
+                font-size: clamp(1.7rem, 5vw, 2.6rem);
+                font-weight: 900;                                     /* 38. PESO EXTRA-BOLD PARA JERARQUÍA */
+                margin-bottom: 18px;
+                color: var(--blanco-puro);                            /* 39. BLANCO PARA MÁXIMO CONTRASTE */
+                text-shadow: 
+                    3px 3px 6px var(--verde-oscuro),                 /* 40. SOMBRA EN COLOR BASE */
+                    0 0 25px rgba(184, 168, 50, 0.4);                /* 41. RESPLANDOR DORADO SUTIL */
+                line-height: 1.1;
+                position: relative;
+                z-index: 3;
+                letter-spacing: -0.5px;                               /* 42. KERNING OPTIMIZADO */
+            }
+
+            /* 43. SUBTÍTULO CON COLOR DE ACENTO FOCAL */
+            .eval-subtitle {
+                font-size: clamp(1.1rem, 3vw, 1.4rem);
+                font-weight: 700;                                     /* 44. BOLD PARA PROMINENCIA */
+                color: var(--acento-amarillo);                        /* 45. COLOR DE ACENTO PARA FOCO */
+                line-height: 1.2;
+                position: relative;
+                z-index: 3;
+                text-shadow: 
+                    2px 2px 4px var(--verde-oscuro),                 /* 46. SOMBRA PARA LEGIBILIDAD */
+                    0 0 15px rgba(212, 196, 65, 0.3);                /* 47. RESPLANDOR COMPLEMENTARIO */
+                letter-spacing: 1px;                                  /* 49. ESPACIADO PARA ELEGANCIA */
+            }
+
+            /* 50. ICONOS DE EVALUACIÓN CON REALCE CROMÁTICO */
+            .eval-title i {
+                margin-right: 15px;
+                vertical-align: middle;
+                color: var(--acento-dorado);                          /* 51. COLOR DE ACENTO PRINCIPAL */
+                font-size: 1.4em;                                    /* 52. TAMAÑO PROMINENTE */
+                text-shadow: 
+                    0 0 12px rgba(184, 168, 50, 0.7),                /* 53. RESPLANDOR DORADO INTENSO */
+                    0 0 24px rgba(184, 168, 50, 0.5),                /* 54. RESPLANDOR EXTENDIDO */
+                    2px 2px 4px rgba(16, 59, 69, 0.6);               /* 55. SOMBRA DE PROFUNDIDAD */
+                filter: drop-shadow(0 0 10px rgba(184, 168, 50, 0.6)); /* 56. FILTRO ADICIONAL */
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);   /* 57. TRANSICIÓN SUAVE */
+                display: inline-block;
+                animation: iconShine 3s ease-in-out infinite;         /* 58. ANIMACIÓN DE BRILLO */
+            }
+
+            .eval-subtitle i {
+                margin-right: 12px;
+                vertical-align: middle;
+                color: var(--acento-amarillo);                        /* 59. ACENTO SECUNDARIO */
+                font-size: 1.2em;
+                text-shadow: 
+                    0 0 8px rgba(212, 196, 65, 0.6),                 /* 60. RESPLANDOR COORDINADO */
+                    2px 2px 3px var(--verde-oscuro);                 /* 61. SOMBRA PARA CONTRASTE */
+                filter: drop-shadow(0 0 8px rgba(212, 196, 65, 0.5));
+                transition: all 0.3s ease;
+                display: inline-block;
+                animation: iconPulse 4s ease-in-out infinite;         /* 62. PULSACIÓN SUTIL */
+            }
+
+            /* 63. BARRA DE PROGRESO/ACENTO INFERIOR */
+            .progress-accent {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 85%;
+                height: 6px;
+                background: var(--gradiente-acento);                  /* 64. GRADIENTE DE ACENTO */
+                border-radius: 3px;
+                z-index: 4;
+                box-shadow: 
+                    0 3px 15px rgba(184, 168, 50, 0.5),              /* 65. SOMBRA DORADA */
+                    inset 0 1px 3px rgba(255, 255, 255, 0.3);        /* 66. HIGHLIGHT INTERNO */
+                animation: progressGlow 2.5s ease-in-out infinite;    /* 67. ANIMACIÓN DE RESPLANDOR */
+            }
+
+            /* 68. ELEMENTOS FLOTANTES CON EQUILIBRIO VISUAL */
+            .floating-elements {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            .eval-shape {
+                position: absolute;
+                border-radius: 50%;
+                opacity: 0.3;                                         /* 69. TRANSPARENCIA EQUILIBRADA */
+                animation: gentleFloat 6s ease-in-out infinite;       /* 70. FLOTACIÓN SUAVE */
+            }
+
+            .eval-shape-1 {
+                width: 35px;
+                height: 35px;
+                background: var(--verde-claro);                       /* 71. VERDE CLARO */
+                top: 25%;
+                left: 8%;
+                animation-delay: 0s;
+            }
+
+            .eval-shape-2 {
+                width: 28px;
+                height: 28px;
+                background: var(--acento-dorado);                     /* 72. ACENTO DORADO */
+                top: 65%;
+                right: 12%;
+                animation-delay: 2s;
+            }
+
+            .eval-shape-3 {
+                width: 32px;
+                height: 32px;
+                background: var(--verde-agua);                        /* 73. VERDE AGUA */
+                top: 45%;
+                right: 35%;
+                animation-delay: 4s;
+            }
+
+            /* 74. ANIMACIONES CON ARMONÍA TEMPORAL */
+            @keyframes floatGlow {
+                0%, 100% { 
+                    opacity: 0.3; 
+                    transform: scale(1) rotate(0deg);                 /* 75. ESTADO INICIAL */
+                }
+                50% { 
+                    opacity: 0.6; 
+                    transform: scale(1.15) rotate(180deg);            /* 76. EXPANSIÓN Y ROTACIÓN */
+                }
+            }
+
+            @keyframes iconShine {
+                0%, 100% { 
+                    transform: scale(1) rotateY(0deg);                /* 77. POSICIÓN NORMAL */
+                    filter: drop-shadow(0 0 10px rgba(184, 168, 50, 0.6));
+                }
+                50% { 
+                    transform: scale(1.1) rotateY(15deg);             /* 78. LIGERA ROTACIÓN 3D */
+                    filter: drop-shadow(0 0 15px rgba(184, 168, 50, 0.9));
+                }
+            }
+
+            @keyframes iconPulse {
+                0%, 100% { 
+                    transform: scale(1);                              /* 79. ESCALA NORMAL */
+                    opacity: 1;
+                }
+                50% { 
+                    transform: scale(1.05);                           /* 80. LIGERA EXPANSIÓN */
+                    opacity: 0.9;
+                }
+            }
+
+            @keyframes progressGlow {
+                0%, 100% { 
+                    box-shadow: 
+                        0 3px 15px rgba(184, 168, 50, 0.5),
+                        inset 0 1px 3px rgba(255, 255, 255, 0.3);     /* 81. RESPLANDOR NORMAL */
+                }
+                50% { 
+                    box-shadow: 
+                        0 3px 25px rgba(184, 168, 50, 0.8),
+                        inset 0 1px 3px rgba(255, 255, 255, 0.5);     /* 82. RESPLANDOR INTENSIFICADO */
+                }
+            }
+
+            @keyframes gentleFloat {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0);           /* 83. POSICIÓN INICIAL */
+                }
+                33% { 
+                    transform: translateY(-8px) translateX(3px);      /* 84. MOVIMIENTO SUTIL */
+                }
+                66% { 
+                    transform: translateY(4px) translateX(-2px);      /* 85. VARIACIÓN DE TRAYECTORIA */
+                }
+            }
+
+            /* 86. ESTADOS HOVER CON FEEDBACK CROMÁTICO */
+            .evaluacion-banner:hover .eval-title {
+                color: var(--acento-amarillo);                        /* 87. CAMBIO A ACENTO */
+                transition: color 0.4s ease;
+                text-shadow: 
+                    3px 3px 6px var(--verde-oscuro),
+                    0 0 30px rgba(212, 196, 65, 0.6);                /* 88. RESPLANDOR INTENSIFICADO */
+            }
+
+            .evaluacion-banner:hover .progress-accent {
+                width: 95%;                                          /* 89. EXPANSIÓN DE BARRA */
+                transition: width 0.5s ease;
+            }
+
+            .eval-title i:hover {
+                transform: scale(1.3) rotateY(25deg);                /* 90. ESCALADO Y ROTACIÓN 3D */
+                color: var(--acento-amarillo);                       /* 91. CAMBIO A ACENTO CLARO */
+                text-shadow: 
+                    0 0 18px rgba(212, 196, 65, 0.9),
+                    0 0 35px rgba(212, 196, 65, 0.7);                /* 92. RESPLANDOR MAXIMIZADO */
+                filter: drop-shadow(0 0 15px rgba(212, 196, 65, 0.8));
+            }
+
+            .eval-subtitle i:hover {
+                transform: scale(1.2) rotate(15deg);                 /* 93. ESCALADO Y ROTACIÓN */
+                color: var(--acento-dorado);
+                filter: drop-shadow(0 0 12px rgba(184, 168, 50, 0.8));
+            }
+
+            /* 94. RESPONSIVIDAD CON JERARQUÍA MANTENIDA */
+            @media (max-width: 768px) {
+                .eval-header {
+                    padding: 30px 25px;                              /* 95. PADDING ADAPTADO */
+                }
+                
+                .eval-title {
+                    margin-bottom: 15px;                             /* 96. ESPACIADO REDUCIDO */
+                }
+                
+                .eval-shape-1,
+                .eval-shape-2,
+                .eval-shape-3 {
+                    opacity: 0.2;                                    /* 97. MENOR OPACIDAD EN MÓVIL */
+                }
+            }
+
+            @media (max-width: 480px) {
+                .eval-header {
+                    padding: 25px 20px;                              /* 98. PADDING COMPACTO */
+                }
+                
+                .eval-title i {
+                    margin-right: 10px;                              /* 99. ESPACIADO REDUCIDO */
+                    font-size: 1.3em;                                /* 100. TAMAÑO ADAPTADO */
+                }
+                
+                .eval-subtitle i {
+                    margin-right: 8px;
+                    font-size: 1.1em;
+                }
+                
+                .progress-accent {
+                    width: 75%;                                      /* 101. BARRA MÁS ESTRECHA */
+                    height: 5px;                                     /* 102. ALTURA REDUCIDA */
+                }
+            }
+
+            /* 103. ACCESIBILIDAD CON CONTRASTE PRESERVADO */
+            @media (prefers-contrast: high) {
+                .eval-title {
+                    text-shadow: 4px 4px 8px var(--negro-texto);     /* 104. MAYOR CONTRASTE */
+                    color: var(--blanco-puro);                       /* 105. BLANCO ABSOLUTO */
+                }
+                
+                .eval-subtitle {
+                    color: var(--acento-amarillo);
+                    text-shadow: 3px 3px 6px var(--negro-texto);     /* 106. SOMBRA MÁS FUERTE */
+                }
+                
+                .eval-header {
+                    border-bottom: 5px solid var(--acento-dorado);   /* 107. BORDE MÁS PROMINENTE */
+                }
+            }
+
+            /* 108. REDUCCIÓN DE MOVIMIENTO PARA ACCESIBILIDAD */
+            @media (prefers-reduced-motion: reduce) {
+                .eval-header::after,
+                .eval-shape-1,
+                .eval-shape-2,
+                .eval-shape-3,
+                .eval-title i,
+                .eval-subtitle i,
+                .progress-accent {
+                    animation: none;                                  /* 109. SIN ANIMACIONES */
+                }
+                
+                .evaluacion-banner:hover .eval-title,
+                .evaluacion-banner:hover .progress-accent,
+                .eval-title i:hover,
+                .eval-subtitle i:hover {
+                    transition: none;                                 /* 110. SIN TRANSICIONES */
+                    transform: none;                                  /* 111. SIN TRANSFORMACIONES */
+                }
+            }
+        `;
+        document.head.appendChild(customStyles);
+    })();
+</script>
+<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+
+<!-- 2. SECCIÓN 2: BANNER DE EVALUACIÓN CON TEORÍA DEL COLOR -->
+<div class="evaluacion-banner">
+    <!-- 112. ELEMENTOS DECORATIVOS FLOTANTES -->
+    <div class="floating-elements">
+        <div class="eval-shape eval-shape-1"></div>
+        <div class="eval-shape eval-shape-2"></div>
+        <div class="eval-shape eval-shape-3"></div>
+    </div>
+    
+    <!-- 113. HEADER CON JERARQUÍA CROMÁTICA OPTIMIZADA -->
+    <div class="eval-header">
+        <h1 class="eval-title">
+            <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+            Demuestra lo que has aprendido
+        </h1>
+        <p class="eval-subtitle">
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            Módulo 2 - Números Primos, MCD y MCM
+        </p>
+        
+        <!-- 114. BARRA DE PROGRESO/ACENTO CON PUNTO FOCAL -->
+        <div class="progress-accent"></div>
+    </div>
+</div>
+<!-- FIN 2. SECCIÓN 2: BANNER DE EVALUACIÓN -->
+
+<!-- 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y OPTIMIZACIÓN CROMÁTICA -->
+<script>
+    /**
+     * 115. FUNCIONES PARA OPTIMIZAR LA EXPERIENCIA DE EVALUACIÓN.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        // 116. VERIFICAR CARGA DEL BANNER DE EVALUACIÓN
+        function verificarBannerEvaluacion() {
+            const banner = document.querySelector('.evaluacion-banner');
+            if (banner) {
+                console.log('📝 Banner de Evaluación con paleta verde cargado correctamente'); // 117. CONFIRMACIÓN DE CARGA
+                
+                // 118. APLICAR EFECTOS DINÁMICOS DE EVALUACIÓN
+                banner.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02) translateY(-3px)';      // 119. ELEVACIÓN SUTIL
+                    this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'; // 120. EASING PREMIUM
+                    this.style.boxShadow = '0 25px 70px rgba(16, 59, 69, 0.5), 0 10px 25px rgba(0, 115, 99, 0.4)'; // 121. SOMBRA EXPANSIVA
+                });
+                
+                banner.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) translateY(0)';            // 122. RETORNO SUAVE
+                    this.style.boxShadow = '0 15px 35px rgba(16, 59, 69, 0.4), 0 5px 15px rgba(0, 115, 99, 0.3)'; // 123. SOMBRA ORIGINAL
+                });
+                
+                // 124. MEJORAR ACCESIBILIDAD PARA EVALUACIÓN
+                const titulo = banner.querySelector('.eval-title');
+                if (titulo) {
+                    titulo.setAttribute('tabindex', '0');                       // 125. HACER FOCUSEABLE
+                    titulo.setAttribute('role', 'banner');                      // 126. ROLE SEMÁNTICO
+                    titulo.setAttribute('aria-label', 'Sección de Evaluación - Demuestra lo que has aprendido en el Módulo 1'); // 127. DESCRIPCIÓN ACCESIBLE
+                    
+                    // 128. FOCUS VISUAL CON COLORES DE LA PALETA
+                    titulo.addEventListener('focus', function() {
+                        this.style.outline = '4px solid #B8A832';               // 129. OUTLINE EN ACENTO DORADO
+                        this.style.outlineOffset = '3px';                       // 130. SEPARACIÓN ÓPTIMA
+                        this.style.borderRadius = '8px';                        // 131. BORDES SUAVES
+                    });
+                }
+                
+                // 132. AGREGAR FEEDBACK SONORO VISUAL (OPCIONAL)
+                const iconos = banner.querySelectorAll('i');
+                iconos.forEach(icono => {
+                    icono.addEventListener('click', function() {
+                        this.style.animation = 'none';                          // 133. RESETEAR ANIMACIÓN
+                        setTimeout(() => {
+                            this.style.animation = '';                          // 134. RESTAURAR ANIMACIÓN
+                        }, 10);
+                    });
+                });
+            } else {
+                console.warn('⚠️ No se encontró el banner de evaluación'); // 135. ADVERTENCIA DE ERROR
+            }
+        }
+        
+        // 136. FUNCIÓN PARA ANÁLISIS CROMÁTICO DE LA PALETA VERDE
+        function analizarPaletaVerde() {
+            const computedStyle = getComputedStyle(document.documentElement);
+            const verdeOscuro = computedStyle.getPropertyValue('--verde-oscuro').trim();
+            const verdeMedio = computedStyle.getPropertyValue('--verde-medio').trim();
+            const acentoDorado = computedStyle.getPropertyValue('--acento-dorado').trim();
+            
+            console.log('🎨 Análisis cromático de evaluación:');              // 137. INICIO DE ANÁLISIS
+            console.log(`   Verde oscuro (base): ${verdeOscuro}`);            // 138. COLOR BASE
+            console.log(`   Verde medio (principal): ${verdeMedio}`);         // 139. COLOR PRINCIPAL
+            console.log(`   Acento dorado (focal): ${acentoDorado}`);         // 140. COLOR FOCAL
+            console.log('   Esquema aplicado: Análogo verde + acento complementario dorado'); // 141. ESQUEMA IDENTIFICADO
+            console.log('   Jerarquía: Contraste máximo en título, acento en subtítulo, elementos decorativos sutiles'); // 142. JERARQUÍA EXPLICADA
+        }
+        
+        // 143. FUNCIÓN PARA DETECTAR CONTEXTO DE EVALUACIÓN
+        function detectarContextoEvaluacion() {
+            const banner = document.querySelector('.evaluacion-banner');
+            if (banner) {
+                // 144. MARCAR COMO CONTEXTO DE EVALUACIÓN
+                banner.setAttribute('data-context', 'evaluacion');              // 145. ATRIBUTO DE CONTEXTO
+                banner.setAttribute('data-modulo', '1');                        // 146. IDENTIFICADOR DE MÓDULO
+                banner.setAttribute('data-tema', 'numeros-enteros');            // 147. TEMA ESPECÍFICO
+                
+                console.log('📊 Contexto de evaluación detectado y configurado'); // 148. CONFIRMACIÓN DE CONTEXTO
+            }
+        }
+        
+        // 149. FUNCIÓN PARA OPTIMIZACIÓN MOTIVACIONAL
+        function aplicarElementosMotivacionales() {
+            const titulo = document.querySelector('.eval-title');
+            const subtitulo = document.querySelector('.eval-subtitle');
+            
+            if (titulo && subtitulo) {
+                // 150. AGREGAR ATRIBUTOS MOTIVACIONALES
+                titulo.setAttribute('data-motivation', 'challenge');            // 151. TIPO DE MOTIVACIÓN
+                subtitulo.setAttribute('data-level', 'modulo-1');               // 152. NIVEL DE DIFICULTAD
+                
+                // 153. EVENTO DE MOTIVACIÓN AL HACER CLIC
+                titulo.addEventListener('click', function() {
+                    console.log('🚀 ¡Estudiante motivado para comenzar la evaluación!'); // 154. LOG MOTIVACIONAL
+                });
+            }
+        }
+        
+        // 155. EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN
+        verificarBannerEvaluacion();
+        analizarPaletaVerde();
+        detectarContextoEvaluacion();
+        aplicarElementosMotivacionales();
+        
+        // 156. LOG FINAL DE INICIALIZACIÓN COMPLETA
+        console.log('🎓 Sistema de Evaluación inicializado - Paleta verde análoga con acento dorado');
+        console.log('✨ Características: Jerarquía cromática, iconos de evaluación, feedback visual optimizado');
+    });
+    
+    /**
+     * 157. FUNCIÓN PARA ALTERNAR MODO DE EVALUACIÓN
+     * @description PERMITE CAMBIAR ENTRE MODO PRÁCTICA Y EVALUACIÓN FORMAL
+     */
+    function alternarModoEvaluacion() {
+        const banner = document.querySelector('.evaluacion-banner');
+        if (banner) {
+            banner.classList.toggle('modo-formal');                             // 158. TOGGLE MODO FORMAL
+            const esFormal = banner.classList.contains('modo-formal');
+            console.log(`📋 Modo de evaluación: ${esFormal ? 'Formal' : 'Práctica'}`); // 159. LOG DEL MODO
+        }
+    }
+    
+    /**
+     * 160. FUNCIÓN DE PREPARACIÓN PARA EVALUACIÓN
+     * @description EJECUTA VERIFICACIONES PREVIAS A LA EVALUACIÓN
+     */
+    function prepararEvaluacion() {
+        const banner = document.querySelector('.evaluacion-banner');
+        if (banner) {
+            banner.classList.add('evaluacion-activa');                          // 161. MARCAR COMO ACTIVA
+            console.log('🎯 Evaluación preparada y lista para comenzar');        // 162. CONFIRMACIÓN DE PREPARACIÓN
+        }
+    }
+</script>
+<!-- FIN 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y OPTIMIZACIÓN CROMÁTICA -->
