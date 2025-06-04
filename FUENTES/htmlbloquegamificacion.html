@@ -1,81 +1,399 @@
-<!-- HEAD DEFINITIONS GO HERE -->
-
-<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- SECCIÓN 1: CARGA DE DEPENDENCIAS -->
 <script>
     /**
-     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
-     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
-     * @param {string} url - URL DEL RECURSO.
+     * Función optimizada para cargar recursos externos con Promise
+     * @param {string} tipo - Tipo de recurso ('stylesheet' o 'script')
+     * @param {string} url - URL del recurso
+     * @returns {Promise} - Promise que se resuelve cuando el recurso se carga
      */
     function cargarRecurso(tipo, url) {
-        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        return new Promise((resolve, reject) => {
+            // Verificar si el recurso ya existe
+            const existente = tipo === 'stylesheet' 
+                ? document.querySelector(`link[href="${url}"]`)
+                : document.querySelector(`script[src="${url}"]`);
+            
+            if (existente) {
+                console.log(`Recurso ya cargado: ${url}`);
+                resolve();
+                return;
+            }
 
-        if (tipo === 'stylesheet') {
-            elemento.rel = 'stylesheet';
-            elemento.href = url;
-        } else {
-            elemento.src = url;
-            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
-        }
-
-        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
-        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
-
-        document.head.appendChild(elemento);
+            const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+            
+            if (tipo === 'stylesheet') {
+                elemento.rel = 'stylesheet';
+                elemento.href = url;
+            } else {
+                elemento.src = url;
+                elemento.defer = true;
+            }
+            
+            elemento.onload = () => {
+                console.log(`Recurso cargado correctamente: ${url}`);
+                resolve();
+            };
+            elemento.onerror = () => {
+                console.error(`Error al cargar el recurso: ${url}`);
+                reject(new Error(`Failed to load ${url}`));
+            };
+            
+            document.head.appendChild(elemento);
+        });
     }
 
-    // 5. CARGAR ESTILOS DE BOOTSTRAP DESDE CDN
-    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
-    // 6. CARGAR ICONOS DE BOOTSTRAP DESDE CDN
-    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+    // Cargar dependencias SIEMPRE para asegurar compatibilidad
+    (async function cargarDependencias() {
+        try {
+            // Cargar Bootstrap CSS SIEMPRE para evitar conflictos con Moodle
+            await cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+            await cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
+            console.log('Dependencias de Bootstrap cargadas correctamente');
+        } catch (error) {
+            console.error('Error cargando dependencias:', error);
+        }
+    })();
+</script>
+<!-- FIN SECCIÓN 1 -->
 
-    /**
-     * 7. AGREGAR ESTILOS PERSONALIZADOS MEDIANTE UN ELEMENTO .
-     */
-    (function agregarEstilosPersonalizados() {
+<!-- SECCIÓN 2: ESTILOS PERSONALIZADOS -->
+<script>
+    (function agregarEstilosCompletos() {
+        // Evitar duplicación de estilos
+        if (document.getElementById('modulo-enteros-styles')) return;
+        
         const customStyles = document.createElement('style');
+        customStyles.id = 'modulo-enteros-styles';
         customStyles.textContent = `
-            /* 8. ESTILOS PERSONALIZADOS */
+            /* Variables CSS consolidadas para el módulo completo */
+            :root {
+                /* Colores - Paleta personalizada */
+                --color-primary: #172139;        /* Azul oscuro principal */
+                --color-secondary: #195855;     /* Azul medio para texto secundario */
+                --color-white: #ffffff;
+                --color-teal: #108181;          /* Azul-verde medio */
+                --color-teal-dark: #00AEAC;     /* Azul-verde claro */
+                --color-accent-1: #FBBB28;      /* Amarillo */
+                --color-accent-2: #E9901E;      /* Naranja */
+                --color-accent-3: #B4C42C;      /* Verde lima */
+                
+                /* Tipografía */
+                --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                --font-weight-bold: 700;
+                --font-weight-medium: 500;
+                --font-size-title: 1.5rem;
+                --font-size-subtitle: 0.9rem;
+                --font-size-floating-sm: 0.7rem;
+                --font-size-floating-md: 0.8rem;
+                --font-size-symbol-sm: 0.8rem;
+                --font-size-symbol-md: 1rem;
+                --font-size-icon: 0.9rem;
+                --font-size-module-number: 2.5rem;
+                
+                /* Layout */
+                --banner-width: 100%;
+                --banner-height: 80px;
+                --header-height: 15px;
+                
+                /* Efectos y opacidades */
+                --opacity-decorative: 0.15;
+                --opacity-pattern: 0.05;
+                --opacity-floating: 0.3;
+                --opacity-symbols: 0.2;
+                
+                /* Gradientes */
+                --gradient-accent: linear-gradient(90deg, var(--color-teal), var(--color-accent-1));
+                --gradient-pattern: radial-gradient(circle at 50% 50%, var(--color-teal-dark) 1px, transparent 1px);
+                
+                /* Z-index */
+                --z-header: 10;
+                --z-content: 20;
+                --z-decorative: 5;
+                --z-shapes: 3;
+                --z-background: 1;
+                --z-floating: 4;
+                --z-footer: 15;
+                --z-module-number: 25;
+                
+                /* Animaciones */
+                --animation-float: float 6s ease-in-out infinite;
+                --animation-pulse: pulse 4s ease-in-out infinite;
+            }
+
+            /* RESET Y BASE PARA TODO EL MÓDULO */
+            .banner-container *, .problem-container * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .banner-container {
+                font-family: var(--font-family);
+                background: var(--color-white);
+                overflow: hidden;
+                margin: 0;
+            }
+
+            /* ESTILOS DEL BANNER */
+            .banner {
+                width: var(--banner-width);
+                height: var(--banner-height);
+                max-height: 80px;
+                position: relative;
+                background: var(--color-white);
+                overflow: hidden;
+                margin: 0 auto;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+            }
+
+            .banner__header {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: var(--header-height);
+                background-color: var(--color-primary);
+                z-index: var(--z-header);
+            }
+
+            .banner__module-number {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: var(--font-size-module-number);
+                font-weight: var(--font-weight-bold);
+                color: var(--color-primary);
+                z-index: var(--z-module-number);
+                font-family: var(--font-family);
+            }
+
+            .banner__module-decoration {
+                position: absolute;
+                left: 0.7rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 45px;
+                height: 45px;
+                border: 3px solid var(--color-teal);
+                border-radius: 50%;
+                opacity: 0.6;
+                z-index: var(--z-decorative);
+                animation: var(--animation-pulse);
+                will-change: transform;
+                backface-visibility: hidden;
+            }
+
+            .banner__module-decoration::after {
+                content: '';
+                position: absolute;
+                top: -8px;
+                left: -8px;
+                width: 45px;
+                height: 45px;
+                border: 2px solid var(--color-accent-1);
+                border-radius: 50%;
+                opacity: 0.4;
+                animation: var(--animation-pulse);
+                animation-delay: 1s;
+            }
+
+            .banner__content {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: var(--header-height) 4rem 0.5rem;
+                box-sizing: border-box;
+                z-index: var(--z-content);
+                text-align: center;
+                margin-left: 2rem;
+            }
+
+            .banner__title {
+                color: var(--color-primary);
+                font-size: var(--font-size-title);
+                line-height: 1.2;
+                font-weight: var(--font-weight-bold);
+                margin-bottom: 0.25rem;
+                font-family: var(--font-family);
+            }
+
+            .banner__accent-line {
+                height: 2px;
+                width: 100px;
+                background: var(--gradient-accent);
+                margin-bottom: 0.25rem;
+                border-radius: 1px;
+            }
+
+            .banner__subtitle {
+                color: var(--color-secondary);
+                font-size: var(--font-size-subtitle);
+                line-height: 1.1;
+                font-weight: var(--font-weight-medium);
+                font-family: var(--font-family);
+            }
+
+            /* ELEMENTOS DECORATIVOS */
+            .banner__decorations {
+                position: absolute;
+                inset: 0;
+                z-index: var(--z-decorative);
+                pointer-events: none;
+            }
+
+            .shape {
+                position: absolute;
+                border-radius: 50%;
+                opacity: var(--opacity-decorative);
+                z-index: var(--z-shapes);
+            }
+
+            .shape--small { width: 20px; height: 20px; }
+            .shape--medium { width: 25px; height: 25px; }
+            .shape--primary { background-color: var(--color-teal); }
+            .shape--accent { background-color: var(--color-accent-3); }
+            .shape--pos-1 { top: 45px; left: 80px; }
+            .shape--pos-2 { top: 25px; right: -8px; }
+
+            .floating-element {
+                position: absolute;
+                font-weight: var(--font-weight-bold);
+                opacity: var(--opacity-floating);
+                animation: var(--animation-float);
+                z-index: var(--z-floating);
+                font-family: var(--font-family);
+                will-change: transform;
+                backface-visibility: hidden;
+            }
+
+            .floating-element--small { font-size: var(--font-size-floating-sm); }
+            .floating-element--medium { font-size: var(--font-size-floating-md); }
+            .floating-element--pos-1 { top: 30px; left: 120px; animation-delay: 0s; }
+            .floating-element--pos-2 { top: 45px; right: 25px; animation-delay: 2s; }
+            .floating-element--pos-3 { top: 55px; left: 140px; animation-delay: 4s; }
+            .floating-element--color-1 { color: var(--color-accent-1); }
+            .floating-element--color-2 { color: var(--color-accent-2); }
+            .floating-element--color-3 { color: var(--color-accent-3); }
+            .floating-element--color-teal { color: var(--color-teal); }
+
+            .math-symbol {
+                position: absolute;
+                font-weight: var(--font-weight-bold);
+                opacity: var(--opacity-symbols);
+                color: var(--color-secondary);
+                z-index: var(--z-background);
+                font-family: var(--font-family);
+            }
+
+            .math-symbol--small { font-size: var(--font-size-symbol-sm); }
+            .math-symbol--medium { font-size: var(--font-size-symbol-md); }
+            .math-symbol--pos-1 { top: 35px; left: 100px; }
+            .math-symbol--pos-2 { top: 50px; right: 15px; }
+
+            .pattern-grid {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 60px;
+                height: 60px;
+                opacity: var(--opacity-pattern);
+                background-image: var(--gradient-pattern);
+                background-size: 5px 5px;
+                transform: rotate(15deg);
+                z-index: var(--z-background);
+            }
+
+            /* ESTILOS DE ACORDEONES - Mantener compatibilidad con Bootstrap */
             .problem-container {
-                background-color: #e0f2f2; /* 9. COLOR DE FONDO AJUSTADO A PALETA AZULES-VERDES */
-                color: #172139;           /* 10. TEXTO OSCURO AJUSTADO A PALETA AZULES-VERDES */
+                background-color: #e0f2f2;
+                color: var(--color-primary);
                 border-radius: 15px;
                 padding: 5%;
             }
+
+            /* Estilos para iconos dentro de botones de acordeón */
             .accordion-button .bi {
                 margin-right: 10px;
-                color: #172139;           /* 11. COLOR DEL ICONO DEL BOTÓN DEL ACORDEÓN */
+                color: var(--color-primary);
             }
+
             .accordion-button:not(.collapsed) .bi {
-                color: #00AEAC;           /* 12. COLOR DEL ICONO CUANDO ESTÁ ABIERTO */
+                color: var(--color-teal-dark);
             }
+
+            /* Personalización de botones de acordeón SIN sobrescribir Bootstrap */
             .accordion-button {
-                color: #172139;           /* 13. COLOR DEL TEXTO DEL BOTÓN DEL ACORDEÓN */
-            }
-            .accordion-button:not(.collapsed) {
-                color: #172139;           /* 14. COLOR DEL TEXTO CUANDO ESTÁ ABIERTO */
-                background-color: #e0f2f2;/* 15. FONDO DEL BOTÓN CUANDO ESTÁ ABIERTO */
-                border-color: #108181;   /* 16. BORDE DEL BOTÓN CUANDO ESTÁ ABIERTO */
-            }
-            .accordion-header {
+                color: var(--color-primary) !important;
                 font-weight: bold;
             }
-            .divider {
-                border-top: 2px solid #108181; /* 17. DIVISOR AJUSTADO A PALETA AZULES-VERDES */
-                margin: 3% 0;
+
+            .accordion-button:not(.collapsed) {
+                color: var(--color-primary) !important;
+                background-color: #e0f2f2 !important;
+                border-color: var(--color-teal) !important;
+                box-shadow: none !important;
             }
+
+            .accordion-button:focus {
+                box-shadow: 0 0 0 0.25rem rgba(16, 129, 129, 0.25) !important;
+            }
+
+            /* Contenido personalizado dentro de acordeones */
             .accordion-body-container {
                 padding: 3%;
-                border: 1px solid #108181; /* 18. BORDE AJUSTADO A PALETA AZULES-VERDES */
+                border: 1px solid var(--color-teal);
                 border-radius: 10px;
-                background-color: #e0f2f2;  /* 19. FONDO AJUSTADO A PALETA AZULES-VERDES */
-                color: #172139;             /* 20. TEXTO DEL CUERPO DEL ACORDEÓN */
+                background-color: #e0f2f2;
+                color: var(--color-primary);
                 margin-top: 2%;
             }
+
             .accordion-body-container strong {
-                color: #172139;             /* 21. TEXTO EN NEGRITA DENTRO DEL CUERPO */
+                color: var(--color-primary);
             }
-            /* 22. MEDIA QUERIES PARA MEJOR RESPONSIVIDAD */
+
+            /* Divisor personalizado */
+            .divider {
+                border-top: 2px solid var(--color-teal);
+                margin: 3% 0;
+            }
+
+            /* Asegurar que los acordeones de Bootstrap funcionen correctamente */
+            .accordion-item {
+                background-color: transparent;
+                border: 1px solid rgba(0,0,0,.125);
+            }
+
+            .accordion-collapse {
+                border: 0;
+            }
+
+            /* ANIMACIONES */
+            @keyframes float {
+                0%, 100% { transform: translateY(0) translateZ(0); }
+                50% { transform: translateY(-5px) translateZ(0); }
+            }
+
+            @keyframes pulse {
+                0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.6; }
+                50% { transform: translateY(-50%) scale(1.1); opacity: 0.8; }
+            }
+
+            /* ACCESIBILIDAD */
+            @media (prefers-reduced-motion: reduce) {
+                .floating-element,
+                .banner__module-decoration,
+                .banner__module-decoration::after {
+                    animation: none;
+                }
+            }
+
+            /* RESPONSIVE DESIGN */
             @media (max-width: 768px) {
                 h1 {
                     font-size: 1.75rem;
@@ -87,7 +405,30 @@
                 .accordion-body-container {
                     padding: 2%;
                 }
+                .banner {
+                    width: 100%;
+                    max-width: 640px;
+                }
+                .banner__title {
+                    font-size: 1.25rem;
+                    padding: 0 0.5rem;
+                }
+                .banner__content {
+                    padding: var(--header-height) 3rem 0.25rem 4rem;
+                }
+                .banner__module-number {
+                    font-size: 2rem;
+                }
+                .banner__module-decoration {
+                    width: 35px;
+                    height: 35px;
+                }
+                .banner__module-decoration::after {
+                    width: 35px;
+                    height: 35px;
+                }
             }
+
             @media (max-width: 576px) {
                 h1 {
                     font-size: 1.5rem;
@@ -100,34 +441,112 @@
                     padding: 1.5%;
                 }
             }
+
+            @media (max-width: 480px) {
+                .banner__header {
+                    height: 12px;
+                }
+                .banner__title {
+                    font-size: 1.1rem;
+                }
+                .banner__content {
+                    padding: 12px 2.5rem 0.25rem 3.5rem;
+                }
+                .banner__accent-line {
+                    width: 80px;
+                }
+                .banner__module-number {
+                    font-size: 1.8rem;
+                    left: 0.5rem;
+                }
+                .banner__module-decoration {
+                    width: 30px;
+                    height: 30px;
+                    left: 0.3rem;
+                }
+                .banner__module-decoration::after {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
         `;
         document.head.appendChild(customStyles);
+        console.log('Estilos consolidados del módulo cargados correctamente');
     })();
 </script>
-<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- FIN SECCIÓN 2 -->
 
-<!-- 2. SECCIÓN 2: TÍTULO -->
+<!-- SECCIÓN 3: CONTENIDO PRINCIPAL -->
 <div class="container-fluid my-4" id="informacion-general-titulo" style="border:1px solid #00AEAC; border-radius:8px; background-color:#E3F7F2; padding:20px;">
-</div>
-<!-- FIN SECCIÓN 2: TÍTULO -->
-
-<!-- 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS PARA CIERRE AUTOMÁTICO) -->
-<div class="accordion" id="accordionModulo">
-    <div class="accordion-item mb-4">
-        <h2 class="accordion-header" id="headingPaso1">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso1" aria-expanded="false" aria-controls="collapsePaso1">
-                <i class="bi bi-123"></i> Revisa los conceptos aprendidos en el módulo 1
-            </button>
-        </h2>
-        <div id="collapsePaso1" class="accordion-collapse collapse" aria-labelledby="headingPaso1" data-bs-parent="#accordionModulo">
-            <div class="accordion-body-container py-3">
-                <p>Introducción al conjunto ℤ que incluye números positivos, negativos y cero</p>
-                <a href="https://profemarlon.com/modulo_1/mod1_diapositiva2.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
-                    Accede a la explicación completa del conjunto de los números enteros
-                </a>
+    <!-- BANNER DE MÓDULO ENTEROS -->
+    <div class="banner-container">
+        <div class="banner">
+            <!-- Header bar -->
+            <div class="banner__header"></div>
+            
+            <!-- Module number with decoration -->
+            <div class="banner__module-decoration"></div>
+            <div class="banner__module-number">3</div>
+            
+            <!-- Main content -->
+            <div class="banner__content">
+                <h1 class="banner__title">Revisa lo que has aprendido y pon a prueba tus habilidades</h1>
+                <div class="banner__accent-line"></div>
+                <p class="banner__subtitle">Módulo de Sistema de los números enteros</p>
+            </div>
+            
+            <!-- Decorative elements -->
+            <div class="banner__decorations">
+                <!-- Geometric shapes -->
+                <div class="shape shape--small shape--primary shape--pos-1"></div>
+                <div class="shape shape--medium shape--accent shape--pos-2"></div>
+                
+                <!-- Floating numbers -->
+                <div class="floating-element floating-element--small floating-element--color-1 floating-element--pos-1">-2</div>
+                <div class="floating-element floating-element--medium floating-element--color-2 floating-element--pos-2">0</div>
+                <div class="floating-element floating-element--small floating-element--color-3 floating-element--pos-3">+5</div>
+                
+                <!-- Math symbols -->
+                <div class="math-symbol math-symbol--small math-symbol--pos-1">ℤ</div>
+                <div class="math-symbol math-symbol--medium math-symbol--pos-2">±</div>
+                
+                <!-- Pattern grid -->
+                <div class="pattern-grid"></div>
             </div>
         </div>
     </div>
+    <!-- FIN BANNER DE MÓDULO ENTEROS -->
+</div>
+
+<!-- ACORDEONES DEL MÓDULO -->
+<div class="accordion" id="accordionModulo">
+    <!-- Primer acordeón -->
+    <div class="accordion-item mb-4">
+        <h2 class="accordion-header" id="headingPaso1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso1" aria-expanded="false" aria-controls="collapsePaso1">
+                <i class="bi bi-123"></i> Repasa y fortalece tus bases en números enteros
+            </button>
+        </h2>
+        <div id="collapsePaso1" class="accordion-collapse collapse" aria-labelledby="headingPaso1" data-bs-parent="#accordionModulo">
+            <div class="accordion-body">
+                <div class="accordion-body-container py-3">
+                    <p>
+                        <i class="bi bi-lightbulb" style="color:#00AEAC;"></i>
+                        ¡Bienvenido/a! Esta actividad está diseñada para que revises y consolides los conceptos fundamentales del conjunto ℤ, que incluye números positivos, negativos y el cero.<br><br>
+                        <i class="bi bi-emoji-smile" style="color:#FBBB28;"></i>
+                        Recuerda: equivocarse es parte del aprendizaje. Si fallas, ¡puedes intentarlo cuantas veces quieras! Lo importante es que te animes a participar y a fortalecer tu confianza en matemáticas.<br><br>
+                        <i class="bi bi-info-circle" style="color:#00AEAC;"></i>
+                        <strong>Esta es una actividad de práctica, no tiene incidencia en la nota del curso introductorio.</strong> Aprovecha este espacio para aprender y mejorar sin presión.
+                    </p>
+                    <a href="https://profemarlon.com/gamificacion/enterosflashcard.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                        <i class="bi bi-controller"></i> ¡Comienza el reto y demuestra tu actitud proactiva!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Segundo acordeón -->
     <div class="accordion-item mb-4">
         <h2 class="accordion-header" id="headingPaso2">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaso2" aria-expanded="false" aria-controls="collapsePaso2">
@@ -135,56 +554,155 @@
             </button>
         </h2>
         <div id="collapsePaso2" class="accordion-collapse collapse" aria-labelledby="headingPaso2" data-bs-parent="#accordionModulo">
-            <div class="accordion-body-container py-3">
-                <p>
-                    <i class="bi bi-emoji-sunglasses" style="color:#00AEAC;"></i>
-                    ¿Te animas a demostrar tu habilidad con los números enteros? Pon a prueba tu lógica y destreza resolviendo operaciones de adición y sustracción. 
-                    <br><br>
-                    <i class="bi bi-info-circle" style="color:#FBBB28;"></i>
-                    <strong>Esta es una actividad de práctica y no afecta tu nota del curso.</strong> ¡Aprovecha para aprender, equivocarte y mejorar sin presión!
-                </p>
-                <a href="https://profemarlon.com/gamificacion/enteros.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
-                    <i class="bi bi-controller"></i> ¡Juega ahora y reta tus conocimientos en números enteros!
-                </a>
+            <div class="accordion-body">
+                <div class="accordion-body-container py-3">
+                    <p>
+                        <i class="bi bi-emoji-sunglasses" style="color:#00AEAC;"></i>
+                        ¿Te animas a poner a prueba tu lógica y destreza resolviendo operaciones de adición y sustracción con números enteros? Cada intento es una oportunidad para aprender y mejorar.<br><br>
+                        <i class="bi bi-arrow-repeat" style="color:#43a047;"></i>
+                        Si cometes errores, ¡no te preocupes! Puedes volver a intentarlo las veces que necesites.<br><br>
+                        <i class="bi bi-info-circle" style="color:#FBBB28;"></i>
+                        <strong>Recuerda: esta actividad es solo de práctica y no afecta tu nota del curso.</strong> ¡Participa con entusiasmo y disfruta el proceso de aprendizaje!
+                    </p>
+                    <a href="https://profemarlon.com/gamificacion/enteros.html" target="_blank" rel="noopener noreferrer" style="font-weight:bold;">
+                        <i class="bi bi-controller"></i> ¡Juega ahora y reta tus conocimientos en números enteros!
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    
-<!-- FIN 3. SECCIÓN 3: ACORDEONES DIAPOSITIVAS 1-8 (AGRUPADOS) -->
+</div>
+<!-- FIN SECCIÓN 3 -->
 
-<!-- 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
-<!-- CARGA DE SCRIPTS NECESARIOS PARA EL FUNCIONAMIENTO DE BOOTSTRAP -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- SECCIÓN 4: SCRIPTS FINALES -->
 <script>
-    /**
-     * 23. FUNCIONES ADICIONALES PARA ACORDEONES.
-     * @description ESTA FUNCIÓN INICIALIZA LOS ACORDEONES CERRADOS AL CARGAR LA PÁGINA.
-     */
-    function initAccordions() {
-        const accordions = document.querySelectorAll('.accordion-collapse'); // 24. SELECCIONA TODOS LOS ACORDEONES
-        accordions.forEach(accordion => accordion.classList.remove('show')); // 25. REMUEVE 'SHOW'
-    }
+    // Cargar Bootstrap JS SIEMPRE para garantizar funcionalidad de acordeones
+    (function cargarBootstrapJS() {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js';
+        script.onload = () => {
+            console.log('Bootstrap JS cargado correctamente');
+            // Inicializar módulo después de cargar Bootstrap
+            setTimeout(() => {
+                ModuloEnteros.init();
+            }, 100);
+        };
+        script.onerror = () => console.error('Error al cargar Bootstrap JS');
+        document.head.appendChild(script);
+    })();
 
-    /**
-     * 26. FUNCIONALIDAD PARA REGISTRAR EN CONSOLA EL ESTADO DE UN ACORDEÓN.
-     * @description IMPRIME EN CONSOLA SI UN ACORDEÓN ESTÁ ABIERTO O CERRADO.
-     * @param {string} idAcordeon - ID DEL ACORDEÓN A VERIFICAR.
-     */
-    function logEstadoAcordeon(idAcordeon) {
-        const acordeon = document.getElementById(idAcordeon); // 27. SELECCIONA ACORDEÓN POR ID
-        if (acordeon) {
-            const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO'; // 28. DETERMINA ESTADO
-            console.log(`El acordeón con ID '${idAcordeon}' está ${estado}.`);
-        } else {
-            console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`); // 29. ADVIERTE SI NO EXISTE
+    // Funciones optimizadas del módulo
+    const ModuloEnteros = {
+        // Inicializar acordeones cerrados
+        initAccordions() {
+            try {
+                const accordions = document.querySelectorAll('.accordion-collapse');
+                accordions.forEach(accordion => {
+                    accordion.classList.remove('show');
+                });
+                console.log(`${accordions.length} acordeones inicializados correctamente`);
+            } catch (error) {
+                console.error('Error inicializando acordeones:', error);
+            }
+        },
+
+        // Ajuste responsivo del banner
+        ajustarBannerResponsivo() {
+            try {
+                const banner = document.querySelector('.banner');
+                if (banner && window.innerWidth < 480) {
+                    banner.style.maxWidth = '100%';
+                }
+            } catch (error) {
+                console.error('Error en ajuste responsivo:', error);
+            }
+        },
+
+        // Función de debug para acordeones
+        logEstadoAcordeon(idAcordeon) {
+            try {
+                const acordeon = document.getElementById(idAcordeon);
+                if (acordeon) {
+                    const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO';
+                    console.log(`Acordeón '${idAcordeon}' está ${estado}`);
+                } else {
+                    console.warn(`Acordeón con ID '${idAcordeon}' no encontrado`);
+                }
+            } catch (error) {
+                console.error('Error verificando estado del acordeón:', error);
+            }
+        },
+
+        // Verificar que Bootstrap esté funcionando
+        verificarBootstrap() {
+            if (window.bootstrap) {
+                console.log('✅ Bootstrap está disponible y funcionando');
+                return true;
+            } else {
+                console.warn('⚠️ Bootstrap no está disponible');
+                return false;
+            }
+        },
+
+        // Inicialización completa del módulo
+        init() {
+            if (this.verificarBootstrap()) {
+                this.initAccordions();
+                this.ajustarBannerResponsivo();
+                console.log('✅ Módulo de números enteros inicializado correctamente');
+            } else {
+                console.warn('⚠️ Inicialización retrasada - esperando Bootstrap...');
+                // Reintentar en 500ms
+                setTimeout(() => this.init(), 500);
+            }
         }
-    }
+    };
 
-    // 30. EVENTO QUE SE DISPARA AL CARGAR COMPLETAMENTE EL DOM
+    // Event listeners optimizados
     document.addEventListener('DOMContentLoaded', () => {
-        initAccordions(); // 31. INICIALIZA ACORDEONES
-        console.log('Acordeones inicializados y cerrados correctamente.');
+        // Solo inicializar si Bootstrap ya está disponible, sino esperar al onload del script
+        if (window.bootstrap) {
+            ModuloEnteros.init();
+        }
+    }, { once: true });
+
+    // Listener de resize con throttling
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            ModuloEnteros.ajustarBannerResponsivo();
+        }, 250);
     });
+
+    // Verificación final de integridad del módulo
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const elementosEsenciales = [
+                '.banner',
+                '.accordion',
+                '.banner__title',
+                '.accordion-button'
+            ];
+            
+            const faltantes = elementosEsenciales.filter(selector => 
+                !document.querySelector(selector)
+            );
+            
+            if (faltantes.length === 0) {
+                console.log('✅ Módulo de números enteros cargado completamente');
+                
+                // Verificar que los acordeones tengan las clases de Bootstrap
+                const accordionButtons = document.querySelectorAll('.accordion-button');
+                if (accordionButtons.length > 0) {
+                    console.log(`✅ ${accordionButtons.length} botones de acordeón detectados`);
+                } else {
+                    console.warn('⚠️ No se detectaron botones de acordeón');
+                }
+            } else {
+                console.warn('⚠️ Elementos faltantes:', faltantes);
+            }
+        }, 1000);
+    }, { once: true });
 </script>
-<!-- FIN 6. SECCIÓN 6: SCRIPTS JAVASCRIPT -->
+<!-- FIN SECCIÓN 4 -->
