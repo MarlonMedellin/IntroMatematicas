@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Laboratorio Matemático</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 🎨 VARIABLES CSS - Del código fuente original */
+        :root {
+            --primary-color: #00AEAC;
+            --secondary-color: #B4C42C;
+            --accent-color: #FBBB28;
+            --background-dark: #172139;
+            --background-light: #195855;
+            --text-light: #ffffff;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* 🚀 HEADER - Extraído del código fuente */
+        .lab-header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(251, 187, 40, 0.3);
+        }
+
+        .lab-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .lab-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.9;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        /* Espaciado adicional para visualización */
+        .demo-container {
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- 🚀 HEADER - HTML exacto del código fuente -->
+        <div class="lab-header">
+            <h1 class="lab-title">
+                <i class="fas fa-flask"></i>
+                Laboratorio Matemático - Módulo 1
+            </h1>
+            <p class="lab-subtitle">
+                <i class="fas fa-calculator"></i>
+                Sistema de los Números Enteros - Colegio Mayor de Antioquia
+            </p>
+        </div>
+    </div>
+</body>
+</html>
