@@ -1,10 +1,23 @@
-<!-- HEAD DEFINITIONS GO HERE -->
-<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
-     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
-     * @param {string} url - URL DEL RECURSO.
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos <link> para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
      */
     function cargarRecurso(tipo, url) {
         const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
@@ -13,31 +26,37 @@
             elemento.href = url;
         } else {
             elemento.src = url;
-            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+            elemento.defer = true; // Performance: Carga no-bloqueante
         }
-        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
-        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
         document.head.appendChild(elemento);
     }
-    // 5. CARGAR FUENTE MONTSERRAT DESDE CDN
-    cargarRecurso('stylesheet', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-    // 6. CARGAR ICONOS DE FONT AWESOME DESDE CDN
+
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
     cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
     /**
-     * 7. AGREGAR ESTILOS REFACTORIZADOS CON ENFOQUE DEFENSIVO.
+     * INYECCIÓN DE ESTILOS CRÍTICOS
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
      */
-    (function agregarEstilosBannerDefensivo() {
+    (function agregarEstilosConsolidacion() {
         const customStyles = document.createElement('style');
-        customStyles.id = 'banner-afianzamiento-defensivo-styles';
+        customStyles.id = 'banner-consolidacion-ultra-resistente';
         customStyles.textContent = `
-            /* 8. RESETEO AGRESIVO PARA EL CONTENEDOR ESPECÍFICO */
-            div[data-banner="afianzamiento-v2"] {
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - CSS CRÍTICO INLINE */
+            /* ================================================================================ */
+            
+            /* RESETEO ABSOLUTO DEL CONTENEDOR PRINCIPAL */
+            div[data-banner-ultra="consolidacion-matematica-v2"] {
                 all: initial !important;
                 font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
                 margin: 20px 0 !important;
                 padding: 0 !important;
                 border: none !important;
-                background: none !important;
+                background: linear-gradient(135deg, #34AAE2 0%, #067FC3 100%) !important;
                 color: inherit !important;
                 text-decoration: none !important;
                 box-sizing: border-box !important;
@@ -45,73 +64,77 @@
                 position: relative !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                min-height: 120px !important;
+                min-height: 140px !important;
                 overflow: hidden !important;
-                border-radius: 16px !important;
-                /* 9. GRADIENTE DIRECTO SIN VARIABLES */
-                background: linear-gradient(135deg, #2F1F86 0%, #AB2F4F 100%) !important;
-                box-shadow: 0 20px 60px rgba(47, 31, 134, 0.4), 0 8px 25px rgba(171, 47, 79, 0.3) !important;
-                border: 2px solid rgba(235, 144, 30, 0.2) !important;
+                border-radius: 20px !important;
+                box-shadow: 0 25px 70px rgba(52, 170, 226, 0.4), 0 10px 30px rgba(6, 127, 195, 0.3) !important;
+                border: 3px solid rgba(255, 255, 255, 0.2) !important;
+                will-change: transform, box-shadow !important; /* GPU acceleration */
+                transform: translateZ(0) !important; /* Force GPU layer */
             }
 
-            /* 10. OVERLAY CON ESPECIFICIDAD MÁXIMA */
-            div[data-banner="afianzamiento-v2"]::before {
+            /* OVERLAY GLASSMORPHISM AVANZADO */
+            div[data-banner-ultra="consolidacion-matematica-v2"]::before {
                 content: '' !important;
                 position: absolute !important;
                 top: 0 !important;
                 left: 0 !important;
                 right: 0 !important;
                 bottom: 0 !important;
-                background: linear-gradient(135deg, rgba(235, 144, 30, 0.1) 0%, transparent 50%, rgba(47, 31, 134, 0.05) 100%) !important;
+                background: linear-gradient(135deg, rgba(6, 127, 195, 0.15) 0%, transparent 50%, rgba(52, 170, 226, 0.08) 100%) !important;
                 z-index: 1 !important;
                 pointer-events: none !important;
                 opacity: 0.8 !important;
+                backdrop-filter: blur(2px) !important;
+                -webkit-backdrop-filter: blur(2px) !important;
             }
 
-            /* 11. HEADER INTERNO CON GLASSMORPHISM */
-            div[data-banner="afianzamiento-v2"] > div[data-role="header"] {
+            /* HEADER PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
+            div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="header-consolidacion"] {
                 all: initial !important;
                 display: block !important;
                 text-align: center !important;
-                padding: 40px 35px !important;
-                background: rgba(232, 55, 118, 0.15) !important;
-                backdrop-filter: blur(25px) saturate(1.4) !important;
-                -webkit-backdrop-filter: blur(25px) saturate(1.4) !important;
-                border-bottom: 5px solid #EB901E !important;
+                padding: 45px 40px !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+                backdrop-filter: blur(30px) saturate(1.4) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(1.4) !important;
+                border-bottom: 6px solid rgba(255, 255, 255, 0.3) !important;
                 position: relative !important;
                 z-index: 2 !important;
                 overflow: hidden !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
             }
 
-            /* 12. ELEMENTO DECORATIVO DEL HEADER */
-            div[data-banner="afianzamiento-v2"] > div[data-role="header"]::after {
+            /* ELEMENTO DECORATIVO NEURONAL */
+            div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="header-consolidacion"]::after {
                 content: '' !important;
                 position: absolute !important;
-                top: -30px !important;
-                right: -30px !important;
-                width: 140px !important;
-                height: 140px !important;
-                background: linear-gradient(90deg, #EB901E 0%, #E83776 100%) !important;
+                top: -40px !important;
+                right: -40px !important;
+                width: 160px !important;
+                height: 160px !important;
+                background: radial-gradient(circle, #067FC3 0%, #34AAE2 40%, transparent 85%) !important;
                 border-radius: 50% !important;
-                opacity: 0.3 !important;
+                opacity: 0.4 !important;
                 z-index: -1 !important;
-                filter: blur(8px) !important;
-                animation: warmGlow 6s ease-in-out infinite !important;
+                filter: blur(12px) !important;
+                animation: brainPulse 6s ease-in-out infinite !important;
+                will-change: opacity, transform !important;
             }
 
-            /* 13. TÍTULO PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
-            div[data-banner="afianzamiento-v2"] h1[data-element="titulo"] {
+            /* TÍTULO PRINCIPAL CON CONTRASTE ABSOLUTO */
+            div[data-banner-ultra="consolidacion-matematica-v2"] h1[data-elemento="titulo-consolidacion"] {
                 all: initial !important;
                 font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-                font-size: clamp(1.8rem, 5.5vw, 2.8rem) !important;
+                font-size: clamp(2rem, 6vw, 3.2rem) !important;
                 font-weight: 900 !important;
-                margin: 0 0 20px 0 !important;
+                margin: 0 0 25px 0 !important;
                 padding: 0 !important;
                 color: #ffffff !important;
-                text-shadow: 4px 4px 8px #2F1F86, 0 0 30px rgba(235, 144, 30, 0.5) !important;
-                line-height: 1.05 !important;
+                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.3) !important;
+                line-height: 1.1 !important;
                 position: relative !important;
                 z-index: 3 !important;
                 letter-spacing: -0.8px !important;
@@ -122,19 +145,20 @@
                 text-decoration: none !important;
                 border: none !important;
                 background: none !important;
+                will-change: color, text-shadow !important;
             }
 
-            /* 14. SUBTÍTULO SIN UPPERCASE */
-            div[data-banner="afianzamiento-v2"] p[data-element="subtitulo"] {
+            /* SUBTÍTULO CON JERARQUÍA VISUAL */
+            div[data-banner-ultra="consolidacion-matematica-v2"] p[data-elemento="subtitulo-consolidacion"] {
                 all: initial !important;
                 font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-                font-size: clamp(1.2rem, 3.2vw, 1.5rem) !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.6rem) !important;
                 font-weight: 700 !important;
-                color: #F5A542 !important;
-                line-height: 1.25 !important;
+                color: #ffffff !important;
+                line-height: 1.3 !important;
                 position: relative !important;
                 z-index: 3 !important;
-                text-shadow: 3px 3px 6px #2F1F86, 0 0 20px rgba(245, 165, 66, 0.4) !important;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.2) !important;
                 text-transform: none !important;
                 letter-spacing: 0.5px !important;
                 text-align: center !important;
@@ -148,63 +172,21 @@
                 box-sizing: border-box !important;
             }
 
-            /* 15. ICONOS CON RESPLANDOR NARANJA */
-            div[data-banner="afianzamiento-v2"] i[data-icon="principal"] {
-                margin-right: 18px !important;
+            /* ICONOS CON RESPLANDOR EXTREMO */
+            div[data-banner-ultra="consolidacion-matematica-v2"] span[data-icono="cerebro-principal"] {
+                margin-right: 20px !important;
                 vertical-align: middle !important;
-                color: #EB901E !important;
-                font-size: 1.5em !important;
-                text-shadow: 0 0 15px rgba(235, 144, 30, 0.8), 0 0 30px rgba(235, 144, 30, 0.6), 3px 3px 6px rgba(47, 31, 134, 0.7) !important;
-                filter: drop-shadow(0 0 12px rgba(235, 144, 30, 0.7)) !important;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                font-size: 1.8em !important;
                 display: inline-block !important;
-                animation: iconEvolution 4s ease-in-out infinite !important;
-                background: none !important;
-                border: none !important;
-                text-decoration: none !important;
-                font-family: 'Font Awesome 6 Free' !important;
-                font-weight: 900 !important;
+                animation: brainGlow 4s ease-in-out infinite !important;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                will-change: transform, filter !important;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
             }
 
-            div[data-banner="afianzamiento-v2"] i[data-icon="secundario"] {
-                margin-right: 15px !important;
-                vertical-align: middle !important;
-                color: #F06B9A !important;
-                font-size: 1.3em !important;
-                text-shadow: 0 0 10px rgba(240, 107, 154, 0.7), 3px 3px 5px #2F1F86 !important;
-                filter: drop-shadow(0 0 10px rgba(240, 107, 154, 0.6)) !important;
-                transition: all 0.3s ease !important;
-                display: inline-block !important;
-                animation: iconProgress 5s ease-in-out infinite !important;
-                background: none !important;
-                border: none !important;
-                text-decoration: none !important;
-                font-family: 'Font Awesome 6 Free' !important;
-                font-weight: 900 !important;
-            }
-
-            /* 16. BARRA ESPECTRAL INFERIOR */
-            div[data-banner="afianzamiento-v2"] > div[data-element="barra"] {
-                all: initial !important;
-                position: absolute !important;
-                bottom: 0 !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: 88% !important;
-                height: 8px !important;
-                background: linear-gradient(135deg, #2F1F86 0%, #AB2F4F 35%, #E83776 70%, #EB901E 100%) !important;
-                border-radius: 4px !important;
-                z-index: 4 !important;
-                box-shadow: 0 4px 20px rgba(235, 144, 30, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.2) !important;
-                animation: spectrumFlow 3s ease-in-out infinite !important;
-                display: block !important;
-                border: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            /* 17. ELEMENTOS FLOTANTES CONCEPTUALES */
-            div[data-banner="afianzamiento-v2"] > div[data-role="flotantes"] {
+            /* ELEMENTOS FLOTANTES COGNITIVOS */
+            div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="elementos-cognitivos"] {
                 all: initial !important;
                 position: absolute !important;
                 top: 0 !important;
@@ -218,127 +200,102 @@
                 display: block !important;
             }
 
-            div[data-concept="conceptos"] {
+            div[data-concepto="afianzamiento-conceptual"] {
                 all: initial !important;
                 position: absolute !important;
                 border-radius: 50% !important;
-                opacity: 0.25 !important;
-                animation: conceptFloat 7s ease-in-out infinite !important;
-                width: 40px !important;
-                height: 40px !important;
-                background: #EB901E !important;
-                top: 20% !important;
-                left: 12% !important;
+                opacity: 0.35 !important;
+                animation: floatCognitivoA 8s ease-in-out infinite !important;
+                width: 45px !important;
+                height: 45px !important;
+                background: rgba(255, 255, 255, 0.3) !important;
+                top: 18% !important;
+                left: 10% !important;
                 animation-delay: 0s !important;
                 display: block !important;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
             }
 
-            div[data-concept="procedimientos"] {
+            div[data-concepto="fortalecimiento-habilidades"] {
                 all: initial !important;
                 position: absolute !important;
                 border-radius: 50% !important;
-                opacity: 0.25 !important;
-                animation: conceptFloat 7s ease-in-out infinite !important;
-                width: 32px !important;
-                height: 32px !important;
-                background: #E83776 !important;
-                top: 70% !important;
+                opacity: 0.35 !important;
+                animation: floatCognitivoB 8s ease-in-out infinite !important;
+                width: 38px !important;
+                height: 38px !important;
+                background: rgba(255, 255, 255, 0.25) !important;
+                top: 68% !important;
                 right: 18% !important;
                 animation-delay: 2.5s !important;
                 display: block !important;
+                box-shadow: 0 0 18px rgba(255, 255, 255, 0.2) !important;
             }
 
-            div[data-concept="problemas"] {
+            div[data-concepto="aplicacion-contextual"] {
                 all: initial !important;
                 position: absolute !important;
                 border-radius: 50% !important;
-                opacity: 0.25 !important;
-                animation: conceptFloat 7s ease-in-out infinite !important;
-                width: 36px !important;
-                height: 36px !important;
-                background: #AB2F4F !important;
-                top: 45% !important;
-                right: 40% !important;
+                opacity: 0.35 !important;
+                animation: floatCognitivoC 8s ease-in-out infinite !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: rgba(255, 255, 255, 0.28) !important;
+                top: 42% !important;
+                right: 38% !important;
                 animation-delay: 5s !important;
                 display: block !important;
+                box-shadow: 0 0 19px rgba(255, 255, 255, 0.2) !important;
             }
 
-            div[data-concept="contexto"] {
+            div[data-concepto="consolidacion-saberes"] {
                 all: initial !important;
                 position: absolute !important;
                 border-radius: 50% !important;
-                opacity: 0.25 !important;
-                animation: conceptFloat 7s ease-in-out infinite !important;
-                width: 28px !important;
-                height: 28px !important;
-                background: #4A3BA3 !important;
-                top: 30% !important;
-                left: 35% !important;
+                opacity: 0.35 !important;
+                animation: floatCognitivoD 8s ease-in-out infinite !important;
+                width: 35px !important;
+                height: 35px !important;
+                background: rgba(255, 255, 255, 0.22) !important;
+                top: 28% !important;
+                left: 42% !important;
                 animation-delay: 1.5s !important;
                 display: block !important;
+                box-shadow: 0 0 16px rgba(255, 255, 255, 0.2) !important;
             }
 
-            /* 18. ANIMACIONES KEYFRAMES */
-            @keyframes warmGlow {
+            /* ANIMACIONES KEYFRAMES OPTIMIZADAS */
+            @keyframes brainPulse {
                 0%, 100% { 
-                    opacity: 0.2; 
+                    opacity: 0.3; 
                     transform: scale(1) rotate(0deg);
                 }
                 50% { 
-                    opacity: 0.5; 
+                    opacity: 0.6; 
                     transform: scale(1.2) rotate(180deg);
                 }
             }
 
-            @keyframes iconEvolution {
+            @keyframes brainGlow {
                 0%, 100% { 
-                    transform: scale(1) rotateY(0deg);
-                    color: #EB901E;
-                    filter: drop-shadow(0 0 12px rgba(235, 144, 30, 0.7));
+                    transform: scale(1) rotateZ(0deg);
+                    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
                 }
                 25% { 
-                    transform: scale(1.1) rotateY(90deg);
-                    color: #E83776;
-                    filter: drop-shadow(0 0 15px rgba(232, 55, 118, 0.8));
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
                 }
                 50% { 
-                    transform: scale(1.15) rotateY(180deg);
-                    color: #AB2F4F;
-                    filter: drop-shadow(0 0 18px rgba(171, 47, 79, 0.9));
+                    transform: scale(1.15) rotateZ(10deg);
+                    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
                 }
                 75% { 
-                    transform: scale(1.1) rotateY(270deg);
-                    color: #4A3BA3;
-                    filter: drop-shadow(0 0 15px rgba(74, 59, 163, 0.8));
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
                 }
             }
 
-            @keyframes iconProgress {
-                0%, 100% { 
-                    transform: scale(1);
-                    opacity: 1;
-                    color: #F06B9A;
-                }
-                50% { 
-                    transform: scale(1.08);
-                    opacity: 0.9;
-                    color: #F5A542;
-                }
-            }
-
-            @keyframes spectrumFlow {
-                0%, 100% { 
-                    box-shadow: 0 4px 20px rgba(235, 144, 30, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.2);
-                }
-                33% { 
-                    box-shadow: 0 4px 25px rgba(232, 55, 118, 0.7), inset 0 2px 5px rgba(255, 255, 255, 0.3);
-                }
-                66% { 
-                    box-shadow: 0 4px 30px rgba(47, 31, 134, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.4);
-                }
-            }
-
-            @keyframes conceptFloat {
+            @keyframes floatCognitivoA {
                 0%, 100% { 
                     transform: translateY(0) translateX(0) rotate(0deg);
                 }
@@ -346,295 +303,563 @@
                     transform: translateY(-12px) translateX(5px) rotate(120deg);
                 }
                 66% { 
-                    transform: translateY(6px) translateX(-3px) rotate(240deg);
+                    transform: translateY(7px) translateX(-4px) rotate(240deg);
                 }
             }
 
-            /* 19. ESTADOS HOVER CON ESPECIFICIDAD DEFENSIVA */
-            div[data-banner="afianzamiento-v2"]:hover h1[data-element="titulo"] {
-                color: #F5A542 !important;
-                transition: color 0.5s ease !important;
-                text-shadow: 4px 4px 8px #2F1F86, 0 0 40px rgba(245, 165, 66, 0.7) !important;
+            @keyframes floatCognitivoB {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-10px) translateX(7px) rotate(90deg);
+                }
+                66% { 
+                    transform: translateY(8px) translateX(-3px) rotate(270deg);
+                }
             }
 
-            div[data-banner="afianzamiento-v2"]:hover > div[data-element="barra"] {
-                width: 95% !important;
-                height: 10px !important;
-                transition: all 0.6s ease !important;
+            @keyframes floatCognitivoC {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-14px) translateX(3px) rotate(150deg);
+                }
+                66% { 
+                    transform: translateY(6px) translateX(-5px) rotate(210deg);
+                }
             }
 
-            div[data-banner="afianzamiento-v2"] i[data-icon="principal"]:hover {
-                transform: scale(1.4) rotateY(360deg) !important;
-                color: #E83776 !important;
-                text-shadow: 0 0 25px rgba(232, 55, 118, 0.9), 0 0 50px rgba(232, 55, 118, 0.7) !important;
-                filter: drop-shadow(0 0 20px rgba(232, 55, 118, 0.9)) !important;
+            @keyframes floatCognitivoD {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-8px) translateX(6px) rotate(60deg);
+                }
+                66% { 
+                    transform: translateY(9px) translateX(-2px) rotate(300deg);
+                }
             }
 
-            div[data-banner="afianzamiento-v2"] i[data-icon="secundario"]:hover {
-                transform: scale(1.3) rotate(180deg) !important;
-                color: #AB2F4F !important;
-                filter: drop-shadow(0 0 15px rgba(171, 47, 79, 0.9)) !important;
+            /* ESTADOS HOVER CON FEEDBACK EXTREMO */
+            div[data-banner-ultra="consolidacion-matematica-v2"]:hover {
+                transform: translateY(-5px) scale(1.01) !important;
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 35px 90px rgba(52, 170, 226, 0.5), 0 15px 40px rgba(6, 127, 195, 0.4) !important;
+                border-color: rgba(255, 255, 255, 0.4) !important;
             }
 
-            /* 20. RESPONSIVIDAD CON ESPECIFICIDAD MÁXIMA */
+            div[data-banner-ultra="consolidacion-matematica-v2"]:hover h1[data-elemento="titulo-consolidacion"] {
+                color: #fff5e6 !important;
+                transition: color 0.6s ease !important;
+                text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 255, 255, 0.5) !important;
+            }
+
+            div[data-banner-ultra="consolidacion-matematica-v2"] span[data-icono="cerebro-principal"]:hover {
+                transform: scale(1.5) rotateZ(360deg) !important;
+                filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)) !important;
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.9) !important;
+            }
+
+            /* RESPONSIVIDAD EXTREMA */
             @media (max-width: 768px) {
-                div[data-banner="afianzamiento-v2"] > div[data-role="header"] {
-                    padding: 35px 28px !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="header-consolidacion"] {
+                    padding: 40px 30px !important;
                 }
                 
-                div[data-banner="afianzamiento-v2"] h1[data-element="titulo"] {
-                    margin-bottom: 18px !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] h1[data-elemento="titulo-consolidacion"] {
+                    margin-bottom: 20px !important;
                     letter-spacing: -0.5px !important;
                 }
                 
-                div[data-concept] {
-                    opacity: 0.15 !important;
+                div[data-concepto] {
+                    opacity: 0.25 !important;
                 }
             }
 
             @media (max-width: 480px) {
-                div[data-banner="afianzamiento-v2"] > div[data-role="header"] {
-                    padding: 30px 22px !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="header-consolidacion"] {
+                    padding: 35px 25px !important;
                 }
                 
-                div[data-banner="afianzamiento-v2"] i[data-icon="principal"] {
-                    margin-right: 12px !important;
-                    font-size: 1.4em !important;
-                }
-                
-                div[data-banner="afianzamiento-v2"] i[data-icon="secundario"] {
-                    margin-right: 10px !important;
-                    font-size: 1.2em !important;
-                }
-                
-                div[data-banner="afianzamiento-v2"] > div[data-element="barra"] {
-                    width: 80% !important;
-                    height: 6px !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] span[data-icono="cerebro-principal"] {
+                    margin-right: 15px !important;
+                    font-size: 1.6em !important;
                 }
             }
 
-            /* 21. ACCESIBILIDAD Y REDUCCIÓN DE MOVIMIENTO */
+            /* ACCESIBILIDAD AVANZADA */
             @media (prefers-contrast: high) {
-                div[data-banner="afianzamiento-v2"] h1[data-element="titulo"] {
-                    text-shadow: 5px 5px 10px #1a0f2e !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] h1[data-elemento="titulo-consolidacion"] {
+                    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8), 0 0 0 2px #000000 !important;
                     color: #ffffff !important;
                 }
                 
-                div[data-banner="afianzamiento-v2"] p[data-element="subtitulo"] {
-                    color: #EB901E !important;
-                    text-shadow: 4px 4px 8px #1a0f2e !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] p[data-elemento="subtitulo-consolidacion"] {
+                    color: #ffffff !important;
+                    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px #000000 !important;
                 }
                 
-                div[data-banner="afianzamiento-v2"] > div[data-role="header"] {
-                    border-bottom: 6px solid #EB901E !important;
+                div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="header-consolidacion"] {
+                    border-bottom: 8px solid rgba(255, 255, 255, 0.6) !important;
+                }
+                
+                div[data-banner-ultra="consolidacion-matematica-v2"] span[data-icono="cerebro-principal"] {
+                    filter: contrast(2) brightness(1.2) !important;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1) !important;
                 }
             }
 
             @media (prefers-reduced-motion: reduce) {
-                div[data-banner="afianzamiento-v2"] > div[data-role="header"]::after,
-                div[data-concept],
-                div[data-banner="afianzamiento-v2"] i[data-icon="principal"],
-                div[data-banner="afianzamiento-v2"] i[data-icon="secundario"],
-                div[data-banner="afianzamiento-v2"] > div[data-element="barra"] {
+                div[data-banner-ultra="consolidacion-matematica-v2"] > div[data-seccion="header-consolidacion"]::after,
+                div[data-concepto],
+                div[data-banner-ultra="consolidacion-matematica-v2"] span[data-icono="cerebro-principal"] {
                     animation: none !important;
                 }
                 
-                div[data-banner="afianzamiento-v2"]:hover h1[data-element="titulo"],
-                div[data-banner="afianzamiento-v2"]:hover > div[data-element="barra"],
-                div[data-banner="afianzamiento-v2"] i[data-icon="principal"]:hover,
-                div[data-banner="afianzamiento-v2"] i[data-icon="secundario"]:hover {
+                div[data-banner-ultra="consolidacion-matematica-v2"]:hover,
+                div[data-banner-ultra="consolidacion-matematica-v2"]:hover h1[data-elemento="titulo-consolidacion"],
+                div[data-banner-ultra="consolidacion-matematica-v2"] span[data-icono="cerebro-principal"]:hover {
                     transition: none !important;
                     transform: none !important;
                 }
             }
+
+            /* MONTSERRAT FORZADO GLOBALMENTE */
+            div[data-banner-ultra="consolidacion-matematica-v2"] *,
+            div[data-banner-ultra="consolidacion-matematica-v2"] h1,
+            div[data-banner-ultra="consolidacion-matematica-v2"] p,
+            div[data-banner-ultra="consolidacion-matematica-v2"] i,
+            div[data-banner-ultra="consolidacion-matematica-v2"] span {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
         `;
         document.head.appendChild(customStyles);
+        console.log('🎨 Estilos críticos de consolidación inyectados con resistencia anti-Moodle garantizada');
     })();
 </script>
-<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 2. SECCIÓN 2: BANNER REFACTORIZADO CON ATRIBUTOS DATA -->
-<div data-banner="afianzamiento-v2">
-    <!-- 22. ELEMENTOS CONCEPTUALES FLOTANTES -->
-    <div data-role="flotantes">
-        <div data-concept="conceptos"></div>
-        <div data-concept="procedimientos"></div>
-        <div data-concept="problemas"></div>
-        <div data-concept="contexto"></div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE CONSOLIDACIÓN COGNITIVA - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-banner-ultra="consolidacion-matematica-v2">
+    <!-- ELEMENTOS COGNITIVOS FLOTANTES -->
+    <div data-seccion="elementos-cognitivos">
+        <div data-concepto="afianzamiento-conceptual"></div>
+        <div data-concepto="fortalecimiento-habilidades"></div>
+        <div data-concepto="aplicacion-contextual"></div>
+        <div data-concepto="consolidacion-saberes"></div>
     </div>
     
-    <!-- 23. HEADER CON CONTENIDO PRINCIPAL -->
-    <div data-role="header">
-        <h1 data-element="titulo">
-            <i class="fas fa-brain" data-icon="principal" aria-hidden="true"></i>
+    <!-- HEADER PRINCIPAL CON CONTENIDO CONSOLIDATIVO -->
+    <div data-seccion="header-consolidacion">
+        <h1 data-elemento="titulo-consolidacion">
+            <span data-icono="cerebro-principal" class="banner-icon">🧠</span>
             Consolida y fortalece tu aprendizaje
         </h1>
-        <p data-element="subtitulo">
-            <i class="fas fa-tools" data-icon="secundario" aria-hidden="true"></i>
-            Módulo 2 - Números Primos, MCD y MCM
+        <p data-elemento="subtitulo-consolidacion">
+            🛠️ Módulo 2 - <strong>Números primos, MCD y MCM</strong>
         </p>
-        
-        <!-- 24. BARRA ESPECTRAL -->
-        <div data-element="barra"></div>
     </div>
 </div>
-<!-- FIN 2. SECCIÓN 2: BANNER REFACTORIZADO -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE CONSOLIDACIÓN COGNITIVA - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD REFACTORIZADOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO DE CONSOLIDACIÓN - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-contenedor="informacion-consolidacion-matematica" 
+     style="all: initial !important; 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            border: 2px solid #067FC3 !important; 
+            border-radius: 15px !important; 
+            background: linear-gradient(135deg, #E3F4FD 0%, #EBF8FF 100%) !important; 
+            padding: 25px !important; 
+            margin: 25px 0 !important; 
+            box-shadow: 0 15px 35px rgba(6, 127, 195, 0.2) !important;
+            display: block !important;
+            position: relative !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            overflow: hidden !important;">
+    
+    <p data-parrafo="competencia-consolidacion" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #1a202c !important; 
+              margin: 0 0 15px 0 !important; 
+              font-size: 1.1em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 12px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 600 !important;
+              line-height: 1.6 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <i class="bi bi-trophy-fill" 
+           style="all: initial !important;
+                  color: #067FC3 !important; 
+                  margin-top: 3px !important;
+                  font-size: 1.2em !important;
+                  text-shadow: 0 0 8px rgba(6, 127, 195, 0.3) !important;
+                  display: inline-block !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+        <strong style="all: initial !important; 
+                      font-family: 'Montserrat', sans-serif !important;
+                      font-weight: 800 !important;
+                      color: #1a202c !important;
+                      display: inline !important;">
+            ¡Continúa con tu viaje, valiente explorador! Esta sección te servirá para afianzar tus habilidades 
+            matemáticas y consolidar todo lo que has aprendido hasta ahora.
+        </strong>
+    </p>
+    
+    <p data-parrafo="descripcion-consolidacion" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #2d3748 !important; 
+              margin: 0 !important; 
+              font-size: 1.05em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 10px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <span style="all: initial !important;
+                     font-size: 1.3em !important;
+                     margin-right: 8px !important;
+                     display: inline-block !important;">🏆</span>
+        Las matemáticas son un lenguaje universal, y aquí debes demostrar tu suficiencia dominando las reglas 
+        y conceptos clave. Aplícalos en ejercicios y problemas reales, iguales a los desafíos que enfrentarás 
+        en tu vida profesional. ¡Es tu momento de brillar y demostrar tu maestría!
+        
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=212383" 
+           target="_blank" 
+           data-enlace="consolidacion-detalle"
+           style="all: initial !important;
+                  font-family: 'Montserrat', sans-serif !important;
+                  text-decoration: none !important; 
+                  color: #067FC3 !important; 
+                  font-weight: 700 !important;
+                  display: inline !important;
+                  transition: all 0.3s ease !important;
+                  border-bottom: 2px solid transparent !important;
+                  padding: 2px 0 !important;
+                  margin: 0 5px !important;">
+            ¡Acepta el desafío!
+        </a>
+        
+        <i class="bi bi-lightning-charge-fill" 
+           style="all: initial !important;
+                  color: #067FC3 !important;
+                  font-size: 1.1em !important;
+                  display: inline-block !important;
+                  margin-left: 5px !important;
+                  transition: transform 0.3s ease !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+    </p>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO DE CONSOLIDACIÓN - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA DE CONSOLIDACIÓN - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * 25. FUNCIONES REFACTORIZADAS PARA EL BANNER DEFENSIVO.
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE PARA CONSOLIDACIÓN
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades cognitivas
      */
     document.addEventListener('DOMContentLoaded', function() {
-        // 26. VERIFICAR CARGA DEL BANNER REFACTORIZADO
-        function verificarBannerRefactorizado() {
-            const banner = document.querySelector('div[data-banner="afianzamiento-v2"]');
+        console.log('🧠 Inicializando sistema ultra-resistente para Banner de Consolidación Cognitiva');
+
+        /**
+         * VERIFICACIÓN DE BANNER DE CONSOLIDACIÓN CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarBannerConsolidacionUltraResistente() {
+            const banner = document.querySelector('div[data-banner-ultra="consolidacion-matematica-v2"]');
             if (banner) {
-                console.log('🎨 Banner refactorizado con CSS defensivo cargado correctamente'); // 27. CONFIRMACIÓN DE CARGA
+                console.log('✅ Banner de consolidación ultra-resistente cargado y funcionando correctamente');
                 
-                // 28. APLICAR EFECTOS DINÁMICOS REFACTORIZADOS
+                // EFECTOS HOVER COGNITIVOS CON GPU ACCELERATION
                 banner.addEventListener('mouseenter', function() {
-                    this.style.setProperty('transform', 'scale(1.015) translateY(-4px)', 'important');
-                    this.style.setProperty('transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
-                    this.style.setProperty('box-shadow', '0 30px 80px rgba(47, 31, 134, 0.5), 0 15px 30px rgba(171, 47, 79, 0.4)', 'important');
-                    this.style.setProperty('border-color', 'rgba(235, 144, 30, 0.4)', 'important');
+                    this.style.setProperty('transform', 'translateY(-5px) scale(1.01) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 35px 90px rgba(52, 170, 226, 0.5), 0 15px 40px rgba(6, 127, 195, 0.4)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.4)', 'important');
+                    this.style.setProperty('will-change', 'transform, box-shadow', 'important');
                 });
                 
                 banner.addEventListener('mouseleave', function() {
-                    this.style.setProperty('transform', 'scale(1) translateY(0)', 'important');
-                    this.style.setProperty('box-shadow', '0 20px 60px rgba(47, 31, 134, 0.4), 0 8px 25px rgba(171, 47, 79, 0.3)', 'important');
-                    this.style.setProperty('border-color', 'rgba(235, 144, 30, 0.2)', 'important');
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(52, 170, 226, 0.4), 0 10px 30px rgba(6, 127, 195, 0.3)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.2)', 'important');
                 });
                 
-                // 29. MEJORAR ACCESIBILIDAD
-                const titulo = banner.querySelector('h1[data-element="titulo"]');
+                // ACCESIBILIDAD COGNITIVA AVANZADA CON ARIA
+                const titulo = banner.querySelector('h1[data-elemento="titulo-consolidacion"]');
                 if (titulo) {
                     titulo.setAttribute('tabindex', '0');
                     titulo.setAttribute('role', 'banner');
-                    titulo.setAttribute('aria-label', 'Sección de Afianzamiento - Consolida y fortalece tu aprendizaje en el Módulo 1');
+                    titulo.setAttribute('aria-label', 'Banner de Consolidación Cognitiva - Consolida y fortalece tu aprendizaje del Módulo 1');
                     
+                    // FOCUS VISUAL COGNITIVO EXTREMO
                     titulo.addEventListener('focus', function() {
-                        this.style.setProperty('outline', '4px solid #EB901E', 'important');
-                        this.style.setProperty('outline-offset', '4px', 'important');
-                        this.style.setProperty('border-radius', '10px', 'important');
+                        this.style.setProperty('outline', '4px solid rgba(6, 127, 195, 0.8)', 'important');
+                        this.style.setProperty('outline-offset', '6px', 'important');
+                        this.style.setProperty('border-radius', '12px', 'important');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.15)', 'important');
+                        this.style.setProperty('padding', '10px', 'important');
+                    });
+                    
+                    titulo.addEventListener('blur', function() {
+                        this.style.removeProperty('outline');
+                        this.style.removeProperty('outline-offset');
+                        this.style.removeProperty('border-radius');
+                        this.style.removeProperty('background');
+                        this.style.removeProperty('padding');
                     });
                 }
                 
-                // 30. SISTEMA DE PROGRESIÓN CONCEPTUAL REFACTORIZADO
-                const iconos = banner.querySelectorAll('i[data-icon]');
-                let conceptualIndex = 0;
-                const conceptualColors = ['#EB901E', '#E83776', '#AB2F4F', '#2F1F86'];
+                // INTERACTIVIDAD COGNITIVA EXTREMA PARA ICONOS
+                const iconos = banner.querySelectorAll('[data-icono]');
+                let interactionCount = 0;
+                const interactionEffects = [
+                    'drop-shadow(0 0 15px rgba(52, 170, 226, 0.8))',   // Azul cognitivo
+                    'drop-shadow(0 0 20px rgba(6, 127, 195, 0.8))',   // Azul profundo
+                    'drop-shadow(0 0 25px rgba(0, 123, 191, 0.8))',   // Azul intenso
+                    'drop-shadow(0 0 30px rgba(0, 149, 255, 0.8))'    // Azul brillante
+                ];
                 
                 iconos.forEach((icono, index) => {
-                    icono.addEventListener('click', function() {
-                        this.style.setProperty('color', conceptualColors[conceptualIndex % 4], 'important');
-                        conceptualIndex++;
-                        console.log(`🎨 Progresión conceptual refactorizada: ${conceptualIndex % 4 + 1}/4`);
+                    icono.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.style.setProperty('filter', interactionEffects[interactionCount % 4], 'important');
+                        this.style.setProperty('transform', 'scale(1.3) rotate(360deg)', 'important');
+                        
+                        interactionCount++;
+                        console.log(`🧠 Consolidación ${interactionCount}: ${this.getAttribute('data-icono')} activado`);
+                        
+                        // RESET DESPUÉS DE ANIMACIÓN COGNITIVA
+                        setTimeout(() => {
+                            this.style.removeProperty('transform');
+                        }, 600);
                     });
+                    
+                    // PREPARAR PARA ANIMACIONES COGNITIVAS DE GPU
+                    icono.style.setProperty('will-change', 'transform, filter', 'important');
                 });
             } else {
-                console.warn('⚠️ No se encontró el banner refactorizado');
+                console.error('❌ Error: Banner de consolidación ultra-resistente no encontrado');
             }
         }
-        
-        // 31. FUNCIÓN PARA ANÁLISIS CROMÁTICO REFACTORIZADO
-        function analizarPaletaRefactorizada() {
-            console.log('🎨 Análisis cromático refactorizado:');
-            console.log('   Naranja vibrante (conceptos): #EB901E');
-            console.log('   Magenta intenso (procedimientos): #E83776');
-            console.log('   Púrpura profundo (problemas): #AB2F4F');
-            console.log('   Azul púrpura (contexto): #2F1F86');
-            console.log('   Enfoque: CSS defensivo con atributos data y colores hardcodeados');
-            console.log('   Especificidad: Máxima usando selectores de atributos únicos');
+
+        /**
+         * ANÁLISIS CROMÁTICO DE IMPLEMENTACIÓN COGNITIVA
+         */
+        function analizarImplementacionCromaticaCognitiva() {
+            console.log('🎨 Análisis de implementación cromática cognitiva ultra-resistente:');
+            console.log('   ✅ Gradiente azul: #34AAE2 → #067FC3 (PANTONE 298 C → 7460 C)');
+            console.log('   ✅ Contraste títulos: Blanco (#ffffff) con sombras oscuras para legibilidad');
+            console.log('   ✅ Icono cerebro: Emoji 🧠 con resplandor blanco cognitivo');
+            console.log('   ✅ Subtítulo: Blanco (#ffffff) con emoji de herramientas 🛠️');
+            console.log('   ✅ Elementos flotantes: Blanco semi-transparente con animaciones cognitivas');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos cognitivos');
+            console.log('   ✅ Performance: GPU acceleration + will-change optimizado para consolidación');
+            console.log('   ✅ Accesibilidad: Contraste óptimo sobre fondo azul para estabilidad');
         }
-        
-        // 32. FUNCIÓN PARA DETECTAR CONTEXTO REFACTORIZADO
-        function detectarContextoRefactorizado() {
-            const banner = document.querySelector('div[data-banner="afianzamiento-v2"]');
-            if (banner) {
-                banner.setAttribute('data-context', 'afianzamiento');
-                banner.setAttribute('data-fase', 'consolidacion');
-                banner.setAttribute('data-modulo', '1');
-                banner.setAttribute('data-tema', 'numeros-enteros');
-                banner.setAttribute('data-competencias', 'conceptual,procedimental,contextual');
-                
-                console.log('🎯 Contexto de afianzamiento refactorizado detectado y configurado');
-            }
-        }
-        
-        // 33. FUNCIÓN PARA PROGRESIÓN CONCEPTUAL REFACTORIZADA
-        function inicializarProgresionRefactorizada() {
-            const shapes = document.querySelectorAll('div[data-concept]');
-            const conceptNames = ['Conceptos', 'Procedimientos', 'Problemas', 'Contexto'];
+
+        /**
+         * CONFIGURACIÓN DE CONTEXTO COGNITIVO MATEMÁTICO
+         */
+        function configurarContextoCognitivoMatematico() {
+            const banner = document.querySelector('div[data-banner-ultra="consolidacion-matematica-v2"]');
+            const contenedor = document.querySelector('div[data-contenedor="informacion-consolidacion-matematica"]');
             
-            shapes.forEach((shape, index) => {
-                const conceptType = shape.getAttribute('data-concept');
-                shape.setAttribute('title', `Área de ${conceptNames[index]}`);
+            if (banner && contenedor) {
+                // ATRIBUTOS DE CONTEXTO COGNITIVO MATEMÁTICO
+                banner.setAttribute('data-contexto-educativo', 'consolidacion-cognitiva-matematica');
+                banner.setAttribute('data-fase-aprendizaje', 'afianzamiento-conceptual');
+                banner.setAttribute('data-modulo-numero', '1');
+                banner.setAttribute('data-tema-principal', 'numeros-enteros-consolidacion');
+                banner.setAttribute('data-competencias', 'consolidar,afianzar,aplicar,dominar');
+                banner.setAttribute('data-metodologia', 'cognitiva-matematica');
+                banner.setAttribute('data-resistencia-moodle', 'ultra-maxima-cognitiva');
                 
-                shape.addEventListener('click', function() {
-                    console.log(`📚 Enfoque refactorizado en: ${conceptType}`);
-                    this.style.setProperty('opacity', '0.6', 'important');
+                contenedor.setAttribute('data-tipo-contenido', 'informacion-consolidacion-cognitiva');
+                contenedor.setAttribute('data-nivel-detalle', 'aplicativo-contextual');
+                contenedor.setAttribute('data-enfoque', 'profesional-matematico');
+                
+                console.log('🧠 Contexto cognitivo matemático ultra-resistente configurado correctamente');
+            }
+        }
+
+        /**
+         * SISTEMA DE PROGRESIÓN COGNITIVA AVANZADO
+         */
+        function inicializarProgresionCognitiva() {
+            const elementosCognitivos = document.querySelectorAll('div[data-concepto]');
+            const conceptosCognitivos = [
+                'Afianzamiento Conceptual',
+                'Fortalecimiento de Habilidades', 
+                'Aplicación Contextual',
+                'Consolidación de Saberes'
+            ];
+            
+            elementosCognitivos.forEach((elemento, index) => {
+                const conceptoType = elemento.getAttribute('data-concepto');
+                elemento.setAttribute('title', `${conceptosCognitivos[index]} - Consolidación Cognitiva de Números Enteros`);
+                elemento.setAttribute('data-progreso-cognitivo', `${index + 1}/4`);
+                elemento.setAttribute('data-fase-consolidacion', conceptoType);
+                
+                // INTERACTIVIDAD COGNITIVA AVANZADA
+                elemento.addEventListener('click', function() {
+                    console.log(`🧠 Consolidación cognitiva: ${conceptoType} (${this.getAttribute('data-progreso-cognitivo')})`);
+                    this.style.setProperty('opacity', '0.8', 'important');
+                    this.style.setProperty('transform', 'scale(1.4)', 'important');
+                    this.style.setProperty('box-shadow', '0 0 35px rgba(6, 127, 195, 0.6)', 'important');
+                    this.style.setProperty('background', 'rgba(52, 170, 226, 0.4)', 'important');
+                    
                     setTimeout(() => {
-                        this.style.setProperty('opacity', '0.25', 'important');
-                    }, 1500);
+                        this.style.setProperty('opacity', '0.35', 'important');
+                        this.style.removeProperty('transform');
+                        this.style.removeProperty('box-shadow');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.3)', 'important');
+                    }, 2500);
                 });
+                
+                // OPTIMIZACIÓN GPU COGNITIVA
+                elemento.style.setProperty('will-change', 'transform, opacity, background', 'important');
             });
         }
-        
-        // 34. FUNCIÓN MOTIVACIONAL REFACTORIZADA
-        function aplicarElementosMotivacionalesRefactorizados() {
-            const titulo = document.querySelector('h1[data-element="titulo"]');
-            const subtitulo = document.querySelector('p[data-element="subtitulo"]');
+
+        /**
+         * CONFIGURACIÓN DE ENLACE COGNITIVO INTELIGENTE
+         */
+        function configurarEnlaceCognitivoInteligente() {
+            const enlace = document.querySelector('a[data-enlace="consolidacion-detalle"]');
+            const icono = document.querySelector('i.bi-lightning-charge-fill');
             
-            if (titulo && subtitulo) {
-                titulo.setAttribute('data-motivation', 'consolidation');
-                titulo.setAttribute('data-learning-phase', 'reinforcement');
-                subtitulo.setAttribute('data-level', 'modulo-1');
-                subtitulo.setAttribute('data-subject', 'numeros-enteros');
+            if (enlace && icono) {
+                enlace.addEventListener('mouseenter', function() {
+                    this.style.setProperty('border-bottom-color', '#067FC3', 'important');
+                    this.style.setProperty('color', '#054a73', 'important');
+                    this.style.setProperty('text-shadow', '0 0 8px rgba(6, 127, 195, 0.4)', 'important');
+                    if (icono) {
+                        icono.style.setProperty('transform', 'scale(1.2) rotate(180deg)', 'important');
+                        icono.style.setProperty('color', '#34AAE2', 'important');
+                    }
+                });
                 
-                titulo.addEventListener('click', function() {
-                    console.log('💪 ¡Estudiante motivado para el afianzamiento conceptual refactorizado!');
-                    console.log('🎯 Objetivo: Consolidar conceptos, procedimientos y resolución de problemas');
+                enlace.addEventListener('mouseleave', function() {
+                    this.style.setProperty('border-bottom-color', 'transparent', 'important');
+                    this.style.setProperty('color', '#067FC3', 'important');
+                    this.style.removeProperty('text-shadow');
+                    if (icono) {
+                        icono.style.removeProperty('transform');
+                        icono.style.setProperty('color', '#067FC3', 'important');
+                    }
+                });
+                
+                enlace.addEventListener('click', function() {
+                    console.log('🔗 Navegación hacia consolidación cognitiva detallada del módulo');
                 });
             }
         }
+
+        // EJECUTAR TODAS LAS FUNCIONES COGNITIVAS DE INICIALIZACIÓN
+        verificarBannerConsolidacionUltraResistente();
+        analizarImplementacionCromaticaCognitiva();
+        configurarContextoCognitivoMatematico();
+        inicializarProgresionCognitiva();
+        configurarEnlaceCognitivoInteligente();
         
-        // 35. EJECUTAR TODAS LAS FUNCIONES REFACTORIZADAS
-        verificarBannerRefactorizado();
-        analizarPaletaRefactorizada();
-        detectarContextoRefactorizado();
-        inicializarProgresionRefactorizada();
-        aplicarElementosMotivacionalesRefactorizados();
-        
-        // 36. LOG FINAL REFACTORIZADO
-        console.log('🚀 Sistema refactorizado inicializado - CSS defensivo con atributos data');
-        console.log('✨ Características: Especificidad máxima, colores hardcodeados, selectores únicos');
-        console.log('🛡️ Protección: Resistente a sobrescritura de Moodle mediante selectores de atributos');
+        // LOG FINAL DE SISTEMA COGNITIVO ULTRA-RESISTENTE
+        console.log('🌟 Sistema Cognitivo Ultra-Resistente de Consolidación inicializado completamente');
+        console.log('🛡️ Características cognitivas implementadas:');
+        console.log('   • Resistencia anti-Moodle máxima con selectores únicos de consolidación');
+        console.log('   • Tipografía Montserrat forzada globalmente en contexto cognitivo');
+        console.log('   • GPU acceleration con will-change optimizado para afianzamiento');
+        console.log('   • Accesibilidad avanzada con ARIA y navegación cognitiva por teclado');
+        console.log('   • Interactividad consolidativa extrema con feedback visual cognitivo');
+        console.log('   • Animaciones cognitivas optimizadas para performance de afianzamiento');
+        console.log('   • Especificidad CSS extrema con !important selectivo para consolidación');
+        console.log('   • Gradiente azul PANTONE institucional para estabilidad y comprensión');
     });
-    
+
     /**
-     * 37. FUNCIONES GLOBALES REFACTORIZADAS
+     * FUNCIONES GLOBALES DE UTILIDAD COGNITIVA ULTRA-RESISTENTE
      */
-    function alternarModoAfianzamientoRefactorizado() {
-        const banner = document.querySelector('div[data-banner="afianzamiento-v2"]');
+    function alternarModoConsolidacionCognitiva() {
+        const banner = document.querySelector('div[data-banner-ultra="consolidacion-matematica-v2"]');
         if (banner) {
-            const modos = ['conceptual', 'procedimental', 'contextual'];
-            const modoActual = banner.getAttribute('data-modo') || 'conceptual';
-            const indiceActual = modos.indexOf(modoActual);
-            const nuevoModo = modos[(indiceActual + 1) % 3];
+            const modosConsolidacion = ['afianzamiento', 'fortalecimiento', 'aplicacion', 'dominio'];
+            const modoActual = banner.getAttribute('data-modo-consolidacion') || 'afianzamiento';
+            const indiceActual = modosConsolidacion.indexOf(modoActual);
+            const nuevoModo = modosConsolidacion[(indiceActual + 1) % 4];
             
-            banner.setAttribute('data-modo', nuevoModo);
-            console.log(`🔄 Modo de afianzamiento refactorizado: ${nuevoModo}`);
+            banner.setAttribute('data-modo-consolidacion', nuevoModo);
+            console.log(`🔄 Modo consolidación cognitiva ultra-resistente: ${nuevoModo}`);
         }
     }
     
-    function prepararAfianzamientoRefactorizado() {
-        const banner = document.querySelector('div[data-banner="afianzamiento-v2"]');
-        if (banner) {
-            banner.classList.add('afianzamiento-activo');
-            banner.style.setProperty('filter', 'brightness(1.05) saturate(1.1)', 'important');
-            console.log('🎯 Afianzamiento refactorizado preparado - CSS defensivo activo');
+    function activarModoAfianzamientoAvanzado() {
+        const banner = document.querySelector('div[data-banner-ultra="consolidacion-matematica-v2"]');
+        const contenedor = document.querySelector('div[data-contenedor="informacion-consolidacion-matematica"]');
+        
+        if (banner && contenedor) {
+            banner.classList.add('afianzamiento-cognitivo-activo');
+            banner.style.setProperty('filter', 'brightness(1.1) saturate(1.3) contrast(1.08)', 'important');
+            banner.style.setProperty('box-shadow', '0 40px 100px rgba(52, 170, 226, 0.6), 0 20px 50px rgba(6, 127, 195, 0.5)', 'important');
+            contenedor.style.setProperty('transform', 'scale(1.02)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(6, 127, 195, 0.3)', 'important');
+            contenedor.style.setProperty('border-color', '#34AAE2', 'important');
+            
+            console.log('🧠 Modo afianzamiento cognitivo avanzado ultra-resistente activado');
+            console.log('✨ Efectos cognitivos aplicados: brillo, saturación, contraste y escala optimizados para consolidación');
         }
+    }
+    
+    function iniciarConsolidacionMatematica() {
+        const elementosCognitivos = document.querySelectorAll('div[data-concepto]');
+        console.log('🧠 Iniciando consolidación matemática cognitiva...');
+        
+        elementosCognitivos.forEach((elemento, index) => {
+            setTimeout(() => {
+                elemento.style.setProperty('background', 'rgba(52, 170, 226, 0.5)', 'important');
+                elemento.style.setProperty('transform', 'scale(1.2)', 'important');
+                elemento.style.setProperty('box-shadow', '0 0 25px rgba(6, 127, 195, 0.7)', 'important');
+                
+                setTimeout(() => {
+                    elemento.style.setProperty('background', 'rgba(255, 255, 255, 0.3)', 'important');
+                    elemento.style.removeProperty('transform');
+                    elemento.style.removeProperty('box-shadow');
+                }, 1000);
+            }, index * 500);
+        });
+        
+        console.log('🧠 Consolidación matemática completada - Conceptos cognitivos afianzados secuencialmente');
     }
 </script>
-<!-- FIN 3. SECCIÓN 3: SCRIPTS REFACTORIZADOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA DE CONSOLIDACIÓN - CIERRE -->
+<!-- ================================================================================================ -->
