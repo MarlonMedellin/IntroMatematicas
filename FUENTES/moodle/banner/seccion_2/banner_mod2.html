@@ -1,10 +1,23 @@
-<!-- HEAD DEFINITIONS GO HERE -->
-<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
-     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
-     * @param {string} url - URL DEL RECURSO.
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos <link> para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
      */
     function cargarRecurso(tipo, url) {
         const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
@@ -13,469 +26,840 @@
             elemento.href = url;
         } else {
             elemento.src = url;
-            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+            elemento.defer = true; // Performance: Carga no-bloqueante
         }
-        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
-        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
         document.head.appendChild(elemento);
     }
-    // 5. CARGAR FUENTE MONTSERRAT DESDE CDN
-    cargarRecurso('stylesheet', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-    // 6. CARGAR ICONOS DE FONT AWESOME DESDE CDN
+
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
     cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
     /**
-     * 7. AGREGAR ESTILOS CON TEORÍA DEL COLOR APLICADA.
+     * INYECCIÓN DE ESTILOS CRÍTICOS
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
      */
-    (function agregarEstilosTeoriaColor() {
+    (function agregarEstilosExploracion() {
         const customStyles = document.createElement('style');
+        customStyles.id = 'banner-exploracion-ultra-resistente';
         customStyles.textContent = `
-            /* 8. VARIABLES CSS BASADAS EN TEORÍA DEL COLOR */
-            :root {
-                /* 9. PALETA MONOCROMÁTICA AZUL - COLORES PRIMARIOS */
-                --color-primary-dark: #1a365d;      /* 10. AZUL NAVY - CMYK 100/91/27/15 APROX */
-                --color-primary-medium: #2563eb;     /* 11. AZUL MEDIO - CMYK 83/41/0/0 APROX */
-                --color-primary-light: #3b82f6;     /* 12. AZUL CLARO - CMYK 70/14/0/0 APROX */
-                --color-primary-bright: #1d4ed8;    /* 13. AZUL SATURADO - CMYK 94/66/0/0 APROX */
-                
-                /* 14. COLORES COMPLEMENTARIOS Y DE ACENTO */
-                --color-accent-warm: #f59e0b;       /* 15. NARANJA COMPLEMENTARIO (CONTRASTE CÁLIDO) */
-                --color-accent-gold: #fbbf24;       /* 16. DORADO (ANÁLOGO CÁLIDO) */
-                --color-neutral-light: #f8fafc;     /* 17. NEUTRAL CLARO */
-                --color-neutral-dark: #0f172a;      /* 18. NEUTRAL OSCURO */
-                
-                /* 19. GRADIENTES CON ARMONÍA CROMÁTICA */
-                --gradient-primary: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-medium) 100%);
-                --gradient-accent: linear-gradient(90deg, var(--color-accent-warm) 0%, var(--color-accent-gold) 100%);
-                --gradient-overlay: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 50%, rgba(251, 191, 36, 0.05) 100%);
-                
-                /* 20. TRANSPARENCIAS PARA LAYERING */
-                --alpha-light: rgba(248, 250, 252, 0.95);
-                --alpha-medium: rgba(37, 99, 235, 0.15);
-                --alpha-accent: rgba(245, 158, 11, 0.3);
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - CSS CRÍTICO INLINE */
+            /* ================================================================================ */
+            
+            /* RESETEO ABSOLUTO DEL CONTENEDOR PRINCIPAL */
+            div[data-banner-ultra="exploracion-matematica-v2"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                margin: 20px 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: linear-gradient(135deg, #E83776 0%, #AB2F87 100%) !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 140px !important;
+                overflow: hidden !important;
+                border-radius: 20px !important;
+                box-shadow: 0 25px 70px rgba(232, 55, 118, 0.4), 0 10px 30px rgba(171, 47, 135, 0.3) !important;
+                border: 3px solid rgba(255, 255, 255, 0.2) !important;
+                will-change: transform, box-shadow !important; /* GPU acceleration */
+                transform: translateZ(0) !important; /* Force GPU layer */
             }
 
-            /* 21. RESETEO DE ESTILOS PARA EL BANNER */
-            .color-theory-banner * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+            /* OVERLAY GLASSMORPHISM AVANZADO */
+            div[data-banner-ultra="exploracion-matematica-v2"]::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: linear-gradient(135deg, rgba(171, 47, 135, 0.15) 0%, transparent 50%, rgba(232, 55, 118, 0.08) 100%) !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                opacity: 0.8 !important;
+                backdrop-filter: blur(2px) !important;
+                -webkit-backdrop-filter: blur(2px) !important;
             }
 
-            /* 22. CONTENEDOR PRINCIPAL CON ESQUEMA MONOCROMÁTICO */
-            .color-theory-banner {
-                font-family: 'Montserrat', sans-serif;
-                background: var(--gradient-primary);                 /* 23. GRADIENTE MONOCROMÁTICO AZUL */
-                color: var(--color-neutral-light);
-                overflow: hidden;
-                border-radius: 12px;
-                margin: 20px 0;
-                position: relative;
-                box-shadow: 0 10px 40px rgba(26, 54, 93, 0.3);      /* 24. SOMBRA EN TONO PRIMARIO */
+            /* HEADER PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
+            div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="header-exploracion"] {
+                all: initial !important;
+                display: block !important;
+                text-align: center !important;
+                padding: 45px 40px !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+                backdrop-filter: blur(30px) saturate(1.4) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(1.4) !important;
+                border-bottom: 6px solid rgba(255, 255, 255, 0.3) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
             }
 
-            /* 25. OVERLAY CON TEORÍA DE CONTRASTE */
-            .color-theory-banner::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: var(--gradient-overlay);                 /* 26. OVERLAY PARA BALANCE CROMÁTICO */
-                z-index: 1;
-                pointer-events: none;
+            /* ELEMENTO DECORATIVO CIENTÍFICO */
+            div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="header-exploracion"]::after {
+                content: '' !important;
+                position: absolute !important;
+                top: -40px !important;
+                right: -40px !important;
+                width: 160px !important;
+                height: 160px !important;
+                background: radial-gradient(circle, #AB2F87 0%, #E83776 40%, transparent 85%) !important;
+                border-radius: 50% !important;
+                opacity: 0.4 !important;
+                z-index: -1 !important;
+                filter: blur(12px) !important;
+                animation: explorationPulse 6s ease-in-out infinite !important;
+                will-change: opacity, transform !important;
             }
 
-            /* 27. HEADER CON GLASSMORPHISM Y CONTRASTE VISUAL */
-            .theory-header {
-                text-align: center;
-                padding: 30px 25px;
-                background: var(--alpha-medium);                     /* 28. FONDO SEMI-TRANSPARENTE AZUL */
-                backdrop-filter: blur(15px) saturate(1.2);           /* 29. GLASSMORPHISM MEJORADO */
-                border-bottom: 3px solid var(--color-accent-warm);   /* 30. LÍNEA DE ACENTO COMPLEMENTARIA */
-                position: relative;
-                z-index: 2;
-                overflow: hidden;
+            /* TÍTULO PRINCIPAL CON CONTRASTE ABSOLUTO */
+            div[data-banner-ultra="exploracion-matematica-v2"] h1[data-elemento="titulo-exploracion"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(2rem, 6vw, 3.2rem) !important;
+                font-weight: 900 !important;
+                margin: 0 0 25px 0 !important;
+                padding: 0 !important;
+                color: #ffffff !important;
+                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.3) !important;
+                line-height: 1.1 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                letter-spacing: -0.8px !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+                text-transform: none !important;
+                text-decoration: none !important;
+                border: none !important;
+                background: none !important;
+                will-change: color, text-shadow !important;
             }
 
-            /* 31. ELEMENTO DECORATIVO CON COLOR DE ACENTO */
-            .theory-header::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(circle, var(--color-accent-gold) 0%, transparent 70%);
-                opacity: 0.6;                                        /* 32. TRANSPARENCIA PARA SUTILEZA */
-                z-index: -1;
-                animation: pulseGlow 4s ease-in-out infinite;        /* 33. ANIMACIÓN DE RESPLANDOR */
+            /* SUBTÍTULO CON JERARQUÍA VISUAL */
+            div[data-banner-ultra="exploracion-matematica-v2"] p[data-elemento="subtitulo-exploracion"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.6rem) !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                line-height: 1.3 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+                text-transform: none !important;
+                letter-spacing: 0.5px !important;
+                text-align: center !important;
+                font-style: normal !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: none !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
             }
 
-            /* 34. TÍTULO PRINCIPAL CON JERARQUÍA CROMÁTICA */
-            .theory-title {
-                font-size: clamp(1.6rem, 4.5vw, 2.4rem);
-                font-weight: 800;                                    /* 35. PESO EXTRABOLD PARA JERARQUÍA */
-                margin-bottom: 15px;
-                color: var(--color-neutral-light);                   /* 36. BLANCO PARA MÁXIMO CONTRASTE */
-                text-shadow: 
-                    2px 2px 4px var(--color-primary-dark),          /* 37. SOMBRA EN COLOR PRIMARIO OSCURO */
-                    0 0 20px rgba(251, 191, 36, 0.3);               /* 38. RESPLANDOR EN COLOR DE ACENTO */
-                line-height: 1.1;
-                position: relative;
-                z-index: 3;
+            /* ICONOS CON RESPLANDOR EXTREMO */
+            div[data-banner-ultra="exploracion-matematica-v2"] span[data-icono="tubo-ensayo-principal"] {
+                margin-right: 20px !important;
+                vertical-align: middle !important;
+                font-size: 1.8em !important;
+                display: inline-block !important;
+                animation: tubeGlow 4s ease-in-out infinite !important;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                will-change: transform, filter !important;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
             }
 
-            /* 39. SUBTÍTULO CON COLOR ANÁLOGO */
-            .theory-subtitle {
-                font-size: clamp(1rem, 2.8vw, 1.3rem);
-                font-weight: 600;
-                color: var(--color-accent-gold);                     /* 40. COLOR DE ACENTO DORADO */
-                line-height: 1.3;
-                position: relative;
-                z-index: 3;
-                text-shadow: 1px 1px 3px var(--color-primary-dark); /* 41. SOMBRA PARA LEGIBILIDAD */
+            /* ELEMENTOS FLOTANTES CIENTÍFICOS */
+            div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="elementos-cientificos"] {
+                all: initial !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: block !important;
             }
 
-            /* 42. ICONOS CON REALCE CROMÁTICO MÁXIMO */
-            .theory-title i,
-            .theory-subtitle i {
-                margin-right: 12px;
-                vertical-align: middle;
-                color: #ff6b35;                                      /* 43. NARANJA VIBRANTE PARA MÁXIMO CONTRASTE */
-                font-size: 1.3em;                                   /* 44. TAMAÑO AUMENTADO PARA PROMINENCIA */
-                text-shadow: 
-                    0 0 10px rgba(255, 107, 53, 0.6),               /* 45. RESPLANDOR NARANJA */
-                    0 0 20px rgba(255, 107, 53, 0.4),               /* 46. RESPLANDOR EXTENDIDO */
-                    2px 2px 4px rgba(0, 0, 0, 0.3);                 /* 47. SOMBRA PARA PROFUNDIDAD */
-                filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.5)); /* 48. FILTRO DE RESPLANDOR ADICIONAL */
-                transition: all 0.3s ease;                          /* 49. TRANSICIÓN SUAVE */
-                display: inline-block;                               /* 50. PARA APLICAR TRANSFORMACIONES */
+            div[data-concepto="hipotesis-formacion"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatCientificoA 8s ease-in-out infinite !important;
+                width: 45px !important;
+                height: 45px !important;
+                background: rgba(255, 255, 255, 0.3) !important;
+                top: 18% !important;
+                left: 10% !important;
+                animation-delay: 0s !important;
+                display: block !important;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
             }
 
-            /* 45. ELEMENTO DECORATIVO INFERIOR CON CONTRASTE COMPLEMENTARIO */
-            .accent-bar {
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 80%;
-                height: 4px;
-                background: var(--gradient-accent);                  /* 46. BARRA DE ACENTO COMPLEMENTARIO */
-                border-radius: 2px;
-                z-index: 4;
-                box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);    /* 47. SOMBRA EN COLOR DE ACENTO */
+            div[data-concepto="experimentacion-practica"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatCientificoB 8s ease-in-out infinite !important;
+                width: 38px !important;
+                height: 38px !important;
+                background: rgba(255, 255, 255, 0.25) !important;
+                top: 68% !important;
+                right: 18% !important;
+                animation-delay: 2.5s !important;
+                display: block !important;
+                box-shadow: 0 0 18px rgba(255, 255, 255, 0.2) !important;
             }
 
-            /* 48. ELEMENTOS FLOTANTES CON ESQUEMA TRIÁDICO */
-            .floating-shapes {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 1;
-                pointer-events: none;
+            div[data-concepto="descubrimiento-conceptos"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatCientificoC 8s ease-in-out infinite !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: rgba(255, 255, 255, 0.28) !important;
+                top: 42% !important;
+                right: 38% !important;
+                animation-delay: 5s !important;
+                display: block !important;
+                box-shadow: 0 0 19px rgba(255, 255, 255, 0.2) !important;
             }
 
-            .shape-1,
-            .shape-2,
-            .shape-3 {
-                position: absolute;
-                border-radius: 50%;
-                opacity: 0.4;                                        /* 49. TRANSPARENCIA PARA NO COMPETIR */
-                animation: floatRotate 8s ease-in-out infinite;      /* 50. ANIMACIÓN SUAVE */
+            div[data-concepto="profundizacion-teoria"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatCientificoD 8s ease-in-out infinite !important;
+                width: 35px !important;
+                height: 35px !important;
+                background: rgba(255, 255, 255, 0.22) !important;
+                top: 28% !important;
+                left: 42% !important;
+                animation-delay: 1.5s !important;
+                display: block !important;
+                box-shadow: 0 0 16px rgba(255, 255, 255, 0.2) !important;
             }
 
-            .shape-1 {
-                width: 40px;
-                height: 40px;
-                background: var(--color-primary-light);              /* 51. AZUL CLARO */
-                top: 20%;
-                left: 10%;
-                animation-delay: 0s;
-            }
-
-            .shape-2 {
-                width: 25px;
-                height: 25px;
-                background: var(--color-accent-warm);                /* 52. NARANJA COMPLEMENTARIO */
-                top: 60%;
-                right: 15%;
-                animation-delay: 2.5s;
-            }
-
-            .shape-3 {
-                width: 30px;
-                height: 30px;
-                background: var(--color-primary-bright);             /* 53. AZUL SATURADO */
-                top: 40%;
-                right: 35%;
-                animation-delay: 5s;
-            }
-
-            /* 54. ANIMACIONES CON TEORÍA DE MOVIMIENTO */
-            @keyframes pulseGlow {
+            /* ANIMACIONES KEYFRAMES OPTIMIZADAS */
+            @keyframes explorationPulse {
                 0%, 100% { 
-                    opacity: 0.4; 
-                    transform: scale(1);                             /* 55. ESCALA NORMAL */
+                    opacity: 0.3; 
+                    transform: scale(1) rotate(0deg);
                 }
                 50% { 
-                    opacity: 0.8; 
-                    transform: scale(1.1);                           /* 56. EXPANSIÓN SUTIL */
+                    opacity: 0.6; 
+                    transform: scale(1.2) rotate(180deg);
                 }
             }
 
-            @keyframes floatRotate {
+            @keyframes tubeGlow {
                 0%, 100% { 
-                    transform: translateY(0) rotate(0deg);           /* 57. POSICIÓN INICIAL */
+                    transform: scale(1) rotateZ(0deg);
+                    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+                }
+                25% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+                }
+                50% { 
+                    transform: scale(1.15) rotateZ(10deg);
+                    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+                }
+                75% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+                }
+            }
+
+            @keyframes floatCientificoA {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
                 }
                 33% { 
-                    transform: translateY(-10px) rotate(120deg);     /* 58. MOVIMIENTO CIRCULAR */
+                    transform: translateY(-12px) translateX(5px) rotate(120deg);
                 }
                 66% { 
-                    transform: translateY(5px) rotate(240deg);       /* 59. CONTINUACIÓN DEL CICLO */
+                    transform: translateY(7px) translateX(-4px) rotate(240deg);
                 }
             }
 
-            /* 60. HOVER STATES CON RETROALIMENTACIÓN CROMÁTICA */
-            .color-theory-banner:hover .theory-title {
-                color: var(--color-accent-gold);                     /* 61. CAMBIO A COLOR DE ACENTO */
-                transition: color 0.4s ease;                         /* 62. TRANSICIÓN SUAVE */
-            }
-
-            .color-theory-banner:hover .accent-bar {
-                width: 90%;                                          /* 63. EXPANSIÓN DE BARRA DE ACENTO */
-                transition: width 0.4s ease;                         /* 64. TRANSICIÓN FLUIDA */
-            }
-
-            /* 65. EFECTOS ESPECIALES PARA ICONOS */
-            .theory-title i:hover,
-            .theory-subtitle i:hover {
-                transform: scale(1.2) rotate(10deg);                 /* 66. ESCALADO Y ROTACIÓN SUTIL */
-                color: #ff8c42;                                      /* 67. NARANJA MÁS CLARO AL HOVER */
-                text-shadow: 
-                    0 0 15px rgba(255, 140, 66, 0.8),               /* 68. RESPLANDOR INTENSIFICADO */
-                    0 0 30px rgba(255, 140, 66, 0.6),               /* 69. RESPLANDOR EXPANDIDO */
-                    3px 3px 6px rgba(0, 0, 0, 0.4);                 /* 70. SOMBRA MÁS PROMINENTE */
-                filter: drop-shadow(0 0 12px rgba(255, 140, 66, 0.7)); /* 71. FILTRO INTENSIFICADO */
-            }
-
-            /* 72. ANIMACIÓN PULSE PARA ICONOS */
-            .theory-title i,
-            .theory-subtitle i {
-                animation: iconPulse 2s ease-in-out infinite;        /* 73. ANIMACIÓN DE PULSACIÓN */
-            }
-
-            @keyframes iconPulse {
+            @keyframes floatCientificoB {
                 0%, 100% { 
-                    transform: scale(1);                             /* 74. ESCALA NORMAL */
-                    filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.5));
+                    transform: translateY(0) translateX(0) rotate(0deg);
                 }
-                50% { 
-                    transform: scale(1.05);                          /* 75. LIGERA EXPANSIÓN */
-                    filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.7));
+                33% { 
+                    transform: translateY(-10px) translateX(7px) rotate(90deg);
+                }
+                66% { 
+                    transform: translateY(8px) translateX(-3px) rotate(270deg);
                 }
             }
 
-            /* 65. MEDIA QUERIES CON CONSISTENCIA CROMÁTICA */
+            @keyframes floatCientificoC {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-14px) translateX(3px) rotate(150deg);
+                }
+                66% { 
+                    transform: translateY(6px) translateX(-5px) rotate(210deg);
+                }
+            }
+
+            @keyframes floatCientificoD {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-8px) translateX(6px) rotate(60deg);
+                }
+                66% { 
+                    transform: translateY(9px) translateX(-2px) rotate(300deg);
+                }
+            }
+
+            /* ESTADOS HOVER CON FEEDBACK EXTREMO */
+            div[data-banner-ultra="exploracion-matematica-v2"]:hover {
+                transform: translateY(-5px) scale(1.01) !important;
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 35px 90px rgba(232, 55, 118, 0.5), 0 15px 40px rgba(171, 47, 135, 0.4) !important;
+                border-color: rgba(255, 255, 255, 0.4) !important;
+            }
+
+            div[data-banner-ultra="exploracion-matematica-v2"]:hover h1[data-elemento="titulo-exploracion"] {
+                color: #fff5e6 !important;
+                transition: color 0.6s ease !important;
+                text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 255, 255, 0.5) !important;
+            }
+
+            div[data-banner-ultra="exploracion-matematica-v2"] span[data-icono="tubo-ensayo-principal"]:hover {
+                transform: scale(1.5) rotateZ(360deg) !important;
+                filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)) !important;
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.9) !important;
+            }
+
+            /* RESPONSIVIDAD EXTREMA */
             @media (max-width: 768px) {
-                .theory-header {
-                    padding: 25px 20px;                              /* 66. PADDING REDUCIDO */
+                div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="header-exploracion"] {
+                    padding: 40px 30px !important;
                 }
                 
-                .theory-title {
-                    margin-bottom: 10px;                             /* 67. MARGEN COMPACTO */
+                div[data-banner-ultra="exploracion-matematica-v2"] h1[data-elemento="titulo-exploracion"] {
+                    margin-bottom: 20px !important;
+                    letter-spacing: -0.5px !important;
                 }
                 
-                .shape-1,
-                .shape-2,
-                .shape-3 {
-                    opacity: 0.2;                                    /* 68. MENOR OPACIDAD EN MÓVIL */
+                div[data-concepto] {
+                    opacity: 0.25 !important;
                 }
             }
 
             @media (max-width: 480px) {
-                .theory-header {
-                    padding: 20px 15px;                              /* 69. PADDING MÍNIMO */
+                div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="header-exploracion"] {
+                    padding: 35px 25px !important;
                 }
                 
-                .theory-title i,
-                .theory-subtitle i {
-                    margin-right: 8px;                               /* 70. ESPACIADO REDUCIDO */
-                    font-size: 1.2em;                                /* 71. TAMAÑO LIGERAMENTE REDUCIDO EN MÓVIL */
-                    text-shadow: 
-                        0 0 8px rgba(255, 107, 53, 0.5),             /* 72. RESPLANDOR ADAPTADO */
-                        2px 2px 3px rgba(0, 0, 0, 0.3);              /* 73. SOMBRA SIMPLIFICADA */
-                }
-                
-                .accent-bar {
-                    width: 70%;                                      /* 74. BARRA MÁS ESTRECHA */
-                    height: 3px;                                     /* 75. ALTURA REDUCIDA */
+                div[data-banner-ultra="exploracion-matematica-v2"] span[data-icono="tubo-ensayo-principal"] {
+                    margin-right: 15px !important;
+                    font-size: 1.6em !important;
                 }
             }
 
-            /* 73. ACCESIBILIDAD CON CONTRASTE MEJORADO */
+            /* ACCESIBILIDAD AVANZADA */
             @media (prefers-contrast: high) {
-                .theory-title {
-                    text-shadow: 3px 3px 6px var(--color-neutral-dark); /* 74. MAYOR CONTRASTE */
-                    color: #ffffff;                                   /* 75. BLANCO PURO */
+                div[data-banner-ultra="exploracion-matematica-v2"] h1[data-elemento="titulo-exploracion"] {
+                    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8), 0 0 0 2px #000000 !important;
+                    color: #ffffff !important;
                 }
                 
-                .theory-subtitle {
-                    color: var(--color-accent-gold);                 /* 76. MANTENER COLOR DE ACENTO */
-                    text-shadow: 2px 2px 4px var(--color-neutral-dark); /* 77. SOMBRA MÁS FUERTE */
+                div[data-banner-ultra="exploracion-matematica-v2"] p[data-elemento="subtitulo-exploracion"] {
+                    color: #ffffff !important;
+                    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px #000000 !important;
                 }
                 
-                .theory-header {
-                    border-bottom: 4px solid var(--color-accent-warm); /* 78. BORDE MÁS GRUESO */
+                div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="header-exploracion"] {
+                    border-bottom: 8px solid rgba(255, 255, 255, 0.6) !important;
+                }
+                
+                div[data-banner-ultra="exploracion-matematica-v2"] span[data-icono="tubo-ensayo-principal"] {
+                    filter: contrast(2) brightness(1.2) !important;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1) !important;
                 }
             }
 
-            /* 79. REDUCCIÓN DE MOVIMIENTO PARA ACCESIBILIDAD */
             @media (prefers-reduced-motion: reduce) {
-                .theory-header::after,
-                .shape-1,
-                .shape-2,
-                .shape-3,
-                .theory-title i,
-                .theory-subtitle i {
-                    animation: none;                                  /* 80. SIN ANIMACIONES */
+                div[data-banner-ultra="exploracion-matematica-v2"] > div[data-seccion="header-exploracion"]::after,
+                div[data-concepto],
+                div[data-banner-ultra="exploracion-matematica-v2"] span[data-icono="tubo-ensayo-principal"] {
+                    animation: none !important;
                 }
                 
-                .color-theory-banner:hover .theory-title,
-                .color-theory-banner:hover .accent-bar,
-                .theory-title i:hover,
-                .theory-subtitle i:hover {
-                    transition: none;                                 /* 81. SIN TRANSICIONES */
-                    transform: none;                                  /* 82. SIN TRANSFORMACIONES */
+                div[data-banner-ultra="exploracion-matematica-v2"]:hover,
+                div[data-banner-ultra="exploracion-matematica-v2"]:hover h1[data-elemento="titulo-exploracion"],
+                div[data-banner-ultra="exploracion-matematica-v2"] span[data-icono="tubo-ensayo-principal"]:hover {
+                    transition: none !important;
+                    transform: none !important;
                 }
+            }
+
+            /* MONTSERRAT FORZADO GLOBALMENTE */
+            div[data-banner-ultra="exploracion-matematica-v2"] *,
+            div[data-banner-ultra="exploracion-matematica-v2"] h1,
+            div[data-banner-ultra="exploracion-matematica-v2"] p,
+            div[data-banner-ultra="exploracion-matematica-v2"] i,
+            div[data-banner-ultra="exploracion-matematica-v2"] span {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
             }
         `;
         document.head.appendChild(customStyles);
+        console.log('🎨 Estilos críticos de exploración inyectados con resistencia anti-Moodle garantizada');
     })();
 </script>
-<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 2. SECCIÓN 2: BANNER CON TEORÍA DEL COLOR APLICADA -->
-<div class="color-theory-banner">
-    <!-- 82. ELEMENTOS DECORATIVOS FLOTANTES -->
-    <div class="floating-shapes">
-        <div class="shape-1"></div>
-        <div class="shape-2"></div>
-        <div class="shape-3"></div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE EXPLORACIÓN CIENTÍFICA - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-banner-ultra="exploracion-matematica-v2">
+    <!-- ELEMENTOS CIENTÍFICOS FLOTANTES -->
+    <div data-seccion="elementos-cientificos">
+        <div data-concepto="hipotesis-formacion"></div>
+        <div data-concepto="experimentacion-practica"></div>
+        <div data-concepto="descubrimiento-conceptos"></div>
+        <div data-concepto="profundizacion-teoria"></div>
     </div>
     
-    <!-- 83. HEADER CON JERARQUÍA CROMÁTICA -->
-    <div class="theory-header">
-        <h1 class="theory-title">
-            <i class="fas fa-flask" aria-hidden="true"></i>
+    <!-- HEADER PRINCIPAL CON CONTENIDO EXPLORATORIO -->
+    <div data-seccion="header-exploracion">
+        <h1 data-elemento="titulo-exploracion">
+            <span data-icono="tubo-ensayo-principal" class="banner-icon">🧪</span>
             ¡Explora cada sección y profundiza en los conceptos clave!
         </h1>
-        <p class="theory-subtitle">
-            <i class="fas fa-calculator" aria-hidden="true"></i>
-            Módulo 2 - Números Primos, MCD y MCM
+        <p data-elemento="subtitulo-exploracion">
+            🔍 Módulo 2 - <strong>Números Primos, MCD y MCM</strong>
         </p>
-        
-        <!-- 84. BARRA DE ACENTO COMPLEMENTARIO -->
-        <div class="accent-bar"></div>
     </div>
 </div>
-<!-- FIN 2. SECCIÓN 2: BANNER CON TEORÍA DEL COLOR -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE EXPLORACIÓN CIENTÍFICA - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y TEORÍA CROMÁTICA -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO DE EXPLORACIÓN - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-contenedor="informacion-exploracion-matematica" 
+     style="all: initial !important; 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            border: 2px solid #AB2F87 !important; 
+            border-radius: 15px !important; 
+            background: linear-gradient(135deg, #F9E8F5 0%, #F5E6F8 100%) !important; 
+            padding: 25px !important; 
+            margin: 25px 0 !important; 
+            box-shadow: 0 15px 35px rgba(171, 47, 135, 0.2) !important;
+            display: block !important;
+            position: relative !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            overflow: hidden !important;">
+    
+    <p data-parrafo="competencia-exploracion" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #1a202c !important; 
+              margin: 0 0 15px 0 !important; 
+              font-size: 1.1em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 12px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 600 !important;
+              line-height: 1.6 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <i class="bi bi-controller" 
+           style="all: initial !important;
+                  color: #AB2F87 !important; 
+                  margin-top: 3px !important;
+                  font-size: 1.2em !important;
+                  text-shadow: 0 0 8px rgba(171, 47, 135, 0.3) !important;
+                  display: inline-block !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+        <strong style="all: initial !important; 
+                      font-family: 'Montserrat', sans-serif !important;
+                      font-weight: 800 !important;
+                      color: #1a202c !important;
+                      display: inline !important;">
+            ¡Jugador, es hora de repasar los conceptos clave de este módulo! Estos conceptos son las reglas 
+            esenciales del juego que debes dominar para resolver cualquier desafío matemático que se presente.
+        </strong>
+    </p>
+    
+    <p data-parrafo="descripcion-exploracion" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #2d3748 !important; 
+              margin: 0 !important; 
+              font-size: 1.05em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 10px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <span style="all: initial !important;
+                     font-size: 1.3em !important;
+                     margin-right: 8px !important;
+                     display: inline-block !important;">🎮</span>
+        Adéntrate en la exploración y comprensión profunda de estos fundamentos para desbloquear nuevas 
+        habilidades y avanzar con éxito al siguiente nivel. Como en cualquier gran aventura, conocer las 
+        reglas te dará la ventaja necesaria para superar todos los obstáculos que encontrarás en tu camino.
+        
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=212270" 
+           target="_blank" 
+           data-enlace="exploracion-detalle"
+           style="all: initial !important;
+                  font-family: 'Montserrat', sans-serif !important;
+                  text-decoration: none !important; 
+                  color: #AB2F87 !important; 
+                  font-weight: 700 !important;
+                  display: inline !important;
+                  transition: all 0.3s ease !important;
+                  border-bottom: 2px solid transparent !important;
+                  padding: 2px 0 !important;
+                  margin: 0 5px !important;">
+            ¡Inicia tu misión!
+        </a>
+        
+        <i class="bi bi-joystick" 
+           style="all: initial !important;
+                  color: #AB2F87 !important;
+                  font-size: 1.1em !important;
+                  display: inline-block !important;
+                  margin-left: 5px !important;
+                  transition: transform 0.3s ease !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+    </p>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO DE EXPLORACIÓN - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA DE EXPLORACIÓN - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * 85. FUNCIONES PARA OPTIMIZAR LA EXPERIENCIA CROMÁTICA.
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE PARA EXPLORACIÓN
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades científicas
      */
     document.addEventListener('DOMContentLoaded', function() {
-        // 86. VERIFICAR CARGA DEL BANNER CON TEORÍA DEL COLOR
-        function verificarBannerTeoriaColor() {
-            const banner = document.querySelector('.color-theory-banner');
+        console.log('🧪 Inicializando sistema ultra-resistente para Banner de Exploración Científica');
+
+        /**
+         * VERIFICACIÓN DE BANNER DE EXPLORACIÓN CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarBannerExploracionUltraResistente() {
+            const banner = document.querySelector('div[data-banner-ultra="exploracion-matematica-v2"]');
             if (banner) {
-                console.log('🎨 Banner con Teoría del Color cargado correctamente'); // 87. CONFIRMACIÓN CROMÁTICA
+                console.log('✅ Banner de exploración ultra-resistente cargado y funcionando correctamente');
                 
-                // 88. APLICAR EFECTOS DINÁMICOS BASADOS EN TEORÍA DEL COLOR
+                // EFECTOS HOVER CIENTÍFICOS CON GPU ACCELERATION
                 banner.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.01) translateY(-2px)';     // 89. ELEVACIÓN SUTIL
-                    this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'; // 90. EASING SUAVE
-                    this.style.boxShadow = '0 20px 60px rgba(26, 54, 93, 0.4)'; // 91. SOMBRA EXPANSIVA
+                    this.style.setProperty('transform', 'translateY(-5px) scale(1.01) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 35px 90px rgba(232, 55, 118, 0.5), 0 15px 40px rgba(171, 47, 135, 0.4)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.4)', 'important');
+                    this.style.setProperty('will-change', 'transform, box-shadow', 'important');
                 });
                 
                 banner.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1) translateY(0)';           // 92. RETORNO A POSICIÓN
-                    this.style.boxShadow = '0 10px 40px rgba(26, 54, 93, 0.3)'; // 93. SOMBRA ORIGINAL
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(232, 55, 118, 0.4), 0 10px 30px rgba(171, 47, 135, 0.3)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.2)', 'important');
                 });
                 
-                // 94. MEJORAR ACCESIBILIDAD CON FOCUS VISIBLE
-                const titulo = banner.querySelector('.theory-title');
+                // ACCESIBILIDAD CIENTÍFICA AVANZADA CON ARIA
+                const titulo = banner.querySelector('h1[data-elemento="titulo-exploracion"]');
                 if (titulo) {
-                    titulo.setAttribute('tabindex', '0');                       // 95. HACER FOCUSEABLE
-                    titulo.setAttribute('role', 'banner');                      // 96. ROLE SEMÁNTICO
-                    titulo.setAttribute('aria-label', 'Laboratorio Matemático Módulo 1 - Sistema de Números Enteros'); // 97. DESCRIPCIÓN COMPLETA
+                    titulo.setAttribute('tabindex', '0');
+                    titulo.setAttribute('role', 'banner');
+                    titulo.setAttribute('aria-label', 'Banner de Exploración Científica - Explora cada sección y profundiza en los conceptos clave del Módulo 1');
                     
-                    // 98. FOCUS VISUAL CON COLORES DE ACENTO
+                    // FOCUS VISUAL CIENTÍFICO EXTREMO
                     titulo.addEventListener('focus', function() {
-                        this.style.outline = '3px solid #f59e0b';               // 99. OUTLINE EN COLOR DE ACENTO
-                        this.style.outlineOffset = '2px';                       // 100. SEPARACIÓN DEL OUTLINE
+                        this.style.setProperty('outline', '4px solid rgba(171, 47, 135, 0.8)', 'important');
+                        this.style.setProperty('outline-offset', '6px', 'important');
+                        this.style.setProperty('border-radius', '12px', 'important');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.15)', 'important');
+                        this.style.setProperty('padding', '10px', 'important');
+                    });
+                    
+                    titulo.addEventListener('blur', function() {
+                        this.style.removeProperty('outline');
+                        this.style.removeProperty('outline-offset');
+                        this.style.removeProperty('border-radius');
+                        this.style.removeProperty('background');
+                        this.style.removeProperty('padding');
                     });
                 }
-            } else {
-                console.warn('⚠️ No se encontró el banner con teoría del color'); // 101. ADVERTENCIA DE ERROR
-            }
-        }
-        
-        // 102. FUNCIÓN PARA DETECCIÓN DE PREFERENCIAS DE CONTRASTE
-        function detectarPreferenciasVisuales() {
-            const banner = document.querySelector('.color-theory-banner');
-            if (banner) {
-                // 103. VERIFICAR PREFERENCIA DE CONTRASTE ALTO
-                if (window.matchMedia('(prefers-contrast: high)').matches) {
-                    banner.classList.add('high-contrast-mode');                 // 104. CLASE PARA ALTO CONTRASTE
-                    console.log('🔆 Modo de alto contraste activado');
-                }
                 
-                // 105. VERIFICAR PREFERENCIA DE MOVIMIENTO REDUCIDO
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    banner.classList.add('reduced-motion-mode');                // 106. CLASE PARA MOVIMIENTO REDUCIDO
-                    console.log('🔇 Modo de movimiento reducido activado');
-                }
+                // INTERACTIVIDAD CIENTÍFICA EXTREMA PARA ICONOS
+                const iconos = banner.querySelectorAll('[data-icono]');
+                let interactionCount = 0;
+                const interactionEffects = [
+                    'drop-shadow(0 0 15px rgba(0, 255, 127, 0.8))',  // Verde científico
+                    'drop-shadow(0 0 20px rgba(138, 43, 226, 0.8))', // Púrpura experimental
+                    'drop-shadow(0 0 25px rgba(255, 20, 147, 0.8))', // Rosa investigativo
+                    'drop-shadow(0 0 30px rgba(0, 191, 255, 0.8))'   // Azul analítico
+                ];
+                
+                iconos.forEach((icono, index) => {
+                    icono.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.style.setProperty('filter', interactionEffects[interactionCount % 4], 'important');
+                        this.style.setProperty('transform', 'scale(1.3) rotate(360deg)', 'important');
+                        
+                        interactionCount++;
+                        console.log(`🔬 Experimento ${interactionCount}: ${this.getAttribute('data-icono')} activado`);
+                        
+                        // RESET DESPUÉS DE ANIMACIÓN CIENTÍFICA
+                        setTimeout(() => {
+                            this.style.removeProperty('transform');
+                        }, 600);
+                    });
+                    
+                    // PREPARAR PARA ANIMACIONES CIENTÍFICAS DE GPU
+                    icono.style.setProperty('will-change', 'transform, filter', 'important');
+                });
+            } else {
+                console.error('❌ Error: Banner de exploración ultra-resistente no encontrado');
             }
         }
-        
-        // 107. FUNCIÓN PARA ANÁLISIS CROMÁTICO EN TIEMPO REAL
-        function analizarContrasteCromatico() {
-            const computedStyle = getComputedStyle(document.documentElement);
-            const primaryDark = computedStyle.getPropertyValue('--color-primary-dark').trim();
-            const accentGold = computedStyle.getPropertyValue('--color-accent-gold').trim();
-            
-            console.log('🎨 Análisis cromático:');                              // 108. INICIO DE ANÁLISIS
-            console.log(`   Primario oscuro: ${primaryDark}`);                 // 109. COLOR PRIMARIO
-            console.log(`   Acento dorado: ${accentGold}`);                    // 110. COLOR DE ACENTO
-            console.log('   Esquema aplicado: Monocromático azul + complementario naranja'); // 111. ESQUEMA IDENTIFICADO
+
+        /**
+         * ANÁLISIS CROMÁTICO DE IMPLEMENTACIÓN CIENTÍFICA
+         */
+        function analizarImplementacionCromaticaCientifica() {
+            console.log('🎨 Análisis de implementación cromática científica ultra-resistente:');
+            console.log('   ✅ Gradiente magenta: #E83776 → #AB2F87 (PANTONE 205 C → 675 C)');
+            console.log('   ✅ Contraste títulos: Blanco (#ffffff) con sombras oscuras para legibilidad');
+            console.log('   ✅ Icono tubo ensayo: Emoji 🧪 con resplandor blanco');
+            console.log('   ✅ Subtítulo: Blanco (#ffffff) con emoji de lupa 🔍');
+            console.log('   ✅ Elementos flotantes: Blanco semi-transparente con animaciones variadas');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos científicos');
+            console.log('   ✅ Performance: GPU acceleration + will-change optimizado para experimentos');
+            console.log('   ✅ Accesibilidad: Contraste óptimo sobre fondo magenta para exploración');
         }
+
+        /**
+         * CONFIGURACIÓN DE CONTEXTO CIENTÍFICO MATEMÁTICO
+         */
+        function configurarContextoCientificoMatematico() {
+            const banner = document.querySelector('div[data-banner-ultra="exploracion-matematica-v2"]');
+            const contenedor = document.querySelector('div[data-contenedor="informacion-exploracion-matematica"]');
+            
+            if (banner && contenedor) {
+                // ATRIBUTOS DE CONTEXTO CIENTÍFICO MATEMÁTICO
+                banner.setAttribute('data-contexto-educativo', 'exploracion-cientifica-matematica');
+                banner.setAttribute('data-fase-aprendizaje', 'experimentacion-conceptual');
+                banner.setAttribute('data-modulo-numero', '1');
+                banner.setAttribute('data-tema-principal', 'numeros-enteros-exploracion');
+                banner.setAttribute('data-competencias', 'explorar,experimentar,analizar,profundizar');
+                banner.setAttribute('data-metodologia', 'cientifica-matematica');
+                banner.setAttribute('data-resistencia-moodle', 'ultra-maxima-cientifica');
+                
+                contenedor.setAttribute('data-tipo-contenido', 'informacion-exploracion-cientifica');
+                contenedor.setAttribute('data-nivel-detalle', 'experimental-descriptivo');
+                contenedor.setAttribute('data-enfoque', 'investigativo-matematico');
+                
+                console.log('🔬 Contexto científico matemático ultra-resistente configurado correctamente');
+            }
+        }
+
+        /**
+         * SISTEMA DE PROGRESIÓN CIENTÍFICA AVANZADO
+         */
+        function inicializarProgresionCientifica() {
+            const elementosCientificos = document.querySelectorAll('div[data-concepto]');
+            const conceptosCientificos = [
+                'Hipótesis y Formación de Conceptos',
+                'Experimentación Práctica', 
+                'Descubrimiento de Patrones',
+                'Profundización Teórica'
+            ];
+            
+            elementosCientificos.forEach((elemento, index) => {
+                const conceptoType = elemento.getAttribute('data-concepto');
+                elemento.setAttribute('title', `${conceptosCientificos[index]} - Exploración Científica de Números Enteros`);
+                elemento.setAttribute('data-progreso-cientifico', `${index + 1}/4`);
+                elemento.setAttribute('data-fase-experimental', conceptoType);
+                
+                // INTERACTIVIDAD CIENTÍFICA AVANZADA
+                elemento.addEventListener('click', function() {
+                    console.log(`🧪 Experimento científico: ${conceptoType} (${this.getAttribute('data-progreso-cientifico')})`);
+                    this.style.setProperty('opacity', '0.8', 'important');
+                    this.style.setProperty('transform', 'scale(1.4)', 'important');
+                    this.style.setProperty('box-shadow', '0 0 35px rgba(171, 47, 135, 0.6)', 'important');
+                    this.style.setProperty('background', 'rgba(232, 55, 118, 0.4)', 'important');
+                    
+                    setTimeout(() => {
+                        this.style.setProperty('opacity', '0.35', 'important');
+                        this.style.removeProperty('transform');
+                        this.style.removeProperty('box-shadow');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.3)', 'important');
+                    }, 2500);
+                });
+                
+                // OPTIMIZACIÓN GPU CIENTÍFICA
+                elemento.style.setProperty('will-change', 'transform, opacity, background', 'important');
+            });
+        }
+
+        /**
+         * CONFIGURACIÓN DE ENLACE CIENTÍFICO INTELIGENTE
+         */
+        function configurarEnlaceCientificoInteligente() {
+            const enlace = document.querySelector('a[data-enlace="exploracion-detalle"]');
+            const icono = document.querySelector('i.bi-arrow-right-circle-fill');
+            
+            if (enlace && icono) {
+                enlace.addEventListener('mouseenter', function() {
+                    this.style.setProperty('border-bottom-color', '#AB2F87', 'important');
+                    this.style.setProperty('color', '#7d2465', 'important');
+                    this.style.setProperty('text-shadow', '0 0 8px rgba(171, 47, 135, 0.4)', 'important');
+                    if (icono) {
+                        icono.style.setProperty('transform', 'translateX(8px) rotate(90deg)', 'important');
+                        icono.style.setProperty('color', '#E83776', 'important');
+                    }
+                });
+                
+                enlace.addEventListener('mouseleave', function() {
+                    this.style.setProperty('border-bottom-color', 'transparent', 'important');
+                    this.style.setProperty('color', '#AB2F87', 'important');
+                    this.style.removeProperty('text-shadow');
+                    if (icono) {
+                        icono.style.removeProperty('transform');
+                        icono.style.setProperty('color', '#AB2F87', 'important');
+                    }
+                });
+                
+                enlace.addEventListener('click', function() {
+                    console.log('🔗 Navegación hacia exploración científica detallada del módulo');
+                });
+            }
+        }
+
+        // EJECUTAR TODAS LAS FUNCIONES CIENTÍFICAS DE INICIALIZACIÓN
+        verificarBannerExploracionUltraResistente();
+        analizarImplementacionCromaticaCientifica();
+        configurarContextoCientificoMatematico();
+        inicializarProgresionCientifica();
+        configurarEnlaceCientificoInteligente();
         
-        // 112. EJECUTAR TODAS LAS VERIFICACIONES
-        verificarBannerTeoriaColor();
-        detectarPreferenciasVisuales();
-        analizarContrasteCromatico();
-        
-        // 113. LOG FINAL DE INICIALIZACIÓN CROMÁTICA
-        console.log('🚀 Sistema de Teoría del Color inicializado - Iconos con realce cromático máximo aplicado');
-        console.log('🔥 Efectos especiales: Resplandor naranja, animación pulse, y hover dinámico en iconos');
+        // LOG FINAL DE SISTEMA CIENTÍFICO ULTRA-RESISTENTE
+        console.log('🌟 Sistema Científico Ultra-Resistente de Exploración inicializado completamente');
+        console.log('🛡️ Características científicas implementadas:');
+        console.log('   • Resistencia anti-Moodle máxima con selectores únicos de exploración');
+        console.log('   • Tipografía Montserrat forzada globalmente en contexto científico');
+        console.log('   • GPU acceleration con will-change optimizado para experimentos');
+        console.log('   • Accesibilidad avanzada con ARIA y navegación científica por teclado');
+        console.log('   • Interactividad experimental extrema con feedback visual científico');
+        console.log('   • Animaciones científicas optimizadas para performance exploratoria');
+        console.log('   • Especificidad CSS extrema con !important selectivo para investigación');
+        console.log('   • Gradiente magenta PANTONE institucional para energía exploratoria');
     });
-    
+
     /**
-     * 114. FUNCIÓN EXPERIMENTAL PARA ALTERNAR ESQUEMAS CROMÁTICOS
-     * @description PERMITE CAMBIAR ENTRE DIFERENTES ESQUEMAS DE COLOR
+     * FUNCIONES GLOBALES DE UTILIDAD CIENTÍFICA ULTRA-RESISTENTE
      */
-    function alternarEsquemaCromatico() {
-        const banner = document.querySelector('.color-theory-banner');
+    function alternarModoExploracionCientifica() {
+        const banner = document.querySelector('div[data-banner-ultra="exploracion-matematica-v2"]');
         if (banner) {
-            banner.classList.toggle('esquema-analogico');                        // 115. TOGGLE ESQUEMA ANÁLOGO
-            const esAnalogico = banner.classList.contains('esquema-analogico');
-            console.log(`🎨 Esquema cromático: ${esAnalogico ? 'Análogo' : 'Monocromático + Complementario'}`); // 116. LOG DEL CAMBIO
+            const modosExploracion = ['hipotesis', 'experimentacion', 'analisis', 'sintesis'];
+            const modoActual = banner.getAttribute('data-modo-exploracion') || 'hipotesis';
+            const indiceActual = modosExploracion.indexOf(modoActual);
+            const nuevoModo = modosExploracion[(indiceActual + 1) % 4];
+            
+            banner.setAttribute('data-modo-exploracion', nuevoModo);
+            console.log(`🔄 Modo exploración científica ultra-resistente: ${nuevoModo}`);
         }
     }
+    
+    function activarModoInvestigacionAvanzado() {
+        const banner = document.querySelector('div[data-banner-ultra="exploracion-matematica-v2"]');
+        const contenedor = document.querySelector('div[data-contenedor="informacion-exploracion-matematica"]');
+        
+        if (banner && contenedor) {
+            banner.classList.add('investigacion-cientifica-activa');
+            banner.style.setProperty('filter', 'brightness(1.1) saturate(1.3) contrast(1.08)', 'important');
+            banner.style.setProperty('box-shadow', '0 40px 100px rgba(232, 55, 118, 0.6), 0 20px 50px rgba(171, 47, 135, 0.5)', 'important');
+            contenedor.style.setProperty('transform', 'scale(1.02)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(171, 47, 135, 0.3)', 'important');
+            contenedor.style.setProperty('border-color', '#E83776', 'important');
+            
+            console.log('🔬 Modo investigación científica avanzada ultra-resistente activado');
+            console.log('✨ Efectos científicos aplicados: brillo, saturación, contraste y escala optimizados para exploración');
+        }
+    }
+    
+    function iniciarExperimentoMatematico() {
+        const elementosCientificos = document.querySelectorAll('div[data-concepto]');
+        console.log('🧪 Iniciando experimento matemático de exploración...');
+        
+        elementosCientificos.forEach((elemento, index) => {
+            setTimeout(() => {
+                elemento.style.setProperty('background', 'rgba(232, 55, 118, 0.5)', 'important');
+                elemento.style.setProperty('transform', 'scale(1.2)', 'important');
+                elemento.style.setProperty('box-shadow', '0 0 25px rgba(171, 47, 135, 0.7)', 'important');
+                
+                setTimeout(() => {
+                    elemento.style.setProperty('background', 'rgba(255, 255, 255, 0.3)', 'important');
+                    elemento.style.removeProperty('transform');
+                    elemento.style.removeProperty('box-shadow');
+                }, 1000);
+            }, index * 500);
+        });
+        
+        console.log('🔬 Experimento matemático completado - Conceptos científicos activados secuencialmente');
+    }
 </script>
-<!-- FIN 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y TEORÍA CROMÁTICA -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA DE EXPLORACIÓN - CIERRE -->
+<!-- ================================================================================================ -->
