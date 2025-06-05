@@ -14,7 +14,6 @@
         montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
         document.head.appendChild(montserratLink);
     }
-
     /**
      * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
      * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
@@ -32,11 +31,9 @@
         elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
         document.head.appendChild(elemento);
     }
-
     // Ejecutar carga de recursos críticos
     cargarMontserrat();
     cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
     /**
      * INYECCIÓN DE ESTILOS CRÍTICOS
      * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
@@ -72,7 +69,6 @@
                 will-change: transform, box-shadow !important; /* GPU acceleration */
                 transform: translateZ(0) !important; /* Force GPU layer */
             }
-
             /* OVERLAY GLASSMORPHISM AVANZADO */
             div[data-banner-ultra="introduccion-matematica-v2"]::before {
                 content: '' !important;
@@ -88,7 +84,6 @@
                 backdrop-filter: blur(2px) !important;
                 -webkit-backdrop-filter: blur(2px) !important;
             }
-
             /* HEADER PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
             div[data-banner-ultra="introduccion-matematica-v2"] > div[data-seccion="header-principal"] {
                 all: initial !important;
@@ -106,7 +101,6 @@
                 box-sizing: border-box !important;
                 font-family: 'Montserrat', sans-serif !important;
             }
-
             /* ELEMENTO DECORATIVO SOL DORADO */
             div[data-banner-ultra="introduccion-matematica-v2"] > div[data-seccion="header-principal"]::after {
                 content: '' !important;
@@ -123,7 +117,6 @@
                 animation: sunPulse 6s ease-in-out infinite !important;
                 will-change: opacity, transform !important;
             }
-
             /* TÍTULO PRINCIPAL CON CONTRASTE ABSOLUTO */
             div[data-banner-ultra="introduccion-matematica-v2"] h1[data-elemento="titulo-principal"] {
                 all: initial !important;
@@ -147,7 +140,6 @@
                 background: none !important;
                 will-change: color, text-shadow !important;
             }
-
             /* SUBTÍTULO CON JERARQUÍA VISUAL */
             div[data-banner-ultra="introduccion-matematica-v2"] p[data-elemento="subtitulo-modulo"] {
                 all: initial !important;
@@ -171,7 +163,6 @@
                 text-decoration: none !important;
                 box-sizing: border-box !important;
             }
-
             /* ICONOS CON RESPLANDOR EXTREMO */
             div[data-banner-ultra="introduccion-matematica-v2"] span[data-icono="cohete-principal"] {
                 margin-right: 20px !important;
@@ -184,7 +175,6 @@
                 text-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
                 filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
             }
-
             div[data-banner-ultra="introduccion-matematica-v2"] i[data-icono="graduacion-secundario"] {
                 margin-right: 16px !important;
                 vertical-align: middle !important;
@@ -201,7 +191,6 @@
                 font-family: 'Font Awesome 6 Free' !important;
                 font-weight: 900 !important;
             }
-
             /* ELEMENTOS FLOTANTES MOTIVACIONALES */
             div[data-banner-ultra="introduccion-matematica-v2"] > div[data-seccion="elementos-flotantes"] {
                 all: initial !important;
@@ -216,7 +205,6 @@
                 height: 100% !important;
                 display: block !important;
             }
-
             div[data-concepto="objetivo-aprendizaje"] {
                 all: initial !important;
                 position: absolute !important;
@@ -232,7 +220,6 @@
                 display: block !important;
                 box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
             }
-
             div[data-concepto="competencia-matematica"] {
                 all: initial !important;
                 position: absolute !important;
@@ -248,7 +235,6 @@
                 display: block !important;
                 box-shadow: 0 0 18px rgba(255, 255, 255, 0.2) !important;
             }
-
             div[data-concepto="motivacion-inicial"] {
                 all: initial !important;
                 position: absolute !important;
@@ -264,7 +250,6 @@
                 display: block !important;
                 box-shadow: 0 0 19px rgba(255, 255, 255, 0.2) !important;
             }
-
             div[data-concepto="introduccion-tema"] {
                 all: initial !important;
                 position: absolute !important;
@@ -280,7 +265,6 @@
                 display: block !important;
                 box-shadow: 0 0 16px rgba(255, 255, 255, 0.2) !important;
             }
-
             /* ANIMACIONES KEYFRAMES OPTIMIZADAS */
             @keyframes sunPulse {
                 0%, 100% { 
@@ -292,7 +276,6 @@
                     transform: scale(1.2) rotate(180deg);
                 }
             }
-
             @keyframes rocketGlow {
                 0%, 100% { 
                     transform: scale(1) rotateZ(0deg);
@@ -311,7 +294,6 @@
                     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
                 }
             }
-
             @keyframes graduationShine {
                 0%, 100% { 
                     transform: scale(1);
@@ -324,7 +306,6 @@
                     color: #2d3748;
                 }
             }
-
             @keyframes floatMotivacional {
                 0%, 100% { 
                     transform: translateY(0) translateX(0) rotate(0deg);
@@ -336,7 +317,6 @@
                     transform: translateY(7px) translateX(-4px) rotate(240deg);
                 }
             }
-
             /* ESTADOS HOVER CON FEEDBACK EXTREMO */
             div[data-banner-ultra="introduccion-matematica-v2"]:hover {
                 transform: translateY(-5px) scale(1.01) !important;
@@ -344,25 +324,21 @@
                 box-shadow: 0 35px 90px rgba(233, 144, 30, 0.5), 0 15px 40px rgba(245, 154, 31, 0.4) !important;
                 border-color: rgba(255, 255, 255, 0.4) !important;
             }
-
             div[data-banner-ultra="introduccion-matematica-v2"]:hover h1[data-elemento="titulo-principal"] {
                 color: #2d3748 !important;
                 transition: color 0.6s ease !important;
                 text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.7) !important;
             }
-
             div[data-banner-ultra="introduccion-matematica-v2"] span[data-icono="cohete-principal"]:hover {
                 transform: scale(1.5) rotateZ(360deg) !important;
                 filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)) !important;
                 text-shadow: 0 0 30px rgba(255, 255, 255, 0.9) !important;
             }
-
             div[data-banner-ultra="introduccion-matematica-v2"] i[data-icono="graduacion-secundario"]:hover {
                 transform: scale(1.3) rotate(180deg) !important;
                 color: #2d3748 !important;
                 filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)) !important;
             }
-
             /* RESPONSIVIDAD EXTREMA */
             @media (max-width: 768px) {
                 div[data-banner-ultra="introduccion-matematica-v2"] > div[data-seccion="header-principal"] {
@@ -378,7 +354,6 @@
                     opacity: 0.25 !important;
                 }
             }
-
             @media (max-width: 480px) {
                 div[data-banner-ultra="introduccion-matematica-v2"] > div[data-seccion="header-principal"] {
                     padding: 35px 25px !important;
@@ -394,7 +369,6 @@
                     font-size: 1.4em !important;
                 }
             }
-
             /* ACCESIBILIDAD AVANZADA */
             @media (prefers-contrast: high) {
                 div[data-banner-ultra="introduccion-matematica-v2"] h1[data-elemento="titulo-principal"] {
@@ -421,7 +395,6 @@
                     text-shadow: 2px 2px 4px rgba(255, 255, 255, 1) !important;
                 }
             }
-
             @media (prefers-reduced-motion: reduce) {
                 div[data-banner-ultra="introduccion-matematica-v2"] > div[data-seccion="header-principal"]::after,
                 div[data-concepto],
@@ -438,7 +411,6 @@
                     transform: none !important;
                 }
             }
-
             /* MONTSERRAT FORZADO GLOBALMENTE */
             div[data-banner-ultra="introduccion-matematica-v2"] *,
             div[data-banner-ultra="introduccion-matematica-v2"] h1,
@@ -455,7 +427,6 @@
 <!-- ================================================================================================ -->
 <!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
 <!-- ================================================================================================ -->
-
 <!-- ================================================================================================ -->
 <!-- SECCIÓN 2: BANNER PRINCIPAL DE INTRODUCCIÓN MATEMÁTICA - APERTURA -->
 <!-- ================================================================================================ -->
@@ -476,26 +447,25 @@
         </h1>
         <p data-elemento="subtitulo-modulo">
             <i class="fas fa-graduation-cap" data-icono="graduacion-secundario" aria-hidden="true"></i>
-            Módulo 1 - <strong>Sistema de los Números Enteros</strong>
+            Módulo 2 - <strong>Números Primos, MCD y MCM</strong>
         </p>
     </div>
 </div>
 <!-- ================================================================================================ -->
 <!-- SECCIÓN 2: BANNER PRINCIPAL DE INTRODUCCIÓN MATEMÁTICA - CIERRE -->
 <!-- ================================================================================================ -->
-
 <!-- ================================================================================================ -->
 <!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO - APERTURA -->
 <!-- ================================================================================================ -->
 <div data-contenedor="informacion-modulo-matematico" 
      style="all: initial !important; 
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            border: 2px solid #4A9B8E !important; 
+            border: 2px solid #E9901E !important; 
             border-radius: 15px !important; 
-            background: linear-gradient(135deg, #E3F7F2 0%, #F0FDF4 100%) !important; 
+            background: linear-gradient(135deg, #FDF4E5 0%, #FEF7ED 100%) !important; 
             padding: 25px !important; 
             margin: 25px 0 !important; 
-            box-shadow: 0 15px 35px rgba(74, 155, 142, 0.2) !important;
+            box-shadow: 0 15px 35px rgba(233, 144, 30, 0.2) !important;
             display: block !important;
             position: relative !important;
             box-sizing: border-box !important;
@@ -522,10 +492,10 @@
               box-sizing: border-box !important;">
         <i class="bi bi-award-fill" 
            style="all: initial !important;
-                  color: #4A9B8E !important; 
+                  color: #E9901E !important; 
                   margin-top: 3px !important;
                   font-size: 1.2em !important;
-                  text-shadow: 0 0 8px rgba(74, 155, 142, 0.3) !important;
+                  text-shadow: 0 0 8px rgba(233, 144, 30, 0.3) !important;
                   display: inline-block !important;
                   font-family: 'Bootstrap Icons' !important;"></i>
         <strong style="all: initial !important; 
@@ -533,8 +503,7 @@
                       font-weight: 800 !important;
                       color: #1a202c !important;
                       display: inline !important;">
-            Al finalizar este módulo, estarás en capacidad de identificar, operar y aplicar las propiedades de
-            los números enteros en la resolución de polinomios aritméticos y problemas básicos.
+            Al finalizar este módulo, estarás en capacidad de identificar números primos, aplicar criterios de divisibilidad, realizar descomposiciones factoriales y calcular el Máximo Común Divisor y el Mínimo Común Múltiplo para resolver problemas.
         </strong>
     </p>
     
@@ -560,17 +529,15 @@
                      font-size: 1.3em !important;
                      margin-right: 8px !important;
                      display: inline-block !important;">🎯</span>
-        En este módulo dominarás operaciones con enteros, explorarás su definición, jerarquía y propiedades
-        (conmutativa, asociativa, distributiva), y resolverás polinomios aritméticos con soltura. Prepárate
-        para enfrentar desafíos matemáticos con confianza y precisión.
+        Explorarás los ladrillos de los números (primos), cómo descomponer cualquier número y encontrar el MCD y MCM. Estas herramientas te ayudarán a simplificar fracciones y resolver problemas de planificación o diseño. Serás capaz de desglosar números y encontrar relaciones clave.
         
-        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208556" 
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208557" 
            target="_blank" 
            data-enlace="modulo-detalle"
            style="all: initial !important;
                   font-family: 'Montserrat', sans-serif !important;
                   text-decoration: none !important; 
-                  color: #4A9B8E !important; 
+                  color: #E9901E !important; 
                   font-weight: 700 !important;
                   display: inline !important;
                   transition: all 0.3s ease !important;
@@ -582,7 +549,7 @@
         
         <i class="bi bi-box-arrow-in-right" 
            style="all: initial !important;
-                  color: #4A9B8E !important;
+                  color: #E9901E !important;
                   font-size: 1.1em !important;
                   display: inline-block !important;
                   margin-left: 5px !important;
@@ -593,7 +560,6 @@
 <!-- ================================================================================================ -->
 <!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO - CIERRE -->
 <!-- ================================================================================================ -->
-
 <!-- ================================================================================================ -->
 <!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - APERTURA -->
 <!-- ================================================================================================ -->
@@ -604,7 +570,6 @@
      */
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🚀 Inicializando sistema ultra-resistente para Banner Matemático');
-
         /**
          * VERIFICACIÓN DE BANNER CON ESPECIFICIDAD MÁXIMA
          */
@@ -633,7 +598,7 @@
                 if (titulo) {
                     titulo.setAttribute('tabindex', '0');
                     titulo.setAttribute('role', 'banner');
-                    titulo.setAttribute('aria-label', 'Banner de Introducción - Inicia tu aventura matemática en el Módulo 1 de Números Enteros');
+                    titulo.setAttribute('aria-label', 'Banner de Introducción - Inicia tu aventura matemática en el Módulo 2 de Números Primos, MCD y MCM');
                     
                     // FOCUS VISUAL EXTREMO
                     titulo.addEventListener('focus', function() {
@@ -685,7 +650,6 @@
                 console.error('❌ Error: Banner ultra-resistente no encontrado');
             }
         }
-
         /**
          * ANÁLISIS CROMÁTICO DE IMPLEMENTACIÓN
          */
@@ -701,7 +665,6 @@
             console.log('   ✅ Performance: GPU acceleration + will-change optimizado');
             console.log('   ✅ Accesibilidad: Contraste óptimo sobre fondo naranja');
         }
-
         /**
          * CONFIGURACIÓN DE CONTEXTO MATEMÁTICO
          */
@@ -713,9 +676,9 @@
                 // ATRIBUTOS DE CONTEXTO MATEMÁTICO
                 banner.setAttribute('data-contexto-educativo', 'introduccion-matematica');
                 banner.setAttribute('data-fase-aprendizaje', 'motivacion-inicial');
-                banner.setAttribute('data-modulo-numero', '1');
-                banner.setAttribute('data-tema-principal', 'numeros-enteros');
-                banner.setAttribute('data-competencias', 'identificar,operar,aplicar,resolver');
+                banner.setAttribute('data-modulo-numero', '2');
+                banner.setAttribute('data-tema-principal', 'numeros-primos-mcd-mcm');
+                banner.setAttribute('data-competencias', 'identificar,aplicar,realizar,calcular');
                 banner.setAttribute('data-resistencia-moodle', 'ultra-maxima');
                 
                 contenedor.setAttribute('data-tipo-contenido', 'informacion-competencias');
@@ -724,7 +687,6 @@
                 console.log('🎯 Contexto matemático ultra-resistente configurado correctamente');
             }
         }
-
         /**
          * SISTEMA DE PROGRESIÓN MOTIVACIONAL AVANZADO
          */
@@ -739,7 +701,7 @@
             
             elementosFlotantes.forEach((elemento, index) => {
                 const conceptoType = elemento.getAttribute('data-concepto');
-                elemento.setAttribute('title', `${conceptosEducativos[index]} - Módulo de Números Enteros`);
+                elemento.setAttribute('title', `${conceptosEducativos[index]} - Módulo de Números Primos, MCD y MCM`);
                 elemento.setAttribute('data-progreso', `${index + 1}/4`);
                 
                 // INTERACTIVIDAD MOTIVACIONAL
@@ -760,7 +722,6 @@
                 elemento.style.setProperty('will-change', 'transform, opacity', 'important');
             });
         }
-
         /**
          * CONFIGURACIÓN DE ENLACE INTELIGENTE
          */
@@ -770,8 +731,8 @@
             
             if (enlace && icono) {
                 enlace.addEventListener('mouseenter', function() {
-                    this.style.setProperty('border-bottom-color', '#4A9B8E', 'important');
-                    this.style.setProperty('color', '#2d7d6d', 'important');
+                    this.style.setProperty('border-bottom-color', '#E9901E', 'important');
+                    this.style.setProperty('color', '#c7761a', 'important');
                     if (icono) {
                         icono.style.setProperty('transform', 'translateX(5px)', 'important');
                     }
@@ -779,7 +740,7 @@
                 
                 enlace.addEventListener('mouseleave', function() {
                     this.style.setProperty('border-bottom-color', 'transparent', 'important');
-                    this.style.setProperty('color', '#4A9B8E', 'important');
+                    this.style.setProperty('color', '#E9901E', 'important');
                     if (icono) {
                         icono.style.removeProperty('transform');
                     }
@@ -790,7 +751,6 @@
                 });
             }
         }
-
         // EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN
         verificarBannerUltraResistente();
         analizarImplementacionCromatica();
@@ -809,7 +769,6 @@
         console.log('   • Animaciones optimizadas para performance');
         console.log('   • Especificidad CSS extrema con !important selectivo');
     });
-
     /**
      * FUNCIONES GLOBALES DE UTILIDAD ULTRA-RESISTENTE
      */
@@ -834,7 +793,7 @@
             banner.classList.add('educativo-avanzado-activo');
             banner.style.setProperty('filter', 'brightness(1.15) saturate(1.2) contrast(1.05)', 'important');
             contenedor.style.setProperty('transform', 'scale(1.02)', 'important');
-            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(74, 155, 142, 0.3)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(233, 144, 30, 0.3)', 'important');
             
             console.log('🎓 Modo educativo avanzado ultra-resistente activado');
             console.log('✨ Efectos aplicados: brillo, saturación, contraste y escala optimizados');

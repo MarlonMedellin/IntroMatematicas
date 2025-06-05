@@ -447,7 +447,7 @@
         </h1>
         <p data-elemento="subtitulo-modulo">
             <i class="fas fa-graduation-cap" data-icono="graduacion-secundario" aria-hidden="true"></i>
-            Módulo 2 - <strong>Números Primos, MCD y MCM</strong>
+            Módulo 1 - <strong>Sistema de los Números Enteros</strong>
         </p>
     </div>
 </div>
@@ -460,12 +460,12 @@
 <div data-contenedor="informacion-modulo-matematico" 
      style="all: initial !important; 
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            border: 2px solid #4A9B8E !important; 
+            border: 2px solid #E9901E !important; 
             border-radius: 15px !important; 
-            background: linear-gradient(135deg, #E3F7F2 0%, #F0FDF4 100%) !important; 
+            background: linear-gradient(135deg, #FDF4E5 0%, #FEF7ED 100%) !important; 
             padding: 25px !important; 
             margin: 25px 0 !important; 
-            box-shadow: 0 15px 35px rgba(74, 155, 142, 0.2) !important;
+            box-shadow: 0 15px 35px rgba(233, 144, 30, 0.2) !important;
             display: block !important;
             position: relative !important;
             box-sizing: border-box !important;
@@ -492,10 +492,10 @@
               box-sizing: border-box !important;">
         <i class="bi bi-award-fill" 
            style="all: initial !important;
-                  color: #4A9B8E !important; 
+                  color: #E9901E !important; 
                   margin-top: 3px !important;
                   font-size: 1.2em !important;
-                  text-shadow: 0 0 8px rgba(74, 155, 142, 0.3) !important;
+                  text-shadow: 0 0 8px rgba(233, 144, 30, 0.3) !important;
                   display: inline-block !important;
                   font-family: 'Bootstrap Icons' !important;"></i>
         <strong style="all: initial !important; 
@@ -503,7 +503,8 @@
                       font-weight: 800 !important;
                       color: #1a202c !important;
                       display: inline !important;">
-            Al finalizar este módulo, estarás en capacidad de identificar números primos, aplicar criterios de divisibilidad, realizar descomposiciones factoriales y calcular el Máximo Común Divisor y el Mínimo Común Múltiplo para resolver problemas.
+            Al finalizar este módulo, estarás en capacidad de identificar, operar y aplicar las propiedades de
+            los números enteros en la resolución de polinomios aritméticos y problemas básicos.
         </strong>
     </p>
     
@@ -529,15 +530,17 @@
                      font-size: 1.3em !important;
                      margin-right: 8px !important;
                      display: inline-block !important;">🎯</span>
-        Explorarás los ladrillos de los números (primos), cómo descomponer cualquier número y encontrar el MCD y MCM. Estas herramientas te ayudarán a simplificar fracciones y resolver problemas de planificación o diseño. Serás capaz de desglosar números y encontrar relaciones clave.
+        En este módulo dominarás operaciones con enteros, explorarás su definición, jerarquía y propiedades
+        (conmutativa, asociativa, distributiva), y resolverás polinomios aritméticos con soltura. Prepárate
+        para enfrentar desafíos matemáticos con confianza y precisión.
         
-        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208557" 
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208556" 
            target="_blank" 
            data-enlace="modulo-detalle"
            style="all: initial !important;
                   font-family: 'Montserrat', sans-serif !important;
                   text-decoration: none !important; 
-                  color: #4A9B8E !important; 
+                  color: #E9901E !important; 
                   font-weight: 700 !important;
                   display: inline !important;
                   transition: all 0.3s ease !important;
@@ -549,7 +552,7 @@
         
         <i class="bi bi-box-arrow-in-right" 
            style="all: initial !important;
-                  color: #4A9B8E !important;
+                  color: #E9901E !important;
                   font-size: 1.1em !important;
                   display: inline-block !important;
                   margin-left: 5px !important;
@@ -598,7 +601,7 @@
                 if (titulo) {
                     titulo.setAttribute('tabindex', '0');
                     titulo.setAttribute('role', 'banner');
-                    titulo.setAttribute('aria-label', 'Banner de Introducción - Inicia tu aventura matemática en el Módulo 2 de Números Primos, MCD y MCM');
+                    titulo.setAttribute('aria-label', 'Banner de Introducción - Inicia tu aventura matemática en el Módulo 1 de Números Enteros');
                     
                     // FOCUS VISUAL EXTREMO
                     titulo.addEventListener('focus', function() {
@@ -676,9 +679,9 @@
                 // ATRIBUTOS DE CONTEXTO MATEMÁTICO
                 banner.setAttribute('data-contexto-educativo', 'introduccion-matematica');
                 banner.setAttribute('data-fase-aprendizaje', 'motivacion-inicial');
-                banner.setAttribute('data-modulo-numero', '2');
-                banner.setAttribute('data-tema-principal', 'numeros-primos-mcd-mcm');
-                banner.setAttribute('data-competencias', 'identificar,aplicar,realizar,calcular');
+                banner.setAttribute('data-modulo-numero', '1');
+                banner.setAttribute('data-tema-principal', 'numeros-enteros');
+                banner.setAttribute('data-competencias', 'identificar,operar,aplicar,resolver');
                 banner.setAttribute('data-resistencia-moodle', 'ultra-maxima');
                 
                 contenedor.setAttribute('data-tipo-contenido', 'informacion-competencias');
@@ -701,7 +704,7 @@
             
             elementosFlotantes.forEach((elemento, index) => {
                 const conceptoType = elemento.getAttribute('data-concepto');
-                elemento.setAttribute('title', `${conceptosEducativos[index]} - Módulo de Números Primos, MCD y MCM`);
+                elemento.setAttribute('title', `${conceptosEducativos[index]} - Módulo de Números Enteros`);
                 elemento.setAttribute('data-progreso', `${index + 1}/4`);
                 
                 // INTERACTIVIDAD MOTIVACIONAL
@@ -731,8 +734,8 @@
             
             if (enlace && icono) {
                 enlace.addEventListener('mouseenter', function() {
-                    this.style.setProperty('border-bottom-color', '#4A9B8E', 'important');
-                    this.style.setProperty('color', '#2d7d6d', 'important');
+                    this.style.setProperty('border-bottom-color', '#E9901E', 'important');
+                    this.style.setProperty('color', '#c7761a', 'important');
                     if (icono) {
                         icono.style.setProperty('transform', 'translateX(5px)', 'important');
                     }
@@ -740,7 +743,7 @@
                 
                 enlace.addEventListener('mouseleave', function() {
                     this.style.setProperty('border-bottom-color', 'transparent', 'important');
-                    this.style.setProperty('color', '#4A9B8E', 'important');
+                    this.style.setProperty('color', '#E9901E', 'important');
                     if (icono) {
                         icono.style.removeProperty('transform');
                     }
@@ -793,7 +796,7 @@
             banner.classList.add('educativo-avanzado-activo');
             banner.style.setProperty('filter', 'brightness(1.15) saturate(1.2) contrast(1.05)', 'important');
             contenedor.style.setProperty('transform', 'scale(1.02)', 'important');
-            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(74, 155, 142, 0.3)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(233, 144, 30, 0.3)', 'important');
             
             console.log('🎓 Modo educativo avanzado ultra-resistente activado');
             console.log('✨ Efectos aplicados: brillo, saturación, contraste y escala optimizados');
