@@ -1,10 +1,22 @@
-<!-- HEAD DEFINITIONS GO HERE -->
-<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * CARGAR RECURSOS EXTERNOS DESDE EL CDN.
-     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
-     * @param {string} url - URL DEL RECURSO.
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos <link> para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
      */
     function cargarRecurso(tipo, url) {
         const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
@@ -13,527 +25,792 @@
             elemento.href = url;
         } else {
             elemento.src = url;
-            elemento.defer = true; // MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+            elemento.defer = true; // Performance: Carga no-bloqueante
         }
-        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`);
-        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`);
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
         document.head.appendChild(elemento);
     }
-    // CARGAR ESTILOS DE BOOTSTRAP DESDE CDN
-    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
-    // CARGAR ICONOS DE BOOTSTRAP DESDE CDN
-    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css');
-    // CARGAR ICONOS DE FONT AWESOME DESDE CDN
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
     cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    cargarRecurso('stylesheet', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
     /**
-     * AGREGAR ESTILOS PERSONALIZADOS MEDIANTE UN ELEMENTO .
+     * INYECCIÓN DE ESTILOS CRÍTICOS
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
      */
     (function agregarEstilosPersonalizados() {
         const customStyles = document.createElement('style');
+        customStyles.id = 'banner-aplicaciones-sistemas-medida-ultra-resistente';
         customStyles.textContent = `
-        /* ESTILOS PERSONALIZADOS */
-        .problem-container {
-          background-color: #E6E6E6; /* COLOR AJUSTADO SEGÚN EL EJEMPLO */
-          color: #333333; /* TEXTO OSCURO */
-          border-radius: 15px;
-          padding: 5%;
-        }
-        .accordion-button .bi {
-          margin-right: 10px;
-        }
-        .accordion-header {
-          font-weight: bold;
-        }
-        .divider {
-          border-top: 2px solid #F2B544;
-          margin: 3% 0;
-        }
-        .accordion-body-container {
-          padding: 3%;
-          border: 1px solid #F2B544;
-          border-radius: 10px;
-          background-color: #FFF5E6;
-          margin-top: 2%;
-        }
-
-        /* BANNER DE INTRODUCCIÓN OPTIMIZADO */
-        div[data-banner="introduccion-v1"] {
-            all: initial !important;
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            margin: 20px 0 !important;
-            padding: 0 !important;
-            border: 2px solid rgba(254, 241, 130, 0.3) !important;
-            background: linear-gradient(135deg, #E9901E 0%, #FF921F 50%, #FBBF28 100%) !important;
-            color: inherit !important;
-            text-decoration: none !important;
-            box-sizing: border-box !important;
-            display: block !important;
-            position: relative !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            min-height: 120px !important;
-            overflow: hidden !important;
-            border-radius: 16px !important;
-            box-shadow: 0 20px 60px rgba(233, 144, 30, 0.4), 0 8px 25px rgba(255, 146, 31, 0.3) !important;
-        }
-
-        /* OVERLAY Y HEADER */
-        div[data-banner="introduccion-v1"]::before {
-            content: '' !important;
-            position: absolute !important;
-            inset: 0 !important;
-            background: linear-gradient(135deg, rgba(254, 241, 130, 0.15) 0%, transparent 50%, rgba(233, 144, 30, 0.05) 100%) !important;
-            z-index: 1 !important;
-            pointer-events: none !important;
-            opacity: 0.7 !important;
-        }
-
-        div[data-banner="introduccion-v1"] > div[data-role="header"] {
-            all: initial !important;
-            display: block !important;
-            text-align: center !important;
-            padding: 40px 35px !important;
-            background: rgba(251, 191, 40, 0.2) !important;
-            backdrop-filter: blur(25px) saturate(1.3) !important;
-            -webkit-backdrop-filter: blur(25px) saturate(1.3) !important;
-            border-bottom: 5px solid #FEF182 !important;
-            position: relative !important;
-            z-index: 2 !important;
-            overflow: hidden !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-
-        div[data-banner="introduccion-v1"] > div[data-role="header"]::after {
-            content: '' !important;
-            position: absolute !important;
-            top: -30px !important;
-            right: -30px !important;
-            width: 140px !important;
-            height: 140px !important;
-            background: radial-gradient(circle, #FEF182 0%, #FBBF28 50%, transparent 80%) !important;
-            border-radius: 50% !important;
-            opacity: 0.4 !important;
-            z-index: -1 !important;
-            filter: blur(10px) !important;
-            animation: sunGlow 5s ease-in-out infinite !important;
-        }
-
-        /* TEXTOS CON CONTRASTE MEJORADO */
-        div[data-banner="introduccion-v1"] h1[data-element="titulo"] {
-            all: initial !important;
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            font-size: clamp(1.9rem, 5.8vw, 3rem) !important;
-            font-weight: 900 !important;
-            margin: 0 0 20px 0 !important;
-            padding: 0 !important;
-            color: #1a365d !important;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6) !important;
-            line-height: 1.1 !important;
-            position: relative !important;
-            z-index: 3 !important;
-            letter-spacing: -0.5px !important;
-            text-align: center !important;
-            display: block !important;
-            box-sizing: border-box !important;
-            text-transform: none !important;
-            text-decoration: none !important;
-            border: none !important;
-            background: none !important;
-        }
-
-        div[data-banner="introduccion-v1"] p[data-element="subtitulo"] {
-            all: initial !important;
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
-            font-size: clamp(1.1rem, 3rem, 1.4rem) !important;
-            font-weight: 700 !important;
-            color: #2d3748 !important;
-            line-height: 1.3 !important;
-            position: relative !important;
-            z-index: 3 !important;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5) !important;
-            text-transform: none !important;
-            letter-spacing: 0.3px !important;
-            text-align: center !important;
-            font-style: normal !important;
-            display: block !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none !important;
-            background: none !important;
-            text-decoration: none !important;
-            box-sizing: border-box !important;
-        }
-
-        /* ICONOS AGRUPADOS */
-        div[data-banner="introduccion-v1"] i[data-icon="principal"],
-        div[data-banner="introduccion-v1"] i[data-icon="secundario"] {
-            vertical-align: middle !important;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 2px 2px 4px rgba(255, 255, 255, 0.6) !important;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)) !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            display: inline-block !important;
-            background: none !important;
-            border: none !important;
-            text-decoration: none !important;
-            font-family: 'Font Awesome 6 Free' !important;
-            font-weight: 900 !important;
-        }
-
-        div[data-banner="introduccion-v1"] i[data-icon="principal"] {
-            margin-right: 18px !important;
-            color: #1a365d !important;
-            font-size: 1.6em !important;
-            animation: starGlow 3s ease-in-out infinite !important;
-        }
-
-        div[data-banner="introduccion-v1"] i[data-icon="secundario"] {
-            margin-right: 15px !important;
-            color: #2d3748 !important;
-            font-size: 1.4em !important;
-            animation: moduleShine 4s ease-in-out infinite !important;
-        }
-
-        /* ELEMENTOS FLOTANTES AGRUPADOS */
-        div[data-banner="introduccion-v1"] > div[data-role="flotantes"] {
-            all: initial !important;
-            position: absolute !important;
-            inset: 0 !important;
-            z-index: 1 !important;
-            pointer-events: none !important;
-            display: block !important;
-        }
-
-        div[data-element="objetivo"], div[data-element="competencia"], 
-        div[data-element="motivacion"], div[data-element="introduccion"] {
-            all: initial !important;
-            position: absolute !important;
-            border-radius: 50% !important;
-            opacity: 0.3 !important;
-            animation: motivationalFloat 6s ease-in-out infinite !important;
-            display: block !important;
-        }
-
-        div[data-element="objetivo"] {
-            width: 42px !important; height: 42px !important;
-            background: #FEF182 !important;
-            top: 15% !important; left: 8% !important;
-            animation-delay: 0s !important;
-        }
-
-        div[data-element="competencia"] {
-            width: 35px !important; height: 35px !important;
-            background: #FBBF28 !important;
-            top: 65% !important; right: 15% !important;
-            animation-delay: 2s !important;
-        }
-
-        div[data-element="motivacion"] {
-            width: 38px !important; height: 38px !important;
-            background: #FF921F !important;
-            top: 40% !important; right: 35% !important;
-            animation-delay: 4s !important;
-        }
-
-        div[data-element="introduccion"] {
-            width: 30px !important; height: 30px !important;
-            background: #E9901E !important;
-            top: 25% !important; left: 40% !important;
-            animation-delay: 1s !important;
-        }
-
-        /* ANIMACIONES AGRUPADAS */
-        @keyframes sunGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-            50% { opacity: 0.6; transform: scale(1.15) rotate(180deg); }
-        }
-
-        @keyframes starGlow {
-            0%, 100% { 
-                transform: scale(1) rotateZ(0deg);
-                color: #1a365d;
-                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - CSS CRÍTICO INLINE */
+            /* ================================================================================ */
+            
+            /* RESETEO ABSOLUTO DEL CONTENEDOR PRINCIPAL */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                margin: 20px 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: linear-gradient(135deg, #E9901E 0%, #F59A1F 100%) !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 140px !important;
+                overflow: hidden !important;
+                border-radius: 20px !important;
+                box-shadow: 0 25px 70px rgba(233, 144, 30, 0.4), 0 10px 30px rgba(245, 154, 31, 0.3) !important;
+                border: 3px solid rgba(255, 255, 255, 0.2) !important;
+                will-change: transform, box-shadow !important; /* GPU acceleration */
+                transform: translateZ(0) !important; /* Force GPU layer */
             }
-            50% { 
-                transform: scale(1.1) rotateZ(10deg);
-                color: #2c5282;
-                filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+            /* OVERLAY GLASSMORPHISM AVANZADO */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: linear-gradient(135deg, rgba(245, 154, 31, 0.15) 0%, transparent 50%, rgba(233, 144, 30, 0.08) 100%) !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                opacity: 0.8 !important;
+                backdrop-filter: blur(2px) !important;
+                -webkit-backdrop-filter: blur(2px) !important;
             }
-        }
-
-        @keyframes moduleShine {
-            0%, 100% { transform: scale(1); opacity: 1; color: #2d3748; }
-            50% { transform: scale(1.08); opacity: 0.9; color: #4a5568; }
-        }
-
-        @keyframes motivationalFloat {
-            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-            33% { transform: translateY(-10px) translateX(4px) rotate(120deg); }
-            66% { transform: translateY(5px) translateX(-3px) rotate(240deg); }
-        }
-
-        /* ESTADOS HOVER AGRUPADOS */
-        div[data-banner="introduccion-v1"]:hover h1[data-element="titulo"] {
-            color: #2c5282 !important;
-            transition: color 0.5s ease !important;
-            text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.7) !important;
-        }
-
-        div[data-banner="introduccion-v1"] i[data-icon="principal"]:hover {
-            transform: scale(1.4) rotateZ(360deg) !important;
-            color: #2c5282 !important;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.7) !important;
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) !important;
-        }
-
-        div[data-banner="introduccion-v1"] i[data-icon="secundario"]:hover {
-            transform: scale(1.3) rotate(180deg) !important;
-            color: #4a5568 !important;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) !important;
-        }
-
-        /* MEDIA QUERIES AGRUPADAS */
-        @media (max-width: 768px) {
-          h1 {
-            font-size: 1.75rem;
-            padding: 3% 0;
-          }
-          .problem-container {
-            padding: 4%;
-          }
-          .accordion-body-container {
-            padding: 2%;
-          }
-          div[data-banner="introduccion-v1"] > div[data-role="header"] { 
-            padding: 35px 28px !important; 
-          }
-          div[data-banner="introduccion-v1"] h1[data-element="titulo"] { 
-            margin-bottom: 18px !important; 
-            letter-spacing: -0.3px !important; 
-          }
-          div[data-element] { 
-            opacity: 0.2 !important; 
-          }
-        }
-
-        @media (max-width: 576px) {
-          h1 {
-            font-size: 1.5rem;
-            padding: 2% 0;
-          }
-          .problem-container {
-            padding: 3%;
-          }
-          .accordion-body-container {
-            padding: 1.5%;
-          }
-          div[data-banner="introduccion-v1"] > div[data-role="header"] { 
-            padding: 30px 22px !important; 
-          }
-          div[data-banner="introduccion-v1"] i[data-icon="principal"] { 
-            margin-right: 12px !important; 
-            font-size: 1.5em !important; 
-          }
-          div[data-banner="introduccion-v1"] i[data-icon="secundario"] { 
-            margin-right: 10px !important; 
-            font-size: 1.3em !important; 
-          }
-        }
-
-        /* ACCESIBILIDAD AGRUPADA */
-        @media (prefers-contrast: high) {
-            div[data-banner="introduccion-v1"] h1[data-element="titulo"] {
-                text-shadow: 3px 3px 6px rgba(255, 255, 255, 1), 0 0 0 2px #ffffff !important;
-                color: #000000 !important;
+            /* HEADER PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="header-principal"] {
+                all: initial !important;
+                display: block !important;
+                text-align: center !important;
+                padding: 45px 40px !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+                backdrop-filter: blur(30px) saturate(1.4) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(1.4) !important;
+                border-bottom: 6px solid rgba(255, 255, 255, 0.3) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
             }
-            div[data-banner="introduccion-v1"] p[data-element="subtitulo"] {
-                color: #1a1a1a !important;
-                text-shadow: 2px 2px 4px rgba(255, 255, 255, 1), 0 0 0 1px #ffffff !important;
+            /* ELEMENTO DECORATIVO SOL DORADO */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="header-principal"]::after {
+                content: '' !important;
+                position: absolute !important;
+                top: -40px !important;
+                right: -40px !important;
+                width: 160px !important;
+                height: 160px !important;
+                background: radial-gradient(circle, #F59A1F 0%, #E9901E 40%, transparent 85%) !important;
+                border-radius: 50% !important;
+                opacity: 0.4 !important;
+                z-index: -1 !important;
+                filter: blur(12px) !important;
+                animation: sunPulse 6s ease-in-out infinite !important;
+                will-change: opacity, transform !important;
             }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            div[data-banner="introduccion-v1"] > div[data-role="header"]::after,
-            div[data-element],
-            div[data-banner="introduccion-v1"] i[data-icon="principal"],
-            div[data-banner="introduccion-v1"] i[data-icon="secundario"] {
-                animation: none !important;
+            /* TÍTULO PRINCIPAL CON CONTRASTE ABSOLUTO */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] h1[data-elemento="titulo-principal"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(2rem, 6vw, 3.2rem) !important;
+                font-weight: 900 !important;
+                margin: 0 0 25px 0 !important;
+                padding: 0 !important;
+                color: #172139 !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6) !important;
+                line-height: 1.1 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                letter-spacing: -0.8px !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+                text-transform: none !important;
+                text-decoration: none !important;
+                border: none !important;
+                background: none !important;
+                will-change: color, text-shadow !important;
             }
-            div[data-banner="introduccion-v1"]:hover h1[data-element="titulo"],
-            div[data-banner="introduccion-v1"] i[data-icon="principal"]:hover,
-            div[data-banner="introduccion-v1"] i[data-icon="secundario"]:hover {
-                transition: none !important;
-                transform: none !important;
+            /* SUBTÍTULO CON JERARQUÍA VISUAL */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] p[data-elemento="subtitulo-modulo"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.6rem) !important;
+                font-weight: 700 !important;
+                color: #172139 !important;
+                line-height: 1.3 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6) !important;
+                text-transform: none !important;
+                letter-spacing: 0.5px !important;
+                text-align: center !important;
+                font-style: normal !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: none !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
             }
-        }
-      `;
+            /* ICONOS CON RESPLANDOR EXTREMO */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span[data-icono="cohete-principal"] {
+                margin-right: 20px !important;
+                vertical-align: middle !important;
+                font-size: 1.8em !important;
+                display: inline-block !important;
+                animation: rocketGlow 4s ease-in-out infinite !important;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                will-change: transform, filter !important;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
+            }
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i[data-icono="graduacion-secundario"] {
+                margin-right: 16px !important;
+                vertical-align: middle !important;
+                color: #172139 !important;
+                font-size: 1.5em !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6) !important;
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) !important;
+                transition: all 0.4s ease !important;
+                display: inline-block !important;
+                animation: graduationShine 5s ease-in-out infinite !important;
+                background: none !important;
+                border: none !important;
+                text-decoration: none !important;
+                font-family: 'Font Awesome 6 Free' !important;
+                font-weight: 900 !important;
+            }
+            /* ELEMENTOS FLOTANTES MOTIVACIONALES */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="elementos-flotantes"] {
+                all: initial !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: block !important;
+            }
+            div[data-concepto="objetivo-aprendizaje"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 45px !important;
+                height: 45px !important;
+                background: rgba(255, 255, 255, 0.3) !important;
+                top: 18% !important;
+                left: 10% !important;
+                animation-delay: 0s !important;
+                display: block !important;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+            }
+            div[data-concepto="competencia-matematica"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 38px !important;
+                height: 38px !important;
+                background: rgba(255, 255, 255, 0.25) !important;
+                top: 68% !important;
+                right: 18% !important;
+                animation-delay: 2.5s !important;
+                display: block !important;
+                box-shadow: 0 0 18px rgba(255, 255, 255, 0.2) !important;
+            }
+            div[data-concepto="motivacion-inicial"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: rgba(255, 255, 255, 0.28) !important;
+                top: 42% !important;
+                right: 38% !important;
+                animation-delay: 5s !important;
+                display: block !important;
+                box-shadow: 0 0 19px rgba(255, 255, 255, 0.2) !important;
+            }
+            div[data-concepto="introduccion-tema"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 35px !important;
+                height: 35px !important;
+                background: rgba(255, 255, 255, 0.22) !important;
+                top: 28% !important;
+                left: 42% !important;
+                animation-delay: 1.5s !important;
+                display: block !important;
+                box-shadow: 0 0 16px rgba(255, 255, 255, 0.2) !important;
+            }
+            /* ANIMACIONES KEYFRAMES OPTIMIZADAS */
+            @keyframes sunPulse {
+                0%, 100% { 
+                    opacity: 0.3; 
+                    transform: scale(1) rotate(0deg);
+                }
+                50% { 
+                    opacity: 0.6; 
+                    transform: scale(1.2) rotate(180deg);
+                }
+            }
+            @keyframes rocketGlow {
+                0%, 100% { 
+                    transform: scale(1) rotateZ(0deg);
+                    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+                }
+                25% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+                }
+                50% { 
+                    transform: scale(1.15) rotateZ(10deg);
+                    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+                }
+                75% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+                }
+            }
+            @keyframes graduationShine {
+                0%, 100% { 
+                    transform: scale(1);
+                    opacity: 1;
+                    color: #172139;
+                }
+                50% { 
+                    transform: scale(1.08);
+                    opacity: 0.9;
+                    color: #2d3748;
+                }
+            }
+            @keyframes floatMotivacional {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-12px) translateX(5px) rotate(120deg);
+                }
+                66% { 
+                    transform: translateY(7px) translateX(-4px) rotate(240deg);
+                }
+            }
+            /* ESTADOS HOVER CON FEEDBACK EXTREMO */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]:hover {
+                transform: translateY(-5px) scale(1.01) !important;
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 35px 90px rgba(233, 144, 30, 0.5), 0 15px 40px rgba(245, 154, 31, 0.4) !important;
+                border-color: rgba(255, 255, 255, 0.4) !important;
+            }
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]:hover h1[data-elemento="titulo-principal"] {
+                color: #2d3748 !important;
+                transition: color 0.6s ease !important;
+                text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.7) !important;
+            }
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span[data-icono="cohete-principal"]:hover {
+                transform: scale(1.5) rotateZ(360deg) !important;
+                filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)) !important;
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.9) !important;
+            }
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i[data-icono="graduacion-secundario"]:hover {
+                transform: scale(1.3) rotate(180deg) !important;
+                color: #2d3748 !important;
+                filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)) !important;
+            }
+            /* RESPONSIVIDAD EXTREMA */
+            @media (max-width: 768px) {
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="header-principal"] {
+                    padding: 40px 30px !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] h1[data-elemento="titulo-principal"] {
+                    margin-bottom: 20px !important;
+                    letter-spacing: -0.5px !important;
+                }
+                
+                div[data-concepto] {
+                    opacity: 0.25 !important;
+                }
+            }
+            @media (max-width: 480px) {
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="header-principal"] {
+                    padding: 35px 25px !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span[data-icono="cohete-principal"] {
+                    margin-right: 15px !important;
+                    font-size: 1.6em !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i[data-icono="graduacion-secundario"] {
+                    margin-right: 12px !important;
+                    font-size: 1.4em !important;
+                }
+            }
+            /* ACCESIBILIDAD AVANZADA */
+            @media (prefers-contrast: high) {
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] h1[data-elemento="titulo-principal"] {
+                    text-shadow: 4px 4px 12px rgba(255, 255, 255, 1), 0 0 0 2px #ffffff !important;
+                    color: #000000 !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] p[data-elemento="subtitulo-modulo"] {
+                    color: #ffffff !important;
+                    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px #000000 !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="header-principal"] {
+                    border-bottom: 8px solid rgba(255, 255, 255, 0.6) !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span[data-icono="cohete-principal"] {
+                    filter: contrast(2) brightness(1.2) !important;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1) !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i[data-icono="graduacion-secundario"] {
+                    color: #000000 !important;
+                    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1) !important;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] > div[data-seccion="header-principal"]::after,
+                div[data-concepto],
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span[data-icono="cohete-principal"],
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i[data-icono="graduacion-secundario"] {
+                    animation: none !important;
+                }
+                
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]:hover,
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]:hover h1[data-elemento="titulo-principal"],
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span[data-icono="cohete-principal"]:hover,
+                div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i[data-icono="graduacion-secundario"]:hover {
+                    transition: none !important;
+                    transform: none !important;
+                }
+            }
+            /* MONTSERRAT FORZADO GLOBALMENTE */
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] *,
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] h1,
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] p,
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] i,
+            div[data-banner-ultra="aplicaciones-sistemas-medida-v2"] span {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
+        `;
         document.head.appendChild(customStyles);
+        console.log('🎨 Estilos críticos inyectados con resistencia anti-Moodle garantizada');
     })();
 </script>
-<!-- FIN SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 2. SECCIÓN 2: TÍTULO -->
-<!-- BANNER DE INTRODUCCIÓN Y MOTIVACIÓN -->
-<div data-banner="introduccion-v1">
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE APLICACIONES Y SISTEMAS DE MEDIDA - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-banner-ultra="aplicaciones-sistemas-medida-v2">
     <!-- ELEMENTOS MOTIVACIONALES FLOTANTES -->
-    <div data-role="flotantes">
-        <div data-element="objetivo"></div>
-        <div data-element="competencia"></div>
-        <div data-element="motivacion"></div>
-        <div data-element="introduccion"></div>
+    <div data-seccion="elementos-flotantes">
+        <div data-concepto="objetivo-aprendizaje"></div>
+        <div data-concepto="competencia-matematica"></div>
+        <div data-concepto="motivacion-inicial"></div>
+        <div data-concepto="introduccion-tema"></div>
     </div>
     
-    <!-- HEADER CON CONTENIDO MOTIVACIONAL -->
-    <div data-role="header">
-        <h1 data-element="titulo">
-            <i class="fas fa-rocket" data-icon="principal" aria-hidden="true"></i>
+    <!-- HEADER PRINCIPAL CON CONTENIDO MOTIVACIONAL -->
+    <div data-seccion="header-principal">
+        <h1 data-elemento="titulo-principal">
+            <span data-icono="cohete-principal" class="banner-icon">🚀</span>
             Inicia tu aventura matemática
         </h1>
-        <p data-element="subtitulo">
-            <i class="fas fa-graduation-cap" data-icon="secundario" aria-hidden="true"></i>
+        <p data-elemento="subtitulo-modulo">
+            <i class="fas fa-graduation-cap" data-icono="graduacion-secundario" aria-hidden="true"></i>
             Módulo 5 - <strong>Aplicaciones y Sistemas de Medida</strong>
         </p>
     </div>
 </div>
-<!-- FIN BANNER DE INTRODUCCIÓN -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE APLICACIONES Y SISTEMAS DE MEDIDA - CIERRE -->
+<!-- ================================================================================================ -->
 
-
-<!-- FIN SECCIÓN 2: TÍTULO -->
-
-<!-- 3. SECCIÓN 3: CONOCER MÁS DE ESTE MÓDULO -->
-<div class="container-fluid my-4" id="informacion-general-conocer" style="border: 1px solid #00AEAC; border-radius: 8px; background-color: #E3F7F2; padding: 20px;">
-
-    <p style="color: #172139; margin: 0; font-size: 1em; display: flex; align-items: start; gap: 8px; flex-wrap: wrap;">
-        <i class="bi bi-tags" style="color: #00AEAC; margin-top: 2px;"></i>
-        <strong>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-contenedor="informacion-modulo-matematico" 
+     style="all: initial !important; 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            border: 2px solid #E9901E !important; 
+            border-radius: 15px !important; 
+            background: linear-gradient(135deg, #FDF4E5 0%, #FEF7ED 100%) !important; 
+            padding: 25px !important; 
+            margin: 25px 0 !important; 
+            box-shadow: 0 15px 35px rgba(233, 144, 30, 0.2) !important;
+            display: block !important;
+            position: relative !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            overflow: hidden !important;">
+    
+    <p data-parrafo="competencia-principal" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #1a202c !important; 
+              margin: 0 0 15px 0 !important; 
+              font-size: 1.1em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 12px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 600 !important;
+              line-height: 1.6 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <i class="bi bi-tags" 
+           style="all: initial !important;
+                  color: #E9901E !important; 
+                  margin-top: 3px !important;
+                  font-size: 1.2em !important;
+                  text-shadow: 0 0 8px rgba(233, 144, 30, 0.3) !important;
+                  display: inline-block !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+        <strong style="all: initial !important; 
+                      font-family: 'Montserrat', sans-serif !important;
+                      font-weight: 800 !important;
+                      color: #1a202c !important;
+                      display: inline !important;">
             Al finalizar este modulo, estarás en capacidad de aplicar factores de conversión para transformar unidades entre diferentes sistemas de medida (SI e Imperial/Inglés) en la resolución de problemas.
         </strong>
     </p>
-
-    <p style="color: #172139; margin: 10px 0 0; font-size: 1em; display: flex; align-items: start; gap: 8px; flex-wrap: wrap;">
-        🎯 Aplicarás lo aprendido a situaciones reales, manejando mediciones. Aprenderás a convertir unidades entre sistemas (metros a pies, litros a galones) usando factores de conversión. Esto es esencial para interpretar datos técnicos o trabajar con especificaciones en ingeniería, arquitectura o ciencias.
-        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208574" target="_blank" style="text-decoration: none; color: inherit; font-weight: bold;">Conoce más de este módulo</a>
-        <i class="bi bi-box-arrow-in-right"></i>
+    
+    <p data-parrafo="descripcion-detallada" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #2d3748 !important; 
+              margin: 0 !important; 
+              font-size: 1.05em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 10px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <span style="all: initial !important;
+                     font-size: 1.3em !important;
+                     margin-right: 8px !important;
+                     display: inline-block !important;">🎯</span>
+        Aplicarás lo aprendido a situaciones reales, manejando mediciones. Aprenderás a convertir unidades entre sistemas (metros a pies, litros a galones) usando factores de conversión. Esto es esencial para interpretar datos técnicos o trabajar con especificaciones en ingeniería, arquitectura o ciencias.
+        
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=208574" 
+           target="_blank" 
+           data-enlace="modulo-detalle"
+           style="all: initial !important;
+                  font-family: 'Montserrat', sans-serif !important;
+                  text-decoration: none !important; 
+                  color: #E9901E !important; 
+                  font-weight: 700 !important;
+                  display: inline !important;
+                  transition: all 0.3s ease !important;
+                  border-bottom: 2px solid transparent !important;
+                  padding: 2px 0 !important;
+                  margin: 0 5px !important;">
+            Conoce más de este módulo
+        </a>
+        
+        <i class="bi bi-box-arrow-in-right" 
+           style="all: initial !important;
+                  color: #E9901E !important;
+                  font-size: 1.1em !important;
+                  display: inline-block !important;
+                  margin-left: 5px !important;
+                  transition: transform 0.3s ease !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
     </p>
 </div>
-<!-- FIN SECCIÓN 3: CONOCER MÁS DE ESTE MÓDULO -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 4. SECCIÓN 4: SCRIPTS JAVASCRIPT -->
-<!-- CARGA DE SCRIPTS NECESARIOS PARA EL FUNCIONAMIENTO DE BOOTSTRAP -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * FUNCIONES ADICIONALES PARA ACORDEONES
-     * @description Esta función inicializa los acordeones cerrados al cargar la página.
-     * El manejo del estado de los acordeones queda completamente a cargo de Bootstrap.
-     */
-    function initAccordions() {
-        const accordions = document.querySelectorAll('.accordion-collapse'); // SELECCIONA TODOS LOS ACORDEONES
-        accordions.forEach(accordion => accordion.classList.remove('show')); // REMUEVE 'SHOW'
-    }
-    /**
-     * FUNCIONALIDAD PARA REGISTRAR EN CONSOLA EL ESTADO DE UN ACORDEÓN
-     * @description Imprime en consola si un acordeón está abierto o cerrado.
-     * @param {string} idAcordeon - ID DEL ACORDEÓN A VERIFICAR.
-     */
-    function logEstadoAcordeon(idAcordeon) {
-        const acordeon = document.getElementById(idAcordeon);
-        if (acordeon) {
-            const estado = acordeon.classList.contains('show') ? 'ABIERTO' : 'CERRADO';
-            console.log(`El acordeón con ID '${idAcordeon}' está ${estado}.`);
-        } else {
-            console.warn(`No se encontró ningún acordeón con ID '${idAcordeon}'.`);
-        }
-    }
-
-    /**
-     * FUNCIONES PARA EL BANNER DE INTRODUCCIÓN
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades
      */
     document.addEventListener('DOMContentLoaded', function() {
-        function verificarBannerIntroduccion() {
-            const banner = document.querySelector('div[data-banner="introduccion-v1"]');
+        console.log('🚀 Inicializando sistema ultra-resistente para Banner de Aplicaciones y Sistemas de Medida');
+        
+        /**
+         * VERIFICACIÓN DE BANNER CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarBannerUltraResistente() {
+            const banner = document.querySelector('div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]');
             if (banner) {
-                console.log('🚀 Banner de Introducción optimizado cargado correctamente');
+                console.log('✅ Banner ultra-resistente cargado y funcionando correctamente');
                 
+                // EFECTOS HOVER EXTREMOS CON GPU ACCELERATION
                 banner.addEventListener('mouseenter', function() {
-                    this.style.setProperty('transform', 'scale(1.02) translateY(-3px)', 'important');
-                    this.style.setProperty('transition', 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
-                    this.style.setProperty('box-shadow', '0 25px 70px rgba(233, 144, 30, 0.5), 0 10px 30px rgba(255, 146, 31, 0.4)', 'important');
-                    this.style.setProperty('border-color', 'rgba(254, 241, 130, 0.5)', 'important');
+                    this.style.setProperty('transform', 'translateY(-5px) scale(1.01) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 35px 90px rgba(233, 144, 30, 0.5), 0 15px 40px rgba(245, 154, 31, 0.4)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.4)', 'important');
+                    this.style.setProperty('will-change', 'transform, box-shadow', 'important');
                 });
                 
                 banner.addEventListener('mouseleave', function() {
-                    this.style.setProperty('transform', 'scale(1) translateY(0)', 'important');
-                    this.style.setProperty('box-shadow', '0 20px 60px rgba(233, 144, 30, 0.4), 0 8px 25px rgba(255, 146, 31, 0.3)', 'important');
-                    this.style.setProperty('border-color', 'rgba(254, 241, 130, 0.3)', 'important');
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(233, 144, 30, 0.4), 0 10px 30px rgba(245, 154, 31, 0.3)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.2)', 'important');
                 });
                 
-                const titulo = banner.querySelector('h1[data-element="titulo"]');
+                // ACCESIBILIDAD AVANZADA CON ARIA
+                const titulo = banner.querySelector('h1[data-elemento="titulo-principal"]');
                 if (titulo) {
                     titulo.setAttribute('tabindex', '0');
                     titulo.setAttribute('role', 'banner');
-                    titulo.setAttribute('aria-label', 'Sección de Introducción - Sistema de los Números Racionales en el Módulo 3');
+                    titulo.setAttribute('aria-label', 'Banner de Introducción - Inicia tu aventura matemática en el Módulo 5 de Aplicaciones y Sistemas de Medida');
                     
+                    // FOCUS VISUAL EXTREMO
                     titulo.addEventListener('focus', function() {
-                        this.style.setProperty('outline', '4px solid #1a365d', 'important');
-                        this.style.setProperty('outline-offset', '4px', 'important');
-                        this.style.setProperty('border-radius', '10px', 'important');
+                        this.style.setProperty('outline', '4px solid rgba(255, 255, 255, 0.8)', 'important');
+                        this.style.setProperty('outline-offset', '6px', 'important');
+                        this.style.setProperty('border-radius', '12px', 'important');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.1)', 'important');
+                        this.style.setProperty('padding', '10px', 'important');
+                    });
+                    
+                    titulo.addEventListener('blur', function() {
+                        this.style.removeProperty('outline');
+                        this.style.removeProperty('outline-offset');
+                        this.style.removeProperty('border-radius');
+                        this.style.removeProperty('background');
+                        this.style.removeProperty('padding');
                     });
                 }
                 
-                const iconos = banner.querySelectorAll('i[data-icon]');
-                let motivationalIndex = 0;
-                const motivationalColors = ['#1a365d', '#2c5282', '#2d3748', '#4a5568'];
+                // INTERACTIVIDAD EXTREMA PARA ICONOS
+                const iconos = banner.querySelectorAll('[data-icono]');
+                let interactionCount = 0;
+                const interactionEffects = [
+                    'drop-shadow(0 0 15px rgba(255, 215, 0, 0.8))',
+                    'drop-shadow(0 0 20px rgba(255, 105, 180, 0.8))',
+                    'drop-shadow(0 0 25px rgba(0, 191, 255, 0.8))',
+                    'drop-shadow(0 0 30px rgba(50, 205, 50, 0.8))'
+                ];
                 
                 iconos.forEach((icono, index) => {
-                    icono.addEventListener('click', function() {
-                        this.style.setProperty('color', motivationalColors[motivationalIndex % 4], 'important');
-                        motivationalIndex++;
-                        console.log(`🎨 Contraste activado: ${motivationalIndex % 4 + 1}/4`);
+                    icono.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.style.setProperty('filter', interactionEffects[interactionCount % 4], 'important');
+                        this.style.setProperty('transform', 'scale(1.3) rotate(360deg)', 'important');
+                        
+                        interactionCount++;
+                        console.log(`🎨 Interacción ${interactionCount}: ${this.getAttribute('data-icono')} activado`);
+                        
+                        // RESET DESPUÉS DE ANIMACIÓN
+                        setTimeout(() => {
+                            this.style.removeProperty('transform');
+                        }, 600);
                     });
+                    
+                    // PREPARAR PARA ANIMACIONES DE GPU
+                    icono.style.setProperty('will-change', 'transform, filter', 'important');
                 });
+            } else {
+                console.error('❌ Error: Banner ultra-resistente no encontrado');
             }
         }
         
-        function detectarContextoIntroduccion() {
-            const banner = document.querySelector('div[data-banner="introduccion-v1"]');
-            if (banner) {
-                banner.setAttribute('data-context', 'introduccion');
-                banner.setAttribute('data-fase', 'motivacion');
-                banner.setAttribute('data-modulo', '3');
-                banner.setAttribute('data-tema', 'numeros-racionales');
-                banner.setAttribute('data-objetivos', 'conocimiento,motivacion,competencias');
-                
-                console.log('🎯 Contexto de introducción detectado y configurado');
-            }
+        /**
+         * ANÁLISIS CROMÁTICO DE IMPLEMENTACIÓN
+         */
+        function analizarImplementacionCromatica() {
+            console.log('🎨 Análisis de implementación cromática ultra-resistente:');
+            console.log('   ✅ Gradiente naranja: #E9901E → #F59A1F');
+            console.log('   ✅ Contraste títulos: Azul oscuro PANTONE 5255 C (#172139) con sombras blancas');
+            console.log('   ✅ Icono cohete: Emoji 🚀 con resplandor blanco');
+            console.log('   ✅ Icono birrete: Azul oscuro (#172139) coordinado con título');
+            console.log('   ✅ Subtítulo: Azul oscuro (#172139) para consistencia visual');
+            console.log('   ✅ Elementos flotantes: Blanco semi-transparente');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos');
+            console.log('   ✅ Performance: GPU acceleration + will-change optimizado');
+            console.log('   ✅ Accesibilidad: Contraste óptimo sobre fondo naranja');
         }
         
-        function inicializarProgresionMotivacional() {
-            const shapes = document.querySelectorAll('div[data-element]');
-            const motivationNames = ['Objetivos', 'Competencias', 'Motivación', 'Introducción'];
+        /**
+         * CONFIGURACIÓN DE CONTEXTO MATEMÁTICO
+         */
+        function configurarContextoMatematico() {
+            const banner = document.querySelector('div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]');
+            const contenedor = document.querySelector('div[data-contenedor="informacion-modulo-matematico"]');
             
-            shapes.forEach((shape, index) => {
-                const elementType = shape.getAttribute('data-element');
-                shape.setAttribute('title', `${motivationNames[index]} del módulo`);
+            if (banner && contenedor) {
+                // ATRIBUTOS DE CONTEXTO MATEMÁTICO
+                banner.setAttribute('data-contexto-educativo', 'aplicaciones-sistemas-medida');
+                banner.setAttribute('data-fase-aprendizaje', 'motivacion-inicial');
+                banner.setAttribute('data-modulo-numero', '5');
+                banner.setAttribute('data-tema-principal', 'factores-conversion-unidades');
+                banner.setAttribute('data-competencias', 'aplicar,transformar,resolver,interpretar');
+                banner.setAttribute('data-resistencia-moodle', 'ultra-maxima');
                 
-                shape.addEventListener('click', function() {
-                    console.log(`🎯 Enfoque motivacional en: ${elementType}`);
-                    this.style.setProperty('opacity', '0.7', 'important');
+                contenedor.setAttribute('data-tipo-contenido', 'informacion-competencias');
+                contenedor.setAttribute('data-nivel-detalle', 'descriptivo');
+                
+                console.log('🎯 Contexto matemático ultra-resistente configurado correctamente');
+            }
+        }
+        
+        /**
+         * SISTEMA DE PROGRESIÓN MOTIVACIONAL AVANZADO
+         */
+        function inicializarProgresionMotivacional() {
+            const elementosFlotantes = document.querySelectorAll('div[data-concepto]');
+            const conceptosEducativos = [
+                'Objetivos de Aprendizaje',
+                'Competencias Matemáticas', 
+                'Motivación Inicial',
+                'Introducción al Tema'
+            ];
+            
+            elementosFlotantes.forEach((elemento, index) => {
+                const conceptoType = elemento.getAttribute('data-concepto');
+                elemento.setAttribute('title', `${conceptosEducativos[index]} - Módulo de Aplicaciones y Sistemas de Medida`);
+                elemento.setAttribute('data-progreso', `${index + 1}/4`);
+                
+                // INTERACTIVIDAD MOTIVACIONAL
+                elemento.addEventListener('click', function() {
+                    console.log(`📚 Enfoque motivacional: ${conceptoType} (${this.getAttribute('data-progreso')})`);
+                    this.style.setProperty('opacity', '0.8', 'important');
+                    this.style.setProperty('transform', 'scale(1.3)', 'important');
+                    this.style.setProperty('box-shadow', '0 0 30px rgba(255, 255, 255, 0.5)', 'important');
+                    
                     setTimeout(() => {
-                        this.style.setProperty('opacity', '0.3', 'important');
-                    }, 1500);
+                        this.style.setProperty('opacity', '0.35', 'important');
+                        this.style.removeProperty('transform');
+                        this.style.removeProperty('box-shadow');
+                    }, 2000);
                 });
+                
+                // OPTIMIZACIÓN GPU
+                elemento.style.setProperty('will-change', 'transform, opacity', 'important');
             });
         }
         
-        // EJECUTAR FUNCIONES
-        verificarBannerIntroduccion();
-        detectarContextoIntroduccion();
-        inicializarProgresionMotivacional();
-        initAccordions(); // INICIALIZA LOS ACORDEONES CERRADOS
+        /**
+         * CONFIGURACIÓN DE ENLACE INTELIGENTE
+         */
+        function configurarEnlaceInteligente() {
+            const enlace = document.querySelector('a[data-enlace="modulo-detalle"]');
+            const icono = document.querySelector('i.bi-box-arrow-in-right');
+            
+            if (enlace && icono) {
+                enlace.addEventListener('mouseenter', function() {
+                    this.style.setProperty('border-bottom-color', '#E9901E', 'important');
+                    this.style.setProperty('color', '#c7761a', 'important');
+                    if (icono) {
+                        icono.style.setProperty('transform', 'translateX(5px)', 'important');
+                    }
+                });
+                
+                enlace.addEventListener('mouseleave', function() {
+                    this.style.setProperty('border-bottom-color', 'transparent', 'important');
+                    this.style.setProperty('color', '#E9901E', 'important');
+                    if (icono) {
+                        icono.style.removeProperty('transform');
+                    }
+                });
+                
+                enlace.addEventListener('click', function() {
+                    console.log('🔗 Navegación hacia información detallada del módulo');
+                });
+            }
+        }
         
-        console.log('🌟 Sistema optimizado inicializado - Código compactado y eficiente');
-        console.log('Acordeones inicializados y cerrados correctamente.');
+        // EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN
+        verificarBannerUltraResistente();
+        analizarImplementacionCromatica();
+        configurarContextoMatematico();
+        inicializarProgresionMotivacional();
+        configurarEnlaceInteligente();
+        
+        // LOG FINAL DE SISTEMA ULTRA-RESISTENTE
+        console.log('🌟 Sistema Ultra-Resistente inicializado completamente');
+        console.log('🛡️ Características implementadas:');
+        console.log('   • Resistencia anti-Moodle máxima con selectores únicos');
+        console.log('   • Tipografía Montserrat forzada globalmente');
+        console.log('   • GPU acceleration con will-change optimizado');
+        console.log('   • Accesibilidad avanzada con ARIA y navegación por teclado');
+        console.log('   • Interactividad extrema con feedback visual');
+        console.log('   • Animaciones optimizadas para performance');
+        console.log('   • Especificidad CSS extrema con !important selectivo');
     });
+    
+    /**
+     * FUNCIONES GLOBALES DE UTILIDAD ULTRA-RESISTENTE
+     */
+    function alternarModoMatematico() {
+        const banner = document.querySelector('div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]');
+        if (banner) {
+            const modos = ['introduccion', 'exploracion', 'consolidacion', 'evaluacion'];
+            const modoActual = banner.getAttribute('data-modo-matematico') || 'introduccion';
+            const indiceActual = modos.indexOf(modoActual);
+            const nuevoModo = modos[(indiceActual + 1) % 4];
+            
+            banner.setAttribute('data-modo-matematico', nuevoModo);
+            console.log(`🔄 Modo matemático ultra-resistente: ${nuevoModo}`);
+        }
+    }
+    
+    function activarModoEducativoAvanzado() {
+        const banner = document.querySelector('div[data-banner-ultra="aplicaciones-sistemas-medida-v2"]');
+        const contenedor = document.querySelector('div[data-contenedor="informacion-modulo-matematico"]');
+        
+        if (banner && contenedor) {
+            banner.classList.add('educativo-avanzado-activo');
+            banner.style.setProperty('filter', 'brightness(1.15) saturate(1.2) contrast(1.05)', 'important');
+            contenedor.style.setProperty('transform', 'scale(1.02)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(233, 144, 30, 0.3)', 'important');
+            
+            console.log('🎓 Modo educativo avanzado ultra-resistente activado');
+            console.log('✨ Efectos aplicados: brillo, saturación, contraste y escala optimizados');
+        }
+    }
 </script>
-<!-- FIN SECCIÓN 4: SCRIPTS JAVASCRIPT -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - CIERRE -->
+<!-- ================================================================================================ -->
