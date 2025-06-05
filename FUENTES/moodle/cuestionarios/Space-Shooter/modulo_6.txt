@@ -1,0 +1,75 @@
+// question: 0  name: Switch category to $course$/top/SpaceShooter
+$CATEGORY: $course$/top/SpaceShooter
+
+// question: 0  name: Switch category to $course$/top/SpaceShooter/Modulo_6
+$CATEGORY: $course$/top/SpaceShooter/Modulo_6
+
+// question: 51  name: potencia_2_cubo_rapida_51
+::potencia_2_cubo_rapida_51::2³ = ? {
+=8 #¡Correcto! 2³ = 2 × 2 × 2 = 8. El exponente 3 indica que multiplicas la base 2 por sí misma tres veces. Tiempo límite: 5 segundos.
+~6 #Incorrecto. Has multiplicado la base por el exponente: 2 × 3 = 6. En potenciación debes multiplicar la base por sí misma: 2 × 2 × 2 = 8.
+~9 #Incorrecto. Has confundido con 3². La operación es 2³ = 2 × 2 × 2 = 8, no 3 × 3 = 9.
+}
+
+// question: 52  name: raiz_cuadrada_16_rapida_52
+::raiz_cuadrada_16_rapida_52::√16 = ? {
+=4 #¡Correcto! √16 = 4 porque 4² = 4 × 4 = 16. La raíz cuadrada busca el número que multiplicado por sí mismo da 16. Tiempo límite: 5 segundos.
+~8 #Incorrecto. Has dividido 16 ÷ 2 = 8. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 16? La respuesta es 4.
+~2 #Incorrecto. Has confundido con otra operación. √16 = 4 porque 4 × 4 = 16.
+}
+
+// question: 53  name: potencia_5_cuadrado_rapida_53
+::potencia_5_cuadrado_rapida_53::5² = ? {
+=25 #¡Correcto! 5² = 5 × 5 = 25. El exponente 2 indica que multiplicas 5 por sí mismo una vez más. Tiempo límite: 3 segundos.
+~10 #Incorrecto. Has multiplicado la base por el exponente: 5 × 2 = 10. En potenciación: 5² = 5 × 5 = 25.
+~7 #Incorrecto. Has sumado base más exponente: 5 + 2 = 7. La potenciación requiere multiplicación: 5 × 5 = 25.
+}
+
+// question: 54  name: raiz_cuadrada_9_rapida_54
+::raiz_cuadrada_9_rapida_54::√9 = ? {
+=3 #¡Correcto! √9 = 3 porque 3² = 3 × 3 = 9. La raíz cuadrada de 9 es el número que multiplicado por sí mismo da 9. Tiempo límite: 3 segundos.
+~4.5 #Incorrecto. Has dividido 9 ÷ 2 = 4.5. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 9? La respuesta es 3.
+~18 #Incorrecto. Has multiplicado 9 × 2 = 18. √9 = 3 porque 3 × 3 = 9.
+}
+
+// question: 55  name: potencia_3_cuadrado_rapida_55
+::potencia_3_cuadrado_rapida_55::3² = ? {
+=9 #¡Correcto! 3² = 3 × 3 = 9. Cualquier número elevado al cuadrado se multiplica por sí mismo una vez. Tiempo límite: 3 segundos.
+~6 #Incorrecto. Has multiplicado la base por el exponente: 3 × 2 = 6. En potenciación: 3² = 3 × 3 = 9.
+~5 #Incorrecto. Has sumado base más exponente: 3 + 2 = 5. La potenciación requiere multiplicación: 3 × 3 = 9.
+}
+
+// question: 56  name: raiz_cuadrada_25_rapida_56
+::raiz_cuadrada_25_rapida_56::√25 = ? {
+=5 #¡Correcto! √25 = 5 porque 5² = 5 × 5 = 25. La raíz cuadrada de 25 es el número que multiplicado por sí mismo da 25. Tiempo límite: 3 segundos.
+~12.5 #Incorrecto. Has dividido 25 ÷ 2 = 12.5. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 25? La respuesta es 5.
+~50 #Incorrecto. Has multiplicado 25 × 2 = 50. √25 = 5 porque 5 × 5 = 25.
+}
+
+// question: 57  name: potencia_4_cuadrado_rapida_57
+::potencia_4_cuadrado_rapida_57::4² = ? {
+=16 #¡Correcto! 4² = 4 × 4 = 16. El cuadrado de 4 es uno de los cuadrados perfectos más comunes. Tiempo límite: 3 segundos.
+~8 #Incorrecto. Has multiplicado la base por el exponente: 4 × 2 = 8. En potenciación: 4² = 4 × 4 = 16.
+~6 #Incorrecto. Has sumado base más exponente: 4 + 2 = 6. La potenciación requiere multiplicación: 4 × 4 = 16.
+}
+
+// question: 58  name: raiz_cuadrada_36_rapida_58
+::raiz_cuadrada_36_rapida_58::√36 = ? {
+=6 #¡Correcto! √36 = 6 porque 6² = 6 × 6 = 36. La raíz cuadrada de 36 es el número que multiplicado por sí mismo da 36. Tiempo límite: 5 segundos.
+~18 #Incorrecto. Has dividido 36 ÷ 2 = 18. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 36? La respuesta es 6.
+~9 #Incorrecto. Has confundido con √9 = 3 o con alguna otra operación. √36 = 6 porque 6 × 6 = 36.
+}
+
+// question: 59  name: potencia_2_cuarta_rapida_59
+::potencia_2_cuarta_rapida_59::2⁴ = ? {
+=16 #¡Correcto! 2⁴ = 2 × 2 × 2 × 2 = 16. El exponente 4 indica que multiplicas la base 2 por sí misma cuatro veces. Tiempo límite: 8 segundos.
+~8 #Incorrecto. Has multiplicado la base por el exponente: 2 × 4 = 8. En potenciación: 2⁴ = 2 × 2 × 2 × 2 = 16.
+~6 #Incorrecto. Has sumado base más exponente: 2 + 4 = 6. La potenciación requiere multiplicación repetida: 2 × 2 × 2 × 2 = 16.
+}
+
+// question: 60  name: raiz_cuadrada_49_rapida_60
+::raiz_cuadrada_49_rapida_60::√49 = ? {
+=7 #¡Correcto! √49 = 7 porque 7² = 7 × 7 = 49. La raíz cuadrada de 49 es el número que multiplicado por sí mismo da 49. Tiempo límite: 5 segundos.
+~24.5 #Incorrecto. Has dividido 49 ÷ 2 = 24.5. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 49? La respuesta es 7.
+~14 #Incorrecto. Has multiplicado 7 × 2 = 14. √49 = 7 porque 7 × 7 = 49.
+}

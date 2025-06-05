@@ -1,0 +1,75 @@
+// question: 0  name: Switch category to $course$/top/SpaceShooter
+$CATEGORY: $course$/top/SpaceShooter
+
+// question: 0  name: Switch category to $course$/top/SpaceShooter/Modulo_5
+$CATEGORY: $course$/top/SpaceShooter/Modulo_5
+
+// question: 41  name: metros_a_centimetros_rapida_41
+::metros_a_centimetros_rapida_41::¿Cuántos cm hay en 2 metros? {
+=200 cm #¡Correcto! 1 metro = 100 cm, entonces 2 metros = 2 × 100 = 200 cm. Factor de conversión: ×100 para pasar de metros a centímetros. Tiempo límite: 5 segundos.
+~20 cm #Incorrecto. Has dividido por 10 en lugar de multiplicar por 100. Para convertir metros a centímetros, multiplicas por 100.
+~2000 cm #Incorrecto. Has multiplicado por 1000. Esa conversión es de metros a milímetros. Para centímetros es ×100.
+}
+
+// question: 42  name: kilogramos_a_gramos_rapida_42
+::kilogramos_a_gramos_rapida_42::¿Cuántos gramos hay en 3 kg? {
+=3000 g #¡Correcto! 1 kg = 1000 g, entonces 3 kg = 3 × 1000 = 3000 g. Factor de conversión: ×1000 para pasar de kg a gramos. Tiempo límite: 5 segundos.
+~300 g #Incorrecto. Has multiplicado por 100 en lugar de 1000. Para convertir kg a gramos, multiplicas por 1000.
+~30 g #Incorrecto. Has dividido en lugar de multiplicar. 1 kg contiene 1000 gramos, no al revés.
+}
+
+// question: 43  name: centimetros_a_milimetros_rapida_43
+::centimetros_a_milimetros_rapida_43::¿Cuántos mm hay en 5 cm? {
+=50 mm #¡Correcto! 1 cm = 10 mm, entonces 5 cm = 5 × 10 = 50 mm. Factor de conversión: ×10 para pasar de centímetros a milímetros. Tiempo límite: 5 segundos.
+~5 mm #Incorrecto. Has mantenido el mismo número. 1 cm contiene 10 mm, entonces 5 cm = 50 mm.
+~500 mm #Incorrecto. Has multiplicado por 100. Para pasar de cm a mm, multiplicas por 10, no por 100.
+}
+
+// question: 44  name: minutos_a_segundos_rapida_44
+::minutos_a_segundos_rapida_44::¿Cuántos segundos hay en 2 minutos? {
+=120 segundos #¡Correcto! 1 minuto = 60 segundos, entonces 2 minutos = 2 × 60 = 120 segundos. Factor de conversión: ×60 para pasar de minutos a segundos. Tiempo límite: 5 segundos.
+~30 segundos #Incorrecto. Has dividido 60 ÷ 2 = 30. Debes multiplicar: 2 × 60 = 120 segundos.
+~200 segundos #Incorrecto. Has multiplicado por 100. Para convertir minutos a segundos, multiplicas por 60.
+}
+
+// question: 45  name: kilometros_a_metros_rapida_45
+::kilometros_a_metros_rapida_45::¿Cuántos metros hay en 1 km? {
+=1000 m #¡Correcto! 1 km = 1000 m. Es una conversión directa del sistema métrico. Factor de conversión: ×1000 para pasar de km a metros. Tiempo límite: 3 segundos.
+~100 m #Incorrecto. Has confundido con la conversión de metros a centímetros. 1 km = 1000 m, no 100 m.
+~10000 m #Incorrecto. Has multiplicado por 10000. 1 km = 1000 metros exactamente.
+}
+
+// question: 46  name: litros_a_mililitros_rapida_46
+::litros_a_mililitros_rapida_46::¿Cuántos ml hay en 1 litro? {
+=1000 ml #¡Correcto! 1 litro = 1000 ml. Es una conversión estándar del sistema métrico. Factor de conversión: ×1000 para pasar de litros a mililitros. Tiempo límite: 3 segundos.
+~100 ml #Incorrecto. Has confundido las unidades. 1 litro contiene 1000 mililitros, no 100.
+~10 ml #Incorrecto. 1 litro es mucho mayor que 10 ml. La conversión correcta es 1 L = 1000 ml.
+}
+
+// question: 47  name: medios_metros_centimetros_rapida_47
+::medios_metros_centimetros_rapida_47::¿Cuántos cm hay en 0.5 metros? {
+=50 cm #¡Correcto! 0.5 metros = 1/2 metro. Como 1 metro = 100 cm, entonces 1/2 metro = 100/2 = 50 cm. Tiempo límite: 8 segundos.
+~5 cm #Incorrecto. Has movido mal el punto decimal. 0.5 m = 50 cm, no 5 cm.
+~0.5 cm #Incorrecto. Has mantenido el mismo número sin convertir. 0.5 metros = 50 centímetros.
+}
+
+// question: 48  name: horas_a_minutos_rapida_48
+::horas_a_minutos_rapida_48::¿Cuántos minutos hay en 1 hora? {
+=60 minutos #¡Correcto! 1 hora = 60 minutos. Es una conversión básica del sistema de tiempo. Factor de conversión: ×60 para pasar de horas a minutos. Tiempo límite: 3 segundos.
+~100 minutos #Incorrecto. Has confundido con el sistema decimal. El tiempo usa base 60: 1 hora = 60 minutos.
+~24 minutos #Incorrecto. 24 es el número de horas en un día. 1 hora = 60 minutos.
+}
+
+// question: 49  name: gramos_a_miligramos_rapida_49
+::gramos_a_miligramos_rapida_49::¿Cuántos mg hay en 2 g? {
+=2000 mg #¡Correcto! 1 g = 1000 mg, entonces 2 g = 2 × 1000 = 2000 mg. Factor de conversión: ×1000 para pasar de gramos a miligramos. Tiempo límite: 8 segundos.
+~200 mg #Incorrecto. Has multiplicado por 100 en lugar de 1000. Para convertir g a mg, multiplicas por 1000.
+~20 mg #Incorrecto. Has dividido en lugar de multiplicar. 1 gramo contiene 1000 miligramos.
+}
+
+// question: 50  name: metros_cuadrados_centimetros_rapida_50
+::metros_cuadrados_centimetros_rapida_50::¿Cuántos cm² hay en 1 m²? {
+=10000 cm² #¡Correcto! 1 m = 100 cm, entonces 1 m² = (100 cm)² = 100 × 100 = 10000 cm². Las unidades de área se elevan al cuadrado. Tiempo límite: 10 segundos.
+~100 cm² #Incorrecto. Has usado la conversión lineal. Para áreas, debes elevar al cuadrado: (100)² = 10000 cm².
+~1000 cm² #Incorrecto. Has confundido con conversión de volumen. Para área: 1 m² = (100 cm)² = 10000 cm².
+}

@@ -1,0 +1,75 @@
+// question: 0  name: Switch category to $course$/top/SpaceShooter
+$CATEGORY: $course$/top/SpaceShooter
+
+// question: 0  name: Switch category to $course$/top/SpaceShooter/Modulo_1
+$CATEGORY: $course$/top/SpaceShooter/Modulo_1
+
+// question: 1  name: suma_enteros_rapida_1
+::suma_enteros_rapida_1::[html]<p dir\="ltr" style\="text-align\: left;">-8 + 5 = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">-3</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Al sumar números con signos diferentes, restas los valores absolutos (8-5=3) y conservas el signo del número con mayor valor absoluto (negativo). Tiempo límite: 10 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">3</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Olvidaste considerar los signos. Cuando sumas números con signos diferentes, debes restar y conservar el signo del número con mayor valor absoluto.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">-13</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Este resultado viene de sumar los valores absolutos en lugar de restarlos. Con signos diferentes, debes restar: |-8| - |5| = 3, y usar el signo negativo.</p><br><p></p>
+}
+
+// question: 2  name: resta_enteros_rapida_2
+::resta_enteros_rapida_2::[html]<p dir\="ltr" style\="text-align\: left;">15 - (-7) = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">22</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Restar un número negativo equivale a sumarlo: 15 - (-7) = 15 + 7 = 22. Recuerda: menos por menos es más. Tiempo límite: 10 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">8</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Este resultado viene de hacer 15 - 7. Recuerda que restar un número negativo es igual a sumarlo: 15 - (-7) = 15 + 7.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">-8</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Has tratado el problema como si fuera 7 - 15. Restar un número negativo equivale a una suma: 15 - (-7) = 15 + 7 = 22.</p><br><p></p>
+}
+
+// question: 3  name: suma_negativos_rapida_3
+::suma_negativos_rapida_3::[html]<p dir\="ltr" style\="text-align\: left;">(-3) + (-9) = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">-12</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Al sumar dos números negativos, sumas sus valores absolutos y conservas el signo negativo: 3 + 9 = 12, entonces (-3) + (-9) = -12. Tiempo límite: 8 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">12</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Olvidaste el signo negativo. Cuando sumas dos números negativos, el resultado siempre es negativo.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">-6</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Este resultado viene de restar en lugar de sumar: 9 - 3 = 6. Con números del mismo signo negativo, debes sumar los valores absolutos.</p><br><p></p>
+}
+
+// question: 4  name: resta_basica_rapida_4
+::resta_basica_rapida_4::[html]<p dir\="ltr" style\="text-align\: left;">20 - 35 = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">-15</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Cuando el minuendo es menor que el sustraendo, el resultado es negativo: 20 - 35 = -(35 - 20) = -15. Tiempo límite: 8 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">15</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Olvidaste que el resultado debe ser negativo. Cuando restas un número mayor de uno menor, el resultado es negativo.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">55</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Has sumado en lugar de restar. La operación es 20 - 35, no 20 + 35.</p><br><p></p>
+}
+
+// question: 5  name: valor_absoluto_rapida_5
+::valor_absoluto_rapida_5::[html]<p dir\="ltr" style\="text-align\: left;">|-12| = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">12</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! El valor absoluto de cualquier número es siempre positivo. |-12| = 12 porque representa la distancia de -12 al cero. Tiempo límite: 5 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">-12</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. El valor absoluto siempre es positivo. Las barras verticales |  | eliminan el signo negativo.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">0</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. El valor absoluto no anula el número, solo elimina el signo negativo. |-12| = 12, no cero.</p><br><p></p>
+}
+
+// question: 6  name: opuestos_rapida_6
+::opuestos_rapida_6::[html]<p dir\="ltr" style\="text-align\: left;">(-4) + 4 = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">0</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! La suma de un número y su opuesto siempre es cero. (-4) + 4 = 0. Los números opuestos se cancelan mutuamente. Tiempo límite: 5 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">8</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Has sumado los valores absolutos ignorando el signo. Los números opuestos se cancelan: (-4) + 4 = 0.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">-8</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Este resultado viene de sumar como si ambos fueran negativos. La suma de opuestos es siempre cero.</p><br><p></p>
+}
+
+// question: 7  name: resta_negativos_rapida_7
+::resta_negativos_rapida_7::[html]<p dir\="ltr" style\="text-align\: left;">-6 - 8 = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">-14</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Restar un número positivo de uno negativo: -6 - 8 = -6 + (-8) = -14. Ambos términos son negativos, así que sumas y conservas el signo. Tiempo límite: 8 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">2</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Este resultado viene de hacer -6 + 8 en lugar de -6 - 8. Restar un positivo equivale a sumar un negativo.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">14</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Olvidaste el signo negativo. El resultado debe ser negativo porque partes de -6 y restas más.</p><br><p></p>
+}
+
+// question: 8  name: suma_mixta_rapida_8
+::suma_mixta_rapida_8::[html]<p dir\="ltr" style\="text-align\: left;">25 + (-10) = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">15</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Al sumar números con signos diferentes, restas sus valores absolutos (25 - 10 = 15) y conservas el signo del mayor (positivo). Tiempo límite: 8 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">35</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Has sumado 25 + 10 ignorando el signo negativo. Sumar un número negativo equivale a restar: 25 + (-10) = 25 - 10.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">-35</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Has tratado ambos números como negativos. El resultado debe ser positivo porque 25 tiene mayor valor absoluto que 10.</p><br><p></p>
+}
+
+// question: 9  name: valores_absolutos_suma_rapida_9
+::valores_absolutos_suma_rapida_9::[html]<p dir\="ltr" style\="text-align\: left;">|−7| + |3| = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">10</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Los valores absolutos convierten ambos números en positivos: |−7| = 7 y |3| = 3, entonces 7 + 3 = 10. Tiempo límite: 10 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">4</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Este resultado viene de hacer 7 - 3. Ambos valores absolutos son positivos, debes sumarlos: 7 + 3 = 10.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">-4</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Los valores absolutos siempre son positivos, por lo que el resultado debe ser positivo. |−7| + |3| = 7 + 3 = 10.</p><br><p></p>
+}
+
+// question: 10  name: suma_final_rapida_10
+::suma_final_rapida_10::[html]<p dir\="ltr" style\="text-align\: left;">(-15) + 20 = ?</p>{
+    =<p dir\="ltr" style\="text-align\: left;">5</p>#<p dir\="ltr" style\="text-align\: left;">¡Correcto! Con signos diferentes, restas los valores absolutos (20 - 15 = 5) y tomas el signo del número con mayor valor absoluto (positivo). Tiempo límite: 8 segundos.</p>
+    ~<p dir\="ltr" style\="text-align\: left;">-5</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. El resultado debe ser positivo porque 20 tiene mayor valor absoluto que 15. (-15) + 20 = +(20 - 15) = 5.</p><br><p></p>
+    ~<p dir\="ltr" style\="text-align\: left;">35</p>#<p dir\="ltr" style\="text-align\: left;"></p><p dir\="ltr">Incorrecto. Has sumado los valores absolutos ignorando los signos. Con signos diferentes debes restar: 20 - 15 = 5.</p><br><p></p>
+}

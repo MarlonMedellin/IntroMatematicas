@@ -1,0 +1,75 @@
+// question: 0  name: Switch category to $course$/top/SpaceShooter
+$CATEGORY: $course$/top/SpaceShooter
+
+// question: 0  name: Switch category to $course$/top/SpaceShooter/Modulo_4
+$CATEGORY: $course$/top/SpaceShooter/Modulo_4
+
+// question: 31  name: proporcion_2_4_x_8_rapida_31
+::proporcion_2_4_x_8_rapida_31::Si 2:4 = x:8, ¿cuál es x? {
+=4 #¡Correcto! Usando productos cruzados: 2 × 8 = 4 × x, entonces 16 = 4x, por lo tanto x = 4. También puedes ver que 4 es el doble de 2, como 8 es el doble de 4. Tiempo límite: 8 segundos.
+~2 #Incorrecto. Has mantenido la primera razón sin considerar el cambio proporcional. Si 4 se convierte en 8 (se duplica), entonces 2 debe duplicarse también.
+~6 #Incorrecto. Has sumado 2 + 4 = 6. En proporciones debes usar multiplicación cruzada: 2 × 8 = 4 × x.
+}
+
+// question: 32  name: porcentaje_50_de_80_rapida_32
+::porcentaje_50_de_80_rapida_32::¿Cuál es el 50% de 80? {
+=40 #¡Correcto! 50% = 1/2, entonces 50% de 80 = 80/2 = 40. También: 80 × 0.50 = 40. Tiempo límite: 5 segundos.
+~30 #Incorrecto. Has calculado aproximadamente pero no exactamente. 50% de 80 es exactamente la mitad: 80/2 = 40.
+~4 #Incorrecto. Has confundido la operación. 50% de 80 no es 80/50, sino 80 × 0.50 = 40.
+}
+
+// question: 33  name: proporcion_directa_3_6_9_rapida_33
+::proporcion_directa_3_6_9_rapida_33::Si 3 = 6, entonces 9 = ? {
+=18 #¡Correcto! La razón es ×2 (3 × 2 = 6), entonces 9 × 2 = 18. En proporcionalidad directa, mantienes la misma razón multiplicativa. Tiempo límite: 8 segundos.
+~12 #Incorrecto. Has sumado 9 + 3 = 12. En proporciones, debes multiplicar por la misma razón: 9 × 2 = 18.
+~3 #Incorrecto. Has aplicado la operación inversa. Si 3 se convierte en 6 (×2), entonces 9 debe convertirse en 18 (×2).
+}
+
+// question: 34  name: porcentaje_25_de_100_rapida_34
+::porcentaje_25_de_100_rapida_34::¿Cuál es el 25% de 100? {
+=25 #¡Correcto! 25% = 25/100 = 1/4, entonces 25% de 100 = 100/4 = 25. También: 100 × 0.25 = 25. Tiempo límite: 5 segundos.
+~75 #Incorrecto. Has calculado el complemento (100% - 25% = 75%). La pregunta pide 25% de 100, que es 25.
+~2.5 #Incorrecto. Has dividido 25/10 en lugar de calcular 25% de 100. El resultado correcto es 100 × 0.25 = 25.
+}
+
+// question: 35  name: proporcion_5_10_3_x_rapida_35
+::proporcion_5_10_3_x_rapida_35::En la proporción 5:10 = 3:x, ¿cuál es x? {
+=6 #¡Correcto! Productos cruzados: 5 × x = 10 × 3, entonces 5x = 30, por lo tanto x = 6. También puedes ver que 10 es el doble de 5, como x debe ser el doble de 3. Tiempo límite: 10 segundos.
+~15 #Incorrecto. Has multiplicado 5 × 3 = 15. Usa productos cruzados: 5 × x = 10 × 3, entonces x = 30/5 = 6.
+~2 #Incorrecto. Has dividido incorrectamente. La proporción requiere que 5 × x = 10 × 3, entonces x = 6.
+}
+
+// question: 36  name: porcentaje_10_de_50_rapida_36
+::porcentaje_10_de_50_rapida_36::¿Cuál es el 10% de 50? {
+=5 #¡Correcto! 10% = 10/100 = 1/10, entonces 10% de 50 = 50/10 = 5. También: 50 × 0.10 = 5. Tiempo límite: 5 segundos.
+~45 #Incorrecto. Has calculado el complemento (90% de 50). La pregunta pide 10% de 50, que es 5.
+~0.5 #Incorrecto. Has movido mal el punto decimal. 10% de 50 = 50 × 0.10 = 5, no 0.5.
+}
+
+// question: 37  name: regla_tres_personas_tareas_rapida_37
+::regla_tres_personas_tareas_rapida_37::Si 4 personas = 8 tareas, ¿cuántas tareas hacen 2 personas? {
+=4 tareas #¡Correcto! Proporción directa: 4 personas / 8 tareas = 2 personas / x tareas. Entonces x = (2 × 8) / 4 = 4 tareas. Tiempo límite: 8 segundos.
+~2 tareas #Incorrecto. Has simplificado la razón de personas pero no la aplicaste correctamente. Si 4 personas hacen 8 tareas, 2 personas hacen 4 tareas.
+~16 tareas #Incorrecto. Has multiplicado 2 × 8 = 16. En proporcionalidad directa, menos personas hacen menos tareas, no más.
+}
+
+// question: 38  name: doble_de_15_rapida_38
+::doble_de_15_rapida_38::¿Cuál es el doble de 15? {
+=30 #¡Correcto! El doble significa multiplicar por 2: 15 × 2 = 30. También puedes sumarlo consigo mismo: 15 + 15 = 30. Tiempo límite: 3 segundos.
+~17 #Incorrecto. Has sumado 15 + 2 = 17. "Doble" significa multiplicar por 2, no sumar 2.
+~7.5 #Incorrecto. Has dividido entre 2 (la mitad) en lugar de multiplicar por 2 (el doble).
+}
+
+// question: 39  name: proporcion_1_3_4_x_rapida_39
+::proporcion_1_3_4_x_rapida_39::Si 1:3 = 4:x, ¿cuál es x? {
+=12 #¡Correcto! Productos cruzados: 1 × x = 3 × 4, entonces x = 12. También puedes ver que 4 es 4 veces 1, como x debe ser 4 veces 3. Tiempo límite: 10 segundos.
+~7 #Incorrecto. Has sumado 1 + 3 + 4 = 8, pero ese no es el método correcto. Usa productos cruzados: x = 3 × 4 / 1 = 12.
+~1.33 #Incorrecto. Has dividido 4/3. En proporciones, usa productos cruzados: 1 × x = 3 × 4, entonces x = 12.
+}
+
+// question: 40  name: mitad_de_60_rapida_40
+::mitad_de_60_rapida_40::¿Cuál es la mitad de 60? {
+=30 #¡Correcto! La mitad significa dividir entre 2: 60 ÷ 2 = 30. También puedes pensarlo como 60 × 1/2 = 30. Tiempo límite: 3 segundos.
+~58 #Incorrecto. Has restado 60 - 2 = 58. "Mitad" significa dividir entre 2, no restar 2.
+~120 #Incorrecto. Has multiplicado por 2 (el doble) en lugar de dividir entre 2 (la mitad).
+}

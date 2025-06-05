@@ -1,0 +1,50 @@
+// question: 0  name: Switch category to $course$/top/html
+$CATEGORY: $course$/top/html
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard
+$CATEGORY: $course$/top/html/FlashCard
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_2
+$CATEGORY: $course$/top/html/FlashCard/Modulo_2
+
+// question: 7  name: numero_primo
+::numero_primo::¿Cuál es la definición de Número Primo? {
+= Número natural mayor que uno con solo dos divisores. #¡Correcto! Un número primo tiene exactamente dos divisores: el 1 y él mismo. Por ejemplo, 7 es primo porque solo es divisible entre 1 y 7. Los primeros primos son: 2, 3, 5, 7, 11, 13...
+~ Número natural mayor que uno con solo tres divisores. #Incorrecto. Un número con tres divisores sería un número compuesto (como 9 = 1×3×3). Los primos tienen exactamente dos divisores, no tres.
+~ Número natural mayor que dos con solo dos divisores. #Incorrecto. Esta definición excluiría al número 2, que es el único número primo par y el más pequeño de todos los primos.
+}
+
+// question: 8  name: mcd
+::mcd::¿Cuál es la definición de MCD? {
+= Mayor número entero que divide exactamente a varios números. #¡Correcto! El MCD (Máximo Común Divisor) es el número más grande que divide a todos los números dados sin dejar residuo. Por ejemplo, MCD(12,18) = 6.
+~ Menor número entero que divide exactamente a varios números. #Incorrecto. El menor divisor común de cualquier conjunto de números siempre es 1. El MCD busca el MAYOR divisor común, no el menor.
+~ Mayor número entero que multiplica exactamente a varios números. #Incorrecto. Esta definición se refiere a multiplicación, no a división. El MCD se basa en encontrar divisores, no múltiplos.
+}
+
+// question: 9  name: mcm
+::mcm::¿Cuál es la definición de MCM? {
+= Menor número entero múltiplo común de varios números dados. #¡Correcto! El MCM (Mínimo Común Múltiplo) es el número más pequeño que es múltiplo de todos los números dados. Por ejemplo, MCM(4,6) = 12.
+~ Mayor número entero múltiplo común de varios números dados. #Incorrecto. No existe un mayor múltiplo común porque los múltiplos se extienden al infinito. El MCM busca el MENOR múltiplo común.
+~ Menor número entero divisor común de varios números dados. #Incorrecto. Esta definición corresponde al concepto de divisor común, que se relaciona con el MCD. El MCM trabaja con múltiplos, no divisores.
+}
+
+// question: 10  name: factorizacion
+::factorizacion::¿Cuál es la definición de Factorización? {
+= Descomposición de un número en producto de factores primos. #¡Correcto! La factorización prima expresa cualquier número como multiplicación de números primos. Por ejemplo, 12 = 2² × 3. Esta descomposición es única para cada número.
+~ Descomposición de un número en suma de factores primos. #Incorrecto. La factorización usa multiplicación (producto), no suma. Por ejemplo, 12 = 2×2×3, no 2+2+3.
+~ Descomposición de un número en producto de factores compuestos. #Incorrecto. La factorización prima requiere específicamente números primos, no compuestos. Los factores compuestos pueden descomponerse más.
+}
+
+// question: 11  name: criterios_divisibilidad
+::criterios_divisibilidad::¿Cuál es la definición de Criterios de Divisibilidad? {
+= Reglas para determinar si un número divide a otro. #¡Correcto! Los criterios de divisibilidad son métodos rápidos para verificar divisiones sin calcular. Por ejemplo, un número es divisible entre 2 si termina en cifra par.
+~ Reglas para determinar si un número multiplica a otro. #Incorrecto. Cualquier número puede multiplicar a otro. Los criterios de divisibilidad se enfocan específicamente en división exacta, no en multiplicación.
+~ Reglas para determinar si un número suma a otro. #Incorrecto. La suma siempre es posible entre cualquier par de números. Los criterios se aplican exclusivamente a la divisibilidad.
+}
+
+// question: 12  name: descomposicion_prima
+::descomposicion_prima::¿Cuál es la definición de Descomposición Prima? {
+= Expresar un número como producto de factores primos únicos. #¡Correcto! La descomposición prima es única para cada número según el Teorema Fundamental de la Aritmética. Por ejemplo, 30 = 2 × 3 × 5.
+~ Expresar un número como suma de factores primos únicos. #Incorrecto. La descomposición prima utiliza multiplicación (producto), no suma. La suma de primos no garantiza unicidad ni utilidad matemática.
+~ Expresar un número como producto de factores compuestos únicos. #Incorrecto. Debe usar factores primos, no compuestos. Los números compuestos pueden descomponerse más, por lo que no serían la forma "prima" final.
+}
