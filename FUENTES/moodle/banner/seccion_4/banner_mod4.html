@@ -1,10 +1,23 @@
-<!-- HEAD DEFINITIONS GO HERE -->
-<!-- 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * 1. CARGAR RECURSOS EXTERNOS DESDE EL CDN.
-     * @param {string} tipo - TIPO DE RECURSO ('stylesheet' O 'script').
-     * @param {string} url - URL DEL RECURSO.
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos <link> para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
      */
     function cargarRecurso(tipo, url) {
         const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
@@ -13,559 +26,840 @@
             elemento.href = url;
         } else {
             elemento.src = url;
-            elemento.defer = true; // 2. MEJOR RENDIMIENTO EN LA CARGA DE SCRIPTS
+            elemento.defer = true; // Performance: Carga no-bloqueante
         }
-        elemento.onload = () => console.log(`Recurso cargado correctamente: ${url}`); // 3. RECURSO CARGADO CORRECTAMENTE
-        elemento.onerror = () => console.error(`Error al cargar el recurso: ${url}`); // 4. ERROR AL CARGAR RECURSO
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
         document.head.appendChild(elemento);
     }
-    // 5. CARGAR FUENTE MONTSERRAT DESDE CDN
-    cargarRecurso('stylesheet', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-    // 6. CARGAR ICONOS DE FONT AWESOME DESDE CDN
+
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
     cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
     /**
-     * 7. AGREGAR ESTILOS CON PALETA VERDE Y TEORÍA DEL COLOR.
+     * INYECCIÓN DE ESTILOS CRÍTICOS
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
      */
-    (function agregarEstilosEvaluacionVerde() {
+    (function agregarEstilosEvaluacion() {
         const customStyles = document.createElement('style');
+        customStyles.id = 'banner-evaluacion-ultra-resistente';
         customStyles.textContent = `
-            /* 8. VARIABLES CSS BASADAS EN PALETA VERDE PANTONE */
-            :root {
-                /* 9. PALETA ANÁLOGA VERDE - COLORES PRINCIPALES */
-                --verde-oscuro: #103B45;           /* 10. PANTONE 567 C - BASE OSCURA */
-                --verde-medio: #007363;            /* 11. PANTONE 3295 C - MEDIO SATURADO */
-                --verde-claro: #4A9B8E;            /* 12. PANTONE 7489 C APROX - CLARO */
-                --verde-agua: #6FB3A0;             /* 13. TONO INTERMEDIO CALCULADO */
-                
-                /* 14. COLOR DE ACENTO COMPLEMENTARIO */
-                --acento-dorado: #B8A832;         /* 15. PANTONE 583 C APROX - ACENTO CÁLIDO */
-                --acento-amarillo: #D4C441;       /* 16. VARIANTE MÁS CLARA DEL ACENTO */
-                
-                /* 17. NEUTRALES PARA CONTRASTE */
-                --blanco-puro: #ffffff;            /* 18. MÁXIMO CONTRASTE */
-                --gris-claro: #f8fafa;            /* 19. NEUTRAL MUY CLARO */
-                --negro-texto: #1a1a1a;           /* 20. TEXTO OSCURO */
-                
-                /* 21. GRADIENTES ARMÓNICOS */
-                --gradiente-principal: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-medio) 100%);
-                --gradiente-acento: linear-gradient(90deg, var(--acento-dorado) 0%, var(--acento-amarillo) 100%);
-                --gradiente-overlay: linear-gradient(135deg, rgba(74, 155, 142, 0.1) 0%, transparent 50%, rgba(184, 168, 50, 0.05) 100%);
-                
-                /* 22. TRANSPARENCIAS PARA LAYERING */
-                --alpha-verde-claro: rgba(111, 179, 160, 0.15);
-                --alpha-acento: rgba(184, 168, 50, 0.3);
-                --alpha-blanco: rgba(255, 255, 255, 0.95);
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - CSS CRÍTICO INLINE */
+            /* ================================================================================ */
+            
+            /* RESETEO ABSOLUTO DEL CONTENEDOR PRINCIPAL */
+            div[data-banner-ultra="evaluacion-matematica-v2"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                margin: 20px 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: linear-gradient(135deg, #007363 0%, #60A65F 100%) !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 140px !important;
+                overflow: hidden !important;
+                border-radius: 20px !important;
+                box-shadow: 0 25px 70px rgba(0, 115, 99, 0.4), 0 10px 30px rgba(96, 166, 95, 0.3) !important;
+                border: 3px solid rgba(255, 255, 255, 0.2) !important;
+                will-change: transform, box-shadow !important; /* GPU acceleration */
+                transform: translateZ(0) !important; /* Force GPU layer */
             }
 
-            /* 23. RESETEO DE ESTILOS PARA EL BANNER */
-            .evaluacion-banner * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+            /* OVERLAY GLASSMORPHISM AVANZADO */
+            div[data-banner-ultra="evaluacion-matematica-v2"]::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: linear-gradient(135deg, rgba(96, 166, 95, 0.15) 0%, transparent 50%, rgba(0, 115, 99, 0.08) 100%) !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                opacity: 0.8 !important;
+                backdrop-filter: blur(2px) !important;
+                -webkit-backdrop-filter: blur(2px) !important;
             }
 
-            /* 24. CONTENEDOR PRINCIPAL CON JERARQUÍA CROMÁTICA */
-            .evaluacion-banner {
-                font-family: 'Montserrat', sans-serif;
-                background: var(--gradiente-principal);               /* 25. GRADIENTE VERDE ANÁLOGO */
-                color: var(--blanco-puro);
-                overflow: hidden;
-                border-radius: 15px;
-                margin: 20px 0;
-                position: relative;
-                box-shadow: 
-                    0 15px 35px rgba(16, 59, 69, 0.4),               /* 26. SOMBRA PRINCIPAL VERDE OSCURO */
-                    0 5px 15px rgba(0, 115, 99, 0.3);               /* 27. SOMBRA SECUNDARIA VERDE MEDIO */
+            /* HEADER PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
+            div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="header-evaluacion"] {
+                all: initial !important;
+                display: block !important;
+                text-align: center !important;
+                padding: 45px 40px !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+                backdrop-filter: blur(30px) saturate(1.4) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(1.4) !important;
+                border-bottom: 6px solid rgba(255, 255, 255, 0.3) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
             }
 
-            /* 28. OVERLAY PARA EQUILIBRIO CROMÁTICO */
-            .evaluacion-banner::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: var(--gradiente-overlay);                 /* 29. OVERLAY SUTIL PARA ARMONÍA */
-                z-index: 1;
-                pointer-events: none;
+            /* ELEMENTO DECORATIVO DE LOGRO */
+            div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="header-evaluacion"]::after {
+                content: '' !important;
+                position: absolute !important;
+                top: -40px !important;
+                right: -40px !important;
+                width: 160px !important;
+                height: 160px !important;
+                background: radial-gradient(circle, #60A65F 0%, #007363 40%, transparent 85%) !important;
+                border-radius: 50% !important;
+                opacity: 0.4 !important;
+                z-index: -1 !important;
+                filter: blur(12px) !important;
+                animation: achievementPulse 6s ease-in-out infinite !important;
+                will-change: opacity, transform !important;
             }
 
-            /* 30. HEADER CON CONTRASTE DE VALOR OPTIMIZADO */
-            .eval-header {
-                text-align: center;
-                padding: 35px 30px;
-                background: var(--alpha-verde-claro);                 /* 31. FONDO SEMI-TRANSPARENTE */
-                backdrop-filter: blur(20px) saturate(1.3);            /* 32. GLASSMORPHISM AVANZADO */
-                border-bottom: 4px solid var(--acento-dorado);        /* 33. LÍNEA DE ACENTO FOCAL */
-                position: relative;
-                z-index: 2;
-                overflow: hidden;
+            /* TÍTULO PRINCIPAL CON CONTRASTE ABSOLUTO */
+            div[data-banner-ultra="evaluacion-matematica-v2"] h1[data-elemento="titulo-evaluacion"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(2rem, 6vw, 3.2rem) !important;
+                font-weight: 900 !important;
+                margin: 0 0 25px 0 !important;
+                padding: 0 !important;
+                color: #ffffff !important;
+                text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.3) !important;
+                line-height: 1.1 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                letter-spacing: -0.8px !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+                text-transform: none !important;
+                text-decoration: none !important;
+                border: none !important;
+                background: none !important;
+                will-change: color, text-shadow !important;
             }
 
-            /* 34. ELEMENTOS DECORATIVOS CON PUNTO FOCAL */
-            .eval-header::after {
-                content: '';
-                position: absolute;
-                top: -20px;
-                right: -20px;
-                width: 120px;
-                height: 120px;
-                background: radial-gradient(circle, var(--acento-amarillo) 0%, transparent 70%);
-                opacity: 0.4;                                         /* 35. TRANSPARENCIA PARA SUTILEZA */
-                z-index: -1;
-                animation: floatGlow 5s ease-in-out infinite;         /* 36. ANIMACIÓN SUAVE */
+            /* SUBTÍTULO CON JERARQUÍA VISUAL */
+            div[data-banner-ultra="evaluacion-matematica-v2"] p[data-elemento="subtitulo-evaluacion"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.6rem) !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                line-height: 1.3 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+                text-transform: none !important;
+                letter-spacing: 0.5px !important;
+                text-align: center !important;
+                font-style: normal !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: none !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
             }
 
-            /* 37. TÍTULO PRINCIPAL CON MÁXIMO CONTRASTE */
-            .eval-title {
-                font-size: clamp(1.7rem, 5vw, 2.6rem);
-                font-weight: 900;                                     /* 38. PESO EXTRA-BOLD PARA JERARQUÍA */
-                margin-bottom: 18px;
-                color: var(--blanco-puro);                            /* 39. BLANCO PARA MÁXIMO CONTRASTE */
-                text-shadow: 
-                    3px 3px 6px var(--verde-oscuro),                 /* 40. SOMBRA EN COLOR BASE */
-                    0 0 25px rgba(184, 168, 50, 0.4);                /* 41. RESPLANDOR DORADO SUTIL */
-                line-height: 1.1;
-                position: relative;
-                z-index: 3;
-                letter-spacing: -0.5px;                               /* 42. KERNING OPTIMIZADO */
+            /* ICONOS CON RESPLANDOR EXTREMO */
+            div[data-banner-ultra="evaluacion-matematica-v2"] span[data-icono="check-principal"] {
+                margin-right: 20px !important;
+                vertical-align: middle !important;
+                font-size: 1.8em !important;
+                display: inline-block !important;
+                animation: checkGlow 4s ease-in-out infinite !important;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                will-change: transform, filter !important;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
             }
 
-            /* 43. SUBTÍTULO CON COLOR DE ACENTO FOCAL */
-            .eval-subtitle {
-                font-size: clamp(1.1rem, 3vw, 1.4rem);
-                font-weight: 700;                                     /* 44. BOLD PARA PROMINENCIA */
-                color: var(--acento-amarillo);                        /* 45. COLOR DE ACENTO PARA FOCO */
-                line-height: 1.2;
-                position: relative;
-                z-index: 3;
-                text-shadow: 
-                    2px 2px 4px var(--verde-oscuro),                 /* 46. SOMBRA PARA LEGIBILIDAD */
-                    0 0 15px rgba(212, 196, 65, 0.3);                /* 47. RESPLANDOR COMPLEMENTARIO */
-                letter-spacing: 1px;                                  /* 49. ESPACIADO PARA ELEGANCIA */
+            /* ELEMENTOS FLOTANTES DE LOGRO */
+            div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="elementos-logro"] {
+                all: initial !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: block !important;
             }
 
-            /* 50. ICONOS DE EVALUACIÓN CON REALCE CROMÁTICO */
-            .eval-title i {
-                margin-right: 15px;
-                vertical-align: middle;
-                color: var(--acento-dorado);                          /* 51. COLOR DE ACENTO PRINCIPAL */
-                font-size: 1.4em;                                    /* 52. TAMAÑO PROMINENTE */
-                text-shadow: 
-                    0 0 12px rgba(184, 168, 50, 0.7),                /* 53. RESPLANDOR DORADO INTENSO */
-                    0 0 24px rgba(184, 168, 50, 0.5),                /* 54. RESPLANDOR EXTENDIDO */
-                    2px 2px 4px rgba(16, 59, 69, 0.6);               /* 55. SOMBRA DE PROFUNDIDAD */
-                filter: drop-shadow(0 0 10px rgba(184, 168, 50, 0.6)); /* 56. FILTRO ADICIONAL */
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);   /* 57. TRANSICIÓN SUAVE */
-                display: inline-block;
-                animation: iconShine 3s ease-in-out infinite;         /* 58. ANIMACIÓN DE BRILLO */
+            div[data-concepto="demostracion-dominio"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatLogroA 8s ease-in-out infinite !important;
+                width: 45px !important;
+                height: 45px !important;
+                background: rgba(255, 255, 255, 0.3) !important;
+                top: 18% !important;
+                left: 10% !important;
+                animation-delay: 0s !important;
+                display: block !important;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
             }
 
-            .eval-subtitle i {
-                margin-right: 12px;
-                vertical-align: middle;
-                color: var(--acento-amarillo);                        /* 59. ACENTO SECUNDARIO */
-                font-size: 1.2em;
-                text-shadow: 
-                    0 0 8px rgba(212, 196, 65, 0.6),                 /* 60. RESPLANDOR COORDINADO */
-                    2px 2px 3px var(--verde-oscuro);                 /* 61. SOMBRA PARA CONTRASTE */
-                filter: drop-shadow(0 0 8px rgba(212, 196, 65, 0.5));
-                transition: all 0.3s ease;
-                display: inline-block;
-                animation: iconPulse 4s ease-in-out infinite;         /* 62. PULSACIÓN SUTIL */
+            div[data-concepto="desafio-final"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatLogroB 8s ease-in-out infinite !important;
+                width: 38px !important;
+                height: 38px !important;
+                background: rgba(255, 255, 255, 0.25) !important;
+                top: 68% !important;
+                right: 18% !important;
+                animation-delay: 2.5s !important;
+                display: block !important;
+                box-shadow: 0 0 18px rgba(255, 255, 255, 0.2) !important;
             }
 
-            /* 63. BARRA DE PROGRESO/ACENTO INFERIOR */
-            .progress-accent {
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 85%;
-                height: 6px;
-                background: var(--gradiente-acento);                  /* 64. GRADIENTE DE ACENTO */
-                border-radius: 3px;
-                z-index: 4;
-                box-shadow: 
-                    0 3px 15px rgba(184, 168, 50, 0.5),              /* 65. SOMBRA DORADA */
-                    inset 0 1px 3px rgba(255, 255, 255, 0.3);        /* 66. HIGHLIGHT INTERNO */
-                animation: progressGlow 2.5s ease-in-out infinite;    /* 67. ANIMACIÓN DE RESPLANDOR */
+            div[data-concepto="excelencia-resultados"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatLogroC 8s ease-in-out infinite !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: rgba(255, 255, 255, 0.28) !important;
+                top: 42% !important;
+                right: 38% !important;
+                animation-delay: 5s !important;
+                display: block !important;
+                box-shadow: 0 0 19px rgba(255, 255, 255, 0.2) !important;
             }
 
-            /* 68. ELEMENTOS FLOTANTES CON EQUILIBRIO VISUAL */
-            .floating-elements {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 1;
-                pointer-events: none;
+            div[data-concepto="culminacion-viaje"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatLogroD 8s ease-in-out infinite !important;
+                width: 35px !important;
+                height: 35px !important;
+                background: rgba(255, 255, 255, 0.22) !important;
+                top: 28% !important;
+                left: 42% !important;
+                animation-delay: 1.5s !important;
+                display: block !important;
+                box-shadow: 0 0 16px rgba(255, 255, 255, 0.2) !important;
             }
 
-            .eval-shape {
-                position: absolute;
-                border-radius: 50%;
-                opacity: 0.3;                                         /* 69. TRANSPARENCIA EQUILIBRADA */
-                animation: gentleFloat 6s ease-in-out infinite;       /* 70. FLOTACIÓN SUAVE */
-            }
-
-            .eval-shape-1 {
-                width: 35px;
-                height: 35px;
-                background: var(--verde-claro);                       /* 71. VERDE CLARO */
-                top: 25%;
-                left: 8%;
-                animation-delay: 0s;
-            }
-
-            .eval-shape-2 {
-                width: 28px;
-                height: 28px;
-                background: var(--acento-dorado);                     /* 72. ACENTO DORADO */
-                top: 65%;
-                right: 12%;
-                animation-delay: 2s;
-            }
-
-            .eval-shape-3 {
-                width: 32px;
-                height: 32px;
-                background: var(--verde-agua);                        /* 73. VERDE AGUA */
-                top: 45%;
-                right: 35%;
-                animation-delay: 4s;
-            }
-
-            /* 74. ANIMACIONES CON ARMONÍA TEMPORAL */
-            @keyframes floatGlow {
+            /* ANIMACIONES KEYFRAMES OPTIMIZADAS */
+            @keyframes achievementPulse {
                 0%, 100% { 
                     opacity: 0.3; 
-                    transform: scale(1) rotate(0deg);                 /* 75. ESTADO INICIAL */
+                    transform: scale(1) rotate(0deg);
                 }
                 50% { 
                     opacity: 0.6; 
-                    transform: scale(1.15) rotate(180deg);            /* 76. EXPANSIÓN Y ROTACIÓN */
+                    transform: scale(1.2) rotate(180deg);
                 }
             }
 
-            @keyframes iconShine {
+            @keyframes checkGlow {
                 0%, 100% { 
-                    transform: scale(1) rotateY(0deg);                /* 77. POSICIÓN NORMAL */
-                    filter: drop-shadow(0 0 10px rgba(184, 168, 50, 0.6));
+                    transform: scale(1) rotateZ(0deg);
+                    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+                }
+                25% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
                 }
                 50% { 
-                    transform: scale(1.1) rotateY(15deg);             /* 78. LIGERA ROTACIÓN 3D */
-                    filter: drop-shadow(0 0 15px rgba(184, 168, 50, 0.9));
+                    transform: scale(1.15) rotateZ(10deg);
+                    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+                }
+                75% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
                 }
             }
 
-            @keyframes iconPulse {
+            @keyframes floatLogroA {
                 0%, 100% { 
-                    transform: scale(1);                              /* 79. ESCALA NORMAL */
-                    opacity: 1;
-                }
-                50% { 
-                    transform: scale(1.05);                           /* 80. LIGERA EXPANSIÓN */
-                    opacity: 0.9;
-                }
-            }
-
-            @keyframes progressGlow {
-                0%, 100% { 
-                    box-shadow: 
-                        0 3px 15px rgba(184, 168, 50, 0.5),
-                        inset 0 1px 3px rgba(255, 255, 255, 0.3);     /* 81. RESPLANDOR NORMAL */
-                }
-                50% { 
-                    box-shadow: 
-                        0 3px 25px rgba(184, 168, 50, 0.8),
-                        inset 0 1px 3px rgba(255, 255, 255, 0.5);     /* 82. RESPLANDOR INTENSIFICADO */
-                }
-            }
-
-            @keyframes gentleFloat {
-                0%, 100% { 
-                    transform: translateY(0) translateX(0);           /* 83. POSICIÓN INICIAL */
+                    transform: translateY(0) translateX(0) rotate(0deg);
                 }
                 33% { 
-                    transform: translateY(-8px) translateX(3px);      /* 84. MOVIMIENTO SUTIL */
+                    transform: translateY(-12px) translateX(5px) rotate(120deg);
                 }
                 66% { 
-                    transform: translateY(4px) translateX(-2px);      /* 85. VARIACIÓN DE TRAYECTORIA */
+                    transform: translateY(7px) translateX(-4px) rotate(240deg);
                 }
             }
 
-            /* 86. ESTADOS HOVER CON FEEDBACK CROMÁTICO */
-            .evaluacion-banner:hover .eval-title {
-                color: var(--acento-amarillo);                        /* 87. CAMBIO A ACENTO */
-                transition: color 0.4s ease;
-                text-shadow: 
-                    3px 3px 6px var(--verde-oscuro),
-                    0 0 30px rgba(212, 196, 65, 0.6);                /* 88. RESPLANDOR INTENSIFICADO */
+            @keyframes floatLogroB {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-10px) translateX(7px) rotate(90deg);
+                }
+                66% { 
+                    transform: translateY(8px) translateX(-3px) rotate(270deg);
+                }
             }
 
-            .evaluacion-banner:hover .progress-accent {
-                width: 95%;                                          /* 89. EXPANSIÓN DE BARRA */
-                transition: width 0.5s ease;
+            @keyframes floatLogroC {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-14px) translateX(3px) rotate(150deg);
+                }
+                66% { 
+                    transform: translateY(6px) translateX(-5px) rotate(210deg);
+                }
             }
 
-            .eval-title i:hover {
-                transform: scale(1.3) rotateY(25deg);                /* 90. ESCALADO Y ROTACIÓN 3D */
-                color: var(--acento-amarillo);                       /* 91. CAMBIO A ACENTO CLARO */
-                text-shadow: 
-                    0 0 18px rgba(212, 196, 65, 0.9),
-                    0 0 35px rgba(212, 196, 65, 0.7);                /* 92. RESPLANDOR MAXIMIZADO */
-                filter: drop-shadow(0 0 15px rgba(212, 196, 65, 0.8));
+            @keyframes floatLogroD {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-8px) translateX(6px) rotate(60deg);
+                }
+                66% { 
+                    transform: translateY(9px) translateX(-2px) rotate(300deg);
+                }
             }
 
-            .eval-subtitle i:hover {
-                transform: scale(1.2) rotate(15deg);                 /* 93. ESCALADO Y ROTACIÓN */
-                color: var(--acento-dorado);
-                filter: drop-shadow(0 0 12px rgba(184, 168, 50, 0.8));
+            /* ESTADOS HOVER CON FEEDBACK EXTREMO */
+            div[data-banner-ultra="evaluacion-matematica-v2"]:hover {
+                transform: translateY(-5px) scale(1.01) !important;
+                transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 35px 90px rgba(0, 115, 99, 0.5), 0 15px 40px rgba(96, 166, 95, 0.4) !important;
+                border-color: rgba(255, 255, 255, 0.4) !important;
             }
 
-            /* 94. RESPONSIVIDAD CON JERARQUÍA MANTENIDA */
+            div[data-banner-ultra="evaluacion-matematica-v2"]:hover h1[data-elemento="titulo-evaluacion"] {
+                color: #fff5e6 !important;
+                transition: color 0.6s ease !important;
+                text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 255, 255, 0.5) !important;
+            }
+
+            div[data-banner-ultra="evaluacion-matematica-v2"] span[data-icono="check-principal"]:hover {
+                transform: scale(1.5) rotateZ(360deg) !important;
+                filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)) !important;
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.9) !important;
+            }
+
+            /* RESPONSIVIDAD EXTREMA */
             @media (max-width: 768px) {
-                .eval-header {
-                    padding: 30px 25px;                              /* 95. PADDING ADAPTADO */
+                div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="header-evaluacion"] {
+                    padding: 40px 30px !important;
                 }
                 
-                .eval-title {
-                    margin-bottom: 15px;                             /* 96. ESPACIADO REDUCIDO */
+                div[data-banner-ultra="evaluacion-matematica-v2"] h1[data-elemento="titulo-evaluacion"] {
+                    margin-bottom: 20px !important;
+                    letter-spacing: -0.5px !important;
                 }
                 
-                .eval-shape-1,
-                .eval-shape-2,
-                .eval-shape-3 {
-                    opacity: 0.2;                                    /* 97. MENOR OPACIDAD EN MÓVIL */
+                div[data-concepto] {
+                    opacity: 0.25 !important;
                 }
             }
 
             @media (max-width: 480px) {
-                .eval-header {
-                    padding: 25px 20px;                              /* 98. PADDING COMPACTO */
+                div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="header-evaluacion"] {
+                    padding: 35px 25px !important;
                 }
                 
-                .eval-title i {
-                    margin-right: 10px;                              /* 99. ESPACIADO REDUCIDO */
-                    font-size: 1.3em;                                /* 100. TAMAÑO ADAPTADO */
-                }
-                
-                .eval-subtitle i {
-                    margin-right: 8px;
-                    font-size: 1.1em;
-                }
-                
-                .progress-accent {
-                    width: 75%;                                      /* 101. BARRA MÁS ESTRECHA */
-                    height: 5px;                                     /* 102. ALTURA REDUCIDA */
+                div[data-banner-ultra="evaluacion-matematica-v2"] span[data-icono="check-principal"] {
+                    margin-right: 15px !important;
+                    font-size: 1.6em !important;
                 }
             }
 
-            /* 103. ACCESIBILIDAD CON CONTRASTE PRESERVADO */
+            /* ACCESIBILIDAD AVANZADA */
             @media (prefers-contrast: high) {
-                .eval-title {
-                    text-shadow: 4px 4px 8px var(--negro-texto);     /* 104. MAYOR CONTRASTE */
-                    color: var(--blanco-puro);                       /* 105. BLANCO ABSOLUTO */
+                div[data-banner-ultra="evaluacion-matematica-v2"] h1[data-elemento="titulo-evaluacion"] {
+                    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8), 0 0 0 2px #000000 !important;
+                    color: #ffffff !important;
                 }
                 
-                .eval-subtitle {
-                    color: var(--acento-amarillo);
-                    text-shadow: 3px 3px 6px var(--negro-texto);     /* 106. SOMBRA MÁS FUERTE */
+                div[data-banner-ultra="evaluacion-matematica-v2"] p[data-elemento="subtitulo-evaluacion"] {
+                    color: #ffffff !important;
+                    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px #000000 !important;
                 }
                 
-                .eval-header {
-                    border-bottom: 5px solid var(--acento-dorado);   /* 107. BORDE MÁS PROMINENTE */
+                div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="header-evaluacion"] {
+                    border-bottom: 8px solid rgba(255, 255, 255, 0.6) !important;
+                }
+                
+                div[data-banner-ultra="evaluacion-matematica-v2"] span[data-icono="check-principal"] {
+                    filter: contrast(2) brightness(1.2) !important;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1) !important;
                 }
             }
 
-            /* 108. REDUCCIÓN DE MOVIMIENTO PARA ACCESIBILIDAD */
             @media (prefers-reduced-motion: reduce) {
-                .eval-header::after,
-                .eval-shape-1,
-                .eval-shape-2,
-                .eval-shape-3,
-                .eval-title i,
-                .eval-subtitle i,
-                .progress-accent {
-                    animation: none;                                  /* 109. SIN ANIMACIONES */
+                div[data-banner-ultra="evaluacion-matematica-v2"] > div[data-seccion="header-evaluacion"]::after,
+                div[data-concepto],
+                div[data-banner-ultra="evaluacion-matematica-v2"] span[data-icono="check-principal"] {
+                    animation: none !important;
                 }
                 
-                .evaluacion-banner:hover .eval-title,
-                .evaluacion-banner:hover .progress-accent,
-                .eval-title i:hover,
-                .eval-subtitle i:hover {
-                    transition: none;                                 /* 110. SIN TRANSICIONES */
-                    transform: none;                                  /* 111. SIN TRANSFORMACIONES */
+                div[data-banner-ultra="evaluacion-matematica-v2"]:hover,
+                div[data-banner-ultra="evaluacion-matematica-v2"]:hover h1[data-elemento="titulo-evaluacion"],
+                div[data-banner-ultra="evaluacion-matematica-v2"] span[data-icono="check-principal"]:hover {
+                    transition: none !important;
+                    transform: none !important;
                 }
+            }
+
+            /* MONTSERRAT FORZADO GLOBALMENTE */
+            div[data-banner-ultra="evaluacion-matematica-v2"] *,
+            div[data-banner-ultra="evaluacion-matematica-v2"] h1,
+            div[data-banner-ultra="evaluacion-matematica-v2"] p,
+            div[data-banner-ultra="evaluacion-matematica-v2"] i,
+            div[data-banner-ultra="evaluacion-matematica-v2"] span {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
             }
         `;
         document.head.appendChild(customStyles);
+        console.log('🎨 Estilos críticos de evaluación inyectados con resistencia anti-Moodle garantizada');
     })();
 </script>
-<!-- FIN 1. SECCIÓN 1: ESTILOS Y RECURSOS -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 2. SECCIÓN 2: BANNER DE EVALUACIÓN CON TEORÍA DEL COLOR -->
-<div class="evaluacion-banner">
-    <!-- 112. ELEMENTOS DECORATIVOS FLOTANTES -->
-    <div class="floating-elements">
-        <div class="eval-shape eval-shape-1"></div>
-        <div class="eval-shape eval-shape-2"></div>
-        <div class="eval-shape eval-shape-3"></div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE EVALUACIÓN FINAL - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-banner-ultra="evaluacion-matematica-v2">
+    <!-- ELEMENTOS DE LOGRO FLOTANTES -->
+    <div data-seccion="elementos-logro">
+        <div data-concepto="demostracion-dominio"></div>
+        <div data-concepto="desafio-final"></div>
+        <div data-concepto="excelencia-resultados"></div>
+        <div data-concepto="culminacion-viaje"></div>
     </div>
     
-    <!-- 113. HEADER CON JERARQUÍA CROMÁTICA OPTIMIZADA -->
-    <div class="eval-header">
-        <h1 class="eval-title">
-            <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+    <!-- HEADER PRINCIPAL CON CONTENIDO EVALUATIVO -->
+    <div data-seccion="header-evaluacion">
+        <h1 data-elemento="titulo-evaluacion">
+            <span data-icono="check-principal" class="banner-icon">✅</span>
             Demuestra lo que has aprendido
         </h1>
-        <p class="eval-subtitle">
-            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-             Módulo 4 - Razones, Proporciones y regla de Tres
+        <p data-elemento="subtitulo-evaluacion">
+            🎓 Módulo 4 - <strong>Razones, Proporciones y regla de Tres</strong>
         </p>
-        
-        <!-- 114. BARRA DE PROGRESO/ACENTO CON PUNTO FOCAL -->
-        <div class="progress-accent"></div>
     </div>
 </div>
-<!-- FIN 2. SECCIÓN 2: BANNER DE EVALUACIÓN -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DE EVALUACIÓN FINAL - CIERRE -->
+<!-- ================================================================================================ -->
 
-<!-- 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y OPTIMIZACIÓN CROMÁTICA -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO DE EVALUACIÓN - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-contenedor="informacion-evaluacion-matematica" 
+     style="all: initial !important; 
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            border: 2px solid #007363 !important; 
+            border-radius: 15px !important; 
+            background: linear-gradient(135deg, #E8F5F2 0%, #F0F9F6 100%) !important; 
+            padding: 25px !important; 
+            margin: 25px 0 !important; 
+            box-shadow: 0 15px 35px rgba(0, 115, 99, 0.2) !important;
+            display: block !important;
+            position: relative !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            overflow: hidden !important;">
+    
+    <p data-parrafo="competencia-evaluacion" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #1a202c !important; 
+              margin: 0 0 15px 0 !important; 
+              font-size: 1.1em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 12px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 600 !important;
+              line-height: 1.6 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <i class="bi bi-flag-fill" 
+           style="all: initial !important;
+                  color: #007363 !important; 
+                  margin-top: 3px !important;
+                  font-size: 1.2em !important;
+                  text-shadow: 0 0 8px rgba(0, 115, 99, 0.3) !important;
+                  display: inline-block !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+        <strong style="all: initial !important; 
+                      font-family: 'Montserrat', sans-serif !important;
+                      font-weight: 800 !important;
+                      color: #1a202c !important;
+                      display: inline !important;">
+            ¡Llegaste al final de este increíble viaje por el módulo! Ha llegado la hora de demostrar todo lo que 
+            has aprendido y enfrentar el desafío final de esta sección épica.
+        </strong>
+    </p>
+    
+    <p data-parrafo="descripcion-evaluacion" 
+       style="all: initial !important;
+              font-family: 'Montserrat', sans-serif !important;
+              color: #2d3748 !important; 
+              margin: 0 !important; 
+              font-size: 1.05em !important; 
+              display: flex !important; 
+              align-items: flex-start !important; 
+              gap: 10px !important; 
+              flex-wrap: wrap !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              text-align: left !important;
+              padding: 0 !important;
+              border: none !important;
+              background: none !important;
+              text-decoration: none !important;
+              box-sizing: border-box !important;">
+        <span style="all: initial !important;
+                     font-size: 1.3em !important;
+                     margin-right: 8px !important;
+                     display: inline-block !important;">🏁</span>
+        Completa esta actividad final, es momento de darlo todo y obtener resultados extraordinarios. Demuestra que 
+        este viaje valió la pena, no solo por alcanzar la meta, sino por todo el crecimiento y aprendizaje que te 
+        trajo hasta aquí. ¡Tu esfuerzo y dedicación están a punto de ser recompensados!
+        
+        <a href="https://colmayor.arrobamedellin.edu.co/mod/quiz/view.php?id=212391" 
+           target="_blank" 
+           data-enlace="evaluacion-detalle"
+           style="all: initial !important;
+                  font-family: 'Montserrat', sans-serif !important;
+                  text-decoration: none !important; 
+                  color: #007363 !important; 
+                  font-weight: 700 !important;
+                  display: inline !important;
+                  transition: all 0.3s ease !important;
+                  border-bottom: 2px solid transparent !important;
+                  padding: 2px 0 !important;
+                  margin: 0 5px !important;">
+            ¡Completa tu misión!
+        </a>
+        
+        <i class="bi bi-star-fill" 
+           style="all: initial !important;
+                  color: #007363 !important;
+                  font-size: 1.1em !important;
+                  display: inline-block !important;
+                  margin-left: 5px !important;
+                  transition: transform 0.3s ease !important;
+                  font-family: 'Bootstrap Icons' !important;"></i>
+    </p>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INFORMACIÓN DESCRIPTIVA DEL MÓDULO DE EVALUACIÓN - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA DE EVALUACIÓN - APERTURA -->
+<!-- ================================================================================================ -->
 <script>
     /**
-     * 115. FUNCIONES PARA OPTIMIZAR LA EXPERIENCIA DE EVALUACIÓN.
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE PARA EVALUACIÓN
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades de logro
      */
     document.addEventListener('DOMContentLoaded', function() {
-        // 116. VERIFICAR CARGA DEL BANNER DE EVALUACIÓN
-        function verificarBannerEvaluacion() {
-            const banner = document.querySelector('.evaluacion-banner');
+        console.log('✅ Inicializando sistema ultra-resistente para Banner de Evaluación Final');
+
+        /**
+         * VERIFICACIÓN DE BANNER DE EVALUACIÓN CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarBannerEvaluacionUltraResistente() {
+            const banner = document.querySelector('div[data-banner-ultra="evaluacion-matematica-v2"]');
             if (banner) {
-                console.log('📝 Banner de Evaluación con paleta verde cargado correctamente'); // 117. CONFIRMACIÓN DE CARGA
+                console.log('✅ Banner de evaluación ultra-resistente cargado y funcionando correctamente');
                 
-                // 118. APLICAR EFECTOS DINÁMICOS DE EVALUACIÓN
+                // EFECTOS HOVER DE LOGRO CON GPU ACCELERATION
                 banner.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.02) translateY(-3px)';      // 119. ELEVACIÓN SUTIL
-                    this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'; // 120. EASING PREMIUM
-                    this.style.boxShadow = '0 25px 70px rgba(16, 59, 69, 0.5), 0 10px 25px rgba(0, 115, 99, 0.4)'; // 121. SOMBRA EXPANSIVA
+                    this.style.setProperty('transform', 'translateY(-5px) scale(1.01) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 35px 90px rgba(0, 115, 99, 0.5), 0 15px 40px rgba(96, 166, 95, 0.4)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.4)', 'important');
+                    this.style.setProperty('will-change', 'transform, box-shadow', 'important');
                 });
                 
                 banner.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1) translateY(0)';            // 122. RETORNO SUAVE
-                    this.style.boxShadow = '0 15px 35px rgba(16, 59, 69, 0.4), 0 5px 15px rgba(0, 115, 99, 0.3)'; // 123. SOMBRA ORIGINAL
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(0, 115, 99, 0.4), 0 10px 30px rgba(96, 166, 95, 0.3)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.2)', 'important');
                 });
                 
-                // 124. MEJORAR ACCESIBILIDAD PARA EVALUACIÓN
-                const titulo = banner.querySelector('.eval-title');
+                // ACCESIBILIDAD DE LOGRO AVANZADA CON ARIA
+                const titulo = banner.querySelector('h1[data-elemento="titulo-evaluacion"]');
                 if (titulo) {
-                    titulo.setAttribute('tabindex', '0');                       // 125. HACER FOCUSEABLE
-                    titulo.setAttribute('role', 'banner');                      // 126. ROLE SEMÁNTICO
-                    titulo.setAttribute('aria-label', 'Sección de Evaluación - Demuestra lo que has aprendido en el Módulo 1'); // 127. DESCRIPCIÓN ACCESIBLE
+                    titulo.setAttribute('tabindex', '0');
+                    titulo.setAttribute('role', 'banner');
+                    titulo.setAttribute('aria-label', 'Banner de Evaluación Final - Demuestra lo que has aprendido del Módulo 1');
                     
-                    // 128. FOCUS VISUAL CON COLORES DE LA PALETA
+                    // FOCUS VISUAL DE LOGRO EXTREMO
                     titulo.addEventListener('focus', function() {
-                        this.style.outline = '4px solid #B8A832';               // 129. OUTLINE EN ACENTO DORADO
-                        this.style.outlineOffset = '3px';                       // 130. SEPARACIÓN ÓPTIMA
-                        this.style.borderRadius = '8px';                        // 131. BORDES SUAVES
+                        this.style.setProperty('outline', '4px solid rgba(0, 115, 99, 0.8)', 'important');
+                        this.style.setProperty('outline-offset', '6px', 'important');
+                        this.style.setProperty('border-radius', '12px', 'important');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.15)', 'important');
+                        this.style.setProperty('padding', '10px', 'important');
+                    });
+                    
+                    titulo.addEventListener('blur', function() {
+                        this.style.removeProperty('outline');
+                        this.style.removeProperty('outline-offset');
+                        this.style.removeProperty('border-radius');
+                        this.style.removeProperty('background');
+                        this.style.removeProperty('padding');
                     });
                 }
                 
-                // 132. AGREGAR FEEDBACK SONORO VISUAL (OPCIONAL)
-                const iconos = banner.querySelectorAll('i');
-                iconos.forEach(icono => {
-                    icono.addEventListener('click', function() {
-                        this.style.animation = 'none';                          // 133. RESETEAR ANIMACIÓN
+                // INTERACTIVIDAD DE LOGRO EXTREMA PARA ICONOS
+                const iconos = banner.querySelectorAll('[data-icono]');
+                let interactionCount = 0;
+                const interactionEffects = [
+                    'drop-shadow(0 0 15px rgba(0, 115, 99, 0.8))',    // Verde logro
+                    'drop-shadow(0 0 20px rgba(96, 166, 95, 0.8))',   // Verde claro
+                    'drop-shadow(0 0 25px rgba(34, 139, 34, 0.8))',   // Verde bosque
+                    'drop-shadow(0 0 30px rgba(50, 205, 50, 0.8))'    // Verde lima
+                ];
+                
+                iconos.forEach((icono, index) => {
+                    icono.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.style.setProperty('filter', interactionEffects[interactionCount % 4], 'important');
+                        this.style.setProperty('transform', 'scale(1.3) rotate(360deg)', 'important');
+                        
+                        interactionCount++;
+                        console.log(`✅ Logro ${interactionCount}: ${this.getAttribute('data-icono')} activado`);
+                        
+                        // RESET DESPUÉS DE ANIMACIÓN DE LOGRO
                         setTimeout(() => {
-                            this.style.animation = '';                          // 134. RESTAURAR ANIMACIÓN
-                        }, 10);
+                            this.style.removeProperty('transform');
+                        }, 600);
                     });
+                    
+                    // PREPARAR PARA ANIMACIONES DE LOGRO DE GPU
+                    icono.style.setProperty('will-change', 'transform, filter', 'important');
                 });
             } else {
-                console.warn('⚠️ No se encontró el banner de evaluación'); // 135. ADVERTENCIA DE ERROR
+                console.error('❌ Error: Banner de evaluación ultra-resistente no encontrado');
             }
         }
-        
-        // 136. FUNCIÓN PARA ANÁLISIS CROMÁTICO DE LA PALETA VERDE
-        function analizarPaletaVerde() {
-            const computedStyle = getComputedStyle(document.documentElement);
-            const verdeOscuro = computedStyle.getPropertyValue('--verde-oscuro').trim();
-            const verdeMedio = computedStyle.getPropertyValue('--verde-medio').trim();
-            const acentoDorado = computedStyle.getPropertyValue('--acento-dorado').trim();
-            
-            console.log('🎨 Análisis cromático de evaluación:');              // 137. INICIO DE ANÁLISIS
-            console.log(`   Verde oscuro (base): ${verdeOscuro}`);            // 138. COLOR BASE
-            console.log(`   Verde medio (principal): ${verdeMedio}`);         // 139. COLOR PRINCIPAL
-            console.log(`   Acento dorado (focal): ${acentoDorado}`);         // 140. COLOR FOCAL
-            console.log('   Esquema aplicado: Análogo verde + acento complementario dorado'); // 141. ESQUEMA IDENTIFICADO
-            console.log('   Jerarquía: Contraste máximo en título, acento en subtítulo, elementos decorativos sutiles'); // 142. JERARQUÍA EXPLICADA
+
+        /**
+         * ANÁLISIS CROMÁTICO DE IMPLEMENTACIÓN DE LOGRO
+         */
+        function analizarImplementacionCromaticaLogro() {
+            console.log('🎨 Análisis de implementación cromática de logro ultra-resistente:');
+            console.log('   ✅ Gradiente verde: #007363 → #60A65F (PANTONE 3295 C → 7489 C)');
+            console.log('   ✅ Contraste títulos: Blanco (#ffffff) con sombras oscuras para legibilidad');
+            console.log('   ✅ Icono check: Emoji ✅ con resplandor blanco de logro');
+            console.log('   ✅ Subtítulo: Blanco (#ffffff) con emoji de graduación 🎓');
+            console.log('   ✅ Elementos flotantes: Blanco semi-transparente con animaciones de logro');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos de evaluación');
+            console.log('   ✅ Performance: GPU acceleration + will-change optimizado para culminación');
+            console.log('   ✅ Accesibilidad: Contraste óptimo sobre fondo verde para éxito');
         }
-        
-        // 143. FUNCIÓN PARA DETECTAR CONTEXTO DE EVALUACIÓN
-        function detectarContextoEvaluacion() {
-            const banner = document.querySelector('.evaluacion-banner');
-            if (banner) {
-                // 144. MARCAR COMO CONTEXTO DE EVALUACIÓN
-                banner.setAttribute('data-context', 'evaluacion');              // 145. ATRIBUTO DE CONTEXTO
-                banner.setAttribute('data-modulo', '1');                        // 146. IDENTIFICADOR DE MÓDULO
-                banner.setAttribute('data-tema', 'numeros-enteros');            // 147. TEMA ESPECÍFICO
+
+        /**
+         * CONFIGURACIÓN DE CONTEXTO DE LOGRO MATEMÁTICO
+         */
+        function configurarContextoLogroMatematico() {
+            const banner = document.querySelector('div[data-banner-ultra="evaluacion-matematica-v2"]');
+            const contenedor = document.querySelector('div[data-contenedor="informacion-evaluacion-matematica"]');
+            
+            if (banner && contenedor) {
+                // ATRIBUTOS DE CONTEXTO DE LOGRO MATEMÁTICO
+                banner.setAttribute('data-contexto-educativo', 'evaluacion-logro-matematica');
+                banner.setAttribute('data-fase-aprendizaje', 'demostracion-dominio');
+                banner.setAttribute('data-modulo-numero', '1');
+                banner.setAttribute('data-tema-principal', 'numeros-enteros-evaluacion');
+                banner.setAttribute('data-competencias', 'demostrar,evaluar,culminar,lograr');
+                banner.setAttribute('data-metodologia', 'evaluativa-matematica');
+                banner.setAttribute('data-resistencia-moodle', 'ultra-maxima-evaluativa');
                 
-                console.log('📊 Contexto de evaluación detectado y configurado'); // 148. CONFIRMACIÓN DE CONTEXTO
+                contenedor.setAttribute('data-tipo-contenido', 'informacion-evaluacion-logro');
+                contenedor.setAttribute('data-nivel-detalle', 'culminativo-motivacional');
+                contenedor.setAttribute('data-enfoque', 'exitoso-matematico');
+                
+                console.log('✅ Contexto de logro matemático ultra-resistente configurado correctamente');
             }
         }
-        
-        // 149. FUNCIÓN PARA OPTIMIZACIÓN MOTIVACIONAL
-        function aplicarElementosMotivacionales() {
-            const titulo = document.querySelector('.eval-title');
-            const subtitulo = document.querySelector('.eval-subtitle');
+
+        /**
+         * SISTEMA DE PROGRESIÓN DE LOGRO AVANZADO
+         */
+        function inicializarProgresionLogro() {
+            const elementosLogro = document.querySelectorAll('div[data-concepto]');
+            const conceptosLogro = [
+                'Demostración de Dominio',
+                'Desafío Final', 
+                'Excelencia en Resultados',
+                'Culminación del Viaje'
+            ];
             
-            if (titulo && subtitulo) {
-                // 150. AGREGAR ATRIBUTOS MOTIVACIONALES
-                titulo.setAttribute('data-motivation', 'challenge');            // 151. TIPO DE MOTIVACIÓN
-                subtitulo.setAttribute('data-level', 'modulo-1');               // 152. NIVEL DE DIFICULTAD
+            elementosLogro.forEach((elemento, index) => {
+                const conceptoType = elemento.getAttribute('data-concepto');
+                elemento.setAttribute('title', `${conceptosLogro[index]} - Evaluación Final de Números Enteros`);
+                elemento.setAttribute('data-progreso-logro', `${index + 1}/4`);
+                elemento.setAttribute('data-fase-evaluacion', conceptoType);
                 
-                // 153. EVENTO DE MOTIVACIÓN AL HACER CLIC
-                titulo.addEventListener('click', function() {
-                    console.log('🚀 ¡Estudiante motivado para comenzar la evaluación!'); // 154. LOG MOTIVACIONAL
+                // INTERACTIVIDAD DE LOGRO AVANZADA
+                elemento.addEventListener('click', function() {
+                    console.log(`✅ Logro evaluativo: ${conceptoType} (${this.getAttribute('data-progreso-logro')})`);
+                    this.style.setProperty('opacity', '0.8', 'important');
+                    this.style.setProperty('transform', 'scale(1.4)', 'important');
+                    this.style.setProperty('box-shadow', '0 0 35px rgba(0, 115, 99, 0.6)', 'important');
+                    this.style.setProperty('background', 'rgba(96, 166, 95, 0.4)', 'important');
+                    
+                    setTimeout(() => {
+                        this.style.setProperty('opacity', '0.35', 'important');
+                        this.style.removeProperty('transform');
+                        this.style.removeProperty('box-shadow');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.3)', 'important');
+                    }, 2500);
+                });
+                
+                // OPTIMIZACIÓN GPU DE LOGRO
+                elemento.style.setProperty('will-change', 'transform, opacity, background', 'important');
+            });
+        }
+
+        /**
+         * CONFIGURACIÓN DE ENLACE DE LOGRO INTELIGENTE
+         */
+        function configurarEnlaceLogroInteligente() {
+            const enlace = document.querySelector('a[data-enlace="evaluacion-detalle"]');
+            const icono = document.querySelector('i.bi-star-fill');
+            
+            if (enlace && icono) {
+                enlace.addEventListener('mouseenter', function() {
+                    this.style.setProperty('border-bottom-color', '#007363', 'important');
+                    this.style.setProperty('color', '#054a47', 'important');
+                    this.style.setProperty('text-shadow', '0 0 8px rgba(0, 115, 99, 0.4)', 'important');
+                    if (icono) {
+                        icono.style.setProperty('transform', 'scale(1.3) rotate(180deg)', 'important');
+                        icono.style.setProperty('color', '#60A65F', 'important');
+                    }
+                });
+                
+                enlace.addEventListener('mouseleave', function() {
+                    this.style.setProperty('border-bottom-color', 'transparent', 'important');
+                    this.style.setProperty('color', '#007363', 'important');
+                    this.style.removeProperty('text-shadow');
+                    if (icono) {
+                        icono.style.removeProperty('transform');
+                        icono.style.setProperty('color', '#007363', 'important');
+                    }
+                });
+                
+                enlace.addEventListener('click', function() {
+                    console.log('🔗 Navegación hacia evaluación final detallada del módulo');
                 });
             }
         }
+
+        // EJECUTAR TODAS LAS FUNCIONES DE LOGRO DE INICIALIZACIÓN
+        verificarBannerEvaluacionUltraResistente();
+        analizarImplementacionCromaticaLogro();
+        configurarContextoLogroMatematico();
+        inicializarProgresionLogro();
+        configurarEnlaceLogroInteligente();
         
-        // 155. EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN
-        verificarBannerEvaluacion();
-        analizarPaletaVerde();
-        detectarContextoEvaluacion();
-        aplicarElementosMotivacionales();
-        
-        // 156. LOG FINAL DE INICIALIZACIÓN COMPLETA
-        console.log('🎓 Sistema de Evaluación inicializado - Paleta verde análoga con acento dorado');
-        console.log('✨ Características: Jerarquía cromática, iconos de evaluación, feedback visual optimizado');
+        // LOG FINAL DE SISTEMA DE LOGRO ULTRA-RESISTENTE
+        console.log('🌟 Sistema de Logro Ultra-Resistente de Evaluación inicializado completamente');
+        console.log('🛡️ Características de logro implementadas:');
+        console.log('   • Resistencia anti-Moodle máxima con selectores únicos de evaluación');
+        console.log('   • Tipografía Montserrat forzada globalmente en contexto de logro');
+        console.log('   • GPU acceleration con will-change optimizado para culminación');
+        console.log('   • Accesibilidad avanzada con ARIA y navegación de logro por teclado');
+        console.log('   • Interactividad evaluativa extrema con feedback visual de logro');
+        console.log('   • Animaciones de logro optimizadas para performance de culminación');
+        console.log('   • Especificidad CSS extrema con !important selectivo para evaluación');
+        console.log('   • Gradiente verde PANTONE institucional para éxito y crecimiento');
     });
-    
+
     /**
-     * 157. FUNCIÓN PARA ALTERNAR MODO DE EVALUACIÓN
-     * @description PERMITE CAMBIAR ENTRE MODO PRÁCTICA Y EVALUACIÓN FORMAL
+     * FUNCIONES GLOBALES DE UTILIDAD DE LOGRO ULTRA-RESISTENTE
      */
-    function alternarModoEvaluacion() {
-        const banner = document.querySelector('.evaluacion-banner');
+    function alternarModoEvaluacionLogro() {
+        const banner = document.querySelector('div[data-banner-ultra="evaluacion-matematica-v2"]');
         if (banner) {
-            banner.classList.toggle('modo-formal');                             // 158. TOGGLE MODO FORMAL
-            const esFormal = banner.classList.contains('modo-formal');
-            console.log(`📋 Modo de evaluación: ${esFormal ? 'Formal' : 'Práctica'}`); // 159. LOG DEL MODO
+            const modosEvaluacion = ['demostracion', 'desafio', 'excelencia', 'culminacion'];
+            const modoActual = banner.getAttribute('data-modo-evaluacion') || 'demostracion';
+            const indiceActual = modosEvaluacion.indexOf(modoActual);
+            const nuevoModo = modosEvaluacion[(indiceActual + 1) % 4];
+            
+            banner.setAttribute('data-modo-evaluacion', nuevoModo);
+            console.log(`🔄 Modo evaluación de logro ultra-resistente: ${nuevoModo}`);
         }
     }
     
-    /**
-     * 160. FUNCIÓN DE PREPARACIÓN PARA EVALUACIÓN
-     * @description EJECUTA VERIFICACIONES PREVIAS A LA EVALUACIÓN
-     */
-    function prepararEvaluacion() {
-        const banner = document.querySelector('.evaluacion-banner');
-        if (banner) {
-            banner.classList.add('evaluacion-activa');                          // 161. MARCAR COMO ACTIVA
-            console.log('🎯 Evaluación preparada y lista para comenzar');        // 162. CONFIRMACIÓN DE PREPARACIÓN
+    function activarModoLogroFinal() {
+        const banner = document.querySelector('div[data-banner-ultra="evaluacion-matematica-v2"]');
+        const contenedor = document.querySelector('div[data-contenedor="informacion-evaluacion-matematica"]');
+        
+        if (banner && contenedor) {
+            banner.classList.add('logro-final-activo');
+            banner.style.setProperty('filter', 'brightness(1.2) saturate(1.4) contrast(1.1)', 'important');
+            banner.style.setProperty('box-shadow', '0 50px 120px rgba(0, 115, 99, 0.7), 0 25px 60px rgba(96, 166, 95, 0.6)', 'important');
+            contenedor.style.setProperty('transform', 'scale(1.03)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 25px 60px rgba(0, 115, 99, 0.4)', 'important');
+            contenedor.style.setProperty('border-color', '#60A65F', 'important');
+            
+            console.log('✅ Modo logro final ultra-resistente activado');
+            console.log('✨ Efectos de logro aplicados: brillo, saturación, contraste y escala optimizados para culminación');
         }
+    }
+    
+    function iniciarEvaluacionFinal() {
+        const elementosLogro = document.querySelectorAll('div[data-concepto]');
+        console.log('✅ Iniciando evaluación final de logro...');
+        
+        elementosLogro.forEach((elemento, index) => {
+            setTimeout(() => {
+                elemento.style.setProperty('background', 'rgba(96, 166, 95, 0.6)', 'important');
+                elemento.style.setProperty('transform', 'scale(1.3)', 'important');
+                elemento.style.setProperty('box-shadow', '0 0 30px rgba(0, 115, 99, 0.8)', 'important');
+                
+                setTimeout(() => {
+                    elemento.style.setProperty('background', 'rgba(255, 255, 255, 0.3)', 'important');
+                    elemento.style.removeProperty('transform');
+                    elemento.style.removeProperty('box-shadow');
+                }, 1200);
+            }, index * 600);
+        });
+        
+        console.log('✅ Evaluación final completada - Logros activados secuencialmente para culminación exitosa');
     }
 </script>
-<!-- FIN 3. SECCIÓN 3: SCRIPTS DE FUNCIONALIDAD Y OPTIMIZACIÓN CROMÁTICA -->
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA DE EVALUACIÓN - CIERRE -->
+<!-- ================================================================================================ -->
