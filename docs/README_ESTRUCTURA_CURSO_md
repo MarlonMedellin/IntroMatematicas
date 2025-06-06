@@ -1,0 +1,105 @@
+# Resumen Integral del Curso Introductorio de Matemáticas  
+**Colegio Mayor de Antioquia**
+
+---
+
+## 1. Contenido
+
+- **6 módulos temáticos**: Números enteros, Números primos y MCM/MCD, Números racionales, Razones y proporciones, Sistemas de medida, Potenciación y radicación.
+- **Cobertura progresiva**: Desde operaciones básicas hasta aplicaciones matemáticas en contextos profesionales (gastronomía, laboratorio, turismo, arquitectura, etc.).
+- **Recursos**: Diapositivas, flashcards, juegos interactivos ("Space Shooter"), problemas contextualizados, autoevaluaciones.
+
+---
+
+## 2. Competencias y Objetivos
+
+- **Competencias**:  
+  - Resolver operaciones con enteros, fracciones, decimales y porcentajes.
+  - Aplicar criterios de divisibilidad, factorización, MCD y MCM.
+  - Utilizar sistemas de medidas y realizar conversiones.
+  - Modelar situaciones reales con potenciación y radicación.
+  - Desarrollar pensamiento lógico, agilidad matemática y capacidad de resolución de problemas.
+- **Objetivo general**: Nivelar y fortalecer las bases matemáticas para el éxito académico universitario y profesional.
+
+---
+
+## 3. Metodológico
+
+- **MOOC**: Curso auto-gestionable, abierto, asincrónico y flexible.
+- **Gamificación**: Uso de juegos, retos, badges, feedback inmediato y rankings para motivar la participación.
+- **Aprendizaje activo**: Basado en exploración, práctica, resolución de problemas y autoevaluación.
+- **Aprendizaje significativo y contextualizado**: Vinculación constante con aplicaciones reales y escenarios profesionales.
+- **Recursos visuales y usabilidad**: Diapositivas animadas, tarjetas, iconografía temática, accesibilidad móvil.
+
+---
+
+## 4. Estructural
+
+- **Organización modular**: 6 módulos, cada uno con 4 sesiones didácticas (Introducción, Exploración, Consolidación, Evaluación).
+- **Secuencia didáctica clara**:  
+  - Motivación y contextualización.
+  - Descubrimiento y explicación visual.
+  - Práctica guiada y gamificada.
+  - Evaluación y retroalimentación.
+- **Banco de actividades**:  
+  - Flashcards (memorización y repaso conceptual).
+  - Juegos tipo arcade (operaciones rápidas).
+  - Problemas contextualizados por área profesional.
+
+---
+
+## 5. Otros Aspectos Identificados
+
+- **Inclusión y transversalidad**: Aplicaciones en múltiples carreras y contextos.
+- **Accesibilidad**: Diseño responsive, materiales visuales, lenguaje claro.
+- **Autoevaluación y feedback**: Retroalimentación inmediata en todas las actividades.
+- **Cultura del error**: Enfoque en el aprendizaje a partir del error, sin penalización.
+- **Preparación para la vida universitaria**: Fomenta autonomía y competencias digitales básicas.
+
+---
+
+# Resumen Técnico
+
+---
+
+## 1. Lógica
+
+- **Navegación modular**: Acceso libre a módulos y sesiones, avance auto-dirigido.
+- **Evaluaciones autocalificables**: Respuestas validadas automáticamente, sin intervención docente directa.
+- **Gamificación lógica**: Puntuación, badges, desbloqueo de niveles, feedback positivo por logros.
+- **Integración de juegos**: Lógica de preguntas aleatorias, temporizadores, y progresión adaptativa.
+
+---
+
+## 2. Tecnologías Usadas
+
+- **Frontend**:  
+  - HTML5 y CSS3 (+ Tailwind CSS para diseño responsivo y visual atractivo).
+  - JavaScript para interactividad, animaciones y lógica de juegos.
+  - Iconografía: FontAwesome.
+  - Google Fonts (Montserrat).
+- **Gamificación**:  
+  - Juegos desarrollados en JavaScript embebido.
+  - Lógica de flashcards y arcade en el navegador.
+- **MOOC delivery**:  
+  - Curso alojado en entorno web, compatible con dispositivos móviles y escritorio.
+  - No requiere instalación de apps externas.
+- **Accesibilidad**:  
+  - Diseño responsive.
+  - Contrastes visuales y organización jerárquica del contenido.
+
+---
+
+## 3. Otros Aspectos Técnicos
+
+- **Estructura de archivos**: Modularizada por temas y actividades.
+- **Escalabilidad**: Fácil extensión de nuevos módulos o actividades.
+- **Feedback inmediato**: Validación de respuestas y retroalimentación en el frontend.
+- **Integración con plataformas institucionales**: Posible adaptación a LMS o repositorios institucionales.
+- **Soporte offline parcial**: Recursos estáticos pueden ser consultados sin conexión permanente.
+- **Mantenimiento y actualización**: Código y recursos fácilmente editables para docentes o desarrolladores.
+
+---
+
+**En síntesis:**  
+Tu curso es un MOOC gamificado, modular, visual y altamente interactivo, que combina rigor matemático con metodologías de vanguardia y tecnologías web modernas, orientado a la nivelación, motivación y éxito de los estudiantes de primer semestre en el Colegio Mayor de Antioquia.
