@@ -175,3 +175,11 @@
 **Total: 36 parejas de flashcards**
 **Formato:** Cada definición contiene exactamente 10 palabras
 **Uso:** Juego educativo de memorización y refuerzo conceptual
+
+el archivo tiene 36 preguntas en las que se da un concepto/definición. hay seis preguntas por cada uno de seis modulos para un total de 36 preguntas. 
+necesito que me ayudes a
+1. convertir estas preguntas en preguntas de seleccion multiple con unica respuesta
+2. crear dos distractores plausibles por cada una de las 36 preguntas
+3. los distractores plausibles deben ser similares en estuctura gramatical a la respuesta correcta
+4. marcar la primer opcion de cada una de las 36 preguntas como **respuesta correcta**
+5. agrega un subtitulo en cada modulo con la plabra **FlashCard Modulo#** con # de 1 a 6

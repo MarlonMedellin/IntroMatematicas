@@ -1,0 +1,50 @@
+// question: 0  name: Switch category to $course$/top/html
+$CATEGORY: $course$/top/html
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard
+$CATEGORY: $course$/top/html/FlashCard
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_3
+$CATEGORY: $course$/top/html/FlashCard/Modulo_3
+
+// question: 13  name: numeros_racionales
+::numeros_racionales::¿Cuál es la definición de Números Racionales? {
+= Números expresables como cociente de dos enteros, denominador diferente cero. #¡Correcto! Los números racionales (ℚ) se escriben como a/b donde a y b son enteros y b ≠ 0. Incluyen fracciones como 3/4, enteros como 5/1, y decimales finitos como 0.5 = 1/2.
+~ Números expresables como cociente de dos enteros, denominador igual cero. #Incorrecto. La división entre cero no está definida en matemáticas. El denominador siempre debe ser diferente de cero para que la fracción tenga sentido.
+~ Números expresables como producto de dos enteros, denominador diferente cero. #Incorrecto. Los racionales se definen como cociente (división), no como producto (multiplicación). El producto de enteros siempre da otro entero.
+}
+
+// question: 14  name: fracciones_equivalentes
+::fracciones_equivalentes::¿Cuál es la definición de Fracciones Equivalentes? {
+= Fracciones que representan la misma cantidad con numeradores denominadores. #¡Correcto! Las fracciones equivalentes tienen el mismo valor pero diferentes numeradores y denominadores. Por ejemplo: 1/2 = 2/4 = 3/6 = 4/8. Se obtienen multiplicando o dividiendo por el mismo número.
+~ Fracciones que representan diferente cantidad con numeradores denominadores iguales. #Incorrecto. Si tienen numeradores y denominadores iguales, son fracciones idénticas, no equivalentes. Las equivalentes tienen diferente apariencia pero igual valor.
+~ Fracciones que representan la misma cantidad con numeradores denominadores iguales. #Incorrecto. Si numeradores y denominadores son iguales, las fracciones son idénticas. Las equivalentes tienen diferente forma pero mismo valor.
+}
+
+// question: 15  name: simplificacion
+::simplificacion::¿Cuál es la definición de Simplificación? {
+= Reducir fracción dividiendo numerador denominador por su máximo común. #¡Correcto! Simplificar significa dividir numerador y denominador por su MCD para obtener la fracción más simple. Por ejemplo: 12/18 ÷ 6 = 2/3.
+~ Aumentar fracción dividiendo numerador denominador por su máximo común. #Incorrecto. Simplificar significa reducir o hacer más simple, no aumentar. El proceso busca la expresión más básica de la fracción.
+~ Reducir fracción multiplicando numerador denominador por su máximo común. #Incorrecto. Multiplicar por el MCD haría la fracción más compleja, no más simple. La simplificación requiere división, no multiplicación.
+}
+
+// question: 16  name: fraccion_propia
+::fraccion_propia::¿Cuál es la definición de Fracción Propia? {
+= Fracción donde el numerador es menor que el denominador. #¡Correcto! Las fracciones propias representan valores menores que 1. Ejemplos: 3/4, 5/8, 2/7. Su valor decimal siempre es menor que 1.0.
+~ Fracción donde el numerador es mayor que el denominador. #Incorrecto. Esta definición corresponde a fracciones impropias. Cuando el numerador es mayor, el valor es mayor que 1.
+~ Fracción donde el numerador es igual que el denominador. #Incorrecto. Cuando numerador y denominador son iguales, la fracción vale exactamente 1, no es propia ni impropia en sentido estricto.
+}
+
+// question: 17  name: fraccion_impropia
+::fraccion_impropia::¿Cuál es la definición de Fracción Impropia? {
+= Fracción donde el numerador es mayor que el denominador. #¡Correcto! Las fracciones impropias representan valores mayores que 1. Ejemplos: 7/4, 9/5, 11/3. Pueden convertirse a números mixtos como 7/4 = 1¾.
+~ Fracción donde el numerador es menor que el denominador. #Incorrecto. Esta definición corresponde a fracciones propias. Cuando el numerador es menor, el valor es menor que 1.
+~ Fracción donde el numerador es igual que el denominador. #Incorrecto. Cuando son iguales, la fracción vale exactamente 1. Para ser impropia, el numerador debe ser estrictamente mayor.
+}
+
+// question: 18  name: numero_decimal
+::numero_decimal::¿Cuál es la definición de Número Decimal? {
+= Representación de fracciones mediante una expresión con punto decimal. #¡Correcto! Los números decimales expresan fracciones usando punto decimal. Por ejemplo: 0.75 = 3/4, 0.5 = 1/2. Pueden ser finitos (0.25) o infinitos periódicos (0.333...).
+~ Representación de fracciones mediante una expresión con coma decimal. #Incorrecto. Aunque algunos países usan coma decimal, la definición estándar y más universal utiliza punto decimal como separador.
+~ Representación de enteros mediante una expresión con punto decimal. #Incorrecto. Los números decimales representan específicamente fracciones, no enteros. Los enteros no necesitan punto decimal para su representación.
+}

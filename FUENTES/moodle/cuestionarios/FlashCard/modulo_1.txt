@@ -1,0 +1,50 @@
+// question: 0  name: Switch category to $course$/top/html
+$CATEGORY: $course$/top/html
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard
+$CATEGORY: $course$/top/html/FlashCard
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_1
+$CATEGORY: $course$/top/html/FlashCard/Modulo_1
+
+// question: 1  name: numeros_enteros
+::numeros_enteros::¿Cuál es la definición de Números Enteros? {
+=Conjunto que incluye números positivos, negativos y el cero. #¡Correcto! Los números enteros (ℤ) incluyen todos los números positivos (+1, +2, +3...), todos los números negativos (-1, -2, -3...) y el cero (0). Este conjunto es fundamental en matemáticas.
+~Conjunto que incluye solo números positivos y el cero únicamente. #Incorrecto. Esta definición excluye los números negativos, que son parte esencial del conjunto de números enteros. Los enteros incluyen positivos, negativos y cero.
+~Conjunto que incluye números fraccionarios, decimales y el cero. #Incorrecto. Esta definición corresponde más a los números racionales. Los enteros son solo números "completos" sin partes fraccionarias.
+}
+
+// question: 2  name: valor_absoluto
+::valor_absoluto::¿Cuál es la definición de Valor Absoluto? {
+=Distancia de un número al cero en la recta. #¡Correcto! El valor absoluto siempre es positivo porque representa distancia. Por ejemplo, |−5| = 5 y |5| = 5, ambos están a 5 unidades del cero.
+~Distancia de un número al uno en la recta. #Incorrecto. El valor absoluto mide la distancia al cero, no al uno. Es el punto de referencia fundamental en la recta numérica.
+~Distancia de un número al infinito en la recta. #Incorrecto. El infinito no es un punto específico en la recta. El valor absoluto siempre se mide desde el cero como punto de referencia.
+}
+
+// question: 3  name: recta_numerica
+::recta_numerica::¿Cuál es la definición de Recta Numérica? {
+=Línea donde cada punto representa un número entero único. #¡Correcto! La recta numérica es una representación visual donde cada punto corresponde a exactamente un número entero, organizados de menor a mayor de izquierda a derecha.
+~Línea donde cada punto representa un número decimal único. #Incorrecto. Aunque los decimales también pueden representarse en una recta, la definición específica se refiere a números enteros en este contexto del módulo.
+~Línea donde cada punto representa un número fraccionario único. #Incorrecto. Las fracciones se estudian en el módulo de números racionales. Aquí nos enfocamos en la representación de números enteros.
+}
+
+// question: 4  name: opuesto
+::opuesto::¿Cuál es la definición de Opuesto? {
+=Número con igual valor absoluto pero signo contrario dado. #¡Correcto! El opuesto de un número tiene la misma distancia al cero pero en dirección contraria. Por ejemplo, el opuesto de +7 es -7, y viceversa.
+~Número con diferente valor absoluto pero signo igual dado. #Incorrecto. Los números opuestos deben tener el mismo valor absoluto. Si tienen diferente valor absoluto, no son opuestos entre sí.
+~Número con igual valor absoluto pero signo igual dado. #Incorrecto. Si tienen el mismo signo, son números iguales, no opuestos. Los opuestos requieren signos contrarios.
+}
+
+// question: 5  name: conjunto_z
+::conjunto_z::¿Cuál es la definición de Conjunto ℤ? {
+=Símbolo que representa al conjunto de los números enteros. #¡Correcto! La letra ℤ (zeta) proviene de la palabra alemana "Zahlen" que significa números. Es la notación matemática estándar para los números enteros.
+~Símbolo que representa al conjunto de los números racionales. #Incorrecto. Los números racionales se representan con ℚ (de "quotient"). ℤ específicamente representa solo los números enteros.
+~Símbolo que representa al conjunto de los números naturales. #Incorrecto. Los números naturales se representan con ℕ. ℤ incluye además los números negativos y el cero.
+}
+
+// question: 6  name: suma_enteros
+::suma_enteros::¿Cuál es la definición de Suma de Enteros? {
+=Operación que combina enteros positivos y negativos correctamente. #¡Correcto! La suma de enteros sigue reglas específicas: signos iguales se suman, signos diferentes se restan, y el resultado toma el signo del número con mayor valor absoluto.
+~Operación que combina enteros positivos y fraccionarios correctamente. #Incorrecto. Esta definición mezcla enteros con fraccionarios, que pertenecen a diferentes conjuntos numéricos. La suma de enteros solo involucra números enteros.
+~Operación que combina enteros negativos y decimales correctamente. #Incorrecto. Los decimales no son números enteros. La suma de enteros se limita a operar solo con números del conjunto ℤ.
+}

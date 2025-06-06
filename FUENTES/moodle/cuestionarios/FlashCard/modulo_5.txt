@@ -1,0 +1,50 @@
+// question: 0  name: Switch category to $course$/top/html
+$CATEGORY: $course$/top/html
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard
+$CATEGORY: $course$/top/html/FlashCard
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_5
+$CATEGORY: $course$/top/html/FlashCard/Modulo_5
+
+// question: 25  name: factor_conversion
+::factor_conversion::¿Cuál es la definición de Factor de Conversión? {
+=Fracción equivalente a uno que cambia unidades manteniendo cantidad. #¡Correcto! Un factor de conversión es una fracción igual a 1 que permite cambiar unidades. Por ejemplo: 1 metro/100 centímetros = 1. Al multiplicar, cancela unidades y mantiene el valor real.
+~Fracción equivalente a cero que cambia unidades manteniendo cantidad. #Incorrecto. Un factor igual a cero anularía completamente la cantidad. Los factores de conversión deben valer 1 para preservar el valor original.
+~Fracción equivalente a uno que cambia unidades alterando cantidad. #Incorrecto. El propósito del factor de conversión es cambiar solo las unidades, nunca alterar la cantidad real que se está midiendo.
+}
+
+// question: 26  name: sistema_internacional
+::sistema_internacional::¿Cuál es la definición de Sistema Internacional? {
+=Sistema métrico estándar mundial basado en metro kilogramo segundo. #¡Correcto! El Sistema Internacional (SI) usa unidades base: metro (longitud), kilogramo (masa), segundo (tiempo), ampere (corriente), kelvin (temperatura), mol (cantidad) y candela (intensidad luminosa).
+~Sistema métrico estándar mundial basado en pulgada libra segundo. #Incorrecto. Pulgada y libra pertenecen al Sistema Imperial, no al Internacional. El SI usa metro y kilogramo como unidades base.
+~Sistema métrico estándar nacional basado en metro kilogramo segundo. #Incorrecto. El Sistema Internacional es mundial, no nacional. Su adopción es global para facilitar la comunicación científica y comercial internacional.
+}
+
+// question: 27  name: sistema_imperial
+::sistema_imperial::¿Cuál es la definición de Sistema Imperial? {
+=Sistema de medidas usado principalmente en Estados Unidos y Reino Unido. #¡Correcto! El Sistema Imperial usa unidades como pulgadas, pies, yardas, millas (longitud), libras, onzas (masa), y galones, cuartos (volumen). Gradualmente está siendo reemplazado por el SI.
+~Sistema de medidas usado principalmente en Francia y Reino Unido. #Incorrecto. Francia usa el Sistema Internacional (métrico), no el Imperial. Francia fue pionera en el desarrollo del sistema métrico.
+~Sistema de medidas usado principalmente en Estados Unidos y Francia. #Incorrecto. Francia adoptó el sistema métrico desde el siglo XVIII. Estados Unidos es uno de los pocos países que aún usa principalmente el Sistema Imperial.
+}
+
+// question: 28  name: unidades_longitud
+::unidades_longitud::¿Qué tipo de magnitud se mide con unidades como metros, centímetros, kilómetros o pulgadas? {
+=Longitud o distancia. #¡Correcto! Estas unidades sirven para medir la longitud, es decir, la distancia, altura o anchura de un objeto. En SI: milímetro, centímetro, metro, kilómetro. En Imperial: pulgada, pie, yarda, milla.
+~Masa o cantidad de materia. #Incorrecto. La masa se mide en gramos, kilogramos, libras, onzas, no en metros o pulgadas.
+~Tiempo o duración. #Incorrecto. El tiempo se mide en segundos, minutos, horas, días, no en metros o pulgadas.
+}
+
+// question: 29  name: conversion_sistemas
+::conversion_sistemas::¿Cómo se puede definir la Conversión entre Sistemas? {
+=Proceso de cambiar medidas del sistema métrico al imperial o viceversa. #¡Correcto! La conversión entre sistemas requiere factores específicos. Ejemplos: 1 metro = 3.28 pies, 1 kilogramo = 2.2 libras, 1 litro = 0.26 galones aproximadamente.
+~Proceso de cambiar medidas del sistema métrico al decimal o viceversa. #Incorrecto. El sistema métrico ya usa notación decimal. No existe conversión entre "métrico" y "decimal" porque son compatibles.
+~Proceso de cambiar medidas del sistema imperial al decimal o viceversa. #Incorrecto. Ambos sistemas pueden expresarse en decimales. La conversión relevante es entre Imperial y Métrico (SI).
+}
+
+// question: 30  name: unidades_masa
+::unidades_masa::¿Cuál es la definición de Unidades de Masa? {
+=Medidas estándar para expresar la cantidad de materia en un objeto físico. #¡Correcto! Las unidades de masa cuantifican materia. En SI: miligramo, gramo, kilogramo, tonelada. En Imperial: onza, libra, ton. Masa es diferente de peso (fuerza gravitacional).
+~Medidas estándar para expresar la cantidad de energía en un objeto físico. #Incorrecto. La energía se mide en julios (SI) o calorías, no en gramos o libras. Masa y energía son propiedades físicas diferentes.
+~Medidas estándar para expresar la cantidad de tiempo en un objeto físico. #Incorrecto. El tiempo se mide en segundos, minutos, horas. Los objetos físicos no "contienen" tiempo; el tiempo es una dimensión independiente.
+}

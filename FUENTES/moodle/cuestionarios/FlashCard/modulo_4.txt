@@ -1,0 +1,50 @@
+// question: 0  name: Switch category to $course$/top/html
+$CATEGORY: $course$/top/html
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard
+$CATEGORY: $course$/top/html/FlashCard
+
+// question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_4
+$CATEGORY: $course$/top/html/FlashCard/Modulo_4
+
+// question: 19  name: razon
+::razon::¿Cuál es la definición de Razón? {
+=Comparación entre dos cantidades mediante una división o cociente. #¡Correcto! Una razón compara dos cantidades dividiéndolas. Se expresa como a:b o a/b. Por ejemplo, si hay 8 niños y 12 niñas, la razón es 8:12 o 2:3 simplificada.
+~Comparación entre dos cantidades mediante una suma o cociente. #Incorrecto. Las razones se basan en división, no en suma. La suma combina cantidades, mientras que la razón las compara proporcionalmente.
+~Comparación entre tres cantidades mediante una división o cociente. #Incorrecto. Una razón básica compara exactamente dos cantidades. Aunque existen razones complejas, la definición fundamental involucra dos elementos.
+}
+
+// question: 20  name: proporcion
+::proporcion::¿Cuál es la definición de Proporción? {
+=Igualdad entre dos razones que relaciona cuatro términos diferentes. #¡Correcto! Una proporción establece que dos razones son iguales: a/b = c/d. Los términos a, b, c, d se llaman proporcionales. Por ejemplo: 2/3 = 8/12.
+~Desigualdad entre dos razones que relaciona cuatro términos diferentes. #Incorrecto. Una proporción requiere igualdad, no desigualdad. Si las razones no son iguales, no forman una proporción válida.
+~Igualdad entre tres razones que relaciona cuatro términos diferentes. #Incorrecto. Una proporción básica compara exactamente dos razones. Tres razones formarían una proporción compuesta más compleja.
+}
+
+// question: 21  name: regla_tres_directa
+::regla_tres_directa::¿Cuál es la definición de Regla de Tres Directa? {
+=Método donde las magnitudes aumentan o disminuyen proporcionalmente juntas. #¡Correcto! En proporcionalidad directa, cuando una magnitud aumenta, la otra también aumenta en la misma proporción. Ejemplo: más trabajadores, más trabajo realizado.
+~Método donde las magnitudes aumentan o disminuyen proporcionalmente separadas. #Incorrecto. En la regla de tres directa, las magnitudes cambian en la misma dirección (juntas), no en direcciones separadas o independientes.
+~Método donde las magnitudes aumentan o disminuyen inversamente juntas. #Incorrecto. Esta definición describe la regla de tres inversa, no directa. En la directa, ambas magnitudes van en la misma dirección.
+}
+
+// question: 22  name: regla_tres_inversa
+::regla_tres_inversa::¿Cuál es la definición de Regla de Tres Inversa? {
+=Método donde una magnitud aumenta mientras otra disminuye proporcionalmente. #¡Correcto! En proporcionalidad inversa, cuando una magnitud aumenta, la otra disminuye en proporción inversa. Ejemplo: más velocidad, menos tiempo para recorrer la misma distancia.
+~Método donde una magnitud aumenta mientras otra aumenta proporcionalmente. #Incorrecto. Esta definición describe la regla de tres directa, no inversa. En la inversa, las magnitudes van en direcciones opuestas.
+~Método donde una magnitud disminuye mientras otra disminuye proporcionalmente. #Incorrecto. Si ambas disminuyen juntas, sería proporcionalidad directa. En la inversa, una aumenta mientras la otra disminuye.
+}
+
+// question: 23  name: porcentaje
+::porcentaje::¿Cuál es la definición de Porcentaje? {
+=Proporción que expresa una cantidad como fracción de cien. #¡Correcto! El porcentaje (%) representa partes de 100. Por ejemplo, 25% = 25/100 = 0.25. Es útil para comparar proporciones de diferentes totales.
+~Proporción que expresa una cantidad como fracción de diez. #Incorrecto. Esto sería un decimal con denominador 10. El porcentaje específicamente usa 100 como base de comparación.
+~Proporción que expresa una cantidad como fracción de mil. #Incorrecto. Esto sería un permil (‰). El porcentaje usa específicamente 100 como denominador estándar.
+}
+
+// question: 24  name: proporcionalidad_directa
+::proporcionalidad_directa::¿Cuál es la definición de Proporcionalidad Directa? {
+=Relación donde al aumentar una cantidad, la otra también. #¡Correcto! En proporcionalidad directa, ambas variables cambian en la misma dirección manteniendo una razón constante. Se expresa como y = kx, donde k es la constante de proporcionalidad.
+~Relación donde al aumentar una cantidad, la otra disminuye. #Incorrecto. Esta definición describe proporcionalidad inversa, no directa. En la directa, ambas cantidades van en la misma dirección.
+~Relación donde al disminuir una cantidad, la otra disminuye. #Incorrecto. Aunque esto también ocurre en proporcionalidad directa, la definición más completa incluye ambos casos: aumentar-aumentar y disminuir-disminuir.
+}
