@@ -1,0 +1,930 @@
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
+<script>
+    /**
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+    
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // Performance: Carga no-bloqueante
+        }
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
+        document.head.appendChild(elemento);
+    }
+    
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
+    cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    /**
+     * INYECCIÓN DE ESTILOS CRÍTICOS CON PALETA INSTITUCIONAL
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
+     */
+    (function agregarEstilosPersonalizados() {
+        const customStyles = document.createElement('style');
+        customStyles.id = 'primera-parte-info-ultra-resistente';
+        customStyles.textContent = `
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - PALETA INSTITUCIONAL ARMÓNICA */
+            /* ================================================================================ */
+            
+            /* VARIABLES DE PALETA INSTITUCIONAL */
+            :root {
+                --color-azul-principal: #172139;      /* PANTONE 5255 C */
+                --color-verde-subtitulo: #195855;     /* PANTONE 626 C */
+                --color-teal-borde: #108181;          /* PANTONE 7717 C */
+                --color-teal-acento: #00AEAC;         /* PANTONE 326 C */
+                --color-naranja-cta: #E9901E;         /* PANTONE 715 C */
+                --color-amarillo-highlight: #FBBB28;   /* PANTONE 1235 C */
+                --color-verde-lima: #B4C42C;          /* PANTONE 583 C */
+                --gradiente-principal: linear-gradient(135deg, var(--color-teal-acento) 0%, var(--color-teal-borde) 100%);
+                --gradiente-secundario: linear-gradient(135deg, var(--color-naranja-cta) 0%, var(--color-amarillo-highlight) 100%);
+                --gradiente-fondo: linear-gradient(135deg, #f8fdfd 0%, #e6f7f7 100%);
+            }
+            
+            /* CONTENEDOR PRINCIPAL ULTRA-RESISTENTE */
+            div[data-seccion-info="primera-parte-curso"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                margin: 30px 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: var(--gradiente-fondo) !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+                border-radius: 20px !important;
+                box-shadow: 0 20px 60px rgba(23, 33, 57, 0.15), 0 8px 25px rgba(16, 129, 129, 0.1) !important;
+                border: 3px solid var(--color-teal-acento) !important;
+                will-change: transform, box-shadow !important;
+                transform: translateZ(0) !important;
+            }
+            
+            /* HEADER PRINCIPAL CON GLASSMORPHISM */
+            div[data-seccion-info="primera-parte-curso"] > div[data-header="titulo-principal"] {
+                all: initial !important;
+                display: block !important;
+                text-align: center !important;
+                padding: 40px 35px 30px !important;
+                background: linear-gradient(135deg, rgba(0, 174, 172, 0.1) 0%, rgba(16, 129, 129, 0.05) 100%) !important;
+                backdrop-filter: blur(20px) saturate(1.2) !important;
+                -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
+                border-bottom: 4px solid var(--color-teal-acento) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            /* TÍTULO PRINCIPAL */
+            div[data-seccion-info="primera-parte-curso"] h1[data-elemento="titulo-seccion"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(1.8rem, 5vw, 2.8rem) !important;
+                font-weight: 800 !important;
+                margin: 0 0 15px 0 !important;
+                padding: 0 !important;
+                color: var(--color-azul-principal) !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8) !important;
+                line-height: 1.2 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                letter-spacing: -0.5px !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+                text-transform: none !important;
+                text-decoration: none !important;
+                border: none !important;
+                background: none !important;
+            }
+            
+            /* EMOJI PRINCIPAL */
+            div[data-seccion-info="primera-parte-curso"] span[data-emoji="principal"] {
+                font-size: 1.4em !important;
+                margin-right: 15px !important;
+                display: inline-block !important;
+                animation: emojiGlow 3s ease-in-out infinite !important;
+                filter: drop-shadow(0 0 8px rgba(0, 174, 172, 0.3)) !important;
+            }
+            
+            /* CONTENIDO PRINCIPAL */
+            div[data-seccion-info="primera-parte-curso"] > div[data-contenido="info-principal"] {
+                all: initial !important;
+                padding: 35px 30px !important;
+                background: rgba(255, 255, 255, 0.8) !important;
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                width: 100% !important;
+            }
+            
+            /* SECCIONES DE CONTENIDO */
+            div[data-bloque-info] {
+                all: initial !important;
+                margin-bottom: 35px !important;
+                padding: 25px !important;
+                border-radius: 15px !important;
+                background: rgba(255, 255, 255, 0.9) !important;
+                border-left: 5px solid var(--color-teal-acento) !important;
+                box-shadow: 0 10px 30px rgba(23, 33, 57, 0.08) !important;
+                position: relative !important;
+                overflow: hidden !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                width: 100% !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            /* TÍTULOS DE SECCIÓN */
+            div[data-bloque-info] h3[data-titulo-bloque] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: clamp(1.3rem, 3vw, 1.8rem) !important;
+                font-weight: 700 !important;
+                color: var(--color-verde-subtitulo) !important;
+                margin: 0 0 20px 0 !important;
+                padding: 0 !important;
+                line-height: 1.3 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                text-align: left !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* ICONOS DE SECCIÓN */
+            div[data-bloque-info] span[data-icono-seccion] {
+                font-size: 1.5em !important;
+                color: var(--color-teal-acento) !important;
+                display: inline-block !important;
+                filter: drop-shadow(0 0 6px rgba(0, 174, 172, 0.2)) !important;
+                animation: iconoBounce 2s ease-in-out infinite !important;
+            }
+            
+            /* PÁRRAFOS DE CONTENIDO */
+            div[data-bloque-info] p[data-parrafo-info] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.1em !important;
+                font-weight: 500 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.7 !important;
+                margin: 0 0 15px 0 !important;
+                padding: 0 !important;
+                text-align: left !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            /* LISTAS DE CONTENIDO */
+            div[data-bloque-info] ul[data-lista-info] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                margin: 15px 0 !important;
+                padding: 0 0 0 20px !important;
+                list-style: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            div[data-bloque-info] li[data-item-lista] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.05em !important;
+                font-weight: 500 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.6 !important;
+                margin: 0 0 12px 0 !important;
+                padding: 0 0 0 25px !important;
+                position: relative !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            /* VIÑETAS PERSONALIZADAS */
+            div[data-bloque-info] li[data-item-lista]::before {
+                content: '▶' !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                color: var(--color-naranja-cta) !important;
+                font-weight: 700 !important;
+                font-size: 0.9em !important;
+            }
+            
+            /* DESTACADOS ESPECIALES */
+            div[data-destacado="profesional"] {
+                all: initial !important;
+                background: linear-gradient(135deg, rgba(233, 144, 30, 0.1) 0%, rgba(251, 187, 40, 0.05) 100%) !important;
+                border: 2px solid var(--color-naranja-cta) !important;
+                border-radius: 12px !important;
+                padding: 20px !important;
+                margin: 20px 0 !important;
+                position: relative !important;
+                overflow: hidden !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            div[data-destacado="profesional"] h4[data-titulo-destacado] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.2em !important;
+                font-weight: 700 !important;
+                color: var(--color-naranja-cta) !important;
+                margin: 0 0 12px 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 10px !important;
+            }
+            
+            /* APLICACIONES PROFESIONALES */
+            div[data-aplicacion-carrera] {
+                all: initial !important;
+                background: rgba(180, 196, 44, 0.1) !important;
+                border-left: 4px solid var(--color-verde-lima) !important;
+                padding: 15px 20px !important;
+                margin: 10px 0 !important;
+                border-radius: 8px !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            div[data-aplicacion-carrera] strong {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-weight: 700 !important;
+                color: var(--color-verde-subtitulo) !important;
+                display: inline !important;
+            }
+            
+            /* ENLACE DE CONTINUACIÓN A SEGUNDA PARTE */
+            div[data-enlace-continuacion="segunda-parte"] {
+                all: initial !important;
+                margin: 35px 0 0 0 !important;
+                padding: 0 !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                width: 100% !important;
+            }
+            
+            div[data-enlace-continuacion="segunda-parte"] a[data-link-segunda-parte="metodologia-experiencia"] {
+                all: initial !important;
+                text-decoration: none !important;
+                color: inherit !important;
+                font-family: 'Montserrat', sans-serif !important;
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                cursor: pointer !important;
+            }
+            
+            div[data-contenedor-enlace="continuacion"] {
+                all: initial !important;
+                background: var(--gradiente-secundario) !important;
+                border-radius: 18px !important;
+                padding: 25px 30px !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 20px !important;
+                box-shadow: 0 12px 35px rgba(233, 144, 30, 0.2), 0 5px 15px rgba(251, 187, 40, 0.15) !important;
+                border: 2px solid var(--color-naranja-cta) !important;
+                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                position: relative !important;
+                overflow: hidden !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
+                will-change: transform, box-shadow !important;
+            }
+            
+            /* ICONO DEL ENLACE */
+            span[data-icono-enlace="siguiente"] {
+                all: initial !important;
+                font-size: 2.2em !important;
+                display: inline-block !important;
+                animation: rocketContinuacion 3s ease-in-out infinite !important;
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) !important;
+                flex-shrink: 0 !important;
+            }
+            
+            /* CONTENIDO DEL ENLACE */
+            div[data-texto-enlace="contenido"] {
+                all: initial !important;
+                flex: 1 !important;
+                display: block !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            h4[data-titulo-enlace="principal"] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: clamp(1.3rem, 3vw, 1.7rem) !important;
+                font-weight: 800 !important;
+                color: var(--color-azul-principal) !important;
+                margin: 0 0 8px 0 !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8) !important;
+                line-height: 1.2 !important;
+                display: block !important;
+            }
+            
+            p[data-descripcion-enlace="metodologia"] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.05em !important;
+                font-weight: 500 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.4 !important;
+                margin: 0 !important;
+                text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6) !important;
+                display: block !important;
+            }
+            
+            /* FLECHA DIRECCIONAL */
+            span[data-flecha-enlace="direccion"] {
+                all: initial !important;
+                font-size: 2em !important;
+                font-weight: 900 !important;
+                color: var(--color-azul-principal) !important;
+                display: inline-block !important;
+                transition: transform 0.3s ease !important;
+                filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.6)) !important;
+                flex-shrink: 0 !important;
+            }
+            
+            /* ANIMACIÓN DEL ROCKET */
+            @keyframes rocketContinuacion {
+                0%, 100% { 
+                    transform: translateY(0) scale(1);
+                    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+                }
+                50% { 
+                    transform: translateY(-5px) scale(1.1);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7));
+                }
+            }
+            
+            /* ESTADOS HOVER DEL ENLACE */
+            div[data-contenedor-enlace="continuacion"]:hover {
+                transform: translateY(-3px) scale(1.02) !important;
+                box-shadow: 0 18px 50px rgba(233, 144, 30, 0.3), 0 8px 25px rgba(251, 187, 40, 0.25) !important;
+                border-color: var(--color-amarillo-highlight) !important;
+            }
+            
+            div[data-contenedor-enlace="continuacion"]:hover span[data-flecha-enlace="direccion"] {
+                transform: translateX(8px) !important;
+            }
+            
+            div[data-contenedor-enlace="continuacion"]:hover span[data-icono-enlace="siguiente"] {
+                transform: scale(1.2) rotate(15deg) !important;
+                filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)) !important;
+            }
+            
+            /* EFECTO DE RESPLANDOR AL HOVER */
+            div[data-contenedor-enlace="continuacion"]::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: -100% !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+                transition: left 0.5s ease !important;
+                z-index: 1 !important;
+            }
+            
+            div[data-contenedor-enlace="continuacion"]:hover::before {
+                left: 100% !important;
+            }
+            
+            /* POSICIONAMIENTO RELATIVO DEL CONTENIDO */
+            div[data-contenedor-enlace="continuacion"] > * {
+                position: relative !important;
+                z-index: 2 !important;
+            }
+            
+            /* ANIMACIONES OPTIMIZADAS */
+            @keyframes emojiGlow {
+                0%, 100% { 
+                    transform: scale(1);
+                    filter: drop-shadow(0 0 8px rgba(0, 174, 172, 0.3));
+                }
+                50% { 
+                    transform: scale(1.1);
+                    filter: drop-shadow(0 0 12px rgba(0, 174, 172, 0.5));
+                }
+            }
+            
+            @keyframes iconoBounce {
+                0%, 100% { 
+                    transform: translateY(0);
+                }
+                50% { 
+                    transform: translateY(-3px);
+                }
+            }
+            
+            /* ESTADOS HOVER */
+            div[data-bloque-info]:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 15px 40px rgba(23, 33, 57, 0.12) !important;
+                border-left-color: var(--color-naranja-cta) !important;
+            }
+            
+            div[data-seccion-info="primera-parte-curso"]:hover {
+                transform: translateY(-3px) scale(1.005) !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 25px 70px rgba(23, 33, 57, 0.2), 0 10px 30px rgba(16, 129, 129, 0.15) !important;
+            }
+            
+            /* RESPONSIVIDAD */
+            @media (max-width: 768px) {
+                div[data-seccion-info="primera-parte-curso"] > div[data-header="titulo-principal"] {
+                    padding: 35px 25px 25px !important;
+                }
+                
+                div[data-seccion-info="primera-parte-curso"] > div[data-contenido="info-principal"] {
+                    padding: 30px 20px !important;
+                }
+                
+                div[data-bloque-info] {
+                    padding: 20px !important;
+                    margin-bottom: 25px !important;
+                }
+                
+                /* RESPONSIVIDAD ENLACE CONTINUACIÓN */
+                div[data-contenedor-enlace="continuacion"] {
+                    padding: 22px 25px !important;
+                    gap: 15px !important;
+                }
+                
+                span[data-icono-enlace="siguiente"] {
+                    font-size: 1.8em !important;
+                }
+                
+                span[data-flecha-enlace="direccion"] {
+                    font-size: 1.6em !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                div[data-seccion-info="primera-parte-curso"] > div[data-header="titulo-principal"] {
+                    padding: 30px 20px 20px !important;
+                }
+                
+                div[data-bloque-info] {
+                    padding: 18px !important;
+                }
+                
+                /* RESPONSIVIDAD MÓVIL ENLACE CONTINUACIÓN */
+                div[data-contenedor-enlace="continuacion"] {
+                    padding: 20px 22px !important;
+                    gap: 12px !important;
+                    flex-direction: column !important;
+                    text-align: center !important;
+                }
+                
+                span[data-icono-enlace="siguiente"] {
+                    font-size: 1.6em !important;
+                }
+                
+                span[data-flecha-enlace="direccion"] {
+                    font-size: 1.4em !important;
+                    transform: rotate(90deg) !important;
+                }
+                
+                div[data-contenedor-enlace="continuacion"]:hover span[data-flecha-enlace="direccion"] {
+                    transform: rotate(90deg) translateY(5px) !important;
+                }
+            }
+            
+            /* ACCESIBILIDAD AVANZADA */
+            @media (prefers-contrast: high) {
+                div[data-seccion-info="primera-parte-curso"] h1[data-elemento="titulo-seccion"] {
+                    color: #000000 !important;
+                    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1) !important;
+                }
+                
+                div[data-bloque-info] h3[data-titulo-bloque] {
+                    color: #000000 !important;
+                }
+                
+                div[data-bloque-info] p[data-parrafo-info],
+                div[data-bloque-info] li[data-item-lista] {
+                    color: #000000 !important;
+                }
+                
+                /* ACCESIBILIDAD ENLACE CONTINUACIÓN */
+                h4[data-titulo-enlace="principal"],
+                p[data-descripcion-enlace="metodologia"] {
+                    color: #000000 !important;
+                    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1) !important;
+                }
+                
+                span[data-flecha-enlace="direccion"] {
+                    color: #000000 !important;
+                    filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 1)) !important;
+                }
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                div[data-seccion-info="primera-parte-curso"] span[data-emoji="principal"],
+                div[data-bloque-info] span[data-icono-seccion] {
+                    animation: none !important;
+                }
+                
+                div[data-bloque-info]:hover,
+                div[data-seccion-info="primera-parte-curso"]:hover {
+                    transform: none !important;
+                    transition: none !important;
+                }
+                
+                /* MOVIMIENTO REDUCIDO ENLACE CONTINUACIÓN */
+                span[data-icono-enlace="siguiente"] {
+                    animation: none !important;
+                }
+                
+                div[data-contenedor-enlace="continuacion"]:hover {
+                    transform: none !important;
+                    transition: none !important;
+                }
+                
+                div[data-contenedor-enlace="continuacion"]:hover span[data-flecha-enlace="direccion"],
+                div[data-contenedor-enlace="continuacion"]:hover span[data-icono-enlace="siguiente"] {
+                    transform: none !important;
+                }
+                
+                div[data-contenedor-enlace="continuacion"]::before {
+                    transition: none !important;
+                }
+            }
+            
+            /* MONTSERRAT FORZADO GLOBALMENTE */
+            div[data-seccion-info="primera-parte-curso"] *,
+            div[data-seccion-info="primera-parte-curso"] h1,
+            div[data-seccion-info="primera-parte-curso"] h3,
+            div[data-seccion-info="primera-parte-curso"] h4,
+            div[data-seccion-info="primera-parte-curso"] p,
+            div[data-seccion-info="primera-parte-curso"] li,
+            div[data-seccion-info="primera-parte-curso"] span,
+            div[data-seccion-info="primera-parte-curso"] strong,
+            div[data-seccion-info="primera-parte-curso"] a {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
+        `;
+        document.head.appendChild(customStyles);
+        console.log('🎨 Estilos institucionales inyectados con resistencia anti-Moodle garantizada');
+    })();
+</script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: PRIMERA PARTE - INFORMACIÓN DEL CURSO - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-seccion-info="primera-parte-curso">
+    <!-- HEADER PRINCIPAL -->
+    <div data-header="titulo-principal">
+        <h1 data-elemento="titulo-seccion">
+            <span data-emoji="principal">🎯</span>
+            ¿Qué vas a lograr en este curso?
+        </h1>
+    </div>
+    
+    <!-- CONTENIDO PRINCIPAL -->
+    <div data-contenido="info-principal">
+        
+        <!-- TRANSFORMACIÓN MATEMÁTICA -->
+        <div data-bloque-info="transformacion">
+            <h3 data-titulo-bloque>
+                <span data-icono-seccion>🚀</span>
+                Transformarás tu relación con las matemáticas
+            </h3>
+            <p data-parrafo-info>
+                ¿Sabías que el 80% de los estudiantes universitarios exitosos dominan estas competencias matemáticas desde el primer semestre? En este curso no solo aprenderás matemáticas, sino que desarrollarás una <strong>mentalidad matemática sólida</strong> que te acompañará durante toda tu carrera profesional.
+            </p>
+        </div>
+        
+        <!-- COMPETENCIAS MATEMÁTICAS -->
+        <div data-bloque-info="competencias">
+            <h3 data-titulo-bloque>
+                <span data-icono-seccion>📚</span>
+                Dominarás 6 competencias matemáticas clave
+            </h3>
+            <ul data-lista-info>
+                <li data-item-lista><strong>Números enteros</strong>: Manejarás operaciones avanzadas y aplicaciones en problemas reales de tu área profesional</li>
+                <li data-item-lista><strong>Números primos y factorización</strong>: Desarrollarás pensamiento lógico para resolver problemas de optimización</li>
+                <li data-item-lista><strong>Números racionales</strong>: Dominarás fracciones, decimales y porcentajes para análisis precisos</li>
+                <li data-item-lista><strong>Razones y proporciones</strong>: Aplicarás escalas, mezclas y distribuciones en contextos profesionales</li>
+                <li data-item-lista><strong>Sistemas de medida</strong>: Realizarás conversiones exactas para proyectos técnicos y científicos</li>
+                <li data-item-lista><strong>Potenciación y radicación</strong>: Modelarás crecimiento, área, volumen y fenómenos exponenciales</li>
+            </ul>
+        </div>
+        
+        <!-- APLICACIONES PROFESIONALES -->
+        <div data-bloque-info="aplicaciones">
+            <h3 data-titulo-bloque>
+                <span data-icono-seccion>💼</span>
+                Conectarás las matemáticas con tu futuro profesional
+            </h3>
+            <p data-parrafo-info>
+                Cada tema que estudies tendrá <strong>aplicaciones directas en tu carrera</strong>:
+            </p>
+            
+            <div data-destacado="profesional">
+                <h4 data-titulo-destacado>
+                    <span>🏢</span>
+                    Aplicaciones por Programa Académico
+                </h4>
+                
+            <div style="margin: 18px 0; padding: 12px 18px; background: #fffbe6; border-left: 5px solid #E9901E; border-radius: 7px; font-size: 1.08em; color: #7a5a00; font-family: 'Montserrat', sans-serif;">
+              <strong>Nota:</strong> Este curso incluye aplicaciones enfocadas y en contexto para todos los programas del Colegio Mayor de Antioquia.
+            </div>
+            
+                <div data-aplicacion-carrera="gastronomia">
+                    <strong>🍳 Gastronomía:</strong> Cálculos de porciones, costos y escalado de recetas
+                </div>
+                
+                <div data-aplicacion-carrera="laboratorio">
+                    <strong>🔬 Laboratorio Clínico:</strong> Interpretación de resultados, diluciones y concentraciones
+                </div>
+                
+                <div data-aplicacion-carrera="turismo">
+                    <strong>✈️ Turismo:</strong> Presupuestos, conversiones de moneda y planificación logística
+                </div>
+                
+                <div data-aplicacion-carrera="arquitectura">
+                    <strong>🏗️ Arquitectura:</strong> Escalas, proporciones y cálculos estructurales
+                </div>
+                
+                <div data-aplicacion-carrera="administracion">
+                    <strong>📊 Administración:</strong> Análisis financiero, estadísticas y proyecciones
+                </div>
+                
+                <div data-aplicacion-carrera="planeacion">
+                    <strong>📈 Planeación y Desarrollo Social:</strong> Análisis demográfico con porcentajes, distribución de recursos mediante regla de tres, cálculo de indicadores sociales y estadísticas poblacionales
+                </div>
+                
+                <div data-aplicacion-carrera="educacion">
+                    <strong>🎓 Educación:</strong> Estadísticas de rendimiento académico, cálculo de tasas de aprobación, análisis de resultados con porcentajes y evaluación del desempeño estudiantil
+                </div>
+            </div>
+        </div>
+        
+        <!-- DESARROLLO PERSONAL -->
+        <div data-bloque-info="desarrollo">
+            <h3 data-titulo-bloque>
+                <span data-icono-seccion>🌟</span>
+                Desarrollarás confianza y autonomía académica
+            </h3>
+            <p data-parrafo-info>
+                Al finalizar este curso habrás fortalecido:
+            </p>
+            <ul data-lista-info>
+                <li data-item-lista><strong>Agilidad mental</strong> para resolver problemas bajo presión</li>
+                <li data-item-lista><strong>Pensamiento crítico</strong> para analizar situaciones complejas</li>
+                <li data-item-lista><strong>Autoconfianza matemática</strong> para enfrentar retos académicos superiores</li>
+                <li data-item-lista><strong>Competencias digitales</strong> esenciales para el aprendizaje universitario moderno</li>
+            </ul>
+        </div>
+        
+        <!-- ENLACE A SEGUNDA PARTE -->
+        <div data-enlace-continuacion="segunda-parte">
+            <a href="https://colmayor.arrobamedellin.edu.co/mod/page/view.php?id=212410" 
+               target="_blank" 
+               data-link-segunda-parte="metodologia-experiencia">
+                <div data-contenedor-enlace="continuacion">
+                    <span data-icono-enlace="siguiente">🚀</span>
+                    <div data-texto-enlace="contenido">
+                        <h4 data-titulo-enlace="principal">¿Cómo vas a vivir esta experiencia?</h4>
+                        <p data-descripcion-enlace="metodologia">Descubre la metodología gamificada, recursos interactivos y flexibilidad total del curso</p>
+                    </div>
+                    <span data-flecha-enlace="direccion">→</span>
+                </div>
+            </a>
+        </div>
+        
+    </div>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: PRIMERA PARTE - INFORMACIÓN DEL CURSO - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - APERTURA -->
+<!-- ================================================================================================ -->
+<script>
+    /**
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE CON PALETA INSTITUCIONAL
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Inicializando sistema ultra-resistente para Primera Parte del Curso');
+        
+        /**
+         * VERIFICACIÓN DE CONTENEDOR CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarContenedorUltraResistente() {
+            const contenedor = document.querySelector('div[data-seccion-info="primera-parte-curso"]');
+            if (contenedor) {
+                console.log('✅ Contenedor ultra-resistente cargado y funcionando correctamente');
+                
+                // EFECTOS HOVER INSTITUCIONALES
+                contenedor.addEventListener('mouseenter', function() {
+                    this.style.setProperty('transform', 'translateY(-3px) scale(1.005) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(23, 33, 57, 0.2), 0 10px 30px rgba(16, 129, 129, 0.15)', 'important');
+                });
+                
+                contenedor.addEventListener('mouseleave', function() {
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 20px 60px rgba(23, 33, 57, 0.15), 0 8px 25px rgba(16, 129, 129, 0.1)', 'important');
+                });
+                
+                // ACCESIBILIDAD AVANZADA
+                const titulo = contenedor.querySelector('h1[data-elemento="titulo-seccion"]');
+                if (titulo) {
+                    titulo.setAttribute('tabindex', '0');
+                    titulo.setAttribute('role', 'heading');
+                    titulo.setAttribute('aria-level', '1');
+                    titulo.setAttribute('aria-label', 'Primera parte: ¿Qué vas a lograr en este curso? - Información sobre objetivos y competencias');
+                }
+                
+                // INTERACTIVIDAD PARA BLOQUES
+                const bloques = contenedor.querySelectorAll('div[data-bloque-info]');
+                bloques.forEach((bloque, index) => {
+                    bloque.addEventListener('mouseenter', function() {
+                        this.style.setProperty('transform', 'translateY(-2px)', 'important');
+                        this.style.setProperty('box-shadow', '0 15px 40px rgba(23, 33, 57, 0.12)', 'important');
+                        this.style.setProperty('border-left-color', '#E9901E', 'important');
+                    });
+                    
+                    bloque.addEventListener('mouseleave', function() {
+                        this.style.setProperty('transform', 'translateY(0)', 'important');
+                        this.style.setProperty('box-shadow', '0 10px 30px rgba(23, 33, 57, 0.08)', 'important');
+                        this.style.setProperty('border-left-color', '#00AEAC', 'important');
+                    });
+                    
+                    // PREPARAR PARA ANIMACIONES DE GPU
+                    bloque.style.setProperty('will-change', 'transform, box-shadow', 'important');
+                });
+                
+            } else {
+                console.error('❌ Error: Contenedor ultra-resistente no encontrado');
+            }
+        }
+        
+        /**
+         * ANÁLISIS CROMÁTICO INSTITUCIONAL
+         */
+        function analizarImplementacionInstitucional() {
+            console.log('🎨 Análisis de implementación con paleta institucional:');
+            console.log('   ✅ Azul principal (#172139): Títulos y textos principales');
+            console.log('   ✅ Verde subtítulo (#195855): Títulos de sección');
+            console.log('   ✅ Teal acento (#00AEAC): Iconos y bordes');
+            console.log('   ✅ Naranja CTA (#E9901E): Elementos destacados');
+            console.log('   ✅ Amarillo highlight (#FBBB28): Gradientes de destaque');
+            console.log('   ✅ Verde lima (#B4C42C): Aplicaciones profesionales');
+            console.log('   ✅ Armonía visual: Gradientes complementarios');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos');
+        }
+        
+        /**
+         * CONFIGURACIÓN DE CONTEXTO EDUCATIVO
+         */
+        function configurarContextoEducativo() {
+            const contenedor = document.querySelector('div[data-seccion-info="primera-parte-curso"]');
+            
+            if (contenedor) {
+                // ATRIBUTOS DE CONTEXTO EDUCATIVO
+                contenedor.setAttribute('data-tipo-contenido', 'informacion-curso');
+                contenedor.setAttribute('data-fase-educativa', 'presentacion-objetivos');
+                contenedor.setAttribute('data-nivel-detalle', 'completo');
+                contenedor.setAttribute('data-paleta-aplicada', 'institucional-armonica');
+                contenedor.setAttribute('data-resistencia-moodle', 'ultra-maxima');
+                
+                console.log('🎯 Contexto educativo ultra-resistente configurado correctamente');
+            }
+        }
+        
+        /**
+         * SISTEMA DE ANIMACIONES INSTITUCIONALES
+         */
+        function inicializarAnimacionesInstitucionales() {
+            const emojis = document.querySelectorAll('span[data-emoji]');
+            const iconos = document.querySelectorAll('span[data-icono-seccion]');
+            
+            // CONFIGURAR EMOJIS
+            emojis.forEach((emoji) => {
+                emoji.style.setProperty('will-change', 'transform, filter', 'important');
+                
+                emoji.addEventListener('click', function() {
+                    this.style.setProperty('transform', 'scale(1.3) rotate(360deg)', 'important');
+                    this.style.setProperty('filter', 'drop-shadow(0 0 15px rgba(0, 174, 172, 0.6))', 'important');
+                    
+                    setTimeout(() => {
+                        this.style.removeProperty('transform');
+                        this.style.setProperty('filter', 'drop-shadow(0 0 8px rgba(0, 174, 172, 0.3))', 'important');
+                    }, 600);
+                });
+            });
+            
+            // CONFIGURAR ICONOS DE SECCIÓN
+            iconos.forEach((icono) => {
+                icono.style.setProperty('will-change', 'transform', 'important');
+            });
+        }
+        
+        // EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN
+        verificarContenedorUltraResistente();
+        analizarImplementacionInstitucional();
+        configurarContextoEducativo();
+        inicializarAnimacionesInstitucionales();
+        configurarEnlaceContinuacion();
+        
+        // LOG FINAL DE SISTEMA INSTITUCIONAL
+        console.log('🌟 Sistema Ultra-Resistente con Paleta Institucional inicializado completamente');
+        console.log('🎨 Características implementadas:');
+        console.log('   • Paleta institucional PANTONE aplicada armónicamente');
+        console.log('   • Resistencia anti-Moodle máxima con selectores únicos');
+        console.log('   • Tipografía Montserrat forzada globalmente');
+        console.log('   • GPU acceleration con will-change optimizado');
+        console.log('   • Accesibilidad avanzada con ARIA');
+        console.log('   • Animaciones institucionales optimizadas');
+        console.log('   • Gradientes complementarios para armonía visual');
+        console.log('   • Enlace de continuación a segunda parte integrado');
+    });
+    
+    /**
+     * FUNCIONES GLOBALES DE UTILIDAD INSTITUCIONAL
+     */
+    function alternarModoInstitucional() {
+        const contenedor = document.querySelector('div[data-seccion-info="primera-parte-curso"]');
+        if (contenedor) {
+            const modos = ['presentacion', 'detalle', 'interactivo', 'enfoque'];
+            const modoActual = contenedor.getAttribute('data-modo-institucional') || 'presentacion';
+            const indiceActual = modos.indexOf(modoActual);
+            const nuevoModo = modos[(indiceActual + 1) % 4];
+            
+            contenedor.setAttribute('data-modo-institucional', nuevoModo);
+            console.log(`🔄 Modo institucional: ${nuevoModo}`);
+        }
+    }
+    
+    function activarModoEnfoqueAcademico() {
+        const contenedor = document.querySelector('div[data-seccion-info="primera-parte-curso"]');
+        const bloques = document.querySelectorAll('div[data-bloque-info]');
+        
+        if (contenedor && bloques.length > 0) {
+            contenedor.style.setProperty('filter', 'brightness(1.05) saturate(1.1)', 'important');
+            
+            bloques.forEach(bloque => {
+                bloque.style.setProperty('border-left-width', '6px', 'important');
+                bloque.style.setProperty('transform', 'scale(1.01)', 'important');
+            });
+            
+            console.log('🎓 Modo enfoque académico institucional activado');
+        }
+    }
+</script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - CIERRE -->
+<!-- ================================================================================================ -->

@@ -1,0 +1,920 @@
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
+<script>
+    /**
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+    
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // Performance: Carga no-bloqueante
+        }
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
+        document.head.appendChild(elemento);
+    }
+    
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
+    cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    
+    /**
+     * INYECCIÓN DE ESTILOS CRÍTICOS SEGUNDA PARTE - PALETA INSTITUCIONAL
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
+     */
+    (function agregarEstilosSegundaParte() {
+        const customStyles = document.createElement('style');
+        customStyles.id = 'segunda-parte-experiencia-ultra-resistente';
+        customStyles.textContent = `
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - SEGUNDA PARTE EXPERIENCIA */
+            /* ================================================================================ */
+            
+            /* VARIABLES DE PALETA INSTITUCIONAL SEGUNDA PARTE */
+            :root {
+                --color-azul-principal: #172139;      /* PANTONE 5255 C */
+                --color-verde-subtitulo: #195855;     /* PANTONE 626 C */
+                --color-teal-borde: #108181;          /* PANTONE 7717 C */
+                --color-teal-acento: #00AEAC;         /* PANTONE 326 C */
+                --color-naranja-cta: #E9901E;         /* PANTONE 715 C */
+                --color-amarillo-highlight: #FBBB28;   /* PANTONE 1235 C */
+                --color-verde-lima: #B4C42C;          /* PANTONE 583 C */
+                --gradiente-experiencia: linear-gradient(135deg, var(--color-verde-subtitulo) 0%, var(--color-teal-acento) 100%);
+                --gradiente-metodologia: linear-gradient(135deg, var(--color-amarillo-highlight) 0%, var(--color-naranja-cta) 100%);
+                --gradiente-fondo-segunda: linear-gradient(135deg, #f0f9f9 0%, #e1f4f4 100%);
+            }
+            
+            /* CONTENEDOR PRINCIPAL SEGUNDA PARTE ULTRA-RESISTENTE */
+            div[data-experiencia-info="segunda-parte-curso"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                margin: 30px 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: var(--gradiente-fondo-segunda) !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+                border-radius: 25px !important;
+                box-shadow: 0 25px 70px rgba(25, 88, 85, 0.18), 0 10px 30px rgba(0, 174, 172, 0.12) !important;
+                border: 3px solid var(--color-verde-subtitulo) !important;
+                will-change: transform, box-shadow !important;
+                transform: translateZ(0) !important;
+            }
+            
+            /* HEADER SEGUNDA PARTE CON GLASSMORPHISM AVANZADO */
+            div[data-experiencia-info="segunda-parte-curso"] > div[data-header-experiencia="titulo-metodologia"] {
+                all: initial !important;
+                display: block !important;
+                text-align: center !important;
+                padding: 45px 40px 35px !important;
+                background: linear-gradient(135deg, rgba(25, 88, 85, 0.12) 0%, rgba(0, 174, 172, 0.06) 100%) !important;
+                backdrop-filter: blur(25px) saturate(1.3) !important;
+                -webkit-backdrop-filter: blur(25px) saturate(1.3) !important;
+                border-bottom: 5px solid var(--color-verde-subtitulo) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            /* ELEMENTO DECORATIVO ONDAS VERDES */
+            div[data-experiencia-info="segunda-parte-curso"] > div[data-header-experiencia="titulo-metodologia"]::after {
+                content: '' !important;
+                position: absolute !important;
+                top: -50px !important;
+                left: -50px !important;
+                width: 180px !important;
+                height: 180px !important;
+                background: radial-gradient(circle, var(--color-teal-acento) 0%, var(--color-verde-subtitulo) 45%, transparent 80%) !important;
+                border-radius: 50% !important;
+                opacity: 0.3 !important;
+                z-index: -1 !important;
+                filter: blur(15px) !important;
+                animation: ondaExperiencia 7s ease-in-out infinite !important;
+                will-change: opacity, transform !important;
+            }
+            
+            /* TÍTULO SEGUNDA PARTE */
+            div[data-experiencia-info="segunda-parte-curso"] h2[data-titulo-experiencia="metodologia-principal"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(1.9rem, 5.5vw, 2.9rem) !important;
+                font-weight: 800 !important;
+                margin: 0 0 20px 0 !important;
+                padding: 0 !important;
+                color: var(--color-azul-principal) !important;
+                text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.9), 0 0 15px rgba(25, 88, 85, 0.2) !important;
+                line-height: 1.2 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                letter-spacing: -0.6px !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+                text-transform: none !important;
+                text-decoration: none !important;
+                border: none !important;
+                background: none !important;
+            }
+            
+            /* EMOJI EXPERIENCIA */
+            div[data-experiencia-info="segunda-parte-curso"] span[data-emoji-experiencia="rocket"] {
+                font-size: 1.5em !important;
+                margin-right: 18px !important;
+                display: inline-block !important;
+                animation: rocketExperiencia 4s ease-in-out infinite !important;
+                filter: drop-shadow(0 0 10px rgba(25, 88, 85, 0.4)) !important;
+            }
+            
+            /* CONTENIDO SEGUNDA PARTE */
+            div[data-experiencia-info="segunda-parte-curso"] > div[data-contenido-experiencia="metodologia-principal"] {
+                all: initial !important;
+                padding: 40px 35px !important;
+                background: rgba(255, 255, 255, 0.85) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                width: 100% !important;
+            }
+            
+            /* BLOQUES DE METODOLOGÍA */
+            div[data-bloque-metodologia] {
+                all: initial !important;
+                margin-bottom: 40px !important;
+                padding: 30px !important;
+                border-radius: 18px !important;
+                background: rgba(255, 255, 255, 0.95) !important;
+                border-left: 6px solid var(--color-verde-subtitulo) !important;
+                box-shadow: 0 12px 35px rgba(23, 33, 57, 0.1), 0 5px 15px rgba(25, 88, 85, 0.08) !important;
+                position: relative !important;
+                overflow: hidden !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                width: 100% !important;
+                transition: all 0.35s ease !important;
+            }
+            
+            /* TÍTULOS DE METODOLOGÍA */
+            div[data-bloque-metodologia] h3[data-titulo-metodologia] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: clamp(1.4rem, 3.2vw, 1.9rem) !important;
+                font-weight: 700 !important;
+                color: var(--color-verde-subtitulo) !important;
+                margin: 0 0 22px 0 !important;
+                padding: 0 !important;
+                line-height: 1.3 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 15px !important;
+                text-align: left !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* ICONOS DE METODOLOGÍA */
+            div[data-bloque-metodologia] span[data-icono-metodologia] {
+                font-size: 1.6em !important;
+                color: var(--color-teal-acento) !important;
+                display: inline-block !important;
+                filter: drop-shadow(0 0 8px rgba(0, 174, 172, 0.25)) !important;
+                animation: pulsoMetodologia 3s ease-in-out infinite !important;
+            }
+            
+            /* PÁRRAFOS DE METODOLOGÍA */
+            div[data-bloque-metodologia] p[data-texto-metodologia] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.12em !important;
+                font-weight: 500 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.75 !important;
+                margin: 0 0 18px 0 !important;
+                padding: 0 !important;
+                text-align: left !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            /* LISTAS DE METODOLOGÍA */
+            div[data-bloque-metodologia] ul[data-lista-metodologia] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                margin: 18px 0 !important;
+                padding: 0 0 0 25px !important;
+                list-style: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            div[data-bloque-metodologia] li[data-item-metodologia] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.08em !important;
+                font-weight: 500 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.65 !important;
+                margin: 0 0 14px 0 !important;
+                padding: 0 0 0 30px !important;
+                position: relative !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            /* VIÑETAS METODOLÓGICAS PERSONALIZADAS */
+            div[data-bloque-metodologia] li[data-item-metodologia]::before {
+                content: '🎯' !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                font-size: 0.9em !important;
+                filter: drop-shadow(0 0 4px rgba(0, 174, 172, 0.3)) !important;
+            }
+            
+            /* DESTACADOS ESPECIALES DE EXPERIENCIA */
+            div[data-destacado-experiencia="flexibilidad"] {
+                all: initial !important;
+                background: linear-gradient(135deg, rgba(251, 187, 40, 0.12) 0%, rgba(233, 144, 30, 0.06) 100%) !important;
+                border: 2px solid var(--color-amarillo-highlight) !important;
+                border-radius: 15px !important;
+                padding: 25px !important;
+                margin: 25px 0 !important;
+                position: relative !important;
+                overflow: hidden !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+            }
+            
+            div[data-destacado-experiencia="flexibilidad"] h4[data-titulo-flexibilidad] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.25em !important;
+                font-weight: 700 !important;
+                color: var(--color-naranja-cta) !important;
+                margin: 0 0 15px 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+            }
+            
+            /* CARACTERÍSTICAS ESPECIALES */
+            div[data-caracteristica-especial] {
+                all: initial !important;
+                background: rgba(180, 196, 44, 0.12) !important;
+                border: 2px solid var(--color-verde-lima) !important;
+                border-radius: 12px !important;
+                padding: 20px !important;
+                margin: 15px 0 !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: flex !important;
+                align-items: flex-start !important;
+                gap: 15px !important;
+            }
+            
+            div[data-caracteristica-especial] span[data-icono-caracteristica] {
+                font-size: 1.3em !important;
+                color: var(--color-verde-lima) !important;
+                display: inline-block !important;
+                margin-top: 2px !important;
+                filter: drop-shadow(0 0 6px rgba(180, 196, 44, 0.3)) !important;
+            }
+            
+            div[data-caracteristica-especial] div[data-texto-caracteristica] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                flex: 1 !important;
+                display: block !important;
+            }
+            
+            div[data-caracteristica-especial] strong {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-weight: 700 !important;
+                color: var(--color-verde-subtitulo) !important;
+                display: inline !important;
+            }
+            
+            div[data-caracteristica-especial] span[data-descripcion-caracteristica] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.05em !important;
+                font-weight: 500 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.6 !important;
+                display: block !important;
+                margin-top: 5px !important;
+            }
+            
+            /* LLAMADA A LA ACCIÓN FINAL */
+            div[data-cta-experiencia="motivacional"] {
+                all: initial !important;
+                background: var(--gradiente-metodologia) !important;
+                border-radius: 20px !important;
+                padding: 35px 30px !important;
+                margin: 35px 0 0 0 !important;
+                text-align: center !important;
+                position: relative !important;
+                overflow: hidden !important;
+                font-family: 'Montserrat', sans-serif !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                box-shadow: 0 15px 40px rgba(233, 144, 30, 0.25) !important;
+            }
+            
+            div[data-cta-experiencia="motivacional"] h3[data-titulo-cta] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: clamp(1.4rem, 3.5vw, 2rem) !important;
+                font-weight: 800 !important;
+                color: var(--color-azul-principal) !important;
+                margin: 0 0 15px 0 !important;
+                text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 15px !important;
+            }
+            
+            div[data-cta-experiencia="motivacional"] p[data-texto-cta] {
+                all: initial !important;
+                font-family: 'Montserrat', sans-serif !important;
+                font-size: 1.15em !important;
+                font-weight: 600 !important;
+                color: var(--color-azul-principal) !important;
+                line-height: 1.5 !important;
+                margin: 0 !important;
+                text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7) !important;
+                font-style: italic !important;
+            }
+            
+            /* ANIMACIONES OPTIMIZADAS SEGUNDA PARTE */
+            @keyframes ondaExperiencia {
+                0%, 100% { 
+                    opacity: 0.25; 
+                    transform: scale(1) rotate(0deg);
+                }
+                50% { 
+                    opacity: 0.45; 
+                    transform: scale(1.15) rotate(180deg);
+                }
+            }
+            
+            @keyframes rocketExperiencia {
+                0%, 100% { 
+                    transform: scale(1) translateY(0);
+                    filter: drop-shadow(0 0 10px rgba(25, 88, 85, 0.4));
+                }
+                25% { 
+                    transform: scale(1.08) translateY(-2px);
+                    filter: drop-shadow(0 0 15px rgba(25, 88, 85, 0.6));
+                }
+                50% { 
+                    transform: scale(1.12) translateY(-4px);
+                    filter: drop-shadow(0 0 20px rgba(25, 88, 85, 0.8));
+                }
+                75% { 
+                    transform: scale(1.08) translateY(-2px);
+                    filter: drop-shadow(0 0 15px rgba(25, 88, 85, 0.6));
+                }
+            }
+            
+            @keyframes pulsoMetodologia {
+                0%, 100% { 
+                    transform: scale(1);
+                    filter: drop-shadow(0 0 8px rgba(0, 174, 172, 0.25));
+                }
+                50% { 
+                    transform: scale(1.1);
+                    filter: drop-shadow(0 0 12px rgba(0, 174, 172, 0.4));
+                }
+            }
+            
+            /* ESTADOS HOVER EXPERIENCIA */
+            div[data-bloque-metodologia]:hover {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 18px 45px rgba(23, 33, 57, 0.15), 0 8px 20px rgba(25, 88, 85, 0.12) !important;
+                border-left-color: var(--color-naranja-cta) !important;
+                border-left-width: 8px !important;
+            }
+            
+            div[data-experiencia-info="segunda-parte-curso"]:hover {
+                transform: translateY(-4px) scale(1.008) !important;
+                transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                box-shadow: 0 30px 80px rgba(25, 88, 85, 0.22), 0 12px 35px rgba(0, 174, 172, 0.18) !important;
+            }
+            
+            div[data-caracteristica-especial]:hover {
+                background: rgba(180, 196, 44, 0.18) !important;
+                transform: translateX(5px) !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            div[data-cta-experiencia="motivacional"]:hover {
+                transform: scale(1.02) !important;
+                box-shadow: 0 20px 50px rgba(233, 144, 30, 0.35) !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            /* RESPONSIVIDAD SEGUNDA PARTE */
+            @media (max-width: 768px) {
+                div[data-experiencia-info="segunda-parte-curso"] > div[data-header-experiencia="titulo-metodologia"] {
+                    padding: 40px 30px 30px !important;
+                }
+                
+                div[data-experiencia-info="segunda-parte-curso"] > div[data-contenido-experiencia="metodologia-principal"] {
+                    padding: 35px 25px !important;
+                }
+                
+                div[data-bloque-metodologia] {
+                    padding: 25px !important;
+                    margin-bottom: 30px !important;
+                }
+                
+                div[data-caracteristica-especial] {
+                    flex-direction: column !important;
+                    gap: 10px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                div[data-experiencia-info="segunda-parte-curso"] > div[data-header-experiencia="titulo-metodologia"] {
+                    padding: 35px 25px 25px !important;
+                }
+                
+                div[data-bloque-metodologia] {
+                    padding: 22px !important;
+                }
+                
+                div[data-cta-experiencia="motivacional"] {
+                    padding: 30px 25px !important;
+                }
+            }
+            
+            /* ACCESIBILIDAD AVANZADA SEGUNDA PARTE */
+            @media (prefers-contrast: high) {
+                div[data-experiencia-info="segunda-parte-curso"] h2[data-titulo-experiencia="metodologia-principal"] {
+                    color: #000000 !important;
+                    text-shadow: 3px 3px 6px rgba(255, 255, 255, 1) !important;
+                }
+                
+                div[data-bloque-metodologia] h3[data-titulo-metodologia] {
+                    color: #000000 !important;
+                }
+                
+                div[data-bloque-metodologia] p[data-texto-metodologia],
+                div[data-bloque-metodologia] li[data-item-metodologia] {
+                    color: #000000 !important;
+                }
+                
+                div[data-cta-experiencia="motivacional"] h3[data-titulo-cta],
+                div[data-cta-experiencia="motivacional"] p[data-texto-cta] {
+                    color: #000000 !important;
+                    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1) !important;
+                }
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                div[data-experiencia-info="segunda-parte-curso"] span[data-emoji-experiencia="rocket"],
+                div[data-bloque-metodologia] span[data-icono-metodologia],
+                div[data-experiencia-info="segunda-parte-curso"] > div[data-header-experiencia="titulo-metodologia"]::after {
+                    animation: none !important;
+                }
+                
+                div[data-bloque-metodologia]:hover,
+                div[data-experiencia-info="segunda-parte-curso"]:hover,
+                div[data-caracteristica-especial]:hover,
+                div[data-cta-experiencia="motivacional"]:hover {
+                    transform: none !important;
+                    transition: none !important;
+                }
+            }
+            
+            /* MONTSERRAT FORZADO GLOBALMENTE SEGUNDA PARTE */
+            div[data-experiencia-info="segunda-parte-curso"] *,
+            div[data-experiencia-info="segunda-parte-curso"] h2,
+            div[data-experiencia-info="segunda-parte-curso"] h3,
+            div[data-experiencia-info="segunda-parte-curso"] h4,
+            div[data-experiencia-info="segunda-parte-curso"] p,
+            div[data-experiencia-info="segunda-parte-curso"] li,
+            div[data-experiencia-info="segunda-parte-curso"] span,
+            div[data-experiencia-info="segunda-parte-curso"] strong {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
+        `;
+        document.head.appendChild(customStyles);
+        console.log('🚀 Estilos segunda parte inyectados con resistencia anti-Moodle garantizada');
+    })();
+</script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: SEGUNDA PARTE - EXPERIENCIA DE APRENDIZAJE - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-experiencia-info="segunda-parte-curso">
+    <!-- HEADER EXPERIENCIA -->
+    <div data-header-experiencia="titulo-metodologia">
+        <h2 data-titulo-experiencia="metodologia-principal">
+            <span data-emoji-experiencia="rocket">🚀</span>
+            ¿Cómo vas a vivir esta experiencia de aprendizaje?
+        </h2>
+    </div>
+    
+    <!-- CONTENIDO EXPERIENCIA -->
+    <div data-contenido-experiencia="metodologia-principal">
+        
+        <!-- METODOLOGÍA GAMIFICADA -->
+        <div data-bloque-metodologia="gamificacion">
+            <h3 data-titulo-metodologia>
+                <span data-icono-metodologia>🎮</span>
+                Metodología gamificada que te mantendrá enganchado
+            </h3>
+            <p data-texto-metodologia>
+                Olvídate de las matemáticas aburridas. Aquí vivirás una <strong>experiencia de aprendizaje interactiva</strong> donde cada logro se celebra:
+            </p>
+            <ul data-lista-metodologia>
+                <li data-item-metodologia><strong>Juegos educativos tipo arcade</strong>: Resuelve operaciones mientras salvas la galaxia matemática</li>
+                <li data-item-metodologia><strong>Flashcards inteligentes</strong>: Memoriza conceptos jugando partidas estratégicas de emparejamiento</li>
+                <li data-item-metodologia><strong>Retos contextualizados</strong>: Aplica matemáticas resolviendo problemas reales de tu futura profesión</li>
+                <li data-item-metodologia><strong>Sistema de badges y logros</strong>: Desbloquea reconocimientos por cada competencia dominada</li>
+            </ul>
+        </div>
+        
+        <!-- FLEXIBILIDAD TOTAL -->
+        <div data-bloque-metodologia="flexibilidad">
+            <h3 data-titulo-metodologia>
+                <span data-icono-metodologia>⏰</span>
+                Flexibilidad total adaptada a tu ritmo de vida
+            </h3>
+            <p data-texto-metodologia>
+                Este es <strong>tu curso, a tu manera</strong>:
+            </p>
+            
+            <div data-destacado-experiencia="flexibilidad">
+                <h4 data-titulo-flexibilidad>
+                    <span>🌟</span>
+                    Características de Flexibilidad
+                </h4>
+                
+                <div data-caracteristica-especial="asincrono">
+                    <span data-icono-caracteristica>🕒</span>
+                    <div data-texto-caracteristica>
+                        <strong>100% asincrónico</strong>
+                        <span data-descripcion-caracteristica>Estudia cuando puedas, donde puedas, sin horarios fijos</span>
+                    </div>
+                </div>
+                
+                <div data-caracteristica-especial="acceso">
+                    <span data-icono-caracteristica>🔄</span>
+                    <div data-texto-caracteristica>
+                        <strong>Acceso ilimitado</strong>
+                        <span data-descripcion-caracteristica>Repite actividades cuantas veces necesites hasta dominar cada tema</span>
+                    </div>
+                </div>
+                
+                <div data-caracteristica-especial="progresion">
+                    <span data-icono-caracteristica>📈</span>
+                    <div data-texto-caracteristica>
+                        <strong>Progresión autodirigida</strong>
+                        <span data-descripcion-caracteristica>Avanza según tu nivel de preparación y disponibilidad de tiempo</span>
+                    </div>
+                </div>
+                
+                <div data-caracteristica-especial="dispositivos">
+                    <span data-icono-caracteristica>📱</span>
+                    <div data-texto-caracteristica>
+                        <strong>Compatible con todos tus dispositivos</strong>
+                        <span data-descripcion-caracteristica>Estudia desde tu celular, tablet o computador</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RECURSOS INTERACTIVOS -->
+        <div data-bloque-metodologia="recursos">
+            <h3 data-titulo-metodologia>
+                <span data-icono-metodologia>🛠️</span>
+                Recursos interactivos de última generación
+            </h3>
+            <p data-texto-metodologia>
+                Aprenderás con <strong>herramientas diseñadas para el éxito</strong>:
+            </p>
+            <ul data-lista-metodologia>
+                <li data-item-metodologia><strong>Diapositivas</strong>: Visualiza conceptos complejos de manera simple y atractiva</li>
+                <li data-item-metodologia><strong>Simuladores interactivos</strong>: Experimenta con problemas reales sin consecuencias</li>
+                <li data-item-metodologia><strong>Feedback inmediato</strong>: Recibe retroalimentación constructiva en tiempo real</li>
+            </ul>
+        </div>
+        
+        <!-- ENFOQUE EN APRENDIZAJE -->
+        <div data-bloque-metodologia="aprendizaje">
+            <h3 data-titulo-metodologia>
+                <span data-icono-metodologia>💡</span>
+                Enfoque en el aprendizaje, no en la calificación
+            </h3>
+            <p data-texto-metodologia>
+                Aquí <strong>el error es tu aliado de aprendizaje</strong>:
+            </p>
+            <ul data-lista-metodologia>
+                <li data-item-metodologia><strong>Sin presión de notas</strong>: Enfócate en entender, no en memorizar para un examen</li>
+                <li data-item-metodologia><strong>Intentos ilimitados</strong>: Practica hasta lograr la maestría completa</li>
+                <li data-item-metodologia><strong>Retroalimentación constructiva</strong>: Cada error te acerca más al dominio del tema</li>
+            </ul>
+        </div>
+        
+        <!-- PREPARACIÓN INTEGRAL -->
+        <div data-bloque-metodologia="preparacion">
+            <h3 data-titulo-metodologia>
+                <span data-icono-metodologia>🎓</span>
+                Preparación integral para el éxito universitario
+            </h3>
+            <p data-texto-metodologia>
+                Este curso te prepara <strong>más allá de las matemáticas</strong>:
+            </p>
+            <ul data-lista-metodologia>
+                <li data-item-metodologia><strong>Autonomía académica</strong>: Desarrolla habilidades de autogestión del aprendizaje</li>
+                <li data-item-metodologia><strong>Competencias digitales</strong>: Domina herramientas tecnológicas esenciales</li>
+                <li data-item-metodologia><strong>Pensamiento crítico</strong>: Analiza, evalúa y resuelve problemas complejos</li>
+                <li data-item-metodologia><strong>Mentalidad de crecimiento</strong>: Construye resilencia y confianza para futuros desafíos</li>
+            </ul>
+        </div>
+        
+        <!-- LLAMADA A LA ACCIÓN MOTIVACIONAL -->
+        <div data-cta-experiencia="motivacional">
+            <h3 data-titulo-cta>
+                <span>✨</span>
+                ¿Estás listo para transformar tu relación con las matemáticas?
+            </h3>
+            <p data-texto-cta>
+                ¡Tu aventura matemática comienza ahora y te llevará al éxito universitario! 🌟
+            </p>
+        </div>
+        
+    </div>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: SEGUNDA PARTE - EXPERIENCIA DE APRENDIZAJE - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA SEGUNDA PARTE - APERTURA -->
+<!-- ================================================================================================ -->
+<script>
+    /**
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE SEGUNDA PARTE
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Inicializando sistema ultra-resistente para Segunda Parte - Experiencia de Aprendizaje');
+        
+        /**
+         * VERIFICACIÓN DE CONTENEDOR EXPERIENCIA CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarContenedorExperienciaUltraResistente() {
+            const contenedor = document.querySelector('div[data-experiencia-info="segunda-parte-curso"]');
+            if (contenedor) {
+                console.log('✅ Contenedor experiencia ultra-resistente cargado y funcionando correctamente');
+                
+                // EFECTOS HOVER INSTITUCIONALES EXPERIENCIA
+                contenedor.addEventListener('mouseenter', function() {
+                    this.style.setProperty('transform', 'translateY(-4px) scale(1.008) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 30px 80px rgba(25, 88, 85, 0.22), 0 12px 35px rgba(0, 174, 172, 0.18)', 'important');
+                });
+                
+                contenedor.addEventListener('mouseleave', function() {
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(25, 88, 85, 0.18), 0 10px 30px rgba(0, 174, 172, 0.12)', 'important');
+                });
+                
+                // ACCESIBILIDAD AVANZADA EXPERIENCIA
+                const titulo = contenedor.querySelector('h2[data-titulo-experiencia="metodologia-principal"]');
+                if (titulo) {
+                    titulo.setAttribute('tabindex', '0');
+                    titulo.setAttribute('role', 'heading');
+                    titulo.setAttribute('aria-level', '2');
+                    titulo.setAttribute('aria-label', 'Segunda parte: ¿Cómo vas a vivir esta experiencia de aprendizaje? - Metodología y recursos del curso');
+                }
+                
+                // INTERACTIVIDAD PARA BLOQUES DE METODOLOGÍA
+                const bloquesMetodologia = contenedor.querySelectorAll('div[data-bloque-metodologia]');
+                bloquesMetodologia.forEach((bloque, index) => {
+                    bloque.addEventListener('mouseenter', function() {
+                        this.style.setProperty('transform', 'translateY(-3px)', 'important');
+                        this.style.setProperty('box-shadow', '0 18px 45px rgba(23, 33, 57, 0.15), 0 8px 20px rgba(25, 88, 85, 0.12)', 'important');
+                        this.style.setProperty('border-left-color', '#E9901E', 'important');
+                        this.style.setProperty('border-left-width', '8px', 'important');
+                    });
+                    
+                    bloque.addEventListener('mouseleave', function() {
+                        this.style.setProperty('transform', 'translateY(0)', 'important');
+                        this.style.setProperty('box-shadow', '0 12px 35px rgba(23, 33, 57, 0.1), 0 5px 15px rgba(25, 88, 85, 0.08)', 'important');
+                        this.style.setProperty('border-left-color', '#195855', 'important');
+                        this.style.setProperty('border-left-width', '6px', 'important');
+                    });
+                    
+                    // PREPARAR PARA ANIMACIONES DE GPU
+                    bloque.style.setProperty('will-change', 'transform, box-shadow, border-left-color', 'important');
+                });
+                
+                // INTERACTIVIDAD PARA CARACTERÍSTICAS ESPECIALES
+                const caracteristicas = contenedor.querySelectorAll('div[data-caracteristica-especial]');
+                caracteristicas.forEach((caracteristica) => {
+                    caracteristica.addEventListener('mouseenter', function() {
+                        this.style.setProperty('background', 'rgba(180, 196, 44, 0.18)', 'important');
+                        this.style.setProperty('transform', 'translateX(5px)', 'important');
+                        this.style.setProperty('transition', 'all 0.3s ease', 'important');
+                    });
+                    
+                    caracteristica.addEventListener('mouseleave', function() {
+                        this.style.setProperty('background', 'rgba(180, 196, 44, 0.12)', 'important');
+                        this.style.setProperty('transform', 'translateX(0)', 'important');
+                    });
+                });
+                
+                // INTERACTIVIDAD PARA CTA MOTIVACIONAL
+                const ctaMotivacional = contenedor.querySelector('div[data-cta-experiencia="motivacional"]');
+                if (ctaMotivacional) {
+                    ctaMotivacional.addEventListener('mouseenter', function() {
+                        this.style.setProperty('transform', 'scale(1.02)', 'important');
+                        this.style.setProperty('box-shadow', '0 20px 50px rgba(233, 144, 30, 0.35)', 'important');
+                        this.style.setProperty('transition', 'all 0.3s ease', 'important');
+                    });
+                    
+                    ctaMotivacional.addEventListener('mouseleave', function() {
+                        this.style.setProperty('transform', 'scale(1)', 'important');
+                        this.style.setProperty('box-shadow', '0 15px 40px rgba(233, 144, 30, 0.25)', 'important');
+                    });
+                }
+                
+            } else {
+                console.error('❌ Error: Contenedor experiencia ultra-resistente no encontrado');
+            }
+        }
+        
+        /**
+         * ANÁLISIS CROMÁTICO INSTITUCIONAL SEGUNDA PARTE
+         */
+        function analizarImplementacionInstitucionalSegundaParte() {
+            console.log('🎨 Análisis de implementación segunda parte con paleta institucional:');
+            console.log('   ✅ Verde subtítulo (#195855): Color principal de la segunda parte');
+            console.log('   ✅ Teal acento (#00AEAC): Iconos y elementos interactivos');
+            console.log('   ✅ Azul principal (#172139): Textos y contenido');
+            console.log('   ✅ Amarillo-Naranja: Gradientes de CTA y elementos destacados');
+            console.log('   ✅ Verde lima (#B4C42C): Características especiales');
+            console.log('   ✅ Armonía cromática: Progresión natural entre primera y segunda parte');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos data-experiencia-info');
+        }
+        
+        /**
+         * CONFIGURACIÓN DE CONTEXTO EXPERIENCIA EDUCATIVA
+         */
+        function configurarContextoExperienciaEducativa() {
+            const contenedor = document.querySelector('div[data-experiencia-info="segunda-parte-curso"]');
+            
+            if (contenedor) {
+                // ATRIBUTOS DE CONTEXTO EXPERIENCIA EDUCATIVA
+                contenedor.setAttribute('data-tipo-contenido', 'experiencia-metodologia');
+                contenedor.setAttribute('data-fase-educativa', 'presentacion-recursos');
+                contenedor.setAttribute('data-enfoque-pedagogico', 'gamificacion-flexibilidad');
+                contenedor.setAttribute('data-nivel-interactividad', 'alto');
+                contenedor.setAttribute('data-paleta-aplicada', 'institucional-verde-principal');
+                contenedor.setAttribute('data-resistencia-moodle', 'ultra-maxima-segunda-parte');
+                
+                console.log('🚀 Contexto experiencia educativa ultra-resistente configurado correctamente');
+            }
+        }
+        
+        /**
+         * SISTEMA DE ANIMACIONES METODOLÓGICAS
+         */
+        function inicializarAnimacionesMetodologicas() {
+            const emojisExperiencia = document.querySelectorAll('span[data-emoji-experiencia]');
+            const iconosMetodologia = document.querySelectorAll('span[data-icono-metodologia]');
+            const iconosCaracteristica = document.querySelectorAll('span[data-icono-caracteristica]');
+            
+            // CONFIGURAR EMOJIS DE EXPERIENCIA
+            emojisExperiencia.forEach((emoji) => {
+                emoji.style.setProperty('will-change', 'transform, filter', 'important');
+                
+                emoji.addEventListener('click', function() {
+                    this.style.setProperty('transform', 'scale(1.4) rotate(360deg)', 'important');
+                    this.style.setProperty('filter', 'drop-shadow(0 0 20px rgba(25, 88, 85, 0.8))', 'important');
+                    
+                    setTimeout(() => {
+                        this.style.removeProperty('transform');
+                        this.style.setProperty('filter', 'drop-shadow(0 0 10px rgba(25, 88, 85, 0.4))', 'important');
+                    }, 700);
+                });
+            });
+            
+            // CONFIGURAR ICONOS DE METODOLOGÍA
+            iconosMetodologia.forEach((icono) => {
+                icono.style.setProperty('will-change', 'transform, filter', 'important');
+                
+                icono.addEventListener('click', function() {
+                    this.style.setProperty('transform', 'scale(1.3) rotate(180deg)', 'important');
+                    this.style.setProperty('filter', 'drop-shadow(0 0 15px rgba(0, 174, 172, 0.6))', 'important');
+                    
+                    setTimeout(() => {
+                        this.style.removeProperty('transform');
+                        this.style.setProperty('filter', 'drop-shadow(0 0 8px rgba(0, 174, 172, 0.25))', 'important');
+                    }, 500);
+                });
+            });
+            
+            // CONFIGURAR ICONOS DE CARACTERÍSTICAS
+            iconosCaracteristica.forEach((icono) => {
+                icono.style.setProperty('will-change', 'transform', 'important');
+            });
+        }
+        
+        // EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN SEGUNDA PARTE
+        verificarContenedorExperienciaUltraResistente();
+        analizarImplementacionInstitucionalSegundaParte();
+        configurarContextoExperienciaEducativa();
+        inicializarAnimacionesMetodologicas();
+        
+        // LOG FINAL DE SISTEMA INSTITUCIONAL SEGUNDA PARTE
+        console.log('🌟 Sistema Ultra-Resistente Segunda Parte con Paleta Institucional inicializado completamente');
+        console.log('🚀 Características específicas implementadas:');
+        console.log('   • Paleta institucional con verde como color principal de segunda parte');
+        console.log('   • Resistencia anti-Moodle máxima con selectores data-experiencia-info únicos');
+        console.log('   • Tipografía Montserrat forzada globalmente en experiencia');
+        console.log('   • GPU acceleration optimizado para metodología interactiva');
+        console.log('   • Accesibilidad avanzada con ARIA específico para experiencia');
+        console.log('   • Animaciones metodológicas suaves y profesionales');
+        console.log('   • Armonía cromática complementaria con primera parte');
+        console.log('   • Elementos de gamificación integrados visualmente');
+    });
+    
+    /**
+     * FUNCIONES GLOBALES DE UTILIDAD EXPERIENCIA
+     */
+    function alternarModoExperiencia() {
+        const contenedor = document.querySelector('div[data-experiencia-info="segunda-parte-curso"]');
+        if (contenedor) {
+            const modos = ['metodologia', 'recursos', 'flexibilidad', 'gamificacion'];
+            const modoActual = contenedor.getAttribute('data-modo-experiencia') || 'metodologia';
+            const indiceActual = modos.indexOf(modoActual);
+            const nuevoModo = modos[(indiceActual + 1) % 4];
+            
+            contenedor.setAttribute('data-modo-experiencia', nuevoModo);
+            console.log(`🔄 Modo experiencia: ${nuevoModo}`);
+        }
+    }
+    
+    function activarModoEnfoqueGamificacion() {
+        const contenedor = document.querySelector('div[data-experiencia-info="segunda-parte-curso"]');
+        const bloquesMetodologia = document.querySelectorAll('div[data-bloque-metodologia]');
+        
+        if (contenedor && bloquesMetodologia.length > 0) {
+            contenedor.style.setProperty('filter', 'brightness(1.08) saturate(1.15)', 'important');
+            
+            bloquesMetodologia.forEach(bloque => {
+                bloque.style.setProperty('border-left-width', '8px', 'important');
+                bloque.style.setProperty('border-left-color', '#E9901E', 'important');
+                bloque.style.setProperty('transform', 'scale(1.015)', 'important');
+            });
+            
+            console.log('🎮 Modo enfoque gamificación institucional activado');
+        }
+    }
+</script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA SEGUNDA PARTE - CIERRE -->
+<!-- ================================================================================================ -->

@@ -1,0 +1,1189 @@
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - APERTURA -->
+<!-- ================================================================================================ -->
+<script>
+    /**
+     * CARGA DINÁMICA DE FUENTE MONTSERRAT
+     * Técnica: Creación programática de elementos <link> para evitar bloqueos de renderizado inicial
+     */
+    function cargarMontserrat() {
+        const montserratLink = document.createElement('link');
+        montserratLink.rel = 'stylesheet';
+        montserratLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap';
+        montserratLink.onload = () => console.log('✅ Montserrat cargado correctamente');
+        montserratLink.onerror = () => console.error('❌ Error al cargar Montserrat');
+        document.head.appendChild(montserratLink);
+    }
+    /**
+     * FUNCIÓN GENÉRICA DE CARGA DE RECURSOS
+     * Patrón de diseño: Factory pattern para crear elementos DOM diferentes según el tipo de recurso
+     */
+    function cargarRecurso(tipo, url) {
+        const elemento = document.createElement(tipo === 'stylesheet' ? 'link' : 'script');
+        if (tipo === 'stylesheet') {
+            elemento.rel = 'stylesheet';
+            elemento.href = url;
+        } else {
+            elemento.src = url;
+            elemento.defer = true; // Performance: Carga no-bloqueante
+        }
+        elemento.onload = () => console.log(`✅ Recurso cargado correctamente: ${url}`);
+        elemento.onerror = () => console.error(`❌ Error al cargar el recurso: ${url}`);
+        document.head.appendChild(elemento);
+    }
+    // Ejecutar carga de recursos críticos
+    cargarMontserrat();
+    cargarRecurso('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+    /**
+     * INYECCIÓN DE ESTILOS CRÍTICOS
+     * Técnica: IIFE (Immediately Invoked Function Expression) para encapsular la lógica de estilos
+     */
+    (function agregarEstilosPersonalizados() {
+        const customStyles = document.createElement('style');
+        customStyles.id = 'recorrido-matematico-ultra-resistente';
+        customStyles.textContent = `
+            /* ================================================================================ */
+            /* RESISTENCIA ANTI-MOODLE GARANTIZADA - CSS CRÍTICO INLINE */
+            /* ================================================================================ */
+            
+            * {
+                margin: 0 !important;
+                padding: 0 !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* RESETEO ABSOLUTO DEL CONTENEDOR PRINCIPAL */
+            div[data-banner-ultra="recorrido-matematico-v2"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                margin: 20px 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: linear-gradient(135deg, #00AEAC 0%, #108181 100%) !important;
+                color: inherit !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 140px !important;
+                overflow: hidden !important;
+                border-radius: 20px !important;
+                box-shadow: 0 25px 70px rgba(0, 174, 172, 0.4), 0 10px 30px rgba(16, 129, 129, 0.3) !important;
+                border: 3px solid rgba(255, 255, 255, 0.2) !important;
+                will-change: transform, box-shadow !important; /* GPU acceleration */
+                transform: translateZ(0) !important; /* Force GPU layer */
+            }
+            /* OVERLAY GLASSMORPHISM AVANZADO */
+            div[data-banner-ultra="recorrido-matematico-v2"]::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                background: linear-gradient(135deg, rgba(16, 129, 129, 0.15) 0%, transparent 50%, rgba(0, 174, 172, 0.08) 100%) !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                opacity: 0.8 !important;
+                backdrop-filter: blur(2px) !important;
+                -webkit-backdrop-filter: blur(2px) !important;
+            }
+            /* HEADER PRINCIPAL CON MÁXIMA ESPECIFICIDAD */
+            div[data-banner-ultra="recorrido-matematico-v2"] > div[data-seccion="header-principal"] {
+                all: initial !important;
+                display: block !important;
+                text-align: center !important;
+                padding: 45px 40px !important;
+                background: rgba(255, 255, 255, 0.12) !important;
+                backdrop-filter: blur(30px) saturate(1.4) !important;
+                -webkit-backdrop-filter: blur(30px) saturate(1.4) !important;
+                border-bottom: 6px solid rgba(255, 255, 255, 0.3) !important;
+                position: relative !important;
+                z-index: 2 !important;
+                overflow: hidden !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            /* ELEMENTO DECORATIVO SOL DORADO */
+            div[data-banner-ultra="recorrido-matematico-v2"] > div[data-seccion="header-principal"]::after {
+                content: '' !important;
+                position: absolute !important;
+                top: -40px !important;
+                right: -40px !important;
+                width: 160px !important;
+                height: 160px !important;
+                background: radial-gradient(circle, #00AEAC 0%, #108181 40%, transparent 85%) !important;
+                border-radius: 50% !important;
+                opacity: 0.4 !important;
+                z-index: -1 !important;
+                filter: blur(12px) !important;
+                animation: sunPulse 6s ease-in-out infinite !important;
+                will-change: opacity, transform !important;
+            }
+            /* TÍTULO PRINCIPAL CON CONTRASTE ABSOLUTO */
+            div[data-banner-ultra="recorrido-matematico-v2"] h1[data-elemento="titulo-principal"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(2rem, 6vw, 3.2rem) !important;
+                font-weight: 900 !important;
+                margin: 0 0 25px 0 !important;
+                padding: 0 !important;
+                color: #ffffff !important;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2) !important;
+                line-height: 1.1 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                letter-spacing: -0.8px !important;
+                text-align: center !important;
+                display: block !important;
+                box-sizing: border-box !important;
+                text-transform: none !important;
+                text-decoration: none !important;
+                border: none !important;
+                background: none !important;
+                will-change: color, text-shadow !important;
+            }
+            /* SUBTÍTULO CON JERARQUÍA VISUAL */
+            div[data-banner-ultra="recorrido-matematico-v2"] p[data-elemento="subtitulo-modulo"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                font-size: clamp(1.2rem, 3.5vw, 1.6rem) !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                line-height: 1.3 !important;
+                position: relative !important;
+                z-index: 3 !important;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.2) !important;
+                text-transform: none !important;
+                letter-spacing: 0.5px !important;
+                text-align: center !important;
+                font-style: normal !important;
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: none !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                opacity: 0.95 !important;
+            }
+            /* ICONOS CON RESPLANDOR EXTREMO */
+            div[data-banner-ultra="recorrido-matematico-v2"] span[data-icono="cohete-principal"] {
+                margin-right: 20px !important;
+                vertical-align: middle !important;
+                font-size: 1.8em !important;
+                display: inline-block !important;
+                animation: rocketGlow 4s ease-in-out infinite !important;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                will-change: transform, filter !important;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.5) !important;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
+            }
+            /* ELEMENTOS FLOTANTES MOTIVACIONALES */
+            div[data-banner-ultra="recorrido-matematico-v2"] > div[data-seccion="elementos-flotantes"] {
+                all: initial !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                z-index: 1 !important;
+                pointer-events: none !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: block !important;
+            }
+            div[data-concepto="objetivo-aprendizaje"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 45px !important;
+                height: 45px !important;
+                background: rgba(255, 255, 255, 0.3) !important;
+                top: 18% !important;
+                left: 10% !important;
+                animation-delay: 0s !important;
+                display: block !important;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+            }
+            div[data-concepto="competencia-matematica"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 38px !important;
+                height: 38px !important;
+                background: rgba(255, 255, 255, 0.25) !important;
+                top: 68% !important;
+                right: 18% !important;
+                animation-delay: 2.5s !important;
+                display: block !important;
+                box-shadow: 0 0 18px rgba(255, 255, 255, 0.2) !important;
+            }
+            div[data-concepto="motivacion-inicial"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 42px !important;
+                height: 42px !important;
+                background: rgba(255, 255, 255, 0.28) !important;
+                top: 42% !important;
+                right: 38% !important;
+                animation-delay: 5s !important;
+                display: block !important;
+                box-shadow: 0 0 19px rgba(255, 255, 255, 0.2) !important;
+            }
+            div[data-concepto="introduccion-tema"] {
+                all: initial !important;
+                position: absolute !important;
+                border-radius: 50% !important;
+                opacity: 0.35 !important;
+                animation: floatMotivacional 8s ease-in-out infinite !important;
+                width: 35px !important;
+                height: 35px !important;
+                background: rgba(255, 255, 255, 0.22) !important;
+                top: 28% !important;
+                left: 42% !important;
+                animation-delay: 1.5s !important;
+                display: block !important;
+                box-shadow: 0 0 16px rgba(255, 255, 255, 0.2) !important;
+            }
+            
+            /* CONTENIDO PRINCIPAL ULTRA-RESISTENTE */
+            div[data-contenedor="contenido-principal"] {
+                all: initial !important;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+                padding: 2rem !important;
+                background: linear-gradient(135deg, #f8fdfd 0%, #e6f7f7 100%) !important;
+                color: #172139 !important;
+                line-height: 1.6 !important;
+                display: block !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* STATS OVERVIEW */
+            div[data-seccion="stats-overview"] {
+                all: initial !important;
+                display: grid !important;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+                gap: 1.5rem !important;
+                margin-bottom: 3rem !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            div[data-elemento="stat-card"] {
+                all: initial !important;
+                background: white !important;
+                padding: 1.5rem !important;
+                border-radius: 15px !important;
+                text-align: center !important;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+                border-top: 4px solid #00AEAC !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+                font-family: 'Montserrat', sans-serif !important;
+                display: block !important;
+                will-change: transform !important;
+            }
+            
+            div[data-elemento="stat-card"]:hover {
+                transform: translateY(-5px) !important;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+            }
+            
+            /* FLOW DIAGRAM - MANTENER COLORES ORIGINALES */
+            div[data-seccion="flow-diagram"] {
+                all: initial !important;
+                background: white !important;
+                padding: 3rem !important;
+                border-radius: 25px !important;
+                margin: 3rem 0 !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+                font-family: 'Montserrat', sans-serif !important;
+                display: block !important;
+            }
+            
+            div[data-elemento="flow-steps"] {
+                all: initial !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                flex-wrap: wrap !important;
+                gap: 1rem !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            div[data-elemento="flow-step"] {
+                all: initial !important;
+                flex: 1 !important;
+                min-width: 200px !important;
+                text-align: center !important;
+                position: relative !important;
+                font-family: 'Montserrat', sans-serif !important;
+                display: block !important;
+            }
+            
+            div[data-elemento="flow-step"]:not(:last-child)::after {
+                content: '→' !important;
+                position: absolute !important;
+                right: -1rem !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                font-size: 2rem !important;
+                color: #00AEAC !important;
+                font-weight: bold !important;
+            }
+            
+            div[data-elemento="step-circle"] {
+                all: initial !important;
+                width: 80px !important;
+                height: 80px !important;
+                border-radius: 50% !important;
+                margin: 0 auto 1rem !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 1.5rem !important;
+                color: white !important;
+                font-weight: bold !important;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            /* MANTENER COLORES ORIGINALES DEL FLOW */
+            div[data-paso="1"] { background: #FF8C00 !important; }
+            div[data-paso="2"] { background: #E91E63 !important; }
+            div[data-paso="3"] { background: #2196F3 !important; }
+            div[data-paso="4"] { background: #4CAF50 !important; }
+            
+            /* MÓDULOS GRID - COLORES ARMONIOSOS DE LA PALETA */
+            div[data-seccion="modules-grid"] {
+                all: initial !important;
+                display: grid !important;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+                gap: 2rem !important;
+                margin-bottom: 3rem !important;
+                font-family: 'Montserrat', sans-serif !important;
+            }
+            
+            div[data-elemento="module-card"] {
+                all: initial !important;
+                background: white !important;
+                border-radius: 20px !important;
+                overflow: hidden !important;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+                font-family: 'Montserrat', sans-serif !important;
+                display: block !important;
+                will-change: transform !important;
+            }
+            
+            div[data-elemento="module-card"]:hover {
+                transform: translateY(-8px) !important;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+            }
+            
+            div[data-modulo="1"] { background: linear-gradient(135deg, #E9901E, #FBBB28) !important; }
+            div[data-modulo="2"] { background: linear-gradient(135deg, #172139, #2C3E50) !important; }
+            div[data-modulo="3"] { background: linear-gradient(135deg, #00AEAC, #108181) !important; }
+            div[data-modulo="4"] { background: linear-gradient(135deg, #FBBB28, #B4C42C) !important; }
+            div[data-modulo="5"] { background: linear-gradient(135deg, #108181, #195855) !important; }
+            div[data-modulo="6"] { background: linear-gradient(135deg, #B4C42C, #E9901E) !important; }
+            
+            /* CAREER TAGS - NUEVOS COLORES DE LA PALETA */
+            div[data-elemento="career-tag"] {
+                all: initial !important;
+                color: white !important;
+                padding: 1rem 1.5rem !important;
+                border-radius: 25px !important;
+                text-align: center !important;
+                font-weight: 600 !important;
+                font-size: 0.95rem !important;
+                transition: transform 0.3s ease !important;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+                font-family: 'Montserrat', sans-serif !important;
+                display: block !important;
+                will-change: transform !important;
+            }
+            
+            div[data-elemento="career-tag"]:hover {
+                transform: scale(1.05) !important;
+            }
+            
+            /* DISTRIBUCIÓN DE COLORES PARA CAREER TAGS */
+            div[data-career="gastronomia"] { background: linear-gradient(135deg, #E9901E, #FBBB28) !important; }
+            div[data-career="laboratorio"] { background: linear-gradient(135deg, #00AEAC, #108181) !important; }
+            div[data-career="turismo"] { background: linear-gradient(135deg, #B4C42C, #195855) !important; }
+            div[data-career="arquitectura"] { background: linear-gradient(135deg, #172139, #00AEAC) !important; }
+            div[data-career="administracion"] { background: linear-gradient(135deg, #FBBB28, #E9901E) !important; }
+            div[data-career="desarrollo"] { background: linear-gradient(135deg, #108181, #B4C42C) !important; }
+            div[data-career="educacion"] { background: linear-gradient(135deg, #195855, #172139) !important; }
+            div[data-career="biotecnologia"] { background: linear-gradient(135deg, #E9901E, #00AEAC) !important; }
+            
+            /* ANIMACIONES KEYFRAMES OPTIMIZADAS */
+            @keyframes sunPulse {
+                0%, 100% { 
+                    opacity: 0.3; 
+                    transform: scale(1) rotate(0deg);
+                }
+                50% { 
+                    opacity: 0.6; 
+                    transform: scale(1.2) rotate(180deg);
+                }
+            }
+            @keyframes rocketGlow {
+                0%, 100% { 
+                    transform: scale(1) rotateZ(0deg);
+                    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+                }
+                25% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+                }
+                50% { 
+                    transform: scale(1.15) rotateZ(10deg);
+                    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+                }
+                75% { 
+                    transform: scale(1.1) rotateZ(5deg);
+                    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+                }
+            }
+            @keyframes floatMotivacional {
+                0%, 100% { 
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                }
+                33% { 
+                    transform: translateY(-12px) translateX(5px) rotate(120deg);
+                }
+                66% { 
+                    transform: translateY(7px) translateX(-4px) rotate(240deg);
+                }
+            }
+            
+            /* RESPONSIVIDAD EXTREMA */
+            @media (max-width: 768px) {
+                div[data-banner-ultra="recorrido-matematico-v2"] > div[data-seccion="header-principal"] {
+                    padding: 40px 30px !important;
+                }
+                
+                div[data-banner-ultra="recorrido-matematico-v2"] h1[data-elemento="titulo-principal"] {
+                    margin-bottom: 20px !important;
+                    letter-spacing: -0.5px !important;
+                }
+                
+                div[data-concepto] {
+                    opacity: 0.25 !important;
+                }
+                
+                div[data-elemento="flow-step"]:not(:last-child)::after {
+                    content: '↓' !important;
+                    right: 50% !important;
+                    top: auto !important;
+                    bottom: -1.5rem !important;
+                    transform: translateX(50%) !important;
+                }
+                
+                div[data-elemento="flow-steps"] {
+                    flex-direction: column !important;
+                }
+                
+                div[data-seccion="modules-grid"] {
+                    grid-template-columns: 1fr !important;
+                }
+                
+                div[data-elemento="step-circle"] {
+                    width: 60px !important;
+                    height: 60px !important;
+                    font-size: 1.2rem !important;
+                }
+            }
+            
+            /* ACCESIBILIDAD AVANZADA */
+            @media (prefers-contrast: high) {
+                div[data-banner-ultra="recorrido-matematico-v2"] h1[data-elemento="titulo-principal"] {
+                    text-shadow: 4px 4px 12px rgba(0, 0, 0, 1), 0 0 0 2px #000000 !important;
+                    color: #ffffff !important;
+                }
+                
+                div[data-banner-ultra="recorrido-matematico-v2"] p[data-elemento="subtitulo-modulo"] {
+                    color: #ffffff !important;
+                    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 0 1px #000000 !important;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                div[data-banner-ultra="recorrido-matematico-v2"] > div[data-seccion="header-principal"]::after,
+                div[data-concepto],
+                div[data-banner-ultra="recorrido-matematico-v2"] span[data-icono="cohete-principal"] {
+                    animation: none !important;
+                }
+                
+                div[data-banner-ultra="recorrido-matematico-v2"]:hover,
+                div[data-banner-ultra="recorrido-matematico-v2"]:hover h1[data-elemento="titulo-principal"],
+                div[data-banner-ultra="recorrido-matematico-v2"] span[data-icono="cohete-principal"]:hover {
+                    transition: none !important;
+                    transform: none !important;
+                }
+            }
+            /* MONTSERRAT FORZADO GLOBALMENTE */
+            div[data-banner-ultra="recorrido-matematico-v2"] *,
+            div[data-contenedor="contenido-principal"] *,
+            body {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            }
+        `;
+        document.head.appendChild(customStyles);
+        console.log('🎨 Estilos críticos inyectados con resistencia anti-Moodle garantizada');
+    })();
+</script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 1: INICIALIZACIÓN Y CARGA DINÁMICA DE RECURSOS - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DEL RECORRIDO MATEMÁTICO - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-banner-ultra="recorrido-matematico-v2">
+    <!-- ELEMENTOS MOTIVACIONALES FLOTANTES -->
+    <div data-seccion="elementos-flotantes">
+        <div data-concepto="objetivo-aprendizaje"></div>
+        <div data-concepto="competencia-matematica"></div>
+        <div data-concepto="motivacion-inicial"></div>
+        <div data-concepto="introduccion-tema"></div>
+    </div>
+    
+    <!-- HEADER PRINCIPAL CON CONTENIDO MOTIVACIONAL -->
+    <div data-seccion="header-principal">
+        <h1 data-elemento="titulo-principal">
+            <span data-icono="cohete-principal" class="banner-icon">🚀</span>
+            Tu Recorrido Matemático
+        </h1>
+        <p data-elemento="subtitulo-modulo">
+            Curso Introductorio de Matemáticas - Colegio Mayor de Antioquia
+        </p>
+    </div>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 2: BANNER PRINCIPAL DEL RECORRIDO MATEMÁTICO - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: CONTENIDO PRINCIPAL DEL RECORRIDO - APERTURA -->
+<!-- ================================================================================================ -->
+<div data-contenedor="contenido-principal">
+    <!-- Stats Overview -->
+    <div data-seccion="stats-overview">
+        <div data-elemento="stat-card">
+            <div style="font-size: 2.5rem; font-weight: 800; color: #00AEAC; font-family: 'Montserrat', sans-serif;">6</div>
+            <div style="color: #666; font-weight: 600; margin-top: 0.5rem; font-family: 'Montserrat', sans-serif;">Módulos Temáticos</div>
+        </div>
+        <div data-elemento="stat-card">
+            <div style="font-size: 2.5rem; font-weight: 800; color: #00AEAC; font-family: 'Montserrat', sans-serif;">24</div>
+            <div style="color: #666; font-weight: 600; margin-top: 0.5rem; font-family: 'Montserrat', sans-serif;">Sesiones de Aprendizaje</div>
+        </div>
+        <div data-elemento="stat-card">
+            <div style="font-size: 2.5rem; font-weight: 800; color: #00AEAC; font-family: 'Montserrat', sans-serif;">3</div>
+            <div style="color: #666; font-weight: 600; margin-top: 0.5rem; font-family: 'Montserrat', sans-serif;">Juegos por Módulo</div>
+        </div>
+        <div data-elemento="stat-card">
+            <div style="font-size: 2.5rem; font-weight: 800; color: #00AEAC; font-family: 'Montserrat', sans-serif;">100%</div>
+            <div style="color: #666; font-weight: 600; margin-top: 0.5rem; font-family: 'Montserrat', sans-serif;">Flexibilidad</div>
+        </div>
+    </div>
+
+    <!-- Flow Diagram -->
+    <div data-seccion="flow-diagram">
+        <h2 style="text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 3rem; color: #172139; font-family: 'Montserrat', sans-serif;"><i class="fas fa-route"></i> Secuencia de Cada Módulo</h2>
+        <div data-elemento="flow-steps">
+            <div data-elemento="flow-step">
+                <div data-elemento="step-circle" data-paso="1">1</div>
+                <div style="font-weight: 700; color: #172139; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">INTRODUCCIÓN</div>
+            </div>
+            <div data-elemento="flow-step">
+                <div data-elemento="step-circle" data-paso="2">2</div>
+                <div style="font-weight: 700; color: #172139; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">EXPLORACIÓN</div>
+            </div>
+            <div data-elemento="flow-step">
+                <div data-elemento="step-circle" data-paso="3">3</div>
+                <div style="font-weight: 700; color: #172139; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">CONSOLIDACIÓN</div>
+            </div>
+            <div data-elemento="flow-step">
+                <div data-elemento="step-circle" data-paso="4">4</div>
+                <div style="font-weight: 700; color: #172139; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">EVALUACIÓN</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modules Grid -->
+    <div data-seccion="modules-grid">
+        <!-- Módulo 1 -->
+        <div data-elemento="module-card">
+            <div data-modulo="1" style="padding: 1.5rem; color: white; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;">MÓDULO 1</div>
+                <div style="font-size: 1.3rem; font-weight: 700; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;"><i class="fas fa-calculator"></i> Sistema de los Números Enteros</div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #E9901E; background: linear-gradient(135deg, #FFF3E0, #FFCC80);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #E9901E;"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Introducción</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Mapa conceptual y motivación</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #00AEAC; background: linear-gradient(135deg, #E8F5E8, #C8E6C9);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #00AEAC;"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Exploración</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Conceptos fundamentales y reglas</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #195855; background: linear-gradient(135deg, #F0F9F9, #E0F2F1);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #195855;"><i class="fas fa-gamepad"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Consolidación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Juegos y práctica interactiva</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #B4C42C; background: linear-gradient(135deg, #F9FBE7, #F0F4C3);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #B4C42C;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Evaluación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Demuestra lo aprendido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div data-elemento="module-card">
+            <div data-modulo="2" style="padding: 1.5rem; color: white; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;">MÓDULO 2</div>
+                <div style="font-size: 1.3rem; font-weight: 700; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;"><i class="fas fa-atom"></i> Números Primos, MCM y MCD</div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #E9901E; background: linear-gradient(135deg, #FFF3E0, #FFCC80);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #E9901E;"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Introducción</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Divisibilidad y factorización</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #00AEAC; background: linear-gradient(135deg, #E8F5E8, #C8E6C9);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #00AEAC;"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Exploración</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Criterios y propiedades</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #195855; background: linear-gradient(135deg, #F0F9F9, #E0F2F1);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #195855;"><i class="fas fa-gamepad"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Consolidación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Aplicación lógica y práctica</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #B4C42C; background: linear-gradient(135deg, #F9FBE7, #F0F4C3);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #B4C42C;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Evaluación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Reto de optimización</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div data-elemento="module-card">
+            <div data-modulo="3" style="padding: 1.5rem; color: white; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;">MÓDULO 3</div>
+                <div style="font-size: 1.3rem; font-weight: 700; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;"><i class="fas fa-fraction"></i> Sistema de los Números Racionales</div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #E9901E; background: linear-gradient(135deg, #FFF3E0, #FFCC80);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #E9901E;"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Introducción</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Fracciones y decimales</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #00AEAC; background: linear-gradient(135deg, #E8F5E8, #C8E6C9);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #00AEAC;"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Exploración</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Equivalencias y operaciones</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #195855; background: linear-gradient(135deg, #F0F9F9, #E0F2F1);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #195855;"><i class="fas fa-gamepad"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Consolidación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Precisión en análisis</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #B4C42C; background: linear-gradient(135deg, #F9FBE7, #F0F4C3);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #B4C42C;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Evaluación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Dominio fraccionario</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo 4 -->
+        <div data-elemento="module-card">
+            <div data-modulo="4" style="padding: 1.5rem; color: white; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;">MÓDULO 4</div>
+                <div style="font-size: 1.3rem; font-weight: 700; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;"><i class="fas fa-balance-scale"></i> Razones, Proporciones y Regla de Tres</div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #E9901E; background: linear-gradient(135deg, #FFF3E0, #FFCC80);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #E9901E;"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Introducción</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Proporcionalidad y escalas</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #00AEAC; background: linear-gradient(135deg, #E8F5E8, #C8E6C9);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #00AEAC;"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Exploración</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Mezclas y distribuciones</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #195855; background: linear-gradient(135deg, #F0F9F9, #E0F2F1);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #195855;"><i class="fas fa-gamepad"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Consolidación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Contextos profesionales</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #B4C42C; background: linear-gradient(135deg, #F9FBE7, #F0F4C3);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #B4C42C;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Evaluación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Planificación logística</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo 5 -->
+        <div data-elemento="module-card">
+            <div data-modulo="5" style="padding: 1.5rem; color: white; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;">MÓDULO 5</div>
+                <div style="font-size: 1.3rem; font-weight: 700; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;"><i class="fas fa-ruler"></i> Aplicaciones y Sistemas de Medida</div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #E9901E; background: linear-gradient(135deg, #FFF3E0, #FFCC80);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #E9901E;"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Introducción</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Sistemas internacional e imperial</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #00AEAC; background: linear-gradient(135deg, #E8F5E8, #C8E6C9);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #00AEAC;"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Exploración</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Conversiones exactas</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #195855; background: linear-gradient(135deg, #F0F9F9, #E0F2F1);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #195855;"><i class="fas fa-gamepad"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Consolidación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Proyectos técnicos</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #B4C42C; background: linear-gradient(135deg, #F9FBE7, #F0F4C3);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #B4C42C;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Evaluación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Precisión científica</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo 6 -->
+        <div data-elemento="module-card">
+            <div data-modulo="6" style="padding: 1.5rem; color: white; text-align: center; position: relative; overflow: hidden;">
+                <div style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;">MÓDULO 6</div>
+                <div style="font-size: 1.3rem; font-weight: 700; position: relative; z-index: 1; font-family: 'Montserrat', sans-serif;"><i class="fas fa-superscript"></i> Potenciación y Radicación</div>
+            </div>
+            <div style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #E9901E; background: linear-gradient(135deg, #FFF3E0, #FFCC80);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #E9901E;"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Introducción</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Exponentes y raíces</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #00AEAC; background: linear-gradient(135deg, #E8F5E8, #C8E6C9);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #00AEAC;"><i class="fas fa-search"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Exploración</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Crecimiento exponencial</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #195855; background: linear-gradient(135deg, #F0F9F9, #E0F2F1);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #195855;"><i class="fas fa-gamepad"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Consolidación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Fenómenos exponenciales</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; padding: 1rem; margin-bottom: 0.75rem; border-radius: 12px; transition: all 0.3s ease; border-left: 4px solid #B4C42C; background: linear-gradient(135deg, #F9FBE7, #F0F4C3);">
+                    <div style="font-size: 1.5rem; margin-right: 1rem; width: 40px; text-align: center; color: #B4C42C;"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 style="font-weight: 700; margin-bottom: 0.3rem; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;">Evaluación</h4>
+                        <p style="font-size: 0.9rem; color: #666; font-weight: 500; font-family: 'Montserrat', sans-serif;">Modelado y crecimiento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Games Section - MANTENER SIN CAMBIOS -->
+    <div style="background: linear-gradient(135deg, #172139, #2C3E50); color: white; padding: 3rem 2rem; border-radius: 25px; margin: 3rem 0; box-shadow: 0 15px 35px rgba(23, 33, 57, 0.3);">
+        <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; color: #FBBB28; font-family: 'Montserrat', sans-serif;"><i class="fas fa-gamepad"></i> Herramientas Gamificadas</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s ease;">
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: #FBBB28;"><i class="fas fa-brain"></i></div>
+                <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">Flashcards</div>
+                <div style="opacity: 0.9; line-height: 1.6; font-family: 'Montserrat', sans-serif;">Juego de memoria para emparejar conceptos matemáticos con sus definiciones. Desarrolla memorización conceptual y comprensión profunda.</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s ease;">
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: #FBBB28;"><i class="fas fa-rocket"></i></div>
+                <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">Space Shooter</div>
+                <div style="opacity: 0.9; line-height: 1.6; font-family: 'Montserrat', sans-serif;">Arcade matemático donde disparas a las respuestas correctas. Mejora velocidad de cálculo mental y precisión operativa.</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s ease;">
+                <div style="font-size: 3rem; margin-bottom: 1rem; color: #FBBB28;"><i class="fas fa-flask"></i></div>
+                <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">MathQuest Laboratorio</div>
+                <div style="opacity: 0.9; line-height: 1.6; font-family: 'Montserrat', sans-serif;">Simulador de laboratorio interactivo que conecta las matemáticas con contextos profesionales reales de cada carrera.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Careers Section -->
+    <div style="background: white; padding: 3rem 2rem; border-radius: 25px; margin: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 2rem; color: #00AEAC; font-family: 'Montserrat', sans-serif;"><i class="fas fa-graduation-cap"></i> Aplicaciones Profesionales</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div data-elemento="career-tag" data-career="gastronomia"><i class="fas fa-utensils"></i> Gastronomía</div>
+            <div data-elemento="career-tag" data-career="laboratorio"><i class="fas fa-microscope"></i> Laboratorio Clínico</div>
+            <div data-elemento="career-tag" data-career="turismo"><i class="fas fa-map-marked-alt"></i> Turismo</div>
+            <div data-elemento="career-tag" data-career="arquitectura"><i class="fas fa-building"></i> Arquitectura</div>
+            <div data-elemento="career-tag" data-career="administracion"><i class="fas fa-chart-line"></i> Administración</div>
+            <div data-elemento="career-tag" data-career="desarrollo"><i class="fas fa-users"></i> Desarrollo Social</div>
+            <div data-elemento="career-tag" data-career="educacion"><i class="fas fa-chalkboard-teacher"></i> Educación</div>
+            <div data-elemento="career-tag" data-career="biotecnologia"><i class="fas fa-dna"></i> Biotecnología</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #172139; color: white; border-radius: 20px;">
+        <h3 style="color: #FBBB28; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;"><i class="fas fa-star"></i> ¡Tu Aventura Matemática Te Espera!</h3>
+        <p style="font-family: 'Montserrat', sans-serif;">Curso diseñado por <strong>Profe Marlon Arcila</strong> • Colegio Mayor de Antioquia</p>
+        <p style="font-family: 'Montserrat', sans-serif;">Avanza a tu ritmo • Aprende jugando • Conecta con tu futuro profesional</p>
+    </div>
+</div>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 3: CONTENIDO PRINCIPAL DEL RECORRIDO - CIERRE -->
+<!-- ================================================================================================ -->
+
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - APERTURA -->
+<!-- ================================================================================================ -->
+<script>
+    /**
+     * SISTEMA DE INICIALIZACIÓN ULTRA-RESISTENTE
+     * Patrón de Arquitectura Modular con encapsulación por responsabilidades
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Inicializando sistema ultra-resistente para Recorrido Matemático');
+        
+        /**
+         * VERIFICACIÓN DE BANNER CON ESPECIFICIDAD MÁXIMA
+         */
+        function verificarBannerUltraResistente() {
+            const banner = document.querySelector('div[data-banner-ultra="recorrido-matematico-v2"]');
+            if (banner) {
+                console.log('✅ Banner ultra-resistente cargado y funcionando correctamente');
+                
+                // EFECTOS HOVER EXTREMOS CON GPU ACCELERATION
+                banner.addEventListener('mouseenter', function() {
+                    this.style.setProperty('transform', 'translateY(-5px) scale(1.01) translateZ(0)', 'important');
+                    this.style.setProperty('transition', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)', 'important');
+                    this.style.setProperty('box-shadow', '0 35px 90px rgba(0, 174, 172, 0.5), 0 15px 40px rgba(16, 129, 129, 0.4)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.4)', 'important');
+                    this.style.setProperty('will-change', 'transform, box-shadow', 'important');
+                });
+                
+                banner.addEventListener('mouseleave', function() {
+                    this.style.setProperty('transform', 'translateZ(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 25px 70px rgba(0, 174, 172, 0.4), 0 10px 30px rgba(16, 129, 129, 0.3)', 'important');
+                    this.style.setProperty('border-color', 'rgba(255, 255, 255, 0.2)', 'important');
+                });
+                
+                // ACCESIBILIDAD AVANZADA CON ARIA
+                const titulo = banner.querySelector('h1[data-elemento="titulo-principal"]');
+                if (titulo) {
+                    titulo.setAttribute('tabindex', '0');
+                    titulo.setAttribute('role', 'banner');
+                    titulo.setAttribute('aria-label', 'Banner de Tu Recorrido Matemático - Curso Introductorio de Matemáticas del Colegio Mayor de Antioquia');
+                    
+                    // FOCUS VISUAL EXTREMO
+                    titulo.addEventListener('focus', function() {
+                        this.style.setProperty('outline', '4px solid rgba(255, 255, 255, 0.8)', 'important');
+                        this.style.setProperty('outline-offset', '6px', 'important');
+                        this.style.setProperty('border-radius', '12px', 'important');
+                        this.style.setProperty('background', 'rgba(255, 255, 255, 0.1)', 'important');
+                        this.style.setProperty('padding', '10px', 'important');
+                    });
+                    
+                    titulo.addEventListener('blur', function() {
+                        this.style.removeProperty('outline');
+                        this.style.removeProperty('outline-offset');
+                        this.style.removeProperty('border-radius');
+                        this.style.removeProperty('background');
+                        this.style.removeProperty('padding');
+                    });
+                }
+                
+                // INTERACTIVIDAD EXTREMA PARA ICONOS
+                const iconos = banner.querySelectorAll('[data-icono]');
+                let interactionCount = 0;
+                const interactionEffects = [
+                    'drop-shadow(0 0 15px rgba(255, 215, 0, 0.8))',
+                    'drop-shadow(0 0 20px rgba(255, 105, 180, 0.8))',
+                    'drop-shadow(0 0 25px rgba(0, 191, 255, 0.8))',
+                    'drop-shadow(0 0 30px rgba(50, 205, 50, 0.8))'
+                ];
+                
+                iconos.forEach((icono, index) => {
+                    icono.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.style.setProperty('filter', interactionEffects[interactionCount % 4], 'important');
+                        this.style.setProperty('transform', 'scale(1.3) rotate(360deg)', 'important');
+                        
+                        interactionCount++;
+                        console.log(`🎨 Interacción ${interactionCount}: ${this.getAttribute('data-icono')} activado`);
+                        
+                        // RESET DESPUÉS DE ANIMACIÓN
+                        setTimeout(() => {
+                            this.style.removeProperty('transform');
+                        }, 600);
+                    });
+                    
+                    // PREPARAR PARA ANIMACIONES DE GPU
+                    icono.style.setProperty('will-change', 'transform, filter', 'important');
+                });
+            } else {
+                console.error('❌ Error: Banner ultra-resistente no encontrado');
+            }
+        }
+        
+        /**
+         * ANÁLISIS CROMÁTICO DE IMPLEMENTACIÓN
+         */
+        function analizarImplementacionCromatica() {
+            console.log('🎨 Análisis de implementación cromática ultra-resistente:');
+            console.log('   ✅ Gradiente teal: #00AEAC → #108181');
+            console.log('   ✅ Contraste títulos: Blanco sobre fondo teal');
+            console.log('   ✅ Icono cohete: Emoji 🚀 con resplandor blanco');
+            console.log('   ✅ Módulos: Colores armoniosos de la paleta establecida');
+            console.log('   ✅ Career tags: Gradientes distribuidos de la paleta');
+            console.log('   ✅ Flow diagram: Colores originales mantenidos');
+            console.log('   ✅ Resistencia: 100% anti-Moodle con selectores únicos');
+            console.log('   ✅ Performance: GPU acceleration + will-change optimizado');
+            console.log('   ✅ Accesibilidad: Contraste óptimo en todo el recorrido');
+        }
+        
+        /**
+         * CONFIGURACIÓN DE CONTEXTO EDUCATIVO
+         */
+        function configurarContextoEducativo() {
+            const banner = document.querySelector('div[data-banner-ultra="recorrido-matematico-v2"]');
+            const contenedor = document.querySelector('div[data-contenedor="contenido-principal"]');
+            
+            if (banner && contenedor) {
+                // ATRIBUTOS DE CONTEXTO EDUCATIVO
+                banner.setAttribute('data-contexto-educativo', 'recorrido-completo');
+                banner.setAttribute('data-fase-aprendizaje', 'overview-general');
+                banner.setAttribute('data-total-modulos', '6');
+                banner.setAttribute('data-metodologia', 'gamificacion-progresiva');
+                banner.setAttribute('data-institucion', 'colegio-mayor-antioquia');
+                banner.setAttribute('data-resistencia-moodle', 'ultra-maxima');
+                
+                contenedor.setAttribute('data-tipo-contenido', 'recorrido-completo');
+                contenedor.setAttribute('data-nivel-detalle', 'overview-modular');
+                
+                console.log('🎯 Contexto educativo ultra-resistente configurado correctamente');
+            }
+        }
+        
+        /**
+         * SISTEMA DE PROGRESIÓN MOTIVACIONAL AVANZADO
+         */
+        function inicializarProgresionMotivacional() {
+            const elementosFlotantes = document.querySelectorAll('div[data-concepto]');
+            const conceptosEducativos = [
+                'Objetivos de Aprendizaje',
+                'Competencias Matemáticas', 
+                'Motivación Inicial',
+                'Introducción al Tema'
+            ];
+            
+            elementosFlotantes.forEach((elemento, index) => {
+                const conceptoType = elemento.getAttribute('data-concepto');
+                elemento.setAttribute('title', `${conceptosEducativos[index]} - Recorrido Matemático Completo`);
+                elemento.setAttribute('data-progreso', `${index + 1}/4`);
+                
+                // INTERACTIVIDAD MOTIVACIONAL
+                elemento.addEventListener('click', function() {
+                    console.log(`📚 Enfoque motivacional: ${conceptoType} (${this.getAttribute('data-progreso')})`);
+                    this.style.setProperty('opacity', '0.8', 'important');
+                    this.style.setProperty('transform', 'scale(1.3)', 'important');
+                    this.style.setProperty('box-shadow', '0 0 30px rgba(255, 255, 255, 0.5)', 'important');
+                    
+                    setTimeout(() => {
+                        this.style.setProperty('opacity', '0.35', 'important');
+                        this.style.removeProperty('transform');
+                        this.style.removeProperty('box-shadow');
+                    }, 2000);
+                });
+                
+                // OPTIMIZACIÓN GPU
+                elemento.style.setProperty('will-change', 'transform, opacity', 'important');
+            });
+        }
+        
+        /**
+         * CONFIGURACIÓN DE INTERACTIVIDAD MODULAR
+         */
+        function configurarInteractividadModular() {
+            const moduloCards = document.querySelectorAll('div[data-elemento="module-card"]');
+            const careerTags = document.querySelectorAll('div[data-elemento="career-tag"]');
+            
+            // HOVER EFFECTS PARA MÓDULOS
+            moduloCards.forEach((card, index) => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.setProperty('transform', 'translateY(-8px) scale(1.02)', 'important');
+                    this.style.setProperty('box-shadow', '0 20px 40px rgba(0,0,0,0.2)', 'important');
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.setProperty('transform', 'translateY(0) scale(1)', 'important');
+                    this.style.setProperty('box-shadow', '0 8px 25px rgba(0,0,0,0.1)', 'important');
+                });
+                
+                card.setAttribute('data-modulo-numero', index + 1);
+                card.setAttribute('title', `Módulo ${index + 1} - Estructura pedagógica completa`);
+            });
+            
+            // HOVER EFFECTS PARA CAREER TAGS
+            careerTags.forEach((tag, index) => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.setProperty('transform', 'scale(1.05) translateY(-2px)', 'important');
+                    this.style.setProperty('box-shadow', '0 8px 20px rgba(0, 0, 0, 0.3)', 'important');
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.setProperty('transform', 'scale(1) translateY(0)', 'important');
+                    this.style.setProperty('box-shadow', '0 5px 15px rgba(0, 0, 0, 0.2)', 'important');
+                });
+                
+                tag.setAttribute('data-career-index', index + 1);
+                tag.setAttribute('title', `Aplicación profesional ${index + 1}/8`);
+            });
+        }
+        
+        // EJECUTAR TODAS LAS FUNCIONES DE INICIALIZACIÓN
+        verificarBannerUltraResistente();
+        analizarImplementacionCromatica();
+        configurarContextoEducativo();
+        inicializarProgresionMotivacional();
+        configurarInteractividadModular();
+        
+        // LOG FINAL DE SISTEMA ULTRA-RESISTENTE
+        console.log('🌟 Sistema Ultra-Resistente inicializado completamente');
+        console.log('🛡️ Características implementadas:');
+        console.log('   • Resistencia anti-Moodle máxima con selectores únicos');
+        console.log('   • Tipografía Montserrat forzada globalmente');
+        console.log('   • GPU acceleration con will-change optimizado');
+        console.log('   • Accesibilidad avanzada con ARIA y navegación por teclado');
+        console.log('   • Interactividad extrema con feedback visual');
+        console.log('   • Animaciones optimizadas para performance');
+        console.log('   • Especificidad CSS extrema con !important selectivo');
+        console.log('   • Colores armoniosos según paleta establecida');
+        console.log('   • Estructura modular pedagógica completa');
+    });
+    
+    /**
+     * FUNCIONES GLOBALES DE UTILIDAD ULTRA-RESISTENTE
+     */
+    function alternarVistaRecorrido() {
+        const contenedor = document.querySelector('div[data-contenedor="contenido-principal"]');
+        if (contenedor) {
+            const modos = ['overview', 'detallado', 'compacto', 'expandido'];
+            const modoActual = contenedor.getAttribute('data-vista-recorrido') || 'overview';
+            const indiceActual = modos.indexOf(modoActual);
+            const nuevoModo = modos[(indiceActual + 1) % 4];
+            
+            contenedor.setAttribute('data-vista-recorrido', nuevoModo);
+            console.log(`🔄 Vista de recorrido ultra-resistente: ${nuevoModo}`);
+        }
+    }
+    
+    function activarModoEducativoAvanzado() {
+        const banner = document.querySelector('div[data-banner-ultra="recorrido-matematico-v2"]');
+        const contenedor = document.querySelector('div[data-contenedor="contenido-principal"]');
+        
+        if (banner && contenedor) {
+            banner.classList.add('educativo-avanzado-activo');
+            banner.style.setProperty('filter', 'brightness(1.15) saturate(1.2) contrast(1.05)', 'important');
+            contenedor.style.setProperty('transform', 'scale(1.01)', 'important');
+            contenedor.style.setProperty('box-shadow', '0 20px 50px rgba(0, 174, 172, 0.3)', 'important');
+            
+            console.log('🎓 Modo educativo avanzado ultra-resistente activado');
+            console.log('✨ Efectos aplicados: brillo, saturación, contraste y escala optimizados');
+        }
+    }
+</script>
+<!-- ================================================================================================ -->
+<!-- SECCIÓN 4: INICIALIZACIÓN Y FUNCIONALIDAD AVANZADA - CIERRE -->
+<!-- ================================================================================================ -->
+
+
+ajustab esto
+quita de cada elemento de  esta lista de cuatro elemntos de introduccion, exploracion, consolidacio y evaluacion
+                    
+
+
+                        
+
+Introducción
+
+
+                        
+
+Mapa conceptual y motivación
+
+
+                    
+
+
+de la captura ajusta los espacios entre elementos
+deja esta sección como te indique, segunda captura
+de la la lista de aplicaciones citando unicamente las cuatro facultades: arquitectura e ingeniería, salud administracion, ciencias sociales y educación
