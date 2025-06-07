@@ -109,3 +109,4 @@ Cada módulo se divide en **4 sesiones didácticas** para guiarte paso a paso:
 ---
 
 **¡Bienvenido al reto matemático del Colegio Mayor de Antioquia!**
+
