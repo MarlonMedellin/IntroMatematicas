@@ -1,11 +1,8 @@
-// question: 0  name: Switch category to $course$/top/html
-$CATEGORY: $course$/top/html
-
 // question: 0  name: Switch category to $course$/top/html/FlashCard
-$CATEGORY: $course$/top/html/FlashCard
+$CATEGORY: $course$/top/FlashCard
 
 // question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_4
-$CATEGORY: $course$/top/html/FlashCard/Modulo_4
+$CATEGORY: $course$/top/FlashCard/Modulo_4
 
 // question: 19  name: razon
 ::razon::¿Cuál es la definición de Razón? {

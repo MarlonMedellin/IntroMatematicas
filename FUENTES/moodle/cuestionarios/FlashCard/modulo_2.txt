@@ -1,11 +1,8 @@
-// question: 0  name: Switch category to $course$/top/html
-$CATEGORY: $course$/top/html
-
 // question: 0  name: Switch category to $course$/top/html/FlashCard
-$CATEGORY: $course$/top/html/FlashCard
+$CATEGORY: $course$/top/FlashCard
 
 // question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_2
-$CATEGORY: $course$/top/html/FlashCard/Modulo_2
+$CATEGORY: $course$/top/FlashCard/Modulo_2
 
 // question: 7  name: numero_primo
 ::numero_primo::¿Cuál es la definición de Número Primo? {

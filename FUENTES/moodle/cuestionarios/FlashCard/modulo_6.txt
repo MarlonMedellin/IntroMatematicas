@@ -1,50 +1,47 @@
-// question: 0  name: Switch category to $course$/top/html
-$CATEGORY: $course$/top/html
-
 // question: 0  name: Switch category to $course$/top/html/FlashCard
-$CATEGORY: $course$/top/html/FlashCard
+$CATEGORY: $course$/top/FlashCard
 
 // question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_6
-$CATEGORY: $course$/top/html/FlashCard/Modulo_6
+$CATEGORY: $course$/top/FlashCard/Modulo_6
 
 // question: 31  name: potenciacion
-::potenciacion::[html]<p dir="ltr" style="text-align: left;">¿Cuál es la definición de Potenciación?</p>{
-    =<p dir="ltr" style="text-align: left;">Operación que representa multiplicación repetida de un mismo número.</p>#<p dir="ltr" style="text-align: left;">¡Correcto! La potenciación expresa multiplicación repetida: 2³ = 2×2×2 = 8. Se compone de base (número que se multiplica) y exponente (veces que se repite).</p>
-    ~<p dir="ltr" style="text-align: left;">Operación que representa suma repetida de un mismo número.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. La suma repetida es multiplicación, no potenciación. Por ejemplo: 2+2+2 = 2×3 = 6, pero 2³ = 8.</p><br><p></p>
-    ~<p dir="ltr" style="text-align: left;">Operación que representa división repetida de un mismo número.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. La división repetida no es potenciación. Las potencias se basan en multiplicación, no en división.</p><br><p></p>
+::potenciacion::¿Cuál es la definición de Potenciación? {
+=Operación que representa multiplicación repetida de un mismo número. #¡Correcto! La potenciación expresa multiplicación repetida: 2³ = 2×2×2 = 8. Se compone de base (número que se multiplica) y exponente (veces que se repite).
+~Operación que representa suma repetida de un mismo número. #Incorrecto. La suma repetida es multiplicación, no potenciación. Por ejemplo: 2+2+2 = 2×3 = 6, pero 2³ = 8.
+~Operación que representa división repetida de un mismo número. #Incorrecto. La división repetida no es potenciación. Las potencias se basan en multiplicación, no en división.
 }
 
 // question: 32  name: radicacion
-::radicacion::[html]<p dir="ltr" style="text-align: left;">¿Cuál es la definición de Radicación?</p>{
-    =<p dir="ltr" style="text-align: left;">Operación inversa de potenciación que encuentra la base original.</p>#<p dir="ltr" style="text-align: left;">¡Correcto! La radicación deshace la potenciación. Si 3² = 9, entonces √9 = 3. El símbolo √ se llama radical y el número bajo él es el radicando.</p>
-    ~<p dir="ltr" style="text-align: left;">Operación inversa de suma que encuentra la base original.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. La operación inversa de la suma es la resta, no la radicación. La radicación es específicamente inversa de la potenciación.</p><br><p></p>
-    ~<p dir="ltr" style="text-align: left;">Operación inversa de multiplicación que encuentra la base original.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. La operación inversa de la multiplicación es la división. La radicación invierte específicamente la potenciación.</p><br><p></p>
+::radicacion::¿Cuál es la definición de Radicación? {
+=Operación inversa de potenciación que encuentra la base original. #¡Correcto! La radicación deshace la potenciación. Si 3² = 9, entonces √9 = 3. El símbolo √ se llama radical y el número bajo él es el radicando.
+~Operación inversa de suma que encuentra la base original. #Incorrecto. La operación inversa de la suma es la resta, no la radicación. La radicación es específicamente inversa de la potenciación.
+~Operación inversa de multiplicación que encuentra la base original. #Incorrecto. La operación inversa de la multiplicación es la división. La radicación invierte específicamente la potenciación.
 }
 
 // question: 33  name: exponente
-::exponente::[html]<p dir="ltr" style="text-align: left;">¿Cuál es la definición de Exponente?</p>{
-    =<p dir="ltr" style="text-align: left;">Número que indica cuántas veces se multiplica la base por sí misma.</p>#<p dir="ltr" style="text-align: left;">¡Correcto! En 5⁴, el exponente 4 indica que 5 se multiplica por sí mismo 4 veces: 5×5×5×5 = 625. También se llama potencia o índice.</p>
-    ~<p dir="ltr" style="text-align: left;">Número que indica cuántas veces se suma la base por sí misma.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. El exponente controla multiplicación repetida, no suma repetida. La suma repetida es concepto de multiplicación simple.</p><br><p></p>
-    ~<p dir="ltr" style="text-align: left;">Número que indica cuántas veces se divide la base por sí misma.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. El exponente no se relaciona con división repetida. Los exponentes negativos involucran división, pero el concepto básico es multiplicación.</p><br><p></p>
+::exponente::¿Cuál es la definición de Exponente? {
+=Número que indica cuántas veces se multiplica la base por sí misma. #¡Correcto! En 5⁴, el exponente 4 indica que 5 se multiplica por sí mismo 4 veces: 5×5×5×5 = 625. También se llama potencia o índice.
+~Número que indica cuántas veces se suma la base por sí misma. #Incorrecto. El exponente controla multiplicación repetida, no suma repetida. La suma repetida es concepto de multiplicación simple.
+~Número que indica cuántas veces se divide la base por sí misma. #Incorrecto. El exponente no se relaciona con división repetida. Los exponentes negativos involucran división, pero el concepto básico es multiplicación.
 }
 
 // question: 34  name: numeros_irracionales
-::numeros_irracionales::[html]<p dir="ltr" style="text-align: left;">¿Cuál es la definición de Números Irracionales?</p>{
-    =<p dir="ltr" style="text-align: left;">Números con expansión decimal infinita no periódica como algunas raíces.</p>#<p dir="ltr" style="text-align: left;">¡Correcto! Los irracionales no pueden expresarse como fracción a/b. Ejemplos: π = 3.14159..., √2 = 1.41421..., e = 2.71828... Sus decimales nunca terminan ni se repiten.</p>
-    ~<p dir="ltr" style="text-align: left;">Números con expansión decimal finita no periódica como algunas raíces.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. Los decimales finitos (como 0.5, 0.25) son racionales porque pueden expresarse como fracciones. Los irracionales tienen decimales infinitos.</p><br><p></p>
-    ~<p dir="ltr" style="text-align: left;">Números con expansión decimal infinita periódica como algunas raíces.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. Los decimales infinitos periódicos (como 0.333... = 1/3) son racionales. Los irracionales son infinitos NO periódicos.</p><br><p></p>
+::numeros_irracionales::¿Cuál es la definición de Números Irracionales? {
+=Números con expansión decimal infinita no periódica como algunas raíces. #¡Correcto! Los irracionales no pueden expresarse como fracción a/b. Ejemplos: π = 3.14159..., √2 = 1.41421..., e = 2.71828... Sus decimales nunca terminan ni se repiten.
+~Números con expansión decimal finita no periódica como algunas raíces. #Incorrecto. Los decimales finitos (como 0.5, 0.25) son racionales porque pueden expresarse como fracciones. Los irracionales tienen decimales infinitos.
+~Números con expansión decimal infinita periódica como algunas raíces. #Incorrecto. Los decimales infinitos periódicos (como 0.333... = 1/3) son racionales. Los irracionales son infinitos NO periódicos.
 }
 
 // question: 35  name: jerarquia_operaciones
-::jerarquia_operaciones::[html]<p dir="ltr" style="text-align: left;">¿Cuál es el propósito de la Jerarquía de Operaciones en matemáticas?</p>{
-    =<p dir="ltr" style="text-align: left;">Establecer un orden específico para resolver expresiones matemáticas con múltiples operaciones.</p>#<p dir="ltr" style="text-align: left;">¡Correcto! El orden es: 1) Paréntesis, 2) Exponentes/Raíces, 3) Multiplicación/División (izquierda a derecha), 4) Suma/Resta (izquierda a derecha). Recordar: PEMDAS o BODMAS.</p>
-    ~<p dir="ltr" style="text-align: left;">Permitir un orden aleatorio para resolver expresiones matemáticas con múltiples operaciones.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. El orden debe ser específico y consistente para obtener resultados correctos. Un orden aleatorio produciría respuestas diferentes e incorrectas.</p><br><p></p>
-    ~<p dir="ltr" style="text-align: left;">Orden específico para resolver expresiones físicas con múltiples operaciones.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. Aunque se aplica en física, la jerarquía de operaciones es fundamentalmente un concepto matemático que se extiende a otras áreas.</p><br><p></p>
+::jerarquia_operaciones::¿Cuál es el propósito de la Jerarquía de Operaciones en matemáticas? {
+=Establecer un orden específico para resolver expresiones matemáticas con múltiples operaciones. #¡Correcto! El orden es: 1) Paréntesis, 2) Exponentes/Raíces, 3) Multiplicación/División (izquierda a derecha), 4) Suma/Resta (izquierda a derecha). Recordar: PEMDAS o BODMAS.
+~Permitir un orden aleatorio para resolver expresiones matemáticas con múltiples operaciones. #Incorrecto. El orden debe ser específico y consistente para obtener resultados correctos. Un orden aleatorio produciría respuestas diferentes e incorrectas.
+~Orden específico para resolver expresiones físicas con múltiples operaciones. #Incorrecto. Aunque se aplica en física, la jerarquía de operaciones es fundamentalmente un concepto matemático que se extiende a otras áreas.
 }
 
 // question: 36  name: raiz_cuadrada
-::raiz_cuadrada::[html]<p dir="ltr" style="text-align: left;">¿Cuál es la definición de Raíz Cuadrada?</p>{
-    =<p dir="ltr" style="text-align: left;">Número que multiplicado por sí mismo da el número original.</p>#<p dir="ltr" style="text-align: left;">¡Correcto! La raíz cuadrada invierte el cuadrado: si x² = a, entonces √a = x. Por ejemplo: √16 = 4 porque 4² = 16. Es el caso más común de radicación.</p>
-    ~<p dir="ltr" style="text-align: left;">Número que sumado por sí mismo da el número original.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. Si un número sumado por sí mismo da el original, sería x + x = x, lo que solo funciona para x = 0. La raíz cuadrada involucra multiplicación.</p><br><p></p>
-    ~<p dir="ltr" style="text-align: left;">Número que dividido por sí mismo da el número original.</p>#<p dir="ltr" style="text-align: left;"></p><p dir="ltr">Incorrecto. Cualquier número dividido por sí mismo da 1 (excepto 0). Esto no define raíz cuadrada, que se basa en multiplicación.</p><br><p></p>
+::raiz_cuadrada::¿Cuál es la definición de Raíz Cuadrada? {
+=Número que multiplicado por sí mismo da el número original. #¡Correcto! La raíz cuadrada invierte el cuadrado: si x² = a, entonces √a = x. Por ejemplo: √16 = 4 porque 4² = 16. Es el caso más común de radicación.
+~Número que sumado por sí mismo da el número original. #Incorrecto. Si un número sumado por sí mismo da el original, sería x + x = x, lo que solo funciona para x = 0. La raíz cuadrada involucra multiplicación.
+~Número que dividido por sí mismo da el número original. #Incorrecto. Cualquier número dividido por sí mismo da 1 (excepto 0). Esto no define raíz cuadrada, que se basa en multiplicación.
 }

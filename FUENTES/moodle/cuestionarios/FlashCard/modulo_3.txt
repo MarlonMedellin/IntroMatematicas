@@ -1,11 +1,8 @@
-// question: 0  name: Switch category to $course$/top/html
-$CATEGORY: $course$/top/html
-
 // question: 0  name: Switch category to $course$/top/html/FlashCard
-$CATEGORY: $course$/top/html/FlashCard
+$CATEGORY: $course$/top/FlashCard
 
 // question: 0  name: Switch category to $course$/top/html/FlashCard/Modulo_3
-$CATEGORY: $course$/top/html/FlashCard/Modulo_3
+$CATEGORY: $course$/top/FlashCard/Modulo_3
 
 // question: 13  name: numeros_racionales
 ::numeros_racionales::¿Cuál es la definición de Números Racionales? {
