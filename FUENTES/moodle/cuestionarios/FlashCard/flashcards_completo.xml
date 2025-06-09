@@ -1,0 +1,1261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- CATEGORÍAS -->
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard</text>
+    </category>
+</question>
+
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard/Modulo_1</text>
+    </category>
+</question>
+
+<!-- MÓDULO 1 - NÚMEROS ENTEROS -->
+
+<question type="multichoice">
+    <name>
+        <text>numeros_enteros</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Números Enteros?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <correctfeedback format="html">
+        <text></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+        <text></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+        <text></text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Conjunto que incluye números positivos, negativos y el cero.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Los números enteros (ℤ) incluyen todos los números positivos (+1, +2, +3...), todos los números negativos (-1, -2, -3...) y el cero (0). Este conjunto es fundamental en matemáticas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Conjunto que incluye solo números positivos y el cero únicamente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición excluye los números negativos, que son parte esencial del conjunto de números enteros. Los enteros incluyen positivos, negativos y cero.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Conjunto que incluye números fraccionarios, decimales y el cero.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición corresponde más a los números racionales. Los enteros son solo números "completos" sin partes fraccionarias.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>valor_absoluto</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Valor Absoluto?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Distancia de un número al cero en la recta.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El valor absoluto siempre es positivo porque representa distancia. Por ejemplo, |−5| = 5 y |5| = 5, ambos están a 5 unidades del cero.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Distancia de un número al uno en la recta.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El valor absoluto mide la distancia al cero, no al uno. Es el punto de referencia fundamental en la recta numérica.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Distancia de un número al infinito en la recta.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El infinito no es un punto específico en la recta. El valor absoluto siempre se mide desde el cero como punto de referencia.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>recta_numerica</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En el contexto de números enteros, ¿cómo se define la Recta Numérica?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Representación visual donde se ubican los números enteros ordenados de menor a mayor.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! En el estudio de números enteros, la recta numérica es una herramienta visual donde cada número entero tiene una posición específica, organizados de izquierda a derecha en orden creciente.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Línea donde solo se representan números positivos y el cero.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La recta numérica para enteros incluye números positivos, negativos y el cero. Los negativos se ubican a la izquierda del cero.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Representación que solo muestra números fraccionarios entre enteros.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. En el contexto de números enteros, la recta numérica se enfoca en la ubicación de números enteros, no fracciones.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>opuesto</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Opuesto?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Número con igual valor absoluto pero signo contrario dado.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El opuesto de un número tiene la misma distancia al cero pero en dirección contraria. Por ejemplo, el opuesto de +7 es -7, y viceversa.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número con diferente valor absoluto pero signo igual dado.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los números opuestos deben tener el mismo valor absoluto. Si tienen diferente valor absoluto, no son opuestos entre sí.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número con igual valor absoluto pero signo igual dado.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Si tienen el mismo signo, son números iguales, no opuestos. Los opuestos requieren signos contrarios.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>conjunto_z</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Conjunto ℤ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Símbolo que representa al conjunto de los números enteros.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La letra ℤ (zeta) proviene de la palabra alemana "Zahlen" que significa números. Es la notación matemática estándar para los números enteros.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Símbolo que representa al conjunto de los números racionales.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los números racionales se representan con ℚ (de "quotient"). ℤ específicamente representa solo los números enteros.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Símbolo que representa al conjunto de los números naturales.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los números naturales se representan con ℕ. ℤ incluye además los números negativos y el cero.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_enteros</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Suma de Enteros?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Operación que combina enteros positivos y negativos correctamente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La suma de enteros sigue reglas específicas: signos iguales se suman, signos diferentes se restan, y el resultado toma el signo del número con mayor valor absoluto.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Operación que combina enteros positivos y fraccionarios correctamente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición mezcla enteros con fraccionarios, que pertenecen a diferentes conjuntos numéricos. La suma de enteros solo involucra números enteros.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Operación que combina enteros negativos y decimales correctamente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los decimales no son números enteros. La suma de enteros se limita a operar solo con números del conjunto ℤ.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 2 -->
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard/Modulo_2</text>
+    </category>
+</question>
+
+<!-- MÓDULO 2 - NÚMEROS PRIMOS Y FACTORIZACIÓN -->
+
+<question type="multichoice">
+    <name>
+        <text>numero_primo</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Número Primo?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Número natural mayor que uno con solo dos divisores.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Un número primo tiene exactamente dos divisores: el 1 y él mismo. Por ejemplo, 7 es primo porque solo es divisible entre 1 y 7. Los primeros primos son: 2, 3, 5, 7, 11, 13...]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número natural mayor que uno con solo tres divisores.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Un número con tres divisores sería un número compuesto (como 9 = 1×3×3). Los primos tienen exactamente dos divisores, no tres.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número natural mayor que dos con solo dos divisores.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición excluiría al número 2, que es el único número primo par y el más pequeño de todos los primos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>mcd</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de MCD?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Mayor número entero que divide exactamente a varios números.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El MCD (Máximo Común Divisor) es el número más grande que divide a todos los números dados sin dejar residuo. Por ejemplo, MCD(12,18) = 6.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Menor número entero que divide exactamente a varios números.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El menor divisor común de cualquier conjunto de números siempre es 1. El MCD busca el MAYOR divisor común, no el menor.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Mayor número entero que multiplica exactamente a varios números.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición se refiere a multiplicación, no a división. El MCD se basa en encontrar divisores, no múltiplos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>mcm</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de MCM?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Menor número entero múltiplo común de varios números dados.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El MCM (Mínimo Común Múltiplo) es el número más pequeño que es múltiplo de todos los números dados. Por ejemplo, MCM(4,6) = 12.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Mayor número entero múltiplo común de varios números dados.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. No existe un mayor múltiplo común porque los múltiplos se extienden al infinito. El MCM busca el MENOR múltiplo común.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Menor número entero divisor común de varios números dados.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición corresponde al concepto de divisor común, que se relaciona con el MCD. El MCM trabaja con múltiplos, no divisores.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>factorizacion</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Factorización?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Descomposición de un número en producto de factores primos.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La factorización prima expresa cualquier número como multiplicación de números primos. Por ejemplo, 12 = 2² × 3. Esta descomposición es única para cada número.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Descomposición de un número en suma de factores primos.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La factorización usa multiplicación (producto), no suma. Por ejemplo, 12 = 2×2×3, no 2+2+3.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Descomposición de un número en producto de factores compuestos.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La factorización prima requiere específicamente números primos, no compuestos. Los factores compuestos pueden descomponerse más.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>criterios_divisibilidad</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Criterios de Divisibilidad?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Reglas para determinar si un número divide a otro.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Los criterios de divisibilidad son métodos rápidos para verificar divisiones sin calcular. Por ejemplo, un número es divisible entre 2 si termina en cifra par.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Reglas para determinar si un número multiplica a otro.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Cualquier número puede multiplicar a otro. Los criterios de divisibilidad se enfocan específicamente en división exacta, no en multiplicación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Reglas para determinar si un número suma a otro.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La suma siempre es posible entre cualquier par de números. Los criterios se aplican exclusivamente a la divisibilidad.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>descomposicion_prima</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Descomposición Prima?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Expresar un número como producto de factores primos únicos.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La descomposición prima es única para cada número según el Teorema Fundamental de la Aritmética. Por ejemplo, 30 = 2 × 3 × 5.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Expresar un número como suma de factores primos únicos.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La descomposición prima utiliza multiplicación (producto), no suma. La suma de primos no garantiza unicidad ni utilidad matemática.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Expresar un número como producto de factores compuestos únicos.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Debe usar factores primos, no compuestos. Los números compuestos pueden descomponerse más, por lo que no serían la forma "prima" final.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 3 -->
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard/Modulo_3</text>
+    </category>
+</question>
+
+<!-- MÓDULO 3 - NÚMEROS RACIONALES -->
+
+<question type="multichoice">
+    <name>
+        <text>numeros_racionales</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Números Racionales?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Números expresables como cociente de dos enteros, denominador diferente cero.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Los números racionales (ℚ) se escriben como a/b donde a y b son enteros y b ≠ 0. Incluyen fracciones como 3/4, enteros como 5/1, y decimales finitos como 0.5 = 1/2.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Números expresables como cociente de dos enteros, denominador igual cero.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La división entre cero no está definida en matemáticas. El denominador siempre debe ser diferente de cero para que la fracción tenga sentido.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Números expresables como producto de dos enteros, denominador diferente cero.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los racionales se definen como cociente (división), no como producto (multiplicación). El producto de enteros siempre da otro entero.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>fracciones_equivalentes</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Fracciones Equivalentes?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Fracciones que representan la misma cantidad con numeradores y denominadores diferentes.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Las fracciones equivalentes tienen el mismo valor pero diferentes numeradores y denominadores. Por ejemplo: 1/2 = 2/4 = 3/6 = 4/8. Se obtienen multiplicando o dividiendo por el mismo número.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracciones que representan diferente cantidad con numeradores y denominadores iguales.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Si tienen numeradores y denominadores iguales, son fracciones idénticas, no equivalentes. Las equivalentes tienen diferente apariencia pero igual valor.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracciones que representan la misma cantidad con numeradores y denominadores iguales.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Si numeradores y denominadores son iguales, las fracciones son idénticas. Las equivalentes tienen diferente forma pero mismo valor.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>simplificacion</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Simplificación?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Reducir fracción dividiendo numerador y denominador por su máximo común divisor.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Simplificar significa dividir numerador y denominador por su MCD para obtener la fracción más simple. Por ejemplo: 12/18 ÷ 6 = 2/3.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Aumentar fracción dividiendo numerador y denominador por su máximo común divisor.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Simplificar significa reducir o hacer más simple, no aumentar. El proceso busca la expresión más básica de la fracción.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Reducir fracción multiplicando numerador y denominador por su máximo común divisor.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Multiplicar por el MCD haría la fracción más compleja, no más simple. La simplificación requiere división, no multiplicación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>fraccion_propia</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Fracción Propia?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Fracción donde el numerador es menor que el denominador.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Las fracciones propias representan valores menores que 1. Ejemplos: 3/4, 5/8, 2/7. Su valor decimal siempre es menor que 1.0.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracción donde el numerador es mayor que el denominador.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición corresponde a fracciones impropias. Cuando el numerador es mayor, el valor es mayor que 1.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracción donde el numerador es igual que el denominador.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Cuando numerador y denominador son iguales, la fracción vale exactamente 1, no es propia ni impropia en sentido estricto.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>fraccion_impropia</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Fracción Impropia?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Fracción donde el numerador es mayor que el denominador.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Las fracciones impropias representan valores mayores que 1. Ejemplos: 7/4, 9/5, 11/3. Pueden convertirse a números mixtos como 7/4 = 1¾.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracción donde el numerador es menor que el denominador.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición corresponde a fracciones propias. Cuando el numerador es menor, el valor es menor que 1.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracción donde el numerador es igual que el denominador.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Cuando son iguales, la fracción vale exactamente 1. Para ser impropia, el numerador debe ser estrictamente mayor.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>numero_decimal</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Número Decimal?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Representación de fracciones mediante una expresión con punto decimal.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Los números decimales expresan fracciones usando punto decimal. Por ejemplo: 0.75 = 3/4, 0.5 = 1/2. Pueden ser finitos (0.25) o infinitos periódicos (0.333...).]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Representación de fracciones mediante una expresión con coma decimal.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque algunos países usan coma decimal, la definición estándar y más universal utiliza punto decimal como separador.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Representación de enteros mediante una expresión con punto decimal.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los números decimales representan específicamente fracciones, no enteros. Los enteros no necesitan punto decimal para su representación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 4 -->
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard/Modulo_4</text>
+    </category>
+</question>
+
+<!-- MÓDULO 4 - RAZONES Y PROPORCIONES -->
+
+<question type="multichoice">
+    <name>
+        <text>razon</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Razón?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Comparación entre dos cantidades mediante una división o cociente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Una razón compara dos cantidades dividiéndolas. Se expresa como a:b o a/b. Por ejemplo, si hay 8 niños y 12 niñas, la razón es 8:12 o 2:3 simplificada.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Comparación entre dos cantidades mediante una suma o cociente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Las razones se basan en división, no en suma. La suma combina cantidades, mientras que la razón las compara proporcionalmente.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Comparación entre tres cantidades mediante una división o cociente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Una razón básica compara exactamente dos cantidades. Aunque existen razones complejas, la definición fundamental involucra dos elementos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>proporcion</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Proporción?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Igualdad entre dos razones que relaciona cuatro términos diferentes.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Una proporción establece que dos razones son iguales: a/b = c/d. Los términos a, b, c, d se llaman proporcionales. Por ejemplo: 2/3 = 8/12.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Desigualdad entre dos razones que relaciona cuatro términos diferentes.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Una proporción requiere igualdad, no desigualdad. Si las razones no son iguales, no forman una proporción válida.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Igualdad entre tres razones que relaciona cuatro términos diferentes.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Una proporción básica compara exactamente dos razones. Tres razones formarían una proporción compuesta más compleja.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>regla_tres_directa</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Regla de Tres Directa?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Método donde las magnitudes aumentan o disminuyen proporcionalmente juntas.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! En proporcionalidad directa, cuando una magnitud aumenta, la otra también aumenta en la misma proporción. Ejemplo: más trabajadores, más trabajo realizado.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Método donde las magnitudes aumentan o disminuyen proporcionalmente separadas.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. En la regla de tres directa, las magnitudes cambian en la misma dirección (juntas), no en direcciones separadas o independientes.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Método donde las magnitudes aumentan o disminuyen inversamente juntas.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición describe la regla de tres inversa, no directa. En la directa, ambas magnitudes van en la misma dirección.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>regla_tres_inversa</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Regla de Tres Inversa?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Método donde una magnitud aumenta mientras otra disminuye proporcionalmente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! En proporcionalidad inversa, cuando una magnitud aumenta, la otra disminuye en proporción inversa. Ejemplo: más velocidad, menos tiempo para recorrer la misma distancia.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Método donde una magnitud aumenta mientras otra aumenta proporcionalmente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición describe la regla de tres directa, no inversa. En la inversa, las magnitudes van en direcciones opuestas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Método donde una magnitud disminuye mientras otra disminuye proporcionalmente.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Si ambas disminuyen juntas, sería proporcionalidad directa. En la inversa, una aumenta mientras la otra disminuye.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>porcentaje</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Porcentaje?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Proporción que expresa una cantidad como fracción de cien.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El porcentaje (%) representa partes de 100. Por ejemplo, 25% = 25/100 = 0.25. Es útil para comparar proporciones de diferentes totales.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Proporción que expresa una cantidad como fracción de diez.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esto sería un decimal con denominador 10. El porcentaje específicamente usa 100 como base de comparación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Proporción que expresa una cantidad como fracción de mil.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esto sería un permil (‰). El porcentaje usa específicamente 100 como denominador estándar.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>proporcionalidad_directa</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Proporcionalidad Directa?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Relación donde al aumentar una cantidad, la otra también aumenta.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! En proporcionalidad directa, ambas variables cambian en la misma dirección manteniendo una razón constante. Se expresa como y = kx, donde k es la constante de proporcionalidad.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Relación donde al aumentar una cantidad, la otra disminuye.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Esta definición describe proporcionalidad inversa, no directa. En la directa, ambas cantidades van en la misma dirección.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Relación donde al disminuir una cantidad, la otra disminuye.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque esto también ocurre en proporcionalidad directa, la definición más completa incluye ambos casos: aumentar-aumentar y disminuir-disminuir.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 5 -->
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard/Modulo_5</text>
+    </category>
+</question>
+
+<!-- MÓDULO 5 - SISTEMAS DE MEDIDAS -->
+
+<question type="multichoice">
+    <name>
+        <text>factor_conversion</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Factor de Conversión?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Fracción equivalente a uno que cambia unidades manteniendo cantidad.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Un factor de conversión es una fracción igual a 1 que permite cambiar unidades. Por ejemplo: 1 metro/100 centímetros = 1. Al multiplicar, cancela unidades y mantiene el valor real.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracción equivalente a cero que cambia unidades manteniendo cantidad.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Un factor igual a cero anularía completamente la cantidad. Los factores de conversión deben valer 1 para preservar el valor original.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Fracción equivalente a uno que cambia unidades alterando cantidad.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El propósito del factor de conversión es cambiar solo las unidades, nunca alterar la cantidad real que se está midiendo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>sistema_internacional</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Sistema Internacional?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Sistema métrico estándar mundial basado en metro kilogramo segundo.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El Sistema Internacional (SI) usa unidades base: metro (longitud), kilogramo (masa), segundo (tiempo), ampere (corriente), kelvin (temperatura), mol (cantidad) y candela (intensidad luminosa).]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Sistema métrico estándar mundial basado en pulgada libra segundo.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Pulgada y libra pertenecen al Sistema Imperial, no al Internacional. El SI usa metro y kilogramo como unidades base.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Sistema métrico estándar nacional basado en metro kilogramo segundo.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El Sistema Internacional es mundial, no nacional. Su adopción es global para facilitar la comunicación científica y comercial internacional.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>sistema_imperial</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Sistema Imperial?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Sistema de medidas usado principalmente en Estados Unidos y Reino Unido.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El Sistema Imperial usa unidades como pulgadas, pies, yardas, millas (longitud), libras, onzas (masa), y galones, cuartos (volumen). Gradualmente está siendo reemplazado por el SI.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Sistema de medidas usado principalmente en Francia y Reino Unido.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Francia usa el Sistema Internacional (métrico), no el Imperial. Francia fue pionera en el desarrollo del sistema métrico.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Sistema de medidas usado principalmente en Estados Unidos y Francia.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Francia adoptó el sistema métrico desde el siglo XVIII. Estados Unidos es uno de los pocos países que aún usa principalmente el Sistema Imperial.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>unidades_longitud</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Qué tipo de magnitud se mide con unidades como metros, centímetros, kilómetros o pulgadas?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Longitud o distancia.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Estas unidades sirven para medir la longitud, es decir, la distancia, altura o anchura de un objeto. En SI: milímetro, centímetro, metro, kilómetro. En Imperial: pulgada, pie, yarda, milla.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Masa o cantidad de materia.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La masa se mide en gramos, kilogramos, libras, onzas, no en metros o pulgadas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Tiempo o duración.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El tiempo se mide en segundos, minutos, horas, días, no en metros o pulgadas.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>conversion_sistemas</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cómo se puede definir la Conversión entre Sistemas?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Proceso de cambiar medidas del sistema métrico al imperial o viceversa.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La conversión entre sistemas requiere factores específicos. Ejemplos: 1 metro = 3.28 pies, 1 kilogramo = 2.2 libras, 1 litro = 0.26 galones aproximadamente.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Proceso de cambiar medidas del sistema métrico al decimal o viceversa.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El sistema métrico ya usa notación decimal. No existe conversión entre "métrico" y "decimal" porque son compatibles.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Proceso de cambiar medidas del sistema imperial al decimal o viceversa.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Ambos sistemas pueden expresarse en decimales. La conversión relevante es entre Imperial y Métrico (SI).]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>unidades_masa</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Unidades de Masa?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Medidas estándar para expresar la cantidad de materia en un objeto físico.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Las unidades de masa cuantifican materia. En SI: miligramo, gramo, kilogramo, tonelada. En Imperial: onza, libra, ton. Masa es diferente de peso (fuerza gravitacional).]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Medidas estándar para expresar la cantidad de energía en un objeto físico.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La energía se mide en julios (SI) o calorías, no en gramos o libras. Masa y energía son propiedades físicas diferentes.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Medidas estándar para expresar la cantidad de tiempo en un objeto físico.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El tiempo se mide en segundos, minutos, horas. Los objetos físicos no "contienen" tiempo; el tiempo es una dimensión independiente.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 6 -->
+<question type="category">
+    <category>
+        <text>$course$/top/FlashCard/Modulo_6</text>
+    </category>
+</question>
+
+<!-- MÓDULO 6 - POTENCIACIÓN Y RADICACIÓN -->
+
+<question type="multichoice">
+    <name>
+        <text>potenciacion</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Potenciación?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Operación que representa multiplicación repetida de un mismo número.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La potenciación expresa multiplicación repetida: 2³ = 2×2×2 = 8. Se compone de base (número que se multiplica) y exponente (veces que se repite).]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Operación que representa suma repetida de un mismo número.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La suma repetida es multiplicación, no potenciación. Por ejemplo: 2+2+2 = 2×3 = 6, pero 2³ = 8.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Operación que representa división repetida de un mismo número.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La división repetida no es potenciación. Las potencias se basan en multiplicación, no en división.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>radicacion</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Radicación?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Operación inversa de potenciación que encuentra la base original.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La radicación deshace la potenciación. Si 3² = 9, entonces √9 = 3. El símbolo √ se llama radical y el número bajo él es el radicando.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Operación inversa de suma que encuentra la base original.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La operación inversa de la suma es la resta, no la radicación. La radicación es específicamente inversa de la potenciación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Operación inversa de multiplicación que encuentra la base original.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La operación inversa de la multiplicación es la división. La radicación invierte específicamente la potenciación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>exponente</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Exponente?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Número que indica cuántas veces se multiplica la base por sí misma.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! En 5⁴, el exponente 4 indica que 5 se multiplica por sí mismo 4 veces: 5×5×5×5 = 625. También se llama potencia o índice.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número que indica cuántas veces se suma la base por sí misma.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El exponente controla multiplicación repetida, no suma repetida. La suma repetida es concepto de multiplicación simple.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número que indica cuántas veces se divide la base por sí misma.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El exponente no se relaciona con división repetida. Los exponentes negativos involucran división, pero el concepto básico es multiplicación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>numeros_irracionales</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Números Irracionales?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Números con expansión decimal infinita no periódica como algunas raíces.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Los irracionales no pueden expresarse como fracción a/b. Ejemplos: π = 3.14159..., √2 = 1.41421..., e = 2.71828... Sus decimales nunca terminan ni se repiten.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Números con expansión decimal finita no periódica como algunas raíces.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los decimales finitos (como 0.5, 0.25) son racionales porque pueden expresarse como fracciones. Los irracionales tienen decimales infinitos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Números con expansión decimal infinita periódica como algunas raíces.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Los decimales infinitos periódicos (como 0.333... = 1/3) son racionales. Los irracionales son infinitos NO periódicos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>jerarquia_operaciones</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es el propósito de la Jerarquía de Operaciones en matemáticas?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Establecer un orden específico para resolver expresiones matemáticas con múltiples operaciones.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El orden es: 1) Paréntesis, 2) Exponentes/Raíces, 3) Multiplicación/División (izquierda a derecha), 4) Suma/Resta (izquierda a derecha). Recordar: PEMDAS o BODMAS.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Permitir un orden aleatorio para resolver expresiones matemáticas con múltiples operaciones.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. El orden debe ser específico y consistente para obtener resultados correctos. Un orden aleatorio produciría respuestas diferentes e incorrectas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Orden específico para resolver expresiones físicas con múltiples operaciones.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque se aplica en física, la jerarquía de operaciones es fundamentalmente un concepto matemático que se extiende a otras áreas.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>raiz_cuadrada</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la definición de Raíz Cuadrada?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Número que multiplicado por sí mismo da el número original.]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La raíz cuadrada invierte el cuadrado: si x² = a, entonces √a = x. Por ejemplo: √16 = 4 porque 4² = 16. Es el caso más común de radicación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número que sumado por sí mismo da el número original.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Si un número sumado por sí mismo da el original, sería x + x = x, lo que solo funciona para x = 0. La raíz cuadrada involucra multiplicación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Número que dividido por sí mismo da el número original.]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Cualquier número dividido por sí mismo da 1 (excepto 0). Esto no define raíz cuadrada, que se basa en multiplicación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+</quiz>
