@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- CATEGORÍAS -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter</text>
+    </category>
+</question>
+
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter/Modulo_1</text>
+    </category>
+</question>
+
+<!-- MÓDULO 1 - OPERACIONES CON ENTEROS -->
+
+<question type="multichoice">
+    <name>
+        <text>suma_enteros_rapida_1</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>-8 + 5 = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>-3</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Al sumar números con signos diferentes, restas los valores absolutos (8-5=3) y conservas el signo del número con mayor valor absoluto (negativo). Tiempo límite: 10 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>3</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Olvidaste considerar los signos. Cuando sumas números con signos diferentes, debes restar y conservar el signo del número con mayor valor absoluto.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-13</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Este resultado viene de sumar los valores absolutos en lugar de restarlos. Con signos diferentes, debes restar: |-8| - |5| = 3, y usar el signo negativo.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>resta_enteros_rapida_2</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>15 - (-7) = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>22</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Restar un número negativo equivale a sumarlo: 15 - (-7) = 15 + 7 = 22. Recuerda: menos por menos es más. Tiempo límite: 10 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>8</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Este resultado viene de hacer 15 - 7. Recuerda que restar un número negativo es igual a sumarlo: 15 - (-7) = 15 + 7.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-8</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has tratado el problema como si fuera 7 - 15. Restar un número negativo equivale a una suma: 15 - (-7) = 15 + 7 = 22.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_negativos_rapida_3</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>(-3) + (-9) = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>-12</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Al sumar dos números negativos, sumas sus valores absolutos y conservas el signo negativo: 3 + 9 = 12, entonces (-3) + (-9) = -12. Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>12</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Olvidaste el signo negativo. Cuando sumas dos números negativos, el resultado siempre es negativo.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-6</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Este resultado viene de restar en lugar de sumar: 9 - 3 = 6. Con números del mismo signo negativo, debes sumar los valores absolutos.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>resta_basica_rapida_4</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>20 - 35 = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>-15</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Cuando el minuendo es menor que el sustraendo, el resultado es negativo: 20 - 35 = -(35 - 20) = -15. Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>15</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Olvidaste que el resultado debe ser negativo. Cuando restas un número mayor de uno menor, el resultado es negativo.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>55</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has sumado en lugar de restar. La operación es 20 - 35, no 20 + 35.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>valor_absoluto_rapida_5</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>|-12| = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>12</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! El valor absoluto de cualquier número es siempre positivo. |-12| = 12 porque representa la distancia de -12 al cero. Tiempo límite: 5 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-12</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. El valor absoluto siempre es positivo. Las barras verticales |  | eliminan el signo negativo.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>0</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. El valor absoluto no anula el número, solo elimina el signo negativo. |-12| = 12, no cero.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>opuestos_rapida_6</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>(-4) + 4 = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>0</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! La suma de un número y su opuesto siempre es cero. (-4) + 4 = 0. Los números opuestos se cancelan mutuamente. Tiempo límite: 5 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>8</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has sumado los valores absolutos ignorando el signo. Los números opuestos se cancelan: (-4) + 4 = 0.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-8</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Este resultado viene de sumar como si ambos fueran negativos. La suma de opuestos es siempre cero.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>resta_negativos_rapida_7</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>-6 - 8 = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>-14</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Restar un número positivo de uno negativo: -6 - 8 = -6 + (-8) = -14. Ambos términos son negativos, así que sumas y conservas el signo. Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>2</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Este resultado viene de hacer -6 + 8 en lugar de -6 - 8. Restar un positivo equivale a sumar un negativo.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>14</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Olvidaste el signo negativo. El resultado debe ser negativo porque partes de -6 y restas más.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_mixta_rapida_8</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>25 + (-10) = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>15</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Al sumar números con signos diferentes, restas sus valores absolutos (25 - 10 = 15) y conservas el signo del mayor (positivo). Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>35</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has sumado 25 + 10 ignorando el signo negativo. Sumar un número negativo equivale a restar: 25 + (-10) = 25 - 10.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-35</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has tratado ambos números como negativos. El resultado debe ser positivo porque 25 tiene mayor valor absoluto que 10.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>valores_absolutos_suma_rapida_9</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>|−7| + |3| = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>10</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Los valores absolutos convierten ambos números en positivos: |−7| = 7 y |3| = 3, entonces 7 + 3 = 10. Tiempo límite: 10 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>4</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Este resultado viene de hacer 7 - 3. Ambos valores absolutos son positivos, debes sumarlos: 7 + 3 = 10.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-4</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Los valores absolutos siempre son positivos, por lo que el resultado debe ser positivo. |−7| + |3| = 7 + 3 = 10.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_final_rapida_10</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>(-15) + 20 = ?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>5</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Con signos diferentes, restas los valores absolutos (20 - 15 = 5) y tomas el signo del número con mayor valor absoluto (positivo). Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>-5</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. El resultado debe ser positivo porque 20 tiene mayor valor absoluto que 15. (-15) + 20 = +(20 - 15) = 5.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>35</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has sumado los valores absolutos ignorando los signos. Con signos diferentes debes restar: 20 - 15 = 5.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 2 -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter/Modulo_2</text>
+    </category>
+</question>
+
+<!-- MÓDULO 2 - NÚMEROS PRIMOS Y FACTORIZACIÓN -->
+
+<question type="multichoice">
+    <name>
+        <text>primo_17_rapida_11</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Es 17 un número primo?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>Sí</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 17 es primo porque solo es divisible entre 1 y 17. No tiene otros divisores. Los números primos mayores que 2 siempre son impares. Tiempo límite: 5 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>No</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 17 es un número primo. Solo es divisible entre 1 y 17, cumpliendo la definición de número primo.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>Depende</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. La clasificación de números primos es absoluta. 17 definitivamente es primo porque tiene exactamente dos divisores: 1 y 17.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>mcd_12_8_rapida_12</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es el MCD de 12 y 8?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>4</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Los divisores de 12 son: 1, 2, 3, 4, 6, 12. Los divisores de 8 son: 1, 2, 4, 8. El mayor divisor común es 4. Tiempo límite: 10 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>2</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Aunque 2 es un divisor común, no es el mayor. El MCD busca el mayor divisor común, que es 4.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>24</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has calculado el MCM en lugar del MCD. El MCM de 12 y 8 es 24, pero el MCD es 4.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>divisibilidad_15_3_rapida_13</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Es 15 divisible por 3?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>Sí</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 15 ÷ 3 = 5 exactamente. También puedes verificarlo sumando las cifras: 1 + 5 = 6, y como 6 es divisible por 3, entonces 15 también. Tiempo límite: 3 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>No</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 15 sí es divisible por 3. Puedes verificarlo: 15 ÷ 3 = 5, sin residuo.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>Solo parcialmente</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. La divisibilidad es absoluta: un número es divisible o no lo es. 15 es completamente divisible por 3.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>primo_mayor_10_rapida_14</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es el primer número primo mayor que 10?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>11</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 11 es el primer primo después de 10. Solo es divisible entre 1 y 11. Los siguientes primos son 13, 17, 19, 23... Tiempo límite: 5 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>12</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 12 no es primo porque es divisible por 1, 2, 3, 4, 6 y 12. Tiene más de dos divisores.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>13</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Aunque 13 es primo, no es el primero mayor que 10. El primer primo mayor que 10 es 11.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>mcm_4_6_rapida_15</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es el MCM de 4 y 6?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>12</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Los múltiplos de 4: 4, 8, 12, 16... Los múltiplos de 6: 6, 12, 18... El menor múltiplo común es 12. Tiempo límite: 10 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>2</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has calculado el MCD en lugar del MCM. El MCD de 4 y 6 es 2, pero el MCM es 12.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>24</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Aunque 24 es múltiplo común de 4 y 6, no es el menor. El MCM busca el menor múltiplo común, que es 12.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>primo_21_rapida_16</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Es 21 un número primo?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>No</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 21 no es primo porque 21 = 3 × 7. Tiene más de dos divisores: 1, 3, 7 y 21. Es un número compuesto. Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>Sí</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 21 no es primo. Es divisible por 3 y por 7, además de 1 y 21. Los números primos solo tienen dos divisores.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>Es semi-primo</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. No existe la categoría "semi-primo" en esta clasificación básica. 21 es un número compuesto, no primo.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>divisibilidad_24_8_rapida_17</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Es 24 divisible por 8?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>Sí</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 24 ÷ 8 = 3 exactamente. También puedes verificarlo: 8 × 3 = 24, sin residuo. Tiempo límite: 5 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>No</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 24 sí es divisible por 8. El resultado es 3 exacto: 24 ÷ 8 = 3.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>Con residuo</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. La división 24 ÷ 8 es exacta, sin residuo. El resultado es 3 completo.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>factores_primos_6_rapida_18</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuántos factores primos tiene 6?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>2 factores</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 6 = 2 × 3. Los factores primos de 6 son 2 y 3. Ambos son números primos diferentes. Tiempo límite: 8 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>3 factores</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Estás contando todos los divisores (1, 2, 3, 6). Los factores primos son solo 2 y 3.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>1 factor</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 6 tiene dos factores primos diferentes: 2 y 3. No se puede expresar como potencia de un solo primo.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>mcd_15_10_rapida_19</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Cuál es el MCD de 15 y 10?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>5</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! Los divisores de 15: 1, 3, 5, 15. Los divisores de 10: 1, 2, 5, 10. El mayor divisor común es 5. Tiempo límite: 10 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>1</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Aunque 1 es divisor común, no es el mayor. Tanto 15 como 10 son divisibles por 5.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>30</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. Has calculado el MCM en lugar del MCD. El MCM de 15 y 10 es 30, pero el MCD es 5.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>primo_par_unico_rapida_20</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[<p>¿Es 2 el único número primo par?</p>]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[<p>Sí</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>¡Correcto! 2 es el único primo par. Todos los demás números pares son divisibles por 2, por lo que tienen más de dos divisores y no pueden ser primos. Tiempo límite: 5 segundos.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>No</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 2 es efectivamente el único primo par. Todos los demás pares son compuestos porque son divisibles por 2.</p>]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[<p>4 también es primo par</p>]]></text>
+        <feedback format="html">
+            <text><![CDATA[<p>Incorrecto. 4 no es primo porque es divisible por 1, 2 y 4. Tiene más de dos divisores, por lo que es compuesto.</p>]]></text>
+        </feedback>
+    </answer>
+</question>
+
+</quiz>

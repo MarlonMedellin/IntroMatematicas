@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- CATEGORÍA MÓDULO 5 -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter/Modulo_5</text>
+    </category>
+</question>
+
+<!-- MÓDULO 5 - SISTEMAS DE MEDIDAS -->
+
+<question type="multichoice">
+    <name>
+        <text>metros_a_centimetros_rapida_41</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos cm hay en 2 metros?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[200 cm]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 metro = 100 cm, entonces 2 metros = 2 × 100 = 200 cm. Factor de conversión: ×100 para pasar de metros a centímetros. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[20 cm]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido por 10 en lugar de multiplicar por 100. Para convertir metros a centímetros, multiplicas por 100.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2000 cm]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 1000. Esa conversión es de metros a milímetros. Para centímetros es ×100.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>kilogramos_a_gramos_rapida_42</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos gramos hay en 3 kg?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[3000 g]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 kg = 1000 g, entonces 3 kg = 3 × 1000 = 3000 g. Factor de conversión: ×1000 para pasar de kg a gramos. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[300 g]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 100 en lugar de 1000. Para convertir kg a gramos, multiplicas por 1000.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[30 g]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido en lugar de multiplicar. 1 kg contiene 1000 gramos, no al revés.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>centimetros_a_milimetros_rapida_43</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos mm hay en 5 cm?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[50 mm]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 cm = 10 mm, entonces 5 cm = 5 × 10 = 50 mm. Factor de conversión: ×10 para pasar de centímetros a milímetros. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[5 mm]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has mantenido el mismo número. 1 cm contiene 10 mm, entonces 5 cm = 50 mm.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[500 mm]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 100. Para pasar de cm a mm, multiplicas por 10, no por 100.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>minutos_a_segundos_rapida_44</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos segundos hay en 2 minutos?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[120 segundos]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 minuto = 60 segundos, entonces 2 minutos = 2 × 60 = 120 segundos. Factor de conversión: ×60 para pasar de minutos a segundos. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[30 segundos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 60 ÷ 2 = 30. Debes multiplicar: 2 × 60 = 120 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[200 segundos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 100. Para convertir minutos a segundos, multiplicas por 60.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>kilometros_a_metros_rapida_45</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos metros hay en 1 km?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1000 m]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 km = 1000 m. Es una conversión directa del sistema métrico. Factor de conversión: ×1000 para pasar de km a metros. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[100 m]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido con la conversión de metros a centímetros. 1 km = 1000 m, no 100 m.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[10000 m]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 10000. 1 km = 1000 metros exactamente.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>litros_a_mililitros_rapida_46</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos ml hay en 1 litro?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1000 ml]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 litro = 1000 ml. Es una conversión estándar del sistema métrico. Factor de conversión: ×1000 para pasar de litros a mililitros. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[100 ml]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido las unidades. 1 litro contiene 1000 mililitros, no 100.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[10 ml]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 1 litro es mucho mayor que 10 ml. La conversión correcta es 1 L = 1000 ml.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>medios_metros_centimetros_rapida_47</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos cm hay en 0.5 metros?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[50 cm]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 0.5 metros = 1/2 metro. Como 1 metro = 100 cm, entonces 1/2 metro = 100/2 = 50 cm. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[5 cm]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has movido mal el punto decimal. 0.5 m = 50 cm, no 5 cm.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.5 cm]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has mantenido el mismo número sin convertir. 0.5 metros = 50 centímetros.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>horas_a_minutos_rapida_48</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos minutos hay en 1 hora?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[60 minutos]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 hora = 60 minutos. Es una conversión básica del sistema de tiempo. Factor de conversión: ×60 para pasar de horas a minutos. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[100 minutos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido con el sistema decimal. El tiempo usa base 60: 1 hora = 60 minutos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[24 minutos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 24 es el número de horas en un día. 1 hora = 60 minutos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>gramos_a_miligramos_rapida_49</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos mg hay en 2 g?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[2000 mg]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 g = 1000 mg, entonces 2 g = 2 × 1000 = 2000 mg. Factor de conversión: ×1000 para pasar de gramos a miligramos. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[200 mg]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 100 en lugar de 1000. Para convertir g a mg, multiplicas por 1000.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[20 mg]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido en lugar de multiplicar. 1 gramo contiene 1000 miligramos.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>metros_cuadrados_centimetros_rapida_50</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos cm² hay en 1 m²?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[10000 cm²]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1 m = 100 cm, entonces 1 m² = (100 cm)² = 100 × 100 = 10000 cm². Las unidades de área se elevan al cuadrado. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[100 cm²]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has usado la conversión lineal. Para áreas, debes elevar al cuadrado: (100)² = 10000 cm².]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1000 cm²]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido con conversión de volumen. Para área: 1 m² = (100 cm)² = 10000 cm².]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 6 -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter/Modulo_6</text>
+    </category>
+</question>
+
+<!-- MÓDULO 6 - POTENCIACIÓN Y RADICACIÓN -->
+
+<question type="multichoice">
+    <name>
+        <text>potencia_2_cubo_rapida_51</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[2³ = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[8]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 2³ = 2 × 2 × 2 = 8. El exponente 3 indica que multiplicas la base 2 por sí misma tres veces. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado la base por el exponente: 2 × 3 = 6. En potenciación debes multiplicar la base por sí misma: 2 × 2 × 2 = 8.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[9]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido con 3². La operación es 2³ = 2 × 2 × 2 = 8, no 3 × 3 = 9.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>raiz_cuadrada_16_rapida_52</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[√16 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[4]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! √16 = 4 porque 4² = 4 × 4 = 16. La raíz cuadrada busca el número que multiplicado por sí mismo da 16. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[8]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 16 ÷ 2 = 8. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 16? La respuesta es 4.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido con otra operación. √16 = 4 porque 4 × 4 = 16.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>potencia_5_cuadrado_rapida_53</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[5² = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[25]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 5² = 5 × 5 = 25. El exponente 2 indica que multiplicas 5 por sí mismo una vez más. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[10]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado la base por el exponente: 5 × 2 = 10. En potenciación: 5² = 5 × 5 = 25.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[7]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado base más exponente: 5 + 2 = 7. La potenciación requiere multiplicación: 5 × 5 = 25.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>raiz_cuadrada_9_rapida_54</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[√9 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[3]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! √9 = 3 porque 3² = 3 × 3 = 9. La raíz cuadrada de 9 es el número que multiplicado por sí mismo da 9. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[4.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 9 ÷ 2 = 4.5. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 9? La respuesta es 3.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[18]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 9 × 2 = 18. √9 = 3 porque 3 × 3 = 9.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>potencia_3_cuadrado_rapida_55</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[3² = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[9]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 3² = 3 × 3 = 9. Cualquier número elevado al cuadrado se multiplica por sí mismo una vez. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado la base por el exponente: 3 × 2 = 6. En potenciación: 3² = 3 × 3 = 9.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado base más exponente: 3 + 2 = 5. La potenciación requiere multiplicación: 3 × 3 = 9.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>raiz_cuadrada_25_rapida_56</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[√25 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[5]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! √25 = 5 porque 5² = 5 × 5 = 25. La raíz cuadrada de 25 es el número que multiplicado por sí mismo da 25. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[12.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 25 ÷ 2 = 12.5. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 25? La respuesta es 5.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[50]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 25 × 2 = 50. √25 = 5 porque 5 × 5 = 25.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>potencia_4_cuadrado_rapida_57</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[4² = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[16]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 4² = 4 × 4 = 16. El cuadrado de 4 es uno de los cuadrados perfectos más comunes. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[8]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado la base por el exponente: 4 × 2 = 8. En potenciación: 4² = 4 × 4 = 16.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado base más exponente: 4 + 2 = 6. La potenciación requiere multiplicación: 4 × 4 = 16.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>raiz_cuadrada_36_rapida_58</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[√36 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! √36 = 6 porque 6² = 6 × 6 = 36. La raíz cuadrada de 36 es el número que multiplicado por sí mismo da 36. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[18]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 36 ÷ 2 = 18. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 36? La respuesta es 6.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[9]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido con √9 = 3 o con alguna otra operación. √36 = 6 porque 6 × 6 = 36.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>potencia_2_cuarta_rapida_59</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[2⁴ = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[16]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 2⁴ = 2 × 2 × 2 × 2 = 16. El exponente 4 indica que multiplicas la base 2 por sí misma cuatro veces. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[8]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado la base por el exponente: 2 × 4 = 8. En potenciación: 2⁴ = 2 × 2 × 2 × 2 = 16.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado base más exponente: 2 + 4 = 6. La potenciación requiere multiplicación repetida: 2 × 2 × 2 × 2 = 16.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>raiz_cuadrada_49_rapida_60</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[√49 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[7]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! √49 = 7 porque 7² = 7 × 7 = 49. La raíz cuadrada de 49 es el número que multiplicado por sí mismo da 49. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[24.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 49 ÷ 2 = 24.5. La raíz cuadrada pregunta: ¿qué número multiplicado por sí mismo da 49? La respuesta es 7.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[14]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 7 × 2 = 14. √49 = 7 porque 7 × 7 = 49.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+</quiz>

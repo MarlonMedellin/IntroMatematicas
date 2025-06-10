@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- CATEGORÍA MÓDULO 3 -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter/Modulo_3</text>
+    </category>
+</question>
+
+<!-- MÓDULO 3 - FRACCIONES Y DECIMALES -->
+
+<question type="multichoice">
+    <name>
+        <text>suma_fracciones_rapida_21</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[1/2 + 1/4 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[3/4]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Para sumar fracciones con denominadores diferentes, buscas el denominador común: 1/2 = 2/4, entonces 2/4 + 1/4 = 3/4. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[5/6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado numeradores y denominadores por separado (1+1=2, 2+4=6). En fracciones, necesitas denominar común.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1/2]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Este resultado viene de sumar solo los numeradores. Debes convertir a denominador común antes de sumar.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>multiplicacion_decimal_rapida_22</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[0.5 × 2 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 0.5 × 2 = 1. También puedes pensarlo como 1/2 × 2 = 2/2 = 1. La multiplicación de decimales sigue las mismas reglas. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.1]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido en lugar de multiplicar. 0.5 × 2 significa "la mitad de algo, tomada dos veces", que es la cantidad completa.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1.0]]></text>
+        <feedback format="html">
+            <text><![CDATA[Correcto matemáticamente, pero en este contexto de respuesta rápida, la forma más simple es 1.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>resta_fracciones_rapida_23</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[3/4 - 1/4 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1/2]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Con el mismo denominador, solo restas los numeradores: 3/4 - 1/4 = (3-1)/4 = 2/4 = 1/2 simplificado. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2/4]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque 2/4 es correcto, debes simplificar la fracción. 2/4 = 1/2 es la forma más simple.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1/4]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has restado incorrectamente. 3 - 1 = 2, no 1. El resultado es 2/4 = 1/2.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>fraccion_a_decimal_rapida_24</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuánto es 1/5 en decimal?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[0.2]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 1/5 = 1 ÷ 5 = 0.2. También puedes multiplicar por 20/20: 1/5 × 20/20 = 20/100 = 0.20. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 0.5 corresponde a 1/2, no a 1/5. Para convertir, divide 1 ÷ 5 = 0.2.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.15]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Este decimal no corresponde a 1/5. Recuerda: 1/5 = 1 ÷ 5 = 0.2.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_fracciones_iguales_rapida_25</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[2/3 + 1/3 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Con igual denominador, sumas los numeradores: 2/3 + 1/3 = (2+1)/3 = 3/3 = 1. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[3/6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado numeradores y denominadores por separado. Con igual denominador, solo sumas numeradores: (2+1)/3 = 3/3 = 1.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[3/3]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque 3/3 es correcto matemáticamente, debes simplificar: 3/3 = 1.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_decimales_rapida_26</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[0.25 + 0.75 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 0.25 + 0.75 = 1.00 = 1. También puedes verlo como 1/4 + 3/4 = 4/4 = 1. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1.00]]></text>
+        <feedback format="html">
+            <text><![CDATA[Correcto matemáticamente, pero la forma más simple de expresar el resultado es 1.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.100]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido el punto decimal. 0.25 + 0.75 = 1, no un decimal menor que uno.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>multiplicacion_fracciones_rapida_27</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[1/2 × 1/2 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[1/4]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Para multiplicar fracciones, multiplicas numeradores entre sí y denominadores entre sí: (1×1)/(2×2) = 1/4. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1/2]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. No sumes las fracciones. En multiplicación: 1/2 × 1/2 = (1×1)/(2×2) = 1/4.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2/4]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque llegas al resultado correcto en el numerador, 2/4 se simplifica a 1/2, que no es la respuesta correcta aquí.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>fraccion_decimal_3_5_rapida_28</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuánto es 3/5 en decimal?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[0.6]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 3/5 = 3 ÷ 5 = 0.6. También: 3/5 × 20/20 = 60/100 = 0.60. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.35]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has concatenado los números 3 y 5 como decimales. Para convertir, debes dividir: 3 ÷ 5 = 0.6.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.53]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has invertido los dígitos. La conversión correcta es 3 ÷ 5 = 0.6.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>resta_entero_fraccion_rapida_29</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[1 - 1/4 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[3/4]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Convierte el entero a fracción: 1 = 4/4, entonces 4/4 - 1/4 = 3/4. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has restado 1 - 1 = 0, ignorando el denominador. Debes convertir: 1 = 4/4, luego 4/4 - 1/4 = 3/4.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1/3]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Este resultado no corresponde a la operación. Convierte 1 a cuartos: 4/4 - 1/4 = 3/4.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>suma_decimales_basica_rapida_30</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[0.1 + 0.3 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[0.4]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Suma directa de decimales: 0.1 + 0.3 = 0.4. Alinea los puntos decimales y suma normalmente. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.13]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has concatenado los números en lugar de sumarlos. 0.1 + 0.3 = 0.4, no 0.13.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.04]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado en lugar de sumar. La suma correcta es 0.1 + 0.3 = 0.4.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 4 -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter/Modulo_4</text>
+    </category>
+</question>
+
+<!-- MÓDULO 4 - RAZONES Y PROPORCIONES -->
+
+<question type="multichoice">
+    <name>
+        <text>proporcion_2_4_x_8_rapida_31</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Si 2:4 = x:8, ¿cuál es x?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[4]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Usando productos cruzados: 2 × 8 = 4 × x, entonces 16 = 4x, por lo tanto x = 4. También puedes ver que 4 es el doble de 2, como 8 es el doble de 4. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has mantenido la primera razón sin considerar el cambio proporcional. Si 4 se convierte en 8 (se duplica), entonces 2 debe duplicarse también.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado 2 + 4 = 6. En proporciones debes usar multiplicación cruzada: 2 × 8 = 4 × x.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>porcentaje_50_de_80_rapida_32</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es el 50% de 80?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[40]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 50% = 1/2, entonces 50% de 80 = 80/2 = 40. También: 80 × 0.50 = 40. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[30]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado aproximadamente pero no exactamente. 50% de 80 es exactamente la mitad: 80/2 = 40.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[4]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has confundido la operación. 50% de 80 no es 80/50, sino 80 × 0.50 = 40.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>proporcion_directa_3_6_9_rapida_33</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Si 3 = 6, entonces 9 = ?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[18]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La razón es ×2 (3 × 2 = 6), entonces 9 × 2 = 18. En proporcionalidad directa, mantienes la misma razón multiplicativa. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[12]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado 9 + 3 = 12. En proporciones, debes multiplicar por la misma razón: 9 × 2 = 18.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[3]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has aplicado la operación inversa. Si 3 se convierte en 6 (×2), entonces 9 debe convertirse en 18 (×2).]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>porcentaje_25_de_100_rapida_34</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es el 25% de 100?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[25]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 25% = 25/100 = 1/4, entonces 25% de 100 = 100/4 = 25. También: 100 × 0.25 = 25. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[75]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el complemento (100% - 25% = 75%). La pregunta pide 25% de 100, que es 25.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 25/10 en lugar de calcular 25% de 100. El resultado correcto es 100 × 0.25 = 25.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>proporcion_5_10_3_x_rapida_35</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En la proporción 5:10 = 3:x, ¿cuál es x?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[6]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Productos cruzados: 5 × x = 10 × 3, entonces 5x = 30, por lo tanto x = 6. También puedes ver que 10 es el doble de 5, como x debe ser el doble de 3. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[15]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 5 × 3 = 15. Usa productos cruzados: 5 × x = 10 × 3, entonces x = 30/5 = 6.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido incorrectamente. La proporción requiere que 5 × x = 10 × 3, entonces x = 6.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>porcentaje_10_de_50_rapida_36</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es el 10% de 50?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[5]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 10% = 10/100 = 1/10, entonces 10% de 50 = 50/10 = 5. También: 50 × 0.10 = 5. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[45]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el complemento (90% de 50). La pregunta pide 10% de 50, que es 5.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[0.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has movido mal el punto decimal. 10% de 50 = 50 × 0.10 = 5, no 0.5.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>regla_tres_personas_tareas_rapida_37</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Si 4 personas = 8 tareas, ¿cuántas tareas hacen 2 personas?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[4 tareas]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Proporción directa: 4 personas / 8 tareas = 2 personas / x tareas. Entonces x = (2 × 8) / 4 = 4 tareas. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2 tareas]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has simplificado la razón de personas pero no la aplicaste correctamente. Si 4 personas hacen 8 tareas, 2 personas hacen 4 tareas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[16 tareas]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 2 × 8 = 16. En proporcionalidad directa, menos personas hacen menos tareas, no más.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>doble_de_15_rapida_38</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es el doble de 15?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[30]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! El doble significa multiplicar por 2: 15 × 2 = 30. También puedes sumarlo consigo mismo: 15 + 15 = 30. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[17]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado 15 + 2 = 17. "Doble" significa multiplicar por 2, no sumar 2.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[7.5]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido entre 2 (la mitad) en lugar de multiplicar por 2 (el doble).]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>proporcion_1_3_4_x_rapida_39</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Si 1:3 = 4:x, ¿cuál es x?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[12]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Productos cruzados: 1 × x = 3 × 4, entonces x = 12. También puedes ver que 4 es 4 veces 1, como x debe ser 4 veces 3. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[7]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado 1 + 3 + 4 = 8, pero ese no es el método correcto. Usa productos cruzados: x = 3 × 4 / 1 = 12.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1.33]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has dividido 4/3. En proporciones, usa productos cruzados: 1 × x = 3 × 4, entonces x = 12.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>mitad_de_60_rapida_40</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuál es la mitad de 60?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[30]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! La mitad significa dividir entre 2: 60 ÷ 2 = 30. También puedes pensarlo como 60 × 1/2 = 30. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[58]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has restado 60 - 2 = 58. "Mitad" significa dividir entre 2, no restar 2.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[120]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado por 2 (el doble) en lugar de dividir entre 2 (la mitad).]]></text>
+        </feedback>
+    </answer>
+</question>
+
+</quiz>
