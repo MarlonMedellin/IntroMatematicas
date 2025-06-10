@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <!-- Módulo 5: Aplicaciones y Sistemas de Medida -->
+  <question type="category">
+    <category>
+      <text>$course$/spaceshooter_problemas/Módulo 5: Aplicaciones y Sistemas de Medida</text>
+    </category>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión km a metros - Ambulancia</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una ambulancia recorre 3.5 km hasta el hospital. ¿Cuántos metros recorre?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir kilómetros a metros multiplicamos por 1.000: 3.5 × 1.000 = 3.500 metros</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>3.500 metros</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! 3.5 km × 1.000 = 3.500 metros</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>350 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Recuerda que 1 km = 1.000 metros, no 100.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>35 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Estás dividiendo en lugar de multiplicar.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>35.000 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 10.000 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión metros a km - Edificio</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un edificio tiene 1.200 metros de altura total incluyendo antenas. ¿Cuántos km de altura tiene?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir metros a kilómetros dividimos por 1.000: 1.200 ÷ 1.000 = 1.2 km</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>1.2 km</p>]]></text>
+      <feedback format="html">
+        <text>¡Correcto! 1.200 ÷ 1.000 = 1.2 km</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>12 km</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 100 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>0.12 km</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 10.000 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>1.200 km</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. No realizaste ninguna conversión.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión gramos a kg - Laboratorio</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En un laboratorio se pesaron 2.500 gramos de una muestra. ¿Cuántos kg son?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir gramos a kilogramos dividimos por 1.000: 2.500 ÷ 1.000 = 2.5 kg</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>2.5 kg</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 2.500 ÷ 1.000 = 2.5 kg</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>25 kg</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 100 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>0.25 kg</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 10.000 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>2.500 kg</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 1.000 en lugar de dividir.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión minutos a horas - Cirugía</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una cirugía veterinaria dura 180 minutos. ¿Cuántas horas son?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir minutos a horas dividimos por 60: 180 ÷ 60 = 3 horas</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>3 horas</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! 180 ÷ 60 = 3 horas</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>1.8 horas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 100 en lugar de 60.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>10.800 horas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 60 en lugar de dividir.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>30 horas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 6 en lugar de 60.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión ml a litros - Medicamento</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un tanque de medicamento líquido contiene 3.200 ml. ¿Cuántos litros son?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir mililitros a litros dividimos por 1.000: 3.200 ÷ 1.000 = 3.2 litros</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>3.2 litros</p>]]></text>
+      <feedback format="html">
+        <text>¡Correcto! 3.200 ÷ 1.000 = 3.2 litros</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>32 litros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 100 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>0.32 litros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 10.000 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>3.200 litros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 1.000 en lugar de dividir.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión cm a mm - Ventana</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una ventana en construcción mide 80 cm de ancho. ¿Cuántos mm son?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir centímetros a milímetros multiplicamos por 10: 80 × 10 = 800 mm</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>800 mm</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 80 × 10 = 800 mm</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>8 mm</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 10 en lugar de multiplicar.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>8.000 mm</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 100 en lugar de 10.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>80 mm</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. No realizaste ninguna conversión.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión horas a minutos - Fermentación</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un proceso de fermentación en gastronomía dura 2.5 horas. ¿Cuántos minutos son?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir horas a minutos multiplicamos por 60: 2.5 × 60 = 150 minutos</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>150 minutos</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! 2.5 × 60 = 150 minutos</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>25 minutos</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 10 en lugar de 60.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>0.042 minutos</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 60 en lugar de multiplicar.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>250 minutos</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 100 en lugar de 60.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión gramos a kg - Medicamento dosis</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un medicamento pesa 450 gramos por dosis. ¿Cuántos kg pesa?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir gramos a kilogramos dividimos por 1.000: 450 ÷ 1.000 = 0.45 kg</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>0.45 kg</p>]]></text>
+      <feedback format="html">
+        <text>¡Correcto! 450 ÷ 1.000 = 0.45 kg</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>4.5 kg</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 100 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>0.045 kg</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 10.000 en lugar de 1.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>450 kg</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 1.000 en lugar de dividir.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Conversión m² a cm² - Oficina turismo</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una oficina de turismo tiene un área de 6 m². ¿Cuántos cm² son?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para convertir metros cuadrados a centímetros cuadrados multiplicamos por 10.000: 6 × 10.000 = 60.000 cm²</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>60.000 cm²</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 6 × 10.000 = 60.000 cm²</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>600 cm²</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 100 en lugar de 10.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>6.000 cm²</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 1.000 en lugar de 10.000.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>60 cm²</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste por 10 en lugar de 10.000.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Distancia = velocidad × tiempo - Vehículo turístico</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un vehículo de transporte turístico viaja a 80 km/h durante 1.5 horas. ¿Qué distancia recorre?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Distancia = velocidad × tiempo: 80 × 1.5 = 120 km</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>120 km</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! 80 × 1.5 = 120 km</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>53.3 km</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste 80 ÷ 1.5 en lugar de multiplicar.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>81.5 km</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Sumaste 80 + 1.5 en lugar de multiplicar.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>78.5 km</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Restaste 80 - 1.5 en lugar de multiplicar.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <!-- Módulo 6: Potenciación y Radicación -->
+  <question type="category">
+    <category>
+      <text>$course$/spaceshooter_problemas/Módulo 6: Potenciación y Radicación</text>
+    </category>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Crecimiento exponencial - Bacterias</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias, ¿cuántas habrá después de 4 horas?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Cada hora se duplica, por lo que multiplicamos por 2⁴: 3 × 2⁴ = 3 × 16 = 48 bacterias</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>48 bacterias</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 3 × 2⁴ = 3 × 16 = 48 bacterias</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>24 bacterias</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 3 × 2³ en lugar de 3 × 2⁴.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>12 bacterias</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste 3 × 4 en lugar de usar exponentes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>96 bacterias</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 3 × 2⁵ en lugar de 3 × 2⁴.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Área de círculo - Plaza</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un arquitecto diseña una plaza circular con radio de 8 metros. ¿Cuál es el área de la plaza? (usa π ≈ 3)</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Área del círculo = π × r². Con π ≈ 3 y r = 8: 3 × 8² = 3 × 64 = 192 m²</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>192 m²</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! 3 × 8² = 3 × 64 = 192 m²</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>24 m²</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 3 × 8 en lugar de 3 × 8².</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>48 m²</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Usaste 2 × π × r en lugar de π × r².</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>64 m²</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Olvidaste multiplicar por π.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Inversión con crecimiento exponencial</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una inversión turística se duplica cada año durante 3 años. Si la inversión inicial fue $50,000, ¿cuánto vale al final?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Se duplica cada año durante 3 años: 50,000 × 2³ = 50,000 × 8 = $400,000</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>$400,000</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 50,000 × 2³ = 50,000 × 8 = $400,000</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>$200,000</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 50,000 × 2² en lugar de 50,000 × 2³.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>$150,000</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Sumaste 50,000 + 100,000 en lugar de usar exponentes.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>$800,000</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 50,000 × 2⁴ en lugar de 50,000 × 2³.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Raíz cuadrada - Área laboratorio</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un laboratorio tiene un área cuadrada de 144 m². ¿Cuánto mide cada lado?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para un cuadrado, lado = √área: √144 = 12 metros</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>12 metros</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! √144 = 12 metros</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>36 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste 144 ÷ 4 en lugar de calcular la raíz cuadrada.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>72 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste 144 ÷ 2 en lugar de calcular la raíz cuadrada.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>18 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste √324 en lugar de √144.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Tiempo de cocción cuadrático</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En gastronomía, el tiempo de cocción aumenta con el cuadrado del grosor del corte. Si un corte de 3 cm tarda 10 minutos, ¿cuánto tardará un corte que sigue la fórmula (grosor)² × 10?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Usando la fórmula con grosor = 3 cm: 3² × 10 = 9 × 10 = 90 minutos</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>90 minutos</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 3² × 10 = 9 × 10 = 90 minutos</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>30 minutos</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 3 × 10 en lugar de 3² × 10.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>270 minutos</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 3³ × 10 en lugar de 3² × 10.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>10 minutos</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. No aplicaste la fórmula correctamente.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Raíz cuadrada doble - Costo tratamiento</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En una clínica, el costo de un tratamiento se reduce progresivamente. Si el costo inicial es $100,000 y se reduce cada mes a la raíz cuadrada del mes anterior durante 2 meses, ¿cuál es el costo final aproximado?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Mes 1: √100,000 ≈ $316; Mes 2: √316 ≈ $18. El costo final es aproximadamente $18,000</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Aproximadamente $18,000</p>]]></text>
+      <feedback format="html">
+        <text>¡Correcto! √(√100,000) ≈ $18,000</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>$50,000</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 2 en lugar de aplicar raíces cuadradas.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>$316</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Solo aplicaste una raíz cuadrada en lugar de dos.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>$100</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste por 1.000 en lugar de aplicar raíces cuadradas.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Cuadrado perfecto - Equipos comunicación</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una empresa de comunicación organiza sus equipos en formación cuadrada de 9×9 personas. ¿Cuántas personas hay en total?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>En una formación cuadrada de 9×9: 9² = 81 personas</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>81 personas</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! 9² = 81 personas</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>18 personas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Sumaste 9 + 9 en lugar de multiplicar 9 × 9.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>36 personas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste el perímetro en lugar del área.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>729 personas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 9³ en lugar de 9².</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Cubo - Resistencia material</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>En construcción, la resistencia de un material es proporcional a 4³. ¿Cuál es el factor de resistencia?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>4³ = 4 × 4 × 4 = 64 unidades de resistencia</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>64 unidades</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 4³ = 64 unidades de resistencia</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>16 unidades</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 4² en lugar de 4³.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>12 unidades</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Multiplicaste 4 × 3 en lugar de calcular 4³.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>256 unidades</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 4⁴ en lugar de 4³.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Raíz cuadrada - Lobby hotel</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Un hotel tiene un lobby cuadrado con área de 225 m². ¿Cuál es la longitud de cada lado?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Para un cuadrado, lado = √área: √225 = 15 metros</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>15 metros</p>]]></text>
+      <feedback format="html">
+        <text>¡Excelente! √225 = 15 metros</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>56.25 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste 225 ÷ 4 en lugar de calcular la raíz cuadrada.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>112.5 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Dividiste 225 ÷ 2 en lugar de calcular la raíz cuadrada.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>25 metros</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste √625 en lugar de √225.</text>
+      </feedback>
+    </answer>
+  </question>
+
+  <question type="multichoice">
+    <name>
+      <text>Potencia de potencia - Campaña publicitaria</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Una campaña publicitaria multiplica su alcance por 3² cada semana. Si después de 2 semanas el alcance se multiplicó según (3²)², y comenzó con 2,000 personas, ¿cuál es el alcance final?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>(3²)² = 9² = 81. Alcance final: 2,000 × 81 = 162,000 personas</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>¡Correcto!</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Tu respuesta es parcialmente correcta.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Respuesta incorrecta.</text>
+    </incorrectfeedback>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>162,000 personas</p>]]></text>
+      <feedback format="html">
+        <text>¡Perfecto! 2,000 × (3²)² = 2,000 × 81 = 162,000 personas</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>18,000 personas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 2,000 × 3² en lugar de 2,000 × (3²)².</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>54,000 personas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 2,000 × 3³ en lugar de 2,000 × (3²)².</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>486,000 personas</p>]]></text>
+      <feedback format="html">
+        <text>Incorrecto. Calculaste 2,000 × 3⁶ en lugar de 2,000 × (3²)².</text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

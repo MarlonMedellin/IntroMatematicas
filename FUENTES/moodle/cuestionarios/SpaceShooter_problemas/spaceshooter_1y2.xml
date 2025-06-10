@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+<!-- CATEGORÍAS -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter_Problemas</text>
+    </category>
+</question>
+
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter_Problemas/Modulo_1</text>
+    </category>
+</question>
+
+<!-- MÓDULO 1 - SISTEMA DE NÚMEROS ENTEROS -->
+
+<question type="multichoice">
+    <name>
+        <text>laboratorio_temperatura_1</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En el laboratorio de biotecnología, la temperatura del incubador está a 37°C. Durante el día experimenta variaciones de -3°C, +2°C y -1°C. ¿Cuál es la temperatura final?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[35°C]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 37 + (-3) + 2 + (-1) = 35°C. En biotecnología, controlar precisamente la temperatura del incubador es crítico para el crecimiento celular. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[39°C]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todas las variaciones como positivas. Recuerda que -3°C y -1°C son disminuciones de temperatura.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[33°C]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado +2°C como negativo. La operación correcta es: 37 + (-3) + 2 + (-1) = 35°C.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>restaurante_inventario_2</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un restaurante tiene 150 unidades en inventario. Durante la semana registra movimientos de: salidas (-45), entradas (+30) y salidas (-25). ¿Cuántas unidades quedan?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[110 unidades]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 150 + (-45) + 30 + (-25) = 110 unidades. En gastronomía, el control de inventario preciso evita desperdicios y garantiza disponibilidad. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[250 unidades]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todos los valores sin considerar los signos. Las salidas se restan del inventario.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[80 unidades]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado las entradas como salidas. El cálculo correcto incluye +30 unidades de entrada.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>construccion_nivel_3</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En una construcción, el nivel de referencia está a 0. Se excava 8 metros hacia abajo, luego se construye una estructura de 12 metros hacia arriba. ¿A qué nivel está la estructura?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[+4 metros]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 0 + (-8) + 12 = +4 metros. En construcción, manejar cotas y niveles correctamente es fundamental para la seguridad estructural. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[+20 metros]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado 8 + 12 ignorando que la excavación es hacia abajo (-8 metros).]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[-4 metros]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has invertido los signos. La excavación baja 8 metros, pero la construcción sube 12 metros desde ese punto.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>hotel_ocupacion_4</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un hotel tiene 85 habitaciones ocupadas. Durante el día hay checkout de 15 habitaciones, nuevas reservas para 8 habitaciones y cancelaciones de 3. ¿Cuántas habitaciones están ocupadas al final?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[75 habitaciones]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 85 + (-15) + 8 + (-3) = 75 habitaciones. En turismo hotelero, el control de ocupación en tiempo real optimiza ingresos y servicio. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[111 habitaciones]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todas las cifras sin considerar que checkout y cancelaciones reducen la ocupación.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[67 habitaciones]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado las nuevas reservas como cancelaciones. Las 8 nuevas reservas aumentan la ocupación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>paciente_temperatura_5</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un paciente tiene una temperatura de 38°C. Recibe tratamiento que reduce la fiebre en 2°C, luego sube 1°C y finalmente baja 1°C más. ¿Cuál es su temperatura final?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[36°C]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 38 + (-2) + 1 + (-1) = 36°C. En ciencias de la salud, monitorear variaciones de temperatura es crucial para evaluar efectividad del tratamiento. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[42°C]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todos los valores como positivos. Las reducciones de temperatura se restan.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[34°C]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado el aumento de 1°C como una disminución. La operación incluye +1°C en el segundo cambio.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>cuenta_bancaria_6</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Una cuenta bancaria tiene $500,000. Se realizan transacciones: depósito (+$200,000), retiro (-$150,000) y pago de servicios (-$80,000). ¿Cuál es el saldo final?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[$470,000]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 500,000 + 200,000 + (-150,000) + (-80,000) = $470,000. En gestión financiera, el seguimiento preciso de flujo de caja es esencial. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[$930,000]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todas las cantidades sin considerar que retiros y pagos reducen el saldo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[$270,000]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado el depósito como un retiro. Los $200,000 de depósito aumentan el saldo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>cocina_porciones_7</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En una cocina profesional, el chef tiene 120 porciones preparadas. Durante el servicio entrega 45 al comedor, prepara 25 más, entrega 30 adicionales y prepara 15 más. ¿Cuántas porciones tiene disponibles?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[85 porciones]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 120 + (-45) + 25 + (-30) + 15 = 85 porciones. En gastronomía profesional, controlar inventario de porciones optimiza el servicio. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[235 porciones]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todos los valores sin considerar que las entregas reducen las porciones disponibles.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[45 porciones]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has restado las preparaciones adicionales en lugar de sumarlas. Preparar más porciones aumenta el disponible.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>agencia_turismo_8</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Una agencia de turismo registra cambios en sus reservas: inicio con 200, cancelaciones (-35), nuevas reservas (+50) y más cancelaciones (-12). ¿Cuántas reservas activas tiene?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[203 reservas]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 200 + (-35) + 50 + (-12) = 203 reservas. En turismo, el seguimiento dinámico de reservas permite optimizar capacidad y precios. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[297 reservas]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todas las cifras sin considerar que las cancelaciones reducen las reservas activas.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[153 reservas]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado las nuevas reservas como cancelaciones. Las 50 nuevas reservas aumentan el total.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>laboratorio_globulos_9</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En un laboratorio clínico, el conteo de glóbulos blancos de un paciente es 8,000. Después del tratamiento presenta variaciones de +1,200, -800 y +300. ¿Cuál es el conteo final?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[8,700 glóbulos blancos]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 8,000 + 1,200 + (-800) + 300 = 8,700 glóbulos blancos. En laboratorio clínico, monitorear variaciones en conteos celulares evalúa respuesta al tratamiento. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[10,300 glóbulos blancos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todas las variaciones como positivas. La disminución de 800 debe restarse del conteo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6,700 glóbulos blancos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado los aumentos como disminuciones. Las variaciones +1,200 y +300 aumentan el conteo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>empresa_comunicaciones_10</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Una empresa de comunicaciones tiene un presupuesto inicial de $2,000,000. Gasta $750,000 en equipos, recibe ingresos por $400,000 y gasta $300,000 en publicidad. ¿Cuál es su presupuesto disponible?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[$1,350,000]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 2,000,000 + (-750,000) + 400,000 + (-300,000) = $1,350,000. En comunicación empresarial, gestionar presupuestos eficientemente maximiza el alcance de campañas. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[$3,450,000]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has sumado todos los valores sin considerar que los gastos reducen el presupuesto disponible.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[$950,000]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has tratado los ingresos como gastos. Los $400,000 de ingresos aumentan el presupuesto disponible.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<!-- CATEGORÍA MÓDULO 2 -->
+<question type="category">
+    <category>
+        <text>$course$/top/SpaceShooter_Problemas/Modulo_2</text>
+    </category>
+</question>
+
+<!-- MÓDULO 2 - NÚMEROS PRIMOS, MCM Y MCD -->
+
+<question type="multichoice">
+    <name>
+        <text>restaurante_entregas_11</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días. ¿Cada cuántos días coinciden todas las entregas?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[24 días]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! MCM(6,8,12) = 24 días. En gastronomía, sincronizar entregas optimiza almacenamiento y reduce costos operativos. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[2 días]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el MCD en lugar del MCM. Para encontrar cuándo coinciden, necesitas el mínimo común múltiplo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[48 días]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado incorrectamente. El MCM de 6, 8 y 12 es 24, no 48.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>veterinaria_pastillas_12</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En una clínica veterinaria hay 36 pastillas de un medicamento y 48 de otro. Se quieren distribuir en dosis iguales usando el mayor número de pastillas por dosis. ¿Cuántas pastillas por dosis?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[12 pastillas por dosis]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! MCD(36,48) = 12 pastillas por dosis. En medicina veterinaria, optimizar dosis minimiza desperdicios y estandariza tratamientos. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[144 pastillas por dosis]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el MCM en lugar del MCD. Para distribuir en partes iguales, necesitas el máximo común divisor.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[6 pastillas por dosis]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque 6 divide a ambos números, no es el mayor divisor común. El MCD de 36 y 48 es 12.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>bacteria_primo_13</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Una bacteria se reproduce cada 11 minutos. ¿Es 11 un número primo?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Sí]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 11 es primo porque solo es divisible por 1 y 11. En microbiología, los ciclos reproductivos siguen patrones matemáticos específicos. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[No]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 11 es un número primo. Solo tiene dos divisores: 1 y 11 mismo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Depende del contexto]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La clasificación de números primos es absoluta y no depende del contexto de aplicación.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>arquitecto_ventanas_14</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un arquitecto diseña ventanas en grupos de 15. ¿Es 15 divisible por 3?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Sí]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 15 ÷ 3 = 5. En arquitectura, usar múltiplos facilita distribuciones simétricas y cálculos de materiales. Tiempo límite: 3 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[No]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 15 es divisible por 3. Puedes verificarlo: 15 ÷ 3 = 5 exactamente.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Solo con residuo]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. La división 15 ÷ 3 es exacta, sin residuo. El resultado es 5 completo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>panaderia_hornos_15</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[En una panadería, el horno 1 hace pan cada 6 minutos y el horno 2 cada 9 minutos. ¿Cada cuántos minutos producen pan simultáneamente?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[18 minutos]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! MCM(6,9) = 18 minutos. En panadería industrial, sincronizar hornos optimiza producción y distribución del producto. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[3 minutos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el MCD en lugar del MCM. Para encontrar cuándo coinciden, necesitas el mínimo común múltiplo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[54 minutos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 6 × 9 = 54. El MCM de 6 y 9 es 18, no su producto directo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>laboratorio_muestras_16</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un laboratorio tiene 42 muestras de sangre y 56 muestras de orina. Quiere organizarlas en bandejas con igual cantidad de muestras. ¿Cuál es el mayor número de muestras por bandeja?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[14 muestras por bandeja]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! MCD(42,56) = 14 muestras por bandeja. En laboratorio clínico, organizar muestras eficientemente acelera el procesamiento. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[168 muestras por bandeja]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el MCM en lugar del MCD. Para distribuir en partes iguales, necesitas el máximo común divisor.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[7 muestras por bandeja]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque 7 divide a ambos números, no es el mayor divisor común. El MCD de 42 y 56 es 14.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>emisora_comercial_17</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Una emisora programa un comercial especial cada 17 minutos. ¿17 es un número primo?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[Sí]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 17 es primo porque solo es divisible por 1 y 17. En comunicación, usar números primos puede crear patrones únicos de programación. Tiempo límite: 5 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[No]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 17 es un número primo. Solo tiene dos divisores: 1 y 17 mismo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[Es compuesto]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. 17 es primo, no compuesto. Un número compuesto tiene más de dos divisores.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>primos_entre_20_30_18</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[¿Cuántos números primos hay entre 20 y 30?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[2 números primos]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! Los números primos entre 20 y 30 son: 23 y 29. En matemáticas aplicadas, identificar primos es fundamental para algoritmos de seguridad. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[3 números primos]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has incluido algún número compuesto. Solo 23 y 29 son primos en ese rango.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[1 número primo]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Hay dos números primos entre 20 y 30: el 23 y el 29.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>hotel_mantenimiento_19</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un hotel programa mantenimiento de habitaciones cada 20 días y mantenimiento de áreas comunes cada 30 días. ¿Cada cuántos días coinciden ambos mantenimientos?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[60 días]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! MCM(20,30) = 60 días. En hotelería, coordinar mantenimientos optimiza recursos y minimiza interrupciones al servicio. Tiempo límite: 10 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[10 días]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has calculado el MCD en lugar del MCM. Para encontrar cuándo coinciden, necesitas el mínimo común múltiplo.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[600 días]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has multiplicado 20 × 30 = 600. El MCM de 20 y 30 es 60, no su producto directo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+<question type="multichoice">
+    <name>
+        <text>seguridad_codigo_20</text>
+    </name>
+    <questiontext format="html">
+        <text><![CDATA[Un sistema de seguridad tiene código 35. Para descifrarlo necesitas sus factores primos. ¿Cuáles son?]]></text>
+    </questiontext>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <answer fraction="100" format="html">
+        <text><![CDATA[5 × 7]]></text>
+        <feedback format="html">
+            <text><![CDATA[¡Correcto! 35 = 5 × 7. En sistemas de seguridad, la factorización prima es base de algoritmos de encriptación modernos. Tiempo límite: 8 segundos.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[3 × 5 × 7]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Has incluido el 3 que no es factor de 35. La factorización correcta es 5 × 7.]]></text>
+        </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+        <text><![CDATA[35 × 1]]></text>
+        <feedback format="html">
+            <text><![CDATA[Incorrecto. Aunque es una factorización válida, no es la descomposición en factores primos. 35 no es primo.]]></text>
+        </feedback>
+    </answer>
+</question>
+
+</quiz>
