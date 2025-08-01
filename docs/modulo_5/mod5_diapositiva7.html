@@ -265,6 +265,58 @@
             color: #475569;
             margin-bottom: 1rem;
         }
+        
+        .conclusion-banner {
+            background: linear-gradient(135deg, #172139 0%, #195855 50%, #108181 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conclusion-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(251, 187, 40, 0.3) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .college-badge {
+            background: #FBBB28;
+            color: #172139;
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .interactive-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 4px;
+            animation: blink 2s ease-in-out infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .interactive-dot:nth-child(1) { background: #E9901E; animation-delay: 0s; }
+        .interactive-dot:nth-child(2) { background: #108181; animation-delay: 0.5s; }
+        .interactive-dot:nth-child(3) { background: #00AEAC; animation-delay: 1s; }
+        .interactive-dot:nth-child(4) { background: #B4C42C; animation-delay: 1.5s; }
     </style>
 </head>
 <body>
@@ -480,6 +532,24 @@
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="conclusion-banner">
+            <div class="college-badge">Colegio Mayor de Antioquia</div>
+            <h3 class="text-xl font-bold mb-2">
+                Competencias Transversales en Sistemas de Medida
+            </h3>
+            <p class="text-base opacity-90 mb-3">
+                Herramientas matemáticas aplicadas que fortalecen el perfil profesional 
+                desde el <strong class="text-tertiary-green">primer semestre</strong>
+            </p>
+            <div class="flex items-center justify-center">
+                <span class="interactive-dot"></span>
+                <span class="interactive-dot"></span>
+                <span class="interactive-dot"></span>
+                <span class="interactive-dot"></span>
+                <span class="ml-3 text-sm font-medium opacity-80">Preparación para retos profesionales reales</span>
             </div>
         </div>
         
