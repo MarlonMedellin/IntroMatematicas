@@ -53,13 +53,15 @@
         }
 
         .slide {
-            width: min(1280px, 100vw);
+            width: 100%;
+            max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
             position: relative;
             background: #ffffff;
-            overflow: hidden;
-            aspect-ratio: 16/9;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 2rem;
         }
 
         .header-bar {
