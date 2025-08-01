@@ -18,14 +18,18 @@
             /* Eliminado overflow: hidden para permitir scroll */
         }
         .slide {
-            width: 1280px;
-            min-height: 720px;
+            width: 100%;
+            max-width: 1280px;
+            min-height: 100vh;
             position: relative;
             background-color: #ffffff;
             /* Eliminado overflow: hidden para permitir scroll */
             display: flex; /* Cambiado a flexbox */
             flex-direction: column; /* Estructura vertical */
             margin: 0 auto; /* Centrado horizontalmente */
+            padding: 2rem;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
         .header-bar {
             position: relative; /* Cambiado de absolute a relative */
