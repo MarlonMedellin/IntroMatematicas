@@ -8,9 +8,21 @@
   <meta name="description"
     content="Portal educativo de Introducción a las Matemáticas. Módulos interactivos y juegos para el aprendizaje de matemáticas básicas.">
 
+  <!-- Performance Optimizations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://unpkg.com">
+
   <!-- Google Fonts: Montserrat -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+  </noscript>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -37,8 +49,8 @@
     }
   </script>
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (Deferred for non-blocking) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <style>
     .glass {
@@ -99,6 +111,15 @@
     .animate-toast {
       animation: slideIn 0.3s ease-out forwards;
     }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
 
@@ -134,6 +155,11 @@
         <i data-lucide="book-open" class="w-5 h-5 mr-3"></i>
         Módulos
       </button>
+      <button onclick="switchTab('maps')" id="side-maps"
+        class="sidebar-item flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-white/5 text-slate-400">
+        <i data-lucide="map" class="w-5 h-5 mr-3"></i>
+        Mapas
+      </button>
     </nav>
 
     <div class="p-4 border-t border-white/5">
@@ -162,7 +188,7 @@
 
       <div class="flex items-center space-x-3">
         <div class="relative group">
-          <input type="text" placeholder="Buscar módulo..."
+          <input type="text" id="resource-search" placeholder="Buscar recursos (ej. enteros, mcm)..."
             class="bg-white/5 border border-white/10 rounded-full px-5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-teal/50 w-full md:w-64 transition-all">
           <i data-lucide="search" class="absolute right-4 top-2.5 w-4 h-4 text-slate-500"></i>
         </div>
@@ -213,11 +239,18 @@
     <section class="px-6 md:px-8 pb-12">
 
       <!-- Tabs Menu (Mobile navigation alternative) -->
-      <div class="flex items-center space-x-1 p-1 bg-white/5 rounded-xl mb-6 w-fit md:hidden">
-        <button onclick="switchTab('dashboard')"
-          class="bg-white/10 px-4 py-2 rounded-lg text-sm font-medium">Dashboard</button>
-        <button onclick="switchTab('flashcards')"
-          class="px-4 py-2 rounded-lg text-sm font-medium text-slate-400">Flashcards</button>
+      <div
+        class="flex items-center space-x-1 p-1 bg-white/5 rounded-xl mb-6 w-full overflow-x-auto no-scrollbar md:hidden">
+        <button onclick="switchTab('dashboard')" id="tab-dashboard"
+          class="mobile-tab px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all bg-primary-teal text-white">Incio</button>
+        <button onclick="switchTab('flashcards')" id="tab-flashcards"
+          class="mobile-tab px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all text-slate-400 whitespace-nowrap">Flashcards</button>
+        <button onclick="switchTab('games')" id="tab-games"
+          class="mobile-tab px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all text-slate-400 whitespace-nowrap">Juegos</button>
+        <button onclick="switchTab('modules')" id="tab-modules"
+          class="mobile-tab px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all text-slate-400 whitespace-nowrap">Módulos</button>
+        <button onclick="switchTab('maps')" id="tab-maps"
+          class="mobile-tab px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all text-slate-400 whitespace-nowrap">Mapas</button>
       </div>
 
       <!-- Content Title (Changes based on tab) -->
@@ -246,6 +279,11 @@
       <!-- Modules View -->
       <div id="content-modules" class="tab-content hidden flex flex-col space-y-8">
         <!-- Modules grouped by themes will be injected here -->
+      </div>
+
+      <!-- Maps View -->
+      <div id="content-maps" class="tab-content hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Maps will be injected here -->
       </div>
 
     </section>
@@ -282,6 +320,15 @@
       { id: 'ss4', name: 'Space: Proporciones', file: 'modulo4_proporciones.html', url: 'https://profemarlon.com/actividades/space-shooter/modules/modulo4_proporciones.html' },
       { id: 'ss5', name: 'Space: Unidades de Medida', file: 'modulo5_medidas.html', url: 'https://profemarlon.com/actividades/space-shooter/modules/modulo5_medidas.html' },
       { id: 'ss6', name: 'Space: Potencias', file: 'modulo6_potencias.html', url: 'https://profemarlon.com/actividades/space-shooter/modules/modulo6_potencias.html' },
+    ];
+
+    const maps = [
+      { id: 'map1', name: 'Mapa: Módulo 1', url: 'https://profemarlon.com/mapa/mapaconceptualmodulo1.html', desc: 'Mapa conceptual del Sistema de Números Enteros.' },
+      { id: 'map2', name: 'Mapa: Módulo 2', url: 'https://profemarlon.com/mapa/mapaconceptualmodulo2.html', desc: 'Mapa conceptual de Números Primos, MCM y MCD.' },
+      { id: 'map3', name: 'Mapa: Módulo 3', url: 'https://profemarlon.com/mapa/mapaconceptualmodulo3.html', desc: 'Mapa conceptual del Sistema de Números Racionales.' },
+      { id: 'map4', name: 'Mapa: Módulo 4', url: 'https://profemarlon.com/mapa/mapaconceptualmodulo4.html', desc: 'Mapa conceptual de Razones y Proporciones.' },
+      { id: 'map5', name: 'Mapa: Módulo 5', url: 'https://profemarlon.com/mapa/mapaconceptualmodulo5.html', desc: 'Mapa conceptual de Sistemas de Medida.' },
+      { id: 'map6', name: 'Mapa: Módulo 6', url: 'https://profemarlon.com/mapa/mapaconceptualmodulo6.html', desc: 'Mapa conceptual de Potenciación y Radicación.' },
     ];
 
     const courseModules = [
@@ -444,10 +491,21 @@
         activeLink.classList.remove('text-slate-400');
       }
 
+      // Update mobile tabs
+      document.querySelectorAll('.mobile-tab').forEach(el => {
+        el.classList.remove('bg-primary-teal', 'text-white');
+        el.classList.add('text-slate-400');
+      });
+      const activeTab = document.getElementById(`tab-${tabId}`);
+      if (activeTab) {
+        activeTab.classList.add('bg-primary-teal', 'text-white');
+        activeTab.classList.remove('text-slate-400');
+      }
+
       // Update title
       const tabTitle = document.getElementById('tab-title');
-      const icons = { 'dashboard': 'layout-grid', 'flashcards': 'copy', 'games': 'gamepad-2', 'modules': 'book-open' };
-      const names = { 'dashboard': 'Vista General', 'flashcards': 'Flashcards Educativos', 'games': 'Módulos Gamificados', 'modules': 'Material de Estudio' };
+      const icons = { 'dashboard': 'layout-grid', 'flashcards': 'copy', 'games': 'gamepad-2', 'modules': 'book-open', 'maps': 'map' };
+      const names = { 'dashboard': 'Vista General', 'flashcards': 'Flashcards Educativos', 'games': 'Módulos Gamificados', 'modules': 'Material de Estudio', 'maps': 'Mapas Conceptuales' };
 
       tabTitle.innerHTML = `<i data-lucide="${icons[tabId]}" class="w-5 h-5 mr-3 text-primary-lightTeal"></i> ${names[tabId]}`;
       lucide.createIcons();
@@ -508,7 +566,36 @@
       const modulesContainer = document.getElementById('content-modules');
       courseModules.forEach(module => modulesContainer.innerHTML += createModuleSection(module));
 
+      // Maps
+      const mapsGrid = document.getElementById('content-maps');
+      maps.forEach(item => mapsGrid.innerHTML += createCard(item, 'Recursos'));
+
       lucide.createIcons();
+
+      // Search Logic
+      const searchInput = document.getElementById('resource-search');
+      searchInput.addEventListener('keyup', (e) => {
+        const query = e.target.value.toLowerCase();
+
+        // Target all resource cards and module slides
+        const items = document.querySelectorAll('.glass-card, .tab-content .grid > div');
+
+        items.forEach(item => {
+          const title = (item.querySelector('h4') || item.querySelector('h5'))?.innerText.toLowerCase() || "";
+          const desc = item.querySelector('p')?.innerText.toLowerCase() || "";
+          if (title.includes(query) || desc.includes(query)) {
+            item.style.display = item.classList.contains('glass') ? 'block' : 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // Hide module headers if no slides are visible within them
+        document.querySelectorAll('#content-modules > div').forEach(section => {
+          const visibleSlides = section.querySelectorAll('.grid > div:not([style*="display: none"])');
+          section.style.display = visibleSlides.length > 0 || query === "" ? 'block' : 'none';
+        });
+      });
     }
 
     window.onload = init;
