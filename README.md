@@ -159,10 +159,17 @@ INICIO → Módulo 1 → Módulo 2 → Módulo 3 → Módulo 4 → Módulo 5 →
 - Navegación libre entre sesiones
 - Progreso visual en tiempo real
 
-#### **2. Centro de Juegos**
+#### **3. Mapas Conceptuales**
+- Visualización interactiva de la estructura de cada módulo
+- Conexión lógica entre conceptos matemáticos
+
+#### **4. Centro de Juegos**
 - **🃏 Flashcards**: Memorización de conceptos
 - **🚀 Space Shooter**: Velocidad en operaciones
 - **🎯 Desafíos**: Retos específicos por tema
+
+#### **5. Búsqueda Inteligente**
+- Filtro en tiempo real de todos los recursos, diapositivas y juegos.
 
 ### **🔧 Herramientas de Apoyo:**
 
