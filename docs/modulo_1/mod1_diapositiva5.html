@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propiedades de la suma y del producto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Sistema de los Números Enteros - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Aprende sobre el conjunto de los números enteros, operaciones básicas, valor absoluto y su aplicación en matemáticas básicas.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
@@ -20,7 +24,7 @@
         }
 
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
@@ -372,14 +376,42 @@
             animation: float 18s infinite ease-in-out;
         }
 
-        .floating-symbol:nth-child(1) { top: 12%; left: 3%; animation-delay: 0s; }
-        .floating-symbol:nth-child(2) { top: 25%; right: 5%; animation-delay: 5s; }
-        .floating-symbol:nth-child(3) { bottom: 35%; left: 8%; animation-delay: 10s; }
-        .floating-symbol:nth-child(4) { bottom: 20%; right: 12%; animation-delay: 15s; }
+        .floating-symbol:nth-child(1) {
+            top: 12%;
+            left: 3%;
+            animation-delay: 0s;
+        }
+
+        .floating-symbol:nth-child(2) {
+            top: 25%;
+            right: 5%;
+            animation-delay: 5s;
+        }
+
+        .floating-symbol:nth-child(3) {
+            bottom: 35%;
+            left: 8%;
+            animation-delay: 10s;
+        }
+
+        .floating-symbol:nth-child(4) {
+            bottom: 20%;
+            right: 12%;
+            animation-delay: 15s;
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
-            50% { transform: translateY(-40px) rotate(20deg); opacity: 0.1; }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.05;
+            }
+
+            50% {
+                transform: translateY(-40px) rotate(20deg);
+                opacity: 0.1;
+            }
         }
 
         /* Interactive animations */
@@ -393,27 +425,78 @@
 
         /* Responsive Design */
         @media (max-width: 1280px) {
-            .slide { padding: 1.5rem; }
-            .title-text h1 { font-size: 2.5rem; line-height: 2.75rem; }
-            .properties-grid { gap: 1rem; }
-            .applications-grid { grid-template-columns: repeat(2, 1fr); }
+            .slide {
+                padding: 1.5rem;
+            }
+
+            .title-text h1 {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+
+            .properties-grid {
+                gap: 1rem;
+            }
+
+            .applications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .slide { padding: 1rem; }
-            .title-container { flex-direction: column; align-items: flex-start; }
-            .title-text h1 { font-size: 2rem; line-height: 2.25rem; }
-            .title-icon { margin-left: 0; margin-top: 1rem; }
-            .properties-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .examples-container { grid-template-columns: 1fr; }
-            .applications-grid { grid-template-columns: 1fr; }
-            .session-badge { font-size: 0.875rem; padding: 0.25rem 1rem; }
-            .showcase-demo { grid-template-columns: 1fr; }
-            .demo-arrow { transform: rotate(90deg); }
-            .factor-steps { flex-direction: column; gap: 1rem; }
+            .slide {
+                padding: 1rem;
+            }
+
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title-text h1 {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+
+            .title-icon {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .examples-container {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
+
+            .showcase-demo {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-arrow {
+                transform: rotate(90deg);
+            }
+
+            .factor-steps {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Floating Background Elements -->
@@ -529,7 +612,7 @@
                     <i class="fas fa-compress-arrows-alt" style="margin-right: 0.5rem;"></i>
                     Factor Común
                 </div>
-                
+
                 <div class="factor-steps">
                     <div class="factor-step">ab + ac</div>
                     <div class="demo-arrow"><i class="fas fa-arrow-right"></i></div>
@@ -554,7 +637,8 @@
                         <i class="fas fa-chart-bar"></i>
                     </div>
                     <div class="app-title">Administración y Comercio</div>
-                    <div class="app-description">Agrupar productos por unidades comunes y simplificar cálculos de inventario</div>
+                    <div class="app-description">Agrupar productos por unidades comunes y simplificar cálculos de
+                        inventario</div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">
@@ -568,10 +652,12 @@
                         <i class="fas fa-calculator"></i>
                     </div>
                     <div class="app-title">Ingeniería</div>
-                    <div class="app-description">Simplificación de expresiones de cálculo de fuerzas y resistencias</div>
+                    <div class="app-description">Simplificación de expresiones de cálculo de fuerzas y resistencias
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

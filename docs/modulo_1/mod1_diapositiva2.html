@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introducción al conjunto de los números enteros</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Sistema de los Números Enteros - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Aprende sobre el conjunto de los números enteros, operaciones básicas, valor absoluto y su aplicación en matemáticas básicas.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -35,7 +39,7 @@
             --accent-orange: #E9901E;
             --accent-green: #B4C42C;
             --accent-cyan: #00AEAC;
-            
+
             --gradient-primary: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-light-teal) 100%);
             --gradient-accent: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-orange) 50%, var(--accent-yellow) 100%);
         }
@@ -53,7 +57,7 @@
         }
 
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
@@ -140,7 +144,7 @@
             box-shadow: 0 4px 12px rgba(23, 33, 57, 0.1);
             animation: slideInUp 1s ease-out 1.1s both;
         }
-        
+
         .content-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 24px rgba(23, 33, 57, 0.15);
@@ -290,36 +294,103 @@
             animation: float 8s infinite ease-in-out;
         }
 
-        .floating-number:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .floating-number:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
-        .floating-number:nth-child(3) { bottom: 30%; left: 5%; animation-delay: 4s; }
-        .floating-number:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 6s; }
+        .floating-number:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-number:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-number:nth-child(3) {
+            bottom: 30%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .floating-number:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 6s;
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
 
         /* Responsive Design */
         @media (max-width: 1280px) {
-            .slide { padding: 1.5rem; }
-            .title-text h1 { font-size: 2.5rem; line-height: 2.75rem; }
-            .content-grid { gap: 1.5rem; }
-            .applications-grid { grid-template-columns: repeat(2, 1fr); }
+            .slide {
+                padding: 1.5rem;
+            }
+
+            .title-text h1 {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+
+            .content-grid {
+                gap: 1.5rem;
+            }
+
+            .applications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .slide { padding: 1rem; }
-            .title-container { flex-direction: column; align-items: flex-start; }
-            .title-text h1 { font-size: 2rem; line-height: 2.25rem; }
-            .title-icon { margin-left: 0; margin-top: 1rem; }
-            .content-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .examples-grid { grid-template-columns: 1fr; }
-            .applications-grid { grid-template-columns: 1fr; }
-            .session-badge { font-size: 0.875rem; padding: 0.25rem 1rem; }
+            .slide {
+                padding: 1rem;
+            }
+
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title-text h1 {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+
+            .title-icon {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Floating Background Elements -->
@@ -472,4 +543,5 @@
         </div>
     </div>
 </body>
+
 </html>

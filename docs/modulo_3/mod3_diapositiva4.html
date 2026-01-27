@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipos de Fracciones</title>
+    <title>Sistema de los Números Racionales - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Estudio detallado de los números racionales, fracciones, decimales y sus operaciones fundamentales.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
@@ -22,14 +26,14 @@
             overflow-x: hidden;
             overflow-y: auto;
         }
-        
+
         .main-container {
             padding: 2rem 3rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
-        
+
         .slide-title {
             color: #172139;
             font-size: 2.25rem;
@@ -37,21 +41,21 @@
             margin-bottom: 0.5rem;
             text-align: center;
         }
-        
+
         .title-accent {
             width: 100px;
             height: 4px;
             background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
             margin: 0 auto 1.5rem;
         }
-        
+
         .types-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .fraction-card {
             background: white;
             border-radius: 16px;
@@ -62,7 +66,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .fraction-card::before {
             content: '';
             position: absolute;
@@ -73,42 +77,42 @@
             background: linear-gradient(90deg, var(--accent-color-1), var(--accent-color-2));
             border-radius: 16px 16px 0 0;
         }
-        
+
         .fraction-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(23, 33, 57, 0.15);
         }
-        
+
         .card-proper {
             --accent-color-1: #B4C42C;
             --accent-color-2: #E9901E;
         }
-        
+
         .card-improper {
             --accent-color-1: #172139;
             --accent-color-2: #195855;
         }
-        
+
         .card-mixed {
             --accent-color-1: #108181;
             --accent-color-2: #00AEAC;
         }
-        
+
         .card-whole {
             --accent-color-1: #E9901E;
             --accent-color-2: #FBBB28;
         }
-        
+
         .card-decimal {
             --accent-color-1: #195855;
             --accent-color-2: #108181;
         }
-        
+
         .card-compound {
             --accent-color-1: #FBBB28;
             --accent-color-2: #B4C42C;
         }
-        
+
         .fraction-type {
             color: #172139;
             font-size: 1.1rem;
@@ -118,7 +122,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .fraction-icon {
             width: 32px;
             height: 32px;
@@ -130,7 +134,7 @@
             color: white;
             background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
         }
-        
+
         .fraction-definition {
             color: #2F3E5D;
             font-size: 0.875rem;
@@ -138,14 +142,14 @@
             margin-bottom: 1rem;
             line-height: 1.4;
         }
-        
+
         .fraction-examples {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .example-fraction {
             background: linear-gradient(135deg, var(--accent-color-1), var(--accent-color-2));
             color: white;
@@ -156,7 +160,7 @@
             text-align: center;
             min-width: 50px;
         }
-        
+
         .visual-fraction {
             display: flex;
             align-items: center;
@@ -166,25 +170,26 @@
             font-weight: 700;
             color: #172139;
         }
-        
+
         .fraction-display {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             margin: 0 0.5rem;
         }
-        
-        .numerator, .denominator {
+
+        .numerator,
+        .denominator {
             line-height: 1;
         }
-        
+
         .fraction-line {
             width: 100%;
             height: 2px;
             background: #172139;
             margin: 2px 0;
         }
-        
+
         .application-note {
             background: rgba(251, 187, 40, 0.1);
             border-left: 3px solid #FBBB28;
@@ -195,7 +200,7 @@
             font-weight: 500;
             font-style: italic;
         }
-        
+
         .floating-shapes {
             position: absolute;
             top: 0;
@@ -205,18 +210,25 @@
             z-index: 1;
             overflow: hidden;
         }
-        
+
         .shape {
             position: absolute;
             opacity: 0.08;
             animation: floatShape 12s infinite ease-in-out;
         }
-        
+
         @keyframes floatShape {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
-        
+
         .shape-1 {
             width: 100px;
             height: 100px;
@@ -226,7 +238,7 @@
             left: 5%;
             animation-delay: 0s;
         }
-        
+
         .shape-2 {
             width: 80px;
             height: 80px;
@@ -236,7 +248,7 @@
             right: 8%;
             animation-delay: 3s;
         }
-        
+
         .shape-3 {
             width: 60px;
             height: 120px;
@@ -246,7 +258,7 @@
             left: 8%;
             animation-delay: 6s;
         }
-        
+
         .shape-4 {
             width: 90px;
             height: 90px;
@@ -256,7 +268,7 @@
             right: 10%;
             animation-delay: 9s;
         }
-        
+
         .comparison-section {
             background: linear-gradient(135deg, #172139 0%, #195855 100%);
             color: white;
@@ -266,7 +278,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .comparison-title {
             color: #FBBB28;
             font-size: 1.25rem;
@@ -274,13 +286,13 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-        
+
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
-        
+
         .comparison-item {
             text-align: center;
             padding: 1rem;
@@ -288,77 +300,78 @@
             border-radius: 12px;
             transition: transform 0.3s ease;
         }
-        
+
         .comparison-item:hover {
             transform: scale(1.05);
         }
-        
+
         .comparison-fraction {
             font-size: 1.5rem;
             font-weight: 700;
             color: #FBBB28;
             margin-bottom: 0.5rem;
         }
-        
+
         .comparison-label {
             font-size: 0.875rem;
             font-weight: 500;
             opacity: 0.9;
         }
-        
+
         /* Responsive styles */
         @media (max-width: 1280px) {
             .main-container {
                 padding: 1.5rem 2rem;
             }
-            
+
             .types-grid {
                 gap: 1rem;
             }
-            
+
             .slide-title {
                 font-size: 2rem;
             }
         }
-        
+
         @media (max-width: 768px) {
             .main-container {
                 padding: 1rem;
             }
-            
+
             .types-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.75rem;
             }
-            
+
             .slide-title {
                 font-size: 1.75rem;
             }
-            
+
             .fraction-card {
                 padding: 1rem;
             }
-            
+
             .comparison-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .floating-shapes {
                 display: none;
             }
         }
-        
+
         @media (max-width: 480px) {
             .types-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .comparison-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Floating Shapes -->
@@ -368,12 +381,12 @@
             <div class="shape shape-3"></div>
             <div class="shape shape-4"></div>
         </div>
-        
+
         <!-- Main Content -->
         <div class="main-container">
             <h1 class="slide-title">Tipos de Fracciones</h1>
             <div class="title-accent"></div>
-            
+
             <div class="types-grid">
                 <!-- Fracción Propia -->
                 <div class="fraction-card card-proper">
@@ -404,7 +417,7 @@
                         Repostería: 3/4 taza de azúcar
                     </div>
                 </div>
-                
+
                 <!-- Fracción Impropia -->
                 <div class="fraction-card card-improper">
                     <div class="fraction-type">
@@ -434,7 +447,7 @@
                         Arquitectura: 5/2 metros de altura
                     </div>
                 </div>
-                
+
                 <!-- Fracción Mixta -->
                 <div class="fraction-card card-mixed">
                     <div class="fraction-type">
@@ -465,7 +478,7 @@
                         Conversión: entero × denominador + numerador
                     </div>
                 </div>
-                
+
                 <!-- Fracción Entera -->
                 <div class="fraction-card card-whole">
                     <div class="fraction-type">
@@ -491,7 +504,7 @@
                         Resultado: número entero exacto
                     </div>
                 </div>
-                
+
                 <!-- Fracción Decimal -->
                 <div class="fraction-card card-decimal">
                     <div class="fraction-type">
@@ -517,7 +530,7 @@
                         Administración: IVA 19% = 19/100
                     </div>
                 </div>
-                
+
                 <!-- Fracción Compuesta -->
                 <div class="fraction-card card-compound">
                     <div class="fraction-type">
@@ -550,7 +563,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Comparison Section -->
             <div class="comparison-section">
                 <h3 class="comparison-title">
@@ -579,4 +592,5 @@
         </div>
     </div>
 </body>
+
 </html>

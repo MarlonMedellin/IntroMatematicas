@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porcentajes y Aumentos/Descuentos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Razones, Proporciones y Regla de Tres - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Entiende las razones y proporciones, y aprende a aplicar la regla de tres simple y compuesta en problemas reales.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -29,7 +33,7 @@
         }
 
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             position: relative;
@@ -349,6 +353,7 @@
                 transform: translateY(-30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -359,6 +364,7 @@
             from {
                 width: 0;
             }
+
             to {
                 width: 8rem;
             }
@@ -369,6 +375,7 @@
                 transform: translateY(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -380,6 +387,7 @@
                 transform: translateX(-50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -391,6 +399,7 @@
                 transform: translateX(50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -402,6 +411,7 @@
                 transform: translateY(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -409,9 +419,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-15px);
             }
@@ -422,7 +435,7 @@
             .content-grid {
                 gap: 1.5rem;
             }
-            
+
             .main-title {
                 font-size: 2.5rem;
             }
@@ -432,21 +445,21 @@
             .slide {
                 padding: 1.5rem;
             }
-            
+
             .content-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .application-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-            
+
             .main-title {
                 font-size: 2rem;
             }
-            
+
             .giant-percent,
             .floating-element {
                 display: none;
@@ -460,6 +473,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <div class="content-container">
@@ -467,11 +481,12 @@
             <div class="header-section">
                 <h1 class="main-title">Porcentajes y Aumentos/Descuentos</h1>
                 <div class="accent-line"></div>
-                
+
                 <div class="definition-box">
                     <p class="definition-text">
-                        El <span class="percentage-highlight">porcentaje (%)</span> es una forma de expresar una proporción 
-                        tomando como base el número <strong>100</strong>. 
+                        El <span class="percentage-highlight">porcentaje (%)</span> es una forma de expresar una
+                        proporción
+                        tomando como base el número <strong>100</strong>.
                         La regla de tres es la herramienta fundamental para resolver problemas de porcentajes.
                     </p>
                 </div>
@@ -485,7 +500,7 @@
                         <i class="fas fa-list-ol"></i>
                         Tipos de Problemas
                     </h2>
-                    
+
                     <div class="problem-type">
                         <div class="problem-number">1</div>
                         <div class="problem-description">
@@ -493,7 +508,7 @@
                             ¿Cuál es el 15% de 200?
                         </div>
                     </div>
-                    
+
                     <div class="problem-type">
                         <div class="problem-number">2</div>
                         <div class="problem-description">
@@ -501,7 +516,7 @@
                             ¿Qué % es 40 de 160?
                         </div>
                     </div>
-                    
+
                     <div class="problem-type">
                         <div class="problem-number">3</div>
                         <div class="problem-description">
@@ -517,23 +532,24 @@
                         <i class="fas fa-calculator"></i>
                         Ejemplo Paso a Paso
                     </h2>
-                    
+
                     <div class="example-card">
                         <div class="problem-statement">
-                            <strong>Problema:</strong> Una tienda ofrece un descuento del 15% en un artículo que cuesta $80.000. 
+                            <strong>Problema:</strong> Una tienda ofrece un descuento del 15% en un artículo que cuesta
+                            $80.000.
                             ¿Cuánto es el descuento y cuál es el precio final?
                         </div>
-                        
+
                         <div class="solution-steps">
                             <div class="step">
                                 <div class="step-icon">1</div>
                                 <div>Calcular el 15% de $80.000</div>
                             </div>
-                            
+
                             <div class="formula-display">
                                 $$\frac{\$80.000 \times 15}{100} = \$12.000$$
                             </div>
-                            
+
                             <div class="step">
                                 <div class="step-icon">2</div>
                                 <div>Precio final = $80.000 - $12.000 = <strong>$68.000</strong></div>
@@ -549,7 +565,7 @@
                     <i class="fas fa-briefcase"></i>
                     Aplicaciones por Programa
                 </h2>
-                
+
                 <div class="application-grid">
                     <div class="app-card">
                         <div class="app-icon">
@@ -559,7 +575,7 @@
                             <strong>Gestión Comercial:</strong> Calcular IVA (19%) sobre ventas de $250.000
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-utensils"></i>
@@ -568,7 +584,7 @@
                             <strong>Gastronomía:</strong> Descuentos sucesivos: 20% + 10% sobre precio de $50.000
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-plane"></i>
@@ -588,4 +604,5 @@
         <div class="floating-element float-3">÷100</div>
     </div>
 </body>
+
 </html>

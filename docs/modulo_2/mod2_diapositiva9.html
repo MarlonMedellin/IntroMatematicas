@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mínimo Común Múltiplo (MCM)</title>
+    <title>Números Primos, MCM y MCD - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Domina los números primos, criterios de divisibilidad, y el cálculo del Mínimo Común Múltiplo y Máximo Común Divisor.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
@@ -24,13 +28,13 @@
             padding: 2rem 3rem;
             box-sizing: border-box;
         }
-        
+
         .title-section {
             text-align: center;
             margin-bottom: 1.5rem;
             animation: slideInDown 0.8s ease-out;
         }
-        
+
         .main-title {
             color: #172139;
             font-weight: 700;
@@ -41,7 +45,7 @@
             justify-content: center;
             gap: 1rem;
         }
-        
+
         .title-icon {
             width: 4rem;
             height: 4rem;
@@ -54,21 +58,21 @@
             color: white;
             animation: pulse 3s infinite ease-in-out;
         }
-        
+
         .subtitle {
             color: #195855;
             font-weight: 500;
             font-size: 1rem;
             margin-bottom: 1rem;
         }
-        
+
         .accent-line {
             width: 8rem;
             height: 0.25rem;
             background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
             margin: 0 auto;
         }
-        
+
         .definition-banner {
             background: linear-gradient(135deg, #00AEAC 0%, #108181 100%);
             border-radius: 1.5rem;
@@ -80,7 +84,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .definition-banner::before {
             content: '';
             position: absolute;
@@ -93,29 +97,29 @@
             opacity: 0.1;
             animation: rotate 15s infinite linear;
         }
-        
+
         .definition-text {
             font-size: 1rem;
             line-height: 1.5;
             font-weight: 600;
             position: relative;
         }
-        
+
         .main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .methods-section {
             animation: slideInLeft 1s ease-out 0.4s both;
         }
-        
+
         .examples-section {
             animation: slideInRight 1s ease-out 0.4s both;
         }
-        
+
         .section-title {
             color: #172139;
             font-weight: 700;
@@ -125,7 +129,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .section-icon {
             width: 2rem;
             height: 2rem;
@@ -136,15 +140,15 @@
             font-size: 1rem;
             color: white;
         }
-        
+
         .methods-icon {
             background: linear-gradient(135deg, #172139 0%, #195855 100%);
         }
-        
+
         .examples-icon {
             background: linear-gradient(135deg, #E9901E 0%, #FBBB28 100%);
         }
-        
+
         .method-card {
             background: white;
             border-radius: 1rem;
@@ -154,33 +158,33 @@
             border-left: 4px solid;
             transition: all 0.3s ease;
         }
-        
+
         .method-card:nth-child(2) {
             border-left-color: #108181;
         }
-        
+
         .method-card:nth-child(3) {
             border-left-color: #E9901E;
         }
-        
+
         .method-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(23, 33, 57, 0.12);
         }
-        
+
         .method-name {
             font-weight: 700;
             font-size: 1rem;
             color: #172139;
             margin-bottom: 0.75rem;
         }
-        
+
         .method-steps {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .method-step {
             display: flex;
             align-items: center;
@@ -189,7 +193,7 @@
             font-size: 0.8rem;
             color: #195855;
         }
-        
+
         .step-bullet {
             width: 1.25rem;
             height: 1.25rem;
@@ -203,7 +207,7 @@
             font-size: 0.7rem;
             flex-shrink: 0;
         }
-        
+
         .example-card {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             border-radius: 1rem;
@@ -213,22 +217,22 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .example-card:nth-child(2) {
             border-top-color: #B4C42C;
         }
-        
+
         .example-card:nth-child(3) {
             border-top-color: #FBBB28;
         }
-        
+
         .example-header {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             margin-bottom: 1rem;
         }
-        
+
         .example-numbers {
             background: linear-gradient(135deg, #172139 0%, #195855 100%);
             color: white;
@@ -237,7 +241,7 @@
             font-weight: 700;
             font-size: 0.9rem;
         }
-        
+
         .example-calculation {
             background: white;
             border-radius: 0.5rem;
@@ -247,7 +251,7 @@
             font-family: 'Courier New', monospace;
             font-size: 0.8rem;
         }
-        
+
         .calc-row {
             display: flex;
             justify-content: space-between;
@@ -255,15 +259,15 @@
             margin-bottom: 0.25rem;
             font-weight: 600;
         }
-        
+
         .calc-number {
             color: #172139;
         }
-        
+
         .calc-factors {
             color: #108181;
         }
-        
+
         .result-badge {
             background: linear-gradient(135deg, #B4C42C 0%, #E9901E 100%);
             color: white;
@@ -273,7 +277,7 @@
             font-weight: 700;
             font-size: 0.9rem;
         }
-        
+
         .comparison-section {
             background: linear-gradient(135deg, #172139 0%, #195855 100%);
             border-radius: 1rem;
@@ -282,7 +286,7 @@
             margin-bottom: 1.5rem;
             animation: fadeInUp 1s ease-out 0.6s both;
         }
-        
+
         .comparison-title {
             font-weight: 700;
             font-size: 1.25rem;
@@ -293,13 +297,13 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
-        
+
         .comparison-item {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
@@ -307,24 +311,24 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
-        
+
         .comparison-item:hover {
             background: rgba(255, 255, 255, 0.2);
         }
-        
+
         .comparison-label {
             font-weight: 700;
             font-size: 1rem;
             margin-bottom: 0.5rem;
             color: #FBBB28;
         }
-        
+
         .comparison-text {
             font-size: 0.8rem;
             line-height: 1.4;
             opacity: 0.9;
         }
-        
+
         .applications-section {
             background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
             border-radius: 1rem;
@@ -332,7 +336,7 @@
             color: white;
             animation: slideInUp 1s ease-out 0.8s both;
         }
-        
+
         .applications-title {
             font-weight: 700;
             font-size: 1.25rem;
@@ -343,13 +347,13 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .applications-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 0.75rem;
         }
-        
+
         .application-item {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 0.5rem;
@@ -358,30 +362,30 @@
             transition: all 0.3s ease;
             text-align: center;
         }
-        
+
         .application-item:hover {
             background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
-        
+
         .app-icon {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: #172139;
         }
-        
+
         .app-title {
             font-weight: 700;
             font-size: 0.7rem;
             margin-bottom: 0.25rem;
         }
-        
+
         .app-description {
             font-size: 0.65rem;
             line-height: 1.3;
             opacity: 0.9;
         }
-        
+
         .decorative-bg {
             position: absolute;
             top: 0;
@@ -391,14 +395,14 @@
             pointer-events: none;
             z-index: -1;
         }
-        
+
         .floating-math {
             position: absolute;
             font-weight: 700;
             opacity: 0.04;
             animation: floatSlow 20s infinite ease-in-out;
         }
-        
+
         .math-1 {
             font-size: 4rem;
             color: #172139;
@@ -406,7 +410,7 @@
             right: 5%;
             animation-delay: 0s;
         }
-        
+
         .math-2 {
             font-size: 2.5rem;
             color: #B4C42C;
@@ -414,7 +418,7 @@
             left: 3%;
             animation-delay: 10s;
         }
-        
+
         .mcm-formula {
             position: absolute;
             top: 25%;
@@ -425,130 +429,142 @@
             animation: pulse 6s infinite ease-in-out;
             animation-delay: 3s;
         }
-        
+
         @keyframes slideInDown {
             from {
                 transform: translateY(-30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes fadeInUp {
             from {
                 transform: translateY(20px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes slideInLeft {
             from {
                 transform: translateX(-30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes slideInRight {
             from {
                 transform: translateX(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes slideInUp {
             from {
                 transform: translateY(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
-        
+
         @keyframes pulse {
-            0%, 100% { 
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 0.06;
             }
-            50% { 
+
+            50% {
                 transform: scale(1.02);
                 opacity: 0.1;
             }
         }
-        
+
         @keyframes rotate {
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
         }
-        
+
         @keyframes floatSlow {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg); 
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
             }
-            50% { 
-                transform: translateY(-15px) rotate(2deg); 
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
             }
         }
-        
+
         /* Responsive Design */
         @media (max-width: 1280px) {
             .slide {
                 padding: 1.5rem;
             }
-            
+
             .main-title {
                 font-size: 2rem;
             }
-            
+
             .main-content {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
         }
-        
+
         @media (max-width: 768px) {
             .slide {
                 padding: 1rem;
             }
-            
+
             .main-title {
                 font-size: 1.75rem;
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
+
             .title-icon {
                 width: 3rem;
                 height: 3rem;
                 font-size: 1.5rem;
             }
-            
+
             .comparison-grid,
             .applications-grid {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
             }
-            
+
             .floating-math,
             .mcm-formula {
                 display: none;
@@ -556,6 +572,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Decorative Background -->
@@ -564,7 +581,7 @@
             <div class="floating-math math-2">×</div>
             <div class="mcm-formula">MCM = producto de todos los factores con mayor exponente</div>
         </div>
-        
+
         <!-- Title Section -->
         <div class="title-section">
             <h1 class="main-title">
@@ -576,15 +593,16 @@
             <p class="subtitle">El menor múltiplo común de dos o más números</p>
             <div class="accent-line"></div>
         </div>
-        
+
         <!-- Definition Banner -->
         <div class="definition-banner">
             <p class="definition-text">
-                El <strong>MCM</strong> es el <strong>menor número entero positivo</strong> que es múltiplo de todos los números dados. 
+                El <strong>MCM</strong> es el <strong>menor número entero positivo</strong> que es múltiplo de todos los
+                números dados.
                 Se calcula tomando todos los factores primos con sus <strong>mayores exponentes</strong>.
             </p>
         </div>
-        
+
         <!-- Main Content -->
         <div class="main-content">
             <!-- Methods Section -->
@@ -595,7 +613,7 @@
                     </div>
                     Métodos de Cálculo
                 </h2>
-                
+
                 <div class="method-card">
                     <div class="method-name">1. Factorización Prima</div>
                     <ol class="method-steps">
@@ -617,7 +635,7 @@
                         </li>
                     </ol>
                 </div>
-                
+
                 <div class="method-card">
                     <div class="method-name">2. Método Abreviado</div>
                     <ol class="method-steps">
@@ -640,7 +658,7 @@
                     </ol>
                 </div>
             </div>
-            
+
             <!-- Examples Section -->
             <div class="examples-section">
                 <h2 class="section-title">
@@ -649,7 +667,7 @@
                     </div>
                     Ejemplos Resueltos
                 </h2>
-                
+
                 <div class="example-card">
                     <div class="example-header">
                         <div class="example-numbers">MCM(6, 8)</div>
@@ -672,7 +690,7 @@
                         MCM = 24
                     </div>
                 </div>
-                
+
                 <div class="example-card">
                     <div class="example-header">
                         <div class="example-numbers">MCM(12, 18, 42)</div>
@@ -701,7 +719,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Comparison Section -->
         <div class="comparison-section">
             <div class="comparison-title">
@@ -729,7 +747,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Applications Section -->
         <div class="applications-section">
             <div class="applications-title">
@@ -761,4 +779,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polinomios aritméticos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Sistema de los Números Enteros - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Aprende sobre el conjunto de los números enteros, operaciones básicas, valor absoluto y su aplicación en matemáticas básicas.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
@@ -20,7 +24,7 @@
         }
 
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
@@ -105,8 +109,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
-            50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.3) rotate(180deg);
+                opacity: 1;
+            }
         }
 
         .definition-title {
@@ -436,14 +449,42 @@
             animation: float 22s infinite ease-in-out;
         }
 
-        .floating-symbol:nth-child(1) { top: 10%; left: 3%; animation-delay: 0s; }
-        .floating-symbol:nth-child(2) { top: 20%; right: 5%; animation-delay: 7s; }
-        .floating-symbol:nth-child(3) { bottom: 30%; left: 8%; animation-delay: 14s; }
-        .floating-symbol:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 21s; }
+        .floating-symbol:nth-child(1) {
+            top: 10%;
+            left: 3%;
+            animation-delay: 0s;
+        }
+
+        .floating-symbol:nth-child(2) {
+            top: 20%;
+            right: 5%;
+            animation-delay: 7s;
+        }
+
+        .floating-symbol:nth-child(3) {
+            bottom: 30%;
+            left: 8%;
+            animation-delay: 14s;
+        }
+
+        .floating-symbol:nth-child(4) {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 21s;
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
-            50% { transform: translateY(-50px) rotate(30deg); opacity: 0.12; }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.05;
+            }
+
+            50% {
+                transform: translateY(-50px) rotate(30deg);
+                opacity: 0.12;
+            }
         }
 
         /* Interactive animations */
@@ -455,24 +496,65 @@
 
         /* Responsive Design */
         @media (max-width: 1280px) {
-            .slide { padding: 1.5rem; }
-            .title-text h1 { font-size: 2.5rem; line-height: 2.75rem; }
-            .main-content { gap: 1rem; }
-            .showcase-steps { grid-template-columns: repeat(2, 1fr); }
+            .slide {
+                padding: 1.5rem;
+            }
+
+            .title-text h1 {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+            }
+
+            .main-content {
+                gap: 1rem;
+            }
+
+            .showcase-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .slide { padding: 1rem; }
-            .title-container { flex-direction: column; align-items: flex-start; }
-            .title-text h1 { font-size: 2rem; line-height: 2.25rem; }
-            .title-icon { margin-left: 0; margin-top: 1rem; }
-            .main-content { grid-template-columns: 1fr; gap: 1rem; }
-            .applications-grid { grid-template-columns: 1fr; }
-            .showcase-steps { grid-template-columns: 1fr; }
-            .session-badge { font-size: 0.875rem; padding: 0.25rem 1rem; }
+            .slide {
+                padding: 1rem;
+            }
+
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title-text h1 {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+
+            .title-icon {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .session-badge {
+                font-size: 0.875rem;
+                padding: 0.25rem 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Floating Background Elements -->
@@ -507,10 +589,12 @@
                 </div>
                 <div class="definition-content">
                     <div class="definition-text">
-                        Un <strong>polinomio aritmético</strong> es una expresión numérica que combina múltiples operaciones: suma, resta, multiplicación y división.
+                        Un <strong>polinomio aritmético</strong> es una expresión numérica que combina múltiples
+                        operaciones: suma, resta, multiplicación y división.
                     </div>
                     <div class="definition-text">
-                        Para resolverlos, se deben seguir las reglas de la <strong>jerarquía de operaciones</strong> y respetar los <strong>signos de agrupación</strong>.
+                        Para resolverlos, se deben seguir las reglas de la <strong>jerarquía de operaciones</strong> y
+                        respetar los <strong>signos de agrupación</strong>.
                     </div>
                     <div class="definition-highlight">
                         <i class="fas fa-key" style="margin-right: 0.5rem;"></i>
@@ -601,14 +685,16 @@
                         <i class="fas fa-utensils"></i>
                     </div>
                     <div class="app-title">Turismo y Gastronomía</div>
-                    <div class="app-description">Combinación de costos, descuentos e impuestos en presupuestos gastronómicos</div>
+                    <div class="app-description">Combinación de costos, descuentos e impuestos en presupuestos
+                        gastronómicos</div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">
                         <i class="fas fa-drafting-compass"></i>
                     </div>
                     <div class="app-title">Ingeniería</div>
-                    <div class="app-description">Cálculos técnicos con varias operaciones interrelacionadas en proyectos</div>
+                    <div class="app-description">Cálculos técnicos con varias operaciones interrelacionadas en proyectos
+                    </div>
                 </div>
                 <div class="app-card">
                     <div class="app-icon">
@@ -621,4 +707,5 @@
         </div>
     </div>
 </body>
+
 </html>

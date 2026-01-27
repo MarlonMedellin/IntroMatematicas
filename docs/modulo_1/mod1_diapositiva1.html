@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de los Números Enteros - Matemáticas Básicas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Aprende sobre el conjunto de los números enteros, operaciones básicas, valor absoluto y su aplicación en matemáticas básicas.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -35,7 +39,7 @@
             --accent-orange: #E9901E;
             --accent-green: #B4C42C;
             --accent-cyan: #00AEAC;
-            
+
             --gradient-primary: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-light-teal) 100%);
             --gradient-accent: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-orange) 50%, var(--accent-yellow) 100%);
         }
@@ -148,7 +152,7 @@
             width: 300px;
             height: 300px;
             opacity: 0.1;
-            background-image: 
+            background-image:
                 linear-gradient(#172139 1px, transparent 1px),
                 linear-gradient(90deg, #172139 1px, transparent 1px);
             background-size: 20px 20px;
@@ -198,8 +202,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         @keyframes fadeInDown {
@@ -207,6 +218,7 @@
                 transform: translateY(-30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -218,6 +230,7 @@
                 transform: translateY(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -225,15 +238,31 @@
         }
 
         @keyframes expandWidth {
-            from { width: 0; }
-            to { width: clamp(180px, 25vw, 320px); }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: clamp(180px, 25vw, 320px);
+            }
         }
 
         /* Animate sequence delays */
-        .animate-sequence > *:nth-child(1) { animation-delay: 0.1s; }
-        .animate-sequence > *:nth-child(2) { animation-delay: 0.3s; }
-        .animate-sequence > *:nth-child(3) { animation-delay: 0.5s; }
-        .animate-sequence > *:nth-child(4) { animation-delay: 0.7s; }
+        .animate-sequence>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .animate-sequence>*:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .animate-sequence>*:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .animate-sequence>*:nth-child(4) {
+            animation-delay: 0.7s;
+        }
 
         .math-symbol {
             position: absolute;
@@ -341,7 +370,9 @@
                 margin-right: 0.5rem !important;
             }
         }
-    </style></head>
+    </style>
+</head>
+
 <body>
     <div class="slide">
         <!-- Header Bar -->
@@ -378,4 +409,5 @@
         </div>
     </div>
 </body>
+
 </html>

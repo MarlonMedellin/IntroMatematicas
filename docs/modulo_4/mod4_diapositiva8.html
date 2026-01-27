@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesión 3: Aplicación de la regla de tres: Porcentajes y Repartos Proporcionales</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Razones, Proporciones y Regla de Tres - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Entiende las razones y proporciones, y aprende a aplicar la regla de tres simple y compuesta en problemas reales.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         * {
@@ -20,7 +24,7 @@
         }
 
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             position: relative;
@@ -216,7 +220,7 @@
             width: 300px;
             height: 300px;
             opacity: 0.1;
-            background-image: 
+            background-image:
                 linear-gradient(#172139 1px, transparent 1px),
                 linear-gradient(90deg, #172139 1px, transparent 1px);
             background-size: 20px 20px;
@@ -315,6 +319,7 @@
                 transform: translateX(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -326,6 +331,7 @@
                 transform: translateY(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -336,6 +342,7 @@
             from {
                 width: 0;
             }
+
             to {
                 width: 8rem;
             }
@@ -346,6 +353,7 @@
                 transform: scale(0.8) translateY(20px);
                 opacity: 0;
             }
+
             to {
                 transform: scale(1) translateY(0);
                 opacity: 1;
@@ -353,19 +361,25 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-20px);
             }
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 0.7;
             }
+
             50% {
                 transform: scale(1.1);
                 opacity: 1;
@@ -379,17 +393,17 @@
                 padding-right: 2rem;
                 padding-top: 140px;
             }
-            
+
             .main-title-line-1,
             .main-title-line-2 {
                 font-size: 2.5rem;
                 line-height: 2.75rem;
             }
-            
+
             .floating-numbers {
                 opacity: 0.3;
             }
-            
+
             .math-symbol {
                 opacity: 0.05;
             }
@@ -399,11 +413,11 @@
             .header-bar {
                 height: 100px;
             }
-            
+
             .slide {
                 padding: 2rem 1rem;
             }
-            
+
             .title-content-container {
                 padding-left: 1rem;
                 padding-right: 1rem;
@@ -411,60 +425,60 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .main-title-line-1,
             .main-title-line-2 {
                 font-size: 2rem;
                 line-height: 2.25rem;
             }
-            
+
             .session-badge {
                 font-size: 0.875rem;
                 padding: 0.25rem 1rem;
             }
-            
+
             .key-concepts {
                 flex-direction: column;
                 gap: 1rem;
                 align-items: center;
             }
-            
+
             .concept-card {
                 width: 100%;
                 max-width: 300px;
             }
-            
+
             .bottom-icons {
                 bottom: 1rem;
                 left: 50%;
                 transform: translateX(-50%);
                 padding: 0.5rem;
             }
-            
+
             .bottom-icon {
                 font-size: 2rem;
                 margin-right: 0.5rem !important;
             }
-            
+
             .floating-numbers,
             .math-symbol {
                 display: none;
             }
-            
+
             .shape-1 {
                 width: 90px;
                 height: 90px;
                 top: 350px;
                 left: -30px;
             }
-            
+
             .shape-2 {
                 width: 90px;
                 height: 90px;
                 top: 120px;
                 right: -20px;
             }
-            
+
             .pattern-grid {
                 width: 150px;
                 height: 150px;
@@ -472,30 +486,31 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Header Bar -->
         <div class="header-bar"></div>
-        
+
         <!-- Main Content -->
         <div class="title-content-container">
             <!-- Session Badge -->
             <div class="session-badge">Sesión 3</div>
-            
+
             <!-- Main Title -->
             <div class="main-title-container">
                 <h1 class="main-title-line-1">Aplicación de la regla de tres:</h1>
                 <h1 class="main-title-line-2">Porcentajes y Repartos Proporcionales</h1>
             </div>
-            
+
             <!-- Accent Line -->
             <div class="accent-line"></div>
-            
+
             <!-- Subtitle -->
             <p class="subtitle">
                 Resolviendo problemas prácticos con porcentajes, aumentos, descuentos y distribuciones proporcionales
             </p>
-            
+
             <!-- Key Concepts Cards -->
             <div class="key-concepts">
                 <div class="concept-card">
@@ -505,7 +520,7 @@
                     <h3 class="concept-title">Porcentajes</h3>
                     <p class="concept-description">Aplicación directa de regla de tres para calcular porcentajes</p>
                 </div>
-                
+
                 <div class="concept-card">
                     <div class="concept-icon">
                         <i class="fas fa-chart-line"></i>
@@ -513,7 +528,7 @@
                     <h3 class="concept-title">Aumentos y Descuentos</h3>
                     <p class="concept-description">Cambios porcentuales sucesivos en contextos comerciales</p>
                 </div>
-                
+
                 <div class="concept-card">
                     <div class="concept-icon">
                         <i class="fas fa-balance-scale"></i>
@@ -523,24 +538,24 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Decorative Elements -->
         <div class="decorative-shape shape-1"></div>
         <div class="decorative-shape shape-2"></div>
-        
+
         <!-- Pattern Grid -->
         <div class="pattern-grid"></div>
-        
+
         <!-- Floating Numbers -->
         <div class="floating-numbers number-1">%</div>
         <div class="floating-numbers number-2">15</div>
         <div class="floating-numbers number-3">3:2</div>
-        
+
         <!-- Math Symbols -->
         <div class="math-symbol symbol-1">÷</div>
         <div class="math-symbol symbol-2">%</div>
         <div class="math-symbol symbol-3">=</div>
-        
+
         <!-- Bottom Icons -->
         <div class="bottom-icons">
             <i class="fas fa-percentage bottom-icon"></i>
@@ -549,4 +564,5 @@
         </div>
     </div>
 </body>
+
 </html>

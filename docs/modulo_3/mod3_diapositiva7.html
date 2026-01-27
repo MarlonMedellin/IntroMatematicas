@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplicación y División de Números Racionales</title>
+    <title>Sistema de los Números Racionales - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Estudio detallado de los números racionales, fracciones, decimales y sus operaciones fundamentales.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             margin: 0 auto;
@@ -22,14 +26,14 @@
             overflow-x: hidden;
             overflow-y: auto;
         }
-        
+
         .main-container {
             padding: 1.5rem 2.5rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
-        
+
         .slide-title {
             color: #172139;
             font-size: 2rem;
@@ -37,21 +41,21 @@
             margin-bottom: 0.5rem;
             text-align: center;
         }
-        
+
         .title-accent {
             width: 120px;
             height: 4px;
             background: linear-gradient(90deg, #B4C42C 0%, #E9901E 50%, #FBBB28 100%);
             margin: 0 auto 1rem;
         }
-        
+
         .operations-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .operation-card {
             background: white;
             border-radius: 16px;
@@ -62,27 +66,27 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .multiplication-card {
             border-color: #B4C42C;
         }
-        
+
         .division-card {
             border-color: #108181;
         }
-        
+
         .operation-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 40px rgba(23, 33, 57, 0.15);
         }
-        
+
         .card-header {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             margin-bottom: 1rem;
         }
-        
+
         .card-icon {
             width: 40px;
             height: 40px;
@@ -94,42 +98,42 @@
             color: white;
             background: linear-gradient(135deg, var(--icon-color-1), var(--icon-color-2));
         }
-        
+
         .multiplication-card .card-icon {
             --icon-color-1: #B4C42C;
             --icon-color-2: #E9901E;
         }
-        
+
         .division-card .card-icon {
             --icon-color-1: #108181;
             --icon-color-2: #00AEAC;
         }
-        
+
         .card-title {
             color: #172139;
             font-size: 1.1rem;
             font-weight: 700;
         }
-        
+
         .card-subtitle {
             color: #195855;
             font-size: 0.85rem;
             font-weight: 500;
         }
-        
+
         .step-container {
             background: rgba(23, 33, 57, 0.03);
             border-radius: 12px;
             padding: 1rem;
             margin: 0.75rem 0;
         }
-        
+
         .step-list {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
         }
-        
+
         .step-item {
             display: flex;
             align-items: center;
@@ -138,7 +142,7 @@
             color: #2F3E5D;
             font-weight: 500;
         }
-        
+
         .step-number {
             width: 20px;
             height: 20px;
@@ -152,17 +156,17 @@
             font-size: 0.7rem;
             flex-shrink: 0;
         }
-        
+
         .multiplication-card .step-number {
             --step-color-1: #B4C42C;
             --step-color-2: #E9901E;
         }
-        
+
         .division-card .step-number {
             --step-color-1: #108181;
             --step-color-2: #00AEAC;
         }
-        
+
         .fraction-equation {
             display: flex;
             align-items: center;
@@ -173,26 +177,27 @@
             margin: 0.75rem 0;
             color: #172139;
         }
-        
+
         .fraction-visual {
             display: inline-flex;
             flex-direction: column;
             align-items: center;
             position: relative;
         }
-        
-        .numerator, .denominator {
+
+        .numerator,
+        .denominator {
             line-height: 1;
             padding: 0 0.25rem;
         }
-        
+
         .fraction-line {
             width: 100%;
             height: 2px;
             background: currentColor;
             margin: 2px 0;
         }
-        
+
         .simplification-hint {
             position: absolute;
             top: -0.5rem;
@@ -204,7 +209,7 @@
             border-radius: 8px;
             font-weight: 600;
         }
-        
+
         .inverse-section {
             background: linear-gradient(135deg, #172139 0%, #195855 100%);
             color: white;
@@ -214,7 +219,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .inverse-section::before {
             content: '';
             position: absolute;
@@ -222,9 +227,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(251,187,40,0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 80% 20%, rgba(251, 187, 40, 0.1) 0%, transparent 50%);
         }
-        
+
         .inverse-title {
             color: #FBBB28;
             font-size: 1.1rem;
@@ -236,20 +241,20 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .inverse-demo {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
-        
+
         .inverse-example {
             background: rgba(255, 255, 255, 0.1);
             padding: 0.75rem;
             border-radius: 8px;
             text-align: center;
         }
-        
+
         .complex-fraction-section {
             background: linear-gradient(135deg, #FBBB28 0%, #E9901E 100%);
             color: #172139;
@@ -257,7 +262,7 @@
             border-radius: 16px;
             margin: 1rem 0;
         }
-        
+
         .complex-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -268,7 +273,7 @@
             justify-content: center;
             gap: 0.5rem;
         }
-        
+
         .complex-demo {
             display: flex;
             align-items: center;
@@ -276,7 +281,7 @@
             gap: 1rem;
             flex-wrap: wrap;
         }
-        
+
         .complex-fraction {
             display: flex;
             flex-direction: column;
@@ -284,32 +289,33 @@
             font-size: 1.5rem;
             font-weight: 700;
         }
-        
-        .complex-numerator, .complex-denominator {
+
+        .complex-numerator,
+        .complex-denominator {
             padding: 0.25rem;
         }
-        
+
         .complex-line {
             width: 120px;
             height: 3px;
             background: #172139;
             margin: 3px 0;
         }
-        
+
         .nested-fraction {
             font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 0.25rem;
         }
-        
+
         .applications-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 0.75rem;
             margin-top: 1rem;
         }
-        
+
         .app-card {
             background: white;
             border: 2px solid #195855;
@@ -320,7 +326,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .app-card::before {
             content: '';
             position: absolute;
@@ -330,31 +336,31 @@
             height: 3px;
             background: linear-gradient(90deg, #195855, #108181, #00AEAC);
         }
-        
+
         .app-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(23, 33, 57, 0.1);
         }
-        
+
         .app-icon {
             font-size: 1.5rem;
             color: #195855;
             margin-bottom: 0.5rem;
         }
-        
+
         .app-title {
             font-weight: 700;
             color: #172139;
             margin-bottom: 0.25rem;
             font-size: 0.85rem;
         }
-        
+
         .app-description {
             font-size: 0.75rem;
             color: #2F3E5D;
             line-height: 1.3;
         }
-        
+
         .floating-elements {
             position: absolute;
             top: 0;
@@ -364,7 +370,7 @@
             z-index: 1;
             overflow: hidden;
         }
-        
+
         .floating-symbol {
             position: absolute;
             font-weight: bold;
@@ -372,40 +378,47 @@
             animation: floatSymbol 8s infinite ease-in-out;
             color: #195855;
         }
-        
+
         @keyframes floatSymbol {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(3deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(3deg);
+            }
         }
-        
+
         .symbol-1 {
             font-size: 4rem;
             top: 8%;
             left: 5%;
             animation-delay: 0s;
         }
-        
+
         .symbol-2 {
             font-size: 3rem;
             top: 15%;
             right: 8%;
             animation-delay: 2s;
         }
-        
+
         .symbol-3 {
             font-size: 2.5rem;
             bottom: 20%;
             left: 10%;
             animation-delay: 4s;
         }
-        
+
         .symbol-4 {
             font-size: 3.5rem;
             bottom: 12%;
             right: 12%;
             animation-delay: 6s;
         }
-        
+
         .highlight-result {
             background: linear-gradient(135deg, rgba(16, 129, 129, 0.1), rgba(0, 174, 172, 0.1));
             border: 2px dashed #108181;
@@ -417,11 +430,11 @@
             font-weight: 600;
             color: #172139;
         }
-        
+
         .cross-cancel {
             position: relative;
         }
-        
+
         .cancel-line {
             position: absolute;
             width: 100%;
@@ -432,59 +445,65 @@
             transform: translateY(-50%) rotate(15deg);
             animation: drawCancel 1s ease-in-out;
         }
-        
+
         @keyframes drawCancel {
-            0% { width: 0; }
-            100% { width: 100%; }
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
-        
+
         /* Responsive styles */
         @media (max-width: 1280px) {
             .main-container {
                 padding: 1.25rem 2rem;
             }
-            
+
             .operations-grid {
                 gap: 1.25rem;
             }
-            
+
             .slide-title {
                 font-size: 1.8rem;
             }
         }
-        
+
         @media (max-width: 768px) {
             .main-container {
                 padding: 1rem;
             }
-            
+
             .operations-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-            
+
             .slide-title {
                 font-size: 1.5rem;
             }
-            
+
             .applications-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .complex-demo {
                 flex-direction: column;
             }
-            
+
             .floating-elements {
                 display: none;
             }
-            
+
             .fraction-equation {
                 font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Floating Symbols -->
@@ -494,12 +513,12 @@
             <div class="floating-symbol symbol-3">⁻¹</div>
             <div class="floating-symbol symbol-4">¹∕</div>
         </div>
-        
+
         <!-- Main Content -->
         <div class="main-container">
             <h1 class="slide-title">Multiplicación y División de Números Racionales</h1>
             <div class="title-accent"></div>
-            
+
             <!-- Operations Grid -->
             <div class="operations-grid">
                 <!-- Multiplication Card -->
@@ -513,7 +532,7 @@
                             <div class="card-subtitle">Directo: numeradores × numeradores</div>
                         </div>
                     </div>
-                    
+
                     <div class="step-container">
                         <div class="step-list">
                             <div class="step-item">
@@ -529,10 +548,11 @@
                                 <span>Simplifica antes o después</span>
                             </div>
                         </div>
-                        
+
                         <div class="fraction-equation">
                             <div class="fraction-visual">
-                                <div class="numerator cross-cancel">3<div class="cancel-line"></div></div>
+                                <div class="numerator cross-cancel">3<div class="cancel-line"></div>
+                                </div>
                                 <div class="fraction-line"></div>
                                 <div class="denominator">4</div>
                             </div>
@@ -540,7 +560,8 @@
                             <div class="fraction-visual">
                                 <div class="numerator">8</div>
                                 <div class="fraction-line"></div>
-                                <div class="denominator cross-cancel">9<div class="cancel-line"></div></div>
+                                <div class="denominator cross-cancel">9<div class="cancel-line"></div>
+                                </div>
                             </div>
                             <span>=</span>
                             <div class="fraction-visual">
@@ -549,14 +570,14 @@
                                 <div class="denominator">3</div>
                             </div>
                         </div>
-                        
+
                         <div class="highlight-result">
                             <i class="fas fa-utensils mr-1"></i>
                             Gastronomía: 3/5 × $50.000 = $30.000 promoción
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Division Card -->
                 <div class="operation-card division-card">
                     <div class="card-header">
@@ -568,7 +589,7 @@
                             <div class="card-subtitle">Multiplicar por el recíproco</div>
                         </div>
                     </div>
-                    
+
                     <div class="step-container">
                         <div class="step-list">
                             <div class="step-item">
@@ -584,7 +605,7 @@
                                 <span>Simplifica el resultado</span>
                             </div>
                         </div>
-                        
+
                         <div class="fraction-equation">
                             <div class="fraction-visual">
                                 <div class="numerator">2</div>
@@ -605,7 +626,7 @@
                                 <div class="denominator">15</div>
                             </div>
                         </div>
-                        
+
                         <div class="highlight-result">
                             <i class="fas fa-flask mr-1"></i>
                             Culinaria: 3/4 L ÷ 1/8 L = 6 botellas
@@ -613,14 +634,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Multiplicative Inverse Section -->
             <div class="inverse-section">
                 <h3 class="inverse-title">
                     <i class="fas fa-exchange-alt"></i>
                     Inverso Multiplicativo (Recíproco)
                 </h3>
-                
+
                 <div class="inverse-demo">
                     <div class="inverse-example">
                         <div style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
@@ -640,7 +661,7 @@
                         </div>
                         <div style="font-size: 0.8rem; opacity: 0.9;">Fracción × Recíproco = 1</div>
                     </div>
-                    
+
                     <div class="inverse-example">
                         <div style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
                             <span>5</span>
@@ -655,7 +676,7 @@
                         </div>
                         <div style="font-size: 0.8rem; opacity: 0.9;">Entero × Recíproco = 1</div>
                     </div>
-                    
+
                     <div class="inverse-example">
                         <div style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #FBBB28;">
                             <span>0</span>
@@ -668,14 +689,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Complex Fractions Section -->
             <div class="complex-fraction-section">
                 <h3 class="complex-title">
                     <i class="fas fa-layer-group"></i>
                     Fracciones Compuestas
                 </h3>
-                
+
                 <div class="complex-demo">
                     <div class="complex-fraction">
                         <div class="complex-numerator">
@@ -710,9 +731,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div style="font-size: 2rem; color: #172139;">=</div>
-                    
+
                     <div style="text-align: center;">
                         <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem;">Procedimiento:</div>
                         <div style="font-size: 0.75rem; line-height: 1.4;">
@@ -723,14 +744,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Applications -->
             <div style="margin-top: 0.5rem;">
-                <h3 style="text-align: center; color: #172139; font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">
+                <h3
+                    style="text-align: center; color: #172139; font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">
                     <i class="fas fa-graduation-cap mr-2"></i>
                     Aplicaciones por Programa
                 </h3>
-                
+
                 <div class="applications-grid">
                     <div class="app-card">
                         <div class="app-icon">
@@ -741,7 +763,7 @@
                             Velocidad: (3/4 distancia) ÷ (1/2 hora) = 3/2 dist./hora
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-dna"></i>
@@ -751,7 +773,7 @@
                             Proporción: (2/5 reactivo A) ÷ (3/10 reactivo B) = 4:3
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-users"></i>
@@ -761,7 +783,7 @@
                             Presupuesto: (1/3 fondos) × (2/5 programa) = 2/15 total
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-drafting-compass"></i>
@@ -776,4 +798,5 @@
         </div>
     </div>
 </body>
+
 </html>

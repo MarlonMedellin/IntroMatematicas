@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathQuest Introductorio de Matemáticas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description"
+        content="Laboratorio Matemático Módulo 4: Razones y Proporciones. Aplica regla de tres y porcentajes en situaciones del mundo real.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/math-lab-styles.css">
 </head>
+
 <body>
     <!-- 🚀 HEADER -->
     <div class="lab-header">
@@ -81,13 +86,8 @@
                     <i class="fas fa-calculator"></i>
                     Realiza tu cálculo:
                 </div>
-                <input 
-                    type="text" 
-                    class="answer-input" 
-                    id="answerInput" 
-                    placeholder="Escribe tu respuesta aquí..."
-                    maxlength="20"
-                >
+                <input type="text" class="answer-input" id="answerInput" placeholder="Escribe tu respuesta aquí..."
+                    maxlength="20">
             </div>
 
             <!-- Botones de acción -->
@@ -163,7 +163,7 @@
         </div>
         <div class="footer-license">
             <i class="fab fa-creative-commons"></i>
-            Licenciado bajo Creative Commons 
+            Licenciado bajo Creative Commons
             <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a>
         </div>
     </div>
@@ -272,16 +272,16 @@
         let skipsUsed = 0;
 
         // 🚀 INICIALIZAR JUEGO
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadExperiment();
-            
+
             // Event listener para Enter
-            document.getElementById('answerInput').addEventListener('keypress', function(e) {
+            document.getElementById('answerInput').addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     checkAnswer();
                 }
             });
-            
+
             // Focus en el input
             document.getElementById('answerInput').focus();
         });
@@ -294,24 +294,24 @@
             }
 
             const experiment = experiments[currentExperiment];
-            
+
             // Actualizar interfaz
             document.getElementById('experimentNumber').textContent = `Experimento ${currentExperiment + 1}/10`;
             document.getElementById('currentExperiment').textContent = currentExperiment + 1;
             document.getElementById('contextIcon').innerHTML = `<i class="${experiment.icon}"></i>`;
             document.getElementById('contextText').textContent = experiment.context;
             document.getElementById('questionText').textContent = experiment.question;
-            
+
             // Limpiar input y feedback
             document.getElementById('answerInput').value = '';
             document.getElementById('answerInput').focus();
             document.getElementById('feedback').style.display = 'none';
             document.getElementById('hintContainer').classList.remove('show');
-            
+
             // Habilitar botones
             document.getElementById('checkBtn').disabled = false;
             document.getElementById('hintBtn').disabled = false;
-            
+
             // Actualizar progreso
             updateProgress();
         }
@@ -321,14 +321,14 @@
             const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
             const correctAnswer = experiments[currentExperiment].answer.toLowerCase();
             const feedback = document.getElementById('feedback');
-            
+
             if (!userAnswer) {
                 showFeedback('Escribe una respuesta antes de verificar', 'incorrect');
                 return;
             }
-            
+
             totalAttempts++;
-            
+
             // Normalizar respuestas para comparación flexible
             const normalizeAnswer = (answer) => {
                 return answer
@@ -343,49 +343,49 @@
                     .replace(/arena/g, '')
                     .toLowerCase();
             };
-            
+
             const normalizedUser = normalizeAnswer(userAnswer);
             const normalizedCorrect = normalizeAnswer(correctAnswer);
-            
+
             // Verificar si la respuesta es correcta (permitir variaciones)
-            const isCorrect = normalizedUser === normalizedCorrect || 
-                             // Permitir respuestas numéricas exactas para el Módulo 4
-                             userAnswer.includes('180') && correctAnswer.includes('180') ||
-                             userAnswer.includes('18') && correctAnswer.includes('18') ||
-                             userAnswer.includes('100') && correctAnswer.includes('100') ||
-                             userAnswer.includes('20') && correctAnswer.includes('20') ||
-                             userAnswer.includes('900000') && correctAnswer.includes('900000') ||
-                             userAnswer.includes('10') && correctAnswer.includes('10') ||
-                             userAnswer.includes('80') && correctAnswer.includes('80') ||
-                             userAnswer.includes('30') && correctAnswer.includes('30') ||
-                             userAnswer.includes('1000000') && correctAnswer.includes('1000000') ||
-                             userAnswer.includes('700') && correctAnswer.includes('700') ||
-                             // Permitir variaciones con comas
-                             (userAnswer.includes('900,000') || userAnswer.includes('900000')) && correctAnswer.includes('900000') ||
-                             (userAnswer.includes('1,000,000') || userAnswer.includes('1000000')) && correctAnswer.includes('1000000');
-            
+            const isCorrect = normalizedUser === normalizedCorrect ||
+                // Permitir respuestas numéricas exactas para el Módulo 4
+                userAnswer.includes('180') && correctAnswer.includes('180') ||
+                userAnswer.includes('18') && correctAnswer.includes('18') ||
+                userAnswer.includes('100') && correctAnswer.includes('100') ||
+                userAnswer.includes('20') && correctAnswer.includes('20') ||
+                userAnswer.includes('900000') && correctAnswer.includes('900000') ||
+                userAnswer.includes('10') && correctAnswer.includes('10') ||
+                userAnswer.includes('80') && correctAnswer.includes('80') ||
+                userAnswer.includes('30') && correctAnswer.includes('30') ||
+                userAnswer.includes('1000000') && correctAnswer.includes('1000000') ||
+                userAnswer.includes('700') && correctAnswer.includes('700') ||
+                // Permitir variaciones con comas
+                (userAnswer.includes('900,000') || userAnswer.includes('900000')) && correctAnswer.includes('900000') ||
+                (userAnswer.includes('1,000,000') || userAnswer.includes('1000000')) && correctAnswer.includes('1000000');
+
             if (isCorrect) {
                 correctAnswers++;
                 score += calculatePoints();
-                
+
                 showFeedback(`¡Excelente! ${experiments[currentExperiment].explanation}`, 'correct');
-                
+
                 // Continuar al siguiente experimento después de 3 segundos
                 setTimeout(() => {
                     currentExperiment++;
                     loadExperiment();
                 }, 3000);
-                
+
             } else {
                 showFeedback(`Incorrecto. ${experiments[currentExperiment].explanation}`, 'incorrect');
-                
+
                 // Mostrar respuesta correcta y continuar
                 setTimeout(() => {
                     currentExperiment++;
                     loadExperiment();
                 }, 4000);
             }
-            
+
             document.getElementById('checkBtn').disabled = true;
             updateStats();
         }
@@ -393,14 +393,14 @@
         // 📊 CALCULAR PUNTOS
         function calculatePoints() {
             let points = 100; // Puntos base
-            
+
             // Bonus por no usar pistas
             if (hintsUsed === 0) points += 50;
-            
+
             // Penalización por usar pistas/saltos
             points -= (hintsUsed * 10);
             points -= (skipsUsed * 20);
-            
+
             return Math.max(points, 10); // Mínimo 10 puntos
         }
 
@@ -417,14 +417,14 @@
         function skipQuestion() {
             skipsUsed++;
             totalAttempts++;
-            
+
             showFeedback(`Pregunta saltada. ${experiments[currentExperiment].explanation}`, 'incorrect');
-            
+
             setTimeout(() => {
                 currentExperiment++;
                 loadExperiment();
             }, 3000);
-            
+
             updateStats();
         }
 
@@ -432,7 +432,7 @@
         function showFeedback(message, type) {
             const feedback = document.getElementById('feedback');
             const icon = type === 'correct' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>';
-            
+
             feedback.innerHTML = `${icon} ${message}`;
             feedback.className = `feedback ${type}`;
             feedback.style.display = 'flex';
@@ -442,7 +442,7 @@
         function updateStats() {
             document.getElementById('correctAnswers').textContent = correctAnswers;
             document.getElementById('score').textContent = score;
-            
+
             const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
             document.getElementById('accuracy').textContent = `${accuracy}%`;
         }
@@ -451,20 +451,20 @@
         function updateProgress() {
             const progress = ((currentExperiment) / experiments.length) * 100;
             document.getElementById('progressFill').style.width = `${progress}%`;
-            document.getElementById('progressText').textContent = 
+            document.getElementById('progressText').textContent =
                 `Experimento ${currentExperiment} de ${experiments.length} completado`;
         }
 
         // 🏆 MOSTRAR PANTALLA DE VICTORIA
         function showVictoryScreen() {
             const accuracy = totalAttempts > 0 ? Math.round((correctAnswers / totalAttempts) * 100) : 100;
-            
+
             let performanceMessage = '';
             if (accuracy >= 90) performanceMessage = '¡Científico Excepcional! 🏆';
             else if (accuracy >= 70) performanceMessage = '¡Buen Trabajo! 👍';
             else if (accuracy >= 50) performanceMessage = '¡Sigue Practicando! 📚';
             else performanceMessage = '¡Continúa Aprendiendo! 💪';
-            
+
             document.getElementById('victoryStats').innerHTML = `
                 <h3>${performanceMessage}</h3>
                 <p><strong>Experimentos Correctos:</strong> ${correctAnswers}/${experiments.length}</p>
@@ -473,7 +473,7 @@
                 <p><strong>Pistas Usadas:</strong> ${hintsUsed}</p>
                 <p><strong>Preguntas Saltadas:</strong> ${skipsUsed}</p>
             `;
-            
+
             document.getElementById('victoryScreen').style.display = 'flex';
         }
 
@@ -485,7 +485,7 @@
             score = 0;
             hintsUsed = 0;
             skipsUsed = 0;
-            
+
             document.getElementById('victoryScreen').style.display = 'none';
             updateStats();
             loadExperiment();
@@ -504,14 +504,14 @@
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
-                
+
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
-                
+
                 oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
                 gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration / 1000);
-                
+
                 oscillator.start(audioContext.currentTime);
                 oscillator.stop(audioContext.currentTime + duration / 1000);
             } catch (e) {
@@ -528,7 +528,7 @@
                     sparkle.style.left = Math.random() * window.innerWidth + 'px';
                     sparkle.style.top = Math.random() * window.innerHeight + 'px';
                     document.body.appendChild(sparkle);
-                    
+
                     setTimeout(() => {
                         sparkle.remove();
                     }, 2000);
@@ -538,7 +538,7 @@
 
         // Añadir efectos cuando se responde correctamente
         const originalShowFeedback = showFeedback;
-        showFeedback = function(message, type) {
+        showFeedback = function (message, type) {
             originalShowFeedback(message, type);
             if (type === 'correct') {
                 playSound(523); // Nota C5
@@ -549,4 +549,5 @@
         };
     </script>
 </body>
+
 </html>

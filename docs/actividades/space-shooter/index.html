@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matemáticas Space Shooter - Colegio Mayor de Antioquia</title>
+    <meta name="description"
+        content="Matemáticas Space Shooter: Juego educativo gamificado para aprender matemáticas básicas. Resuelve operaciones rápidas y destruye respuestas correctas.">
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/index-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
@@ -144,7 +149,9 @@
         <div class="project-info">
             <div class="info-card">
                 <h3><i class="fas fa-info-circle"></i> Información del Proyecto</h3>
-                <p>Este sistema de juegos educativos está diseñado para reforzar conceptos matemáticos fundamentales a través de la gamificación. Cada módulo presenta 10 preguntas de respuesta rápida en un entorno de space shooter.</p>
+                <p>Este sistema de juegos educativos está diseñado para reforzar conceptos matemáticos fundamentales a
+                    través de la gamificación. Cada módulo presenta 10 preguntas de respuesta rápida en un entorno de
+                    space shooter.</p>
                 <div class="features">
                     <div class="feature">
                         <i class="fas fa-clock"></i>
@@ -173,18 +180,20 @@
                 Recurso gamificado desarrollado por el Profe Marlon Arcila
             </div>
             <div style="margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                <a href="https://www.youtube.com/@MarlonDavidArcila" target="_blank"
+                    style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
                     <i class="fab fa-youtube" style="color: #E9901E;"></i>
                     Canal de YouTube
                 </a>
-                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank" style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
+                <a href="https://www.linkedin.com/in/marlon-arcila" target="_blank"
+                    style="color: #00AEAC; text-decoration: none; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; font-weight: 500;">
                     <i class="fab fa-linkedin" style="color: #108181;"></i>
                     LinkedIn
                 </a>
             </div>
             <div class="footer-license">
                 <i class="fab fa-creative-commons" style="margin-right: 5px;"></i>
-                Licenciado bajo Creative Commons 
+                Licenciado bajo Creative Commons
                 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
                     BY-NC-ND 4.0
                 </a>
@@ -195,17 +204,17 @@
     <script>
         // Efecto hover mejorado para las tarjetas
         document.querySelectorAll('.module-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
-            
-            card.addEventListener('mouseleave', function() {
+
+            card.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
 
         // Animación de entrada
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const cards = document.querySelectorAll('.module-card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
@@ -216,4 +225,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regla de Tres Compuesta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Razones, Proporciones y Regla de Tres - Matemáticas Básicas</title>
+    <meta name="description"
+        content="Entiende las razones y proporciones, y aprende a aplicar la regla de tres simple y compuesta en problemas reales.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
@@ -29,7 +33,7 @@
         }
 
         .slide {
-            width: 100%; 
+            width: 100%;
             max-width: 1280px;
             min-height: 100vh;
             position: relative;
@@ -457,6 +461,7 @@
                 transform: translateY(-30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -467,6 +472,7 @@
             from {
                 width: 0;
             }
+
             to {
                 width: 10rem;
             }
@@ -477,6 +483,7 @@
                 transform: translateY(30px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -488,6 +495,7 @@
                 transform: translateX(-50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -499,6 +507,7 @@
                 transform: translateX(50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -506,12 +515,16 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
             }
+
             33% {
                 transform: translateY(-10px) rotate(5deg);
             }
+
             66% {
                 transform: translateY(5px) rotate(-3deg);
             }
@@ -522,7 +535,7 @@
             .content-grid {
                 gap: 1.5rem;
             }
-            
+
             .main-title {
                 font-size: 2.3rem;
             }
@@ -536,21 +549,21 @@
             .slide {
                 padding: 1.5rem;
             }
-            
+
             .content-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .app-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
             }
-            
+
             .main-title {
                 font-size: 1.8rem;
             }
-            
+
             .decorative-math,
             .floating-symbols {
                 display: none;
@@ -564,6 +577,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <div class="content-container">
@@ -586,9 +600,9 @@
                             <h2 class="concept-title">Concepto y Procedimiento</h2>
                         </div>
                     </div>
-                    
+
                     <p class="concept-description">
-                        Se utiliza cuando intervienen <strong>más de dos magnitudes</strong> relacionadas entre sí. 
+                        Se utiliza cuando intervienen <strong>más de dos magnitudes</strong> relacionadas entre sí.
                         El objetivo es encontrar el valor desconocido de una magnitud.
                     </p>
 
@@ -597,22 +611,22 @@
                             <i class="fas fa-list-ol"></i>
                             Procedimiento General:
                         </div>
-                        
+
                         <div class="step">
                             <div class="step-number">1</div>
                             <div><strong>Identificar</strong> todas las magnitudes y la incógnita</div>
                         </div>
-                        
+
                         <div class="step">
                             <div class="step-number">2</div>
                             <div><strong>Organizar datos</strong> en dos filas (conocidos vs. nuevos)</div>
                         </div>
-                        
+
                         <div class="step">
                             <div class="step-number">3</div>
                             <div><strong>Analizar relaciones:</strong> directa o inversa con la incógnita</div>
                         </div>
-                        
+
                         <div class="step">
                             <div class="step-number">4</div>
                             <div><strong>Calcular factores</strong> y multiplicar por el valor conocido</div>
@@ -632,7 +646,7 @@
                     </div>
 
                     <div class="problem-statement">
-                        <strong>Problema:</strong> Si 4 obreros trabajando 6 h/día construyen 80 m de muro en 10 días, 
+                        <strong>Problema:</strong> Si 4 obreros trabajando 6 h/día construyen 80 m de muro en 10 días,
                         ¿cuántos días necesitarán 6 obreros trabajando 8 h/día para construir 120 m?
                     </div>
 
@@ -668,7 +682,7 @@
                             <i class="fas fa-brain"></i>
                             Análisis de Relaciones:
                         </div>
-                        
+
                         <div class="relation-analysis">
                             <div class="relation-item">
                                 <span class="relation-inverse">INVERSA</span>
@@ -701,41 +715,45 @@
                     <i class="fas fa-university"></i>
                     Aplicaciones por Programa Académico
                 </h2>
-                
+
                 <div class="app-grid">
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-hard-hat"></i>
                         </div>
                         <div class="app-text">
-                            <strong>Ingeniería Civil:</strong> 10 obreros, 2 km carretera, 15 días, 8h/día → ¿Días para 12 obreros, 3 km, 10h/día?
+                            <strong>Ingeniería Civil:</strong> 10 obreros, 2 km carretera, 15 días, 8h/día → ¿Días para
+                            12 obreros, 3 km, 10h/día?
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-plane"></i>
                         </div>
                         <div class="app-text">
-                            <strong>Turismo:</strong> 3 agentes, 90 clientes, 5 días, 6h/día → ¿Clientes para 5 agentes, 10 días, 8h/día?
+                            <strong>Turismo:</strong> 3 agentes, 90 clientes, 5 días, 6h/día → ¿Clientes para 5 agentes,
+                            10 días, 8h/día?
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-bread-slice"></i>
                         </div>
                         <div class="app-text">
-                            <strong>Repostería:</strong> 4 hornos, 20 kg gas, 800 panes, 5h → ¿Gas para 6 hornos, 1200 panes, 8h?
+                            <strong>Repostería:</strong> 4 hornos, 20 kg gas, 800 panes, 5h → ¿Gas para 6 hornos, 1200
+                            panes, 8h?
                         </div>
                     </div>
-                    
+
                     <div class="app-card">
                         <div class="app-icon">
                             <i class="fas fa-flask"></i>
                         </div>
                         <div class="app-text">
-                            <strong>Biotecnología:</strong> 3 biorreactores, 150L cultivo, 6h, 80% eficiencia → ¿Litros para 5 reactores, 4h?
+                            <strong>Biotecnología:</strong> 3 biorreactores, 150L cultivo, 6h, 80% eficiencia → ¿Litros
+                            para 5 reactores, 4h?
                         </div>
                     </div>
                 </div>
@@ -746,10 +764,11 @@
         <div class="decorative-math math-1">3+</div>
         <div class="decorative-math math-2">×÷</div>
         <div class="decorative-math math-3">∝</div>
-        
+
         <div class="floating-symbols symbol-1">⟶</div>
         <div class="floating-symbols symbol-2">×</div>
         <div class="floating-symbols symbol-3">÷</div>
     </div>
 </body>
+
 </html>
