@@ -4,3 +4,16 @@
 /actividades/flashcard-game/* /fc/:splat 301
 /actividades/space-shooter/modules/* /ss/:splat 301
 /actividades/space-shooter/* /ss/:splat 301
+/modulo_1/* /m1/:splat 301
+/modulo_2/* /m2/:splat 301
+/modulo_3/* /m3/:splat 301
+/modulo_4/* /m4/:splat 301
+/modulo_5/* /m5/:splat 301
+/modulo_6/* /m6/:splat 301
+/docs/modulo_1/* /m1/:splat 301
+/docs/modulo_2/* /m2/:splat 301
+/docs/modulo_3/* /m3/:splat 301
+/docs/modulo_4/* /m4/:splat 301
+/docs/modulo_5/* /m5/:splat 301
+/docs/modulo_6/* /m6/:splat 301
+
