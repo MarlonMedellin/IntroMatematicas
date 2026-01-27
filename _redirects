@@ -1,9 +1,20 @@
+# Juegos
 /actividades/MathQuest/modules/* /mq/:splat 301
 /actividades/MathQuest/* /mq/:splat 301
 /actividades/flashcard-game/modules/* /fc/:splat 301
 /actividades/flashcard-game/* /fc/:splat 301
 /actividades/space-shooter/modules/* /ss/:splat 301
 /actividades/space-shooter/* /ss/:splat 301
+
+# Redirecciones desde /docs/ (Estructura antigua de GitHub Pages)
+/docs/actividades/MathQuest/modules/* /mq/:splat 301
+/docs/actividades/MathQuest/* /mq/:splat 301
+/docs/actividades/flashcard-game/modules/* /fc/:splat 301
+/docs/actividades/flashcard-game/* /fc/:splat 301
+/docs/actividades/space-shooter/modules/* /ss/:splat 301
+/docs/actividades/space-shooter/* /ss/:splat 301
+
+# Módulos Diapositivas
 /modulo_1/* /m1/:splat 301
 /modulo_2/* /m2/:splat 301
 /modulo_3/* /m3/:splat 301
@@ -16,7 +27,21 @@
 /docs/modulo_4/* /m4/:splat 301
 /docs/modulo_5/* /m5/:splat 301
 /docs/modulo_6/* /m6/:splat 301
+
+# Carpeta Mapa y Recursos Visuales
 /docs/mapa/* /mapa/:splat 301
 /mapa-curso/* /mapa/:splat 301
+/mapas/* /mapa/:splat 301
+/visuales/* /mapa/:splat 301
+
+# Alias cortos para Mapas
+/mapa1 /mapa/mapaconceptualmodulo1.html 301
+/mapa2 /mapa/mapaconceptualmodulo2.html 301
+/mapa3 /mapa/mapaconceptualmodulo3.html 301
+/mapa4 /mapa/mapaconceptualmodulo4.html 301
+/mapa5 /mapa/mapaconceptualmodulo5.html 301
+/mapa6 /mapa/mapaconceptualmodulo6.html 301
+
+
 
 
