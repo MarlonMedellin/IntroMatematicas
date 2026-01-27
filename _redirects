@@ -1,3 +1,113 @@
+# ==========================================
+# REGLAS DE REDIRECCIÓN - rebranding
+# ==========================================
+
+# --- JUEGOS (RUTAS PROFESIONALES) ---
+
+# MathQuest (Laboratorio)
+/mq1 /mq/modulo1_enteros.html 301
+/mq2 /mq/modulo2_mcm_mcd.html 301
+/mq3 /mq/modulo3_racionales.html 301
+/mq4 /mq/modulo4_razones.html 301
+/mq5 /mq/modulo5_medidas.html 301
+/mq6 /mq/modulo6_pot_rad.html 301
+
+# Flashcard Game (Memoria)
+/fc1 /fc/modulo1_flashcard.html 301
+/fc2 /fc/modulo2_flashcard.html 301
+/fc3 /fc/modulo3_flashcard.html 301
+/fc4 /fc/modulo4_flashcard.html 301
+/fc5 /fc/modulo5_flashcard.html 301
+/fc6 /fc/modulo6_flashcard.html 301
+
+# Space Shooter (Arcade)
+/ss1 /ss/modulo1_enteros.html 301
+/ss2 /ss/modulo2_primos.html 301
+/ss3 /ss/modulo3_racionales.html 301
+/ss4 /ss/modulo4_proporciones.html 301
+/ss5 /ss/modulo5_medidas.html 301
+/ss6 /ss/modulo6_potencias.html 301
+
+# --- DIAPOSITIVAS (RUTAS PROFESIONALES) ---
+
+# Módulo 1
+/m1-1 /m1/mod1_diapositiva1.html 301
+/m1-2 /m1/mod1_diapositiva2.html 301
+/m1-3 /m1/mod1_diapositiva3.html 301
+/m1-4 /m1/mod1_diapositiva4.html 301
+/m1-5 /m1/mod1_diapositiva5.html 301
+/m1-6 /m1/mod1_diapositiva6.html 301
+/m1-7 /m1/mod1_diapositiva7.html 301
+/m1-8 /m1/mod1_diapositiva8.html 301
+
+# Módulo 2
+/m2-1 /m2/mod2_diapositiva1.html 301
+/m2-2 /m2/mod2_diapositiva2.html 301
+/m2-3 /m2/mod2_diapositiva3.html 301
+/m2-4 /m2/mod2_diapositiva4.html 301
+/m2-5 /m2/mod2_diapositiva5.html 301
+/m2-6 /m2/mod2_diapositiva6.html 301
+/m2-7 /m2/mod2_diapositiva7.html 301
+/m2-8 /m2/mod2_diapositiva8.html 301
+/m2-9 /m2/mod2_diapositiva9.html 301
+/m2-10 /m2/mod2_diapositiva10.html 301
+
+# Módulo 3
+/m3-1 /m3/mod3_diapositiva1.html 301
+/m3-2 /m3/mod3_diapositiva2.html 301
+/m3-3 /m3/mod3_diapositiva3.html 301
+/m3-4 /m3/mod3_diapositiva4.html 301
+/m3-5 /m3/mod3_diapositiva5.html 301
+/m3-6 /m3/mod3_diapositiva6.html 301
+/m3-7 /m3/mod3_diapositiva7.html 301
+/m3-8 /m3/mod3_diapositiva8.html 301
+
+# Módulo 4
+/m4-1 /m4/mod4_diapositiva1.html 301
+/m4-2 /m4/mod4_diapositiva2.html 301
+/m4-3 /m4/mod4_diapositiva3.html 301
+/m4-4 /m4/mod4_diapositiva4.html 301
+/m4-5 /m4/mod4_diapositiva5.html 301
+/m4-6 /m4/mod4_diapositiva6.html 301
+/m4-7 /m4/mod4_diapositiva7.html 301
+/m4-8 /m4/mod4_diapositiva8.html 301
+/m4-9 /m4/mod4_diapositiva9.html 301
+/m4-10 /m4/mod4_diapositiva10.html 301
+/m4-11 /m4/mod4_diapositiva11.html 301
+/m4-12 /m4/mod4_diapositiva12.html 301
+
+# Módulo 5
+/m5-1 /m5/mod5_diapositiva1.html 301
+/m5-2 /m5/mod5_diapositiva2.html 301
+/m5-3 /m5/mod5_diapositiva3.html 301
+/m5-4 /m5/mod5_diapositiva4.html 301
+/m5-5 /m5/mod5_diapositiva5.html 301
+/m5-6 /m5/mod5_diapositiva6.html 301
+/m5-7 /m5/mod5_diapositiva7.html 301
+/m5-8 /m5/mod5_diapositiva8.html 301
+
+# Módulo 6
+/m6-1 /m6/mod6_diapositiva1.html 301
+/m6-2 /m6/mod6_diapositiva2.html 301
+/m6-3 /m6/mod6_diapositiva3.html 301
+/m6-4 /m6/mod6_diapositiva4.html 301
+/m6-5 /m6/mod6_diapositiva5.html 301
+/m6-6 /m6/mod6_diapositiva6.html 301
+/m6-7 /m6/mod6_diapositiva7.html 301
+/m6-8 /m6/mod6_diapositiva8.html 301
+/m6-9 /m6/mod6_diapositiva9.html 301
+/m6-10 /m6/mod6_diapositiva10.html 301
+
+# --- MAPAS (RUTAS PROFESIONALES) ---
+/mapa1 /mapa/mapaconceptualmodulo1.html 301
+/mapa2 /mapa/mapaconceptualmodulo2.html 301
+/mapa3 /mapa/mapaconceptualmodulo3.html 301
+/mapa4 /mapa/mapaconceptualmodulo4.html 301
+/mapa5 /mapa/mapaconceptualmodulo5.html 301
+/mapa6 /mapa/mapaconceptualmodulo6.html 301
+
+# --- COMPATIBILIDAD CON RUTAS ANTIGUAS (BACKWARD COMPATIBILITY) ---
+
 # Juegos
 /actividades/MathQuest/modules/* /mq/:splat 301
 /actividades/MathQuest/* /mq/:splat 301
@@ -6,7 +116,7 @@
 /actividades/space-shooter/modules/* /ss/:splat 301
 /actividades/space-shooter/* /ss/:splat 301
 
-# Redirecciones desde /docs/ (Estructura antigua de GitHub Pages)
+# Redirecciones desde /docs/
 /docs/actividades/MathQuest/modules/* /mq/:splat 301
 /docs/actividades/MathQuest/* /mq/:splat 301
 /docs/actividades/flashcard-game/modules/* /fc/:splat 301
@@ -14,7 +124,7 @@
 /docs/actividades/space-shooter/modules/* /ss/:splat 301
 /docs/actividades/space-shooter/* /ss/:splat 301
 
-# Módulos Diapositivas
+# Módulos y Mapas
 /modulo_1/* /m1/:splat 301
 /modulo_2/* /m2/:splat 301
 /modulo_3/* /m3/:splat 301
@@ -27,21 +137,7 @@
 /docs/modulo_4/* /m4/:splat 301
 /docs/modulo_5/* /m5/:splat 301
 /docs/modulo_6/* /m6/:splat 301
-
-# Carpeta Mapa y Recursos Visuales
 /docs/mapa/* /mapa/:splat 301
 /mapa-curso/* /mapa/:splat 301
 /mapas/* /mapa/:splat 301
 /visuales/* /mapa/:splat 301
-
-# Alias cortos para Mapas
-/mapa1 /mapa/mapaconceptualmodulo1.html 301
-/mapa2 /mapa/mapaconceptualmodulo2.html 301
-/mapa3 /mapa/mapaconceptualmodulo3.html 301
-/mapa4 /mapa/mapaconceptualmodulo4.html 301
-/mapa5 /mapa/mapaconceptualmodulo5.html 301
-/mapa6 /mapa/mapaconceptualmodulo6.html 301
-
-
-
-
