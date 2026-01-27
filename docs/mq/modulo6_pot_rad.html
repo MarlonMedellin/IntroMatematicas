@@ -6,18 +6,18 @@
     <title>MathQuest Introductorio de Matemáticas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+    <link rel="stylesheet" href="assets/math-lab-styles.css">
 </head>
 <body>
     <!-- 🚀 HEADER -->
     <div class="lab-header">
         <h1 class="lab-title">
             <i class="fas fa-flask"></i>
-            Laboratorio Matemático - Módulo 2
+            Laboratorio Matemático - Módulo 6
         </h1>
         <p class="lab-subtitle">
-            <i class="fas fa-calculator"></i>
-            Números Primos, MCM y MCD - Colegio Mayor de Antioquia
+            <i class="fas fa-superscript"></i>
+            Potenciación y Radicación - Colegio Mayor de Antioquia
         </p>
     </div>
 
@@ -63,16 +63,16 @@
             <!-- Contexto del problema -->
             <div class="experiment-context">
                 <div class="context-icon" id="contextIcon">
-                    <i class="fas fa-truck"></i>
+                    <i class="fas fa-microscope"></i>
                 </div>
                 <div class="context-text" id="contextText">
-                    Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días.
+                    En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias.
                 </div>
             </div>
 
             <!-- Pregunta principal -->
             <div class="experiment-question" id="questionText">
-                ¿Cada cuántos días coinciden todas las entregas?
+                ¿Cuántas bacterias habrá después de 4 horas?
             </div>
 
             <!-- Área de cálculo -->
@@ -148,8 +148,8 @@
                     Repetir Laboratorio
                 </button>
                 <button class="btn btn-secondary" onclick="goToNextModule()">
-                    <i class="fas fa-arrow-right"></i>
-                    Siguiente Módulo
+                    <i class="fas fa-graduation-cap"></i>
+                    ¡Curso Completado!
                 </button>
             </div>
         </div>
@@ -169,97 +169,97 @@
     </div>
 
     <script>
-        // 🧪 DATOS DEL MÓDULO 2: NÚMEROS PRIMOS, MCM Y MCD
+        // 🧪 DATOS DEL MÓDULO 6: POTENCIACIÓN Y RADICACIÓN
         const experiments = [
             {
-                context: "Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días.",
-                icon: "fas fa-truck",
-                question: "¿Cada cuántos días coinciden todas las entregas?",
-                calculation: "MCM(6, 8, 12)",
-                answer: "24",
-                hint: "El MCM es el menor múltiplo común. Factoriza: 6=2×3, 8=2³, 12=2²×3. MCM = 2³×3 = 24",
-                explanation: "Para que coincidan todas las entregas, necesitamos el MCM(6,8,12) = 24 días"
-            },
-            {
-                context: "En una clínica veterinaria hay 36 pastillas de un medicamento y 48 de otro. Se quieren distribuir en dosis iguales usando el mayor número de pastillas por dosis.",
-                icon: "fas fa-pills",
-                question: "¿Cuántas pastillas por dosis?",
-                calculation: "MCD(36, 48)",
-                answer: "12",
-                hint: "El MCD es el mayor divisor común. Factoriza: 36=2²×3², 48=2⁴×3. MCD = 2²×3 = 12",
-                explanation: "Para el mayor número de pastillas por dosis, necesitamos el MCD(36,48) = 12 pastillas por dosis"
-            },
-            {
-                context: "Una bacteria se reproduce cada 11 minutos.",
+                context: "En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias.",
                 icon: "fas fa-microscope",
-                question: "¿Es 11 un número primo?",
-                calculation: "Verificar divisores de 11",
-                answer: "Sí",
-                hint: "Un número primo solo tiene dos divisores: 1 y él mismo. Verifica si 11 tiene otros divisores",
-                explanation: "11 es primo porque solo es divisible por 1 y por 11. No tiene otros divisores"
+                question: "¿Cuántas bacterias habrá después de 4 horas?",
+                calculation: "3 × 2⁴ = 3 × 16",
+                answer: "48",
+                hint: "Primero calcula 2⁴ = 2 × 2 × 2 × 2 = 16, luego multiplica: 3 × 16 = 48 bacterias",
+                explanation: "3 × 2⁴ = 3 × 16 = 48 bacterias después de 4 horas de duplicación"
             },
             {
-                context: "Un arquitecto diseña ventanas en grupos de 15.",
-                icon: "fas fa-window-maximize",
-                question: "¿Es 15 divisible por 3?",
-                calculation: "15 ÷ 3",
-                answer: "Sí",
-                hint: "Un número es divisible por 3 si la suma de sus cifras es divisible por 3. Para 15: 1+5=6, y 6 es divisible por 3",
-                explanation: "15 ÷ 3 = 5, por lo tanto 15 es divisible por 3"
+                context: "Un arquitecto diseña una plaza circular con radio de 8 metros. (usa π ≈ 3)",
+                icon: "fas fa-circle",
+                question: "¿Cuál es el área de la plaza?",
+                calculation: "Área = π × r² = 3 × 8²",
+                answer: "192",
+                hint: "Área del círculo = π × r². Calcula: 8² = 64, luego 3 × 64 = 192 m²",
+                explanation: "Área = 3 × 8² = 3 × 64 = 192 m² de área de la plaza circular"
             },
             {
-                context: "En una panadería, el horno 1 hace pan cada 6 minutos y el horno 2 cada 9 minutos.",
-                icon: "fas fa-bread-slice",
-                question: "¿Cada cuántos minutos producen pan simultáneamente?",
-                calculation: "MCM(6, 9)",
-                answer: "18",
-                hint: "Factoriza: 6=2×3, 9=3². MCM = 2×3² = 18",
-                explanation: "Para que produzcan simultáneamente, necesitamos el MCM(6,9) = 18 minutos"
+                context: "Una inversión turística se duplica cada año durante 3 años. Si la inversión inicial fue $50,000.",
+                icon: "fas fa-chart-line",
+                question: "¿Cuánto vale al final?",
+                calculation: "50,000 × 2³",
+                answer: "400000",
+                hint: "Calcula 2³ = 2 × 2 × 2 = 8, luego multiplica: 50,000 × 8 = 400,000",
+                explanation: "50,000 × 2³ = 50,000 × 8 = $400,000 valor final de la inversión"
             },
             {
-                context: "Un laboratorio tiene 42 muestras de sangre y 56 muestras de orina. Quiere organizarlas en bandejas con igual cantidad de muestras.",
-                icon: "fas fa-vial",
-                question: "¿Cuál es el mayor número de muestras por bandeja?",
-                calculation: "MCD(42, 56)",
-                answer: "14",
-                hint: "Factoriza: 42=2×3×7, 56=2³×7. MCD = 2×7 = 14",
-                explanation: "Para el mayor número de muestras por bandeja, necesitamos el MCD(42,56) = 14 muestras"
+                context: "Un laboratorio tiene un área cuadrada de 144 m².",
+                icon: "fas fa-square",
+                question: "¿Cuánto mide cada lado?",
+                calculation: "Lado = √144",
+                answer: "12",
+                hint: "Busca un número que multiplicado por sí mismo dé 144. √144 = 12 porque 12 × 12 = 144",
+                explanation: "Lado = √144 = 12 metros cada lado del laboratorio cuadrado"
             },
             {
-                context: "Una emisora programa un comercial especial cada 17 minutos.",
-                icon: "fas fa-radio",
-                question: "¿17 es un número primo?",
-                calculation: "Verificar divisores de 17",
-                answer: "Sí",
-                hint: "Verifica si 17 tiene divisores entre 2 y √17 ≈ 4.1. Prueba con 2, 3, 4",
-                explanation: "17 es primo porque solo es divisible por 1 y por 17. No tiene otros divisores"
+                context: "En gastronomía, el tiempo de cocción aumenta con el cuadrado del grosor del corte. Si un corte de 3 cm sigue la fórmula (grosor)² × 10.",
+                icon: "fas fa-utensils",
+                question: "¿Cuánto tiempo tardará en cocinarse?",
+                calculation: "3² × 10",
+                answer: "90",
+                hint: "Calcula 3² = 3 × 3 = 9, luego multiplica: 9 × 10 = 90 minutos",
+                explanation: "3² × 10 = 9 × 10 = 90 minutos de tiempo de cocción"
             },
             {
-                context: "Necesitas identificar números primos en un rango específico.",
-                icon: "fas fa-list-ol",
-                question: "¿Cuántos números primos hay entre 20 y 30?",
-                calculation: "Verificar: 21, 22, 23, 24, 25, 26, 27, 28, 29",
-                answer: "2",
-                hint: "Revisa cada número: 21=3×7, 22=2×11, 23=primo, 24=2³×3, 25=5², 26=2×13, 27=3³, 28=2²×7, 29=primo",
-                explanation: "Entre 20 y 30 hay 2 números primos: 23 y 29"
+                context: "En una clínica, el costo de un tratamiento se reduce progresivamente. Si el costo inicial es $100,000 y se reduce cada mes a la raíz cuadrada del mes anterior durante 2 meses.",
+                icon: "fas fa-calculator",
+                question: "¿Cuál es el costo final aproximado?",
+                calculation: "√(√100,000)",
+                answer: "18000",
+                hint: "Primer mes: √100,000 ≈ 316. Segundo mes: √316 ≈ 18. Respuesta aproximada: $18,000",
+                explanation: "√(√100,000) = √316 ≈ 18, por lo tanto aproximadamente $18,000"
             },
             {
-                context: "Un hotel programa mantenimiento de habitaciones cada 20 días y mantenimiento de áreas comunes cada 30 días.",
+                context: "Una empresa de comunicación organiza sus equipos en formación cuadrada de 9×9 personas.",
+                icon: "fas fa-users",
+                question: "¿Cuántas personas hay en total?",
+                calculation: "9²",
+                answer: "81",
+                hint: "9² = 9 × 9 = 81 personas en total",
+                explanation: "9² = 9 × 9 = 81 personas organizadas en formación cuadrada"
+            },
+            {
+                context: "En construcción, la resistencia de un material es proporcional a 4³.",
+                icon: "fas fa-hard-hat",
+                question: "¿Cuál es el factor de resistencia?",
+                calculation: "4³",
+                answer: "64",
+                hint: "4³ = 4 × 4 × 4. Primero: 4 × 4 = 16, luego: 16 × 4 = 64",
+                explanation: "4³ = 4 × 4 × 4 = 64 unidades de resistencia del material"
+            },
+            {
+                context: "Un hotel tiene un lobby cuadrado con área de 225 m².",
                 icon: "fas fa-hotel",
-                question: "¿Cada cuántos días coinciden ambos mantenimientos?",
-                calculation: "MCM(20, 30)",
-                answer: "60",
-                hint: "Factoriza: 20=2²×5, 30=2×3×5. MCM = 2²×3×5 = 60",
-                explanation: "Para que coincidan ambos mantenimientos, necesitamos el MCM(20,30) = 60 días"
+                question: "¿Cuál es la longitud de cada lado?",
+                calculation: "Lado = √225",
+                answer: "15",
+                hint: "Busca un número que multiplicado por sí mismo dé 225. √225 = 15 porque 15 × 15 = 225",
+                explanation: "Lado = √225 = 15 metros cada lado del lobby cuadrado"
             },
             {
-                context: "Un sistema de seguridad tiene código 35. Para descifrarlo necesitas sus factores primos.",
-                icon: "fas fa-lock",
-                question: "¿Cuáles son los factores primos de 35?",
-                calculation: "35 ÷ factores primos",
-                answer: "5 × 7",
-                hint: "Divide 35 entre números primos pequeños: 35 ÷ 5 = 7, y 7 es primo",
-                explanation: "35 = 5 × 7. Los factores primos de 35 son 5 y 7"
+                context: "Una campaña publicitaria multiplica su alcance por 3² cada semana. Después de 2 semanas el alcance se multiplicó según (3²)² y comenzó con 2,000 personas.",
+                icon: "fas fa-bullhorn",
+                question: "¿Cuál es el alcance final?",
+                calculation: "2,000 × (3²)² = 2,000 × 9²",
+                answer: "162000",
+                hint: "Primero: 3² = 9, luego (3²)² = 9² = 81. Finalmente: 2,000 × 81 = 162,000 personas",
+                explanation: "2,000 × (3²)² = 2,000 × 9² = 2,000 × 81 = 162,000 personas de alcance final"
             }
         ];
 
@@ -329,10 +329,47 @@
             
             totalAttempts++;
             
+            // Normalizar respuestas para comparación flexible
+            const normalizeAnswer = (answer) => {
+                return answer
+                    .replace(/[\s,$%°cbacteriasm²personasunidades]/g, '')
+                    .replace(/bacterias?/g, '')
+                    .replace(/metros?/g, '')
+                    .replace(/m²?/g, '')
+                    .replace(/personas?/g, '')
+                    .replace(/unidades?/g, '')
+                    .replace(/minutos?/g, '')
+                    .replace(/aproximadamente/g, '')
+                    .toLowerCase();
+            };
+            
+            const normalizedUser = normalizeAnswer(userAnswer);
+            const normalizedCorrect = normalizeAnswer(correctAnswer);
+            
             // Verificar si la respuesta es correcta (permitir variaciones)
-            const isCorrect = userAnswer === correctAnswer || 
-                             userAnswer === correctAnswer.replace('°c', '') ||
-                             (correctAnswer.includes('sí') && (userAnswer.includes('sí') || userAnswer.includes('si') || userAnswer.includes('sobrevive')));
+            const isCorrect = normalizedUser === normalizedCorrect || 
+                             // Permitir respuestas numéricas exactas para el Módulo 6
+                             userAnswer.includes('48') && correctAnswer.includes('48') ||
+                             userAnswer.includes('192') && correctAnswer.includes('192') ||
+                             userAnswer.includes('400000') && correctAnswer.includes('400000') ||
+                             userAnswer.includes('12') && correctAnswer.includes('12') ||
+                             userAnswer.includes('90') && correctAnswer.includes('90') ||
+                             userAnswer.includes('18000') && correctAnswer.includes('18000') ||
+                             userAnswer.includes('81') && correctAnswer.includes('81') ||
+                             userAnswer.includes('64') && correctAnswer.includes('64') ||
+                             userAnswer.includes('15') && correctAnswer.includes('15') ||
+                             userAnswer.includes('162000') && correctAnswer.includes('162000') ||
+                             // Permitir variaciones con comas para números grandes
+                             (userAnswer.includes('400,000') || userAnswer.includes('400000')) && correctAnswer.includes('400000') ||
+                             (userAnswer.includes('162,000') || userAnswer.includes('162000')) && correctAnswer.includes('162000') ||
+                             (userAnswer.includes('18,000') || userAnswer.includes('18000')) && correctAnswer.includes('18000') ||
+                             // Permitir respuestas con unidades
+                             (userAnswer.includes('48') && userAnswer.includes('bacteria')) ||
+                             (userAnswer.includes('192') && userAnswer.includes('m²')) ||
+                             (userAnswer.includes('12') && userAnswer.includes('metro')) ||
+                             (userAnswer.includes('90') && userAnswer.includes('minuto')) ||
+                             (userAnswer.includes('81') && userAnswer.includes('persona')) ||
+                             (userAnswer.includes('15') && userAnswer.includes('metro'));
             
             if (isCorrect) {
                 correctAnswers++;
@@ -463,9 +500,9 @@
 
         // ➡️ IR AL SIGUIENTE MÓDULO
         function goToNextModule() {
-            alert('¡Felicitaciones! Dirígete al Módulo 2: Números Primos, MCM y MCD');
-            // Aquí puedes redirigir al siguiente módulo
-            // window.location.href = 'modulo2_primos_lab.html';
+            alert('¡FELICITACIONES! 🎉 Has completado todo el Laboratorio Matemático del Colegio Mayor de Antioquia. ¡Eres un científico matemático completo!');
+            // Aquí puedes redirigir a la página principal o certificado
+            // window.location.href = 'index.html';
         }
 
         // 🎹 EFECTOS DE SONIDO SIMPLES

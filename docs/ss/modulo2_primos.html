@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3: Números Racionales - Space Shooter Matemático</title>
-    <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/space-game.css">
+    <title>Módulo 2: Primos, MCM y MCD - Space Shooter Matemático</title>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/space-game.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1 id="gameTitle">🧮 Space Shooter - Números Racionales</h1>
-            <p id="gameSubtitle">¡Navega por fracciones y decimales en el cosmos matemático!</p>
+            <h1 id="gameTitle">🔬 Space Shooter - Primos, MCM y MCD</h1>
+            <p id="gameSubtitle">¡Optimiza recursos matemáticos y factoriza en el espacio!</p>
         </div>
 
         <!-- Panel de estadísticas -->
@@ -57,7 +57,7 @@
         <!-- Problema actual -->
         <div class="current-problem">
             <div class="problem-text" id="currentQuestion">Preparando misión matemática...</div>
-            <div class="problem-instruction" id="questionInstruction">Calcula fracciones y decimales para eliminar amenazas espaciales</div>
+            <div class="problem-instruction" id="questionInstruction">Destruye enemigos con factorización y cálculos de MCM/MCD</div>
         </div>
 
         <!-- Área de juego -->
@@ -74,7 +74,7 @@
             <strong>🎮 Controles:</strong> 
             <span style="color: #00AEAC; background: rgba(0, 174, 172, 0.2); padding: 3px 8px; border-radius: 5px; font-weight: bold;">← →</span> Mover nave | 
             <span style="color: #00AEAC; background: rgba(0, 174, 172, 0.2); padding: 3px 8px; border-radius: 5px; font-weight: bold;">ESPACIO</span> Disparar | 
-            <span style="color: #B4C42C; font-weight: bold;">¡Precisión con fracciones!</span>
+            <span style="color: #B4C42C; font-weight: bold;">¡Factoriza y optimiza!</span>
         </div>
 
         <!-- Controles móviles -->
@@ -118,10 +118,10 @@
                     <button class="btn secondary" onclick="window.location.href='../index.html'">
                         <i class="fas fa-home"></i> Menú Principal
                     </button>
-                    <button class="btn" onclick="window.location.href='modulo2_primos.html'">
+                    <button class="btn" onclick="window.location.href='modulo1_enteros.html'">
                         <i class="fas fa-arrow-left"></i> Módulo Anterior
                     </button>
-                    <button class="btn" onclick="window.location.href='modulo4_proporciones.html'">
+                    <button class="btn" onclick="window.location.href='modulo3_racionales.html'">
                         <i class="fas fa-arrow-right"></i> Siguiente Módulo
                     </button>
                 </div>
@@ -155,20 +155,20 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../assets/data/modulo3-questions.js"></script>
-    <script src="../assets/js/game-engine.js"></script>
+    <script src="assets/data/modulo2-questions.js"></script>
+    <script src="assets/js/game-engine.js"></script>
     <script>
         // Inicialización del juego
         let gameEngine;
         
         document.addEventListener('DOMContentLoaded', function() {
             // Crear instancia del motor del juego
-            gameEngine = new SpaceShooterEngine(Modulo3Config, Modulo3Questions);
+            gameEngine = new SpaceShooterEngine(Modulo2Config, Modulo2Questions);
             
             // Inicializar el juego
             gameEngine.init();
             
-            console.log('🧮 Módulo 3: Números Racionales - Iniciado');
+            console.log('🔬 Módulo 2: Primos, MCM y MCD - Iniciado');
         });
     </script>
 </body>

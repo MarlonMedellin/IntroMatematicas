@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Memoria - Potenciación y Radicación</title>
-    <meta name="description" content="Juego educativo de memoria para aprender conceptos de potenciación y radicación">
+    <title>Juego de Memoria - Números Primos, MCM y MCD</title>
+    <meta name="description" content="Juego educativo de memoria para aprender conceptos de números primos, máximo común divisor y mínimo común múltiplo">
     
     <!-- Google Fonts - Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Estilos del juego -->
-    <link rel="stylesheet" href="../assets/css/flashcard.css">
+    <link rel="stylesheet" href="assets/css/flashcard.css">
 </head>
 <body>
     <div class="container">
@@ -23,7 +23,7 @@
                 <i class="fas fa-brain" style="color: #FBBB28; margin-right: 10px;"></i>
                 Juego de Memoria
             </h1>
-            <p>Módulo 6: Potenciación y Radicación</p>
+            <p>Módulo 2: Números Primos, MCM y MCD</p>
         </div>
 
         <!-- Panel de estadísticas -->
@@ -80,30 +80,30 @@
     </div>
 
     <!-- JavaScript del juego -->
-    <script src="../assets/js/flashcard.js"></script>
+    <script src="assets/js/flashcard.js"></script>
     <script>
-        // Datos específicos del Módulo 6: Potenciación y Radicación
+        // Datos específicos del Módulo 2: Números Primos, MCM y MCD
         // Datos del juego
         const gameData = [
-            { id: 1, type: 'concept', content: 'Potenciación', pair: 1 },
-            { id: 2, type: 'definition', content: 'Operación que representa multiplicación repetida de un mismo número.', pair: 1 },
-            { id: 3, type: 'concept', content: 'Radicación', pair: 2 },
-            { id: 4, type: 'definition', content: 'Operación inversa de potenciación que encuentra la base original.', pair: 2 },
-            { id: 5, type: 'concept', content: 'Exponente', pair: 3 },
-            { id: 6, type: 'definition', content: 'Número que indica cuántas veces se multiplica la base por sí misma.', pair: 3 },
-            { id: 7, type: 'concept', content: 'Números Irracionales', pair: 4 },
-            { id: 8, type: 'definition', content: 'Números con expansión decimal infinita no periódica como algunas raíces.', pair: 4 },
-            { id: 9, type: 'concept', content: 'Jerarquía de Operaciones', pair: 5 },
-            { id: 10, type: 'definition', content: 'Orden específico para resolver expresiones matemáticas con múltiples operaciones.', pair: 5 },
-            { id: 11, type: 'concept', content: 'Raíz Cuadrada', pair: 6 },
-            { id: 12, type: 'definition', content: 'Número que multiplicado por sí mismo da el número original.', pair: 6 }
+            { id: 1, type: 'concept', content: 'Número Primo', pair: 1 },
+            { id: 2, type: 'definition', content: 'Número natural mayor que uno con solo dos divisores.', pair: 1 },
+            { id: 3, type: 'concept', content: 'MCD', pair: 2 },
+            { id: 4, type: 'definition', content: 'Mayor número entero que divide exactamente a varios números.', pair: 2 },
+            { id: 5, type: 'concept', content: 'MCM', pair: 3 },
+            { id: 6, type: 'definition', content: 'Menor número entero múltiplo común de varios números dados.', pair: 3 },
+            { id: 7, type: 'concept', content: 'Criterios de Divisibilidad', pair: 4 },
+            { id: 8, type: 'definition', content: 'Reglas para determinar si un número divide a otro.', pair: 4 },
+            { id: 9, type: 'concept', content: 'Números Coprimos', pair: 5 },
+            { id: 10, type: 'definition', content: 'Dos números que solo tienen como divisor común el uno.', pair: 5 },
+            { id: 11, type: 'concept', content: 'Factorización', pair: 6 },
+            { id: 12, type: 'definition', content: 'Proceso de expresar un número como producto de otros números menores llamados factores.', pair: 6 }
         ];
 
         // Inicializar el juego cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 const game = new FlashcardGame(gameData);
-                console.log('✅ Módulo 6: Potenciación y Radicación cargado correctamente');
+                console.log('✅ Módulo 2: Números Primos, MCM y MCD cargado correctamente');
             } catch (error) {
                 console.error('❌ Error al inicializar el juego:', error);
                 alert('Error al cargar el juego. Por favor, recarga la página.');

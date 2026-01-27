@@ -1,0 +1,6 @@
+/actividades/MathQuest/modules/* /mq/:splat 301
+/actividades/MathQuest/* /mq/:splat 301
+/actividades/flashcard-game/modules/* /fc/:splat 301
+/actividades/flashcard-game/* /fc/:splat 301
+/actividades/space-shooter/modules/* /ss/:splat 301
+/actividades/space-shooter/* /ss/:splat 301

@@ -6,18 +6,18 @@
     <title>MathQuest Introductorio de Matemáticas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+    <link rel="stylesheet" href="assets/math-lab-styles.css">
 </head>
 <body>
     <!-- 🚀 HEADER -->
     <div class="lab-header">
         <h1 class="lab-title">
             <i class="fas fa-flask"></i>
-            Laboratorio Matemático - Módulo 6
+            Laboratorio Matemático - Módulo 4
         </h1>
         <p class="lab-subtitle">
-            <i class="fas fa-superscript"></i>
-            Potenciación y Radicación - Colegio Mayor de Antioquia
+            <i class="fas fa-balance-scale"></i>
+            Razones, Proporciones y Regla de Tres - Colegio Mayor de Antioquia
         </p>
     </div>
 
@@ -63,16 +63,16 @@
             <!-- Contexto del problema -->
             <div class="experiment-context">
                 <div class="context-icon" id="contextIcon">
-                    <i class="fas fa-microscope"></i>
+                    <i class="fas fa-bus"></i>
                 </div>
                 <div class="context-text" id="contextText">
-                    En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias.
+                    Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.
                 </div>
             </div>
 
             <!-- Pregunta principal -->
             <div class="experiment-question" id="questionText">
-                ¿Cuántas bacterias habrá después de 4 horas?
+                ¿Cuántos km puede recorrer con 15 litros?
             </div>
 
             <!-- Área de cálculo -->
@@ -148,8 +148,8 @@
                     Repetir Laboratorio
                 </button>
                 <button class="btn btn-secondary" onclick="goToNextModule()">
-                    <i class="fas fa-graduation-cap"></i>
-                    ¡Curso Completado!
+                    <i class="fas fa-arrow-right"></i>
+                    Siguiente Módulo
                 </button>
             </div>
         </div>
@@ -169,97 +169,97 @@
     </div>
 
     <script>
-        // 🧪 DATOS DEL MÓDULO 6: POTENCIACIÓN Y RADICACIÓN
+        // 🧪 DATOS DEL MÓDULO 4: RAZONES, PROPORCIONES Y REGLA DE TRES
         const experiments = [
             {
-                context: "En microbiología, una bacteria se duplica cada hora. Si inicialmente hay 3 bacterias.",
-                icon: "fas fa-microscope",
-                question: "¿Cuántas bacterias habrá después de 4 horas?",
-                calculation: "3 × 2⁴ = 3 × 16",
-                answer: "48",
-                hint: "Primero calcula 2⁴ = 2 × 2 × 2 × 2 = 16, luego multiplica: 3 × 16 = 48 bacterias",
-                explanation: "3 × 2⁴ = 3 × 16 = 48 bacterias después de 4 horas de duplicación"
+                context: "Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.",
+                icon: "fas fa-bus",
+                question: "¿Cuántos km puede recorrer con 15 litros?",
+                calculation: "60:5 = x:15",
+                answer: "180",
+                hint: "Plantea la proporción: 60 km / 5 litros = x km / 15 litros. Multiplica cruzado: 60 × 15 = 5 × x, entonces 900 = 5x, por lo tanto x = 180",
+                explanation: "Proporción: 60:5 = x:15. Resolviendo: x = (60 × 15) ÷ 5 = 900 ÷ 5 = 180 km"
             },
             {
-                context: "Un arquitecto diseña una plaza circular con radio de 8 metros. (usa π ≈ 3)",
-                icon: "fas fa-circle",
-                question: "¿Cuál es el área de la plaza?",
-                calculation: "Área = π × r² = 3 × 8²",
-                answer: "192",
-                hint: "Área del círculo = π × r². Calcula: 8² = 64, luego 3 × 64 = 192 m²",
-                explanation: "Área = 3 × 8² = 3 × 64 = 192 m² de área de la plaza circular"
-            },
-            {
-                context: "Una inversión turística se duplica cada año durante 3 años. Si la inversión inicial fue $50,000.",
-                icon: "fas fa-chart-line",
-                question: "¿Cuánto vale al final?",
-                calculation: "50,000 × 2³",
-                answer: "400000",
-                hint: "Calcula 2³ = 2 × 2 × 2 = 8, luego multiplica: 50,000 × 8 = 400,000",
-                explanation: "50,000 × 2³ = 50,000 × 8 = $400,000 valor final de la inversión"
-            },
-            {
-                context: "Un laboratorio tiene un área cuadrada de 144 m².",
-                icon: "fas fa-square",
-                question: "¿Cuánto mide cada lado?",
-                calculation: "Lado = √144",
-                answer: "12",
-                hint: "Busca un número que multiplicado por sí mismo dé 144. √144 = 12 porque 12 × 12 = 144",
-                explanation: "Lado = √144 = 12 metros cada lado del laboratorio cuadrado"
-            },
-            {
-                context: "En gastronomía, el tiempo de cocción aumenta con el cuadrado del grosor del corte. Si un corte de 3 cm sigue la fórmula (grosor)² × 10.",
+                context: "En una cocina, 4 cocineros pueden preparar 12 platos en una hora.",
                 icon: "fas fa-utensils",
-                question: "¿Cuánto tiempo tardará en cocinarse?",
-                calculation: "3² × 10",
-                answer: "90",
-                hint: "Calcula 3² = 3 × 3 = 9, luego multiplica: 9 × 10 = 90 minutos",
-                explanation: "3² × 10 = 9 × 10 = 90 minutos de tiempo de cocción"
+                question: "¿Cuántos platos pueden preparar 6 cocineros en una hora?",
+                calculation: "4:12 = 6:x",
+                answer: "18",
+                hint: "Proporcionalidad directa: 4 cocineros / 12 platos = 6 cocineros / x platos. Multiplica cruzado: 4x = 12 × 6 = 72, entonces x = 18",
+                explanation: "Proporción: 4:12 = 6:x. Resolviendo: x = (6 × 12) ÷ 4 = 72 ÷ 4 = 18 platos"
             },
             {
-                context: "En una clínica, el costo de un tratamiento se reduce progresivamente. Si el costo inicial es $100,000 y se reduce cada mes a la raíz cuadrada del mes anterior durante 2 meses.",
-                icon: "fas fa-calculator",
-                question: "¿Cuál es el costo final aproximado?",
-                calculation: "√(√100,000)",
-                answer: "18000",
-                hint: "Primer mes: √100,000 ≈ 316. Segundo mes: √316 ≈ 18. Respuesta aproximada: $18,000",
-                explanation: "√(√100,000) = √316 ≈ 18, por lo tanto aproximadamente $18,000"
+                context: "Una clínica aumentó sus consultas en 25%. Si antes atendía 80 pacientes diarios.",
+                icon: "fas fa-user-md",
+                question: "¿Cuántos pacientes atiende ahora?",
+                calculation: "80 + (25% × 80)",
+                answer: "100",
+                hint: "Aumento del 25%: calcula 25% de 80 = 0.25 × 80 = 20. Luego suma: 80 + 20 = 100 pacientes",
+                explanation: "Pacientes iniciales: 80. Aumento: 25% de 80 = 20 pacientes. Total: 80 + 20 = 100 pacientes"
             },
             {
-                context: "Una empresa de comunicación organiza sus equipos en formación cuadrada de 9×9 personas.",
-                icon: "fas fa-users",
-                question: "¿Cuántas personas hay en total?",
-                calculation: "9²",
-                answer: "81",
-                hint: "9² = 9 × 9 = 81 personas en total",
-                explanation: "9² = 9 × 9 = 81 personas organizadas en formación cuadrada"
-            },
-            {
-                context: "En construcción, la resistencia de un material es proporcional a 4³.",
+                context: "En una construcción, la relación cemento:arena es 2:5. Si se usan 8 bultos de cemento.",
                 icon: "fas fa-hard-hat",
-                question: "¿Cuál es el factor de resistencia?",
-                calculation: "4³",
-                answer: "64",
-                hint: "4³ = 4 × 4 × 4. Primero: 4 × 4 = 16, luego: 16 × 4 = 64",
-                explanation: "4³ = 4 × 4 × 4 = 64 unidades de resistencia del material"
+                question: "¿Cuántos bultos de arena se necesitan?",
+                calculation: "2:5 = 8:x",
+                answer: "20",
+                hint: "Proporción: 2 cemento / 5 arena = 8 cemento / x arena. Multiplica cruzado: 2x = 5 × 8 = 40, entonces x = 20",
+                explanation: "Proporción: 2:5 = 8:x. Resolviendo: x = (8 × 5) ÷ 2 = 40 ÷ 2 = 20 bultos de arena"
             },
             {
-                context: "Un hotel tiene un lobby cuadrado con área de 225 m².",
-                icon: "fas fa-hotel",
-                question: "¿Cuál es la longitud de cada lado?",
-                calculation: "Lado = √225",
-                answer: "15",
-                hint: "Busca un número que multiplicado por sí mismo dé 225. √225 = 15 porque 15 × 15 = 225",
-                explanation: "Lado = √225 = 15 metros cada lado del lobby cuadrado"
+                context: "Un laboratorio reduce sus gastos al 75% del mes anterior. Si gastó $1,200,000 el mes pasado.",
+                icon: "fas fa-flask",
+                question: "¿Cuánto gastó este mes?",
+                calculation: "75% × 1,200,000",
+                answer: "900000",
+                hint: "75% = 0.75. Entonces: 0.75 × 1,200,000 = 900,000",
+                explanation: "Gastos este mes: 75% de $1,200,000 = 0.75 × 1,200,000 = $900,000"
             },
             {
-                context: "Una campaña publicitaria multiplica su alcance por 3² cada semana. Después de 2 semanas el alcance se multiplicó según (3²)² y comenzó con 2,000 personas.",
+                context: "Una agencia de publicidad produce 5 comerciales en 15 días.",
                 icon: "fas fa-bullhorn",
-                question: "¿Cuál es el alcance final?",
-                calculation: "2,000 × (3²)² = 2,000 × 9²",
-                answer: "162000",
-                hint: "Primero: 3² = 9, luego (3²)² = 9² = 81. Finalmente: 2,000 × 81 = 162,000 personas",
-                explanation: "2,000 × (3²)² = 2,000 × 9² = 2,000 × 81 = 162,000 personas de alcance final"
+                question: "¿Cuántos comerciales produce en 30 días?",
+                calculation: "5:15 = x:30",
+                answer: "10",
+                hint: "Proporción: 5 comerciales / 15 días = x comerciales / 30 días. Multiplica cruzado: 5 × 30 = 15x, entonces 150 = 15x, por lo tanto x = 10",
+                explanation: "Proporción: 5:15 = x:30. Resolviendo: x = (5 × 30) ÷ 15 = 150 ÷ 15 = 10 comerciales"
+            },
+            {
+                context: "En un hotel, la ocupación actual y la ocupación objetivo están en proporción 3:4. Si la ocupación actual es 60 habitaciones.",
+                icon: "fas fa-hotel",
+                question: "¿Cuál es la ocupación objetivo?",
+                calculation: "3:4 = 60:x",
+                answer: "80",
+                hint: "Proporción: 3 actual / 4 objetivo = 60 actual / x objetivo. Multiplica cruzado: 3x = 4 × 60 = 240, entonces x = 80",
+                explanation: "Proporción: 3:4 = 60:x. Resolviendo: x = (60 × 4) ÷ 3 = 240 ÷ 3 = 80 habitaciones"
+            },
+            {
+                context: "Un medicamento veterinario se dosifica en proporción 2:1 (ml de medicamento por kg de peso). Si un animal pesa 15 kg.",
+                icon: "fas fa-syringe",
+                question: "¿Cuántos ml de medicamento necesita?",
+                calculation: "2:1 = x:15",
+                answer: "30",
+                hint: "Proporción: 2 ml / 1 kg = x ml / 15 kg. Multiplica cruzado: 2 × 15 = 1 × x, entonces x = 30 ml",
+                explanation: "Proporción: 2:1 = x:15. Resolviendo: x = (2 × 15) ÷ 1 = 30 ml de medicamento"
+            },
+            {
+                context: "En una empresa, la relación entre ingresos y gastos debe ser 5:3. Si los gastos son $600,000.",
+                icon: "fas fa-chart-line",
+                question: "¿Cuáles deben ser los ingresos?",
+                calculation: "5:3 = x:600,000",
+                answer: "1000000",
+                hint: "Proporción: 5 ingresos / 3 gastos = x ingresos / 600,000 gastos. Multiplica cruzado: 5 × 600,000 = 3x, entonces 3,000,000 = 3x, por lo tanto x = 1,000,000",
+                explanation: "Proporción: 5:3 = x:600,000. Resolviendo: x = (5 × 600,000) ÷ 3 = 3,000,000 ÷ 3 = $1,000,000"
+            },
+            {
+                context: "Una receta para 4 personas requiere 200g de harina.",
+                icon: "fas fa-bread-slice",
+                question: "¿Cuánta harina se necesita para 14 personas?",
+                calculation: "4:200 = 14:x",
+                answer: "700",
+                hint: "Proporción: 4 personas / 200g = 14 personas / x gramos. Multiplica cruzado: 4x = 200 × 14 = 2,800, entonces x = 700g",
+                explanation: "Proporción: 4:200 = 14:x. Resolviendo: x = (14 × 200) ÷ 4 = 2,800 ÷ 4 = 700g de harina"
             }
         ];
 
@@ -332,14 +332,15 @@
             // Normalizar respuestas para comparación flexible
             const normalizeAnswer = (answer) => {
                 return answer
-                    .replace(/[\s,$%°cbacteriasm²personasunidades]/g, '')
-                    .replace(/bacterias?/g, '')
-                    .replace(/metros?/g, '')
-                    .replace(/m²?/g, '')
-                    .replace(/personas?/g, '')
-                    .replace(/unidades?/g, '')
-                    .replace(/minutos?/g, '')
-                    .replace(/aproximadamente/g, '')
+                    .replace(/[\s,$%°ckmlgpacientesplatoshabitacionescomerciales]/g, '')
+                    .replace(/km/g, '')
+                    .replace(/platos?/g, '')
+                    .replace(/pacientes?/g, '')
+                    .replace(/bultos?/g, '')
+                    .replace(/comerciales?/g, '')
+                    .replace(/habitaciones?/g, '')
+                    .replace(/gramos?/g, '')
+                    .replace(/arena/g, '')
                     .toLowerCase();
             };
             
@@ -348,28 +349,20 @@
             
             // Verificar si la respuesta es correcta (permitir variaciones)
             const isCorrect = normalizedUser === normalizedCorrect || 
-                             // Permitir respuestas numéricas exactas para el Módulo 6
-                             userAnswer.includes('48') && correctAnswer.includes('48') ||
-                             userAnswer.includes('192') && correctAnswer.includes('192') ||
-                             userAnswer.includes('400000') && correctAnswer.includes('400000') ||
-                             userAnswer.includes('12') && correctAnswer.includes('12') ||
-                             userAnswer.includes('90') && correctAnswer.includes('90') ||
-                             userAnswer.includes('18000') && correctAnswer.includes('18000') ||
-                             userAnswer.includes('81') && correctAnswer.includes('81') ||
-                             userAnswer.includes('64') && correctAnswer.includes('64') ||
-                             userAnswer.includes('15') && correctAnswer.includes('15') ||
-                             userAnswer.includes('162000') && correctAnswer.includes('162000') ||
-                             // Permitir variaciones con comas para números grandes
-                             (userAnswer.includes('400,000') || userAnswer.includes('400000')) && correctAnswer.includes('400000') ||
-                             (userAnswer.includes('162,000') || userAnswer.includes('162000')) && correctAnswer.includes('162000') ||
-                             (userAnswer.includes('18,000') || userAnswer.includes('18000')) && correctAnswer.includes('18000') ||
-                             // Permitir respuestas con unidades
-                             (userAnswer.includes('48') && userAnswer.includes('bacteria')) ||
-                             (userAnswer.includes('192') && userAnswer.includes('m²')) ||
-                             (userAnswer.includes('12') && userAnswer.includes('metro')) ||
-                             (userAnswer.includes('90') && userAnswer.includes('minuto')) ||
-                             (userAnswer.includes('81') && userAnswer.includes('persona')) ||
-                             (userAnswer.includes('15') && userAnswer.includes('metro'));
+                             // Permitir respuestas numéricas exactas para el Módulo 4
+                             userAnswer.includes('180') && correctAnswer.includes('180') ||
+                             userAnswer.includes('18') && correctAnswer.includes('18') ||
+                             userAnswer.includes('100') && correctAnswer.includes('100') ||
+                             userAnswer.includes('20') && correctAnswer.includes('20') ||
+                             userAnswer.includes('900000') && correctAnswer.includes('900000') ||
+                             userAnswer.includes('10') && correctAnswer.includes('10') ||
+                             userAnswer.includes('80') && correctAnswer.includes('80') ||
+                             userAnswer.includes('30') && correctAnswer.includes('30') ||
+                             userAnswer.includes('1000000') && correctAnswer.includes('1000000') ||
+                             userAnswer.includes('700') && correctAnswer.includes('700') ||
+                             // Permitir variaciones con comas
+                             (userAnswer.includes('900,000') || userAnswer.includes('900000')) && correctAnswer.includes('900000') ||
+                             (userAnswer.includes('1,000,000') || userAnswer.includes('1000000')) && correctAnswer.includes('1000000');
             
             if (isCorrect) {
                 correctAnswers++;
@@ -500,9 +493,9 @@
 
         // ➡️ IR AL SIGUIENTE MÓDULO
         function goToNextModule() {
-            alert('¡FELICITACIONES! 🎉 Has completado todo el Laboratorio Matemático del Colegio Mayor de Antioquia. ¡Eres un científico matemático completo!');
-            // Aquí puedes redirigir a la página principal o certificado
-            // window.location.href = 'index.html';
+            alert('¡Felicitaciones! Dirígete al Módulo 4: Razones, Proporciones y Regla de Tres');
+            // Aquí puedes redirigir al siguiente módulo
+            // window.location.href = 'modulo4_proporciones_lab.html';
         }
 
         // 🎹 EFECTOS DE SONIDO SIMPLES

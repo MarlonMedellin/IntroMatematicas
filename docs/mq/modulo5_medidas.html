@@ -6,18 +6,18 @@
     <title>MathQuest Introductorio de Matemáticas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+    <link rel="stylesheet" href="assets/math-lab-styles.css">
 </head>
 <body>
     <!-- 🚀 HEADER -->
     <div class="lab-header">
         <h1 class="lab-title">
             <i class="fas fa-flask"></i>
-            Laboratorio Matemático - Módulo 4
+            Laboratorio Matemático - Módulo 5
         </h1>
         <p class="lab-subtitle">
-            <i class="fas fa-balance-scale"></i>
-            Razones, Proporciones y Regla de Tres - Colegio Mayor de Antioquia
+            <i class="fas fa-ruler-combined"></i>
+            Aplicaciones y Sistemas de Medida - Colegio Mayor de Antioquia
         </p>
     </div>
 
@@ -169,97 +169,97 @@
     </div>
 
     <script>
-        // 🧪 DATOS DEL MÓDULO 4: RAZONES, PROPORCIONES Y REGLA DE TRES
+        // 🧪 DATOS DEL MÓDULO 5: APLICACIONES Y SISTEMAS DE MEDIDA
         const experiments = [
             {
-                context: "Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.",
-                icon: "fas fa-bus",
-                question: "¿Cuántos km puede recorrer con 15 litros?",
-                calculation: "60:5 = x:15",
-                answer: "180",
-                hint: "Plantea la proporción: 60 km / 5 litros = x km / 15 litros. Multiplica cruzado: 60 × 15 = 5 × x, entonces 900 = 5x, por lo tanto x = 180",
-                explanation: "Proporción: 60:5 = x:15. Resolviendo: x = (60 × 15) ÷ 5 = 900 ÷ 5 = 180 km"
+                context: "Una ambulancia recorre 3.5 km hasta el hospital.",
+                icon: "fas fa-ambulance",
+                question: "¿Cuántos metros recorre?",
+                calculation: "3.5 × 1,000",
+                answer: "3500",
+                hint: "Para convertir kilómetros a metros, multiplica por 1,000: 3.5 × 1,000 = 3,500 metros",
+                explanation: "3.5 km × 1,000 = 3,500 metros recorridos por la ambulancia"
             },
             {
-                context: "En una cocina, 4 cocineros pueden preparar 12 platos en una hora.",
-                icon: "fas fa-utensils",
-                question: "¿Cuántos platos pueden preparar 6 cocineros en una hora?",
-                calculation: "4:12 = 6:x",
-                answer: "18",
-                hint: "Proporcionalidad directa: 4 cocineros / 12 platos = 6 cocineros / x platos. Multiplica cruzado: 4x = 12 × 6 = 72, entonces x = 18",
-                explanation: "Proporción: 4:12 = 6:x. Resolviendo: x = (6 × 12) ÷ 4 = 72 ÷ 4 = 18 platos"
+                context: "Un edificio tiene 1,200 metros de altura total incluyendo antenas.",
+                icon: "fas fa-building",
+                question: "¿Cuántos km de altura tiene?",
+                calculation: "1,200 ÷ 1,000",
+                answer: "1.2",
+                hint: "Para convertir metros a kilómetros, divide entre 1,000: 1,200 ÷ 1,000 = 1.2 km",
+                explanation: "1,200 metros ÷ 1,000 = 1.2 km de altura total del edificio"
             },
             {
-                context: "Una clínica aumentó sus consultas en 25%. Si antes atendía 80 pacientes diarios.",
+                context: "En un laboratorio se pesaron 2,500 gramos de una muestra.",
+                icon: "fas fa-weight",
+                question: "¿Cuántos kg son?",
+                calculation: "2,500 ÷ 1,000",
+                answer: "2.5",
+                hint: "Para convertir gramos a kilogramos, divide entre 1,000: 2,500 ÷ 1,000 = 2.5 kg",
+                explanation: "2,500 gramos ÷ 1,000 = 2.5 kg de muestra pesada"
+            },
+            {
+                context: "Una cirugía veterinaria dura 180 minutos.",
                 icon: "fas fa-user-md",
-                question: "¿Cuántos pacientes atiende ahora?",
-                calculation: "80 + (25% × 80)",
-                answer: "100",
-                hint: "Aumento del 25%: calcula 25% de 80 = 0.25 × 80 = 20. Luego suma: 80 + 20 = 100 pacientes",
-                explanation: "Pacientes iniciales: 80. Aumento: 25% de 80 = 20 pacientes. Total: 80 + 20 = 100 pacientes"
+                question: "¿Cuántas horas son?",
+                calculation: "180 ÷ 60",
+                answer: "3",
+                hint: "Para convertir minutos a horas, divide entre 60: 180 ÷ 60 = 3 horas",
+                explanation: "180 minutos ÷ 60 = 3 horas de duración de la cirugía"
             },
             {
-                context: "En una construcción, la relación cemento:arena es 2:5. Si se usan 8 bultos de cemento.",
-                icon: "fas fa-hard-hat",
-                question: "¿Cuántos bultos de arena se necesitan?",
-                calculation: "2:5 = 8:x",
-                answer: "20",
-                hint: "Proporción: 2 cemento / 5 arena = 8 cemento / x arena. Multiplica cruzado: 2x = 5 × 8 = 40, entonces x = 20",
-                explanation: "Proporción: 2:5 = 8:x. Resolviendo: x = (8 × 5) ÷ 2 = 40 ÷ 2 = 20 bultos de arena"
-            },
-            {
-                context: "Un laboratorio reduce sus gastos al 75% del mes anterior. Si gastó $1,200,000 el mes pasado.",
+                context: "Un tanque de medicamento líquido contiene 3,200 ml.",
                 icon: "fas fa-flask",
-                question: "¿Cuánto gastó este mes?",
-                calculation: "75% × 1,200,000",
-                answer: "900000",
-                hint: "75% = 0.75. Entonces: 0.75 × 1,200,000 = 900,000",
-                explanation: "Gastos este mes: 75% de $1,200,000 = 0.75 × 1,200,000 = $900,000"
+                question: "¿Cuántos litros son?",
+                calculation: "3,200 ÷ 1,000",
+                answer: "3.2",
+                hint: "Para convertir mililitros a litros, divide entre 1,000: 3,200 ÷ 1,000 = 3.2 litros",
+                explanation: "3,200 ml ÷ 1,000 = 3.2 litros de medicamento líquido"
             },
             {
-                context: "Una agencia de publicidad produce 5 comerciales en 15 días.",
-                icon: "fas fa-bullhorn",
-                question: "¿Cuántos comerciales produce en 30 días?",
-                calculation: "5:15 = x:30",
-                answer: "10",
-                hint: "Proporción: 5 comerciales / 15 días = x comerciales / 30 días. Multiplica cruzado: 5 × 30 = 15x, entonces 150 = 15x, por lo tanto x = 10",
-                explanation: "Proporción: 5:15 = x:30. Resolviendo: x = (5 × 30) ÷ 15 = 150 ÷ 15 = 10 comerciales"
+                context: "Una ventana en construcción mide 80 cm de ancho.",
+                icon: "fas fa-window-maximize",
+                question: "¿Cuántos mm son?",
+                calculation: "80 × 10",
+                answer: "800",
+                hint: "Para convertir centímetros a milímetros, multiplica por 10: 80 × 10 = 800 mm",
+                explanation: "80 cm × 10 = 800 mm de ancho de la ventana"
             },
             {
-                context: "En un hotel, la ocupación actual y la ocupación objetivo están en proporción 3:4. Si la ocupación actual es 60 habitaciones.",
-                icon: "fas fa-hotel",
-                question: "¿Cuál es la ocupación objetivo?",
-                calculation: "3:4 = 60:x",
-                answer: "80",
-                hint: "Proporción: 3 actual / 4 objetivo = 60 actual / x objetivo. Multiplica cruzado: 3x = 4 × 60 = 240, entonces x = 80",
-                explanation: "Proporción: 3:4 = 60:x. Resolviendo: x = (60 × 4) ÷ 3 = 240 ÷ 3 = 80 habitaciones"
+                context: "Un proceso de fermentación en gastronomía dura 2.5 horas.",
+                icon: "fas fa-wine-bottle",
+                question: "¿Cuántos minutos son?",
+                calculation: "2.5 × 60",
+                answer: "150",
+                hint: "Para convertir horas a minutos, multiplica por 60: 2.5 × 60 = 150 minutos",
+                explanation: "2.5 horas × 60 = 150 minutos de fermentación"
             },
             {
-                context: "Un medicamento veterinario se dosifica en proporción 2:1 (ml de medicamento por kg de peso). Si un animal pesa 15 kg.",
-                icon: "fas fa-syringe",
-                question: "¿Cuántos ml de medicamento necesita?",
-                calculation: "2:1 = x:15",
-                answer: "30",
-                hint: "Proporción: 2 ml / 1 kg = x ml / 15 kg. Multiplica cruzado: 2 × 15 = 1 × x, entonces x = 30 ml",
-                explanation: "Proporción: 2:1 = x:15. Resolviendo: x = (2 × 15) ÷ 1 = 30 ml de medicamento"
+                context: "Un medicamento pesa 450 gramos por dosis.",
+                icon: "fas fa-pills",
+                question: "¿Cuántos kg pesa?",
+                calculation: "450 ÷ 1,000",
+                answer: "0.45",
+                hint: "Para convertir gramos a kilogramos, divide entre 1,000: 450 ÷ 1,000 = 0.45 kg",
+                explanation: "450 gramos ÷ 1,000 = 0.45 kg por dosis de medicamento"
             },
             {
-                context: "En una empresa, la relación entre ingresos y gastos debe ser 5:3. Si los gastos son $600,000.",
-                icon: "fas fa-chart-line",
-                question: "¿Cuáles deben ser los ingresos?",
-                calculation: "5:3 = x:600,000",
-                answer: "1000000",
-                hint: "Proporción: 5 ingresos / 3 gastos = x ingresos / 600,000 gastos. Multiplica cruzado: 5 × 600,000 = 3x, entonces 3,000,000 = 3x, por lo tanto x = 1,000,000",
-                explanation: "Proporción: 5:3 = x:600,000. Resolviendo: x = (5 × 600,000) ÷ 3 = 3,000,000 ÷ 3 = $1,000,000"
+                context: "Una oficina de turismo tiene un área de 6 m².",
+                icon: "fas fa-map-marked-alt",
+                question: "¿Cuántos cm² son?",
+                calculation: "6 × 10,000",
+                answer: "60000",
+                hint: "Para convertir metros cuadrados a centímetros cuadrados, multiplica por 10,000: 6 × 10,000 = 60,000 cm²",
+                explanation: "6 m² × 10,000 = 60,000 cm² de área de la oficina"
             },
             {
-                context: "Una receta para 4 personas requiere 200g de harina.",
-                icon: "fas fa-bread-slice",
-                question: "¿Cuánta harina se necesita para 14 personas?",
-                calculation: "4:200 = 14:x",
-                answer: "700",
-                hint: "Proporción: 4 personas / 200g = 14 personas / x gramos. Multiplica cruzado: 4x = 200 × 14 = 2,800, entonces x = 700g",
-                explanation: "Proporción: 4:200 = 14:x. Resolviendo: x = (14 × 200) ÷ 4 = 2,800 ÷ 4 = 700g de harina"
+                context: "Un vehículo de transporte turístico viaja a 80 km/h durante 1.5 horas.",
+                icon: "fas fa-bus",
+                question: "¿Qué distancia recorre?",
+                calculation: "80 × 1.5",
+                answer: "120",
+                hint: "Distancia = velocidad × tiempo. Entonces: 80 km/h × 1.5 h = 120 km",
+                explanation: "80 km/h × 1.5 horas = 120 km de distancia recorrida"
             }
         ];
 
@@ -493,9 +493,9 @@
 
         // ➡️ IR AL SIGUIENTE MÓDULO
         function goToNextModule() {
-            alert('¡Felicitaciones! Dirígete al Módulo 4: Razones, Proporciones y Regla de Tres');
+            alert('¡Felicitaciones! Dirígete al Módulo 5: Aplicaciones y Sistemas de Medida');
             // Aquí puedes redirigir al siguiente módulo
-            // window.location.href = 'modulo4_proporciones_lab.html';
+            // window.location.href = 'modulo5_medidas_lab.html';
         }
 
         // 🎹 EFECTOS DE SONIDO SIMPLES

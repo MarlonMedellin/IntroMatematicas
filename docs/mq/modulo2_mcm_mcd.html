@@ -6,18 +6,18 @@
     <title>MathQuest Introductorio de Matemáticas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/math-lab-styles.css">
+    <link rel="stylesheet" href="assets/math-lab-styles.css">
 </head>
 <body>
     <!-- 🚀 HEADER -->
     <div class="lab-header">
         <h1 class="lab-title">
             <i class="fas fa-flask"></i>
-            Laboratorio Matemático - Módulo 5
+            Laboratorio Matemático - Módulo 2
         </h1>
         <p class="lab-subtitle">
-            <i class="fas fa-ruler-combined"></i>
-            Aplicaciones y Sistemas de Medida - Colegio Mayor de Antioquia
+            <i class="fas fa-calculator"></i>
+            Números Primos, MCM y MCD - Colegio Mayor de Antioquia
         </p>
     </div>
 
@@ -63,16 +63,16 @@
             <!-- Contexto del problema -->
             <div class="experiment-context">
                 <div class="context-icon" id="contextIcon">
-                    <i class="fas fa-bus"></i>
+                    <i class="fas fa-truck"></i>
                 </div>
                 <div class="context-text" id="contextText">
-                    Un vehículo turístico consume combustible a razón de 60 km por cada 5 litros.
+                    Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días.
                 </div>
             </div>
 
             <!-- Pregunta principal -->
             <div class="experiment-question" id="questionText">
-                ¿Cuántos km puede recorrer con 15 litros?
+                ¿Cada cuántos días coinciden todas las entregas?
             </div>
 
             <!-- Área de cálculo -->
@@ -169,97 +169,97 @@
     </div>
 
     <script>
-        // 🧪 DATOS DEL MÓDULO 5: APLICACIONES Y SISTEMAS DE MEDIDA
+        // 🧪 DATOS DEL MÓDULO 2: NÚMEROS PRIMOS, MCM Y MCD
         const experiments = [
             {
-                context: "Una ambulancia recorre 3.5 km hasta el hospital.",
-                icon: "fas fa-ambulance",
-                question: "¿Cuántos metros recorre?",
-                calculation: "3.5 × 1,000",
-                answer: "3500",
-                hint: "Para convertir kilómetros a metros, multiplica por 1,000: 3.5 × 1,000 = 3,500 metros",
-                explanation: "3.5 km × 1,000 = 3,500 metros recorridos por la ambulancia"
+                context: "Un restaurante programa la entrega de ingredientes: carnes cada 6 días, verduras cada 8 días y lácteos cada 12 días.",
+                icon: "fas fa-truck",
+                question: "¿Cada cuántos días coinciden todas las entregas?",
+                calculation: "MCM(6, 8, 12)",
+                answer: "24",
+                hint: "El MCM es el menor múltiplo común. Factoriza: 6=2×3, 8=2³, 12=2²×3. MCM = 2³×3 = 24",
+                explanation: "Para que coincidan todas las entregas, necesitamos el MCM(6,8,12) = 24 días"
             },
             {
-                context: "Un edificio tiene 1,200 metros de altura total incluyendo antenas.",
-                icon: "fas fa-building",
-                question: "¿Cuántos km de altura tiene?",
-                calculation: "1,200 ÷ 1,000",
-                answer: "1.2",
-                hint: "Para convertir metros a kilómetros, divide entre 1,000: 1,200 ÷ 1,000 = 1.2 km",
-                explanation: "1,200 metros ÷ 1,000 = 1.2 km de altura total del edificio"
-            },
-            {
-                context: "En un laboratorio se pesaron 2,500 gramos de una muestra.",
-                icon: "fas fa-weight",
-                question: "¿Cuántos kg son?",
-                calculation: "2,500 ÷ 1,000",
-                answer: "2.5",
-                hint: "Para convertir gramos a kilogramos, divide entre 1,000: 2,500 ÷ 1,000 = 2.5 kg",
-                explanation: "2,500 gramos ÷ 1,000 = 2.5 kg de muestra pesada"
-            },
-            {
-                context: "Una cirugía veterinaria dura 180 minutos.",
-                icon: "fas fa-user-md",
-                question: "¿Cuántas horas son?",
-                calculation: "180 ÷ 60",
-                answer: "3",
-                hint: "Para convertir minutos a horas, divide entre 60: 180 ÷ 60 = 3 horas",
-                explanation: "180 minutos ÷ 60 = 3 horas de duración de la cirugía"
-            },
-            {
-                context: "Un tanque de medicamento líquido contiene 3,200 ml.",
-                icon: "fas fa-flask",
-                question: "¿Cuántos litros son?",
-                calculation: "3,200 ÷ 1,000",
-                answer: "3.2",
-                hint: "Para convertir mililitros a litros, divide entre 1,000: 3,200 ÷ 1,000 = 3.2 litros",
-                explanation: "3,200 ml ÷ 1,000 = 3.2 litros de medicamento líquido"
-            },
-            {
-                context: "Una ventana en construcción mide 80 cm de ancho.",
-                icon: "fas fa-window-maximize",
-                question: "¿Cuántos mm son?",
-                calculation: "80 × 10",
-                answer: "800",
-                hint: "Para convertir centímetros a milímetros, multiplica por 10: 80 × 10 = 800 mm",
-                explanation: "80 cm × 10 = 800 mm de ancho de la ventana"
-            },
-            {
-                context: "Un proceso de fermentación en gastronomía dura 2.5 horas.",
-                icon: "fas fa-wine-bottle",
-                question: "¿Cuántos minutos son?",
-                calculation: "2.5 × 60",
-                answer: "150",
-                hint: "Para convertir horas a minutos, multiplica por 60: 2.5 × 60 = 150 minutos",
-                explanation: "2.5 horas × 60 = 150 minutos de fermentación"
-            },
-            {
-                context: "Un medicamento pesa 450 gramos por dosis.",
+                context: "En una clínica veterinaria hay 36 pastillas de un medicamento y 48 de otro. Se quieren distribuir en dosis iguales usando el mayor número de pastillas por dosis.",
                 icon: "fas fa-pills",
-                question: "¿Cuántos kg pesa?",
-                calculation: "450 ÷ 1,000",
-                answer: "0.45",
-                hint: "Para convertir gramos a kilogramos, divide entre 1,000: 450 ÷ 1,000 = 0.45 kg",
-                explanation: "450 gramos ÷ 1,000 = 0.45 kg por dosis de medicamento"
+                question: "¿Cuántas pastillas por dosis?",
+                calculation: "MCD(36, 48)",
+                answer: "12",
+                hint: "El MCD es el mayor divisor común. Factoriza: 36=2²×3², 48=2⁴×3. MCD = 2²×3 = 12",
+                explanation: "Para el mayor número de pastillas por dosis, necesitamos el MCD(36,48) = 12 pastillas por dosis"
             },
             {
-                context: "Una oficina de turismo tiene un área de 6 m².",
-                icon: "fas fa-map-marked-alt",
-                question: "¿Cuántos cm² son?",
-                calculation: "6 × 10,000",
-                answer: "60000",
-                hint: "Para convertir metros cuadrados a centímetros cuadrados, multiplica por 10,000: 6 × 10,000 = 60,000 cm²",
-                explanation: "6 m² × 10,000 = 60,000 cm² de área de la oficina"
+                context: "Una bacteria se reproduce cada 11 minutos.",
+                icon: "fas fa-microscope",
+                question: "¿Es 11 un número primo?",
+                calculation: "Verificar divisores de 11",
+                answer: "Sí",
+                hint: "Un número primo solo tiene dos divisores: 1 y él mismo. Verifica si 11 tiene otros divisores",
+                explanation: "11 es primo porque solo es divisible por 1 y por 11. No tiene otros divisores"
             },
             {
-                context: "Un vehículo de transporte turístico viaja a 80 km/h durante 1.5 horas.",
-                icon: "fas fa-bus",
-                question: "¿Qué distancia recorre?",
-                calculation: "80 × 1.5",
-                answer: "120",
-                hint: "Distancia = velocidad × tiempo. Entonces: 80 km/h × 1.5 h = 120 km",
-                explanation: "80 km/h × 1.5 horas = 120 km de distancia recorrida"
+                context: "Un arquitecto diseña ventanas en grupos de 15.",
+                icon: "fas fa-window-maximize",
+                question: "¿Es 15 divisible por 3?",
+                calculation: "15 ÷ 3",
+                answer: "Sí",
+                hint: "Un número es divisible por 3 si la suma de sus cifras es divisible por 3. Para 15: 1+5=6, y 6 es divisible por 3",
+                explanation: "15 ÷ 3 = 5, por lo tanto 15 es divisible por 3"
+            },
+            {
+                context: "En una panadería, el horno 1 hace pan cada 6 minutos y el horno 2 cada 9 minutos.",
+                icon: "fas fa-bread-slice",
+                question: "¿Cada cuántos minutos producen pan simultáneamente?",
+                calculation: "MCM(6, 9)",
+                answer: "18",
+                hint: "Factoriza: 6=2×3, 9=3². MCM = 2×3² = 18",
+                explanation: "Para que produzcan simultáneamente, necesitamos el MCM(6,9) = 18 minutos"
+            },
+            {
+                context: "Un laboratorio tiene 42 muestras de sangre y 56 muestras de orina. Quiere organizarlas en bandejas con igual cantidad de muestras.",
+                icon: "fas fa-vial",
+                question: "¿Cuál es el mayor número de muestras por bandeja?",
+                calculation: "MCD(42, 56)",
+                answer: "14",
+                hint: "Factoriza: 42=2×3×7, 56=2³×7. MCD = 2×7 = 14",
+                explanation: "Para el mayor número de muestras por bandeja, necesitamos el MCD(42,56) = 14 muestras"
+            },
+            {
+                context: "Una emisora programa un comercial especial cada 17 minutos.",
+                icon: "fas fa-radio",
+                question: "¿17 es un número primo?",
+                calculation: "Verificar divisores de 17",
+                answer: "Sí",
+                hint: "Verifica si 17 tiene divisores entre 2 y √17 ≈ 4.1. Prueba con 2, 3, 4",
+                explanation: "17 es primo porque solo es divisible por 1 y por 17. No tiene otros divisores"
+            },
+            {
+                context: "Necesitas identificar números primos en un rango específico.",
+                icon: "fas fa-list-ol",
+                question: "¿Cuántos números primos hay entre 20 y 30?",
+                calculation: "Verificar: 21, 22, 23, 24, 25, 26, 27, 28, 29",
+                answer: "2",
+                hint: "Revisa cada número: 21=3×7, 22=2×11, 23=primo, 24=2³×3, 25=5², 26=2×13, 27=3³, 28=2²×7, 29=primo",
+                explanation: "Entre 20 y 30 hay 2 números primos: 23 y 29"
+            },
+            {
+                context: "Un hotel programa mantenimiento de habitaciones cada 20 días y mantenimiento de áreas comunes cada 30 días.",
+                icon: "fas fa-hotel",
+                question: "¿Cada cuántos días coinciden ambos mantenimientos?",
+                calculation: "MCM(20, 30)",
+                answer: "60",
+                hint: "Factoriza: 20=2²×5, 30=2×3×5. MCM = 2²×3×5 = 60",
+                explanation: "Para que coincidan ambos mantenimientos, necesitamos el MCM(20,30) = 60 días"
+            },
+            {
+                context: "Un sistema de seguridad tiene código 35. Para descifrarlo necesitas sus factores primos.",
+                icon: "fas fa-lock",
+                question: "¿Cuáles son los factores primos de 35?",
+                calculation: "35 ÷ factores primos",
+                answer: "5 × 7",
+                hint: "Divide 35 entre números primos pequeños: 35 ÷ 5 = 7, y 7 es primo",
+                explanation: "35 = 5 × 7. Los factores primos de 35 son 5 y 7"
             }
         ];
 
@@ -329,40 +329,10 @@
             
             totalAttempts++;
             
-            // Normalizar respuestas para comparación flexible
-            const normalizeAnswer = (answer) => {
-                return answer
-                    .replace(/[\s,$%°ckmlgpacientesplatoshabitacionescomerciales]/g, '')
-                    .replace(/km/g, '')
-                    .replace(/platos?/g, '')
-                    .replace(/pacientes?/g, '')
-                    .replace(/bultos?/g, '')
-                    .replace(/comerciales?/g, '')
-                    .replace(/habitaciones?/g, '')
-                    .replace(/gramos?/g, '')
-                    .replace(/arena/g, '')
-                    .toLowerCase();
-            };
-            
-            const normalizedUser = normalizeAnswer(userAnswer);
-            const normalizedCorrect = normalizeAnswer(correctAnswer);
-            
             // Verificar si la respuesta es correcta (permitir variaciones)
-            const isCorrect = normalizedUser === normalizedCorrect || 
-                             // Permitir respuestas numéricas exactas para el Módulo 4
-                             userAnswer.includes('180') && correctAnswer.includes('180') ||
-                             userAnswer.includes('18') && correctAnswer.includes('18') ||
-                             userAnswer.includes('100') && correctAnswer.includes('100') ||
-                             userAnswer.includes('20') && correctAnswer.includes('20') ||
-                             userAnswer.includes('900000') && correctAnswer.includes('900000') ||
-                             userAnswer.includes('10') && correctAnswer.includes('10') ||
-                             userAnswer.includes('80') && correctAnswer.includes('80') ||
-                             userAnswer.includes('30') && correctAnswer.includes('30') ||
-                             userAnswer.includes('1000000') && correctAnswer.includes('1000000') ||
-                             userAnswer.includes('700') && correctAnswer.includes('700') ||
-                             // Permitir variaciones con comas
-                             (userAnswer.includes('900,000') || userAnswer.includes('900000')) && correctAnswer.includes('900000') ||
-                             (userAnswer.includes('1,000,000') || userAnswer.includes('1000000')) && correctAnswer.includes('1000000');
+            const isCorrect = userAnswer === correctAnswer || 
+                             userAnswer === correctAnswer.replace('°c', '') ||
+                             (correctAnswer.includes('sí') && (userAnswer.includes('sí') || userAnswer.includes('si') || userAnswer.includes('sobrevive')));
             
             if (isCorrect) {
                 correctAnswers++;
@@ -493,9 +463,9 @@
 
         // ➡️ IR AL SIGUIENTE MÓDULO
         function goToNextModule() {
-            alert('¡Felicitaciones! Dirígete al Módulo 5: Aplicaciones y Sistemas de Medida');
+            alert('¡Felicitaciones! Dirígete al Módulo 2: Números Primos, MCM y MCD');
             // Aquí puedes redirigir al siguiente módulo
-            // window.location.href = 'modulo5_medidas_lab.html';
+            // window.location.href = 'modulo2_primos_lab.html';
         }
 
         // 🎹 EFECTOS DE SONIDO SIMPLES
